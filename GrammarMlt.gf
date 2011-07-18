@@ -1,8 +1,12 @@
+-- Maltese Resource Grammar Library
+-- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- Licensed under LGPL
+
 --# -path=.:../abstract:../common:../prelude
 
-concrete GrammarMlt of Grammar = 
-  NounMlt, 
-  VerbMlt, 
+concrete GrammarMlt of Grammar =
+  NounMlt,
+  VerbMlt,
   AdjectiveMlt,
   AdverbMlt,
   NumeralMlt,
@@ -18,27 +22,27 @@ concrete GrammarMlt of Grammar =
 
 	flags coding=utf8 ;
 
-	lincat  
+	lincat
 		S  = {s : Str} ;
-		Cl = {s : ResMlt.Tense => Bool => Str} ; 
-		NP = ResMlt.NP ; -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ; 
+		Cl = {s : ResMlt.Tense => Bool => Str} ;
+		NP = ResMlt.NP ; -- {s : Case => {clit,obj : Str ; isClit : Bool} ; a : Agr} ;
 		VP = ResMlt.VP ; -- {v : Verb ; clit : Str ; clitAgr : ClitAgr ; obj : Agr => Str} ;
 		AP = {s : Gender => Number => Str ; isPre : Bool} ;
 		CN = ResMlt.Noun ; -- {s : Number => Str ; g : Gender} ;
 		Det = {s : Gender => Case => Str ; n : Number} ;
 		N = ResMlt.Noun ; -- {s : Number => Str ; g : Gender} ;
 		A = ResMlt.Adj ; -- {s : Gender => Number => Str ; isPre : Bool} ;
-		V = ResMlt.Verb ; 
+		V = ResMlt.Verb ;
 		V2 = ResMlt.Verb ** {c : Case} ;
 		AdA = {s : Str} ;
 		Pol = {s : Str ; b : Bool} ;
 		Tense = {s : Str ; t : ResMlt.Tense} ;
 		Conj = {s : Str ; n : Number} ;
-		
+
 	lin
-		UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ; 
-		PredVP np vp = 
-		let 
+		UseCl t p cl = {s = t.s ++ p.s ++ cl.s ! t.t ! p.b} ;
+		PredVP np vp =
+		let
 		subj = (np.s ! Nom).obj ;
 		obj  = vp.obj ! np.a ;
 		clit = vp.clit ;
@@ -50,12 +54,12 @@ concrete GrammarMlt of Grammar =
 		s = \\t,b => subj ++ neg b ++ clit ++ verb ! t ++ obj
 		} ;
 
-		ComplV2 v2 np = 
+		ComplV2 v2 np =
 		let
 		nps = np.s ! v2.c
 		in {
-		v = {s = v2.s ; aux = v2.aux} ; 
-		clit = nps.clit ; 
+		v = {s = v2.s ; aux = v2.aux} ;
+		clit = nps.clit ;
 		clitAgr = case <nps.isClit,v2.c> of {
 		<True,Acc> => CAgr np.a ;
 		_ => CAgrNo
@@ -64,16 +68,16 @@ concrete GrammarMlt of Grammar =
 		} ;
 
 		UseV v = {
-		v = v ; 
-		clit = [] ; 
+		v = v ;
+		clit = [] ;
 		clitAgr = CAgrNo ;
 		obj = \\_ => []
 		} ;
 
 		DetCN det cn = {
 		s = \\c => {
-		obj = det.s ! cn.g ! c ++ cn.s ! det.n ; 
-		clit = [] ; 
+		obj = det.s ! cn.g ! c ++ cn.s ! det.n ;
+		clit = [] ;
 		isClit = False
 		} ;
 		a = Ag cn.g det.n Per3
@@ -85,8 +89,8 @@ concrete GrammarMlt of Grammar =
 		} ;
 
 		CompAP ap = {
-		v = essere_V ; 
-		clit = [] ; 
+		v = essere_V ;
+		clit = [] ;
 		clitAgr = CAgrNo ;
 		obj = \\ag => case ag of {
 		Ag g n _ => ap.s ! g ! n
@@ -100,8 +104,8 @@ concrete GrammarMlt of Grammar =
 
 		ConjNP co nx ny = {
 		s = \\c => {
-		obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ; 
-		clit = [] ; 
+		obj = (nx.s ! c).obj ++ co.s ++ (ny.s ! c).obj ;
+		clit = [] ;
 		isClit = False
 		} ;
 		a = conjAgr co.n nx.a ny.a
@@ -147,9 +151,9 @@ concrete GrammarMlt of Grammar =
 		or_Conj  = {s = "o" ; n = Sg} ;
 
 	oper
-		quello_A : Adj = mkAdj 
+		quello_A : Adj = mkAdj
 		(elisForms "quello" "quell'" "quel") "quella"
 		(elisForms "quegli" "quegli" "quei") "quelle"
 		True ;
 
-} 
+}

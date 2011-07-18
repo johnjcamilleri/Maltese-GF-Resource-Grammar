@@ -1,8 +1,12 @@
+-- Maltese Resource Grammar Library
+-- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- Licensed under LGPL
+
 --# -path=.:../abstract:../../prelude:../common
 
-resource ParadigmsMlt = open 
-	Predef, 
-	Prelude, 
+resource ParadigmsMlt = open
+	Predef,
+	Prelude,
 	MorphoMlt,
 	OrthoMlt,(ResMlt=ResMlt),
 	CatMlt

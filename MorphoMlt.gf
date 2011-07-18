@@ -1,7 +1,6 @@
-
--- Ċċ Ġġ Ħħ Żż
-
--- ALL THIS STUFF IS KEPT HERE FOR MY OWN REFERNECE ONLY, SHOULD PROBABLY BE SCRAPPED --
+-- Maltese Resource Grammar Library
+-- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- Licensed under LGPL
 
 resource MorphoMlt = ResMlt ** open Prelude in {
 	flags optimize = all ;--noexpand; coding=utf8 ;

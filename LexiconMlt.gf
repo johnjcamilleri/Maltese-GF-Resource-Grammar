@@ -1,13 +1,17 @@
+-- Maltese Resource Grammar Library
+-- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- Licensed under LGPL
+
 --# -path=.:../abstract:../common:../prelude
---
+
 concrete LexiconMlt of Lexicon = CatMlt **
-	open ParadigmsMlt, ResMlt, Prelude in { 
+	open ParadigmsMlt, ResMlt, Prelude in {
 
 	flags optimize=values ; coding=utf8 ;
-	
+
 	lin
 		{- ===== VERBS ===== -}
-		
+
 		cut_V2 = mkVerb "qata'" "aqta'" "aqtgħu" ;
 		write_V2 = mkVerb "kiteb" ;
 		break_V2 = mkVerb "kiser" ;
@@ -20,16 +24,18 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		understand_V2 = mkVerb "fehem" ;
 		pull_V2 = mkVerb "ġibed" ;
 		--walk_V = mkVerb "mexa'" ;
-		
+
 		die_V = mkVerb "qarmeċ" ;
-		
-		
+
+
 		{- ===== NOUNS ===== -}
-		
+
 		airplane_N = mkNoun "ajruplan" Masc ;
 		apple_N = mkNoun "tuffieħa" Fem ;
-  
+
 --	oper
+
+		-- NOT MY CODE -John
 		-- Define different possible patterns
 		{-
 		pattern_AA : Pattern = { v1 = "a" ; v2 = "a" } ; -- eg QASAM
@@ -40,7 +46,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		pattern_OO : Pattern = { v1 = "o" ; v2 = "o" } ; -- eg QOROB
 		pattern_OA : Pattern = { v1 = "o" ; v2 = "o" } ; -- GĦOLA, GĦOXA, ĦOLA (only!)
 		-}
-		
+
 		--Define some roots
 		{-
 		root_HTF : Root = { K = "ħ" ; T = "t" ; B = "f" ; L=[] } ; -- pattern: AA
