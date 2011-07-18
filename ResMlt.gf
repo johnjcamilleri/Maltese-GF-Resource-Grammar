@@ -42,6 +42,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		VOrigin =
 			  Semitic
 			| Romance
+			| English
 		;
 --		Order   = Verbal | Nominal ;
 
@@ -51,8 +52,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		-- Shortcut type
 		GenNum = gn Gender Number ;
 
-		-- People we can be referring to
-		PerGenNum =
+		-- Agreement features
+		Agr =
 			  Per1 Number	-- Jiena, Aħna
 			| Per2 Number	-- Inti, Intom
 			| Per3Sg Gender	-- Huwa, Hija
@@ -71,8 +72,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Possible verb forms (tense + person)
 		VForm =
-			  VPerf PerGenNum		-- Perfect tense in all pronoun cases
-			| VImpf PerGenNum		-- Imperfect tense in all pronoun cases
+			  VPerf Agr		-- Perfect tense in all pronoun cases
+			| VImpf Agr		-- Imperfect tense in all pronoun cases
 			| VImp Number 			-- Imperative is always Per2, Sg & Pl
 			-- | VPresPart GenNum	-- Present Particible for Gender/Number
 			-- | VPastPart GenNum	-- Past Particible for Gender/Number
@@ -316,8 +317,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in PERFECT tense
 		-- Params: Root, Pattern
-		-- Return: Lookup table of PerGenNum against Str
-		conjStrongPerf : Root -> Pattern -> ( PerGenNum => Str ) = \root,p ->
+		-- Return: Lookup table of Agr against Str
+		conjStrongPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
 			let
 				stem_12 = root.K + root.T + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + root.B ;
 				stem_3 = root.K + p.v1 + root.T + root.B ;
@@ -334,8 +335,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
 		-- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-		-- Return: Lookup table of PerGenNum against Str
-		conjStrongImpf : Str -> Str -> ( PerGenNum => Str ) = \stem_sg,stem_pl ->
+		-- Return: Lookup table of Agr against Str
+		conjStrongImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
 			table {
 				Per1 Sg		=> "n" + stem_sg ;	-- Jiena NIKTEB
 				Per2 Sg		=> "t" + stem_sg ;	-- Inti TIKTEB
@@ -395,8 +396,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in PERFECT tense
 		-- Params: Root, Pattern
-		-- Return: Lookup table of PerGenNum against Str
-		conjDefectivePerf : Root -> Pattern -> ( PerGenNum => Str ) = \root,p ->
+		-- Return: Lookup table of Agr against Str
+		conjDefectivePerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
 			let
 				stem_12 = root.K + root.T + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + "j" ; -- "AGĦ" -> "AJ"
 				stem_3 = root.K + p.v1 + root.T + root.B ;
@@ -413,8 +414,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
 		-- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-		-- Return: Lookup table of PerGenNum against Str
-		conjDefectiveImpf : Str -> Str -> ( PerGenNum => Str ) = \stem_sg,stem_pl ->
+		-- Return: Lookup table of Agr against Str
+		conjDefectiveImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
 			table {
 				Per1 Sg		=> "n" + stem_sg ;	-- Jiena NIKTEB
 				Per2 Sg		=> "t" + stem_sg ;	-- Inti TIKTEB
@@ -459,8 +460,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in PERFECT tense
 		-- Params: Root, Pattern
-		-- Return: Lookup table of PerGenNum against Str
-		conjQuadPerf : Root -> Pattern -> ( PerGenNum => Str ) = \root,p ->
+		-- Return: Lookup table of Agr against Str
+		conjQuadPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
 			let
 				stem_12 = root.K + p.v1 + root.T + root.B + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + root.L ;
 				stem_3 = root.K + p.v1 + root.T + root.B + root.L ;
@@ -477,8 +478,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
 		-- Params: Imperative Singular (eg ____), Imperative Plural (eg ___)
-		-- Return: Lookup table of PerGenNum against Str
-		conjQuadImpf : Str -> Str -> ( PerGenNum => Str ) = \stem_sg,stem_pl ->
+		-- Return: Lookup table of Agr against Str
+		conjQuadImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
 			let
 				prefix_dbl:Str = case stem_sg of {
 					X@( "d" | "t" ) + _ => "i" + X ;
