@@ -1,4 +1,4 @@
--- IdiomMlt.gf: idiomatic expressions
+-- TextMlt.gf: many-phrase texts
 --
 -- Maltese Resource Grammar Library
 -- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
@@ -6,9 +6,7 @@
 
 concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
 
--- Cl
--- QCl
--- VP
--- Utt
+-- Text
 
 }
+

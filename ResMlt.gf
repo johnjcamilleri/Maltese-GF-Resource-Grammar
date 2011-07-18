@@ -1,3 +1,5 @@
+-- ResMlt.gf: Language-specific parameter types, morphology, VP formation
+--
 -- Maltese Resource Grammar Library
 -- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
 -- Licensed under LGPL
@@ -67,7 +69,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			| Imp	-- Imperative, eg ISRAQ
 			-- | PresPart	-- Present Particible. Intransitive and 'motion' verbs only, eg NIEŻEL
 			-- | PastPart	-- Past Particible. Both verbal & adjectival function, eg MISRUQ
-			-- | GöteborgerbalNoun	-- Verbal Noun, eg SERQ
+			-- | VerbalNoun	-- Verbal Noun, eg SERQ
 		;
 
 		-- Possible verb forms (tense + person)

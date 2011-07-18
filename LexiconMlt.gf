@@ -1,3 +1,5 @@
+-- LexiconMlt.gf: test lexicon of 300 content words
+--
 -- Maltese Resource Grammar Library
 -- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
 -- Licensed under LGPL
@@ -5,7 +7,8 @@
 --# -path=.:../abstract:../common:../prelude
 
 concrete LexiconMlt of Lexicon = CatMlt **
-	open ParadigmsMlt, ResMlt, Prelude in {
+	--open ParadigmsMlt, ResMlt, Prelude in {
+	open ParadigmsMlt, IrregMlt in {
 
 	flags optimize=values ; coding=utf8 ;
 
@@ -19,12 +22,12 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		throw_V2 = mkVerb "tefa'" ;
 		hear_V2 = mkVerb "sama'" "isma'" "isimgħu" ;
 		fear_V2 = mkVerb "beża'" ;
-		pray_V = mkVerb "talab" "itlob" "itolbu"
+		pray_V = mkVerb "talab" "itlob" "itolbu" ;
 		understand_V2 = mkVerb "fehem" ;
 		pull_V2 = mkVerb "ġibed" ;
 		walk_V = mkVerb "mexa'" ;
 
-		die_V = mkVerb "miet" ;
+		-- die_V = mkVerb "miet" ;
 		die_V = mkVerb "qarmeċ" ;
 
 
