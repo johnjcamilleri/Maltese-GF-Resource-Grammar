@@ -7,11 +7,13 @@
 --# -path=.:prelude:../abstract:../common
 
 abstract IrregMltAbs = Cat ** {
+
+{-
 fun
 
--- EG...
---  awake_V : V ;
---  bear_V : V ;
---  beat_V : V ;
+	awake_V : V ;
+	bear_V : V ;
+	beat_V : V ;
+-}
 
 }

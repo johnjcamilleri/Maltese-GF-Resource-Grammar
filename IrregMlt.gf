@@ -9,6 +9,5 @@
 concrete IrregMlt of IrregMltAbs = CatMlt ** open ParadigmsMlt in {
 
 
-dfsdf
 
 }
