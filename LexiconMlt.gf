@@ -54,10 +54,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		art_N = mkNoun "arti" ;
 --		ashes_N = mkNoun "rmied" ;
 --		ask_V2Q
-		baby_N = mkNoun "tarbija" ;
+		baby_N = mkNoun "tarbija" "trabi" ;
 		back_N = mkNoun "dahar" ;
 --		bad_A
-		bank_N = mkNoun "bank" ;
+		bank_N = mkNoun "bank" "banek" ;
 		bark_N = mkNoun "qoxra" ;
 --		beautiful_A
 --		become_VA
@@ -72,12 +72,12 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		blood_N = mkNoun "demm" ;
 --		blow_V
 --		blue_A
-		boat_N = mkNoun "dgħajsa" ;
-		bone_N = mkNoun "għadma" ;
-		book_N = mkNoun "ktieb" ;
-		boot_N = mkNoun "żarbuna" ;
+		boat_N = mkNoun "dgħajsa" "dgħajjes" ;
+		bone_N = mkNoun "għadma" "għadam" ;
+		book_N = mkNoun "ktieb" "kotba" ;
+		boot_N = mkNoun "żarbuna" "żraben" ;
 		boss_N = mkNoun "imgħallem" ;
-		boy_N = mkNoun "tifel" ;
+		boy_N = mkNoun "tifel" "subien" ;
 		bread_N = mkNoun "ħobż" ;
 --		break_V2
 		breast_N = mkNoun "sider" ;

@@ -1,12 +1,14 @@
 -- cat test/nouns.gfs | ./_gf > test/nouns.out
 se utf8
-i -retain LangMlt.gf
+i -retain AllMlt.gf
+cc -table -unqual thigh_N
+cc -table -unqual sailor_N
+
 cc -table -unqual airplane_N
 cc -table -unqual animal_N
 cc -table -unqual apartment_N
 cc -table -unqual apple_N
 cc -table -unqual art_N
-cc -table -unqual ashes_N
 cc -table -unqual baby_N
 cc -table -unqual back_N
 cc -table -unqual bank_N

@@ -33,7 +33,7 @@ resource ParadigmsMlt = open
 		-- Helper function for inferring noun plural from singulative
 		inferNounPlural : Str -> Str = \sing ->
 			case last(sing) of {
-				"i" => sing + "in" ;
+				"i" => sing + "n" ;
 				"a" => init(sing) ;
 				_ => sing + "i"
 			} ;
@@ -68,6 +68,17 @@ resource ParadigmsMlt = open
 			mkNoun : Str -> Gender -> Noun = \sing,gender ->
 				let
 					plural = inferNounPlural sing ;
+				in
+					mkNounWorst sing [] plural [] [] gender ;
+
+			-- Take the singular, plural. Infer gender.
+			-- Assume no special plural forms.
+			-- Params:
+				-- Singular, eg KTIEB
+				-- Plural, eg KOTBA
+			mkNoun : Str -> Str -> Noun = \sing,plural ->
+				let
+					gender = inferNounGender sing ;
 				in
 					mkNounWorst sing [] plural [] [] gender ;
 
