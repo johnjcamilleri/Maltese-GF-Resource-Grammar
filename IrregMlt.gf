@@ -1,7 +1,7 @@
 -- IrregMlt.gf: irregularly inflected words (mostly verbs)
 --
 -- Maltese Resource Grammar Library
--- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- John J. Camilleri, 2011
 -- Licensed under LGPL
 
 --# -path=.:prelude:../abstract:../common

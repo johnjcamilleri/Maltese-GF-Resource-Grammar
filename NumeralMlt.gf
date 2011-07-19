@@ -1,7 +1,7 @@
 -- NumeralMlt.gf: cardinals and ordinals
 --
 -- Maltese Resource Grammar Library
--- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- John J. Camilleri, 2011
 -- Licensed under LGPL
 
 concrete NumeralMlt of Numeral = CatMlt ** open Predef, Prelude, ResMlt, MorphoMlt in {

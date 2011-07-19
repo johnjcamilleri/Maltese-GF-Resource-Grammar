@@ -1,7 +1,7 @@
 -- ResMlt.gf: Language-specific parameter types, morphology, VP formation
 --
 -- Maltese Resource Grammar Library
--- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- John J. Camilleri, 2011
 -- Licensed under LGPL
 
 --# -path=.:../abstract:../common:../prelude
@@ -53,6 +53,11 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Shortcut type
 		GenNum = gn Gender Number ;
+
+		-- Animacy - human or inanimate?
+		Animacy =
+			  Animate
+			| Inanimamte
 
 		-- Agreement features
 		Agr =

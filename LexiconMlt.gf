@@ -1,7 +1,7 @@
 -- LexiconMlt.gf: test lexicon of 300 content words
 --
 -- Maltese Resource Grammar Library
--- (c) 2011 John J. Camilleri [john@johnjcamilleri.com]
+-- John J. Camilleri, 2011
 -- Licensed under LGPL
 
 --# -path=.:../abstract:../common:../prelude
@@ -52,7 +52,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		answer_V2S
 		apartment_N = mkNoun "appartament" ;
 		art_N = mkNoun "arti" ;
-		ashes_N = mkNoun "rmiet" ;
+--		ashes_N = mkNoun "rmied" ;
 --		ask_V2Q
 		baby_N = mkNoun "tarbija" ;
 		back_N = mkNoun "dahar" ;
