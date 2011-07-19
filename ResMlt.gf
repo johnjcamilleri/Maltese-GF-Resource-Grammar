@@ -25,7 +25,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 	param
 
 		Number  = Sg | Pl ;
-		N_Number =
+		N_Number =		-- Noun number
 			  N_Sg		-- Singular, eg BAJDA
 			| N_Dl		-- Dual, eg WIDNEJN
 			| N_Det		-- Determinate plural, eg [zewġ] BAJDIET
@@ -127,10 +127,10 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			g : Gender ;
 		} ;
 
-		-- Adj : Type = {
-			-- s : Gender => Number => Str ;
+		Adj : Type = {
+			s : Gender => Number => Str ;
 			-- isPre : Bool ;
-		-- } ;
+		} ;
 
 		Verb : Type = {
 			s : VForm => Str ;	-- Give me the form (tense, person etc) and I'll give you the string
