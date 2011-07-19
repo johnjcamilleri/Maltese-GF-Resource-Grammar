@@ -4,6 +4,10 @@
 -- John J. Camilleri, 2011
 -- Licensed under LGPL
 
-concrete ExtraMlt of ExtraMltAbs = CatMlt ** open ResMlt in {
+concrete ExtraMlt of ExtraMltAbs = CatMlt **
+	open ResMlt, ParadigmsMlt in {
+
+	lin
+		thigh_N = mkNounDual "koxxa" ;
 
 }

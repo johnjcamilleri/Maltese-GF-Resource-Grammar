@@ -21,74 +21,106 @@ resource ParadigmsMlt = open
 
 		{- ===== Noun Paradigms ===== -}
 
+{-
+	Nouns can have the following forms (* marks base form):
+	NNQ = Non-numerically quantifiable
+		a) Singulative*, Plural
+		b) Singulative* (1), Dual (2), Plural (>2)
+		c) Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
+		d) Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
+-}
+
+		-- Helper function for inferring noun plural from singulative
+		inferNounPlural : Str -> Str = \sing ->
+			case last(sing) of {
+				"i" => sing + "in" ;
+				"a" => init(sing) ;
+				_ => sing + "i"
+			} ;
+
+		-- Helper function for inferring noun gender from singulative
+		inferNounGender : Str -> Gender = \sing ->
+			case last(sing) of {
+				"a" => Fem ;
+				_ => Masc
+			} ;
+
 		-- Overloaded function for building a noun
 		-- Return: Noun
 		mkNoun : Noun = overload {
 
-			-- Take the singular and infer gender & plural
+			-- Take the singular and infer gender & plural.
+			-- Assume no special plural forms.
 			-- Params:
 				-- Singular, eg AJRUPLAN
-			mkNoun : Str -> Noun = \sing -> {
-					s = table {
-						N_Sg => sing ;
-						N_Dl => [] ;
-						N_Pl => sing + "i"
-					} ;
-					g = case last(sing) of {
-						"a" => Fem ;
-						_ => Masc
-					} ;
-				} ;
+			mkNoun : Str -> Noun = \sing ->
+				let
+					plural = inferNounPlural sing ;
+					gender = inferNounGender sing ;
+				in
+					mkNounWorst sing [] plural [] [] gender ;
 
-			-- Take the singular and infer the plural (assumes no double)
+			-- Take an explicit gender.
+			-- Assume no special plural forms.
 			-- Params:
 				-- Singular, eg AJRUPLAN
 				-- Gender
-			mkNoun : Str -> Gender -> Noun = \sing,gen -> {
-					s = table {
-						N_Sg => sing ;
-						N_Dl => [] ;
-						N_Pl => sing + "i"
-					} ;
-					g = gen ;
-				} ;
+			mkNoun : Str -> Gender -> Noun = \sing,gender ->
+				let
+					plural = inferNounPlural sing ;
+				in
+					mkNounWorst sing [] plural [] [] gender ;
 
-			-- Take the singular and plural (assumes no double)
+			-- Take the singular, plural and gender.
+			-- Assume no special plural forms.
 			-- Params:
 				-- Singular, eg KTIEB
 				-- Plural, eg KOTBA
 				-- Gender
-			mkNoun : Str -> Str -> Gender -> Noun = \sing,plural,gen -> {
-					s = table {
-						N_Sg => sing ;
-						N_Dl => [] ;
-						N_Pl => plural
-					} ;
-					g = gen ;
-				} ;
-
-			-- Takes the singular and plural (assumes no double)
-			-- Params:
-				-- Singular, eg KOXXA
-				-- Double, eg KOXXTEJN
-				-- Plural, eg KOXXOX
-				-- Gender
-			mkNoun : Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,gen -> {
-					s = table {
-						N_Sg => sing ;
-						N_Dl => dual ;
-						N_Pl => plural
-					} ;
-					g = gen ;
-				} ;
+			mkNoun : Str -> Str -> Gender -> Noun = \sing,plural,gender ->
+				mkNounWorst sing [] plural [] [] gender ;
 
 		} ; --end of mkNoun overload
 
+		-- Worst case
+		-- Takes all forms and a gender
+		-- Params:
+			-- Singular, eg KOXXA
+			-- Double, eg KOXXTEJN
+			-- Plural
+			-- Determinate Plural, eg KOXXIET
+			-- Collective Plural, eg KOXXOX
+			-- Gender
+		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,det,coll,gen -> {
+			s = table {
+				N_Sg => sing ;
+				N_Dl => dual ;
+				N_Pl => plural ;
+				N_Det => det ;
+				N_Coll => coll
+			} ;
+			g = gen ;
+		} ;
+
+
+		-- Take the singular and infer dual, plural & gender
+		-- Params:
+			-- Singular, eg AJRUPLAN
+		mkNounDual : Str -> Noun = \sing ->
+			let
+				dual : Str = case sing of {
+					_ + ("għ"|"'") => sing + "ajn" ;
+					_ + ("a") => init(sing) + "tejn" ;
+					_ => sing + "ejn"
+				} ;
+				plural = inferNounPlural sing ;
+				gender = inferNounGender sing ;
+			in
+				mkNounWorst sing dual plural [] [] gender ;
 
 
 
-
-		{- ===== Verb paradigms ===== -}
+		{- ========== Verb paradigms ========== -}
 
 		-- Takes a verb as a string and returns the VType and root/pattern.
 		-- Used in smart paradigm below and elsewhere.

@@ -6,4 +6,7 @@
 
 abstract ExtraMltAbs = Cat ** {
 
+	fun
+		thigh_N : N ;
+
 }

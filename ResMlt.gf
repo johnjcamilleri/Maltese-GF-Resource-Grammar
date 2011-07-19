@@ -28,11 +28,12 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		N_Number =		-- Noun number
 			  N_Sg		-- Singular, eg BAJDA
 			| N_Dl		-- Dual, eg WIDNEJN
+			| N_Pl		-- Regular plural, eg [zewġ] BAJDIET
 			| N_Det		-- Determinate plural, eg [zewġ] BAJDIET
 			| N_Coll	-- Collective plural, eg BAJD
 		;
 
-		N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
+		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
 
 
 		Gender  = Masc | Fem ;
@@ -54,10 +55,12 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		-- Shortcut type
 		GenNum = gn Gender Number ;
 
+{-
 		-- Animacy - human or inanimate?
 		Animacy =
 			  Animate
 			| Inanimamte
+-}
 
 		-- Agreement features
 		Agr =

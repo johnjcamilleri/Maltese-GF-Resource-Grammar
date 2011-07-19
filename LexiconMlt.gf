@@ -76,7 +76,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		bone_N = mkNoun "għadma" ;
 		book_N = mkNoun "ktieb" ;
 		boot_N = mkNoun "żarbuna" ;
-		boss_N = mkNoun "" ;
+		boss_N = mkNoun "imgħallem" ;
 		boy_N = mkNoun "tifel" ;
 		bread_N = mkNoun "ħobż" ;
 --		break_V2

@@ -1,0 +1,5 @@
+se utf8
+--i alltenses/LangEng.gfo
+i LangMlt.gf
+rf -lines -tree -file="test/nouns.treebank" | l -all -treebank
+
