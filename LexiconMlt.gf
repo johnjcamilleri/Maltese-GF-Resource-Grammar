@@ -38,7 +38,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		--airplane_N = mkNoun "ajruplan" Masc ;
 		airplane_N = mkNoun "ajruplan" ;
 		--apple_N = mkNoun "tuffieħa" Fem ;
-		apple_N = mkNoun "tuffieħa" ;
+		apple_N = mkNounColl "tuffieħ" ;
+
+		bench_N = mkNoun "bank" "bankijiet" ;
 
 
 
@@ -51,11 +53,11 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		animal_N = mkNoun "annimal" ;
 --		answer_V2S
 		apartment_N = mkNoun "appartament" ;
-		art_N = mkNoun "arti" ;
+		art_N = mkNounNoPlural "arti" ;
 --		ashes_N = mkNoun "rmied" ;
 --		ask_V2Q
 		baby_N = mkNoun "tarbija" "trabi" ;
-		back_N = mkNoun "dahar" ;
+		back_N = mkNounNoPlural "dahar" ;
 --		bad_A
 		bank_N = mkNoun "bank" "banek" ;
 		bark_N = mkNoun "qoxra" ;

@@ -24,17 +24,20 @@ resource ParadigmsMlt = open
 {-
 	Nouns can have the following forms (* marks base form):
 	NNQ = Non-numerically quantifiable
-		a) Singulative*, Plural
-		b) Singulative* (1), Dual (2), Plural (>2)
-		c) Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
-		d) Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
+		- Singulative, no plural!
+		- Singulative*, Plural
+		- Singulative* (1), Dual (2), Plural (>2)
+		- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
+		- Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
 -}
 
 		-- Helper function for inferring noun plural from singulative
 		inferNounPlural : Str -> Str = \sing ->
-			case last(sing) of {
-				"i" => sing + "n" ;
-				"a" => init(sing) ;
+			case sing of {
+				_ + "i" => sing + "n" ; -- eg BAĦRIN, DĦULIN, RAĦLIN
+				_ + "a" => init(sing) + "iet" ; -- eg RIXIET, GREMXULIET
+				_ + "q" => sing + "at" ; -- eg TRIQAT
+				_ + "ħa" => init(sing) + "at" ; -- eg TUFFIEĦAT
 				_ => sing + "i"
 			} ;
 
@@ -93,6 +96,50 @@ resource ParadigmsMlt = open
 
 		} ; --end of mkNoun overload
 
+
+		-- Take the singular and infer gender.
+		-- No other plural forms.
+		-- Params:
+			-- Singular, eg ARTI
+		mkNounNoPlural : Str -> Noun = \sing ->
+			let
+				gender = inferNounGender sing ;
+			in
+				mkNounWorst sing [] [] [] [] gender ;
+
+
+		-- Take the singular and infer dual, plural & gender
+		-- Params:
+			-- Singular, eg AJRUPLAN
+		mkNounDual : Str -> Noun = \sing ->
+			let
+				dual : Str = case sing of {
+					_ + ("għ"|"'") => sing + "ajn" ;
+					_ + ("a") => init(sing) + "tejn" ;
+					_ => sing + "ejn"
+				} ;
+				plural = inferNounPlural sing ;
+				gender = inferNounGender sing ;
+			in
+				mkNounWorst sing dual plural [] [] gender ;
+
+
+		-- Take the collective, and infer singulative, determinate plural, and gender.
+		-- Params:
+			-- Collective Plural, eg TUFFIEĦ
+		mkNounColl : Str -> Noun = \coll ->
+			let
+				sing : Str = case coll of {
+					_ => coll + "a"
+				} ;
+				det : Str = case coll of {
+					_ => coll + "iet"
+				} ;
+				gender = inferNounGender sing ;
+			in
+				mkNounWorst sing [] [] det coll gender ;
+
+
 		-- Worst case
 		-- Takes all forms and a gender
 		-- Params:
@@ -112,22 +159,6 @@ resource ParadigmsMlt = open
 			} ;
 			g = gen ;
 		} ;
-
-
-		-- Take the singular and infer dual, plural & gender
-		-- Params:
-			-- Singular, eg AJRUPLAN
-		mkNounDual : Str -> Noun = \sing ->
-			let
-				dual : Str = case sing of {
-					_ + ("għ"|"'") => sing + "ajn" ;
-					_ + ("a") => init(sing) + "tejn" ;
-					_ => sing + "ejn"
-				} ;
-				plural = inferNounPlural sing ;
-				gender = inferNounGender sing ;
-			in
-				mkNounWorst sing dual plural [] [] gender ;
 
 
 

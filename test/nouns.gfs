@@ -1,4 +1,4 @@
--- cat test/nouns.gfs | ./_gf > test/nouns.out
+-- ./_gf < test/nouns.gfs > test/nouns.out
 se utf8
 i -retain AllMlt.gf
 cc -table -unqual thigh_N
