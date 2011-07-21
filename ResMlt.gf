@@ -1,4 +1,4 @@
--- ResMlt.gf: Language-specific parameter types, morphology, VP formation
+Num-- ResMlt.gf: Language-specific parameter types, morphology, VP formation
 --
 -- Maltese Resource Grammar Library
 -- John J. Camilleri, 2011
@@ -24,13 +24,16 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 	param
 
-		Number  = Sg | Pl ;
-		N_Number =		-- Noun number
-			  N_Sg		-- Singular, eg BAJDA
-			| N_Dl		-- Dual, eg WIDNEJN
-			| N_Pl		-- Regular plural, eg [zewġ] BAJDIET
-			| N_Det		-- Determinate plural, eg [zewġ] BAJDIET
-			| N_Coll	-- Collective plural, eg BAJD
+		Number2 =
+			  Sg
+			| Pl ;
+
+		Number5 =
+			  Singulative	-- eg BAJDA
+			| Dual			-- eg WIDNEJN
+			| Plural		-- "Regular" plural
+			| DeterminatePl	-- eg BAJDIET
+			| CollectivePl	-- eg BAJD
 		;
 		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
 
@@ -41,7 +44,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		Gender  = Masc | Fem ;
 
-		-- Noun cases (note all examples include DEFINITE ARTICLE)
+		-- Noun cases (note my examples include DEFINITE ARTICLE)
 		-- Commented lines mean that noun iflection is unchanged, not
 		-- that the case does not occur in Maltese!
 		Case =
@@ -53,7 +56,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 --			| Additive		-- synonym of Allative (above)
 			| Benefactive	-- referent as recipient, eg GĦAT-TARBIJA. cf Dative.
 --			| Causative		-- referent as the cause of a situation (MINĦABBA)
-			| Comitative	-- With, eg MAT-TARBIJA
+			| Comitative	-- with, eg MAT-TARBIJA
 			| Dative		-- referent as indirect object, eg LIT-TARBIJA. cf Benefactive.
 --			| Delative		-- motion downward from referent
 			| Elative		-- motion away from referent, eg MIT-TARBIJA
@@ -62,7 +65,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 --			| Essive		-- temporary state / while / in capacity of (BĦALA)
 			| Genitive		-- referent as possessor, eg TAT-TARBIJA
 --			| Illative		-- motion into / towards referent, eg SAT-TARBIJA. cf Allative.
-			| Inessive		-- within referent, eg ĠOT-TARBIJA
+			| Inessive		-- within referent, eg ĠOT-TARBIJA, FIT-TARBIJA
 			| Instrumental	-- referent as instrument, eg BIT-TARBIJA. cf Ablative.
 			| Lative		-- motion up to referent, eg SAT-TARBIJA
 --			| Locative		-- location at referent
@@ -89,7 +92,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		-- Mamma = Per3 Sg Masc ;
 
 		-- Shortcut type
-		GenNum = gn Gender Number ;
+		-- GenNum = gn Gender Number2 ;
 
 {-
 		-- Animacy - human or inanimate?
@@ -100,8 +103,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		-- Agreement features
 		Agr =
-			  Per1 Number	-- Jiena, Aħna
-			| Per2 Number	-- Inti, Intom
+			  Per1 Number2	-- Jiena, Aħna
+			| Per2 Number2	-- Inti, Intom
 			| Per3Sg Gender	-- Huwa, Hija
 			| Per3Pl		-- Huma
 		;
@@ -120,7 +123,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		VForm =
 			  VPerf Agr		-- Perfect tense in all pronoun cases
 			| VImpf Agr		-- Imperfect tense in all pronoun cases
-			| VImp Number 			-- Imperative is always Per2, Sg & Pl
+			| VImp Number2 			-- Imperative is always Per2, Sg & Pl
 			-- | VPresPart GenNum	-- Present Particible for Gender/Number
 			-- | VPastPart GenNum	-- Past Particible for Gender/Number
 			-- | VVerbalNoun			-- Verbal Noun
@@ -168,17 +171,17 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 {-
 		Noun : Type = {
-			s : N_Number => Str ;
+			s : Number5 => Str ;
 			g : Gender ;
 		} ;
 -}
 		Noun : Type = {
-			s : N_Number => Definiteness => Case => Str ;
+			s : Number5 => Definiteness => Case => Str ;
 			g : Gender ;
 		} ;
 
 		Adj : Type = {
-			s : Gender => Number => Str ;
+			s : Gender => Number2 => Str ;
 			-- isPre : Bool ;
 		} ;
 

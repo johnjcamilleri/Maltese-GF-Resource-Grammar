@@ -58,15 +58,6 @@ resource ParadigmsMlt = open
 				_ => Masc
 			} ;
 
-		-- prefix noun with its definite article
-		getNounDefArt : Str -> Str = \n ->
-			case n of {
-				"s" + #Consonant + _ => "l-i" ;
-				("għ" | #Vowel) + _ => "l-" ;
-				K@#CoronalConsonant + _ => "i" + K + "-" ;
-				#Consonant + _ => "il-" ;
-				_ => []
-			} ;
 
 		-- Overloaded function for building a noun
 		-- Return: Noun
@@ -172,31 +163,98 @@ resource ParadigmsMlt = open
 		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,det,coll,gen -> {
 {-
 			s = table {
-				N_Sg => sing ;
-				N_Dl => dual ;
-				N_Pl => plural ;
-				N_Det => det ;
-				N_Coll => coll
+				Singulative => sing ;
+				Dual => dual ;
+				Plural => plural ;
+				DeterminatePl => det ;
+				CollectivePl => coll
+			} ;
+-}
+{-
+			s = table {
+				Definite => table {
+					Singulative => (getNounDefArt sing) + sing ;
+					Dual => (getNounDefArt dual) + dual ;
+					Plural => (getNounDefArt plural) + plural ;
+					DeterminatePl => (getNounDefArt det) + det ;
+					CollectivePl => (getNounDefArt coll) + coll
+				} ;
+				Indefinite => table {
+					Singulative => sing ;
+					Dual => dual ;
+					Plural => plural ;
+					DeterminatePl => det ;
+					CollectivePl => coll
+				}
 			} ;
 -}
 			s = table {
-				Definite => table {
-					N_Sg => (getNounDefArt sing) + sing ;
-					N_Dl => (getNounDefArt dual) + dual ;
-					N_Pl => (getNounDefArt plural) + plural ;
-					N_Det => (getNounDefArt det) + det ;
-					N_Coll => (getNounDefArt coll) + coll
-				} ;
-				Indefinite => table {
-					N_Sg => sing ;
-					N_Dl => dual ;
-					N_Pl => plural ;
-					N_Det => det ;
-					N_Coll => coll
-				}
+				Singulative		=> buildCaseTable sing ;
+				Dual			=> buildCaseTable dual ;
+				Plural			=> buildCaseTable plural ;
+				DeterminatePl	=> buildCaseTable det ;
+				CollectivePl	=> buildCaseTable coll
 			} ;
 			g = gen ;
 		} ;
+
+
+		-- prefix noun with its definite article
+		getNounDefArt : Str -> Str = \n ->
+			case n of {
+				"s" + #Consonant + _ => "l-i" ;
+				("għ" | #Vowel) + _ => "l-" ;
+				K@#CoronalConsonant + _ => "i" + K + "-" ;
+				#Consonant + _ => "il-" ;
+				_ => []
+			} ;
+
+
+		-- TODO: Can this be encoded more statically?
+		buildCaseTable : Str -> (Definiteness => Case => Str) = \noun ->
+			table {
+				Definite => table {
+					Benefactive		=> [] ;
+					Comitative		=> [] ;
+					Dative			=> [] ;
+					Elative			=> [] ;
+					Equative		=> [] ;
+					Genitive		=> [] ;
+					Inessive		=> [] ;
+					Instrumental	=> [] ;
+					Lative			=> [] ;
+					Nominative		=> (getNounDefArt noun) + noun ;
+				} ;
+				Indefinite => table {
+					Benefactive		=> [] ;
+					Comitative		=> [] ;
+					Dative			=> [] ;
+					Elative			=> [] ;
+					Equative		=> [] ;
+					Genitive		=> [] ;
+					Inessive		=> [] ;
+					Instrumental	=> [] ;
+					Lative			=> [] ;
+					Nominative		=> noun ;
+				}
+			};
+
+
+
+
+			case kejs of {
+				Benefactive	=> "għal" ;
+				Comitative	=> "ma'" ;
+				Dative		=> "lil" ;
+				Elative		=> "minn" ;
+				Equative	=> "bħal" ;
+				Genitive	=> "ta'" ;
+				Inessive	=> "fi" ; -- or ĠO?
+				Instrumental=> "bi" ;
+				Lative		=> "sa" ;
+				Nominative	=> []
+			} ;
+
 
 
 
