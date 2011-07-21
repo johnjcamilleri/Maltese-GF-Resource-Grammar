@@ -32,16 +32,48 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			| N_Det		-- Determinate plural, eg [zewġ] BAJDIET
 			| N_Coll	-- Collective plural, eg BAJD
 		;
+		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
 
-		N_Def =
+		Definiteness =
 			  Definite
 			| Indefinite
 		;
-		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
-
 
 		Gender  = Masc | Fem ;
---		Case    = Nom | Acc | Gen ;
+
+		-- Noun cases (note all examples include DEFINITE ARTICLE)
+		-- Commented lines mean that noun iflection is unchanged, not
+		-- that the case does not occur in Maltese!
+		Case =
+--			  Absessive		-- lack or absence of referent (MINGĦAJR)
+--			| Ablative		-- referent as instrument, cause, location, source or time
+--			| Absolutive	-- subject of intransitive or object of transitive verb (in ergative-absolutive languages)
+--			| Accusative	-- referent as direct object (in nominative-accusative languages)
+--			| Allative		-- motion towards referent (LEJN)
+--			| Additive		-- synonym of Allative (above)
+			| Benefactive	-- referent as recipient, eg GĦAT-TARBIJA. cf Dative.
+--			| Causative		-- referent as the cause of a situation (MINĦABBA)
+			| Comitative	-- With, eg MAT-TARBIJA
+			| Dative		-- referent as indirect object, eg LIT-TARBIJA. cf Benefactive.
+--			| Delative		-- motion downward from referent
+			| Elative		-- motion away from referent, eg MIT-TARBIJA
+			| Equative		-- likeness or identity, eg BĦAT-TARBIJA
+--			| Ergative		-- subject of transitive verb (in ergative-absolutive languages)
+--			| Essive		-- temporary state / while / in capacity of (BĦALA)
+			| Genitive		-- referent as possessor, eg TAT-TARBIJA
+--			| Illative		-- motion into / towards referent, eg SAT-TARBIJA. cf Allative.
+			| Inessive		-- within referent, eg ĠOT-TARBIJA
+			| Instrumental	-- referent as instrument, eg BIT-TARBIJA. cf Ablative.
+			| Lative		-- motion up to referent, eg SAT-TARBIJA
+--			| Locative		-- location at referent
+			| Nominative	-- referent as subject, eg IT-TARBIJA
+--			| Partitive		-- partial nature of referent
+--			| Prolative		-- motion along / beside referent
+--			| Superessive	-- on / upon (FUQ)
+--			| Translative	-- referent noun or adjective as result of process of change
+--			| Vocative		-- referent being adressed, eg AA TARBIJA (lol)
+		;
+
 --		Person  = P1 | P2 | P3 ;
 --		State   = Def | Indef | Const ;
 --		Mood    = Ind | Cnj | Jus ;
@@ -141,7 +173,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		} ;
 -}
 		Noun : Type = {
-			s : N_Def => N_Number => Str ;
+			s : N_Number => Definiteness => Case => Str ;
 			g : Gender ;
 		} ;
 
