@@ -1,4 +1,4 @@
-Num-- ResMlt.gf: Language-specific parameter types, morphology, VP formation
+-- ResMlt.gf: Language-specific parameter types, morphology, VP formation
 --
 -- Maltese Resource Grammar Library
 -- John J. Camilleri, 2011
@@ -54,7 +54,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 --			| Accusative	-- referent as direct object (in nominative-accusative languages)
 --			| Allative		-- motion towards referent (LEJN)
 --			| Additive		-- synonym of Allative (above)
-			| Benefactive	-- referent as recipient, eg GĦAT-TARBIJA. cf Dative.
+			Benefactive		-- referent as recipient, eg GĦAT-TARBIJA. cf Dative.
 --			| Causative		-- referent as the cause of a situation (MINĦABBA)
 			| Comitative	-- with, eg MAT-TARBIJA
 			| Dative		-- referent as indirect object, eg LIT-TARBIJA. cf Benefactive.

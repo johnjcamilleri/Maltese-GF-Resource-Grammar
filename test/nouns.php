@@ -7,7 +7,7 @@ $outfile = 'test/nouns.out.html';
 
 // Execute GF stuff and capture output
 echo " Running GF\n";
-chdir('../');
+chdir( dirname(__FILE__) . '/../' );
 exec($command, $output, $return_status);
 if ($return_status != 0)
 	die (" Failed.\n");
@@ -51,7 +51,7 @@ $HTML = <<<HTML
 	<style type="text/css">
 		table { border-collapse:collapse; border-spacing:0; }
 		td { padding:0.2em 1em; border-width:1px 0; border-style:solid; }
-		tr:nth-child(odd) { background-color:#ddd; }
+		tr:nth-child(odd) { background-color:#eee; }
 		tr.separator { background-color:#000; font-size:2px; }
 		tr:hover { background-color:skyblue; }
 	</style>

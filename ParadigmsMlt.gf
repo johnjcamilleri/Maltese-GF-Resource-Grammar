@@ -161,33 +161,6 @@ resource ParadigmsMlt = open
 			-- Collective Plural, eg KOXXOX
 			-- Gender
 		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,det,coll,gen -> {
-{-
-			s = table {
-				Singulative => sing ;
-				Dual => dual ;
-				Plural => plural ;
-				DeterminatePl => det ;
-				CollectivePl => coll
-			} ;
--}
-{-
-			s = table {
-				Definite => table {
-					Singulative => (getNounDefArt sing) + sing ;
-					Dual => (getNounDefArt dual) + dual ;
-					Plural => (getNounDefArt plural) + plural ;
-					DeterminatePl => (getNounDefArt det) + det ;
-					CollectivePl => (getNounDefArt coll) + coll
-				} ;
-				Indefinite => table {
-					Singulative => sing ;
-					Dual => dual ;
-					Plural => plural ;
-					DeterminatePl => det ;
-					CollectivePl => coll
-				}
-			} ;
--}
 			s = table {
 				Singulative		=> buildCaseTable sing ;
 				Dual			=> buildCaseTable dual ;
@@ -210,38 +183,68 @@ resource ParadigmsMlt = open
 			} ;
 
 
-		-- TODO: Can this be encoded more statically?
 		buildCaseTable : Str -> (Definiteness => Case => Str) = \noun ->
 			table {
 				Definite => table {
-					Benefactive		=> [] ;
-					Comitative		=> [] ;
-					Dative			=> [] ;
-					Elative			=> [] ;
-					Equative		=> [] ;
-					Genitive		=> [] ;
-					Inessive		=> [] ;
-					Instrumental	=> [] ;
-					Lative			=> [] ;
-					Nominative		=> (getNounDefArt noun) + noun ;
+					Benefactive	=> [] ;
+					Comitative	=> [] ;
+					Dative		=> [] ;
+					Elative		=> [] ;
+					Equative	=> [] ;
+					Genitive	=> [] ;
+					Inessive	=> [] ;
+					Instrumental=> [] ;
+					Lative		=> [] ;
+					Nominative	=> (getNounDefArt noun) + noun
 				} ;
 				Indefinite => table {
-					Benefactive		=> [] ;
-					Comitative		=> [] ;
-					Dative			=> [] ;
-					Elative			=> [] ;
-					Equative		=> [] ;
-					Genitive		=> [] ;
-					Inessive		=> [] ;
-					Instrumental	=> [] ;
-					Lative			=> [] ;
-					Nominative		=> noun ;
+					Benefactive	=> "għal" ++ noun;
+					Comitative	=> abbrevPreposition "ma'" noun ;
+					Dative		=> "lil" ++ noun ;
+					Elative		=> "minn" ++ noun ;
+					Equative	=> "bħal" ++ noun ;
+					Genitive	=> abbrevPreposition "ta'" noun ;
+					Inessive	=> abbrevPreposition "fi" noun;
+					Instrumental=> abbrevPreposition "bi" noun;
+					Lative		=> abbrevPreposition "sa" noun ;
+					Nominative	=> noun
 				}
 			};
 
 
+			abbrevPreposition : Str -> Str -> Str = \prep,noun ->
+				let
+					initPrepLetter = take 1 prep ;
+					initNounLetter = take 1 noun
+				in
+				case prep of {
+
+					-- TA', MA', SA
+					_ + ("a'"|"a") =>
+						case noun of {
+							#Vowel + _  => initPrepLetter + "'" + noun ;
+							("għ" | "h") + #Vowel + _ => initPrepLetter + "'" + noun ;
+							_ => prep ++ noun
+						} ;
+
+					-- FI, BI
+					_ + "i" =>
+					if_then_Str (pbool2bool (eqStr initPrepLetter initNounLetter))
+						(prep ++ noun)
+						(case noun of {
+							-- initPrepLetter + _ => prep ++ noun ;
+							#Vowel + _  => initPrepLetter + "'" + noun ;
+							#Consonant + #Vowel + _  => initPrepLetter + "'" + noun ;
+							#Consonant + "r" + #Vowel + _ => initPrepLetter + "'" + noun ;
+							_ => prep ++ noun
+						})
+
+				};
 
 
+
+
+{-
 			case kejs of {
 				Benefactive	=> "għal" ;
 				Comitative	=> "ma'" ;
@@ -254,6 +257,7 @@ resource ParadigmsMlt = open
 				Lative		=> "sa" ;
 				Nominative	=> []
 			} ;
+-}
 
 
 
@@ -407,7 +411,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjStrongImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+		conjStrongImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
 			let
 				stem_sg = case (p.v1 + p.v2) of {
 					"aa" => "i" + root.K + root.T + "o" + root.B ;
@@ -486,7 +490,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+		conjDefectiveImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
 			let
 				v1 = case p.v1 of { "e" => "i" ; _ => p.v1 } ;
 				v_pl = case p.v1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
@@ -556,7 +560,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjQuadImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+		conjQuadImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
 			table {
 				Sg => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;	-- Inti:  DARDAR
 				Pl => root.K + p.v1 + root.T + root.B + root.L + "u"	-- Intom: DARDRU
