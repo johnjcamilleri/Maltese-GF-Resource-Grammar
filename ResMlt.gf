@@ -28,6 +28,15 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			  Sg
 			| Pl ;
 
+{-
+	Nouns can have the following forms (* marks base form):
+	NNQ = Non-numerically quantifiable
+		- Singulative, no plural!
+		- Singulative*, Plural
+		- Singulative* (1), Dual (2), Plural (>2)
+		- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
+		- Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
+-}
 		Number5 =
 			  Singulative	-- eg BAJDA
 			| Dual			-- eg WIDNEJN

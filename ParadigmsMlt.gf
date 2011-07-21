@@ -21,16 +21,6 @@ resource ParadigmsMlt = open
 
 		{- ===== Noun Paradigms ===== -}
 
-{-
-	Nouns can have the following forms (* marks base form):
-	NNQ = Non-numerically quantifiable
-		- Singulative, no plural!
-		- Singulative*, Plural
-		- Singulative* (1), Dual (2), Plural (>2)
-		- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
-		- Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
--}
-
 		-- Helper function for inferring noun plural from singulative
 		inferNounPlural : Str -> Str = \sing ->
 			case sing of {
@@ -172,94 +162,90 @@ resource ParadigmsMlt = open
 		} ;
 
 
-		-- prefix noun with its definite article
-		getNounDefArt : Str -> Str = \n ->
-			case n of {
-				"s" + #Consonant + _ => "l-i" ;
-				("għ" | #Vowel) + _ => "l-" ;
-				K@#CoronalConsonant + _ => "i" + K + "-" ;
-				#Consonant + _ => "il-" ;
-				_ => []
-			} ;
-
-
+		-- Build a definiteness/case table for a single noun number form
+		-- Params:
+			-- noun form (eg NEMLA, NEMEL, NEMLIET)
 		buildCaseTable : Str -> (Definiteness => Case => Str) = \noun ->
 			table {
 				Definite => table {
-					Benefactive	=> [] ;
-					Comitative	=> [] ;
-					Dative		=> [] ;
-					Elative		=> [] ;
-					Equative	=> [] ;
-					Genitive	=> [] ;
-					Inessive	=> [] ;
-					Instrumental=> [] ;
-					Lative		=> [] ;
-					Nominative	=> (getNounDefArt noun) + noun
+					Benefactive	=> abbrevPrepositionDef "għall" noun;
+					Comitative	=> abbrevPrepositionDef "mal" noun ;
+					Dative		=> abbrevPrepositionDef "lill" noun ;
+					Elative		=> abbrevPrepositionDef "mill" noun ;
+					Equative	=> abbrevPrepositionDef "bħall" noun ;
+					Genitive	=> abbrevPrepositionDef "tal" noun ;
+					Inessive	=> abbrevPrepositionDef "fil" noun;
+					Instrumental=> abbrevPrepositionDef "bil" noun;
+					Lative		=> abbrevPrepositionDef "sal" noun ;
+					Nominative	=> abbrevPrepositionDef "il" noun
 				} ;
 				Indefinite => table {
 					Benefactive	=> "għal" ++ noun;
-					Comitative	=> abbrevPreposition "ma'" noun ;
+					Comitative	=> abbrevPrepositionIndef "ma'" noun ;
 					Dative		=> "lil" ++ noun ;
 					Elative		=> "minn" ++ noun ;
 					Equative	=> "bħal" ++ noun ;
-					Genitive	=> abbrevPreposition "ta'" noun ;
-					Inessive	=> abbrevPreposition "fi" noun;
-					Instrumental=> abbrevPreposition "bi" noun;
-					Lative		=> abbrevPreposition "sa" noun ;
+					Genitive	=> abbrevPrepositionIndef "ta'" noun ;
+					Inessive	=> abbrevPrepositionIndef "fi" noun;
+					Instrumental=> abbrevPrepositionIndef "bi" noun;
+					Lative		=> abbrevPrepositionIndef "sa" noun ;
 					Nominative	=> noun
 				}
 			};
 
-
-			abbrevPreposition : Str -> Str -> Str = \prep,noun ->
-				let
-					initPrepLetter = take 1 prep ;
-					initNounLetter = take 1 noun
-				in
-				case prep of {
-
-					-- TA', MA', SA
-					_ + ("a'"|"a") =>
-						case noun of {
-							#Vowel + _  => initPrepLetter + "'" + noun ;
-							("għ" | "h") + #Vowel + _ => initPrepLetter + "'" + noun ;
-							_ => prep ++ noun
-						} ;
-
-					-- FI, BI
-					_ + "i" =>
-					if_then_Str (pbool2bool (eqStr initPrepLetter initNounLetter))
-						(prep ++ noun)
-						(case noun of {
-							-- initPrepLetter + _ => prep ++ noun ;
-							#Vowel + _  => initPrepLetter + "'" + noun ;
-							#Consonant + #Vowel + _  => initPrepLetter + "'" + noun ;
-							#Consonant + "r" + #Vowel + _ => initPrepLetter + "'" + noun ;
-							_ => prep ++ noun
-						})
-
-				};
-
-
-
-
-{-
-			case kejs of {
-				Benefactive	=> "għal" ;
-				Comitative	=> "ma'" ;
-				Dative		=> "lil" ;
-				Elative		=> "minn" ;
-				Equative	=> "bħal" ;
-				Genitive	=> "ta'" ;
-				Inessive	=> "fi" ; -- or ĠO?
-				Instrumental=> "bi" ;
-				Lative		=> "sa" ;
-				Nominative	=> []
+		-- Correctly abbreviate definite prepositions and join with noun
+		-- Params:
+			-- preposition (eg TAL, MAL, BĦALL)
+			-- noun
+		abbrevPrepositionDef : Str -> Str -> Str = \prep,noun ->
+			let
+				-- Remove either 1 or 2 l's
+				initPrep : Str = case prep of {
+					_ + "ll" => tk 2 prep ;
+					_ + "l"  => tk 1 prep ;
+					_ => prep -- this should never happen, I don't think
+				}
+			in
+			case noun of {
+				"s" + #Consonant + _ => prep + "l-i" + noun ;
+				("għ" | #Vowel) + _ => prep + "-" + noun ;
+				K@#CoronalConsonant + _ => initPrep + K + "-" + noun ;
+				#Consonant + _ => prep + "-" + noun ;
+				_ => []
 			} ;
--}
 
+		-- Correctly abbreviate indefinite prepositions and join with noun
+		-- Params:
+			-- preposition (eg TA', MA', BĦAL)
+			-- noun
+		abbrevPrepositionIndef : Str -> Str -> Str = \prep,noun ->
+			let
+				initPrepLetter = take 1 prep ;
+				initNounLetter = take 1 noun
+			in
+			case prep of {
 
+				-- TA', MA', SA
+				_ + ("a'"|"a") =>
+					case noun of {
+						#Vowel + _  => initPrepLetter + "'" + noun ;
+						("għ" | "h") + #Vowel + _ => initPrepLetter + "'" + noun ;
+						_ => prep ++ noun
+					} ;
+
+				-- FI, BI
+				_ + "i" =>
+				if_then_Str (pbool2bool (eqStr initPrepLetter initNounLetter))
+					(prep ++ noun)
+					(case noun of {
+						-- initPrepLetter + _ => prep ++ noun ;
+						#Vowel + _  => initPrepLetter + "'" + noun ;
+						#Consonant + #Vowel + _  => initPrepLetter + "'" + noun ;
+						#Consonant + "r" + #Vowel + _ => initPrepLetter + "'" + noun ;
+						_ => prep ++ noun
+					})
+
+			};
 
 
 		{- ========== Verb paradigms ========== -}

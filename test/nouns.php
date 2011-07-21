@@ -15,6 +15,7 @@ if ($return_status != 0)
 // Process line by line.
 $HTML_pre = '';
 $HTML_table = '';
+$prev_cols = array();
 foreach ($output as $n => $line) {
 
 	// Skip timings
@@ -29,8 +30,16 @@ foreach ($output as $n => $line) {
 		}
 
 		$HTML_table .= '<tr>';
+		$col = 0;
 		foreach (explode('=>',$matches[3]) as $i) {
-			$HTML_table .= '<td>'.$i.'</td>';
+			$i = trim($i);
+			if (@$prev_cols[$col] == $i || $i == '[]') {
+				$HTML_table .= '<td>&nbsp;</td>';
+			} else {
+				$HTML_table .= '<td>'.$i.'</td>';
+				@$prev_cols[$col] = $i;
+			}
+			$col++;
 		}
 		$HTML_table .= '</tr>';
 	}
@@ -50,10 +59,11 @@ $HTML = <<<HTML
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<style type="text/css">
 		table { border-collapse:collapse; border-spacing:0; }
-		td { padding:0.2em 1em; border-width:1px 0; border-style:solid; }
 		tr:nth-child(odd) { background-color:#eee; }
 		tr.separator { background-color:#000; font-size:2px; }
 		tr:hover { background-color:skyblue; }
+		td { padding:0.2em 1em; border-width:1px 0; border-style:solid; border-color:#ccc; }
+		td:last-child { font-style:italic; }
 	</style>
 </head>
 <body>
