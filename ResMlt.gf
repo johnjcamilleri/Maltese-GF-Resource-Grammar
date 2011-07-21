@@ -33,6 +33,10 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			| N_Coll	-- Collective plural, eg BAJD
 		;
 
+		N_Def =
+			  Definite
+			| Indefinite
+		;
 		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
 
 
@@ -42,7 +46,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 --		State   = Def | Indef | Const ;
 --		Mood    = Ind | Cnj | Jus ;
 --		Voice   = Act | Pas ;
-		VOrigin =
+		Origin =
 			  Semitic
 			| Romance
 			| English
@@ -130,8 +134,14 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			-- a : Agr
 		-- } ;
 
+{-
 		Noun : Type = {
 			s : N_Number => Str ;
+			g : Gender ;
+		} ;
+-}
+		Noun : Type = {
+			s : N_Def => N_Number => Str ;
 			g : Gender ;
 		} ;
 
@@ -143,7 +153,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		Verb : Type = {
 			s : VForm => Str ;	-- Give me the form (tense, person etc) and I'll give you the string
 			t : VType ;			-- Inherent - Strong/Hollow etc
-			o : VOrigin ;		-- Inherent - a verb of Semitic or Romance origins?
+			o : Origin ;		-- Inherent - a verb of Semitic or Romance origins?
 		} ;
 
 }

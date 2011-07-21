@@ -42,10 +42,30 @@ resource ParadigmsMlt = open
 			} ;
 
 		-- Helper function for inferring noun gender from singulative
+		-- Refer Maltese (Descriptive Grammars) pg190
 		inferNounGender : Str -> Gender = \sing ->
-			case last(sing) of {
-				"a" => Fem ;
+			case sing of {
+				_ + "aġni" => Fem ;
+				_ + "anti" => Fem ;
+				_ + "zzjoni" => Fem ;
+				_ + "ġenesi" => Fem ;
+				_ + "ite" => Fem ;
+				_ + "itù" => Fem ;
+				_ + "joni" => Fem ;
+				_ + "ojde" => Fem ;
+				_ + "udni" => Fem ;
+				_ + ("a"|"à") => Fem ;
 				_ => Masc
+			} ;
+
+		-- prefix noun with its definite article
+		getNounDefArt : Str -> Str = \n ->
+			case n of {
+				"s" + #Consonant + _ => "l-i" ;
+				("għ" | #Vowel) + _ => "l-" ;
+				K@#CoronalConsonant + _ => "i" + K + "-" ;
+				#Consonant + _ => "il-" ;
+				_ => []
 			} ;
 
 		-- Overloaded function for building a noun
@@ -150,12 +170,30 @@ resource ParadigmsMlt = open
 			-- Collective Plural, eg KOXXOX
 			-- Gender
 		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,det,coll,gen -> {
+{-
 			s = table {
 				N_Sg => sing ;
 				N_Dl => dual ;
 				N_Pl => plural ;
 				N_Det => det ;
 				N_Coll => coll
+			} ;
+-}
+			s = table {
+				Definite => table {
+					N_Sg => (getNounDefArt sing) + sing ;
+					N_Dl => (getNounDefArt dual) + dual ;
+					N_Pl => (getNounDefArt plural) + plural ;
+					N_Det => (getNounDefArt det) + det ;
+					N_Coll => (getNounDefArt coll) + coll
+				} ;
+				Indefinite => table {
+					N_Sg => sing ;
+					N_Dl => dual ;
+					N_Pl => plural ;
+					N_Det => det ;
+					N_Coll => coll
+				}
 			} ;
 			g = gen ;
 		} ;
