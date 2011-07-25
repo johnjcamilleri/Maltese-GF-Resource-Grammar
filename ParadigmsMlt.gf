@@ -25,8 +25,8 @@ resource ParadigmsMlt = open
 		-- Nouns with collective & determinate forms should not use this...
 		inferNounPlural : Str -> Str = \sing ->
 			case sing of {
+				_ + "na" => init sing + "iet" ; -- eg WIDNIET
 				_ + "i" => sing + "n" ; -- eg BAĦRIN, DĦULIN, RAĦLIN
---				_ + "ħa" => sing + "t" ; -- eg TUFFIEĦAT
 				_ + "a" => init(sing) + "i" ; -- eg ROTI
 				_ + "q" => sing + "at" ; -- eg TRIQAT
 				_ => sing + "i"
@@ -124,7 +124,7 @@ resource ParadigmsMlt = open
 			let
 				dual : Str = case sing of {
 					_ + ("għ"|"'") => sing + "ajn" ;
-					_ + ("a") => init(sing) + "tejn" ;
+					_ + ("a") => init(sing) + "ejn" ;
 					_ => sing + "ejn"
 				} ;
 				plural = inferNounPlural sing ;
@@ -138,13 +138,21 @@ resource ParadigmsMlt = open
 			-- Collective Plural, eg TUFFIEĦ
 		mkNounColl : Str -> Noun = \coll ->
 			let
-				sing : Str = case coll of {
-					_ => coll + "a"
+				stem : Str = case coll of {
+					-- This can only apply when there are 2 syllables in the word
+					_ + #Vowel + #Consonant + #Vowel + K@#Consonant => tk 2 coll + K ; -- eg GĦADAM -> GĦADM-
+
+					_ => coll
 				} ;
-				det : Str = case coll of {
-					_ => coll + "at"
+				-------
+				sing : Str = case stem of {
+					_ => stem + "a"
 				} ;
-				gender = inferNounGender sing ;
+				det : Str = case stem of {
+					_ => stem + "iet"
+				} ;
+				-- gender = inferNounGender sing ;
+				gender = Masc ; -- Collective noun is always treated as Masculine
 			in
 				mkNounWorst sing [] [] det coll gender ;
 
@@ -208,19 +216,19 @@ resource ParadigmsMlt = open
 		abbrevPrepositionDef : Str -> Str -> Str = \prep,noun ->
 			let
 				-- Remove either 1 or 2 l's
-				initPrep : Str = case prep of {
+				prepStem : Str = case prep of {
 					_ + "ll" => tk 2 prep ;
 					_ + "l"  => tk 1 prep ;
 					_ => prep -- this should never happen, I don't think
 				}
 			in
 			case noun of {
-				"s" + #Consonant + _ => prep + "l-i" + noun ;
+				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
 				("għ" | #Vowel) + _ => case prep of {
 					("fil"|"bil") => (take 1 prep) + "l-" + noun ;
 					_ => prep + "-" + noun
 				};
-				K@#CoronalConsonant + _ => initPrep + K + "-" + noun ;
+				K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
 				#Consonant + _ => prep + "-" + noun ;
 				_ => []
 			} ;

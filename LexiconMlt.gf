@@ -75,63 +75,63 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		blow_V
 --		blue_A
 		boat_N = mkNoun "dgħajsa" "dgħajjes" ;
-		bone_N = mkNoun "għadma" "għadam" ;
+		bone_N = mkNounColl "għadam" ;
 		book_N = mkNoun "ktieb" "kotba" ;
-		boot_N = mkNoun "żarbuna" "żraben" ;
-		boss_N = mkNoun "imgħallem" ;
-		boy_N = mkNoun "tifel" "subien" ;
-		bread_N = mkNoun "ħobż" ;
+		boot_N = mkNoun "żarbun" "żraben" ; -- what about ŻARBUNA?
+		boss_N = mkNoun "mgħallem" "mgħallmin" ;
+		boy_N = mkNoun "tifel" "tfal" ;
+		bread_N = mkNounColl "ħobż" ;
 --		break_V2
-		breast_N = mkNoun "sider" ;
+		breast_N = mkNoun "sider" "sdur" ; -- also ISDRA
 --		breathe_V
 --		broad_A
-		brother_N2 = mkNoun "ħu" ;
+		brother_N2 = mkNoun "ħu" "aħwa" ;
 --		brown_A
 --		burn_V
-		butter_N = mkNoun "butir" ;
+		butter_N = mkNounWorst [] [] [] "butirijiet" "butir" Masc ;
 --		buy_V2
-		camera_N = mkNoun "kamera" ;
+		camera_N = mkNoun "kamera" "kameras" ;
 		cap_N = mkNoun "beritta" ;
 		car_N = mkNoun "karozza" ;
-		carpet_N = mkNoun "tapit" ;
-		cat_N = mkNoun "qattus" ;
-		ceiling_N = mkNoun "saqaf" ;
-		chair_N = mkNoun "siġġu" ;
-		cheese_N = mkNoun "ġobon" ;
-		child_N = mkNoun "tfajjel" ;
-		church_N = mkNoun "knisja" ;
-		city_N = mkNoun "belt" ;
+		carpet_N = mkNoun "tapit" ; -- TAPITI or TWAPET ?
+		cat_N = mkNoun "qattus" "qtates" ; -- what about QATTUSA ?
+		ceiling_N = mkNoun "saqaf" "soqfa";
+		chair_N = mkNoun "siġġu" "siġġijiet" ;
+		cheese_N = mkNounColl "ġobon" ;
+--		child_N = mkNoun "tfajjel" ; -- Not an easy one...
+		church_N = mkNoun "knisja" "knejjes" ;
+		city_N = mkNoun "belt" "bliet" Fem ;
 --		clean_A
 --		clever_A
 --		close_V2
-		cloud_N = mkNoun "sħaba" ;
-		coat_N = mkNoun "kowt" ;
+		cloud_N = mkNounColl "sħab" ;
+		coat_N = mkNoun "kowt" "kowtijiet" ;
 --		cold_A
 --		come_V
-		computer_N = mkNoun "kompjuter" ;
+		computer_N = mkNoun "kompjuter" "kompjuters" ;
 --		correct_A
 --		count_V2
 		country_N = mkNoun "pajjiż" ;
 		cousin_N = mkNoun "kuġin" ;
-		cow_N = mkNoun "baqra" ;
+		cow_N = mkNounWorst "baqra" "baqartejn" [] [] "baqar" Fem ;
 --		cut_V2
-		day_N = mkNoun "ġurnata" ;
+		day_N = mkNoun "ġurnata" "ġranet" ;
 --		dig_V
 --		dirty_A
 		distance_N3 = mkNoun "distanza" ;
 --		do_V2
-		doctor_N = mkNoun "tabib" ;
-		dog_N = mkNoun "kelb" ;
-		door_N = mkNoun "bieb" ;
+		doctor_N = mkNoun "tabib" "tobba" ; -- what about TABIBA ?
+		dog_N = mkNoun "kelb" "klieb" ;
+		door_N = mkNoun "bieb" "bibien" ; -- what about BIEBA ?
 --		drink_V2
 --		dry_A
 --		dull_A
-		dust_N = mkNoun "trab" ;
-		ear_N = mkNoun "widen" ;
-		earth_N = mkNoun "art" ; -- dinja?
+		dust_N = mkNounColl "trab" ; -- not sure but sounds right
+		ear_N = mkNounDual "widna" ;
+		earth_N = mkNoun "art" "artijiet" Fem ;
 --		easy_A2V
 --		eat_V2
-		egg_N = mkNoun "bajda" ;
+		egg_N = mkNounColl "bajd" ;
 --		empty_A
 		enemy_N = mkNoun "għadu" ;
 		eye_N = mkNoun "għajn" ;

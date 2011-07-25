@@ -1,6 +1,9 @@
 #!/usr/bin/php
 <?php
 
+// Timing
+$time_start = microtime(true);
+
 // Just some variables
 $outfile = 'test/nouns.out';
 $command = './_gf < test/nouns.gfs > '.$outfile;
@@ -82,24 +85,29 @@ $HTML = <<<HTML
 </head>
 <body>
 
-<a href="#compiler-output">Compiler output</a>
 
 <div id="text-output">
 {$TEXT}
 </div>
-
-<pre id="compiler-output">{$HTML_console}</pre>
 
 </body>
 </html>
 HTML;
 
 
-//<table>{$HTML_table}</table>
+/*
+<table>{$HTML_table}</table>
+<a href="#compiler-output">Compiler output</a>
+<pre id="compiler-output">{$HTML_console}</pre>
+*/
 
 
 // Save to file
 echo " Writing to file $htmlfile\n";
 @unlink($htmlfile);
 file_put_contents($htmlfile, $HTML);
-echo " Done\n";
+
+// Stop timing
+$time_end = microtime(true);
+$time_taken = $time_end - $time_start;
+printf(" Done in %.2fs\n", $time_taken);
