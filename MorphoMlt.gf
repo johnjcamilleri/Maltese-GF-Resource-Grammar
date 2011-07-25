@@ -5,6 +5,6 @@
 -- Licensed under LGPL
 
 resource MorphoMlt = ResMlt ** open Prelude in {
-	flags optimize = all ;--noexpand; coding=utf8 ;
+	flags optimize=all ; coding=utf8 ;
 
 }

@@ -14,7 +14,7 @@ resource ParadigmsMlt = open
 	CatMlt
 	in {
 
-	flags optimize=noexpand;  coding=utf8 ;
+	flags optimize=noexpand ; coding=utf8 ;
 
 
 	oper
@@ -22,12 +22,13 @@ resource ParadigmsMlt = open
 		{- ===== Noun Paradigms ===== -}
 
 		-- Helper function for inferring noun plural from singulative
+		-- Nouns with collective & determinate forms should not use this...
 		inferNounPlural : Str -> Str = \sing ->
 			case sing of {
 				_ + "i" => sing + "n" ; -- eg BAĦRIN, DĦULIN, RAĦLIN
-				_ + "a" => init(sing) + "iet" ; -- eg RIXIET, GREMXULIET
+--				_ + "ħa" => sing + "t" ; -- eg TUFFIEĦAT
+				_ + "a" => init(sing) + "i" ; -- eg ROTI
 				_ + "q" => sing + "at" ; -- eg TRIQAT
-				_ + "ħa" => init(sing) + "at" ; -- eg TUFFIEĦAT
 				_ => sing + "i"
 			} ;
 
@@ -102,11 +103,18 @@ resource ParadigmsMlt = open
 		-- No other plural forms.
 		-- Params:
 			-- Singular, eg ARTI
-		mkNounNoPlural : Str -> Noun = \sing ->
-			let
-				gender = inferNounGender sing ;
-			in
-				mkNounWorst sing [] [] [] [] gender ;
+		mkNounNoPlural : Nouns = overload {
+
+			mkNounNoPlural : Str -> Noun = \sing ->
+				let	gender = inferNounGender sing ;
+				in  mkNounWorst sing [] [] [] [] gender
+			;
+
+			mkNounNoPlural : Str -> Gender -> Noun = \sing,gender ->
+				mkNounWorst sing [] [] [] [] gender
+			;
+
+		} ; --end of mkNounNoPlural overload
 
 
 		-- Take the singular and infer dual, plural & gender
@@ -134,7 +142,7 @@ resource ParadigmsMlt = open
 					_ => coll + "a"
 				} ;
 				det : Str = case coll of {
-					_ => coll + "iet"
+					_ => coll + "at"
 				} ;
 				gender = inferNounGender sing ;
 			in
@@ -180,11 +188,11 @@ resource ParadigmsMlt = open
 					Nominative	=> abbrevPrepositionDef "il" noun
 				} ;
 				Indefinite => table {
-					Benefactive	=> "għal" ++ noun;
+					Benefactive	=> abbrevPrepositionIndef "għal" noun;
 					Comitative	=> abbrevPrepositionIndef "ma'" noun ;
-					Dative		=> "lil" ++ noun ;
-					Elative		=> "minn" ++ noun ;
-					Equative	=> "bħal" ++ noun ;
+					Dative		=> abbrevPrepositionIndef "lil" noun ;
+					Elative		=> abbrevPrepositionIndef "minn" noun ;
+					Equative	=> abbrevPrepositionIndef "bħal" noun ;
 					Genitive	=> abbrevPrepositionIndef "ta'" noun ;
 					Inessive	=> abbrevPrepositionIndef "fi" noun;
 					Instrumental=> abbrevPrepositionIndef "bi" noun;
@@ -208,7 +216,10 @@ resource ParadigmsMlt = open
 			in
 			case noun of {
 				"s" + #Consonant + _ => prep + "l-i" + noun ;
-				("għ" | #Vowel) + _ => prep + "-" + noun ;
+				("għ" | #Vowel) + _ => case prep of {
+					("fil"|"bil") => (take 1 prep) + "l-" + noun ;
+					_ => prep + "-" + noun
+				};
 				K@#CoronalConsonant + _ => initPrep + K + "-" + noun ;
 				#Consonant + _ => prep + "-" + noun ;
 				_ => []
@@ -223,6 +234,7 @@ resource ParadigmsMlt = open
 				initPrepLetter = take 1 prep ;
 				initNounLetter = take 1 noun
 			in
+			if_then_Str (isNil noun) [] (
 			case prep of {
 
 				-- TA', MA', SA
@@ -243,9 +255,12 @@ resource ParadigmsMlt = open
 						#Consonant + #Vowel + _  => initPrepLetter + "'" + noun ;
 						#Consonant + "r" + #Vowel + _ => initPrepLetter + "'" + noun ;
 						_ => prep ++ noun
-					})
+					}) ;
 
-			};
+				-- Else leave untouched
+				_ => prep ++ noun
+
+			});
 
 
 		{- ========== Verb paradigms ========== -}

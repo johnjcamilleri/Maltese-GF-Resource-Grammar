@@ -6,8 +6,8 @@
 
 abstract ExtraMltAbs = Cat ** {
 
-	fun
-		thigh_N : N ;
-		sailor_N : N ;
+--	fun
+--		thigh_N : N ;
+--		sailor_N : N ;
 
 }

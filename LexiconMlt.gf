@@ -53,25 +53,25 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		animal_N = mkNoun "annimal" ;
 --		answer_V2S
 		apartment_N = mkNoun "appartament" ;
-		art_N = mkNounNoPlural "arti" ;
+		art_N = mkNounNoPlural "arti" Fem ;
 --		ashes_N = mkNoun "rmied" ;
 --		ask_V2Q
 		baby_N = mkNoun "tarbija" "trabi" ;
-		back_N = mkNounNoPlural "dahar" ;
+		back_N = mkNoun "dahar" "dhur" ;
 --		bad_A
-		bank_N = mkNoun "bank" "banek" ;
-		bark_N = mkNoun "qoxra" ;
+		bank_N = mkNoun "bank" "bankijiet" ; -- BANEK is for lotto booths!
+		bark_N = mkNoun "qoxra" "qoxriet" ;
 --		beautiful_A
 --		become_VA
-		beer_N = mkNoun "birra" ;
+		beer_N = mkNoun "birra" "birer" ;
 --		beg_V2V
-		belly_N = mkNoun "żaqq" ;
+		belly_N = mkNoun "żaqq" "żquq" ;
 --		big_A
 		bike_N = mkNoun "rota" ;
-		bird_N = mkNoun "għasfur" ;
+		bird_N = mkNoun "għasfur" "għasafar" ; -- what about GĦASFURA?
 --		bite_V2
 --		black_A
-		blood_N = mkNoun "demm" ;
+		blood_N = mkNounWorst [] [] "dmija" [] "demm" Masc ;
 --		blow_V
 --		blue_A
 		boat_N = mkNoun "dgħajsa" "dgħajjes" ;

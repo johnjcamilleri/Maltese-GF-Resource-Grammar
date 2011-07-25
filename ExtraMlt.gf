@@ -10,8 +10,8 @@ concrete ExtraMlt of ExtraMltAbs = CatMlt **
 	flags coding=utf8 ;
 
 
-	lin
-		thigh_N = mkNounDual "koxxa" ;
-		sailor_N = mkNoun "baħri" ;
+--	lin
+--		thigh_N = mkNounDual "koxxa" ;
+--		sailor_N = mkNoun "baħri" ;
 
 }

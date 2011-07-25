@@ -2,19 +2,22 @@
 <?php
 
 // Just some variables
-$command = './_gf < test/nouns.gfs';
-$outfile = 'test/nouns.out.html';
+$outfile = 'test/nouns.out';
+$command = './_gf < test/nouns.gfs > '.$outfile;
+$htmlfile = 'test/nouns.out.html';
 
 // Execute GF stuff and capture output
 echo " Running GF\n";
 chdir( dirname(__FILE__) . '/../' );
-exec($command, $output, $return_status);
+exec($command, $out, $return_status);
 if ($return_status != 0)
 	die (" Failed.\n");
+$output = file($outfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 // Process line by line.
-$HTML_pre = '';
+$HTML_console = '';
 $HTML_table = '';
+$TEXT = '';
 $prev_cols = array();
 foreach ($output as $n => $line) {
 
@@ -24,14 +27,24 @@ foreach ($output as $n => $line) {
 	// Process items
 	elseif (preg_match('/^(> )?(\w) \. (.*)/', $line, $matches)) {
 
-		// Blank line?
+		// Have we reached a new entry?
 		if ($matches[1]) {
 			$HTML_table .= '<tr class="separator"><td colspan="100%">&nbsp;</td></td>';
+			$TEXT .= "\n<hr/>\n";
 		}
+
+		$columns = explode('=>',$matches[3]);
+
+		array_walk(
+			$columns,
+			create_function('$v,$k,&$t','$t .= ($k==3) ? "<em>$v</em>" : str_pad($v, 20);'),
+			&$TEXT
+		);
+		$TEXT .= "\n";
 
 		$HTML_table .= '<tr>';
 		$col = 0;
-		foreach (explode('=>',$matches[3]) as $i) {
+		foreach ($columns as $i) {
 			$i = trim($i);
 			if (@$prev_cols[$col] == $i || $i == '[]') {
 				$HTML_table .= '<td>&nbsp;</td>';
@@ -46,7 +59,7 @@ foreach ($output as $n => $line) {
 
 	// Anything else is compiler output
 	else
-		$HTML_pre .= $line . "\n";
+		$HTML_console .= $line . "\n";
 
 }
 
@@ -58,10 +71,11 @@ $HTML = <<<HTML
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<style type="text/css">
+		#text-output { white-space:pre; font-family:monospace; }
+		#text-output em { font-family:serif; }
 		table { border-collapse:collapse; border-spacing:0; }
 		tr:nth-child(odd) { background-color:#eee; }
 		tr.separator { background-color:#000; font-size:2px; }
-		tr:hover { background-color:skyblue; }
 		td { padding:0.2em 1em; border-width:1px 0; border-style:solid; border-color:#ccc; }
 		td:last-child { font-style:italic; }
 	</style>
@@ -70,16 +84,22 @@ $HTML = <<<HTML
 
 <a href="#compiler-output">Compiler output</a>
 
-<table>{$HTML_table}</table>
+<div id="text-output">
+{$TEXT}
+</div>
 
-<pre id="compiler-output">{$HTML_pre}</pre>
+<pre id="compiler-output">{$HTML_console}</pre>
 
 </body>
 </html>
 HTML;
 
+
+//<table>{$HTML_table}</table>
+
+
 // Save to file
-echo " Writing to file $outfile\n";
-@unlink($outfile);
-file_put_contents($outfile, $HTML);
+echo " Writing to file $htmlfile\n";
+@unlink($htmlfile);
+file_put_contents($htmlfile, $HTML);
 echo " Done\n";
