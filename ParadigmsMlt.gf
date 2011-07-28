@@ -63,7 +63,7 @@ resource ParadigmsMlt = open
 					plural = inferNounPlural sing ;
 					gender = inferNounGender sing ;
 				in
-					mkNounWorst sing [] plural [] [] gender ;
+					mkNounWorst sing [] [] plural [] gender ;
 
 			-- Take an explicit gender.
 			-- Assume no special plural forms.
@@ -74,7 +74,7 @@ resource ParadigmsMlt = open
 				let
 					plural = inferNounPlural sing ;
 				in
-					mkNounWorst sing [] plural [] [] gender ;
+					mkNounWorst sing [] [] plural [] gender ;
 
 			-- Take the singular, plural. Infer gender.
 			-- Assume no special plural forms.
@@ -85,7 +85,7 @@ resource ParadigmsMlt = open
 				let
 					gender = inferNounGender sing ;
 				in
-					mkNounWorst sing [] plural [] [] gender ;
+					mkNounWorst sing [] [] plural [] gender ;
 
 			-- Take the singular, plural and gender.
 			-- Assume no special plural forms.
@@ -94,7 +94,7 @@ resource ParadigmsMlt = open
 				-- Plural, eg KOTBA
 				-- Gender
 			mkNoun : Str -> Str -> Gender -> Noun = \sing,plural,gender ->
-				mkNounWorst sing [] plural [] [] gender ;
+					mkNounWorst sing [] [] plural [] gender ;
 
 		} ; --end of mkNoun overload
 
@@ -130,7 +130,7 @@ resource ParadigmsMlt = open
 				plural = inferNounPlural sing ;
 				gender = inferNounGender sing ;
 			in
-				mkNounWorst sing dual plural [] [] gender ;
+				mkNounWorst sing [] dual plural [] gender ;
 
 
 		-- Take the collective, and infer singulative, determinate plural, and gender.
@@ -154,25 +154,25 @@ resource ParadigmsMlt = open
 				-- gender = inferNounGender sing ;
 				gender = Masc ; -- Collective noun is always treated as Masculine
 			in
-				mkNounWorst sing [] [] det coll gender ;
+				mkNounWorst sing coll [] det [] gender ;
 
 
 		-- Worst case
 		-- Takes all forms and a gender
 		-- Params:
-			-- Singular, eg KOXXA
+			-- Singulative, eg KOXXA
+			-- Collective, eg KOXXOX
 			-- Double, eg KOXXTEJN
-			-- Plural
 			-- Determinate Plural, eg KOXXIET
-			-- Collective Plural, eg KOXXOX
+			-- Indeterminate Plural
 			-- Gender
-		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,dual,plural,det,coll,gen -> {
+		mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
 			s = table {
-				Singulative		=> buildCaseTable sing ;
-				Dual			=> buildCaseTable dual ;
-				Plural			=> buildCaseTable plural ;
-				DeterminatePl	=> buildCaseTable det ;
-				Collective	=> buildCaseTable coll
+				Singular Singulative	=> buildCaseTable sing ;
+				Singular Collective		=> buildCaseTable coll ;
+				Dual					=> buildCaseTable dual ;
+				Plural Determinate		=> buildCaseTable det ;
+				Plural Indeterminate	=> buildCaseTable ind
 			} ;
 			g = gen ;
 		} ;
@@ -420,7 +420,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjStrongImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
+		conjStrongImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
 			let
 				stem_sg = case (p.v1 + p.v2) of {
 					"aa" => "i" + root.K + root.T + "o" + root.B ;
@@ -499,7 +499,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjDefectiveImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
+		conjDefectiveImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
 			let
 				v1 = case p.v1 of { "e" => "i" ; _ => p.v1 } ;
 				v_pl = case p.v1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
@@ -569,7 +569,7 @@ resource ParadigmsMlt = open
 		-- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
 		-- Params: Root, Pattern
 		-- Return: Lookup table of Number against Str
-		conjQuadImp : Root -> Pattern -> ( Number2 => Str ) = \root,p ->
+		conjQuadImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
 			table {
 				Sg => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;	-- Inti:  DARDAR
 				Pl => root.K + p.v1 + root.T + root.B + root.L + "u"	-- Intom: DARDRU

@@ -71,7 +71,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		bird_N = mkNoun "għasfur" "għasafar" ; -- what about GĦASFURA?
 --		bite_V2
 --		black_A
-		blood_N = mkNounWorst [] [] "dmija" [] "demm" Masc ;
+		blood_N = mkNounWorst [] "demm" [] "dmija" [] Masc ;
 --		blow_V
 --		blue_A
 		boat_N = mkNoun "dgħajsa" "dgħajjes" ;
@@ -88,7 +88,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		brother_N2 = mkNoun "ħu" "aħwa" ;
 --		brown_A
 --		burn_V
-		butter_N = mkNounWorst [] [] [] "butirijiet" "butir" Masc ;
+		butter_N = mkNounWorst [] "butir" [] "butirijiet" [] Masc ;
 --		buy_V2
 		camera_N = mkNoun "kamera" "kameras" ;
 		cap_N = mkNoun "beritta" ;
@@ -113,7 +113,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		count_V2
 		country_N = mkNoun "pajjiż" ;
 		cousin_N = mkNoun "kuġin" ;
-		cow_N = mkNounWorst "baqra" "baqartejn" [] [] "baqar" Fem ;
+		cow_N = mkNounWorst "baqra" "baqar" "baqartejn" [] [] Fem ;
 --		cut_V2
 		day_N = mkNoun "ġurnata" "ġranet" ;
 --		dig_V
@@ -134,7 +134,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		egg_N = mkNounColl "bajd" ;
 --		empty_A
 		enemy_N = mkNoun "għadu" "għedewwa" ;
-		eye_N = mkNounWorst "għajn" "għajnejn" "għajnejn" [] [] Fem ;
+		eye_N = mkNounWorst "għajn" [] "għajnejn" "għajnejn" "għejun" Fem ;
 		factory_N = mkNoun "fabbrika" ;
 --		fall_V
 --		far_Adv
@@ -145,7 +145,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		feather_N = mkNounColl "rix" ;
 --		fight_V2
 --		find_V2
-		fingernail_N = mkNounWorst "difer" "difrejn" "dwiefer" [] [] Masc ;
+		fingernail_N = mkNounWorst "difer" [] "difrejn" "dwiefer" [] Masc ;
 		fire_N = mkNoun "nar" "nirien" ;
 		fish_N = mkNounColl "ħut" ;
 --		float_V
@@ -153,8 +153,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		flow_V
 		flower_N = mkNoun "fjura" ;
 --		fly_V
-		fog_N = mkNounWorst [] [] [] [] "ċpar" Masc ;
-		foot_N = mkNounWorst "sieq" "saqajn" "saqajn" [] [] Masc ;
+		fog_N = mkNounWorst [] "ċpar" [] [] [] Masc ;
+		foot_N = mkNounWorst "sieq" [] "saqajn" "saqajn" [] Fem ;
 		forest_N = mkNoun "foresta" ; -- also MASĠAR
 --		forget_V2
 --		freeze_V
@@ -168,14 +168,14 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		give_V3
 		glove_N = mkNoun "ingwanta" ;
 --		go_V
-		gold_N = mkNoun [] [] [] "deheb" "dehbijiet" Masc ;
+		gold_N = mkNounWorst [] "deheb" [] "dehbijiet" [] Masc ;
 --		good_A
 		grammar_N = mkNoun "grammatika" ;
-		grass_N = mkNoun "ħaxix" [] "ħxejjex" [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
+		grass_N = mkNounWorst "ħaxixa" "ħaxix" [] [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
 --		green_A
-		guts_N = mkNoun "" "msaren" ;
-		hair_N = mkNoun "xagħar" ;
-		hand_N = mkNoun "id" ;
+		guts_N = mkNounWorst "musrana" [] [] "musraniet" "msaren" Fem ;
+		hair_N = mkNounWorst "xagħar" [] [] "xagħariet" "xgħur" Masc ;
+		hand_N = mkNounWorst "id" [] "idejn" "idejn" [] Fem ;
 		harbour_N = mkNoun "port" ;
 		hat_N = mkNoun "kappell" ;
 --		hate_V2

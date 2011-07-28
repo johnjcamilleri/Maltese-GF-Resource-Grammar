@@ -24,52 +24,80 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 	param
 
-		Number2 =
-			  Sg
-			| Pl ;
-
 {-
 	Note: NNQ = Non-numerically quantifiable
 
-	Nouns can have the following forms (* marks base form):
-		- Singulative (1, >10)
-		- Dual (2)
-		- Plural (>2)
-		- Collective (NNQ)
-		- Determinate (2-10)
-		- Indeterminate plural (NNQ)
+	Nouns can have the following forms:
+		o Singular
+			- Singulative (1, >10)
+			- Collective (NNQ)
+		o Dual (2)
+		o Plural
+			- Determinate (2-10)
+			- Indeterminate Plural (NNQ)
+				- Sound
+				- Broken
+				- Plural of Plural
 
-	Typical combinations thereof:
+	Typical combinations thereof  (* marks base form):
 		- Singulative, no plural!
 		- Singulative*, Plural
 		- Singulative* (1), Dual (2), Plural (>2)
 		- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
 		- Singulative, Collective*, Determinate Plural, Indeterminate Plural -> very few nouns have these 4 forms
 -}
-		Number5 =
-			  Singulative	-- eg BAJDA
-			| Dual			-- eg WIDNEJN
-			| Plural		-- "Regular" plural
-			| Collective	-- eg BAJD
-			| DeterminatePl	-- eg BAJDIET
-			| IndeterminatePl	-- eg BAJDIET
+		Noun_Sg_Type =
+			  Singulative	-- eg ĦUTA
+			| Collective	-- eg ĦUT
 		;
-		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
+		Noun_Pl_Type =
+			  Determinate	-- eg ĦUTIET
+			| Indeterminate	-- eg ĦWIET
+		;
+		Noun_Number =
+			  Singular Noun_Sg_Type		-- eg ĦUTA / ĦUT
+			| Dual						-- eg WIDNEJN
+			| Plural Noun_Pl_Type		-- eg ĦUTIET / ĦWIET
+		;
+
+{-
+		Noun_PluralType =
+			  Sound				-- External (affix), eg FERGĦA -> FERGĦAT
+			| Broken			-- Internal, eg FERGĦA -> FRIEGĦI
+			| Irregular			-- eg MARA -> NISA
+			| PluralOfPlural	-- eg TARF -> TRUF -> TRUFIJIET
+			| Foreign			-- eg KARTI, PRATTIĊI, TELEVIXINS
+		;
+-}
 
 		Gender  = Masc | Fem ;
 
 		Animacy =
 			  Animate
-			| Inanimamte
+			| Inanimate
+		;
 
 		Definiteness =
 			  Definite		-- eg IL-KARTA. In this context same as Determinate
 			| Indefinite	-- eg KARTA
 		;
 
+{-
+		-- CASE AS DEFINED BY GRAMMATIKA MALTIJA, p132
+		-- Noun cases
+		Case =
+			  Nominative	-- referent as subject, eg IT-TARBIJA ...
+			| Genitive		-- referent as possessor, eg ... TAT-TARBIJA
+			| Accusative	-- referent as direct object
+			| Dative		-- referent as indirect object, eg ... LIT-TARBIJA
+			| Ablative		-- referent as instrument, cause, location, source or time, eg ... MINN TARBIJA
+			| Vocative		-- referent being adressed, eg AA TARBIJA (lol)
+		;
+-}
+
+		-- CASE AS DEFINED BY ME
 		-- Noun cases (note my examples include DEFINITE ARTICLE)
-		-- Commented lines mean that noun iflection is unchanged, not
-		-- that the case does not occur in Maltese!
+		-- Commented lines mean that noun iflection is unchanged, not that the case does not occur in Maltese!
 		Case =
 --			  Absessive		-- lack or absence of referent (MINGĦAJR)
 --			| Ablative		-- referent as instrument, cause, location, source or time
@@ -118,10 +146,12 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		-- GenNum = gn Gender Number2 ;
 
 
+		Person_Number = Sg | Pl ;
+
 		-- Agreement features
 		Agr =
-			  Per1 Number2	-- Jiena, Aħna
-			| Per2 Number2	-- Inti, Intom
+			  Per1 Person_Number	-- Jiena, Aħna
+			| Per2 Person_Number	-- Inti, Intom
 			| Per3Sg Gender	-- Huwa, Hija
 			| Per3Pl		-- Huma
 		;
@@ -140,7 +170,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		VForm =
 			  VPerf Agr		-- Perfect tense in all pronoun cases
 			| VImpf Agr		-- Imperfect tense in all pronoun cases
-			| VImp Number2 			-- Imperative is always Per2, Sg & Pl
+			| VImp Person_Number	-- Imperative is always Per2, Sg & Pl
 			-- | VPresPart GenNum	-- Present Particible for Gender/Number
 			-- | VPastPart GenNum	-- Past Particible for Gender/Number
 			-- | VVerbalNoun			-- Verbal Noun
@@ -193,12 +223,12 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		} ;
 -}
 		Noun : Type = {
-			s : Number5 => Definiteness => Case => Str ;
+			s : Noun_Number => Definiteness => Case => Str ;
 			g : Gender ;
 		} ;
 
 		Adj : Type = {
-			s : Gender => Number2 => Str ;
+			s : Gender => Person_Number => Str ;
 			-- isPre : Bool ;
 		} ;
 
