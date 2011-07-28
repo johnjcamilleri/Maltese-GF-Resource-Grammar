@@ -19,9 +19,9 @@ Bug reports: http://code.google.com/p/grammatical-framework/issues/list
 Languages:
 > 20 msec
 > 8 msec
-> 4 msec
-> 4 msec
+> 8 msec
 > 0 msec
+> 4 msec
 > + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Common.gfo
 + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Cat.gfo
 + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Noun.gfo
@@ -72,11 +72,177 @@ Languages:
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IdiomMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/GrammarMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IrregMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
+- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gf... checking module LexiconMlt
+   Warning: function bench_N is not in abstract
+   Warning: no linearization of add_V3
+   Warning: no linearization of alas_Interj
+   Warning: no linearization of already_Adv
+   Warning: no linearization of answer_V2S
+   Warning: no linearization of ashes_N
+   Warning: no linearization of ask_V2Q
+   Warning: no linearization of bad_A
+   Warning: no linearization of beautiful_A
+   Warning: no linearization of become_VA
+   Warning: no linearization of beg_V2V
+   Warning: no linearization of big_A
+   Warning: no linearization of bite_V2
+   Warning: no linearization of black_A
+   Warning: no linearization of blow_V
+   Warning: no linearization of blue_A
+   Warning: no linearization of break_V2
+   Warning: no linearization of breathe_V
+   Warning: no linearization of broad_A
+   Warning: no linearization of brown_A
+   Warning: no linearization of burn_V
+   Warning: no linearization of buy_V2
+   Warning: no linearization of child_N
+   Warning: no linearization of clean_A
+   Warning: no linearization of clever_A
+   Warning: no linearization of close_V2
+   Warning: no linearization of cold_A
+   Warning: no linearization of come_V
+   Warning: no linearization of correct_A
+   Warning: no linearization of count_V2
+   Warning: no linearization of cut_V2
+   Warning: no linearization of dig_V
+   Warning: no linearization of dirty_A
+   Warning: no linearization of do_V2
+   Warning: no linearization of drink_V2
+   Warning: no linearization of dry_A
+   Warning: no linearization of dull_A
+   Warning: no linearization of easy_A2V
+   Warning: no linearization of eat_V2
+   Warning: no linearization of empty_A
+   Warning: no linearization of fall_V
+   Warning: no linearization of far_Adv
+   Warning: no linearization of fear_V2
+   Warning: no linearization of fear_VS
+   Warning: no linearization of fight_V2
+   Warning: no linearization of find_V2
+   Warning: no linearization of float_V
+   Warning: no linearization of floor_N
+   Warning: no linearization of flow_V
+   Warning: no linearization of fly_V
+   Warning: no linearization of forget_V2
+   Warning: no linearization of freeze_V
+   Warning: no linearization of full_A
+   Warning: no linearization of fun_AV
+   Warning: no linearization of give_V3
+   Warning: no linearization of go_V
+   Warning: no linearization of good_A
+   Warning: no linearization of green_A
+   Warning: no linearization of hate_V2
+   Warning: no linearization of hear_V2
+   Warning: no linearization of heavy_A
+   Warning: no linearization of hit_V2
+   Warning: no linearization of hold_V2
+   Warning: no linearization of hope_VS
+   Warning: no linearization of hot_A
+   Warning: no linearization of hunt_V2
+   Warning: no linearization of important_A
+   Warning: no linearization of john_PN
+   Warning: no linearization of jump_V
+   Warning: no linearization of kill_V2
+   Warning: no linearization of know_V2
+   Warning: no linearization of know_VQ
+   Warning: no linearization of know_VS
+   Warning: no linearization of laugh_V
+   Warning: no linearization of learn_V2
+   Warning: no linearization of leave_V2
+   Warning: no linearization of left_Ord
+   Warning: no linearization of lie_V
+   Warning: no linearization of like_V2
+   Warning: no linearization of listen_V2
+   Warning: no linearization of live_V
+   Warning: no linearization of long_A
+   Warning: no linearization of lose_V2
+   Warning: no linearization of love_V2
+   Warning: no linearization of married_A2
+   Warning: no linearization of narrow_A
+   Warning: no linearization of near_A
+   Warning: no linearization of new_A
+   Warning: no linearization of now_Adv
+   Warning: no linearization of old_A
+   Warning: no linearization of open_V2
+   Warning: no linearization of paint_V2A
+   Warning: no linearization of paris_PN
+   Warning: no linearization of play_V
+   Warning: no linearization of play_V2
+   Warning: no linearization of probable_AS
+   Warning: no linearization of pull_V2
+   Warning: no linearization of push_V2
+   Warning: no linearization of put_V2
+   Warning: no linearization of rain_V0
+   Warning: no linearization of read_V2
+   Warning: no linearization of ready_A
+   Warning: no linearization of red_A
+   Warning: no linearization of right_Ord
+   Warning: no linearization of rotten_A
+   Warning: no linearization of round_A
+   Warning: no linearization of rub_V2
+   Warning: no linearization of run_V
+   Warning: no linearization of say_VS
+   Warning: no linearization of scratch_V2
+   Warning: no linearization of see_V2
+   Warning: no linearization of seek_V2
+   Warning: no linearization of sell_V3
+   Warning: no linearization of send_V3
+   Warning: no linearization of sew_V
+   Warning: no linearization of sharp_A
+   Warning: no linearization of short_A
+   Warning: no linearization of sing_V
+   Warning: no linearization of sit_V
+   Warning: no linearization of sleep_V
+   Warning: no linearization of small_A
+   Warning: no linearization of smell_V
+   Warning: no linearization of smooth_A
+   Warning: no linearization of speak_V2
+   Warning: no linearization of spit_V
+   Warning: no linearization of split_V2
+   Warning: no linearization of squeeze_V2
+   Warning: no linearization of stab_V2
+   Warning: no linearization of stand_V
+   Warning: no linearization of stop_V
+   Warning: no linearization of straight_A
+   Warning: no linearization of stupid_A
+   Warning: no linearization of suck_V2
+   Warning: no linearization of swell_V
+   Warning: no linearization of swim_V
+   Warning: no linearization of switch8off_V2
+   Warning: no linearization of switch8on_V2
+   Warning: no linearization of talk_V3
+   Warning: no linearization of teach_V2
+   Warning: no linearization of thick_A
+   Warning: no linearization of thin_A
+   Warning: no linearization of think_V
+   Warning: no linearization of throw_V2
+   Warning: no linearization of tie_V2
+   Warning: no linearization of today_Adv
+   Warning: no linearization of travel_V
+   Warning: no linearization of turn_V
+   Warning: no linearization of ugly_A
+   Warning: no linearization of uncertain_A
+   Warning: no linearization of understand_V2
+   Warning: no linearization of vomit_V
+   Warning: no linearization of wait_V2
+   Warning: no linearization of walk_V
+   Warning: no linearization of warm_A
+   Warning: no linearization of wash_V2
+   Warning: no linearization of watch_V2
+   Warning: no linearization of wet_A
+   Warning: no linearization of white_A
+   Warning: no linearization of wide_A
+   Warning: no linearization of win_V2
+   Warning: no linearization of wipe_V2
+   Warning: no linearization of wonder_VQ
+   Warning: no linearization of write_V2
+   Warning: no linearization of yellow_A
+   Warning: no linearization of young_A
+  wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gfo
+- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ExtraMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
-312 msec
+- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
+5440 msec
 > s . Singulative => Definite => Benefactive => għall-ajruplan
 s . Singulative => Definite => Comitative => mal-ajruplan
 s . Singulative => Definite => Dative => lill-ajruplan
@@ -280,7 +446,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+12 msec
 > s . Singulative => Definite => Benefactive => għall-appartament
 s . Singulative => Definite => Comitative => mal-appartament
 s . Singulative => Definite => Dative => lill-appartament
@@ -586,7 +752,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għat-tarbija
 s . Singulative => Definite => Comitative => mat-tarbija
 s . Singulative => Definite => Dative => lit-tarbija
@@ -688,7 +854,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għad-dahar
 s . Singulative => Definite => Comitative => mad-dahar
 s . Singulative => Definite => Dative => lid-dahar
@@ -790,7 +956,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-bank
 s . Singulative => Definite => Comitative => mal-bank
 s . Singulative => Definite => Dative => lill-bank
@@ -1198,7 +1364,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-rota
 s . Singulative => Definite => Comitative => mar-rota
 s . Singulative => Definite => Dative => lir-rota
@@ -1606,7 +1772,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-għadma
 s . Singulative => Definite => Comitative => mal-għadma
 s . Singulative => Definite => Dative => lill-għadma
@@ -1810,7 +1976,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għaż-żarbun
 s . Singulative => Definite => Comitative => maż-żarbun
 s . Singulative => Definite => Dative => liż-żarbun
@@ -2014,7 +2180,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-0 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għat-tifel
 s . Singulative => Definite => Comitative => mat-tifel
 s . Singulative => Definite => Dative => lit-tifel
@@ -2116,7 +2282,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħobża
 s . Singulative => Definite => Comitative => mal-ħobża
 s . Singulative => Definite => Dative => lill-ħobża
@@ -2218,7 +2384,7 @@ s . CollectivePl => Indefinite => Instrumental => b'ħobż
 s . CollectivePl => Indefinite => Lative => sa ħobż
 s . CollectivePl => Indefinite => Nominative => ħobż
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għas-sider
 s . Singulative => Definite => Comitative => mas-sider
 s . Singulative => Definite => Dative => lis-sider
@@ -2320,7 +2486,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħu
 s . Singulative => Definite => Comitative => mal-ħu
 s . Singulative => Definite => Dative => lill-ħu
@@ -2524,7 +2690,7 @@ s . CollectivePl => Indefinite => Instrumental => bi butir
 s . CollectivePl => Indefinite => Lative => sa butir
 s . CollectivePl => Indefinite => Nominative => butir
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-kamera
 s . Singulative => Definite => Comitative => mal-kamera
 s . Singulative => Definite => Dative => lill-kamera
@@ -3136,7 +3302,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għas-siġġu
 s . Singulative => Definite => Comitative => mas-siġġu
 s . Singulative => Definite => Dative => lis-siġġu
@@ -3340,7 +3506,7 @@ s . CollectivePl => Indefinite => Instrumental => b'ġobon
 s . CollectivePl => Indefinite => Lative => sa ġobon
 s . CollectivePl => Indefinite => Nominative => ġobon
 g . Masc
-4 msec
+8 msec
 > atomic term child_N
 given CommonX, CatMlt, ExtraMlt, CommonX, CatMlt, IrregMlt, CommonX, CatMlt, LexiconMlt, CommonX, CatMlt, IdiomMlt, CommonX, CatMlt, StructuralMlt, CommonX, TextX, CommonX, CatMlt, PhraseMlt, CommonX, CatMlt, ConjunctionMlt, CommonX, CatMlt, RelativeMlt, CommonX, CatMlt, QuestionMlt, CommonX, CatMlt, SentenceMlt, CommonX, CatMlt, NumeralMlt, CommonX, CatMlt, AdverbMlt, CommonX, CatMlt, AdjectiveMlt, CommonX, CatMlt, VerbMlt, CommonX, CatMlt, NounMlt, GrammarMlt, LangMlt, AllMlt
    constant not found: child_N
@@ -3446,7 +3612,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-belt
 s . Singulative => Definite => Comitative => mal-belt
 s . Singulative => Definite => Dative => lill-belt
@@ -3650,7 +3816,7 @@ s . CollectivePl => Indefinite => Instrumental => bi sħab
 s . CollectivePl => Indefinite => Lative => sa sħab
 s . CollectivePl => Indefinite => Nominative => sħab
 g . Masc
-0 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-kowt
 s . Singulative => Definite => Comitative => mal-kowt
 s . Singulative => Definite => Dative => lill-kowt
@@ -3854,7 +4020,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-32 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-pajjiż
 s . Singulative => Definite => Comitative => mal-pajjiż
 s . Singulative => Definite => Dative => lill-pajjiż
@@ -3956,7 +4122,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-kuġin
 s . Singulative => Definite => Comitative => mal-kuġin
 s . Singulative => Definite => Dative => lill-kuġin
@@ -4058,7 +4224,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-baqra
 s . Singulative => Definite => Comitative => mal-baqra
 s . Singulative => Definite => Dative => lill-baqra
@@ -4262,7 +4428,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għad-distanza
 s . Singulative => Definite => Comitative => mad-distanza
 s . Singulative => Definite => Dative => lid-distanza
@@ -4364,7 +4530,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għat-tabib
 s . Singulative => Definite => Comitative => mat-tabib
 s . Singulative => Definite => Dative => lit-tabib
@@ -4466,7 +4632,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-kelb
 s . Singulative => Definite => Comitative => mal-kelb
 s . Singulative => Definite => Dative => lill-kelb
@@ -4976,7 +5142,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-bajda
 s . Singulative => Definite => Comitative => mal-bajda
 s . Singulative => Definite => Dative => lill-bajda
@@ -5119,26 +5285,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-għadui
-s . Plural => Definite => Comitative => mal-għadui
-s . Plural => Definite => Dative => lill-għadui
-s . Plural => Definite => Elative => mill-għadui
-s . Plural => Definite => Equative => bħall-għadui
-s . Plural => Definite => Genitive => tal-għadui
-s . Plural => Definite => Inessive => fl-għadui
-s . Plural => Definite => Instrumental => bl-għadui
-s . Plural => Definite => Lative => sal-għadui
-s . Plural => Definite => Nominative => il-għadui
-s . Plural => Indefinite => Benefactive => għal għadui
-s . Plural => Indefinite => Comitative => m'għadui
-s . Plural => Indefinite => Dative => lil għadui
-s . Plural => Indefinite => Elative => minn għadui
-s . Plural => Indefinite => Equative => bħal għadui
-s . Plural => Indefinite => Genitive => t'għadui
-s . Plural => Indefinite => Inessive => f'għadui
-s . Plural => Indefinite => Instrumental => b'għadui
-s . Plural => Indefinite => Lative => s'għadui
-s . Plural => Indefinite => Nominative => għadui
+s . Plural => Definite => Benefactive => għall-għedewwa
+s . Plural => Definite => Comitative => mal-għedewwa
+s . Plural => Definite => Dative => lill-għedewwa
+s . Plural => Definite => Elative => mill-għedewwa
+s . Plural => Definite => Equative => bħall-għedewwa
+s . Plural => Definite => Genitive => tal-għedewwa
+s . Plural => Definite => Inessive => fl-għedewwa
+s . Plural => Definite => Instrumental => bl-għedewwa
+s . Plural => Definite => Lative => sal-għedewwa
+s . Plural => Definite => Nominative => il-għedewwa
+s . Plural => Indefinite => Benefactive => għal għedewwa
+s . Plural => Indefinite => Comitative => m'għedewwa
+s . Plural => Indefinite => Dative => lil għedewwa
+s . Plural => Indefinite => Elative => minn għedewwa
+s . Plural => Indefinite => Equative => bħal għedewwa
+s . Plural => Indefinite => Genitive => t'għedewwa
+s . Plural => Indefinite => Inessive => f'għedewwa
+s . Plural => Indefinite => Instrumental => b'għedewwa
+s . Plural => Indefinite => Lative => s'għedewwa
+s . Plural => Indefinite => Nominative => għedewwa
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -5201,46 +5367,46 @@ s . Singulative => Indefinite => Inessive => f'għajn
 s . Singulative => Indefinite => Instrumental => b'għajn
 s . Singulative => Indefinite => Lative => s'għajn
 s . Singulative => Indefinite => Nominative => għajn
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-għajni
-s . Plural => Definite => Comitative => mal-għajni
-s . Plural => Definite => Dative => lill-għajni
-s . Plural => Definite => Elative => mill-għajni
-s . Plural => Definite => Equative => bħall-għajni
-s . Plural => Definite => Genitive => tal-għajni
-s . Plural => Definite => Inessive => fl-għajni
-s . Plural => Definite => Instrumental => bl-għajni
-s . Plural => Definite => Lative => sal-għajni
-s . Plural => Definite => Nominative => il-għajni
-s . Plural => Indefinite => Benefactive => għal għajni
-s . Plural => Indefinite => Comitative => m'għajni
-s . Plural => Indefinite => Dative => lil għajni
-s . Plural => Indefinite => Elative => minn għajni
-s . Plural => Indefinite => Equative => bħal għajni
-s . Plural => Indefinite => Genitive => t'għajni
-s . Plural => Indefinite => Inessive => f'għajni
-s . Plural => Indefinite => Instrumental => b'għajni
-s . Plural => Indefinite => Lative => s'għajni
-s . Plural => Indefinite => Nominative => għajni
+s . Dual => Definite => Benefactive => għall-għajnejn
+s . Dual => Definite => Comitative => mal-għajnejn
+s . Dual => Definite => Dative => lill-għajnejn
+s . Dual => Definite => Elative => mill-għajnejn
+s . Dual => Definite => Equative => bħall-għajnejn
+s . Dual => Definite => Genitive => tal-għajnejn
+s . Dual => Definite => Inessive => fl-għajnejn
+s . Dual => Definite => Instrumental => bl-għajnejn
+s . Dual => Definite => Lative => sal-għajnejn
+s . Dual => Definite => Nominative => il-għajnejn
+s . Dual => Indefinite => Benefactive => għal għajnejn
+s . Dual => Indefinite => Comitative => m'għajnejn
+s . Dual => Indefinite => Dative => lil għajnejn
+s . Dual => Indefinite => Elative => minn għajnejn
+s . Dual => Indefinite => Equative => bħal għajnejn
+s . Dual => Indefinite => Genitive => t'għajnejn
+s . Dual => Indefinite => Inessive => f'għajnejn
+s . Dual => Indefinite => Instrumental => b'għajnejn
+s . Dual => Indefinite => Lative => s'għajnejn
+s . Dual => Indefinite => Nominative => għajnejn
+s . Plural => Definite => Benefactive => għall-għajnejn
+s . Plural => Definite => Comitative => mal-għajnejn
+s . Plural => Definite => Dative => lill-għajnejn
+s . Plural => Definite => Elative => mill-għajnejn
+s . Plural => Definite => Equative => bħall-għajnejn
+s . Plural => Definite => Genitive => tal-għajnejn
+s . Plural => Definite => Inessive => fl-għajnejn
+s . Plural => Definite => Instrumental => bl-għajnejn
+s . Plural => Definite => Lative => sal-għajnejn
+s . Plural => Definite => Nominative => il-għajnejn
+s . Plural => Indefinite => Benefactive => għal għajnejn
+s . Plural => Indefinite => Comitative => m'għajnejn
+s . Plural => Indefinite => Dative => lil għajnejn
+s . Plural => Indefinite => Elative => minn għajnejn
+s . Plural => Indefinite => Equative => bħal għajnejn
+s . Plural => Indefinite => Genitive => t'għajnejn
+s . Plural => Indefinite => Inessive => f'għajnejn
+s . Plural => Indefinite => Instrumental => b'għajnejn
+s . Plural => Indefinite => Lative => s'għajnejn
+s . Plural => Indefinite => Nominative => għajnejn
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -5281,7 +5447,7 @@ s . CollectivePl => Indefinite => Inessive => []
 s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
-g . Masc
+g . Fem
 8 msec
 > s . Singulative => Definite => Benefactive => għall-fabbrika
 s . Singulative => Definite => Comitative => mal-fabbrika
@@ -5384,27 +5550,27 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
-> s . Singulative => Definite => Benefactive => għax-xaħam
-s . Singulative => Definite => Comitative => max-xaħam
-s . Singulative => Definite => Dative => lix-xaħam
-s . Singulative => Definite => Elative => mix-xaħam
-s . Singulative => Definite => Equative => bħax-xaħam
-s . Singulative => Definite => Genitive => tax-xaħam
-s . Singulative => Definite => Inessive => fix-xaħam
-s . Singulative => Definite => Instrumental => bix-xaħam
-s . Singulative => Definite => Lative => sax-xaħam
-s . Singulative => Definite => Nominative => ix-xaħam
-s . Singulative => Indefinite => Benefactive => għal xaħam
-s . Singulative => Indefinite => Comitative => ma' xaħam
-s . Singulative => Indefinite => Dative => lil xaħam
-s . Singulative => Indefinite => Elative => minn xaħam
-s . Singulative => Indefinite => Equative => bħal xaħam
-s . Singulative => Indefinite => Genitive => ta' xaħam
-s . Singulative => Indefinite => Inessive => f'xaħam
-s . Singulative => Indefinite => Instrumental => b'xaħam
-s . Singulative => Indefinite => Lative => sa xaħam
-s . Singulative => Indefinite => Nominative => xaħam
+8 msec
+> s . Singulative => Definite => Benefactive => għax-xaħma
+s . Singulative => Definite => Comitative => max-xaħma
+s . Singulative => Definite => Dative => lix-xaħma
+s . Singulative => Definite => Elative => mix-xaħma
+s . Singulative => Definite => Equative => bħax-xaħma
+s . Singulative => Definite => Genitive => tax-xaħma
+s . Singulative => Definite => Inessive => fix-xaħma
+s . Singulative => Definite => Instrumental => bix-xaħma
+s . Singulative => Definite => Lative => sax-xaħma
+s . Singulative => Definite => Nominative => ix-xaħma
+s . Singulative => Indefinite => Benefactive => għal xaħma
+s . Singulative => Indefinite => Comitative => ma' xaħma
+s . Singulative => Indefinite => Dative => lil xaħma
+s . Singulative => Indefinite => Elative => minn xaħma
+s . Singulative => Indefinite => Equative => bħal xaħma
+s . Singulative => Indefinite => Genitive => ta' xaħma
+s . Singulative => Indefinite => Inessive => f'xaħma
+s . Singulative => Indefinite => Instrumental => b'xaħma
+s . Singulative => Indefinite => Lative => sa xaħma
+s . Singulative => Indefinite => Nominative => xaħma
 s . Dual => Definite => Benefactive => []
 s . Dual => Definite => Comitative => []
 s . Dual => Definite => Dative => []
@@ -5425,66 +5591,66 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għax-xaħami
-s . Plural => Definite => Comitative => max-xaħami
-s . Plural => Definite => Dative => lix-xaħami
-s . Plural => Definite => Elative => mix-xaħami
-s . Plural => Definite => Equative => bħax-xaħami
-s . Plural => Definite => Genitive => tax-xaħami
-s . Plural => Definite => Inessive => fix-xaħami
-s . Plural => Definite => Instrumental => bix-xaħami
-s . Plural => Definite => Lative => sax-xaħami
-s . Plural => Definite => Nominative => ix-xaħami
-s . Plural => Indefinite => Benefactive => għal xaħami
-s . Plural => Indefinite => Comitative => ma' xaħami
-s . Plural => Indefinite => Dative => lil xaħami
-s . Plural => Indefinite => Elative => minn xaħami
-s . Plural => Indefinite => Equative => bħal xaħami
-s . Plural => Indefinite => Genitive => ta' xaħami
-s . Plural => Indefinite => Inessive => f'xaħami
-s . Plural => Indefinite => Instrumental => b'xaħami
-s . Plural => Indefinite => Lative => sa xaħami
-s . Plural => Indefinite => Nominative => xaħami
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
+s . Plural => Definite => Benefactive => []
+s . Plural => Definite => Comitative => []
+s . Plural => Definite => Dative => []
+s . Plural => Definite => Elative => []
+s . Plural => Definite => Equative => []
+s . Plural => Definite => Genitive => []
+s . Plural => Definite => Inessive => []
+s . Plural => Definite => Instrumental => []
+s . Plural => Definite => Lative => []
+s . Plural => Definite => Nominative => []
+s . Plural => Indefinite => Benefactive => []
+s . Plural => Indefinite => Comitative => []
+s . Plural => Indefinite => Dative => []
+s . Plural => Indefinite => Elative => []
+s . Plural => Indefinite => Equative => []
+s . Plural => Indefinite => Genitive => []
+s . Plural => Indefinite => Inessive => []
+s . Plural => Indefinite => Instrumental => []
+s . Plural => Indefinite => Lative => []
+s . Plural => Indefinite => Nominative => []
+s . DeterminatePl => Definite => Benefactive => għax-xaħmiet
+s . DeterminatePl => Definite => Comitative => max-xaħmiet
+s . DeterminatePl => Definite => Dative => lix-xaħmiet
+s . DeterminatePl => Definite => Elative => mix-xaħmiet
+s . DeterminatePl => Definite => Equative => bħax-xaħmiet
+s . DeterminatePl => Definite => Genitive => tax-xaħmiet
+s . DeterminatePl => Definite => Inessive => fix-xaħmiet
+s . DeterminatePl => Definite => Instrumental => bix-xaħmiet
+s . DeterminatePl => Definite => Lative => sax-xaħmiet
+s . DeterminatePl => Definite => Nominative => ix-xaħmiet
+s . DeterminatePl => Indefinite => Benefactive => għal xaħmiet
+s . DeterminatePl => Indefinite => Comitative => ma' xaħmiet
+s . DeterminatePl => Indefinite => Dative => lil xaħmiet
+s . DeterminatePl => Indefinite => Elative => minn xaħmiet
+s . DeterminatePl => Indefinite => Equative => bħal xaħmiet
+s . DeterminatePl => Indefinite => Genitive => ta' xaħmiet
+s . DeterminatePl => Indefinite => Inessive => f'xaħmiet
+s . DeterminatePl => Indefinite => Instrumental => b'xaħmiet
+s . DeterminatePl => Indefinite => Lative => sa xaħmiet
+s . DeterminatePl => Indefinite => Nominative => xaħmiet
+s . CollectivePl => Definite => Benefactive => għax-xaħam
+s . CollectivePl => Definite => Comitative => max-xaħam
+s . CollectivePl => Definite => Dative => lix-xaħam
+s . CollectivePl => Definite => Elative => mix-xaħam
+s . CollectivePl => Definite => Equative => bħax-xaħam
+s . CollectivePl => Definite => Genitive => tax-xaħam
+s . CollectivePl => Definite => Inessive => fix-xaħam
+s . CollectivePl => Definite => Instrumental => bix-xaħam
+s . CollectivePl => Definite => Lative => sax-xaħam
+s . CollectivePl => Definite => Nominative => ix-xaħam
+s . CollectivePl => Indefinite => Benefactive => għal xaħam
+s . CollectivePl => Indefinite => Comitative => ma' xaħam
+s . CollectivePl => Indefinite => Dative => lil xaħam
+s . CollectivePl => Indefinite => Elative => minn xaħam
+s . CollectivePl => Indefinite => Equative => bħal xaħam
+s . CollectivePl => Indefinite => Genitive => ta' xaħam
+s . CollectivePl => Indefinite => Inessive => f'xaħam
+s . CollectivePl => Indefinite => Instrumental => b'xaħam
+s . CollectivePl => Indefinite => Lative => sa xaħam
+s . CollectivePl => Indefinite => Nominative => xaħam
 g . Masc
 4 msec
 > s . Singulative => Definite => Benefactive => għall-missier
@@ -5527,26 +5693,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-missieri
-s . Plural => Definite => Comitative => mal-missieri
-s . Plural => Definite => Dative => lill-missieri
-s . Plural => Definite => Elative => mill-missieri
-s . Plural => Definite => Equative => bħall-missieri
-s . Plural => Definite => Genitive => tal-missieri
-s . Plural => Definite => Inessive => fil-missieri
-s . Plural => Definite => Instrumental => bil-missieri
-s . Plural => Definite => Lative => sal-missieri
-s . Plural => Definite => Nominative => il-missieri
-s . Plural => Indefinite => Benefactive => għal missieri
-s . Plural => Indefinite => Comitative => ma' missieri
-s . Plural => Indefinite => Dative => lil missieri
-s . Plural => Indefinite => Elative => minn missieri
-s . Plural => Indefinite => Equative => bħal missieri
-s . Plural => Indefinite => Genitive => ta' missieri
-s . Plural => Indefinite => Inessive => f'missieri
-s . Plural => Indefinite => Instrumental => b'missieri
-s . Plural => Indefinite => Lative => sa missieri
-s . Plural => Indefinite => Nominative => missieri
+s . Plural => Definite => Benefactive => għall-missierijiet
+s . Plural => Definite => Comitative => mal-missierijiet
+s . Plural => Definite => Dative => lill-missierijiet
+s . Plural => Definite => Elative => mill-missierijiet
+s . Plural => Definite => Equative => bħall-missierijiet
+s . Plural => Definite => Genitive => tal-missierijiet
+s . Plural => Definite => Inessive => fil-missierijiet
+s . Plural => Definite => Instrumental => bil-missierijiet
+s . Plural => Definite => Lative => sal-missierijiet
+s . Plural => Definite => Nominative => il-missierijiet
+s . Plural => Indefinite => Benefactive => għal missierijiet
+s . Plural => Indefinite => Comitative => ma' missierijiet
+s . Plural => Indefinite => Dative => lil missierijiet
+s . Plural => Indefinite => Elative => minn missierijiet
+s . Plural => Indefinite => Equative => bħal missierijiet
+s . Plural => Indefinite => Genitive => ta' missierijiet
+s . Plural => Indefinite => Inessive => f'missierijiet
+s . Plural => Indefinite => Instrumental => b'missierijiet
+s . Plural => Indefinite => Lative => sa missierijiet
+s . Plural => Indefinite => Nominative => missierijiet
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -5629,68 +5795,68 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għar-rixi
-s . Plural => Definite => Comitative => mar-rixi
-s . Plural => Definite => Dative => lir-rixi
-s . Plural => Definite => Elative => mir-rixi
-s . Plural => Definite => Equative => bħar-rixi
-s . Plural => Definite => Genitive => tar-rixi
-s . Plural => Definite => Inessive => fir-rixi
-s . Plural => Definite => Instrumental => bir-rixi
-s . Plural => Definite => Lative => sar-rixi
-s . Plural => Definite => Nominative => ir-rixi
-s . Plural => Indefinite => Benefactive => għal rixi
-s . Plural => Indefinite => Comitative => ma' rixi
-s . Plural => Indefinite => Dative => lil rixi
-s . Plural => Indefinite => Elative => minn rixi
-s . Plural => Indefinite => Equative => bħal rixi
-s . Plural => Indefinite => Genitive => ta' rixi
-s . Plural => Indefinite => Inessive => f'rixi
-s . Plural => Indefinite => Instrumental => b'rixi
-s . Plural => Indefinite => Lative => sa rixi
-s . Plural => Indefinite => Nominative => rixi
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
-g . Fem
-4 msec
+s . Plural => Definite => Benefactive => []
+s . Plural => Definite => Comitative => []
+s . Plural => Definite => Dative => []
+s . Plural => Definite => Elative => []
+s . Plural => Definite => Equative => []
+s . Plural => Definite => Genitive => []
+s . Plural => Definite => Inessive => []
+s . Plural => Definite => Instrumental => []
+s . Plural => Definite => Lative => []
+s . Plural => Definite => Nominative => []
+s . Plural => Indefinite => Benefactive => []
+s . Plural => Indefinite => Comitative => []
+s . Plural => Indefinite => Dative => []
+s . Plural => Indefinite => Elative => []
+s . Plural => Indefinite => Equative => []
+s . Plural => Indefinite => Genitive => []
+s . Plural => Indefinite => Inessive => []
+s . Plural => Indefinite => Instrumental => []
+s . Plural => Indefinite => Lative => []
+s . Plural => Indefinite => Nominative => []
+s . DeterminatePl => Definite => Benefactive => għar-rixiet
+s . DeterminatePl => Definite => Comitative => mar-rixiet
+s . DeterminatePl => Definite => Dative => lir-rixiet
+s . DeterminatePl => Definite => Elative => mir-rixiet
+s . DeterminatePl => Definite => Equative => bħar-rixiet
+s . DeterminatePl => Definite => Genitive => tar-rixiet
+s . DeterminatePl => Definite => Inessive => fir-rixiet
+s . DeterminatePl => Definite => Instrumental => bir-rixiet
+s . DeterminatePl => Definite => Lative => sar-rixiet
+s . DeterminatePl => Definite => Nominative => ir-rixiet
+s . DeterminatePl => Indefinite => Benefactive => għal rixiet
+s . DeterminatePl => Indefinite => Comitative => ma' rixiet
+s . DeterminatePl => Indefinite => Dative => lil rixiet
+s . DeterminatePl => Indefinite => Elative => minn rixiet
+s . DeterminatePl => Indefinite => Equative => bħal rixiet
+s . DeterminatePl => Indefinite => Genitive => ta' rixiet
+s . DeterminatePl => Indefinite => Inessive => f'rixiet
+s . DeterminatePl => Indefinite => Instrumental => b'rixiet
+s . DeterminatePl => Indefinite => Lative => sa rixiet
+s . DeterminatePl => Indefinite => Nominative => rixiet
+s . CollectivePl => Definite => Benefactive => għar-rix
+s . CollectivePl => Definite => Comitative => mar-rix
+s . CollectivePl => Definite => Dative => lir-rix
+s . CollectivePl => Definite => Elative => mir-rix
+s . CollectivePl => Definite => Equative => bħar-rix
+s . CollectivePl => Definite => Genitive => tar-rix
+s . CollectivePl => Definite => Inessive => fir-rix
+s . CollectivePl => Definite => Instrumental => bir-rix
+s . CollectivePl => Definite => Lative => sar-rix
+s . CollectivePl => Definite => Nominative => ir-rix
+s . CollectivePl => Indefinite => Benefactive => għal rix
+s . CollectivePl => Indefinite => Comitative => ma' rix
+s . CollectivePl => Indefinite => Dative => lil rix
+s . CollectivePl => Indefinite => Elative => minn rix
+s . CollectivePl => Indefinite => Equative => bħal rix
+s . CollectivePl => Indefinite => Genitive => ta' rix
+s . CollectivePl => Indefinite => Inessive => f'rix
+s . CollectivePl => Indefinite => Instrumental => b'rix
+s . CollectivePl => Indefinite => Lative => sa rix
+s . CollectivePl => Indefinite => Nominative => rix
+g . Masc
+8 msec
 > s . Singulative => Definite => Benefactive => għad-difer
 s . Singulative => Definite => Comitative => mad-difer
 s . Singulative => Definite => Dative => lid-difer
@@ -5711,46 +5877,46 @@ s . Singulative => Indefinite => Inessive => f'difer
 s . Singulative => Indefinite => Instrumental => b'difer
 s . Singulative => Indefinite => Lative => sa difer
 s . Singulative => Indefinite => Nominative => difer
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għad-diferi
-s . Plural => Definite => Comitative => mad-diferi
-s . Plural => Definite => Dative => lid-diferi
-s . Plural => Definite => Elative => mid-diferi
-s . Plural => Definite => Equative => bħad-diferi
-s . Plural => Definite => Genitive => tad-diferi
-s . Plural => Definite => Inessive => fid-diferi
-s . Plural => Definite => Instrumental => bid-diferi
-s . Plural => Definite => Lative => sad-diferi
-s . Plural => Definite => Nominative => id-diferi
-s . Plural => Indefinite => Benefactive => għal diferi
-s . Plural => Indefinite => Comitative => ma' diferi
-s . Plural => Indefinite => Dative => lil diferi
-s . Plural => Indefinite => Elative => minn diferi
-s . Plural => Indefinite => Equative => bħal diferi
-s . Plural => Indefinite => Genitive => ta' diferi
-s . Plural => Indefinite => Inessive => f'diferi
-s . Plural => Indefinite => Instrumental => b'diferi
-s . Plural => Indefinite => Lative => sa diferi
-s . Plural => Indefinite => Nominative => diferi
+s . Dual => Definite => Benefactive => għad-difrejn
+s . Dual => Definite => Comitative => mad-difrejn
+s . Dual => Definite => Dative => lid-difrejn
+s . Dual => Definite => Elative => mid-difrejn
+s . Dual => Definite => Equative => bħad-difrejn
+s . Dual => Definite => Genitive => tad-difrejn
+s . Dual => Definite => Inessive => fid-difrejn
+s . Dual => Definite => Instrumental => bid-difrejn
+s . Dual => Definite => Lative => sad-difrejn
+s . Dual => Definite => Nominative => id-difrejn
+s . Dual => Indefinite => Benefactive => għal difrejn
+s . Dual => Indefinite => Comitative => ma' difrejn
+s . Dual => Indefinite => Dative => lil difrejn
+s . Dual => Indefinite => Elative => minn difrejn
+s . Dual => Indefinite => Equative => bħal difrejn
+s . Dual => Indefinite => Genitive => ta' difrejn
+s . Dual => Indefinite => Inessive => f'difrejn
+s . Dual => Indefinite => Instrumental => b'difrejn
+s . Dual => Indefinite => Lative => sa difrejn
+s . Dual => Indefinite => Nominative => difrejn
+s . Plural => Definite => Benefactive => għad-dwiefer
+s . Plural => Definite => Comitative => mad-dwiefer
+s . Plural => Definite => Dative => lid-dwiefer
+s . Plural => Definite => Elative => mid-dwiefer
+s . Plural => Definite => Equative => bħad-dwiefer
+s . Plural => Definite => Genitive => tad-dwiefer
+s . Plural => Definite => Inessive => fid-dwiefer
+s . Plural => Definite => Instrumental => bid-dwiefer
+s . Plural => Definite => Lative => sad-dwiefer
+s . Plural => Definite => Nominative => id-dwiefer
+s . Plural => Indefinite => Benefactive => għal dwiefer
+s . Plural => Indefinite => Comitative => ma' dwiefer
+s . Plural => Indefinite => Dative => lil dwiefer
+s . Plural => Indefinite => Elative => minn dwiefer
+s . Plural => Indefinite => Equative => bħal dwiefer
+s . Plural => Indefinite => Genitive => ta' dwiefer
+s . Plural => Indefinite => Inessive => fi dwiefer
+s . Plural => Indefinite => Instrumental => bi dwiefer
+s . Plural => Indefinite => Lative => sa dwiefer
+s . Plural => Indefinite => Nominative => dwiefer
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -5833,26 +5999,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għan-nari
-s . Plural => Definite => Comitative => man-nari
-s . Plural => Definite => Dative => lin-nari
-s . Plural => Definite => Elative => min-nari
-s . Plural => Definite => Equative => bħan-nari
-s . Plural => Definite => Genitive => tan-nari
-s . Plural => Definite => Inessive => fin-nari
-s . Plural => Definite => Instrumental => bin-nari
-s . Plural => Definite => Lative => san-nari
-s . Plural => Definite => Nominative => in-nari
-s . Plural => Indefinite => Benefactive => għal nari
-s . Plural => Indefinite => Comitative => ma' nari
-s . Plural => Indefinite => Dative => lil nari
-s . Plural => Indefinite => Elative => minn nari
-s . Plural => Indefinite => Equative => bħal nari
-s . Plural => Indefinite => Genitive => ta' nari
-s . Plural => Indefinite => Inessive => f'nari
-s . Plural => Indefinite => Instrumental => b'nari
-s . Plural => Indefinite => Lative => sa nari
-s . Plural => Indefinite => Nominative => nari
+s . Plural => Definite => Benefactive => għan-nirien
+s . Plural => Definite => Comitative => man-nirien
+s . Plural => Definite => Dative => lin-nirien
+s . Plural => Definite => Elative => min-nirien
+s . Plural => Definite => Equative => bħan-nirien
+s . Plural => Definite => Genitive => tan-nirien
+s . Plural => Definite => Inessive => fin-nirien
+s . Plural => Definite => Instrumental => bin-nirien
+s . Plural => Definite => Lative => san-nirien
+s . Plural => Definite => Nominative => in-nirien
+s . Plural => Indefinite => Benefactive => għal nirien
+s . Plural => Indefinite => Comitative => ma' nirien
+s . Plural => Indefinite => Dative => lil nirien
+s . Plural => Indefinite => Elative => minn nirien
+s . Plural => Indefinite => Equative => bħal nirien
+s . Plural => Indefinite => Genitive => ta' nirien
+s . Plural => Indefinite => Inessive => f'nirien
+s . Plural => Indefinite => Instrumental => b'nirien
+s . Plural => Indefinite => Lative => sa nirien
+s . Plural => Indefinite => Nominative => nirien
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -5894,7 +6060,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħuta
 s . Singulative => Definite => Comitative => mal-ħuta
 s . Singulative => Definite => Dative => lill-ħuta
@@ -5935,169 +6101,71 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-ħuti
-s . Plural => Definite => Comitative => mal-ħuti
-s . Plural => Definite => Dative => lill-ħuti
-s . Plural => Definite => Elative => mill-ħuti
-s . Plural => Definite => Equative => bħall-ħuti
-s . Plural => Definite => Genitive => tal-ħuti
-s . Plural => Definite => Inessive => fil-ħuti
-s . Plural => Definite => Instrumental => bil-ħuti
-s . Plural => Definite => Lative => sal-ħuti
-s . Plural => Definite => Nominative => il-ħuti
-s . Plural => Indefinite => Benefactive => għal ħuti
-s . Plural => Indefinite => Comitative => ma' ħuti
-s . Plural => Indefinite => Dative => lil ħuti
-s . Plural => Indefinite => Elative => minn ħuti
-s . Plural => Indefinite => Equative => bħal ħuti
-s . Plural => Indefinite => Genitive => ta' ħuti
-s . Plural => Indefinite => Inessive => f'ħuti
-s . Plural => Indefinite => Instrumental => b'ħuti
-s . Plural => Indefinite => Lative => sa ħuti
-s . Plural => Indefinite => Nominative => ħuti
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
-g . Fem
-4 msec
-> s . Singulative => Definite => Benefactive => għall-art
-s . Singulative => Definite => Comitative => mal-art
-s . Singulative => Definite => Dative => lill-art
-s . Singulative => Definite => Elative => mill-art
-s . Singulative => Definite => Equative => bħall-art
-s . Singulative => Definite => Genitive => tal-art
-s . Singulative => Definite => Inessive => fl-art
-s . Singulative => Definite => Instrumental => bl-art
-s . Singulative => Definite => Lative => sal-art
-s . Singulative => Definite => Nominative => il-art
-s . Singulative => Indefinite => Benefactive => għal art
-s . Singulative => Indefinite => Comitative => m'art
-s . Singulative => Indefinite => Dative => lil art
-s . Singulative => Indefinite => Elative => minn art
-s . Singulative => Indefinite => Equative => bħal art
-s . Singulative => Indefinite => Genitive => t'art
-s . Singulative => Indefinite => Inessive => f'art
-s . Singulative => Indefinite => Instrumental => b'art
-s . Singulative => Indefinite => Lative => s'art
-s . Singulative => Indefinite => Nominative => art
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-arti
-s . Plural => Definite => Comitative => mal-arti
-s . Plural => Definite => Dative => lill-arti
-s . Plural => Definite => Elative => mill-arti
-s . Plural => Definite => Equative => bħall-arti
-s . Plural => Definite => Genitive => tal-arti
-s . Plural => Definite => Inessive => fl-arti
-s . Plural => Definite => Instrumental => bl-arti
-s . Plural => Definite => Lative => sal-arti
-s . Plural => Definite => Nominative => il-arti
-s . Plural => Indefinite => Benefactive => għal arti
-s . Plural => Indefinite => Comitative => m'arti
-s . Plural => Indefinite => Dative => lil arti
-s . Plural => Indefinite => Elative => minn arti
-s . Plural => Indefinite => Equative => bħal arti
-s . Plural => Indefinite => Genitive => t'arti
-s . Plural => Indefinite => Inessive => f'arti
-s . Plural => Indefinite => Instrumental => b'arti
-s . Plural => Indefinite => Lative => s'arti
-s . Plural => Indefinite => Nominative => arti
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
+s . Plural => Definite => Benefactive => []
+s . Plural => Definite => Comitative => []
+s . Plural => Definite => Dative => []
+s . Plural => Definite => Elative => []
+s . Plural => Definite => Equative => []
+s . Plural => Definite => Genitive => []
+s . Plural => Definite => Inessive => []
+s . Plural => Definite => Instrumental => []
+s . Plural => Definite => Lative => []
+s . Plural => Definite => Nominative => []
+s . Plural => Indefinite => Benefactive => []
+s . Plural => Indefinite => Comitative => []
+s . Plural => Indefinite => Dative => []
+s . Plural => Indefinite => Elative => []
+s . Plural => Indefinite => Equative => []
+s . Plural => Indefinite => Genitive => []
+s . Plural => Indefinite => Inessive => []
+s . Plural => Indefinite => Instrumental => []
+s . Plural => Indefinite => Lative => []
+s . Plural => Indefinite => Nominative => []
+s . DeterminatePl => Definite => Benefactive => għall-ħutiet
+s . DeterminatePl => Definite => Comitative => mal-ħutiet
+s . DeterminatePl => Definite => Dative => lill-ħutiet
+s . DeterminatePl => Definite => Elative => mill-ħutiet
+s . DeterminatePl => Definite => Equative => bħall-ħutiet
+s . DeterminatePl => Definite => Genitive => tal-ħutiet
+s . DeterminatePl => Definite => Inessive => fil-ħutiet
+s . DeterminatePl => Definite => Instrumental => bil-ħutiet
+s . DeterminatePl => Definite => Lative => sal-ħutiet
+s . DeterminatePl => Definite => Nominative => il-ħutiet
+s . DeterminatePl => Indefinite => Benefactive => għal ħutiet
+s . DeterminatePl => Indefinite => Comitative => ma' ħutiet
+s . DeterminatePl => Indefinite => Dative => lil ħutiet
+s . DeterminatePl => Indefinite => Elative => minn ħutiet
+s . DeterminatePl => Indefinite => Equative => bħal ħutiet
+s . DeterminatePl => Indefinite => Genitive => ta' ħutiet
+s . DeterminatePl => Indefinite => Inessive => f'ħutiet
+s . DeterminatePl => Indefinite => Instrumental => b'ħutiet
+s . DeterminatePl => Indefinite => Lative => sa ħutiet
+s . DeterminatePl => Indefinite => Nominative => ħutiet
+s . CollectivePl => Definite => Benefactive => għall-ħut
+s . CollectivePl => Definite => Comitative => mal-ħut
+s . CollectivePl => Definite => Dative => lill-ħut
+s . CollectivePl => Definite => Elative => mill-ħut
+s . CollectivePl => Definite => Equative => bħall-ħut
+s . CollectivePl => Definite => Genitive => tal-ħut
+s . CollectivePl => Definite => Inessive => fil-ħut
+s . CollectivePl => Definite => Instrumental => bil-ħut
+s . CollectivePl => Definite => Lative => sal-ħut
+s . CollectivePl => Definite => Nominative => il-ħut
+s . CollectivePl => Indefinite => Benefactive => għal ħut
+s . CollectivePl => Indefinite => Comitative => ma' ħut
+s . CollectivePl => Indefinite => Dative => lil ħut
+s . CollectivePl => Indefinite => Elative => minn ħut
+s . CollectivePl => Indefinite => Equative => bħal ħut
+s . CollectivePl => Indefinite => Genitive => ta' ħut
+s . CollectivePl => Indefinite => Inessive => f'ħut
+s . CollectivePl => Indefinite => Instrumental => b'ħut
+s . CollectivePl => Indefinite => Lative => sa ħut
+s . CollectivePl => Indefinite => Nominative => ħut
 g . Masc
+4 msec
+> atomic term floor_N
+given CommonX, CatMlt, ExtraMlt, CommonX, CatMlt, IrregMlt, CommonX, CatMlt, LexiconMlt, CommonX, CatMlt, IdiomMlt, CommonX, CatMlt, StructuralMlt, CommonX, TextX, CommonX, CatMlt, PhraseMlt, CommonX, CatMlt, ConjunctionMlt, CommonX, CatMlt, RelativeMlt, CommonX, CatMlt, QuestionMlt, CommonX, CatMlt, SentenceMlt, CommonX, CatMlt, NumeralMlt, CommonX, CatMlt, AdverbMlt, CommonX, CatMlt, AdjectiveMlt, CommonX, CatMlt, VerbMlt, CommonX, CatMlt, NounMlt, GrammarMlt, LangMlt, AllMlt
+   constant not found: floor_N
 4 msec
 > s . Singulative => Definite => Benefactive => għall-fjura
 s . Singulative => Definite => Comitative => mal-fjura
@@ -6200,27 +6268,27 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
-> s . Singulative => Definite => Benefactive => għaċ-ċpar
-s . Singulative => Definite => Comitative => maċ-ċpar
-s . Singulative => Definite => Dative => liċ-ċpar
-s . Singulative => Definite => Elative => miċ-ċpar
-s . Singulative => Definite => Equative => bħaċ-ċpar
-s . Singulative => Definite => Genitive => taċ-ċpar
-s . Singulative => Definite => Inessive => fiċ-ċpar
-s . Singulative => Definite => Instrumental => biċ-ċpar
-s . Singulative => Definite => Lative => saċ-ċpar
-s . Singulative => Definite => Nominative => iċ-ċpar
-s . Singulative => Indefinite => Benefactive => għal ċpar
-s . Singulative => Indefinite => Comitative => ma' ċpar
-s . Singulative => Indefinite => Dative => lil ċpar
-s . Singulative => Indefinite => Elative => minn ċpar
-s . Singulative => Indefinite => Equative => bħal ċpar
-s . Singulative => Indefinite => Genitive => ta' ċpar
-s . Singulative => Indefinite => Inessive => fi ċpar
-s . Singulative => Indefinite => Instrumental => bi ċpar
-s . Singulative => Indefinite => Lative => sa ċpar
-s . Singulative => Indefinite => Nominative => ċpar
+4 msec
+> s . Singulative => Definite => Benefactive => []
+s . Singulative => Definite => Comitative => []
+s . Singulative => Definite => Dative => []
+s . Singulative => Definite => Elative => []
+s . Singulative => Definite => Equative => []
+s . Singulative => Definite => Genitive => []
+s . Singulative => Definite => Inessive => []
+s . Singulative => Definite => Instrumental => []
+s . Singulative => Definite => Lative => []
+s . Singulative => Definite => Nominative => []
+s . Singulative => Indefinite => Benefactive => []
+s . Singulative => Indefinite => Comitative => []
+s . Singulative => Indefinite => Dative => []
+s . Singulative => Indefinite => Elative => []
+s . Singulative => Indefinite => Equative => []
+s . Singulative => Indefinite => Genitive => []
+s . Singulative => Indefinite => Inessive => []
+s . Singulative => Indefinite => Instrumental => []
+s . Singulative => Indefinite => Lative => []
+s . Singulative => Indefinite => Nominative => []
 s . Dual => Definite => Benefactive => []
 s . Dual => Definite => Comitative => []
 s . Dual => Definite => Dative => []
@@ -6241,26 +6309,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għaċ-ċpari
-s . Plural => Definite => Comitative => maċ-ċpari
-s . Plural => Definite => Dative => liċ-ċpari
-s . Plural => Definite => Elative => miċ-ċpari
-s . Plural => Definite => Equative => bħaċ-ċpari
-s . Plural => Definite => Genitive => taċ-ċpari
-s . Plural => Definite => Inessive => fiċ-ċpari
-s . Plural => Definite => Instrumental => biċ-ċpari
-s . Plural => Definite => Lative => saċ-ċpari
-s . Plural => Definite => Nominative => iċ-ċpari
-s . Plural => Indefinite => Benefactive => għal ċpari
-s . Plural => Indefinite => Comitative => ma' ċpari
-s . Plural => Indefinite => Dative => lil ċpari
-s . Plural => Indefinite => Elative => minn ċpari
-s . Plural => Indefinite => Equative => bħal ċpari
-s . Plural => Indefinite => Genitive => ta' ċpari
-s . Plural => Indefinite => Inessive => fi ċpari
-s . Plural => Indefinite => Instrumental => bi ċpari
-s . Plural => Indefinite => Lative => sa ċpari
-s . Plural => Indefinite => Nominative => ċpari
+s . Plural => Definite => Benefactive => []
+s . Plural => Definite => Comitative => []
+s . Plural => Definite => Dative => []
+s . Plural => Definite => Elative => []
+s . Plural => Definite => Equative => []
+s . Plural => Definite => Genitive => []
+s . Plural => Definite => Inessive => []
+s . Plural => Definite => Instrumental => []
+s . Plural => Definite => Lative => []
+s . Plural => Definite => Nominative => []
+s . Plural => Indefinite => Benefactive => []
+s . Plural => Indefinite => Comitative => []
+s . Plural => Indefinite => Dative => []
+s . Plural => Indefinite => Elative => []
+s . Plural => Indefinite => Equative => []
+s . Plural => Indefinite => Genitive => []
+s . Plural => Indefinite => Inessive => []
+s . Plural => Indefinite => Instrumental => []
+s . Plural => Indefinite => Lative => []
+s . Plural => Indefinite => Nominative => []
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -6281,26 +6349,26 @@ s . DeterminatePl => Indefinite => Inessive => []
 s . DeterminatePl => Indefinite => Instrumental => []
 s . DeterminatePl => Indefinite => Lative => []
 s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
+s . CollectivePl => Definite => Benefactive => għaċ-ċpar
+s . CollectivePl => Definite => Comitative => maċ-ċpar
+s . CollectivePl => Definite => Dative => liċ-ċpar
+s . CollectivePl => Definite => Elative => miċ-ċpar
+s . CollectivePl => Definite => Equative => bħaċ-ċpar
+s . CollectivePl => Definite => Genitive => taċ-ċpar
+s . CollectivePl => Definite => Inessive => fiċ-ċpar
+s . CollectivePl => Definite => Instrumental => biċ-ċpar
+s . CollectivePl => Definite => Lative => saċ-ċpar
+s . CollectivePl => Definite => Nominative => iċ-ċpar
+s . CollectivePl => Indefinite => Benefactive => għal ċpar
+s . CollectivePl => Indefinite => Comitative => ma' ċpar
+s . CollectivePl => Indefinite => Dative => lil ċpar
+s . CollectivePl => Indefinite => Elative => minn ċpar
+s . CollectivePl => Indefinite => Equative => bħal ċpar
+s . CollectivePl => Indefinite => Genitive => ta' ċpar
+s . CollectivePl => Indefinite => Inessive => fi ċpar
+s . CollectivePl => Indefinite => Instrumental => bi ċpar
+s . CollectivePl => Indefinite => Lative => sa ċpar
+s . CollectivePl => Indefinite => Nominative => ċpar
 g . Masc
 4 msec
 > s . Singulative => Definite => Benefactive => għas-sieq
@@ -6323,46 +6391,46 @@ s . Singulative => Indefinite => Inessive => f'sieq
 s . Singulative => Indefinite => Instrumental => b'sieq
 s . Singulative => Indefinite => Lative => sa sieq
 s . Singulative => Indefinite => Nominative => sieq
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għas-sieqat
-s . Plural => Definite => Comitative => mas-sieqat
-s . Plural => Definite => Dative => lis-sieqat
-s . Plural => Definite => Elative => mis-sieqat
-s . Plural => Definite => Equative => bħas-sieqat
-s . Plural => Definite => Genitive => tas-sieqat
-s . Plural => Definite => Inessive => fis-sieqat
-s . Plural => Definite => Instrumental => bis-sieqat
-s . Plural => Definite => Lative => sas-sieqat
-s . Plural => Definite => Nominative => is-sieqat
-s . Plural => Indefinite => Benefactive => għal sieqat
-s . Plural => Indefinite => Comitative => ma' sieqat
-s . Plural => Indefinite => Dative => lil sieqat
-s . Plural => Indefinite => Elative => minn sieqat
-s . Plural => Indefinite => Equative => bħal sieqat
-s . Plural => Indefinite => Genitive => ta' sieqat
-s . Plural => Indefinite => Inessive => f'sieqat
-s . Plural => Indefinite => Instrumental => b'sieqat
-s . Plural => Indefinite => Lative => sa sieqat
-s . Plural => Indefinite => Nominative => sieqat
+s . Dual => Definite => Benefactive => għas-saqajn
+s . Dual => Definite => Comitative => mas-saqajn
+s . Dual => Definite => Dative => lis-saqajn
+s . Dual => Definite => Elative => mis-saqajn
+s . Dual => Definite => Equative => bħas-saqajn
+s . Dual => Definite => Genitive => tas-saqajn
+s . Dual => Definite => Inessive => fis-saqajn
+s . Dual => Definite => Instrumental => bis-saqajn
+s . Dual => Definite => Lative => sas-saqajn
+s . Dual => Definite => Nominative => is-saqajn
+s . Dual => Indefinite => Benefactive => għal saqajn
+s . Dual => Indefinite => Comitative => ma' saqajn
+s . Dual => Indefinite => Dative => lil saqajn
+s . Dual => Indefinite => Elative => minn saqajn
+s . Dual => Indefinite => Equative => bħal saqajn
+s . Dual => Indefinite => Genitive => ta' saqajn
+s . Dual => Indefinite => Inessive => f'saqajn
+s . Dual => Indefinite => Instrumental => b'saqajn
+s . Dual => Indefinite => Lative => sa saqajn
+s . Dual => Indefinite => Nominative => saqajn
+s . Plural => Definite => Benefactive => għas-saqajn
+s . Plural => Definite => Comitative => mas-saqajn
+s . Plural => Definite => Dative => lis-saqajn
+s . Plural => Definite => Elative => mis-saqajn
+s . Plural => Definite => Equative => bħas-saqajn
+s . Plural => Definite => Genitive => tas-saqajn
+s . Plural => Definite => Inessive => fis-saqajn
+s . Plural => Definite => Instrumental => bis-saqajn
+s . Plural => Definite => Lative => sas-saqajn
+s . Plural => Definite => Nominative => is-saqajn
+s . Plural => Indefinite => Benefactive => għal saqajn
+s . Plural => Indefinite => Comitative => ma' saqajn
+s . Plural => Indefinite => Dative => lil saqajn
+s . Plural => Indefinite => Elative => minn saqajn
+s . Plural => Indefinite => Equative => bħal saqajn
+s . Plural => Indefinite => Genitive => ta' saqajn
+s . Plural => Indefinite => Inessive => f'saqajn
+s . Plural => Indefinite => Instrumental => b'saqajn
+s . Plural => Indefinite => Lative => sa saqajn
+s . Plural => Indefinite => Nominative => saqajn
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -6547,26 +6615,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-friġġi
-s . Plural => Definite => Comitative => mal-friġġi
-s . Plural => Definite => Dative => lill-friġġi
-s . Plural => Definite => Elative => mill-friġġi
-s . Plural => Definite => Equative => bħall-friġġi
-s . Plural => Definite => Genitive => tal-friġġi
-s . Plural => Definite => Inessive => fil-friġġi
-s . Plural => Definite => Instrumental => bil-friġġi
-s . Plural => Definite => Lative => sal-friġġi
-s . Plural => Definite => Nominative => il-friġġi
-s . Plural => Indefinite => Benefactive => għal friġġi
-s . Plural => Indefinite => Comitative => ma' friġġi
-s . Plural => Indefinite => Dative => lil friġġi
-s . Plural => Indefinite => Elative => minn friġġi
-s . Plural => Indefinite => Equative => bħal friġġi
-s . Plural => Indefinite => Genitive => ta' friġġi
-s . Plural => Indefinite => Inessive => fi friġġi
-s . Plural => Indefinite => Instrumental => b'friġġi
-s . Plural => Indefinite => Lative => sa friġġi
-s . Plural => Indefinite => Nominative => friġġi
+s . Plural => Definite => Benefactive => għall-friġġijiet
+s . Plural => Definite => Comitative => mal-friġġijiet
+s . Plural => Definite => Dative => lill-friġġijiet
+s . Plural => Definite => Elative => mill-friġġijiet
+s . Plural => Definite => Equative => bħall-friġġijiet
+s . Plural => Definite => Genitive => tal-friġġijiet
+s . Plural => Definite => Inessive => fil-friġġijiet
+s . Plural => Definite => Instrumental => bil-friġġijiet
+s . Plural => Definite => Lative => sal-friġġijiet
+s . Plural => Definite => Nominative => il-friġġijiet
+s . Plural => Indefinite => Benefactive => għal friġġijiet
+s . Plural => Indefinite => Comitative => ma' friġġijiet
+s . Plural => Indefinite => Dative => lil friġġijiet
+s . Plural => Indefinite => Elative => minn friġġijiet
+s . Plural => Indefinite => Equative => bħal friġġijiet
+s . Plural => Indefinite => Genitive => ta' friġġijiet
+s . Plural => Indefinite => Inessive => fi friġġijiet
+s . Plural => Indefinite => Instrumental => b'friġġijiet
+s . Plural => Indefinite => Lative => sa friġġijiet
+s . Plural => Indefinite => Nominative => friġġijiet
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -6608,7 +6676,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħabib
 s . Singulative => Definite => Comitative => mal-ħabib
 s . Singulative => Definite => Dative => lill-ħabib
@@ -6649,26 +6717,26 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-ħabibi
-s . Plural => Definite => Comitative => mal-ħabibi
-s . Plural => Definite => Dative => lill-ħabibi
-s . Plural => Definite => Elative => mill-ħabibi
-s . Plural => Definite => Equative => bħall-ħabibi
-s . Plural => Definite => Genitive => tal-ħabibi
-s . Plural => Definite => Inessive => fil-ħabibi
-s . Plural => Definite => Instrumental => bil-ħabibi
-s . Plural => Definite => Lative => sal-ħabibi
-s . Plural => Definite => Nominative => il-ħabibi
-s . Plural => Indefinite => Benefactive => għal ħabibi
-s . Plural => Indefinite => Comitative => ma' ħabibi
-s . Plural => Indefinite => Dative => lil ħabibi
-s . Plural => Indefinite => Elative => minn ħabibi
-s . Plural => Indefinite => Equative => bħal ħabibi
-s . Plural => Indefinite => Genitive => ta' ħabibi
-s . Plural => Indefinite => Inessive => f'ħabibi
-s . Plural => Indefinite => Instrumental => b'ħabibi
-s . Plural => Indefinite => Lative => sa ħabibi
-s . Plural => Indefinite => Nominative => ħabibi
+s . Plural => Definite => Benefactive => għall-ħbieb
+s . Plural => Definite => Comitative => mal-ħbieb
+s . Plural => Definite => Dative => lill-ħbieb
+s . Plural => Definite => Elative => mill-ħbieb
+s . Plural => Definite => Equative => bħall-ħbieb
+s . Plural => Definite => Genitive => tal-ħbieb
+s . Plural => Definite => Inessive => fil-ħbieb
+s . Plural => Definite => Instrumental => bil-ħbieb
+s . Plural => Definite => Lative => sal-ħbieb
+s . Plural => Definite => Nominative => il-ħbieb
+s . Plural => Indefinite => Benefactive => għal ħbieb
+s . Plural => Indefinite => Comitative => ma' ħbieb
+s . Plural => Indefinite => Dative => lil ħbieb
+s . Plural => Indefinite => Elative => minn ħbieb
+s . Plural => Indefinite => Equative => bħal ħbieb
+s . Plural => Indefinite => Genitive => ta' ħbieb
+s . Plural => Indefinite => Inessive => fi ħbieb
+s . Plural => Indefinite => Instrumental => bi ħbieb
+s . Plural => Indefinite => Lative => sa ħbieb
+s . Plural => Indefinite => Nominative => ħbieb
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -6751,26 +6819,230 @@ s . Dual => Indefinite => Inessive => []
 s . Dual => Indefinite => Instrumental => []
 s . Dual => Indefinite => Lative => []
 s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-frotti
-s . Plural => Definite => Comitative => mal-frotti
-s . Plural => Definite => Dative => lill-frotti
-s . Plural => Definite => Elative => mill-frotti
-s . Plural => Definite => Equative => bħall-frotti
-s . Plural => Definite => Genitive => tal-frotti
-s . Plural => Definite => Inessive => fil-frotti
-s . Plural => Definite => Instrumental => bil-frotti
-s . Plural => Definite => Lative => sal-frotti
-s . Plural => Definite => Nominative => il-frotti
-s . Plural => Indefinite => Benefactive => għal frotti
-s . Plural => Indefinite => Comitative => ma' frotti
-s . Plural => Indefinite => Dative => lil frotti
-s . Plural => Indefinite => Elative => minn frotti
-s . Plural => Indefinite => Equative => bħal frotti
-s . Plural => Indefinite => Genitive => ta' frotti
-s . Plural => Indefinite => Inessive => fi frotti
-s . Plural => Indefinite => Instrumental => b'frotti
-s . Plural => Indefinite => Lative => sa frotti
-s . Plural => Indefinite => Nominative => frotti
+s . Plural => Definite => Benefactive => []
+s . Plural => Definite => Comitative => []
+s . Plural => Definite => Dative => []
+s . Plural => Definite => Elative => []
+s . Plural => Definite => Equative => []
+s . Plural => Definite => Genitive => []
+s . Plural => Definite => Inessive => []
+s . Plural => Definite => Instrumental => []
+s . Plural => Definite => Lative => []
+s . Plural => Definite => Nominative => []
+s . Plural => Indefinite => Benefactive => []
+s . Plural => Indefinite => Comitative => []
+s . Plural => Indefinite => Dative => []
+s . Plural => Indefinite => Elative => []
+s . Plural => Indefinite => Equative => []
+s . Plural => Indefinite => Genitive => []
+s . Plural => Indefinite => Inessive => []
+s . Plural => Indefinite => Instrumental => []
+s . Plural => Indefinite => Lative => []
+s . Plural => Indefinite => Nominative => []
+s . DeterminatePl => Definite => Benefactive => għall-frottiet
+s . DeterminatePl => Definite => Comitative => mal-frottiet
+s . DeterminatePl => Definite => Dative => lill-frottiet
+s . DeterminatePl => Definite => Elative => mill-frottiet
+s . DeterminatePl => Definite => Equative => bħall-frottiet
+s . DeterminatePl => Definite => Genitive => tal-frottiet
+s . DeterminatePl => Definite => Inessive => fil-frottiet
+s . DeterminatePl => Definite => Instrumental => bil-frottiet
+s . DeterminatePl => Definite => Lative => sal-frottiet
+s . DeterminatePl => Definite => Nominative => il-frottiet
+s . DeterminatePl => Indefinite => Benefactive => għal frottiet
+s . DeterminatePl => Indefinite => Comitative => ma' frottiet
+s . DeterminatePl => Indefinite => Dative => lil frottiet
+s . DeterminatePl => Indefinite => Elative => minn frottiet
+s . DeterminatePl => Indefinite => Equative => bħal frottiet
+s . DeterminatePl => Indefinite => Genitive => ta' frottiet
+s . DeterminatePl => Indefinite => Inessive => fi frottiet
+s . DeterminatePl => Indefinite => Instrumental => b'frottiet
+s . DeterminatePl => Indefinite => Lative => sa frottiet
+s . DeterminatePl => Indefinite => Nominative => frottiet
+s . CollectivePl => Definite => Benefactive => għall-frott
+s . CollectivePl => Definite => Comitative => mal-frott
+s . CollectivePl => Definite => Dative => lill-frott
+s . CollectivePl => Definite => Elative => mill-frott
+s . CollectivePl => Definite => Equative => bħall-frott
+s . CollectivePl => Definite => Genitive => tal-frott
+s . CollectivePl => Definite => Inessive => fil-frott
+s . CollectivePl => Definite => Instrumental => bil-frott
+s . CollectivePl => Definite => Lative => sal-frott
+s . CollectivePl => Definite => Nominative => il-frott
+s . CollectivePl => Indefinite => Benefactive => għal frott
+s . CollectivePl => Indefinite => Comitative => ma' frott
+s . CollectivePl => Indefinite => Dative => lil frott
+s . CollectivePl => Indefinite => Elative => minn frott
+s . CollectivePl => Indefinite => Equative => bħal frott
+s . CollectivePl => Indefinite => Genitive => ta' frott
+s . CollectivePl => Indefinite => Inessive => fi frott
+s . CollectivePl => Indefinite => Instrumental => b'frott
+s . CollectivePl => Indefinite => Lative => sa frott
+s . CollectivePl => Indefinite => Nominative => frott
+g . Masc
+8 msec
+> s . Singulative => Definite => Benefactive => għall-ġnien
+s . Singulative => Definite => Comitative => mal-ġnien
+s . Singulative => Definite => Dative => lill-ġnien
+s . Singulative => Definite => Elative => mill-ġnien
+s . Singulative => Definite => Equative => bħall-ġnien
+s . Singulative => Definite => Genitive => tal-ġnien
+s . Singulative => Definite => Inessive => fil-ġnien
+s . Singulative => Definite => Instrumental => bil-ġnien
+s . Singulative => Definite => Lative => sal-ġnien
+s . Singulative => Definite => Nominative => il-ġnien
+s . Singulative => Indefinite => Benefactive => għal ġnien
+s . Singulative => Indefinite => Comitative => ma' ġnien
+s . Singulative => Indefinite => Dative => lil ġnien
+s . Singulative => Indefinite => Elative => minn ġnien
+s . Singulative => Indefinite => Equative => bħal ġnien
+s . Singulative => Indefinite => Genitive => ta' ġnien
+s . Singulative => Indefinite => Inessive => fi ġnien
+s . Singulative => Indefinite => Instrumental => bi ġnien
+s . Singulative => Indefinite => Lative => sa ġnien
+s . Singulative => Indefinite => Nominative => ġnien
+s . Dual => Definite => Benefactive => []
+s . Dual => Definite => Comitative => []
+s . Dual => Definite => Dative => []
+s . Dual => Definite => Elative => []
+s . Dual => Definite => Equative => []
+s . Dual => Definite => Genitive => []
+s . Dual => Definite => Inessive => []
+s . Dual => Definite => Instrumental => []
+s . Dual => Definite => Lative => []
+s . Dual => Definite => Nominative => []
+s . Dual => Indefinite => Benefactive => []
+s . Dual => Indefinite => Comitative => []
+s . Dual => Indefinite => Dative => []
+s . Dual => Indefinite => Elative => []
+s . Dual => Indefinite => Equative => []
+s . Dual => Indefinite => Genitive => []
+s . Dual => Indefinite => Inessive => []
+s . Dual => Indefinite => Instrumental => []
+s . Dual => Indefinite => Lative => []
+s . Dual => Indefinite => Nominative => []
+s . Plural => Definite => Benefactive => għall-ġonna
+s . Plural => Definite => Comitative => mal-ġonna
+s . Plural => Definite => Dative => lill-ġonna
+s . Plural => Definite => Elative => mill-ġonna
+s . Plural => Definite => Equative => bħall-ġonna
+s . Plural => Definite => Genitive => tal-ġonna
+s . Plural => Definite => Inessive => fil-ġonna
+s . Plural => Definite => Instrumental => bil-ġonna
+s . Plural => Definite => Lative => sal-ġonna
+s . Plural => Definite => Nominative => il-ġonna
+s . Plural => Indefinite => Benefactive => għal ġonna
+s . Plural => Indefinite => Comitative => ma' ġonna
+s . Plural => Indefinite => Dative => lil ġonna
+s . Plural => Indefinite => Elative => minn ġonna
+s . Plural => Indefinite => Equative => bħal ġonna
+s . Plural => Indefinite => Genitive => ta' ġonna
+s . Plural => Indefinite => Inessive => f'ġonna
+s . Plural => Indefinite => Instrumental => b'ġonna
+s . Plural => Indefinite => Lative => sa ġonna
+s . Plural => Indefinite => Nominative => ġonna
+s . DeterminatePl => Definite => Benefactive => []
+s . DeterminatePl => Definite => Comitative => []
+s . DeterminatePl => Definite => Dative => []
+s . DeterminatePl => Definite => Elative => []
+s . DeterminatePl => Definite => Equative => []
+s . DeterminatePl => Definite => Genitive => []
+s . DeterminatePl => Definite => Inessive => []
+s . DeterminatePl => Definite => Instrumental => []
+s . DeterminatePl => Definite => Lative => []
+s . DeterminatePl => Definite => Nominative => []
+s . DeterminatePl => Indefinite => Benefactive => []
+s . DeterminatePl => Indefinite => Comitative => []
+s . DeterminatePl => Indefinite => Dative => []
+s . DeterminatePl => Indefinite => Elative => []
+s . DeterminatePl => Indefinite => Equative => []
+s . DeterminatePl => Indefinite => Genitive => []
+s . DeterminatePl => Indefinite => Inessive => []
+s . DeterminatePl => Indefinite => Instrumental => []
+s . DeterminatePl => Indefinite => Lative => []
+s . DeterminatePl => Indefinite => Nominative => []
+s . CollectivePl => Definite => Benefactive => []
+s . CollectivePl => Definite => Comitative => []
+s . CollectivePl => Definite => Dative => []
+s . CollectivePl => Definite => Elative => []
+s . CollectivePl => Definite => Equative => []
+s . CollectivePl => Definite => Genitive => []
+s . CollectivePl => Definite => Inessive => []
+s . CollectivePl => Definite => Instrumental => []
+s . CollectivePl => Definite => Lative => []
+s . CollectivePl => Definite => Nominative => []
+s . CollectivePl => Indefinite => Benefactive => []
+s . CollectivePl => Indefinite => Comitative => []
+s . CollectivePl => Indefinite => Dative => []
+s . CollectivePl => Indefinite => Elative => []
+s . CollectivePl => Indefinite => Equative => []
+s . CollectivePl => Indefinite => Genitive => []
+s . CollectivePl => Indefinite => Inessive => []
+s . CollectivePl => Indefinite => Instrumental => []
+s . CollectivePl => Indefinite => Lative => []
+s . CollectivePl => Indefinite => Nominative => []
+g . Masc
+8 msec
+> s . Singulative => Definite => Benefactive => għat-tifla
+s . Singulative => Definite => Comitative => mat-tifla
+s . Singulative => Definite => Dative => lit-tifla
+s . Singulative => Definite => Elative => mit-tifla
+s . Singulative => Definite => Equative => bħat-tifla
+s . Singulative => Definite => Genitive => tat-tifla
+s . Singulative => Definite => Inessive => fit-tifla
+s . Singulative => Definite => Instrumental => bit-tifla
+s . Singulative => Definite => Lative => sat-tifla
+s . Singulative => Definite => Nominative => it-tifla
+s . Singulative => Indefinite => Benefactive => għal tifla
+s . Singulative => Indefinite => Comitative => ma' tifla
+s . Singulative => Indefinite => Dative => lil tifla
+s . Singulative => Indefinite => Elative => minn tifla
+s . Singulative => Indefinite => Equative => bħal tifla
+s . Singulative => Indefinite => Genitive => ta' tifla
+s . Singulative => Indefinite => Inessive => f'tifla
+s . Singulative => Indefinite => Instrumental => b'tifla
+s . Singulative => Indefinite => Lative => sa tifla
+s . Singulative => Indefinite => Nominative => tifla
+s . Dual => Definite => Benefactive => []
+s . Dual => Definite => Comitative => []
+s . Dual => Definite => Dative => []
+s . Dual => Definite => Elative => []
+s . Dual => Definite => Equative => []
+s . Dual => Definite => Genitive => []
+s . Dual => Definite => Inessive => []
+s . Dual => Definite => Instrumental => []
+s . Dual => Definite => Lative => []
+s . Dual => Definite => Nominative => []
+s . Dual => Indefinite => Benefactive => []
+s . Dual => Indefinite => Comitative => []
+s . Dual => Indefinite => Dative => []
+s . Dual => Indefinite => Elative => []
+s . Dual => Indefinite => Equative => []
+s . Dual => Indefinite => Genitive => []
+s . Dual => Indefinite => Inessive => []
+s . Dual => Indefinite => Instrumental => []
+s . Dual => Indefinite => Lative => []
+s . Dual => Indefinite => Nominative => []
+s . Plural => Definite => Benefactive => għat-tfal
+s . Plural => Definite => Comitative => mat-tfal
+s . Plural => Definite => Dative => lit-tfal
+s . Plural => Definite => Elative => mit-tfal
+s . Plural => Definite => Equative => bħat-tfal
+s . Plural => Definite => Genitive => tat-tfal
+s . Plural => Definite => Inessive => fit-tfal
+s . Plural => Definite => Instrumental => bit-tfal
+s . Plural => Definite => Lative => sat-tfal
+s . Plural => Definite => Nominative => it-tfal
+s . Plural => Indefinite => Benefactive => għal tfal
+s . Plural => Indefinite => Comitative => ma' tfal
+s . Plural => Indefinite => Dative => lil tfal
+s . Plural => Indefinite => Elative => minn tfal
+s . Plural => Indefinite => Equative => bħal tfal
+s . Plural => Indefinite => Genitive => ta' tfal
+s . Plural => Indefinite => Inessive => fi tfal
+s . Plural => Indefinite => Instrumental => bi tfal
+s . Plural => Indefinite => Lative => sa tfal
+s . Plural => Indefinite => Nominative => tfal
 s . DeterminatePl => Definite => Benefactive => []
 s . DeterminatePl => Definite => Comitative => []
 s . DeterminatePl => Definite => Dative => []
@@ -6813,210 +7085,6 @@ s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
 8 msec
-> s . Singulative => Definite => Benefactive => għall-ġnien
-s . Singulative => Definite => Comitative => mal-ġnien
-s . Singulative => Definite => Dative => lill-ġnien
-s . Singulative => Definite => Elative => mill-ġnien
-s . Singulative => Definite => Equative => bħall-ġnien
-s . Singulative => Definite => Genitive => tal-ġnien
-s . Singulative => Definite => Inessive => fil-ġnien
-s . Singulative => Definite => Instrumental => bil-ġnien
-s . Singulative => Definite => Lative => sal-ġnien
-s . Singulative => Definite => Nominative => il-ġnien
-s . Singulative => Indefinite => Benefactive => għal ġnien
-s . Singulative => Indefinite => Comitative => ma' ġnien
-s . Singulative => Indefinite => Dative => lil ġnien
-s . Singulative => Indefinite => Elative => minn ġnien
-s . Singulative => Indefinite => Equative => bħal ġnien
-s . Singulative => Indefinite => Genitive => ta' ġnien
-s . Singulative => Indefinite => Inessive => fi ġnien
-s . Singulative => Indefinite => Instrumental => bi ġnien
-s . Singulative => Indefinite => Lative => sa ġnien
-s . Singulative => Indefinite => Nominative => ġnien
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għall-ġnieni
-s . Plural => Definite => Comitative => mal-ġnieni
-s . Plural => Definite => Dative => lill-ġnieni
-s . Plural => Definite => Elative => mill-ġnieni
-s . Plural => Definite => Equative => bħall-ġnieni
-s . Plural => Definite => Genitive => tal-ġnieni
-s . Plural => Definite => Inessive => fil-ġnieni
-s . Plural => Definite => Instrumental => bil-ġnieni
-s . Plural => Definite => Lative => sal-ġnieni
-s . Plural => Definite => Nominative => il-ġnieni
-s . Plural => Indefinite => Benefactive => għal ġnieni
-s . Plural => Indefinite => Comitative => ma' ġnieni
-s . Plural => Indefinite => Dative => lil ġnieni
-s . Plural => Indefinite => Elative => minn ġnieni
-s . Plural => Indefinite => Equative => bħal ġnieni
-s . Plural => Indefinite => Genitive => ta' ġnieni
-s . Plural => Indefinite => Inessive => fi ġnieni
-s . Plural => Indefinite => Instrumental => bi ġnieni
-s . Plural => Indefinite => Lative => sa ġnieni
-s . Plural => Indefinite => Nominative => ġnieni
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
-g . Masc
-4 msec
-> s . Singulative => Definite => Benefactive => għat-tifla
-s . Singulative => Definite => Comitative => mat-tifla
-s . Singulative => Definite => Dative => lit-tifla
-s . Singulative => Definite => Elative => mit-tifla
-s . Singulative => Definite => Equative => bħat-tifla
-s . Singulative => Definite => Genitive => tat-tifla
-s . Singulative => Definite => Inessive => fit-tifla
-s . Singulative => Definite => Instrumental => bit-tifla
-s . Singulative => Definite => Lative => sat-tifla
-s . Singulative => Definite => Nominative => it-tifla
-s . Singulative => Indefinite => Benefactive => għal tifla
-s . Singulative => Indefinite => Comitative => ma' tifla
-s . Singulative => Indefinite => Dative => lil tifla
-s . Singulative => Indefinite => Elative => minn tifla
-s . Singulative => Indefinite => Equative => bħal tifla
-s . Singulative => Indefinite => Genitive => ta' tifla
-s . Singulative => Indefinite => Inessive => f'tifla
-s . Singulative => Indefinite => Instrumental => b'tifla
-s . Singulative => Indefinite => Lative => sa tifla
-s . Singulative => Indefinite => Nominative => tifla
-s . Dual => Definite => Benefactive => []
-s . Dual => Definite => Comitative => []
-s . Dual => Definite => Dative => []
-s . Dual => Definite => Elative => []
-s . Dual => Definite => Equative => []
-s . Dual => Definite => Genitive => []
-s . Dual => Definite => Inessive => []
-s . Dual => Definite => Instrumental => []
-s . Dual => Definite => Lative => []
-s . Dual => Definite => Nominative => []
-s . Dual => Indefinite => Benefactive => []
-s . Dual => Indefinite => Comitative => []
-s . Dual => Indefinite => Dative => []
-s . Dual => Indefinite => Elative => []
-s . Dual => Indefinite => Equative => []
-s . Dual => Indefinite => Genitive => []
-s . Dual => Indefinite => Inessive => []
-s . Dual => Indefinite => Instrumental => []
-s . Dual => Indefinite => Lative => []
-s . Dual => Indefinite => Nominative => []
-s . Plural => Definite => Benefactive => għat-tifli
-s . Plural => Definite => Comitative => mat-tifli
-s . Plural => Definite => Dative => lit-tifli
-s . Plural => Definite => Elative => mit-tifli
-s . Plural => Definite => Equative => bħat-tifli
-s . Plural => Definite => Genitive => tat-tifli
-s . Plural => Definite => Inessive => fit-tifli
-s . Plural => Definite => Instrumental => bit-tifli
-s . Plural => Definite => Lative => sat-tifli
-s . Plural => Definite => Nominative => it-tifli
-s . Plural => Indefinite => Benefactive => għal tifli
-s . Plural => Indefinite => Comitative => ma' tifli
-s . Plural => Indefinite => Dative => lil tifli
-s . Plural => Indefinite => Elative => minn tifli
-s . Plural => Indefinite => Equative => bħal tifli
-s . Plural => Indefinite => Genitive => ta' tifli
-s . Plural => Indefinite => Inessive => f'tifli
-s . Plural => Indefinite => Instrumental => b'tifli
-s . Plural => Indefinite => Lative => sa tifli
-s . Plural => Indefinite => Nominative => tifli
-s . DeterminatePl => Definite => Benefactive => []
-s . DeterminatePl => Definite => Comitative => []
-s . DeterminatePl => Definite => Dative => []
-s . DeterminatePl => Definite => Elative => []
-s . DeterminatePl => Definite => Equative => []
-s . DeterminatePl => Definite => Genitive => []
-s . DeterminatePl => Definite => Inessive => []
-s . DeterminatePl => Definite => Instrumental => []
-s . DeterminatePl => Definite => Lative => []
-s . DeterminatePl => Definite => Nominative => []
-s . DeterminatePl => Indefinite => Benefactive => []
-s . DeterminatePl => Indefinite => Comitative => []
-s . DeterminatePl => Indefinite => Dative => []
-s . DeterminatePl => Indefinite => Elative => []
-s . DeterminatePl => Indefinite => Equative => []
-s . DeterminatePl => Indefinite => Genitive => []
-s . DeterminatePl => Indefinite => Inessive => []
-s . DeterminatePl => Indefinite => Instrumental => []
-s . DeterminatePl => Indefinite => Lative => []
-s . DeterminatePl => Indefinite => Nominative => []
-s . CollectivePl => Definite => Benefactive => []
-s . CollectivePl => Definite => Comitative => []
-s . CollectivePl => Definite => Dative => []
-s . CollectivePl => Definite => Elative => []
-s . CollectivePl => Definite => Equative => []
-s . CollectivePl => Definite => Genitive => []
-s . CollectivePl => Definite => Inessive => []
-s . CollectivePl => Definite => Instrumental => []
-s . CollectivePl => Definite => Lative => []
-s . CollectivePl => Definite => Nominative => []
-s . CollectivePl => Indefinite => Benefactive => []
-s . CollectivePl => Indefinite => Comitative => []
-s . CollectivePl => Indefinite => Dative => []
-s . CollectivePl => Indefinite => Elative => []
-s . CollectivePl => Indefinite => Equative => []
-s . CollectivePl => Indefinite => Genitive => []
-s . CollectivePl => Indefinite => Inessive => []
-s . CollectivePl => Indefinite => Instrumental => []
-s . CollectivePl => Indefinite => Lative => []
-s . CollectivePl => Indefinite => Nominative => []
-g . Fem
-4 msec
 > s . Singulative => Definite => Benefactive => għall-ingwanta
 s . Singulative => Definite => Comitative => mal-ingwanta
 s . Singulative => Definite => Dative => lill-ingwanta
@@ -7220,7 +7288,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+28 msec
 > s . Singulative => Definite => Benefactive => għall-grammatika
 s . Singulative => Definite => Comitative => mal-grammatika
 s . Singulative => Definite => Dative => lill-grammatika
@@ -7322,7 +7390,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħaxix
 s . Singulative => Definite => Comitative => mal-ħaxix
 s . Singulative => Definite => Dative => lill-ħaxix
@@ -7730,7 +7798,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-port
 s . Singulative => Definite => Comitative => mal-port
 s . Singulative => Definite => Dative => lill-port
@@ -7832,7 +7900,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-kappell
 s . Singulative => Definite => Comitative => mal-kappell
 s . Singulative => Definite => Dative => lill-kappell
@@ -7934,7 +8002,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-ras
 s . Singulative => Definite => Comitative => mar-ras
 s . Singulative => Definite => Dative => lir-ras
@@ -8036,7 +8104,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-qalb
 s . Singulative => Definite => Comitative => mal-qalb
 s . Singulative => Definite => Dative => lill-qalb
@@ -8240,7 +8308,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-ħorn
 s . Singulative => Definite => Comitative => mal-ħorn
 s . Singulative => Definite => Dative => lill-ħorn
@@ -8342,7 +8410,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għaż-żiemel
 s . Singulative => Definite => Comitative => maż-żiemel
 s . Singulative => Definite => Dative => liż-żiemel
@@ -8546,7 +8614,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-raġel
 s . Singulative => Definite => Comitative => mar-raġel
 s . Singulative => Definite => Dative => lir-raġel
@@ -8648,7 +8716,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għas-silġ
 s . Singulative => Definite => Comitative => mas-silġ
 s . Singulative => Definite => Dative => lis-silġ
@@ -8750,7 +8818,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-industrija
 s . Singulative => Definite => Comitative => mal-industrija
 s . Singulative => Definite => Dative => lill-industrija
@@ -8954,7 +9022,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+12 msec
 > s . Singulative => Definite => Benefactive => għar-re
 s . Singulative => Definite => Comitative => mar-re
 s . Singulative => Definite => Dative => lir-re
@@ -9362,7 +9430,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-lingwa
 s . Singulative => Definite => Comitative => mal-lingwa
 s . Singulative => Definite => Dative => lill-lingwa
@@ -9464,7 +9532,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-werqa
 s . Singulative => Definite => Comitative => mal-werqa
 s . Singulative => Definite => Dative => lill-werqa
@@ -9566,7 +9634,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ġilda
 s . Singulative => Definite => Comitative => mal-ġilda
 s . Singulative => Definite => Dative => lill-ġilda
@@ -9668,7 +9736,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-riġel
 s . Singulative => Definite => Comitative => mar-riġel
 s . Singulative => Definite => Dative => lir-riġel
@@ -9974,7 +10042,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-imħabba
 s . Singulative => Definite => Comitative => mal-imħabba
 s . Singulative => Definite => Dative => lill-imħabba
@@ -10178,7 +10246,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+12 msec
 > s . Singulative => Definite => Benefactive => għall-laħam
 s . Singulative => Definite => Comitative => mal-laħam
 s . Singulative => Definite => Dative => lill-laħam
@@ -10280,7 +10348,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħalib
 s . Singulative => Definite => Comitative => mal-ħalib
 s . Singulative => Definite => Dative => lill-ħalib
@@ -10382,7 +10450,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-qamar
 s . Singulative => Definite => Comitative => mal-qamar
 s . Singulative => Definite => Dative => lill-qamar
@@ -10484,7 +10552,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-omm
 s . Singulative => Definite => Comitative => mal-omm
 s . Singulative => Definite => Dative => lill-omm
@@ -10586,7 +10654,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-muntanja
 s . Singulative => Definite => Comitative => mal-muntanja
 s . Singulative => Definite => Dative => lill-muntanja
@@ -10688,7 +10756,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħalq
 s . Singulative => Definite => Comitative => mal-ħalq
 s . Singulative => Definite => Dative => lill-ħalq
@@ -11096,7 +11164,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-gazzetta
 s . Singulative => Definite => Comitative => mal-gazzetta
 s . Singulative => Definite => Dative => lill-gazzetta
@@ -11198,7 +11266,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-lejl
 s . Singulative => Definite => Comitative => mal-lejl
 s . Singulative => Definite => Dative => lill-lejl
@@ -11300,7 +11368,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-imnieħer
 s . Singulative => Definite => Comitative => mal-imnieħer
 s . Singulative => Definite => Dative => lill-imnieħer
@@ -11402,7 +11470,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għan-numru
 s . Singulative => Definite => Comitative => man-numru
 s . Singulative => Definite => Dative => lin-numru
@@ -11504,7 +11572,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għaż-żejt
 s . Singulative => Definite => Comitative => maż-żejt
 s . Singulative => Definite => Dative => liż-żejt
@@ -11606,7 +11674,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-karta
 s . Singulative => Definite => Comitative => mal-karta
 s . Singulative => Definite => Dative => lill-karta
@@ -12218,7 +12286,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-pulizija
 s . Singulative => Definite => Comitative => mal-pulizija
 s . Singulative => Definite => Dative => lill-pulizija
@@ -12320,7 +12388,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-qassis
 s . Singulative => Definite => Comitative => mal-qassis
 s . Singulative => Definite => Dative => lill-qassis
@@ -12626,7 +12694,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-radju
 s . Singulative => Definite => Comitative => mar-radju
 s . Singulative => Definite => Dative => lir-radju
@@ -13034,7 +13102,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għar-ristorant
 s . Singulative => Definite => Comitative => mar-ristorant
 s . Singulative => Definite => Dative => lir-ristorant
@@ -13646,7 +13714,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ħabel
 s . Singulative => Definite => Comitative => mal-ħabel
 s . Singulative => Definite => Dative => lill-ħabel
@@ -13850,7 +13918,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għar-regola
 s . Singulative => Definite => Comitative => mar-regola
 s . Singulative => Definite => Dative => lir-regola
@@ -13952,7 +14020,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-melħ
 s . Singulative => Definite => Comitative => mal-melħ
 s . Singulative => Definite => Dative => lill-melħ
@@ -14156,7 +14224,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-iskola
 s . Singulative => Definite => Comitative => mal-iskola
 s . Singulative => Definite => Dative => lill-iskola
@@ -14258,7 +14326,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-isxjenza
 s . Singulative => Definite => Comitative => mal-isxjenza
 s . Singulative => Definite => Dative => lill-isxjenza
@@ -14360,7 +14428,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-baħar
 s . Singulative => Definite => Comitative => mal-baħar
 s . Singulative => Definite => Dative => lill-baħar
@@ -14564,7 +14632,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għan-nagħaġ
 s . Singulative => Definite => Comitative => man-nagħaġ
 s . Singulative => Definite => Dative => lin-nagħaġ
@@ -14666,7 +14734,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-32 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-vapur
 s . Singulative => Definite => Comitative => mal-vapur
 s . Singulative => Definite => Dative => lill-vapur
@@ -15074,7 +15142,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-fidda
 s . Singulative => Definite => Comitative => mal-fidda
 s . Singulative => Definite => Dative => lill-fidda
@@ -15278,7 +15346,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-0 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-ġilda
 s . Singulative => Definite => Comitative => mal-ġilda
 s . Singulative => Definite => Dative => lill-ġilda
@@ -15380,7 +15448,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għas-sema
 s . Singulative => Definite => Comitative => mas-sema
 s . Singulative => Definite => Dative => lis-sema
@@ -15584,7 +15652,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għas-serp
 s . Singulative => Definite => Comitative => mas-serp
 s . Singulative => Definite => Dative => lis-serp
@@ -15890,7 +15958,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+24 msec
 > s . Singulative => Definite => Benefactive => għall-kanzunetta
 s . Singulative => Definite => Comitative => mal-kanzunetta
 s . Singulative => Definite => Dative => lill-kanzunetta
@@ -16094,7 +16162,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-azzar
 s . Singulative => Definite => Comitative => mal-azzar
 s . Singulative => Definite => Dative => lill-azzar
@@ -16298,7 +16366,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-ġebla
 s . Singulative => Definite => Comitative => mal-ġebla
 s . Singulative => Definite => Dative => lill-ġebla
@@ -16400,7 +16468,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-fuklar
 s . Singulative => Definite => Comitative => mal-fuklar
 s . Singulative => Definite => Dative => lill-fuklar
@@ -16910,7 +16978,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-għalliem
 s . Singulative => Definite => Comitative => mal-għalliem
 s . Singulative => Definite => Dative => lill-għalliem
@@ -17012,7 +17080,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għat-televixin
 s . Singulative => Definite => Comitative => mat-televixin
 s . Singulative => Definite => Dative => lit-televixin
@@ -17216,7 +17284,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għas-sinna
 s . Singulative => Definite => Comitative => mas-sinna
 s . Singulative => Definite => Dative => lis-sinna
@@ -17522,7 +17590,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għall-università
 s . Singulative => Definite => Comitative => mal-università
 s . Singulative => Definite => Dative => lill-università
@@ -17726,7 +17794,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għall-gwerra
 s . Singulative => Definite => Comitative => mal-gwerra
 s . Singulative => Definite => Dative => lill-gwerra
@@ -18134,7 +18202,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singulative => Definite => Benefactive => għat-tieqa
 s . Singulative => Definite => Comitative => mat-tieqa
 s . Singulative => Definite => Dative => lit-tieqa
@@ -18644,7 +18712,7 @@ s . CollectivePl => Indefinite => Instrumental => []
 s . CollectivePl => Indefinite => Lative => []
 s . CollectivePl => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singulative => Definite => Benefactive => għad-dudu
 s . Singulative => Definite => Comitative => mad-dudu
 s . Singulative => Definite => Dative => lid-dudu

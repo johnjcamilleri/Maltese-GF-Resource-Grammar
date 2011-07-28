@@ -172,7 +172,7 @@ resource ParadigmsMlt = open
 				Dual			=> buildCaseTable dual ;
 				Plural			=> buildCaseTable plural ;
 				DeterminatePl	=> buildCaseTable det ;
-				CollectivePl	=> buildCaseTable coll
+				Collective	=> buildCaseTable coll
 			} ;
 			g = gen ;
 		} ;

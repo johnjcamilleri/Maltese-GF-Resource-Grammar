@@ -133,47 +133,47 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		eat_V2
 		egg_N = mkNounColl "bajd" ;
 --		empty_A
-		enemy_N = mkNoun "għadu" ;
-		eye_N = mkNoun "għajn" ;
+		enemy_N = mkNoun "għadu" "għedewwa" ;
+		eye_N = mkNounWorst "għajn" "għajnejn" "għajnejn" [] [] Fem ;
 		factory_N = mkNoun "fabbrika" ;
 --		fall_V
 --		far_Adv
-		fat_N = mkNoun "xaħam" ;
-		father_N2 = mkNoun "missier" ;
+		fat_N = mkNounColl "xaħam" ;
+		father_N2 = mkNoun "missier" "missierijiet" ;
 --		fear_V2
 --		fear_VS
-		feather_N = mkNoun "rixa" ;
+		feather_N = mkNounColl "rix" ;
 --		fight_V2
 --		find_V2
-		fingernail_N = mkNoun "difer" ;
-		fire_N = mkNoun "nar" ;
-		fish_N = mkNoun "ħuta" ;
+		fingernail_N = mkNounWorst "difer" "difrejn" "dwiefer" [] [] Masc ;
+		fire_N = mkNoun "nar" "nirien" ;
+		fish_N = mkNounColl "ħut" ;
 --		float_V
-		floor_N = mkNoun "art" ;
+		earth_N = mkNoun "art" "artijiet" Fem ;
 --		flow_V
 		flower_N = mkNoun "fjura" ;
 --		fly_V
-		fog_N = mkNoun "ċpar" ;
-		foot_N = mkNoun "sieq" ;
-		forest_N = mkNoun "foresta" ;
+		fog_N = mkNounWorst [] [] [] [] "ċpar" Masc ;
+		foot_N = mkNounWorst "sieq" "saqajn" "saqajn" [] [] Masc ;
+		forest_N = mkNoun "foresta" ; -- also MASĠAR
 --		forget_V2
 --		freeze_V
-		fridge_N = mkNoun "friġġ" ;
-		friend_N = mkNoun "ħabib" ;
-		fruit_N = mkNoun "frotta" ;
+		fridge_N = mkNoun "friġġ" "friġġijiet" ;
+		friend_N = mkNoun "ħabib" "ħbieb" ;
+		fruit_N = mkNounColl "frott" ;
 --		full_A
 --		fun_AV
-		garden_N = mkNoun "ġnien" ;
-		girl_N = mkNoun "tifla" ;
+		garden_N = mkNoun "ġnien" "ġonna" ;
+		girl_N = mkNoun "tifla" "tfal" ;
 --		give_V3
 		glove_N = mkNoun "ingwanta" ;
 --		go_V
-		gold_N = mkNoun "deheb" ;
+		gold_N = mkNoun [] [] [] "deheb" "dehbijiet" Masc ;
 --		good_A
 		grammar_N = mkNoun "grammatika" ;
-		grass_N = mkNoun "ħaxix" ;
+		grass_N = mkNoun "ħaxix" [] "ħxejjex" [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
 --		green_A
-		guts_N = mkNoun "imsaren" ;
+		guts_N = mkNoun "" "msaren" ;
 		hair_N = mkNoun "xagħar" ;
 		hand_N = mkNoun "id" ;
 		harbour_N = mkNoun "port" ;

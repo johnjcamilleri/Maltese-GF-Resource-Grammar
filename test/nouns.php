@@ -110,4 +110,4 @@ file_put_contents($htmlfile, $HTML);
 // Stop timing
 $time_end = microtime(true);
 $time_taken = $time_end - $time_start;
-printf(" Done in %.2fs\n", $time_taken);
+printf(" Done in %.2fs (completed at %s)\n", $time_taken, date('H:i'));

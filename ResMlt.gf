@@ -29,29 +29,43 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			| Pl ;
 
 {-
+	Note: NNQ = Non-numerically quantifiable
+
 	Nouns can have the following forms (* marks base form):
-	NNQ = Non-numerically quantifiable
+		- Singulative (1, >10)
+		- Dual (2)
+		- Plural (>2)
+		- Collective (NNQ)
+		- Determinate (2-10)
+		- Indeterminate plural (NNQ)
+
+	Typical combinations thereof:
 		- Singulative, no plural!
 		- Singulative*, Plural
 		- Singulative* (1), Dual (2), Plural (>2)
 		- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
-		- Singulative, Collective*, Determinate Plural, NNQ Plural -> very few nouns have these 4 forms
+		- Singulative, Collective*, Determinate Plural, Indeterminate Plural -> very few nouns have these 4 forms
 -}
 		Number5 =
 			  Singulative	-- eg BAJDA
 			| Dual			-- eg WIDNEJN
 			| Plural		-- "Regular" plural
+			| Collective	-- eg BAJD
 			| DeterminatePl	-- eg BAJDIET
-			| CollectivePl	-- eg BAJD
+			| IndeterminatePl	-- eg BAJDIET
 		;
 		-- N_PluralType = Sound | Broken ; -- Sound = External (affix) / Broken = Internal
 
-		Definiteness =
-			  Definite
-			| Indefinite
-		;
-
 		Gender  = Masc | Fem ;
+
+		Animacy =
+			  Animate
+			| Inanimamte
+
+		Definiteness =
+			  Definite		-- eg IL-KARTA. In this context same as Determinate
+			| Indefinite	-- eg KARTA
+		;
 
 		-- Noun cases (note my examples include DEFINITE ARTICLE)
 		-- Commented lines mean that noun iflection is unchanged, not
@@ -103,12 +117,6 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		-- Shortcut type
 		-- GenNum = gn Gender Number2 ;
 
-{-
-		-- Animacy - human or inanimate?
-		Animacy =
-			  Animate
-			| Inanimamte
--}
 
 		-- Agreement features
 		Agr =
