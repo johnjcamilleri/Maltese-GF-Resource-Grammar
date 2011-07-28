@@ -34,7 +34,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		o Dual (2)
 		o Plural
 			- Determinate (2-10)
-			- Indeterminate Plural (NNQ)
+			- Indeterminate (NNQ)
 				- Sound
 				- Broken
 				- Plural of Plural

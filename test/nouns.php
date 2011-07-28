@@ -8,20 +8,40 @@ $time_start = microtime(true);
 $outfile = 'test/nouns.out';
 $command = './_gf < test/nouns.gfs > '.$outfile;
 $htmlfile = 'test/nouns.out.html';
+$TEXT = '';
+
+// ================
 
 // Execute GF stuff and capture output
-echo " Running GF\n";
-chdir( dirname(__FILE__) . '/../' );
-exec($command, $out, $return_status);
-if ($return_status != 0)
-	die (" Failed.\n");
+if (@$GLOBALS['argv'][1] == '--cached') {
+	echo " Reading directly from {$outfile}\n";
+} else {
+	echo " Running GF\n";
+	chdir( dirname(__FILE__) . '/../' );
+	exec($command, $out, $return_status);
+	if ($return_status != 0)
+		die (" Failed.\n");
+}
 $output = file($outfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+if ($output === false)
+		die (" Failed reading {$outfile}.\n");
 
-// Process line by line.
-$HTML_console = '';
-$HTML_table = '';
-$TEXT = '';
-$prev_cols = array();
+// ================
+
+// Recursive function for nesting as deep as we need
+function nest($stack, &$branch) {
+	if (count($stack) > 1) {
+		$key = array_shift($stack);
+		nest($stack, $branch[$key]);
+	} else {
+		$branch = $stack[0];
+	}
+}
+
+// Process line by line & put into heirarchical array
+$tree = array(); // overall structure
+$ix = 0; // item index
+$console_output = '';
 foreach ($output as $n => $line) {
 
 	// Skip timings
@@ -32,40 +52,59 @@ foreach ($output as $n => $line) {
 
 		// Have we reached a new entry?
 		if ($matches[1]) {
-			$HTML_table .= '<tr class="separator"><td colspan="100%">&nbsp;</td></td>';
-			$TEXT .= "\n<hr/>\n";
+			$ix++;
 		}
 
+		// Split at arrow and nest
 		$columns = explode('=>',$matches[3]);
-
-		array_walk(
-			$columns,
-			create_function('$v,$k,&$t','$t .= ($k==3) ? "<em>$v</em>" : str_pad($v, 20);'),
-			&$TEXT
-		);
-		$TEXT .= "\n";
-
-		$HTML_table .= '<tr>';
-		$col = 0;
-		foreach ($columns as $i) {
-			$i = trim($i);
-			if (@$prev_cols[$col] == $i || $i == '[]') {
-				$HTML_table .= '<td>&nbsp;</td>';
-			} else {
-				$HTML_table .= '<td>'.$i.'</td>';
-				@$prev_cols[$col] = $i;
-			}
-			$col++;
-		}
-		$HTML_table .= '</tr>';
+		$columns = array_map('trim', $columns);
+		nest($columns, $tree[$ix][$matches[2]]);
 	}
 
 	// Anything else is compiler output
 	else
-		$HTML_console .= $line . "\n";
-
+		$console_output .= $line . "\n";
 }
 
+// ================
+
+// Process recursively for output
+
+function disp($branch, $depth=0) {
+	if (is_array($branch)) {
+		foreach ($branch as $k => $v) {
+			//printf("\n%s%-15s", str_repeat("\t", $depth), $k);
+			echo "<div><b>$k</b>";
+			disp($v, $depth+1);
+			echo "</div>";
+		}
+	} else {
+		echo $branch == '[]' ? '' : "<em>$branch</em>";
+	}
+}
+/*
+function dispHTML($branch, $depth=0) {
+	if (is_array($branch)) {
+		foreach ($branch as $k => $v) {
+			printf('<h%2$d>%1$s</h%2$d>'."\n", $k, $depth+1);
+			dispHTML($v, $depth+1);
+		}
+	} else {
+		echo "<p>$branch</p>\n";
+	}
+}
+*/
+
+ob_start();
+foreach ($tree as $item) {
+	disp($item);
+	echo "<hr/>";
+}
+$TEXT_out = ob_get_contents();
+ob_end_clean();
+
+
+// ================
 
 // Format into HTML
 echo " Formatting to HTML\n";
@@ -74,8 +113,12 @@ $HTML = <<<HTML
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<style type="text/css">
-		#text-output { white-space:pre; font-family:monospace; }
-		#text-output em { font-family:serif; }
+		body { font: 18px/1.5 serif; color:#999; }
+		div { margin-left: 2em; }
+		#text-output { margin:0; }
+		#text-output b { display: inline-block; width: 10em; font-weight:normal; }
+		#text-output em { font-style: italic; color:#000; }
+
 		table { border-collapse:collapse; border-spacing:0; }
 		tr:nth-child(odd) { background-color:#eee; }
 		tr.separator { background-color:#000; font-size:2px; }
@@ -87,7 +130,7 @@ $HTML = <<<HTML
 
 
 <div id="text-output">
-{$TEXT}
+{$TEXT_out}
 </div>
 
 </body>
@@ -106,6 +149,8 @@ HTML;
 echo " Writing to file $htmlfile\n";
 @unlink($htmlfile);
 file_put_contents($htmlfile, $HTML);
+
+// ================
 
 // Stop timing
 $time_end = microtime(true);

@@ -176,45 +176,45 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		guts_N = mkNounWorst "musrana" [] [] "musraniet" "msaren" Fem ;
 		hair_N = mkNounWorst "xagħar" [] [] "xagħariet" "xgħur" Masc ;
 		hand_N = mkNounWorst "id" [] "idejn" "idejn" [] Fem ;
-		harbour_N = mkNoun "port" ;
-		hat_N = mkNoun "kappell" ;
+		harbour_N = mkNoun "port" "portijiet" ;
+		hat_N = mkNoun "kappell" "kpiepel" ;
 --		hate_V2
-		head_N = mkNoun "ras" ;
+		head_N = mkNoun "ras" "rjus" Fem ;
 --		hear_V2
-		heart_N = mkNoun "qalb" ;
+		heart_N = mkNoun "qalb" "qlub" Fem ;
 --		heavy_A
-		hill_N = mkNoun "għolja" ;
+		hill_N = mkNoun "għolja" "għoljiet" ;
 --		hit_V2
 --		hold_V2
 --		hope_VS
-		horn_N = mkNoun "ħorn" ;
-		horse_N = mkNoun "żiemel" ;
+		horn_N = mkNoun "ħorn" "ħornijiet" ;
+		horse_N = mkNoun "żiemel" "żwiemel" ;
 --		hot_A
-		house_N = mkNoun "dar" ;
+		house_N = mkNoun "dar" "djar" Fem ;
 --		hunt_V2
-		husband_N = mkNoun "raġel" ;
-		ice_N = mkNoun "silġ" ;
+		husband_N = mkNoun "raġel" "rġiel" ;
+		ice_N = mkNoun "silġ" "silġiet" ;
 --		important_A
 		industry_N = mkNoun "industrija" ;
-		iron_N = mkNoun "ħadid" ;
+		iron_N = mkNounWorst "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" Masc ;
 --		john_PN
 --		jump_V
 --		kill_V2
-		king_N = mkNoun "re" ;
-		knee_N = mkNoun "irkoppa" ;
+		king_N = mkNoun "re" "rejjiet" ;
+		knee_N = mkNounWorst "rkoppa" [] "rkopptejn" "rkoppiet" [] Fem ; -- TODO use mkNounDual
 --		know_V2
 --		know_VQ
 --		know_VS
-		lake_N = mkNoun "għadira" ;
+		lake_N = mkNoun "għadira" "għadajjar" ;
 		lamp_N = mkNoun "lampa" ;
 		language_N = mkNoun "lingwa" ; -- lsien?
 --		laugh_V
-		leaf_N = mkNoun "werqa" ;
+		leaf_N = mkNounWorst "werqa" "weraq" "werqtejn" "werqiet" [] Fem ;
 --		learn_V2
-		leather_N = mkNoun "ġilda" ;
+		leather_N = mkNounWorst "ġilda" "ġild" [] "ġildiet" "ġlud" Fem ; -- mkNounColl "ġild" ;
 --		leave_V2
 --		left_Ord
-		leg_N = mkNoun "riġel" ; -- sieq?
+		leg_N = mkNounWorst "riġel" [] "riġlejn" [] [] Masc ; -- sieq?
 --		lie_V
 --		like_V2
 --		listen_V2
