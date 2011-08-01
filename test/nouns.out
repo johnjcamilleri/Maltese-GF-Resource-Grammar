@@ -18,8 +18,8 @@ Bug reports: http://code.google.com/p/grammatical-framework/issues/list
 
 Languages:
 > 20 msec
-> 8 msec
-> 4 msec
+> 16 msec
+> 0 msec
 > 4 msec
 > 4 msec
 > + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Common.gfo
@@ -72,177 +72,11 @@ Languages:
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IdiomMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/GrammarMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IrregMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gf... checking module LexiconMlt
-   Warning: function bench_N is not in abstract
-   Warning: no linearization of add_V3
-   Warning: no linearization of alas_Interj
-   Warning: no linearization of already_Adv
-   Warning: no linearization of answer_V2S
-   Warning: no linearization of ashes_N
-   Warning: no linearization of ask_V2Q
-   Warning: no linearization of bad_A
-   Warning: no linearization of beautiful_A
-   Warning: no linearization of become_VA
-   Warning: no linearization of beg_V2V
-   Warning: no linearization of big_A
-   Warning: no linearization of bite_V2
-   Warning: no linearization of black_A
-   Warning: no linearization of blow_V
-   Warning: no linearization of blue_A
-   Warning: no linearization of break_V2
-   Warning: no linearization of breathe_V
-   Warning: no linearization of broad_A
-   Warning: no linearization of brown_A
-   Warning: no linearization of burn_V
-   Warning: no linearization of buy_V2
-   Warning: no linearization of child_N
-   Warning: no linearization of clean_A
-   Warning: no linearization of clever_A
-   Warning: no linearization of close_V2
-   Warning: no linearization of cold_A
-   Warning: no linearization of come_V
-   Warning: no linearization of correct_A
-   Warning: no linearization of count_V2
-   Warning: no linearization of cut_V2
-   Warning: no linearization of dig_V
-   Warning: no linearization of dirty_A
-   Warning: no linearization of do_V2
-   Warning: no linearization of drink_V2
-   Warning: no linearization of dry_A
-   Warning: no linearization of dull_A
-   Warning: no linearization of easy_A2V
-   Warning: no linearization of eat_V2
-   Warning: no linearization of empty_A
-   Warning: no linearization of fall_V
-   Warning: no linearization of far_Adv
-   Warning: no linearization of fear_V2
-   Warning: no linearization of fear_VS
-   Warning: no linearization of fight_V2
-   Warning: no linearization of find_V2
-   Warning: no linearization of float_V
-   Warning: no linearization of floor_N
-   Warning: no linearization of flow_V
-   Warning: no linearization of fly_V
-   Warning: no linearization of forget_V2
-   Warning: no linearization of freeze_V
-   Warning: no linearization of full_A
-   Warning: no linearization of fun_AV
-   Warning: no linearization of give_V3
-   Warning: no linearization of go_V
-   Warning: no linearization of good_A
-   Warning: no linearization of green_A
-   Warning: no linearization of hate_V2
-   Warning: no linearization of hear_V2
-   Warning: no linearization of heavy_A
-   Warning: no linearization of hit_V2
-   Warning: no linearization of hold_V2
-   Warning: no linearization of hope_VS
-   Warning: no linearization of hot_A
-   Warning: no linearization of hunt_V2
-   Warning: no linearization of important_A
-   Warning: no linearization of john_PN
-   Warning: no linearization of jump_V
-   Warning: no linearization of kill_V2
-   Warning: no linearization of know_V2
-   Warning: no linearization of know_VQ
-   Warning: no linearization of know_VS
-   Warning: no linearization of laugh_V
-   Warning: no linearization of learn_V2
-   Warning: no linearization of leave_V2
-   Warning: no linearization of left_Ord
-   Warning: no linearization of lie_V
-   Warning: no linearization of like_V2
-   Warning: no linearization of listen_V2
-   Warning: no linearization of live_V
-   Warning: no linearization of long_A
-   Warning: no linearization of lose_V2
-   Warning: no linearization of love_V2
-   Warning: no linearization of married_A2
-   Warning: no linearization of narrow_A
-   Warning: no linearization of near_A
-   Warning: no linearization of new_A
-   Warning: no linearization of now_Adv
-   Warning: no linearization of old_A
-   Warning: no linearization of open_V2
-   Warning: no linearization of paint_V2A
-   Warning: no linearization of paris_PN
-   Warning: no linearization of play_V
-   Warning: no linearization of play_V2
-   Warning: no linearization of probable_AS
-   Warning: no linearization of pull_V2
-   Warning: no linearization of push_V2
-   Warning: no linearization of put_V2
-   Warning: no linearization of rain_V0
-   Warning: no linearization of read_V2
-   Warning: no linearization of ready_A
-   Warning: no linearization of red_A
-   Warning: no linearization of right_Ord
-   Warning: no linearization of rotten_A
-   Warning: no linearization of round_A
-   Warning: no linearization of rub_V2
-   Warning: no linearization of run_V
-   Warning: no linearization of say_VS
-   Warning: no linearization of scratch_V2
-   Warning: no linearization of see_V2
-   Warning: no linearization of seek_V2
-   Warning: no linearization of sell_V3
-   Warning: no linearization of send_V3
-   Warning: no linearization of sew_V
-   Warning: no linearization of sharp_A
-   Warning: no linearization of short_A
-   Warning: no linearization of sing_V
-   Warning: no linearization of sit_V
-   Warning: no linearization of sleep_V
-   Warning: no linearization of small_A
-   Warning: no linearization of smell_V
-   Warning: no linearization of smooth_A
-   Warning: no linearization of speak_V2
-   Warning: no linearization of spit_V
-   Warning: no linearization of split_V2
-   Warning: no linearization of squeeze_V2
-   Warning: no linearization of stab_V2
-   Warning: no linearization of stand_V
-   Warning: no linearization of stop_V
-   Warning: no linearization of straight_A
-   Warning: no linearization of stupid_A
-   Warning: no linearization of suck_V2
-   Warning: no linearization of swell_V
-   Warning: no linearization of swim_V
-   Warning: no linearization of switch8off_V2
-   Warning: no linearization of switch8on_V2
-   Warning: no linearization of talk_V3
-   Warning: no linearization of teach_V2
-   Warning: no linearization of thick_A
-   Warning: no linearization of thin_A
-   Warning: no linearization of think_V
-   Warning: no linearization of throw_V2
-   Warning: no linearization of tie_V2
-   Warning: no linearization of today_Adv
-   Warning: no linearization of travel_V
-   Warning: no linearization of turn_V
-   Warning: no linearization of ugly_A
-   Warning: no linearization of uncertain_A
-   Warning: no linearization of understand_V2
-   Warning: no linearization of vomit_V
-   Warning: no linearization of wait_V2
-   Warning: no linearization of walk_V
-   Warning: no linearization of warm_A
-   Warning: no linearization of wash_V2
-   Warning: no linearization of watch_V2
-   Warning: no linearization of wet_A
-   Warning: no linearization of white_A
-   Warning: no linearization of wide_A
-   Warning: no linearization of win_V2
-   Warning: no linearization of wipe_V2
-   Warning: no linearization of wonder_VQ
-   Warning: no linearization of write_V2
-   Warning: no linearization of yellow_A
-   Warning: no linearization of young_A
-  wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
++ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gfo
++ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ExtraMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
-6796 msec
++ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
+316 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ajruplan
 s . Singular Singulative => Definite => Comitative => mal-ajruplan
 s . Singular Singulative => Definite => Dative => lill-ajruplan
@@ -650,7 +484,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+32 msec
 > s . Singular Singulative => Definite => Benefactive => għall-arti
 s . Singular Singulative => Definite => Comitative => mal-arti
 s . Singular Singulative => Definite => Dative => lill-arti
@@ -854,7 +688,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għad-dahar
 s . Singular Singulative => Definite => Comitative => mad-dahar
 s . Singular Singulative => Definite => Dative => lid-dahar
@@ -1058,7 +892,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-12 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-qoxra
 s . Singular Singulative => Definite => Comitative => mal-qoxra
 s . Singular Singulative => Definite => Dative => lill-qoxra
@@ -1160,7 +994,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-birra
 s . Singular Singulative => Definite => Comitative => mal-birra
 s . Singular Singulative => Definite => Dative => lill-birra
@@ -1262,7 +1096,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għaż-żaqq
 s . Singular Singulative => Definite => Comitative => maż-żaqq
 s . Singular Singulative => Definite => Dative => liż-żaqq
@@ -1976,7 +1810,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għaż-żarbun
 s . Singular Singulative => Definite => Comitative => maż-żarbun
 s . Singular Singulative => Definite => Dative => liż-żarbun
@@ -2078,7 +1912,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-imgħallem
 s . Singular Singulative => Definite => Comitative => mal-imgħallem
 s . Singular Singulative => Definite => Dative => lill-imgħallem
@@ -2180,7 +2014,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għat-tifel
 s . Singular Singulative => Definite => Comitative => mat-tifel
 s . Singular Singulative => Definite => Dative => lit-tifel
@@ -2384,7 +2218,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għas-sider
 s . Singular Singulative => Definite => Comitative => mas-sider
 s . Singular Singulative => Definite => Dative => lis-sider
@@ -2486,7 +2320,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħu
 s . Singular Singulative => Definite => Comitative => mal-ħu
 s . Singular Singulative => Definite => Dative => lill-ħu
@@ -2588,7 +2422,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => []
 s . Singular Singulative => Definite => Comitative => []
 s . Singular Singulative => Definite => Dative => []
@@ -2690,7 +2524,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-kamera
 s . Singular Singulative => Definite => Comitative => mal-kamera
 s . Singular Singulative => Definite => Dative => lill-kamera
@@ -2894,7 +2728,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-karozza
 s . Singular Singulative => Definite => Comitative => mal-karozza
 s . Singular Singulative => Definite => Dative => lill-karozza
@@ -3098,7 +2932,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-qattus
 s . Singular Singulative => Definite => Comitative => mal-qattus
 s . Singular Singulative => Definite => Dative => lill-qattus
@@ -3200,7 +3034,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għas-saqaf
 s . Singular Singulative => Definite => Comitative => mas-saqaf
 s . Singular Singulative => Definite => Dative => lis-saqaf
@@ -3302,7 +3136,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għas-siġġu
 s . Singular Singulative => Definite => Comitative => mas-siġġu
 s . Singular Singulative => Definite => Dative => lis-siġġu
@@ -3404,7 +3238,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ġobna
 s . Singular Singulative => Definite => Comitative => mal-ġobna
 s . Singular Singulative => Definite => Dative => lill-ġobna
@@ -3918,7 +3752,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-kompjuter
 s . Singular Singulative => Definite => Comitative => mal-kompjuter
 s . Singular Singulative => Definite => Dative => lill-kompjuter
@@ -4020,7 +3854,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-pajjiż
 s . Singular Singulative => Definite => Comitative => mal-pajjiż
 s . Singular Singulative => Definite => Dative => lill-pajjiż
@@ -4428,7 +4262,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għad-distanza
 s . Singular Singulative => Definite => Comitative => mad-distanza
 s . Singular Singulative => Definite => Dative => lid-distanza
@@ -4836,7 +4670,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għat-traba
 s . Singular Singulative => Definite => Comitative => mat-traba
 s . Singular Singulative => Definite => Dative => lit-traba
@@ -5040,7 +4874,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-art
 s . Singular Singulative => Definite => Comitative => mal-art
 s . Singular Singulative => Definite => Dative => lill-art
@@ -5142,7 +4976,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-12 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-bajda
 s . Singular Singulative => Definite => Comitative => mal-bajda
 s . Singular Singulative => Definite => Dative => lill-bajda
@@ -5346,7 +5180,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-għajn
 s . Singular Singulative => Definite => Comitative => mal-għajn
 s . Singular Singulative => Definite => Dative => lill-għajn
@@ -5550,7 +5384,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għax-xaħma
 s . Singular Singulative => Definite => Comitative => max-xaħma
 s . Singular Singulative => Definite => Dative => lix-xaħma
@@ -6060,7 +5894,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħuta
 s . Singular Singulative => Definite => Comitative => mal-ħuta
 s . Singular Singulative => Definite => Dative => lill-ħuta
@@ -6166,7 +6000,7 @@ g . Masc
 > atomic term floor_N
 given CommonX, CatMlt, ExtraMlt, CommonX, CatMlt, IrregMlt, CommonX, CatMlt, LexiconMlt, CommonX, CatMlt, IdiomMlt, CommonX, CatMlt, StructuralMlt, CommonX, TextX, CommonX, CatMlt, PhraseMlt, CommonX, CatMlt, ConjunctionMlt, CommonX, CatMlt, RelativeMlt, CommonX, CatMlt, QuestionMlt, CommonX, CatMlt, SentenceMlt, CommonX, CatMlt, NumeralMlt, CommonX, CatMlt, AdverbMlt, CommonX, CatMlt, AdjectiveMlt, CommonX, CatMlt, VerbMlt, CommonX, CatMlt, NounMlt, GrammarMlt, LangMlt, AllMlt
    constant not found: floor_N
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-fjura
 s . Singular Singulative => Definite => Comitative => mal-fjura
 s . Singular Singulative => Definite => Dative => lill-fjura
@@ -6268,7 +6102,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => []
 s . Singular Singulative => Definite => Comitative => []
 s . Singular Singulative => Definite => Dative => []
@@ -6370,7 +6204,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għas-sieq
 s . Singular Singulative => Definite => Comitative => mas-sieq
 s . Singular Singulative => Definite => Dative => lis-sieq
@@ -6574,7 +6408,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-friġġ
 s . Singular Singulative => Definite => Comitative => mal-friġġ
 s . Singular Singulative => Definite => Dative => lill-friġġ
@@ -6982,7 +6816,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għat-tifla
 s . Singular Singulative => Definite => Comitative => mat-tifla
 s . Singular Singulative => Definite => Dative => lit-tifla
@@ -7390,7 +7224,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħaxixa
 s . Singular Singulative => Definite => Comitative => mal-ħaxixa
 s . Singular Singulative => Definite => Dative => lill-ħaxixa
@@ -7492,7 +7326,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => bi ħxejjex
 s . Plural Indeterminate => Indefinite => Lative => sa ħxejjex
 s . Plural Indeterminate => Indefinite => Nominative => ħxejjex
 g . Masc
-8 msec
+0 msec
 > s . Singular Singulative => Definite => Benefactive => għall-musrana
 s . Singular Singulative => Definite => Comitative => mal-musrana
 s . Singular Singulative => Definite => Dative => lill-musrana
@@ -7594,7 +7428,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => bi msaren
 s . Plural Indeterminate => Indefinite => Lative => sa msaren
 s . Plural Indeterminate => Indefinite => Nominative => msaren
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għax-xagħar
 s . Singular Singulative => Definite => Comitative => max-xagħar
 s . Singular Singulative => Definite => Dative => lix-xagħar
@@ -7696,7 +7530,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => bi xgħur
 s . Plural Indeterminate => Indefinite => Lative => sa xgħur
 s . Plural Indeterminate => Indefinite => Nominative => xgħur
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-id
 s . Singular Singulative => Definite => Comitative => mal-id
 s . Singular Singulative => Definite => Dative => lill-id
@@ -8002,7 +7836,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-12 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-ras
 s . Singular Singulative => Definite => Comitative => mar-ras
 s . Singular Singulative => Definite => Dative => lir-ras
@@ -8104,7 +7938,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-qalb
 s . Singular Singulative => Definite => Comitative => mal-qalb
 s . Singular Singulative => Definite => Dative => lill-qalb
@@ -8206,7 +8040,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-28 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-għolja
 s . Singular Singulative => Definite => Comitative => mal-għolja
 s . Singular Singulative => Definite => Dative => lill-għolja
@@ -8410,7 +8244,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-12 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għaż-żiemel
 s . Singular Singulative => Definite => Comitative => maż-żiemel
 s . Singular Singulative => Definite => Dative => liż-żiemel
@@ -8512,7 +8346,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għad-dar
 s . Singular Singulative => Definite => Comitative => mad-dar
 s . Singular Singulative => Definite => Dative => lid-dar
@@ -8818,7 +8652,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-industrija
 s . Singular Singulative => Definite => Comitative => mal-industrija
 s . Singular Singulative => Definite => Dative => lill-industrija
@@ -8920,7 +8754,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħadida
 s . Singular Singulative => Definite => Comitative => mal-ħadida
 s . Singular Singulative => Definite => Dative => lill-ħadida
@@ -9124,7 +8958,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-irkoppa
 s . Singular Singulative => Definite => Comitative => mal-irkoppa
 s . Singular Singulative => Definite => Dative => lill-irkoppa
@@ -9328,7 +9162,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-lampa
 s . Singular Singulative => Definite => Comitative => mal-lampa
 s . Singular Singulative => Definite => Dative => lill-lampa
@@ -9430,7 +9264,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-lingwa
 s . Singular Singulative => Definite => Comitative => mal-lingwa
 s . Singular Singulative => Definite => Dative => lill-lingwa
@@ -9532,7 +9366,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-werqa
 s . Singular Singulative => Definite => Comitative => mal-werqa
 s . Singular Singulative => Definite => Dative => lill-werqa
@@ -9634,7 +9468,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-12 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ġilda
 s . Singular Singulative => Definite => Comitative => mal-ġilda
 s . Singular Singulative => Definite => Dative => lill-ġilda
@@ -9838,7 +9672,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-fwied
 s . Singular Singulative => Definite => Comitative => mal-fwied
 s . Singular Singulative => Definite => Dative => lill-fwied
@@ -10144,7 +9978,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-raġel
 s . Singular Singulative => Definite => Comitative => mar-raġel
 s . Singular Singulative => Definite => Dative => lir-raġel
@@ -10246,7 +10080,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-laħam
 s . Singular Singulative => Definite => Comitative => mal-laħam
 s . Singular Singulative => Definite => Dative => lill-laħam
@@ -10552,7 +10386,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+12 msec
 > s . Singular Singulative => Definite => Benefactive => għall-omm
 s . Singular Singulative => Definite => Comitative => mal-omm
 s . Singular Singulative => Definite => Dative => lill-omm
@@ -10756,7 +10590,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħalq
 s . Singular Singulative => Definite => Comitative => mal-ħalq
 s . Singular Singulative => Definite => Dative => lill-ħalq
@@ -10960,7 +10794,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-isem
 s . Singular Singulative => Definite => Comitative => mal-isem
 s . Singular Singulative => Definite => Dative => lill-isem
@@ -11368,7 +11202,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-imnieħer
 s . Singular Singulative => Definite => Comitative => mal-imnieħer
 s . Singular Singulative => Definite => Dative => lill-imnieħer
@@ -11470,7 +11304,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-12 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għan-numru
 s . Singular Singulative => Definite => Comitative => man-numru
 s . Singular Singulative => Definite => Dative => lin-numru
@@ -11674,7 +11508,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+12 msec
 > s . Singular Singulative => Definite => Benefactive => għall-karta
 s . Singular Singulative => Definite => Comitative => mal-karta
 s . Singular Singulative => Definite => Dative => lill-karta
@@ -11776,7 +11610,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-paċi
 s . Singular Singulative => Definite => Comitative => mal-paċi
 s . Singular Singulative => Definite => Dative => lill-paċi
@@ -11878,7 +11712,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-12 msec
+32 msec
 > s . Singular Singulative => Definite => Benefactive => għall-pinna
 s . Singular Singulative => Definite => Comitative => mal-pinna
 s . Singular Singulative => Definite => Dative => lill-pinna
@@ -11980,7 +11814,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => []
 s . Singular Singulative => Definite => Comitative => []
 s . Singular Singulative => Definite => Dative => []
@@ -12082,7 +11916,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-pjaneta
 s . Singular Singulative => Definite => Comitative => mal-pjaneta
 s . Singular Singulative => Definite => Dative => lill-pjaneta
@@ -12490,7 +12324,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-reġina
 s . Singular Singulative => Definite => Comitative => mar-reġina
 s . Singular Singulative => Definite => Dative => lir-reġina
@@ -12694,7 +12528,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-radju
 s . Singular Singulative => Definite => Comitative => mar-radju
 s . Singular Singulative => Definite => Dative => lir-radju
@@ -13000,7 +12834,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-reliġjon
 s . Singular Singulative => Definite => Comitative => mar-reliġjon
 s . Singular Singulative => Definite => Dative => lir-reliġjon
@@ -13102,7 +12936,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-restorant
 s . Singular Singulative => Definite => Comitative => mar-restorant
 s . Singular Singulative => Definite => Dative => lir-restorant
@@ -13204,7 +13038,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+12 msec
 > s . Singular Singulative => Definite => Benefactive => għax-xmara
 s . Singular Singulative => Definite => Comitative => max-xmara
 s . Singular Singulative => Definite => Dative => lix-xmara
@@ -14020,7 +13854,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-melħ
 s . Singular Singulative => Definite => Comitative => mal-melħ
 s . Singular Singulative => Definite => Dative => lill-melħ
@@ -14428,7 +14262,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-baħar
 s . Singular Singulative => Definite => Comitative => mal-baħar
 s . Singular Singulative => Definite => Dative => lill-baħar
@@ -14734,7 +14568,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-vapur
 s . Singular Singulative => Definite => Comitative => mal-vapur
 s . Singular Singulative => Definite => Dative => lill-vapur
@@ -14836,7 +14670,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-qmis
 s . Singular Singulative => Definite => Comitative => mal-qmis
 s . Singular Singulative => Definite => Dative => lill-qmis
@@ -14938,7 +14772,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għaż-żarbun
 s . Singular Singulative => Definite => Comitative => maż-żarbun
 s . Singular Singulative => Definite => Dative => liż-żarbun
@@ -15040,7 +14874,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ħanut
 s . Singular Singulative => Definite => Comitative => mal-ħanut
 s . Singular Singulative => Definite => Dative => lill-ħanut
@@ -15142,7 +14976,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-fidda
 s . Singular Singulative => Definite => Comitative => mal-fidda
 s . Singular Singulative => Definite => Dative => lill-fidda
@@ -15346,7 +15180,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ġilda
 s . Singular Singulative => Definite => Comitative => mal-ġilda
 s . Singular Singulative => Definite => Dative => lill-ġilda
@@ -15550,7 +15384,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għad-duħħan
 s . Singular Singulative => Definite => Comitative => mad-duħħan
 s . Singular Singulative => Definite => Dative => lid-duħħan
@@ -15652,7 +15486,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għas-serp
 s . Singular Singulative => Definite => Comitative => mas-serp
 s . Singular Singulative => Definite => Dative => lis-serp
@@ -15754,7 +15588,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => []
 s . Singular Singulative => Definite => Comitative => []
 s . Singular Singulative => Definite => Dative => []
@@ -15958,7 +15792,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-kanzunetta
 s . Singular Singulative => Definite => Comitative => mal-kanzunetta
 s . Singular Singulative => Definite => Dative => lill-kanzunetta
@@ -16366,7 +16200,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-12 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ġebla
 s . Singular Singulative => Definite => Comitative => mal-ġebla
 s . Singular Singulative => Definite => Dative => lill-ġebla
@@ -16672,7 +16506,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għax-xemx
 s . Singular Singulative => Definite => Comitative => max-xemx
 s . Singular Singulative => Definite => Dative => lix-xemx
@@ -16774,7 +16608,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-mejda
 s . Singular Singulative => Definite => Comitative => mal-mejda
 s . Singular Singulative => Definite => Dative => lill-mejda
@@ -16876,7 +16710,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għad-denb
 s . Singular Singulative => Definite => Comitative => mad-denb
 s . Singular Singulative => Definite => Dative => lid-denb
@@ -17080,7 +16914,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għat-televixin
 s . Singular Singulative => Definite => Comitative => mat-televixin
 s . Singular Singulative => Definite => Dative => lit-televixin
@@ -17284,7 +17118,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-24 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għas-sinna
 s . Singular Singulative => Definite => Comitative => mas-sinna
 s . Singular Singulative => Definite => Dative => lis-sinna
@@ -17692,7 +17526,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-raħal
 s . Singular Singulative => Definite => Comitative => mar-raħal
 s . Singular Singulative => Definite => Dative => lir-raħal
@@ -17794,7 +17628,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-gwerra
 s . Singular Singulative => Definite => Comitative => mal-gwerra
 s . Singular Singulative => Definite => Dative => lill-gwerra
@@ -17896,7 +17730,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+0 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ilma
 s . Singular Singulative => Definite => Comitative => mal-ilma
 s . Singular Singulative => Definite => Dative => lill-ilma
@@ -18100,7 +17934,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għar-riħ
 s . Singular Singulative => Definite => Comitative => mar-riħ
 s . Singular Singulative => Definite => Dative => lir-riħ
@@ -18304,7 +18138,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => []
 s . Singular Singulative => Definite => Comitative => []
 s . Singular Singulative => Definite => Dative => []
@@ -18406,7 +18240,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => bi nbejjed
 s . Plural Indeterminate => Indefinite => Lative => sa nbejjed
 s . Plural Indeterminate => Indefinite => Nominative => nbejjed
 g . Masc
-4 msec
+8 msec
 > s . Singular Singulative => Definite => Benefactive => għall-ġewnaħ
 s . Singular Singulative => Definite => Comitative => mal-ġewnaħ
 s . Singular Singulative => Definite => Dative => lill-ġewnaħ
@@ -18508,7 +18342,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Masc
-12 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-mara
 s . Singular Singulative => Definite => Comitative => mal-mara
 s . Singular Singulative => Definite => Dative => lill-mara
@@ -18610,7 +18444,7 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-8 msec
+4 msec
 > s . Singular Singulative => Definite => Benefactive => għall-injam
 s . Singular Singulative => Definite => Comitative => mal-injam
 s . Singular Singulative => Definite => Dative => lill-injam
@@ -18916,5 +18750,5 @@ s . Plural Indeterminate => Indefinite => Instrumental => []
 s . Plural Indeterminate => Indefinite => Lative => []
 s . Plural Indeterminate => Indefinite => Nominative => []
 g . Fem
-4 msec
+8 msec
 > See you.

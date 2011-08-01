@@ -4,7 +4,8 @@
 -- John J. Camilleri, 2011
 -- Licensed under LGPL
 
-concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude, ParamX in {
+--concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude, ParamX in {
+concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 	flags optimize=all_subs ;
 
@@ -28,6 +29,20 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude, ParamX in {
 --		Tense = {s : Str ; t : ResMlt.Tense} ;
 --		Conj = {s : Str ; n : Number} ;
 
+
+		-- Cardinal or ordinal in WORDS (not digits)
+		Numeral = {
+			s : DForm => Str ;
+			s2 : Str ;
+			n : Num_Number
+		} ;
+
+		-- Cardinal or ordinal in DIGITS (not words)
+		Digits = {
+			s : Str ;
+			n : Num_Number ;
+			tail : DTail
+		};
 
 {-
 -- These below are just examples, I believe they came form Italian.

@@ -16,7 +16,6 @@ resource ParadigmsMlt = open
 
 	flags optimize=noexpand ; coding=utf8 ;
 
-
 	oper
 
 		{- ===== Noun Paradigms ===== -}

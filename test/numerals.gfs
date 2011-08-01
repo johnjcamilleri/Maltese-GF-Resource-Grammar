@@ -1,0 +1,11 @@
+-- Treeebank numerals test
+-- Run using the following command:
+-- ./_gf < test/numerals.gfs > test/numerals.out
+
+se utf8
+i -retain AllMlt.gf
+-- cc -table -unqual airplane_N
+mkNP (mkNumeral n1_Unit) (man_N) -- one man
+mkNP (mkNumeral n2_Unit) (man_N) -- two men
+mkNP (mkNumeral "35") (man_N) -- thirty-five men
+mkNP (mkNumeral (mkSub100 n2_Unit n1_Unit)) (man_N) -- twenty-one men

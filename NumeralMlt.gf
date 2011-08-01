@@ -4,20 +4,20 @@
 -- John J. Camilleri, 2011
 -- Licensed under LGPL
 
-concrete NumeralMlt of Numeral = CatMlt ** open Predef, Prelude, ResMlt, MorphoMlt in {
+concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 
--- Digit
--- Numeral
+	flags coding=utf8 ;
+
+-- Numeral, Digit
+-- Dig, Digits
 
 {-
-	-- This code taken from examples/numerals/maltese.sty in GF darcs repository.
+	-- This code taken from examples/numerals/maltese.sty in GF darcs repository, July 2011.
 	-- Original author unknown
 
-	-- ===== ABSTRACT =====
-	-- numerals from 1 to 999999 in decimal notation
+	-- ABSTRACT definitions copied from lib/src/abstract/Numeral.gf
 
-	flags startcat=Numeral ;
-
+	-- Numerals from 1 to 999999 in decimal notation
 	cat
 		Numeral ;     -- 0..
 		Digit ;       -- 2..9
@@ -26,7 +26,7 @@ concrete NumeralMlt of Numeral = CatMlt ** open Predef, Prelude, ResMlt, MorphoM
 		Sub1000 ;     -- 1..999
 		Sub1000000 ;  -- 1..999999
 
-	fun
+	data
 		num : Sub1000000 -> Numeral ;
 
 		n2, n3, n4, n5, n6, n7, n8, n9 : Digit ;
@@ -45,65 +45,191 @@ concrete NumeralMlt of Numeral = CatMlt ** open Predef, Prelude, ResMlt, MorphoM
 		pot2as3 : Sub1000 -> Sub1000000 ;             -- coercion of 1..999
 		pot3 : Sub1000 -> Sub1000000 ;                -- m * 1000
 		pot3plus : Sub1000 -> Sub1000 -> Sub1000000 ; -- m * 1000 + n
+-}
+	oper
+{-
+		-- These 2 types used in lincat below
+		LinDigit = {
+			s : DForm => Str ;
+			s2 : Str ;
+			n : Num_Number
+		} ;
+-}
+		Form = {
+			s : Str ;		--
+			s2 : Str ;		--
+			n : Num_Number		-- Number
+		} ;
 
-	-- ===== CONCRETE =====
-	param DForm = unit | teen | teenil | ten | hund ;
-	param Size = sg | pl | dual ;
 
-	oper LinDigit = {s: DForm => Str ; s2 : Str ; size : Size } ;
-	oper Form = {s : Str ; s2 : Str ; size : Size } ;
-
-	lincat Numeral = {s : Str} ;
-	lincat Digit = LinDigit ;
-	lincat Sub10 = LinDigit ;
-	lincat Sub100 = Form ;
-	lincat Sub1000 = Form ;
-	lincat Sub1000000 = {s : Str} ;
+	-- HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
+	lincat
+		Digit = Numeral ;
+		Sub10 = Numeral ;
+		Sub100 = Form ;
+		Sub1000 = Form ;
+		Sub1000000 = Form ;
 
 	lin num x = x ; -- TODO
 
-	oper mkN : Str -> Str -> Str -> Str -> Str -> LinDigit = \u -> \tn -> \t -> \h -> \e ->
-	  {s = table {unit => u ; teen => tn + "ax" ; teenil => tn + "ax" + "il" ;
-				  ten => t ; hund => h ++ "mija"} ; s2 = e ; size = pl };
+	oper
+		mkNum : Str -> Str -> Str -> Str -> Str -> Numeral = \unit,teen,ten,hundred,thousand -> lin Numeral {
+			s = table {
+				Unit => unit ;
+				Teen => teen ;
+				TeenIl => teen + "-il" ;
+				Ten => ten ;
+				Hund => hundred ++ "mija"
+			} ;
+			s2 = thousand ;
+			n = NumPl
+		} ;
 
-	lin n2 =
-	  {s = table {unit => "tnejn" ;
-				  teen => "tnax" ; teenil => "tnax-il" ;
-				  ten  => "gh-oxrin" ;
-				  hund => "mitejn"} ; s2 = "tnejn" ; size = dual} ;
-	lin n3 = mkN "tlieta" "tlett" "tletin" "tliet" "tlitt";
-	lin n4 = mkN "erbgh-a" "erbat" "erbgh-in" "erba'" "erbat";
-	lin n5 = mkN "h-amsa" "h-mist" "h-amsin" "h-ames" "h-amest" ;
-	lin n6 = mkN "sitta" "sitt" "sitt" "sitt" "sitt";
-	lin n7 = mkN "sebgh-a" "sbat" "sbebgh-in" "seba'" "sebat" ;
-	lin n8 = mkN "tmienja" "tmint" "tmenin" "tmien" "tmint" ;
-	lin n9 = mkN "disgh-a" "dsat" "disgh-in" "disa'" "disat";
+	lin
+		n2 = lin Numeral {
+			s = table {
+				Unit => "tnejn" ;
+				Teen => "tnax" ;
+				TeenIl => "tnax-il" ;
+				Ten  => "għoxrin" ;
+				Hund => "mitejn"
+			} ;
+			s2 = "tnejn" ;
+			n = NumDual
+		} ;
+		n3 = mkNum "tlieta" "tlettax" "tletin" "tliet" "tlitt" ;
+		n4 = mkNum "erbgħa" "erbatax" "erbgħin" "erba'" "erbat" ;
+		n5 = mkNum "ħamsa" "ħmistax" "ħamsin" "ħames" "ħamest" ;
+		n6 = mkNum "sitta" "sittax" "sitt" "sitt" "sitt" ;
+		n7 = mkNum "sebgħa" "sbatax" "sbebgħin" "seba'" "sebat" ;
+		n8 = mkNum "tmienja" "tmintax" "tmenin" "tmien" "tmint" ;
+		n9 = mkNum "disgħa" "dsatax" "disgħin" "disa'" "disat" ;
 
-	oper ss : Str -> Form = \s1 -> {s = s1 ; s2 = s1 ; size = pl };
-	oper ss2 : Str -> Str -> Form = \a -> \b -> {s = a ; s2 = b ; size = pl };
+	oper
+		-- Helper functions for creating s/s2/n tables
+		ss : Str -> Form = \a -> {
+			s = a ;
+			s2 = a ;
+			n = NumPl
+		} ;
+		ss2 : Str -> Str -> Form = \a,b -> {
+			s = a ;
+			s2 = b ;
+			n = NumPl
+		} ;
 
-	lin pot01  =
-	  {s = table {unit => "wieh-ed" ; teen => "h-dax" ; _ => "mija" } ;
-	   s2 = "wieh-ed" ;
-	   size = sg};
-	lin pot0 d = d;
-	lin pot110 = ss "gh-axra" ;
-	lin pot111 = ss2 "h-dax" "h-dax-il";
-	lin pot1to19 d = ss2 (d.s ! teen) (d.s ! teenil);
-	lin pot0as1 n = {s = n.s ! unit ; s2 = n.s2 ; size = n.size} ;
-	lin pot1 d = ss (d.s ! ten) ;
-	lin pot1plus d e = ss ((e.s ! unit) ++ "u" ++ (d.s ! ten)) ;
-	lin pot1as2 n = n ;
-	lin pot2 d = ss (d.s ! hund) ;
-	lin pot2plus d e = ss2 ((d.s ! hund) ++ "u" ++ e.s)
-						   ((d.s ! hund) ++ "u" ++ e.s2) ;
-	lin pot2as3 n = {s = n.s } ;
-	lin pot3 n = { s = (elf n.s2) ! n.size } ;
-	lin pot3plus n m = { s = (elf n.s2) ! n.size ++ m.s} ;
+	lin
+		pot01 = lin Numeral {
+			s = table {
+				Unit => "wieħed" ;
+				Teen => "ħdax" ;
+				_ => "mija"
+			} ;
+			s2 = "wieħed" ;
+			n = NumSg
+		} ;
+		pot0 d = d;
+		pot110 = NumeralMlt.ss "għaxra" ;
+		pot111 = NumeralMlt.ss2 "ħdax" "ħdax-il";
+		pot1to19 d = NumeralMlt.ss2 (d.s ! Teen) (d.s ! TeenIl);
+		pot0as1 n = {
+			s = n.s ! Unit ;
+			s2 = n.s2 ;
+			n = n.n
+		} ;
+		pot1 d = NumeralMlt.ss (d.s ! Ten) ;
+		pot1plus d e = NumeralMlt.ss ((e.s ! Unit) ++ "u" ++ (d.s ! Ten)) ;
+		pot1as2 n = n ;
+		pot2 d = NumeralMlt.ss (d.s ! Hund) ;
+		pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund) ++ "u" ++ e.s) ((d.s ! Hund) ++ "u" ++ e.s2) ;
+		pot2as3 n = {
+			s = n.s ;
+			s2 = n.s2 ; -- these are prob wrong
+			n = NumPl ; -- these are prob wrong
+		} ;
+		pot3 n = {
+			s = (elf n.s2) ! n.n ;
+			s2 = n.s2 ; -- these are prob wrong
+			n = NumPl ; -- these are prob wrong
+		} ;
+		pot3plus n m = {
+			s = (elf n.s2) ! n.n ++ m.s ;
+			s2 = n.s2 ; -- these are prob wrong
+			n = NumPl ; -- these are prob wrong
+		} ;
 
-	oper elf : Str -> Size => Str = \attr ->
-	  table {pl => attr ++ "elef" ; dual => "elfejn" ; sg => "elf"} ;
+	oper
+		elf : Str -> Num_Number => Str = \attr -> table {
+			NumSg => "elf" ;
+			NumDual => "elfejn" ;
+			NumPl => attr ++ "elef"
+		} ;
 
+{-
+	Numerals as sequences of digits have a separate, simpler grammar
+	================================================================
+
+	cat
+		Dig ;  -- single digit 0..9
+
+	data
+		IDig  : Dig -> Digits ;       -- 8
+		IIDig : Dig -> Digits -> Digits ; -- 876
+
+		D_0, D_1, D_2, D_3, D_4, D_5, D_6, D_7, D_8, D_9 : Dig ;
 -}
+
+	lincat
+
+
+		Dig = {
+			s : Str ;
+			n : Num_Number
+		} ;
+
+	oper
+		-- Helper for making a Dig object. Specifying no number inplies plural.
+		mkDig : Dig = overload {
+			mkDig : Str -> Dig = \digit -> lin Dig {
+				s = digit ;
+				n = NumPl
+			} ;
+			mkDig : Str -> Num_Number -> Dig = \digit,num -> lin Dig {
+				s = digit ;
+				n = num
+			} ;
+		} ;
+
+		-- For correct comma placement in Digits
+		commaIf : DTail -> Str = \t -> case t of {
+			T3 => "," ;
+			_ => []
+		} ;
+		inc : DTail -> DTail = \t -> case t of {
+			T1 => T2 ;
+			T2 => T3 ;
+			T3 => T1
+		} ;
+
+	lin
+		D_0 = mkDig "0" ;
+		D_1 = mkDig "1" NumSg ;
+		D_2 = mkDig "2" NumDual ;
+		D_3 = mkDig "3" ;
+		D_4 = mkDig "4" ;
+		D_5 = mkDig "5" ;
+		D_6 = mkDig "6" ;
+		D_7 = mkDig "7" ;
+		D_8 = mkDig "8" ;
+		D_9 = mkDig "9" ;
+
+		-- Create Digits from a Dig
+		IDig d = d ** {tail = T1} ;
+
+		-- Create Digits from combining Dig with Digits
+		IIDig d i = {
+			s = d.s ++ commaIf i.tail ++ i.s ;
+			n = NumPl
+		} ;
 
 }

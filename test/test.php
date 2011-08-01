@@ -5,17 +5,26 @@
 $time_start = microtime(true);
 
 // Just some variables
-$outfile = 'test/nouns.out';
-$command = './_gf < test/nouns.gfs > '.$outfile;
-$htmlfile = 'test/nouns.out.html';
+if (!($type = @$GLOBALS['argv'][1]))
+	die (" Usage: ".basename($GLOBALS['argv'][0])." type [--cached]\n");
+
+$infile   = "test/{$type}.gfs";
+$outfile  = "test/{$type}.out";
+$htmlfile = "test/{$type}.out.html";
+$command  = "./_gf < {$infile} > {$outfile}";
+
 $TEXT = '';
 
 // ================
 
 // Execute GF stuff and capture output
-if (@$GLOBALS['argv'][1] == '--cached') {
+if (@$GLOBALS['argv'][2] == '--cached') {
 	echo " Reading directly from {$outfile}\n";
 } else {
+	// Check infile exists
+	if (!file_exists($infile))
+		die (" Failed to read {$infile}.\n");
+
 	echo " Running GF\n";
 	chdir( dirname(__FILE__) . '/../' );
 	exec($command, $out, $return_status);
@@ -24,7 +33,7 @@ if (@$GLOBALS['argv'][1] == '--cached') {
 }
 $output = file($outfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 if ($output === false)
-		die (" Failed reading {$outfile}.\n");
+	die (" Failed to read {$outfile}.\n");
 
 // ================
 

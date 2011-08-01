@@ -24,6 +24,22 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 	param
 
+		-- Used in the NumeralMlt module
+		DTail = T1 | T2 | T3 ; -- This is arlready defined in ParamX...
+		Num_Number =
+			  NumSg
+			| NumDual
+			| NumPl
+		;
+		DForm =
+			  Unit		-- 0..10
+			| Teen		-- 11-19
+			| TeenIl	-- 11-19
+			| Ten		-- 20-99
+			| Hund		-- 100+
+		;
+
+
 {-
 	Note: NNQ = Non-numerically quantifiable
 
