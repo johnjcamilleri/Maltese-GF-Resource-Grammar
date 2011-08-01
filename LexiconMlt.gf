@@ -71,7 +71,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		bird_N = mkNoun "għasfur" "għasafar" ; -- what about GĦASFURA?
 --		bite_V2
 --		black_A
-		blood_N = mkNounWorst [] "demm" [] "dmija" [] Masc ;
+		blood_N = mkNoun [] "demm" [] "dmija" [] ;
 --		blow_V
 --		blue_A
 		boat_N = mkNoun "dgħajsa" "dgħajjes" ;
@@ -88,7 +88,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		brother_N2 = mkNoun "ħu" "aħwa" ;
 --		brown_A
 --		burn_V
-		butter_N = mkNounWorst [] "butir" [] "butirijiet" [] Masc ;
+		butter_N = mkNoun [] "butir" [] "butirijiet" [] ;
 --		buy_V2
 		camera_N = mkNoun "kamera" "kameras" ;
 		cap_N = mkNoun "beritta" ;
@@ -113,7 +113,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		count_V2
 		country_N = mkNoun "pajjiż" ;
 		cousin_N = mkNoun "kuġin" ;
-		cow_N = mkNounWorst "baqra" "baqar" "baqartejn" [] [] Fem ;
+		cow_N = mkNoun "baqra" "baqar" "baqartejn" [] [] ;
 --		cut_V2
 		day_N = mkNoun "ġurnata" "ġranet" ;
 --		dig_V
@@ -145,7 +145,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		feather_N = mkNounColl "rix" ;
 --		fight_V2
 --		find_V2
-		fingernail_N = mkNounWorst "difer" [] "difrejn" "dwiefer" [] Masc ;
+		fingernail_N = mkNoun "difer" [] "difrejn" "dwiefer" [] ;
 		fire_N = mkNoun "nar" "nirien" ;
 		fish_N = mkNounColl "ħut" ;
 --		float_V
@@ -153,7 +153,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		flow_V
 		flower_N = mkNoun "fjura" ;
 --		fly_V
-		fog_N = mkNounWorst [] "ċpar" [] [] [] Masc ;
+		fog_N = mkNoun [] "ċpar" [] [] [] ;
 		foot_N = mkNounWorst "sieq" [] "saqajn" "saqajn" [] Fem ;
 		forest_N = mkNoun "foresta" ; -- also MASĠAR
 --		forget_V2
@@ -168,13 +168,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		give_V3
 		glove_N = mkNoun "ingwanta" ;
 --		go_V
-		gold_N = mkNounWorst [] "deheb" [] "dehbijiet" [] Masc ;
+		gold_N = mkNoun [] "deheb" [] "dehbijiet" [] ;
 --		good_A
 		grammar_N = mkNoun "grammatika" ;
 		grass_N = mkNounWorst "ħaxixa" "ħaxix" [] [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
 --		green_A
-		guts_N = mkNounWorst "musrana" [] [] "musraniet" "msaren" Fem ;
-		hair_N = mkNounWorst "xagħar" [] [] "xagħariet" "xgħur" Masc ;
+		guts_N = mkNoun "musrana" [] [] "musraniet" "msaren" ;
+		hair_N = mkNoun "xagħar" [] [] "xagħariet" "xgħur" ;
 		hand_N = mkNounWorst "id" [] "idejn" "idejn" [] Fem ;
 		harbour_N = mkNoun "port" "portijiet" ;
 		hat_N = mkNoun "kappell" "kpiepel" ;
@@ -201,7 +201,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		jump_V
 --		kill_V2
 		king_N = mkNoun "re" "rejjiet" ;
-		knee_N = mkNounWorst "rkoppa" [] "rkopptejn" "rkoppiet" [] Fem ; -- TODO use mkNounDual
+		knee_N = mkNoun "rkoppa" [] "rkopptejn" "rkoppiet" [] ; -- TODO use mkNounDual
 --		know_V2
 --		know_VQ
 --		know_VS
@@ -209,117 +209,117 @@ concrete LexiconMlt of Lexicon = CatMlt **
 		lamp_N = mkNoun "lampa" ;
 		language_N = mkNoun "lingwa" ; -- lsien?
 --		laugh_V
-		leaf_N = mkNounWorst "werqa" "weraq" "werqtejn" "werqiet" [] Fem ;
+		leaf_N = mkNoun "werqa" "weraq" "werqtejn" "werqiet" [] ;
 --		learn_V2
-		leather_N = mkNounWorst "ġilda" "ġild" [] "ġildiet" "ġlud" Fem ; -- mkNounColl "ġild" ;
+		leather_N = mkNoun "ġilda" "ġild" [] "ġildiet" "ġlud" ; -- mkNounColl "ġild" ;
 --		leave_V2
 --		left_Ord
-		leg_N = mkNounWorst "riġel" [] "riġlejn" [] [] Masc ; -- sieq?
+		leg_N = mkNoun "riġel" [] "riġlejn" [] [] ; -- sieq?
 --		lie_V
 --		like_V2
 --		listen_V2
 --		live_V
-		liver_N = mkNoun "fwied" ;
+		liver_N = mkNoun "fwied" [] [] [] "ifdwa" ;
 --		long_A
 --		lose_V2
-		louse_N = mkNoun "qamla" ;
-		love_N = mkNoun "imħabba" ;
+		louse_N = mkNoun "qamla" "qamliet" ;
+		love_N = mkNoun "mħabba" "mħabbiet" ; -- hmmm
 --		love_V2
-		man_N = mkNoun "raġel" ;
+		man_N = mkNoun "raġel" "rġiel" ;
 --		married_A2
-		meat_N = mkNoun "laħam" ;
-		milk_N = mkNoun "ħalib" ;
-		moon_N = mkNoun "qamar" ;
-		mother_N2 = mkNoun "omm" ;
+		meat_N = mkNoun "laħam" [] [] "laħmiet" "laħmijiet" ;
+		milk_N = mkNoun [] "ħalib" [] "ħalibijiet" "ħlejjeb" ;
+		moon_N = mkNoun "qamar" "oqmra" ; -- qmura?
+		mother_N2 = mkNoun "omm" "ommijiet" Fem ;
 		mountain_N = mkNoun "muntanja" ;
-		mouth_N = mkNoun "ħalq" ;
-		music_N = mkNoun "musika" ;
-		name_N = mkNoun "isem" ;
+		mouth_N = mkNoun "ħalq" "ħluq" ;
+		music_N = mkNoun "musika" ; -- plural?
+		name_N = mkNoun "isem" "ismijiet" ;
 --		narrow_A
 --		near_A
-		neck_N = mkNoun "għonq" ;
+		neck_N = mkNoun "għonq" "għenuq" ;
 --		new_A
 		newspaper_N = mkNoun "gazzetta" ;
-		night_N = mkNoun "lejl" ;
-		nose_N = mkNoun "imnieħer" ;
+		night_N = mkNoun "lejl" "ljieli" ;
+		nose_N = mkNoun "mnieħer" "mniħrijiet" ;
 --		now_Adv
 		number_N = mkNoun "numru" ;
-		oil_N = mkNoun "żejt" ;
+		oil_N = mkNoun "żejt" "żjut" ;
 --		old_A
 --		open_V2
 --		paint_V2A
 		paper_N = mkNoun "karta" ;
 --		paris_PN
-		peace_N = mkNoun "paċi" ;
-		pen_N = mkNoun "pinna" ;
-		person_N = mkNoun "persuna" ;
+		peace_N = mkNoun "paċi" "paċijiet" Fem ;
+		pen_N = mkNoun "pinna" "pinen" ;
+		person_N = mkNounWorst [] "persuna" [] "persuni" [] Masc ;
 		planet_N = mkNoun "pjaneta" ;
-		plastic_N = mkNoun "plastik" ;
+		plastic_N = mkNounNoPlural "plastik" ;
 --		play_V
 --		play_V2
-		policeman_N = mkNoun "pulizija" ;
-		priest_N = mkNoun "qassis" ;
+		policeman_N = mkNounNoPlural "pulizija" ;
+		priest_N = mkNoun "qassis" "qassisin" ;
 --		probable_AS
 --		pull_V2
 --		push_V2
 --		put_V2
-		queen_N = mkNoun "reġina" ;
-		question_N = mkNoun "mistoqsija" ; -- domanda?
-		radio_N = mkNoun "radju" ;
-		rain_N = mkNoun "xita" ;
+		queen_N = mkNoun "reġina" "rġejjen" ;
+		question_N = mkNoun "mistoqsija" "mistoqsijiet" ; -- domanda?
+		radio_N = mkNoun "radju" "radjijiet" ;
+		rain_N = mkNounNoPlural "xita" ;
 --		rain_V0
 --		read_V2
 --		ready_A
-		reason_N = mkNoun "raġuni" ;
+		reason_N = mkNoun "raġun" "raġunijiet" ;
 --		red_A
-		religion_N = mkNoun "reliġjon" ;
-		restaurant_N = mkNoun "ristorant" ;
+		religion_N = mkNoun "reliġjon" "reliġjonijiet" ;
+		restaurant_N = mkNoun "restorant" ;
 --		right_Ord
-		river_N = mkNoun "xmara" ;
-		road_N = mkNoun "triq" ;
-		rock_N = mkNoun "ġebla" ;
-		roof_N = mkNoun "saqaf" ;
-		root_N = mkNoun "qħerq" ;
-		rope_N = mkNoun "ħabel" ;
+		river_N = mkNoun "xmara" "xmajjar" ;
+		road_N = mkNounWorst "triq" [] [] "triqat" "toroq" Fem ;
+		rock_N = mkNoun "blata" "blat" [] "blatiet" "blajjiet" ; -- in dictionary BLAT and BLATA are separate!
+		roof_N = mkNoun "saqaf" "soqfa" ;
+		root_N = mkNoun "qħerq" "qħeruq" ;
+		rope_N = mkNoun "ħabel" "ħbula" ;
 --		rotten_A
 --		round_A
 --		rub_V2
-		rubber_N = mkNoun "gomma" ;
+		rubber_N = mkNoun "gomma" "gomom" ;
 		rule_N = mkNoun "regola" ;
 --		run_V
-		salt_N = mkNoun "melħ" ;
-		sand_N = mkNoun "ramel" ;
+		salt_N = mkNoun "melħ" "melħiet" ;
+		sand_N = mkNoun "ramla" "ramel" [] "ramliet" "rmiel" ;
 --		say_VS
-		school_N = mkNoun "skola" ;
-		science_N = mkNoun "sxjenza" ;
+		school_N = mkNoun "skola" "skejjel" ;
+		science_N = mkNoun "xjenza" ;
 --		scratch_V2
-		sea_N = mkNoun "baħar" ;
+		sea_N = mkNoun "baħar" [] "baħrejn" "ibħra" [] ;
 --		see_V2
-		seed_N = mkNoun "żerriegħa" ;
+		seed_N = mkNoun "żerriegħa" "żerrigħat" ;
 --		seek_V2
 --		sell_V3
 --		send_V3
 --		sew_V
 --		sharp_A
-		sheep_N = mkNoun "nagħaġ" ;
+		sheep_N = mkNoun "nagħġa" "nagħaġ" [] "nagħġiet" [] ;
 		ship_N = mkNoun "vapur" ;
-		shirt_N = mkNoun "qmis" ;
-		shoe_N = mkNoun "żarbuna" ;
-		shop_N = mkNoun "ħanut" ;
+		shirt_N = mkNoun "qmis" "qomos" Fem ;
+		shoe_N = mkNoun "żarbun" "żraben" ;
+		shop_N = mkNoun "ħanut" "ħwienet" ;
 --		short_A
-		silver_N = mkNoun "fidda" ;
+		silver_N = mkNoun "fidda" "fided" ;
 --		sing_V
-		sister_N = mkNoun "oħt" ;
+		sister_N = mkNoun "oħt" "aħwa" Fem ;
 --		sit_V
-		skin_N = mkNoun "ġilda" ;
-		sky_N = mkNoun "sema" ;
+		skin_N = mkNoun "ġilda" "ġildiet" ;
+		sky_N = mkNoun "sema" "smewwiet" Masc ;
 --		sleep_V
 --		small_A
 --		smell_V
-		smoke_N = mkNoun "duħħan" ;
+		smoke_N = mkNoun "duħħan" "dħaħen" ;
 --		smooth_A
-		snake_N = mkNoun "serp" ;
-		snow_N = mkNoun "borra" ;
+		snake_N = mkNoun "serp" "sriep" ;
+		snow_N = mkNoun [] "borra" [] [] [] ;
 		sock_N = mkNoun "kalzetta" ;
 		song_N = mkNoun "kanzunetta" ;
 --		speak_V2
@@ -328,68 +328,68 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --		squeeze_V2
 --		stab_V2
 --		stand_V
-		star_N = mkNoun "stilla" ;
-		steel_N = mkNoun "azzar" ;
+		star_N = mkNoun "stilla" "stilel" ;
+		steel_N = mkNounNoPlural "azzar" ;
 		stick_N = mkNoun "lasta" ;
-		stone_N = mkNoun "ġebla" ;
+		stone_N = mkNoun "ġebla" "ġebel" [] "ġebliet" "ġbiel" ;
 --		stop_V
-		stove_N = mkNoun "fuklar" ;
+		stove_N = mkNoun "kuker" "kukers" ; -- fuklar?
 --		straight_A
 		student_N = mkNoun "student" ;
 --		stupid_A
 --		suck_V2
-		sun_N = mkNoun "xemx" ;
+		sun_N = mkNoun "xemx" "xmux" Fem ;
 --		swell_V
 --		swim_V
 --		switch8off_V2
 --		switch8on_V2
-		table_N = mkNoun "mejda" ;
-		tail_N = mkNoun "denb" ;
+		table_N = mkNoun "mejda" "mwejjed" ;
+		tail_N = mkNoun "denb" "dnieb" ;
 --		talk_V3
 --		teach_V2
-		teacher_N = mkNoun "għalliem" ; -- għalliema ?
-		television_N = mkNoun "televixin" ;
+		teacher_N = mkNoun "għalliem" "għalliema" ; -- għalliema ?
+		television_N = mkNoun "televixin" "televixins" ;
 --		thick_A
 --		thin_A
 --		think_V
 --		throw_V2
 --		tie_V2
 --		today_Adv
-		tongue_N = mkNoun "lsien" ;
-		tooth_N = mkNoun "sinna" ; -- darsa?
+		tongue_N = mkNoun "lsien" "ilsna" ;
+		tooth_N = mkNoun "sinna" [] [] "sinniet" "snien" ; -- darsa?
 		train_N = mkNoun "ferrovija" ;
 --		travel_V
-		tree_N = mkNoun "siġra" ;
+		tree_N = mkNoun "siġra" "siġar" [] "siġriet" [] ;
 --		turn_V
 --		ugly_A
 --		uncertain_A
 --		understand_V2
-		university_N = mkNoun "università" ;
-		village_N = mkNoun "raħal" ; -- villaġġ ?
+		university_N = mkNoun "università" "universitàjiet" ;
+		village_N = mkNoun "raħal" "rħula" ; -- villaġġ ?
 --		vomit_V
 --		wait_V2
 --		walk_V
-		war_N = mkNoun "gwerra" ;
+		war_N = mkNoun "gwerra" "gwerrer" ;
 --		warm_A
 --		wash_V2
 --		watch_V2
-		water_N = mkNoun "ilma" ;
+		water_N = mkNoun "ilma" "ilmijiet" Masc ;
 --		wet_A
 --		white_A
 --		wide_A
-		wife_N = mkNoun "mara" ;
+		wife_N = mkNoun "mara" "nisa" ;
 --		win_V2
-		wind_N = mkNoun "riħ" ;
-		window_N = mkNoun "tieqa" ;
-		wine_N = mkNoun "inbid" ;
-		wing_N = mkNoun "ġewnaħ" ;
+		wind_N = mkNoun "riħ" [] [] "rjieħ" "rjiħat" ;
+		window_N = mkNoun "tieqa" "twieqi" ;
+		wine_N = mkNoun [] "nbid" [] [] "nbejjed" ;
+		wing_N = mkNoun "ġewnaħ" "ġwienaħ" ;
 --		wipe_V2
-		woman_N = mkNoun "mara" ;
+		woman_N = mkNoun "mara" "nisa" ;
 --		wonder_VQ
-		wood_N = mkNoun "injam" ;
-		worm_N = mkNoun "dudu" ; -- duda
+		wood_N = mkNoun "injam" "injamiet" ;
+		worm_N = mkNoun "dudu" "dud" [] "dudiet" "dwied" ; -- duda
 --		write_V2
-		year_N = mkNoun "sena" ;
+		year_N = mkNoun "sena" [] "sentejn" "snin" [] ;
 --		yellow_A
 --		young_A
 

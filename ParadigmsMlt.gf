@@ -27,7 +27,7 @@ resource ParadigmsMlt = open
 			case sing of {
 				_ + "na" => init sing + "iet" ; -- eg WIDNIET
 				_ + "i" => sing + "n" ; -- eg BAĦRIN, DĦULIN, RAĦLIN
-				_ + "a" => init(sing) + "i" ; -- eg ROTI
+				_ + ("a"|"u") => init(sing) + "i" ; -- eg ROTI
 				_ + "q" => sing + "at" ; -- eg TRIQAT
 				_ => sing + "i"
 			} ;
@@ -96,6 +96,30 @@ resource ParadigmsMlt = open
 			mkNoun : Str -> Str -> Gender -> Noun = \sing,plural,gender ->
 					mkNounWorst sing [] [] plural [] gender ;
 
+
+			-- Takes all 5 forms
+			-- Params:
+				-- Singulative, eg KOXXA
+				-- Collective, eg KOXXOX
+				-- Double, eg KOXXTEJN
+				-- Determinate Plural, eg KOXXIET
+				-- Indeterminate Plural
+			mkNoun : Str -> Str -> Str -> Str -> Str -> Noun = \sing,coll,dual,det,ind ->
+				let
+					gender = if_then_else (Gender) (isNil sing) (inferNounGender coll) (inferNounGender sing) ;
+				in
+				{
+					s = table {
+						Singular Singulative	=> buildCaseTable sing ;
+						Singular Collective		=> buildCaseTable coll ;
+						Dual					=> buildCaseTable dual ;
+						Plural Determinate		=> buildCaseTable det ;
+						Plural Indeterminate	=> buildCaseTable ind
+					} ;
+					g = gender ;
+				} ;
+
+
 		} ; --end of mkNoun overload
 
 
@@ -103,7 +127,7 @@ resource ParadigmsMlt = open
 		-- No other plural forms.
 		-- Params:
 			-- Singular, eg ARTI
-		mkNounNoPlural : Nouns = overload {
+		mkNounNoPlural : Noun = overload {
 
 			mkNounNoPlural : Str -> Noun = \sing ->
 				let	gender = inferNounGender sing ;
