@@ -32,14 +32,14 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 		-- Cardinal or ordinal in WORDS (not digits)
 		Numeral = {
-			s : DForm => Str ;
-			s2 : Str ;
+			s : CardOrd => Str ;
+			-- s2 : Str ;
 			n : Num_Number
 		} ;
 
 		-- Cardinal or ordinal in DIGITS (not words)
 		Digits = {
-			s : Str ;
+			s : Str ;			-- No need for CardOrd, i.e. no 1st, 2nd etc
 			n : Num_Number ;
 			tail : DTail
 		};

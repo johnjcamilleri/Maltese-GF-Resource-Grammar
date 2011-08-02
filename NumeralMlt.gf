@@ -47,46 +47,105 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		pot3plus : Sub1000 -> Sub1000 -> Sub1000000 ; -- m * 1000 + n
 -}
 	oper
-{-
-		-- These 2 types used in lincat below
-		LinDigit = {
-			s : DForm => Str ;
+		Form1 = {
+			s : DForm => CardOrd => Str ;
 			s2 : Str ;
 			n : Num_Number
 		} ;
--}
-		Form = {
-			s : Str ;		--
-			s2 : Str ;		--
-			n : Num_Number		-- Number
+		Form2 = {
+			s : CardOrd => Str ;
+			s2 : Str ;
+			n : Num_Number
 		} ;
 
 
-	-- HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE HERE
 	lincat
-		Digit = Numeral ;
-		Sub10 = Numeral ;
-		Sub100 = Form ;
-		Sub1000 = Form ;
-		Sub1000000 = Form ;
+		Digit = Form1 ;
+		Sub10 = Form1 ;
+		Sub100 = Form2 ;
+		Sub1000 = Form2 ;
+		Sub1000000 = Form2 ;
 
-	lin num x = x ; -- TODO
+	lin
+		-- Produce a Number from Sub1000000
+		num x = x ;
 
 	oper
-		mkNum : Str -> Str -> Str -> Str -> Str -> Numeral = \unit,teen,ten,hundred,thousand -> lin Numeral {
-			s = table {
-				Unit => unit ;
-				Teen => teen ;
-				TeenIl => teen + "-il" ;
-				Ten => ten ;
-				Hund => hundred ++ "mija"
+		-- Correctly abbreviate and join with numeral
+		-- Params:
+			-- numeral
+		attachOrdinalArticle : Str -> Str = \num ->
+			case num of {
+				("s"|#LiquidCons) + #Consonant + _ => "l-i" + num ;
+				("għ" | #Vowel) + _ => "l-" + num ;
+				K@#CoronalConsonant + _ => "i" + K + "-" + num ;
+				_ => "il-" + num
 			} ;
+
+
+		-- Make a number
+		-- Should be moved to ResMlt ?
+		mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,teen,ten,hundred,thousand,ordunit,num -> {
+			s = table {
+				Unit => table {
+					NCard => unit ;		-- eg WIEĦED
+					NOrd => ordunit		-- eg L-EWWEL
+				} ;
+				Teen => table {
+					NCard => teen ;		-- eg DSATAX
+					NOrd => (attachOrdinalArticle teen) + "-il"		-- eg ID-DSATAX-IL
+				} ;
+				TeenIl => table {
+					NCard => teen + "-il" ;		-- eg DSATAX-IL
+					NOrd => (attachOrdinalArticle teen) + "-il"		-- eg ID-DSATAX-IL
+				} ;
+				Ten => table {
+					NCard => ten ;		-- eg TLETIN
+					NOrd => attachOrdinalArticle ten		-- eg IT-TLETIN
+				} ;
+				Hund => table {
+					NCard => case num of {
+						NumDual => hundred ;		-- eg MITEJN
+						_ => hundred ++ "mija"		-- eg SEBA' MIJA
+					} ;
+					NOrd => case num of {
+						NumDual => attachOrdinalArticle hundred ;	-- eg IL-MITEJN
+						_ => attachOrdinalArticle hundred ++ "mija"	-- eg IS-SEBA' MIJA
+					}
+				}
+			} ;
+
+{-
+				NCard => table {
+					Unit => unit ;
+					Teen => teen ;
+					TeenIl => teen + "-il" ;
+					Ten => ten ;
+					Hund => case num of {
+						NumDual => hundred ;
+						_ => hundred ++ "mija"
+					}
+				} ;
+				NOrd => table {
+					Unit => ordunit ; -- eg L-EWWEL
+					Teen => (attachOrdinalArticle teen) + "-il" ; -- eg ID-DSATAX-IL
+					TeenIl => teen + "-il" ; -- TODO
+					Ten => attachOrdinalArticle ten ; -- eg IT-TLETIN
+					--Hund => attachOrdinalArticle hundred ++ "mija"
+					Hund => case num of {
+						NumDual => attachOrdinalArticle hundred ;	-- eg IL-MITEJN
+						_ => attachOrdinalArticle hundred ++ "mija"	-- eg IS-SEBA' MIJA
+					}
+				}
+-}
+
 			s2 = thousand ;
-			n = NumPl
+			n = num
 		} ;
 
 	lin
-		n2 = lin Numeral {
+{-
+		n2 = {
 			s = table {
 				Unit => "tnejn" ;
 				Teen => "tnax" ;
@@ -97,29 +156,46 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			s2 = "tnejn" ;
 			n = NumDual
 		} ;
-		n3 = mkNum "tlieta" "tlettax" "tletin" "tliet" "tlitt" ;
-		n4 = mkNum "erbgħa" "erbatax" "erbgħin" "erba'" "erbat" ;
-		n5 = mkNum "ħamsa" "ħmistax" "ħamsin" "ħames" "ħamest" ;
-		n6 = mkNum "sitta" "sittax" "sitt" "sitt" "sitt" ;
-		n7 = mkNum "sebgħa" "sbatax" "sbebgħin" "seba'" "sebat" ;
-		n8 = mkNum "tmienja" "tmintax" "tmenin" "tmien" "tmint" ;
-		n9 = mkNum "disgħa" "dsatax" "disgħin" "disa'" "disat" ;
+-}
+		n2 = mkNum "tnejn" "tnax" "għoxrin" "mitejn" "tnejn" "tieni" NumDual ;
+		n3 = mkNum "tlieta" "tlettax" "tletin" "tliet" "tlitt" "tielet" NumPl ;
+		n4 = mkNum "erbgħa" "erbatax" "erbgħin" "erba'" "erbat" "raba" NumPl ;
+		n5 = mkNum "ħamsa" "ħmistax" "ħamsin" "ħames" "ħamest" "ħames" NumPl ;
+		n6 = mkNum "sitta" "sittax" "sitt" "sitt" "sitt" "sitt" NumPl ;
+		n7 = mkNum "sebgħa" "sbatax" "sebgħin" "seba'" "sebat" "seba'" NumPl ;
+		n8 = mkNum "tmienja" "tmintax" "tmenin" "tmien" "tmint" "tmin" NumPl ;
+		n9 = mkNum "disgħa" "dsatax" "disgħin" "disa'" "disat" "disa'" NumPl ;
 
 	oper
-		-- Helper functions for creating s/s2/n tables
-		ss : Str -> Form = \a -> {
-			s = a ;
+		-- Helper functions for below...
+		-- Still don't really know what the point of them is!
+		ss : Str -> Form2 = \a -> {
+			s = table {
+				NCard => a ;
+				NOrd => a
+			} ;
 			s2 = a ;
 			n = NumPl
 		} ;
-		ss2 : Str -> Str -> Form = \a,b -> {
-			s = a ;
+		ss2 : Str -> Str -> Form2 = \a,b -> {
+			s = table {
+				NCard => a ;
+				NOrd => a
+			} ;
 			s2 = b ;
 			n = NumPl
 		} ;
+{-
+		ss3 : CardOrd => Str -> Form2 = \cas -> {
+			s = cas ;
+			s2 = cas ! NCard ;
+			n = NumPl
+		} ;
+-}
 
 	lin
-		pot01 = lin Numeral {
+{-
+		pot01 =  {
 			s = table {
 				Unit => "wieħed" ;
 				Teen => "ħdax" ;
@@ -128,34 +204,36 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			s2 = "wieħed" ;
 			n = NumSg
 		} ;
-		pot0 d = d;
+-}
+		pot01 = mkNum "wieħed" "ħdax" [] [] [] "l-ewwel" NumSg ;
+		pot0 d = d ** {n = NumPl} ;
 		pot110 = NumeralMlt.ss "għaxra" ;
 		pot111 = NumeralMlt.ss2 "ħdax" "ħdax-il";
-		pot1to19 d = NumeralMlt.ss2 (d.s ! Teen) (d.s ! TeenIl);
+		pot1to19 d = NumeralMlt.ss2 (d.s ! Teen ! NCard) (d.s ! TeenIl ! NCard);
 		pot0as1 n = {
 			s = n.s ! Unit ;
 			s2 = n.s2 ;
 			n = n.n
 		} ;
-		pot1 d = NumeralMlt.ss (d.s ! Ten) ;
-		pot1plus d e = NumeralMlt.ss ((e.s ! Unit) ++ "u" ++ (d.s ! Ten)) ;
+		pot1 d = NumeralMlt.ss (d.s ! Ten ! NCard) ;
+		pot1plus d e = NumeralMlt.ss ((e.s ! Unit ! NCard) ++ "u" ++ (d.s ! Ten ! NCard)) ;
 		pot1as2 n = n ;
-		pot2 d = NumeralMlt.ss (d.s ! Hund) ;
-		pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund) ++ "u" ++ e.s) ((d.s ! Hund) ++ "u" ++ e.s2) ;
+		pot2 d = NumeralMlt.ss (d.s ! Hund ! NCard) ;
+		pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund ! NCard) ++ "u" ++ e.s ! NCard) ((d.s ! Hund ! NCard) ++ "u" ++ e.s2) ;
 		pot2as3 n = {
-			s = n.s ;
-			s2 = n.s2 ; -- these are prob wrong
-			n = NumPl ; -- these are prob wrong
+			s = \\cardord => n.s ! cardord ;
+			s2 = n.s2 ;
+			n = NumPl ;
 		} ;
 		pot3 n = {
-			s = (elf n.s2) ! n.n ;
-			s2 = n.s2 ; -- these are prob wrong
-			n = NumPl ; -- these are prob wrong
+			s = \\cardord => (elf n.s2) ! n.n ;
+			s2 = n.s2 ;
+			n = NumPl ;
 		} ;
 		pot3plus n m = {
-			s = (elf n.s2) ! n.n ++ m.s ;
-			s2 = n.s2 ; -- these are prob wrong
-			n = NumPl ; -- these are prob wrong
+			s = \\cardord => (elf n.s2) ! n.n ++ m.s ! cardord ;
+			s2 = n.s2 ;
+			n = NumPl ;
 		} ;
 
 	oper
@@ -180,7 +258,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 -}
 
 	lincat
-
 
 		Dig = {
 			s : Str ;
@@ -228,8 +305,9 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 
 		-- Create Digits from combining Dig with Digits
 		IIDig d i = {
-			s = d.s ++ commaIf i.tail ++ i.s ;
-			n = NumPl
+			s = d.s ++ (commaIf i.tail) ++ i.s ;
+			n = NumPl ;
+			tail = inc i.tail
 		} ;
 
 }

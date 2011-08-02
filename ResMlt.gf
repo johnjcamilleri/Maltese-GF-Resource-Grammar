@@ -25,6 +25,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 	param
 
 		-- Used in the NumeralMlt module
+		CardOrd = NCard | NOrd ;
 		DTail = T1 | T2 | T3 ; -- This is arlready defined in ParamX...
 		Num_Number =
 			  NumSg

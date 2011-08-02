@@ -1,11 +1,180 @@
--- Treeebank numerals test
--- Run using the following command:
--- ./_gf < test/numerals.gfs > test/numerals.out
 
-se utf8
-i -retain AllMlt.gf
--- cc -table -unqual airplane_N
-mkNP (mkNumeral n1_Unit) (man_N) -- one man
-mkNP (mkNumeral n2_Unit) (man_N) -- two men
-mkNP (mkNumeral "35") (man_N) -- thirty-five men
-mkNP (mkNumeral (mkSub100 n2_Unit n1_Unit)) (man_N) -- twenty-one men
+Numeral: num (pot2as3 (pot1as2 (pot0as1 pot01))) -- 1
+NumeralEng: one
+NumeralMlt: wieħed
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))) -- 2
+NumeralEng: two
+NumeralMlt: tnejn
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))) -- 3
+NumeralEng: three
+NumeralMlt: tlieta
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n4)))) -- 4
+NumeralEng: four
+NumeralMlt: erbgħa
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))) -- 5
+NumeralEng: five
+NumeralMlt: ħamsa
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n6)))) -- 6
+NumeralEng: six
+NumeralMlt: sitta
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n7)))) -- 7
+NumeralEng: seven
+NumeralMlt: sebgħa
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n8)))) -- 8
+NumeralEng: eight
+NumeralMlt: tmienja
+
+Numeral: num (pot2as3 (pot1as2 (pot0as1 (pot0 n9)))) -- 9
+NumeralEng: nine
+NumeralMlt: disgħa
+
+Numeral: num (pot2as3 (pot1as2 pot110)) -- 10
+NumeralEng: ten
+NumeralMlt: għaxra
+
+Numeral: num (pot2as3 (pot1as2 pot111)) -- 11
+NumeralEng: eleven
+NumeralMlt: ħdax
+
+Numeral: num (pot2as3 (pot1as2 (pot1to19 n3))) -- 13
+NumeralEng: thirteen
+NumeralMlt: tlettax
+
+Numeral: num (pot2as3 (pot1as2 (pot1to19 n4))) -- 14
+NumeralEng: fourteen
+NumeralMlt: erbatax
+
+Numeral: num (pot2as3 (pot1as2 (pot1 n7))) -- 70
+NumeralEng: seventy
+NumeralMlt: sebgħin
+
+Numeral: num (pot2as3 (pot2 pot01)) -- 100
+NumeralEng: one hundred
+NumeralMlt: mija
+
+Numeral: num (pot2as3 (pot2plus pot01 (pot1to19 n2))) -- 112
+NumeralEng: one hundred and twelve
+NumeralMlt: mija u tnax
+
+Numeral: num (pot2as3 (pot2plus pot01 (pot1to19 n4))) -- 114
+NumeralEng: one hundred and fourteen
+NumeralMlt: mija u erbatax
+
+Numeral: num (pot2as3 (pot2 (pot0 n4))) -- 400
+NumeralEng: four hundred
+NumeralMlt: erba' mija
+
+Numeral: num (pot2as3 (pot2plus (pot0 n4) pot110)) -- 410
+NumeralEng: four hundred and ten
+NumeralMlt: erba' mija u għaxra
+
+Numeral: num (pot2as3 (pot2plus (pot0 n5) (pot0as1 pot01))) -- 501
+NumeralEng: five hundred and one
+NumeralMlt: ħames mija u wieħed
+
+Numeral: num (pot2as3 (pot2 (pot0 n6))) -- 600
+NumeralEng: six hundred
+NumeralMlt: sitt mija
+
+Numeral: num (pot2as3 (pot2 (pot0 n8))) -- 800
+NumeralEng: eight hundred
+NumeralMlt: tmien mija
+
+Numeral: num (pot2as3 (pot2plus (pot0 n9) pot111)) -- 911
+NumeralEng: nine hundred and eleven
+NumeralMlt: disa' mija u ħdax
+
+Numeral: num (pot3 (pot1as2 (pot0as1 pot01))) -- 1,000
+NumeralEng: one thousand
+NumeralMlt: elf
+
+Numeral: num (pot3 (pot1as2 pot111)) -- 11,000
+NumeralEng: eleven thousand
+NumeralMlt: ħdax-il elef
+
+Numeral: num (pot3plus (pot1as2 pot111) (pot1as2 (pot1to19 n2))) -- 11,012
+NumeralEng: eleven thousand twelve
+NumeralMlt: ħdax-il elef tnax
+
+Numeral: num (pot3 (pot1as2 (pot1 n4))) -- 40,000
+NumeralEng: forty thousand
+NumeralMlt: erbgħin elef
+
+Numeral: num (pot3plus (pot1as2 (pot1plus n9 pot01)) (pot2 (pot0 n7))) -- 91,700
+NumeralEng: ninety - one thousand seven hundred
+NumeralMlt: wieħed u disgħin elef seba' mija
+
+Numeral: num (pot3 (pot2 pot01)) -- 100,000
+NumeralEng: one hundred thousand
+NumeralMlt: mija elef
+
+Numeral: num (pot3plus (pot2 pot01) (pot2 pot01)) -- 100,100
+NumeralEng: one hundred thousand one hundred
+NumeralMlt: mija elef mija
+
+Numeral: num (pot3plus (pot2 pot01) (pot1as2 (pot1plus n3 pot01))) 100,031
+NumeralEng: one hundred thousand thirty - one
+NumeralMlt: mija elef wieħed u tletin
+
+Numeral: num (pot3 (pot2plus pot01 pot110)) -- 110,000
+NumeralEng: one hundred and ten thousand
+NumeralMlt: mija u għaxra elef
+
+Numeral: num (pot3 (pot2plus pot01 pot111)) -- 111,000
+NumeralEng: one hundred and eleven thousand
+NumeralMlt: mija u ħdax-il elef
+
+Numeral: num (pot3plus (pot2plus pot01 (pot1plus n2 pot01)) (pot2 pot01)) -- 121,100
+NumeralEng: one hundred and twenty - one thousand one hundred
+NumeralMlt: mija u wieħed u għoxrin elef mija
+
+Numeral: num (pot3 (pot2plus pot01 (pot1 n3))) -- 130,000
+NumeralEng: one hundred and thirty thousand
+NumeralMlt: mija u tletin elef
+
+Numeral: num (pot3 (pot2plus pot01 (pot1plus n4 pot01))) -- 141,000
+NumeralEng: one hundred and forty - one thousand
+NumeralMlt: mija u wieħed u erbgħin elef
+
+Numeral: num (pot3 (pot2plus pot01 (pot1 n6))) -- 160,000
+NumeralEng: one hundred and sixty thousand
+NumeralMlt: mija u sitt elef
+
+Numeral: num (pot3 (pot2 (pot0 n2))) -- 200,000
+NumeralEng: two hundred thousand
+NumeralMlt: mitejn elef
+
+Numeral: num (pot3plus (pot2 (pot0 n2)) (pot2plus (pot0 n4) pot110)) -- 200,410
+NumeralEng: two hundred thousand four hundred and ten
+NumeralMlt: mitejn elef erba' mija u għaxra
+
+Numeral: num (pot3 (pot2 (pot0 n6))) -- 600,000
+NumeralEng: six hundred thousand
+NumeralMlt: sitt mija elef
+
+Numeral: num (pot3plus (pot2plus (pot0 n6) pot110) (pot1as2 pot110)) -- 610,010
+NumeralEng: six hundred and ten thousand ten
+NumeralMlt: sitt mija u għaxra elef għaxra
+
+Numeral: num (pot3plus (pot2 (pot0 n7)) (pot2plus (pot0 n6) pot110)) -- 700,610
+NumeralEng: seven hundred thousand six hundred and ten
+NumeralMlt: seba' mija elef sitt mija u għaxra
+
+Numeral: num (pot3plus (pot2plus (pot0 n8) (pot1 n5)) (pot1as2 (pot1to19 n7))) -- 850,017
+NumeralEng: eight hundred and fifty thousand seventeen
+NumeralMlt: tmien mija u ħamsin elef sbatax
+
+Numeral: num (pot3plus (pot2 (pot0 n9)) (pot2plus pot01 pot110)) -- 900,110
+NumeralEng: nine hundred thousand one hundred and ten
+NumeralMlt: disa' mija elef mija u għaxra
+
+Numeral: num (pot3plus (pot2 (pot0 n9)) (pot2 (pot0 n2))) -- 900,200
+NumeralEng: nine hundred thousand two hundred
+NumeralMlt: disa' mija elef mitejn
