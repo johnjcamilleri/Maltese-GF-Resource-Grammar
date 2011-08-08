@@ -96,7 +96,7 @@ resource ParadigmsMlt = open
 					mkNounWorst sing [] [] plural [] gender ;
 
 
-			-- Takes all 5 forms
+			-- Takes all 5 forms, inferring gender
 			-- Params:
 				-- Singulative, eg KOXXA
 				-- Collective, eg KOXXOX

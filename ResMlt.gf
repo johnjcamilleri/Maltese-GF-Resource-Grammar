@@ -255,4 +255,38 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 			o : Origin ;		-- Inherent - a verb of Semitic or Romance origins?
 		} ;
 
+
+		{- ===== Useful helper functions ===== -}
+
+		-- When no preposition specified, assume "il"
+		addDefiniteArticle = addDefinitePreposition "il" ;
+
+		-- Correctly inflect definite preposition and join with noun
+		-- A more generic version of addDefiniteArticle
+			-- Params:
+				-- preposition (eg TAL, MAL, BĦALL)
+				-- noun
+		addDefinitePreposition : Str -> Str -> Str = \prep,noun ->
+			let
+				-- Remove either 1 or 2 l's
+				prepStem : Str = case prep of {
+					_ + "ll" => Predef.tk 2 prep ;
+					_ + "l"  => Predef.tk 1 prep ;
+					_ => prep -- this should never happen, I don't think
+				}
+			in
+			case noun of {
+				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
+				("għ" | #Vowel) + _ => case prep of {
+					("fil"|"bil") => (Predef.take 1 prep) + "l-" + noun ;
+					_ => case prep of {
+						"il" => "l" + "-" + noun ;
+						_ => prep + "-" + noun
+					}
+				};
+				K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
+				#Consonant + _ => prep + "-" + noun
+				-- _ => []
+			} ;
+
 }

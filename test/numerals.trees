@@ -1,0 +1,137 @@
+-- Run with:
+-- rf -lines -tree -file=test/numerals.trees | l -all -treebank | wf -file=test/numerals.treebank
+
+-- 1
+num (pot2as3 (pot1as2 (pot0as1 pot01)))
+
+-- 2
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))
+
+-- 3
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))
+
+-- 4
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))
+
+-- 5
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))
+
+-- 6
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n6))))
+
+-- 7
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n7))))
+
+-- 8
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n8))))
+
+-- 9
+num (pot2as3 (pot1as2 (pot0as1 (pot0 n9))))
+
+-- 10
+num (pot2as3 (pot1as2 pot110))
+
+-- 11
+num (pot2as3 (pot1as2 pot111))
+
+-- 13
+num (pot2as3 (pot1as2 (pot1to19 n3)))
+
+-- 14
+num (pot2as3 (pot1as2 (pot1to19 n4)))
+
+-- 70
+num (pot2as3 (pot1as2 (pot1 n7)))
+
+-- 100
+num (pot2as3 (pot2 pot01))
+
+-- 112
+num (pot2as3 (pot2plus pot01 (pot1to19 n2)))
+
+-- 114
+num (pot2as3 (pot2plus pot01 (pot1to19 n4)))
+
+-- 400
+num (pot2as3 (pot2 (pot0 n4)))
+
+-- 410
+num (pot2as3 (pot2plus (pot0 n4) pot110))
+
+-- 501
+num (pot2as3 (pot2plus (pot0 n5) (pot0as1 pot01)))
+
+-- 600
+num (pot2as3 (pot2 (pot0 n6)))
+
+-- 800
+num (pot2as3 (pot2 (pot0 n8)))
+
+-- 911
+num (pot2as3 (pot2plus (pot0 n9) pot111))
+
+-- 1,000
+num (pot3 (pot1as2 (pot0as1 pot01)))
+
+-- 11,000
+num (pot3 (pot1as2 pot111))
+
+-- 11,012
+num (pot3plus (pot1as2 pot111) (pot1as2 (pot1to19 n2)))
+
+-- 40,000
+num (pot3 (pot1as2 (pot1 n4)))
+
+-- 91,700
+num (pot3plus (pot1as2 (pot1plus n9 pot01)) (pot2 (pot0 n7)))
+
+-- 100,000
+num (pot3 (pot2 pot01))
+
+-- 100,100
+num (pot3plus (pot2 pot01) (pot2 pot01))
+
+-- 100,031
+num (pot3plus (pot2 pot01) (pot1as2 (pot1plus n3 pot01)))
+
+-- 110,000
+num (pot3 (pot2plus pot01 pot110))
+
+-- 111,000
+num (pot3 (pot2plus pot01 pot111))
+
+-- 121,100
+num (pot3plus (pot2plus pot01 (pot1plus n2 pot01)) (pot2 pot01))
+
+-- 130,000
+num (pot3 (pot2plus pot01 (pot1 n3)))
+
+-- 141,000
+num (pot3 (pot2plus pot01 (pot1plus n4 pot01)))
+
+-- 160,000
+num (pot3 (pot2plus pot01 (pot1 n6)))
+
+-- 200,000
+num (pot3 (pot2 (pot0 n2)))
+
+-- 200,410
+num (pot3plus (pot2 (pot0 n2)) (pot2plus (pot0 n4) pot110))
+
+-- 600,000
+num (pot3 (pot2 (pot0 n6)))
+
+-- 610,010
+num (pot3plus (pot2plus (pot0 n6) pot110) (pot1as2 pot110))
+
+-- 700,610
+num (pot3plus (pot2 (pot0 n7)) (pot2plus (pot0 n6) pot110))
+
+-- 850,017
+num (pot3plus (pot2plus (pot0 n8) (pot1 n5)) (pot1as2 (pot1to19 n7)))
+
+-- 900,110
+num (pot3plus (pot2 (pot0 n9)) (pot2plus pot01 pot110))
+
+-- 900,200
+num (pot3plus (pot2 (pot0 n9)) (pot2 (pot0 n2)))

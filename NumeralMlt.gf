@@ -71,6 +71,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		num x = x ;
 
 	oper
+{-
 		-- Correctly abbreviate and join with numeral
 		-- Params:
 			-- numeral
@@ -81,7 +82,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 				K@#CoronalConsonant + _ => "i" + K + "-" + num ;
 				_ => "il-" + num
 			} ;
-
+-}
 
 		-- Make a number
 		-- Should be moved to ResMlt ?
@@ -89,19 +90,19 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			s = table {
 				Unit => table {
 					NCard => unit ;		-- eg WIEĦED
-					NOrd => ordunit		-- eg L-EWWEL
+					NOrd => (addDefiniteArticle ordunit)		-- eg L-EWWEL
 				} ;
 				Teen => table {
 					NCard => teen ;		-- eg DSATAX
-					NOrd => (attachOrdinalArticle teen) + "-il"		-- eg ID-DSATAX-IL
+					NOrd => (addDefiniteArticle teen) + "-il"		-- eg ID-DSATAX-IL
 				} ;
 				TeenIl => table {
 					NCard => teen + "-il" ;		-- eg DSATAX-IL
-					NOrd => (attachOrdinalArticle teen) + "-il"		-- eg ID-DSATAX-IL
+					NOrd => (addDefiniteArticle teen) + "-il"		-- eg ID-DSATAX-IL
 				} ;
 				Ten => table {
 					NCard => ten ;		-- eg TLETIN
-					NOrd => attachOrdinalArticle ten		-- eg IT-TLETIN
+					NOrd => (addDefiniteArticle ten)		-- eg IT-TLETIN
 				} ;
 				Hund => table {
 					NCard => case num of {
@@ -109,8 +110,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 						_ => hundred ++ "mija"		-- eg SEBA' MIJA
 					} ;
 					NOrd => case num of {
-						NumDual => attachOrdinalArticle hundred ;	-- eg IL-MITEJN
-						_ => attachOrdinalArticle hundred ++ "mija"	-- eg IS-SEBA' MIJA
+						NumDual => (addDefiniteArticle hundred) ;	-- eg IL-MITEJN
+						_ => (addDefiniteArticle hundred) ++ "mija"	-- eg IS-SEBA' MIJA
 					}
 				}
 			} ;
@@ -205,7 +206,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			n = NumSg
 		} ;
 -}
-		pot01 = mkNum "wieħed" "ħdax" [] [] [] "l-ewwel" NumSg ;
+		pot01 = mkNum "wieħed" "ħdax" [] [] [] "ewwel" NumSg ;
 		pot0 d = d ** {n = NumPl} ;
 		pot110 = NumeralMlt.ss "għaxra" ;
 		pot111 = NumeralMlt.ss2 "ħdax" "ħdax-il";
