@@ -285,8 +285,8 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 					}
 				};
 				K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
-				#Consonant + _ => prep + "-" + noun
-				-- _ => []
+				#Consonant + _ => prep + "-" + noun ;
+				_ => []
 			} ;
 
 }

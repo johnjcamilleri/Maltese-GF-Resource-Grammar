@@ -207,16 +207,16 @@ resource ParadigmsMlt = open
 		buildCaseTable : Str -> (Definiteness => Case => Str) = \noun ->
 			table {
 				Definite => table {
-					Benefactive	=> abbrevPrepositionDef "għall" noun;
-					Comitative	=> abbrevPrepositionDef "mal" noun ;
-					Dative		=> abbrevPrepositionDef "lill" noun ;
-					Elative		=> abbrevPrepositionDef "mill" noun ;
-					Equative	=> abbrevPrepositionDef "bħall" noun ;
-					Genitive	=> abbrevPrepositionDef "tal" noun ;
-					Inessive	=> abbrevPrepositionDef "fil" noun;
-					Instrumental=> abbrevPrepositionDef "bil" noun;
-					Lative		=> abbrevPrepositionDef "sal" noun ;
-					Nominative	=> abbrevPrepositionDef "il" noun
+					Benefactive	=> addDefinitePreposition "għall" noun;
+					Comitative	=> addDefinitePreposition "mal" noun ;
+					Dative		=> addDefinitePreposition "lill" noun ;
+					Elative		=> addDefinitePreposition "mill" noun ;
+					Equative	=> addDefinitePreposition "bħall" noun ;
+					Genitive	=> addDefinitePreposition "tal" noun ;
+					Inessive	=> addDefinitePreposition "fil" noun;
+					Instrumental=> addDefinitePreposition "bil" noun;
+					Lative		=> addDefinitePreposition "sal" noun ;
+					Nominative	=> addDefinitePreposition "il" noun
 				} ;
 				Indefinite => table {
 					Benefactive	=> abbrevPrepositionIndef "għal" noun;
@@ -232,6 +232,7 @@ resource ParadigmsMlt = open
 				}
 			};
 
+{-
 		-- Correctly abbreviate definite prepositions and join with noun
 		-- Params:
 			-- preposition (eg TAL, MAL, BĦALL)
@@ -255,7 +256,7 @@ resource ParadigmsMlt = open
 				#Consonant + _ => prep + "-" + noun ;
 				_ => []
 			} ;
-
+-}
 		-- Correctly abbreviate indefinite prepositions and join with noun
 		-- Params:
 			-- preposition (eg TA', MA', BĦAL)
