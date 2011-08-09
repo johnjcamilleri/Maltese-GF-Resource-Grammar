@@ -67,25 +67,21 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		Sub1000000 = Form2 ;
 
 	lin
-		-- Produce a Number from Sub1000000
+		-- Sub1000000 -> Numeral
 		num x = x ;
 
 	oper
-{-
-		-- Correctly abbreviate and join with numeral
-		-- Params:
-			-- numeral
-		attachOrdinalArticle : Str -> Str = \num ->
-			case num of {
-				("s"|#LiquidCons) + #Consonant + _ => "l-i" + num ;
-				("għ" | #Vowel) + _ => "l-" + num ;
-				K@#CoronalConsonant + _ => "i" + K + "-" + num ;
-				_ => "il-" + num
-			} ;
--}
 
-		-- Make a number
+		-- Make a "number" (in this case a Form1)
 		-- Should be moved to ResMlt ?
+		-- Params:
+			-- unit, eg TNEJN
+			-- teen, eg TNAX
+			-- ten, eg GĦOXRIN
+			-- hundred, eg MITEJN
+			-- thousand, eg ELFEJN
+			-- ordinal unit (without article), eg TIENI
+			-- number, eg NumDual
 		mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,teen,ten,hundred,thousand,ordunit,num -> {
 			s = table {
 				Unit => table {
@@ -115,32 +111,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 					}
 				}
 			} ;
-
-{-
-				NCard => table {
-					Unit => unit ;
-					Teen => teen ;
-					TeenIl => teen + "-il" ;
-					Ten => ten ;
-					Hund => case num of {
-						NumDual => hundred ;
-						_ => hundred ++ "mija"
-					}
-				} ;
-				NOrd => table {
-					Unit => ordunit ; -- eg L-EWWEL
-					Teen => (attachOrdinalArticle teen) + "-il" ; -- eg ID-DSATAX-IL
-					TeenIl => teen + "-il" ; -- TODO
-					Ten => attachOrdinalArticle ten ; -- eg IT-TLETIN
-					--Hund => attachOrdinalArticle hundred ++ "mija"
-					Hund => case num of {
-						NumDual => attachOrdinalArticle hundred ;	-- eg IL-MITEJN
-						_ => attachOrdinalArticle hundred ++ "mija"	-- eg IS-SEBA' MIJA
-					}
-				}
--}
-
-			s2 = thousand ;
+			s2 = thousand ; -- TODO
 			n = num
 		} ;
 
@@ -158,18 +129,19 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			n = NumDual
 		} ;
 -}
-		n2 = mkNum "tnejn" "tnax" "għoxrin" "mitejn" "tnejn" "tieni" NumDual ;
-		n3 = mkNum "tlieta" "tlettax" "tletin" "tliet" "tlitt" "tielet" NumPl ;
-		n4 = mkNum "erbgħa" "erbatax" "erbgħin" "erba'" "erbat" "raba" NumPl ;
-		n5 = mkNum "ħamsa" "ħmistax" "ħamsin" "ħames" "ħamest" "ħames" NumPl ;
-		n6 = mkNum "sitta" "sittax" "sitt" "sitt" "sitt" "sitt" NumPl ;
-		n7 = mkNum "sebgħa" "sbatax" "sebgħin" "seba'" "sebat" "seba'" NumPl ;
-		n8 = mkNum "tmienja" "tmintax" "tmenin" "tmien" "tmint" "tmin" NumPl ;
-		n9 = mkNum "disgħa" "dsatax" "disgħin" "disa'" "disat" "disa'" NumPl ;
+		--			unit		teen		ten			hundred		thusand		ord unit	number
+		n2 = mkNum "tnejn" 		"tnax"		"għoxrin"	"mitejn"	"elfejn"	"tieni"		NumDual ;
+		n3 = mkNum "tlieta"		"tlettax"	"tletin"	"tliet"		"tlitt"		"tielet"	NumPl ;
+		n4 = mkNum "erbgħa"		"erbatax"	"erbgħin"	"erba'"		"erbat"		"raba'"		NumPl ;
+		n5 = mkNum "ħamsa" 		"ħmistax"	"ħamsin"	"ħames"		"ħamest"	"ħames"		NumPl ;
+		n6 = mkNum "sitta"		"sittax"	"sitt"		"sitt"		"sitt"		"sitt"		NumPl ;
+		n7 = mkNum "sebgħa"		"sbatax"	"sebgħin"	"seba'"		"sebat"		"seba'"		NumPl ;
+		n8 = mkNum "tmienja"	"tmintax"	"tmenin"	"tmien"		"tmint"		"tmin"		NumPl ;
+		n9 = mkNum "disgħa"		"dsatax"	"disgħin"	"disa'"		"disat"		"disa'"		NumPl ;
 
 	oper
 		-- Helper functions for below...
-		-- Still don't really know what the point of them is!
+		-- Still don't really know what the point of them is
 		ss : Str -> Form2 = \a -> {
 			s = table {
 				NCard => a ;
@@ -186,10 +158,46 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			s2 = b ;
 			n = NumPl
 		} ;
+
+
+		-- My own take...
+		mkForm2 : Form2 = overload {
+
+			-- Infer ordinal
+			mkForm2 : Str -> Form2 = \card -> {
+				s = table {
+					NCard => card ;
+					NOrd => addDefiniteArticle card
+				} ;
+				s2 = card ; -- TODO
+				n = NumPl
+			} ;
+
+			-- Explicit ordinal
+			mkForm2 : Str -> Str -> Form2 = \card,ord -> {
+				s = table {
+					NCard => card ;
+					NOrd => ord
+				} ;
+				s2 = card ; -- TODO
+				n = NumPl
+			} ;
+
+			-- Give an existing table
+			mkForm2 : (CardOrd => Str) -> Form2 = \tab -> {
+				s = tab ;
+				s2 = tab ! NCard ; -- TODO
+				n = NumPl
+			} ;
+
+		};
 {-
-		ss3 : CardOrd => Str -> Form2 = \cas -> {
-			s = cas ;
-			s2 = cas ! NCard ;
+		ss4 : Str -> Str -> Form2 = \card,ord -> {
+			s = table {
+				NCard => card ;
+				NOrd => ord
+			} ;
+			s2 = card ;
 			n = NumPl
 		} ;
 -}
@@ -206,31 +214,68 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			n = NumSg
 		} ;
 -}
+		-- Sub10 ; 1
 		pot01 = mkNum "wieħed" "ħdax" [] [] [] "ewwel" NumSg ;
+
+		-- Digit -> Sub10 ; d * 1
+		-- TODO: special case for DUAL?
 		pot0 d = d ** {n = NumPl} ;
-		pot110 = NumeralMlt.ss "għaxra" ;
-		pot111 = NumeralMlt.ss2 "ħdax" "ħdax-il";
-		pot1to19 d = NumeralMlt.ss2 (d.s ! Teen ! NCard) (d.s ! TeenIl ! NCard);
+
+		-- Sub100 ; 10, 11
+		pot110 = mkForm2 "għaxra" "l-għaxar" ;
+		pot111 = mkForm2 "ħdax" "il-ħdax-il" ;
+
+		-- Digit -> Sub100 ; 10 + d
+		--pot1to19 d = NumeralMlt.ss2 (d.s ! Teen ! NCard) (d.s ! TeenIl ! NCard);
+		pot1to19 d = mkForm2 (d.s ! Teen);
+
+		-- Sub10 -> Sub100 ; coercion of 1..9
 		pot0as1 n = {
 			s = n.s ! Unit ;
 			s2 = n.s2 ;
 			n = n.n
 		} ;
-		pot1 d = NumeralMlt.ss (d.s ! Ten ! NCard) ;
-		pot1plus d e = NumeralMlt.ss ((e.s ! Unit ! NCard) ++ "u" ++ (d.s ! Ten ! NCard)) ;
+
+		-- Digit -> Sub100 ; d * 10
+		--pot1 d = NumeralMlt.ss (d.s ! Ten ! NCard) ;
+		pot1 d = mkForm2 (d.s ! Ten) ;
+
+		-- Digit -> Sub10 -> Sub100 ; d * 10 + n
+		-- pot1plus d e = NumeralMlt.ss ((e.s ! Unit ! NCard) ++ "u" ++ (d.s ! Ten ! NCard)) ;
+		pot1plus d e =
+			mkForm2
+				((e.s ! Unit ! NCard) ++ "u" ++ (d.s ! Ten ! NCard))
+				((e.s ! Unit ! NOrd) ++ "u" ++ (d.s ! Ten ! NCard)) ;
+
+		-- Sub100 -> Sub1000 ; coercion of 1..99
 		pot1as2 n = n ;
-		pot2 d = NumeralMlt.ss (d.s ! Hund ! NCard) ;
-		pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund ! NCard) ++ "u" ++ e.s ! NCard) ((d.s ! Hund ! NCard) ++ "u" ++ e.s2) ;
+
+		-- Sub10 -> Sub1000 ; m * 100
+		--pot2 d = NumeralMlt.ss (d.s ! Hund ! NCard) ;
+		pot2 d = mkForm2 (d.s ! Hund) ;
+
+		-- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
+		--pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund ! NCard) ++ "u" ++ (e.s ! NCard)) ((d.s ! Hund ! NCard) ++ "u" ++ e.s2) ;
+		pot2plus d e =
+			mkForm2
+				((d.s ! Hund ! NCard) ++ "u" ++ (e.s ! NCard))
+				((d.s ! Hund ! NOrd) ++ "u" ++ (e.s ! NCard)) ;
+
+		-- Sub1000 -> Sub1000000 ; coercion of 1..999
 		pot2as3 n = {
 			s = \\cardord => n.s ! cardord ;
 			s2 = n.s2 ;
-			n = NumPl ;
+			n = n.n ;
 		} ;
+
+		-- Sub1000 -> Sub1000000 ; m * 1000
 		pot3 n = {
 			s = \\cardord => (elf n.s2) ! n.n ;
 			s2 = n.s2 ;
 			n = NumPl ;
 		} ;
+
+		-- Sub1000 -> Sub1000 -> Sub1000000 ; m * 1000 + n
 		pot3plus n m = {
 			s = \\cardord => (elf n.s2) ! n.n ++ m.s ! cardord ;
 			s2 = n.s2 ;
@@ -238,6 +283,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		} ;
 
 	oper
+		-- TODO
 		elf : Str -> Num_Number => Str = \attr -> table {
 			NumSg => "elf" ;
 			NumDual => "elfejn" ;
