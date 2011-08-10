@@ -66,10 +66,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		Sub1000 = Form2 ;
 		Sub1000000 = Form2 ;
 
-	lin
-		-- Sub1000000 -> Numeral
-		num x = x ;
-
 	oper
 
 		-- Make a "number" (in this case a Form1)
@@ -116,19 +112,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		} ;
 
 	lin
-{-
-		n2 = {
-			s = table {
-				Unit => "tnejn" ;
-				Teen => "tnax" ;
-				TeenIl => "tnax-il" ;
-				Ten  => "għoxrin" ;
-				Hund => "mitejn"
-			} ;
-			s2 = "tnejn" ;
-			n = NumDual
-		} ;
--}
 		--			unit		teen		ten			hundred		thusand		ord unit	number
 		n2 = mkNum "tnejn" 		"tnax"		"għoxrin"	"mitejn"	"elfejn"	"tieni"		NumDual ;
 		n3 = mkNum "tlieta"		"tlettax"	"tletin"	"tliet"		"tlitt"		"tielet"	NumPl ;
@@ -140,27 +123,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		n9 = mkNum "disgħa"		"dsatax"	"disgħin"	"disa'"		"disat"		"disa'"		NumPl ;
 
 	oper
-		-- Helper functions for below...
-		-- Still don't really know what the point of them is
-		ss : Str -> Form2 = \a -> {
-			s = table {
-				NCard => a ;
-				NOrd => a
-			} ;
-			s2 = a ;
-			n = NumPl
-		} ;
-		ss2 : Str -> Str -> Form2 = \a,b -> {
-			s = table {
-				NCard => a ;
-				NOrd => a
-			} ;
-			s2 = b ;
-			n = NumPl
-		} ;
-
-
-		-- My own take...
+		-- Helper functions for below
 		mkForm2 : Form2 = overload {
 
 			-- Infer ordinal
@@ -183,7 +146,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 				n = NumPl
 			} ;
 
-			-- Give an existing table
+			-- Given an existing table
 			mkForm2 : (CardOrd => Str) -> Form2 = \tab -> {
 				s = tab ;
 				s2 = tab ! NCard ; -- TODO
@@ -191,18 +154,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			} ;
 
 		};
-{-
-		ss4 : Str -> Str -> Form2 = \card,ord -> {
-			s = table {
-				NCard => card ;
-				NOrd => ord
-			} ;
-			s2 = card ;
-			n = NumPl
-		} ;
--}
 
 	lin
+
+		-- Sub1000000 -> Numeral
+		num x = x ;
+
 {-
 		pot01 =  {
 			s = table {
@@ -262,11 +219,14 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 				((d.s ! Hund ! NOrd) ++ "u" ++ (e.s ! NCard)) ;
 
 		-- Sub1000 -> Sub1000000 ; coercion of 1..999
+{-
 		pot2as3 n = {
 			s = \\cardord => n.s ! cardord ;
 			s2 = n.s2 ;
 			n = n.n ;
 		} ;
+-}
+		pot2as3 n = n ;
 
 		-- Sub1000 -> Sub1000000 ; m * 1000
 		pot3 n = {

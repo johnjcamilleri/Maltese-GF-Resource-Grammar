@@ -17,11 +17,11 @@ Bug reports: http://code.google.com/p/grammatical-framework/issues/list
 
 
 Languages:
-> 24 msec
+> 28 msec
 > 4 msec
-> 8 msec
 > 4 msec
-> 0 msec
+> 4 msec
+> 4 msec
 > + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Common.gfo
 + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Cat.gfo
 + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Noun.gfo
@@ -76,7 +76,7 @@ Languages:
 - compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
 + reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ExtraMlt.gfo
 - compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
-412 msec
+408 msec
 > 4 msec
 > s . NCard => wieħed
 s . NOrd => l-ewwel
@@ -85,15 +85,15 @@ n . NumSg
 > s . NCard => tnejn
 s . NOrd => it-tieni
 n . NumDual
-12 msec
+8 msec
 > s . NCard => tlieta
 s . NOrd => it-tielet
 n . NumPl
-4 msec
+8 msec
 > s . NCard => erbgħa
 s . NOrd => ir-raba'
 n . NumPl
-8 msec
+4 msec
 > s . NCard => ħamsa
 s . NOrd => il-ħames
 n . NumPl
@@ -105,35 +105,35 @@ n . NumPl
 > s . NCard => sebgħa
 s . NOrd => is-seba'
 n . NumPl
-8 msec
+4 msec
 > s . NCard => tmienja
 s . NOrd => it-tmin
 n . NumPl
-4 msec
+8 msec
 > s . NCard => disgħa
 s . NOrd => id-disa'
 n . NumPl
-12 msec
+4 msec
 > s . NCard => għaxra
 s . NOrd => l-għaxar
 n . NumPl
-8 msec
+4 msec
 > s . NCard => ħdax
 s . NOrd => il-ħdax-il
 n . NumPl
-4 msec
+8 msec
 > s . NCard => tlettax
 s . NOrd => it-tlettax-il
 n . NumPl
-8 msec
+4 msec
 > s . NCard => erbatax
 s . NOrd => l-erbatax-il
 n . NumPl
-4 msec
+8 msec
 > s . NCard => sebgħin
 s . NOrd => is-sebgħin
 n . NumPl
-8 msec
+0 msec
 > s . NCard => mija
 s . NOrd => mija
 n . NumPl
@@ -141,15 +141,15 @@ n . NumPl
 > s . NCard => mija u tnax
 s . NOrd => mija u tnax
 n . NumPl
-8 msec
+12 msec
 > s . NCard => mija u erbatax
 s . NOrd => mija u erbatax
 n . NumPl
-8 msec
+4 msec
 > s . NCard => erba' mija
 s . NOrd => l-erba' mija
 n . NumPl
-4 msec
+8 msec
 > s . NCard => erba' mija u għaxra
 s . NOrd => l-erba' mija u għaxra
 n . NumPl
@@ -169,11 +169,11 @@ n . NumPl
 > s . NCard => disa' mija u ħdax
 s . NOrd => id-disa' mija u ħdax
 n . NumPl
-8 msec
+4 msec
 > s . NCard => elf
 s . NOrd => elf
 n . NumPl
-8 msec
+12 msec
 > s . NCard => ħdax elef
 s . NOrd => ħdax elef
 n . NumPl
@@ -189,7 +189,7 @@ n . NumPl
 > s . NCard => wieħed u disgħin elef seba' mija
 s . NOrd => wieħed u disgħin elef is-seba' mija
 n . NumPl
-8 msec
+4 msec
 > s . NCard => mija elef
 s . NOrd => mija elef
 n . NumPl
@@ -197,7 +197,7 @@ n . NumPl
 > s . NCard => mija elef mija
 s . NOrd => mija elef mija
 n . NumPl
-12 msec
+8 msec
 > parse error
 4 msec
 > s . NCard => mija u għaxra elef
@@ -207,7 +207,7 @@ n . NumPl
 > s . NCard => mija u ħdax elef
 s . NOrd => mija u ħdax elef
 n . NumPl
-4 msec
+8 msec
 > s . NCard => mija u wieħed u għoxrin elef mija
 s . NOrd => mija u wieħed u għoxrin elef mija
 n . NumPl
@@ -219,7 +219,7 @@ n . NumPl
 > s . NCard => mija u wieħed u erbgħin elef
 s . NOrd => mija u wieħed u erbgħin elef
 n . NumPl
-4 msec
+8 msec
 > s . NCard => mija u sitt elef
 s . NOrd => mija u sitt elef
 n . NumPl
@@ -227,33 +227,33 @@ n . NumPl
 > s . NCard => mitejn elef
 s . NOrd => mitejn elef
 n . NumPl
-4 msec
+8 msec
 > s . NCard => mitejn elef erba' mija u għaxra
 s . NOrd => mitejn elef l-erba' mija u għaxra
 n . NumPl
-4 msec
+8 msec
 > s . NCard => sitt mija elef
 s . NOrd => sitt mija elef
 n . NumPl
-4 msec
+8 msec
 > s . NCard => sitt mija u għaxra elef għaxra
 s . NOrd => sitt mija u għaxra elef l-għaxar
 n . NumPl
-8 msec
+4 msec
 > s . NCard => seba' mija elef sitt mija u għaxra
 s . NOrd => seba' mija elef is-sitt mija u għaxra
 n . NumPl
-4 msec
+12 msec
 > s . NCard => tmien mija u ħamsin elef sbatax
 s . NOrd => tmien mija u ħamsin elef il-isbatax-il
 n . NumPl
-8 msec
+12 msec
 > s . NCard => disa' mija elef mija u għaxra
 s . NOrd => disa' mija elef mija u għaxra
 n . NumPl
-8 msec
+12 msec
 > s . NCard => disa' mija elef mitejn
 s . NOrd => disa' mija elef il-mitejn
 n . NumPl
-8 msec
+4 msec
 > See you.
