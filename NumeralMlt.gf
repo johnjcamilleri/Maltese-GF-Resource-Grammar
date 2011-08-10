@@ -185,7 +185,10 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			-- Given an existing table
 			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Form2 = \tab,form -> {
 				s = tab ;
-				thou = tab ! NCard ! NumNominative ; -- TODO
+				thou = case form of {
+					Teen => tab ! NCard ! NumAdjectival ;
+					_ => tab ! NCard ! NumNominative
+				} ;
 				n = NumPl ;
 				f = form ;
 			} ;
@@ -203,23 +206,11 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		-- Sub1000000 -> Numeral
 		num x = x ;
 
-{-
-		pot01 =  {
-			s = table {
-				Unit => "wieħed" ;
-				Teen => "ħdax" ;
-				_ => "mija"
-			} ;
-			thou = "wieħed" ;
-			n = NumSg
-		} ;
--}
 		-- Sub10 ; 1
-		pot01 = mkNum "wieħed" "ħdax" [] [] [] [] "ewwel" NumSg ;
+		pot01 = mkNum "wieħed" [] [] [] [] [] "ewwel" NumSg ;
 
 		-- Digit -> Sub10 ; d * 1
-		-- TODO: special case for DUAL?
-		pot0 d = d ** {n = NumPl} ;
+		pot0 d = d ** {n = case d.n of { NumDual => NumDual ; _ => NumPl } } ;
 
 		-- Sub100 ; 10, 11
 		pot110 = mkForm2 "għaxra"	"l-għaxar"		"għaxar"	Teen ;
