@@ -35,10 +35,14 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		DForm =
 			  Unit		-- 0..10
 			| Teen		-- 11-19
-			| TeenIl	-- 11-19
+			--| TeenIl	-- 11-19
 			| Ten		-- 20-99
-			| Hund		-- 100+
+			| Hund		-- 100..999
+			--| Thou		-- 1000+
 		;
+		Num_Case =
+			  NumNominative
+			| NumAdjectival ;
 
 
 {-
@@ -275,6 +279,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 					_ => prep -- this should never happen, I don't think
 				}
 			in
+{-
 			case noun of {
 				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
 				("għ" | #Vowel) + _ => case prep of {
@@ -286,6 +291,21 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 				};
 				K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
 				#Consonant + _ => prep + "-" + noun ;
+				_ => []
+			} ;
+-}
+			-- TODO: I am using ++ because you cannot glue runtime variables...
+			case noun of {
+				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" ++ noun ;
+				("għ" | #Vowel) + _ => case prep of {
+					("fil"|"bil") => (Predef.take 1 prep) + "l-" ++ noun ;
+					_ => case prep of {
+						"il" => "l" + "-" ++ noun ;
+						_ => prep + "-" ++ noun
+					}
+				};
+				K@#CoronalConsonant + _ => prepStem + K + "-" ++ noun ;
+				#Consonant + _ => prep + "-" ++ noun ;
 				_ => []
 			} ;
 
