@@ -17,109 +17,66 @@ Bug reports: http://code.google.com/p/grammatical-framework/issues/list
 
 
 Languages:
-> 28 msec
+> 12 msec
+> 12 msec
 > 4 msec
-> 4 msec
-> 4 msec
-> 4 msec
-> + reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Common.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Cat.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Noun.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Verb.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Adjective.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Adverb.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Numeral.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Sentence.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Question.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Relative.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Conjunction.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Phrase.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Text.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Structural.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Idiom.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Tense.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/NumeralTransfer.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Transfer.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Grammar.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Lexicon.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/abstract/Lang.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IrregMltAbs.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ExtraMltAbs.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMltAbs.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/prelude/Predef.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/prelude/Prelude.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/common/ParamX.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/common/CommonX.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/PatternsMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ResMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/CatMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/NounMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/VerbMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/AdjectiveMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/AdverbMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/NumeralMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/SentenceMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/QuestionMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/RelativeMlt.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/prelude/Coordination.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ConjunctionMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/PhraseMlt.gfo
-+ reading /home/john/Documents/MOLTO/GF (Darcs Repository)/lib/src/common/TextX.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/MorphoMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/OrthoMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ParadigmsMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/StructuralMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IdiomMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/GrammarMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/GrammarMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/IrregMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/LexiconMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/LangMlt.gfo
-+ reading /home/john/Documents/MOLTO/Maltese RGL/maltese/ExtraMlt.gfo
-- compiling /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gf...   wrote file /home/john/Documents/MOLTO/Maltese RGL/maltese/AllMlt.gfo
-412 msec
+> 0 msec
+> 8 msec
+> + reading /home/john/GF (darcs)/lib/src/abstract/Common.gfo
++ reading /home/john/GF (darcs)/lib/src/abstract/Cat.gfo
++ reading /home/john/GF (darcs)/lib/src/abstract/Numeral.gfo
++ reading /home/john/GF (darcs)/lib/src/prelude/Predef.gfo
++ reading /home/john/GF (darcs)/lib/src/prelude/Prelude.gfo
++ reading /home/john/GF (darcs)/lib/src/common/ParamX.gfo
++ reading /home/john/GF (darcs)/lib/src/common/CommonX.gfo
++ reading /home/john/Documents/GF/Maltese RGL/maltese/PatternsMlt.gfo
++ reading /home/john/Documents/GF/Maltese RGL/maltese/ResMlt.gfo
++ reading /home/john/Documents/GF/Maltese RGL/maltese/CatMlt.gfo
+- compiling /home/john/Documents/GF/Maltese RGL/maltese/NumeralMlt.gf...   wrote file /home/john/Documents/GF/Maltese RGL/maltese/NumeralMlt.gfo
+112 msec
 > 4 msec
 > s . NCard => NumNominative => elf
 s . NCard => NumAdjectival => elf
 s . NOrd => NumNominative => l- elf
 s . NOrd => NumAdjectival => l- elf
 n . NumPl
-12 msec
+4 msec
 > s . NCard => NumNominative => elfejn
 s . NCard => NumAdjectival => elfejn
 s . NOrd => NumNominative => l- elfejn
 s . NOrd => NumAdjectival => l- elfejn
 n . NumPl
-8 msec
-> s . NCard => NumNominative => tlitt elef
-s . NCard => NumAdjectival => tlitt elef
-s . NOrd => NumNominative => it- tlitt elef
-s . NOrd => NumAdjectival => it- tlitt elef
+4 msec
+> s . NCard => NumNominative => tlett elef
+s . NCard => NumAdjectival => tlett elef
+s . NOrd => NumNominative => it- tlett elef
+s . NOrd => NumAdjectival => it- tlett elef
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => disat elef
 s . NCard => NumAdjectival => disat elef
 s . NOrd => NumNominative => id- disat elef
 s . NOrd => NumAdjectival => id- disat elef
 n . NumPl
 8 msec
-> s . NCard => NumNominative => għaxar elf
-s . NCard => NumAdjectival => għaxar elf
+> s . NCard => NumNominative => għaxra elf
+s . NCard => NumAdjectival => għaxra elf
 s . NOrd => NumNominative => l- għaxar elf
 s . NOrd => NumAdjectival => l- għaxar elf
 n . NumPl
 8 msec
-> s . NCard => NumNominative => ħdax-il elf
-s . NCard => NumAdjectival => ħdax-il elf
+> s . NCard => NumNominative => ħdax elf
+s . NCard => NumAdjectival => ħdax elf
 s . NOrd => NumNominative => il- ħdax-il elf
 s . NOrd => NumAdjectival => il- ħdax-il elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => tnax-il elf
 s . NCard => NumAdjectival => tnax-il elf
 s . NOrd => NumNominative => it- tnax-il elf
 s . NOrd => NumAdjectival => it- tnax-il elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => tlettax-il elf
 s . NCard => NumAdjectival => tlettax-il elf
 s . NOrd => NumNominative => it- tlettax-il elf
@@ -140,16 +97,16 @@ n . NumPl
 4 msec
 > s . NCard => NumNominative => wieħed u għoxrin elf
 s . NCard => NumAdjectival => wieħed u għoxrin elf
-s . NOrd => NumNominative => il- wieħed u għoxrin elf
-s . NOrd => NumAdjectival => il- wieħed u għoxrin elf
+s . NOrd => NumNominative => u għoxrin elf
+s . NOrd => NumAdjectival => u għoxrin elf
 n . NumPl
 8 msec
 > s . NCard => NumNominative => tnejn u għoxrin elf
 s . NCard => NumAdjectival => tnejn u għoxrin elf
-s . NOrd => NumNominative => it- tnejn u għoxrin elf
-s . NOrd => NumAdjectival => it- tnejn u għoxrin elf
+s . NOrd => NumNominative => it- tieni u għoxrin elf
+s . NOrd => NumAdjectival => it- tieni u għoxrin elf
 n . NumPl
-12 msec
+8 msec
 > s . NCard => NumNominative => tletin elf
 s . NCard => NumAdjectival => tletin elf
 s . NOrd => NumNominative => it- tletin elf
@@ -158,68 +115,68 @@ n . NumPl
 4 msec
 > s . NCard => NumNominative => wieħed u tletin elf
 s . NCard => NumAdjectival => wieħed u tletin elf
-s . NOrd => NumNominative => il- wieħed u tletin elf
-s . NOrd => NumAdjectival => il- wieħed u tletin elf
+s . NOrd => NumNominative => u tletin elf
+s . NOrd => NumAdjectival => u tletin elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => tnejn u tletin elf
 s . NCard => NumAdjectival => tnejn u tletin elf
-s . NOrd => NumNominative => it- tnejn u tletin elf
-s . NOrd => NumAdjectival => it- tnejn u tletin elf
+s . NOrd => NumNominative => it- tieni u tletin elf
+s . NOrd => NumAdjectival => it- tieni u tletin elf
 n . NumPl
 8 msec
 > s . NCard => NumNominative => disgħa u disgħin elf
 s . NCard => NumAdjectival => disgħa u disgħin elf
-s . NOrd => NumNominative => id- disgħa u disgħin elf
-s . NOrd => NumAdjectival => id- disgħa u disgħin elf
+s . NOrd => NumNominative => id- disa' u disgħin elf
+s . NOrd => NumAdjectival => id- disa' u disgħin elf
 n . NumPl
-8 msec
-> s . NCard => NumNominative => mitt elf
-s . NCard => NumAdjectival => mitt elf
-s . NOrd => NumNominative => il- mitt elf
-s . NOrd => NumAdjectival => il- mitt elf
+4 msec
+> s . NCard => NumNominative => mija elf
+s . NCard => NumAdjectival => mija elf
+s . NOrd => NumNominative => mitt elf
+s . NOrd => NumAdjectival => mitt elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => mija u wieħed elf
 s . NCard => NumAdjectival => mija u wieħed elf
-s . NOrd => NumNominative => il- mija u wieħed elf
-s . NOrd => NumAdjectival => il- mija u wieħed elf
+s . NOrd => NumNominative => mitt u wieħed elf
+s . NOrd => NumAdjectival => mitt u wieħed elf
 n . NumPl
 8 msec
 > s . NCard => NumNominative => mija u sitta elf
 s . NCard => NumAdjectival => mija u sitta elf
-s . NOrd => NumNominative => il- mija u sitta elf
-s . NOrd => NumAdjectival => il- mija u sitta elf
+s . NOrd => NumNominative => mitt u sitta elf
+s . NOrd => NumAdjectival => mitt u sitta elf
 n . NumPl
-12 msec
+4 msec
 > s . NCard => NumNominative => mija u għaxra elf
 s . NCard => NumAdjectival => mija u għaxra elf
-s . NOrd => NumNominative => il- mija u għaxra elf
-s . NOrd => NumAdjectival => il- mija u għaxra elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u ħdax elf
-s . NCard => NumAdjectival => mija u ħdax elf
-s . NOrd => NumNominative => il- mija u ħdax elf
-s . NOrd => NumAdjectival => il- mija u ħdax elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u tletin elf
-s . NCard => NumAdjectival => mija u tletin elf
-s . NOrd => NumNominative => il- mija u tletin elf
-s . NOrd => NumAdjectival => il- mija u tletin elf
+s . NOrd => NumNominative => mitt u għaxra elf
+s . NOrd => NumAdjectival => mitt u għaxra elf
 n . NumPl
 12 msec
+> s . NCard => NumNominative => mija u ħdax elf
+s . NCard => NumAdjectival => mija u ħdax elf
+s . NOrd => NumNominative => mitt u ħdax elf
+s . NOrd => NumAdjectival => mitt u ħdax elf
+n . NumPl
+4 msec
+> s . NCard => NumNominative => mija u tletin elf
+s . NCard => NumAdjectival => mija u tletin elf
+s . NOrd => NumNominative => mitt u tletin elf
+s . NOrd => NumAdjectival => mitt u tletin elf
+n . NumPl
+4 msec
 > s . NCard => NumNominative => mija u wieħed u erbgħin elf
 s . NCard => NumAdjectival => mija u wieħed u erbgħin elf
-s . NOrd => NumNominative => il- mija u wieħed u erbgħin elf
-s . NOrd => NumAdjectival => il- mija u wieħed u erbgħin elf
+s . NOrd => NumNominative => mitt u wieħed u erbgħin elf
+s . NOrd => NumAdjectival => mitt u wieħed u erbgħin elf
 n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u sitt elf
-s . NCard => NumAdjectival => mija u sitt elf
-s . NOrd => NumNominative => il- mija u sitt elf
-s . NOrd => NumAdjectival => il- mija u sitt elf
+4 msec
+> s . NCard => NumNominative => mija u sittin elf
+s . NCard => NumAdjectival => mija u sittin elf
+s . NOrd => NumNominative => mitt u sittin elf
+s . NOrd => NumAdjectival => mitt u sittin elf
 n . NumPl
 8 msec
 > s . NCard => NumNominative => mitejn elf
@@ -230,277 +187,8 @@ n . NumPl
 4 msec
 > s . NCard => NumNominative => erba' mija u sittax elf
 s . NCard => NumAdjectival => erba' mija u sittax elf
-s . NOrd => NumNominative => l- erba' mija u sittax elf
-s . NOrd => NumAdjectival => l- erba' mija u sittax elf
-n . NumPl
-8 msec
-> 4 msec
-> 4 msec
-> 4 msec
-> s . NCard => NumNominative => wieħed
-s . NCard => NumAdjectival => []
-s . NOrd => NumNominative => []
-s . NOrd => NumAdjectival => []
-n . NumSg
-4 msec
-> s . NCard => NumNominative => tnejn
-s . NCard => NumAdjectival => żewġ
-s . NOrd => NumNominative => it- tieni
-s . NOrd => NumAdjectival => it- tieni
-n . NumDual
-8 msec
-> s . NCard => NumNominative => tlieta
-s . NCard => NumAdjectival => tliet
-s . NOrd => NumNominative => it- tielet
-s . NOrd => NumAdjectival => it- tielet
+s . NOrd => NumNominative => l- erba' mitt u sittax elf
+s . NOrd => NumAdjectival => l- erba' mitt u sittax elf
 n . NumPl
 4 msec
-> s . NCard => NumNominative => erbgħa
-s . NCard => NumAdjectival => erba'
-s . NOrd => NumNominative => ir- raba'
-s . NOrd => NumAdjectival => ir- raba'
-n . NumPl
-8 msec
-> s . NCard => NumNominative => ħamsa
-s . NCard => NumAdjectival => ħames
-s . NOrd => NumNominative => il- ħames
-s . NOrd => NumAdjectival => il- ħames
-n . NumPl
-4 msec
-> s . NCard => NumNominative => sitta
-s . NCard => NumAdjectival => sitt
-s . NOrd => NumNominative => is- sitt
-s . NOrd => NumAdjectival => is- sitt
-n . NumPl
-8 msec
-> s . NCard => NumNominative => sebgħa
-s . NCard => NumAdjectival => seba'
-s . NOrd => NumNominative => is- seba'
-s . NOrd => NumAdjectival => is- seba'
-n . NumPl
-4 msec
-> s . NCard => NumNominative => tmienja
-s . NCard => NumAdjectival => tmin
-s . NOrd => NumNominative => it- tmin
-s . NOrd => NumAdjectival => it- tmin
-n . NumPl
-8 msec
-> s . NCard => NumNominative => disgħa
-s . NCard => NumAdjectival => disa'
-s . NOrd => NumNominative => id- disa'
-s . NOrd => NumAdjectival => id- disa'
-n . NumPl
-4 msec
-> s . NCard => NumNominative => għaxra
-s . NCard => NumAdjectival => għaxar
-s . NOrd => NumNominative => l-għaxar
-s . NOrd => NumAdjectival => l-għaxar
-n . NumPl
-4 msec
-> s . NCard => NumNominative => ħdax
-s . NCard => NumAdjectival => ħdax-il
-s . NOrd => NumNominative => il-ħdax-il
-s . NOrd => NumAdjectival => il-ħdax-il
-n . NumPl
-4 msec
-> s . NCard => NumNominative => tlettax
-s . NCard => NumAdjectival => tlettax-il
-s . NOrd => NumNominative => it- tlettax-il
-s . NOrd => NumAdjectival => it- tlettax-il
-n . NumPl
-8 msec
-> s . NCard => NumNominative => erbatax
-s . NCard => NumAdjectival => erbatax-il
-s . NOrd => NumNominative => l- erbatax-il
-s . NOrd => NumAdjectival => l- erbatax-il
-n . NumPl
-4 msec
-> s . NCard => NumNominative => sebgħin
-s . NCard => NumAdjectival => sebgħin
-s . NOrd => NumNominative => is- sebgħin
-s . NOrd => NumAdjectival => is- sebgħin
-n . NumPl
-4 msec
-> s . NCard => NumNominative => mija
-s . NCard => NumAdjectival => mitt
-s . NOrd => NumNominative => mitt
-s . NOrd => NumAdjectival => mitt
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u tnax
-s . NCard => NumAdjectival => mitt u tnax-il
-s . NOrd => NumNominative => mitt u tnax
-s . NOrd => NumAdjectival => mitt u tnax-il
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u erbatax
-s . NCard => NumAdjectival => mitt u erbatax-il
-s . NOrd => NumNominative => mitt u erbatax
-s . NOrd => NumAdjectival => mitt u erbatax-il
-n . NumPl
-4 msec
-> s . NCard => NumNominative => erba' mija
-s . NCard => NumAdjectival => erba' mitt
-s . NOrd => NumNominative => l- erba' mitt
-s . NOrd => NumAdjectival => l- erba' mitt
-n . NumPl
-8 msec
-> s . NCard => NumNominative => erba' mija u għaxra
-s . NCard => NumAdjectival => erba' mitt u għaxar
-s . NOrd => NumNominative => l- erba' mitt u għaxra
-s . NOrd => NumAdjectival => l- erba' mitt u għaxar
-n . NumPl
-8 msec
-> s . NCard => NumNominative => ħames mija u wieħed
-s . NCard => NumAdjectival => ħames mitt u
-s . NOrd => NumNominative => il- ħames mitt u wieħed
-s . NOrd => NumAdjectival => il- ħames mitt u
-n . NumPl
-8 msec
-> s . NCard => NumNominative => sitt mija
-s . NCard => NumAdjectival => sitt mitt
-s . NOrd => NumNominative => is- sitt mitt
-s . NOrd => NumAdjectival => is- sitt mitt
-n . NumPl
-4 msec
-> s . NCard => NumNominative => tmien mija
-s . NCard => NumAdjectival => tmien mitt
-s . NOrd => NumNominative => it- tmien mitt
-s . NOrd => NumAdjectival => it- tmien mitt
-n . NumPl
-8 msec
-> s . NCard => NumNominative => disa' mija u ħdax
-s . NCard => NumAdjectival => disa' mitt u ħdax-il
-s . NOrd => NumNominative => id- disa' mitt u ħdax
-s . NOrd => NumAdjectival => id- disa' mitt u ħdax-il
-n . NumPl
-8 msec
-> s . NCard => NumNominative => elf
-s . NCard => NumAdjectival => elf
-s . NOrd => NumNominative => l- elf
-s . NOrd => NumAdjectival => l- elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => ħdax-il elf
-s . NCard => NumAdjectival => ħdax-il elf
-s . NOrd => NumNominative => il- ħdax-il elf
-s . NOrd => NumAdjectival => il- ħdax-il elf
-n . NumPl
-4 msec
-> s . NCard => NumNominative => ħdax-il elf u tnax
-s . NCard => NumAdjectival => ħdax-il elf u tnax
-s . NOrd => NumNominative => il- ħdax-il elf u tnax
-s . NOrd => NumAdjectival => il- ħdax-il elf u tnax
-n . NumPl
-8 msec
-> s . NCard => NumNominative => erbgħin elf
-s . NCard => NumAdjectival => erbgħin elf
-s . NOrd => NumNominative => l- erbgħin elf
-s . NOrd => NumAdjectival => l- erbgħin elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => wieħed u disgħin elf u seba' mija
-s . NCard => NumAdjectival => wieħed u disgħin elf u seba' mija
-s . NOrd => NumNominative => il- wieħed u disgħin elf u seba' mija
-s . NOrd => NumAdjectival => il- wieħed u disgħin elf u seba' mija
-n . NumPl
-16 msec
-> s . NCard => NumNominative => mitt elf
-s . NCard => NumAdjectival => mitt elf
-s . NOrd => NumNominative => il- mitt elf
-s . NOrd => NumAdjectival => il- mitt elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija elf u mija
-s . NCard => NumAdjectival => mija elf u mija
-s . NOrd => NumNominative => il- mija elf u mija
-s . NOrd => NumAdjectival => il- mija elf u mija
-n . NumPl
-8 msec
-> parse error
-4 msec
-> s . NCard => NumNominative => mija u għaxra elf
-s . NCard => NumAdjectival => mija u għaxra elf
-s . NOrd => NumNominative => il- mija u għaxra elf
-s . NOrd => NumAdjectival => il- mija u għaxra elf
-n . NumPl
-12 msec
-> s . NCard => NumNominative => mija u ħdax elf
-s . NCard => NumAdjectival => mija u ħdax elf
-s . NOrd => NumNominative => il- mija u ħdax elf
-s . NOrd => NumAdjectival => il- mija u ħdax elf
-n . NumPl
-12 msec
-> s . NCard => NumNominative => mija u wieħed u għoxrin elf u mija
-s . NCard => NumAdjectival => mija u wieħed u għoxrin elf u mija
-s . NOrd => NumNominative => il- mija u wieħed u għoxrin elf u mija
-s . NOrd => NumAdjectival => il- mija u wieħed u għoxrin elf u mija
-n . NumPl
-24 msec
-> s . NCard => NumNominative => mija u tletin elf
-s . NCard => NumAdjectival => mija u tletin elf
-s . NOrd => NumNominative => il- mija u tletin elf
-s . NOrd => NumAdjectival => il- mija u tletin elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mija u wieħed u erbgħin elf
-s . NCard => NumAdjectival => mija u wieħed u erbgħin elf
-s . NOrd => NumNominative => il- mija u wieħed u erbgħin elf
-s . NOrd => NumAdjectival => il- mija u wieħed u erbgħin elf
-n . NumPl
-12 msec
-> s . NCard => NumNominative => mija u sitt elf
-s . NCard => NumAdjectival => mija u sitt elf
-s . NOrd => NumNominative => il- mija u sitt elf
-s . NOrd => NumAdjectival => il- mija u sitt elf
-n . NumPl
-12 msec
-> s . NCard => NumNominative => mitejn elf
-s . NCard => NumAdjectival => mitejn elf
-s . NOrd => NumNominative => il- mitejn elf
-s . NOrd => NumAdjectival => il- mitejn elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => mitejn elf u erba' mija u għaxra
-s . NCard => NumAdjectival => mitejn elf u erba' mija u għaxra
-s . NOrd => NumNominative => il- mitejn elf u erba' mija u għaxra
-s . NOrd => NumAdjectival => il- mitejn elf u erba' mija u għaxra
-n . NumPl
-8 msec
-> s . NCard => NumNominative => sitt mija elf
-s . NCard => NumAdjectival => sitt mija elf
-s . NOrd => NumNominative => is- sitt mija elf
-s . NOrd => NumAdjectival => is- sitt mija elf
-n . NumPl
-8 msec
-> s . NCard => NumNominative => sitt mija u għaxra elf u għaxra
-s . NCard => NumAdjectival => sitt mija u għaxra elf u għaxra
-s . NOrd => NumNominative => is- sitt mija u għaxra elf u għaxra
-s . NOrd => NumAdjectival => is- sitt mija u għaxra elf u għaxra
-n . NumPl
-8 msec
-> s . NCard => NumNominative => seba' mija elf u sitt mija u għaxra
-s . NCard => NumAdjectival => seba' mija elf u sitt mija u għaxra
-s . NOrd => NumNominative => is- seba' mija elf u sitt mija u għaxra
-s . NOrd => NumAdjectival => is- seba' mija elf u sitt mija u għaxra
-n . NumPl
-12 msec
-> s . NCard => NumNominative => tmien mija u ħamsin elf u sbatax
-s . NCard => NumAdjectival => tmien mija u ħamsin elf u sbatax
-s . NOrd => NumNominative => it- tmien mija u ħamsin elf u sbatax
-s . NOrd => NumAdjectival => it- tmien mija u ħamsin elf u sbatax
-n . NumPl
-16 msec
-> s . NCard => NumNominative => disa' mija elf u mija u għaxra
-s . NCard => NumAdjectival => disa' mija elf u mija u għaxra
-s . NOrd => NumNominative => id- disa' mija elf u mija u għaxra
-s . NOrd => NumAdjectival => id- disa' mija elf u mija u għaxra
-n . NumPl
-8 msec
-> s . NCard => NumNominative => disa' mija elf u mitejn
-s . NCard => NumAdjectival => disa' mija elf u mitejn
-s . NOrd => NumNominative => id- disa' mija elf u mitejn
-s . NOrd => NumAdjectival => id- disa' mija elf u mitejn
-n . NumPl
-8 msec
 > See you.

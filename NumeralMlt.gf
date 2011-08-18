@@ -4,7 +4,7 @@
 -- John J. Camilleri, 2011
 -- Licensed under LGPL
 
-concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
+concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt in {
 
 	flags coding=utf8 ;
 
@@ -49,14 +49,16 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 	oper
 		Form1 = {
 			s : DForm => CardOrd => Num_Case => Str ;
-			thou : Str ;
-			n : Num_Number
+			thou : CardOrd => Str ;
+			n : Num_Number ;
+			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
 		} ;
 		Form2 = {
 			s : CardOrd => Num_Case => Str ;
-			thou : Str ;
+			thou : CardOrd => Str ;
 			n : Num_Number ;
 			f : DForm ;
+			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
 		} ;
 
 
@@ -73,14 +75,28 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		-- Should be moved to ResMlt ?
 		-- Params:
 			-- unit, eg TNEJN
+			-- ordinal unit (without article), eg TIENI
 			-- adjectival, eg ŻEWĠ
 			-- teen, eg TNAX
 			-- ten, eg GĦOXRIN
-			-- hundred, eg MITEJN
-			-- thousand, eg ELFEJN
-			-- ordinal unit (without article), eg TIENI
 			-- number, eg NumDual
-		mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,ordunit,adjectival,teen,ten,hundred,thousand,num -> {
+		--mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,ordunit,adjectival,teen,ten,hundred,thousand,num -> {
+		mkNum : Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,ordunit,adjectival,teen,ten,num ->
+			let
+				hundred = case num of {
+					NumSg => "mija" ;
+					NumDual => "mitejn" ;
+					_ => adjectival
+				} ;
+				thousand = case num of {
+					NumDual => "elfejn" ;
+					_ => case adjectival of {
+						_ + "'" => (init adjectival) + "t" ;	-- eg SEBA' -> SEBAT
+						_ + "t" => adjectival ;					-- eg SITT -> SITT
+						_ => adjectival + "t"					-- eg ĦAMES -> ĦAMEST
+					}
+				}
+			in {
 			s = table {
 				Unit => table {
 					NCard => table {
@@ -102,20 +118,26 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 				} ;
 				Hund => table {
 					NCard => case num of {
+						NumSg => \\numcase => hundred ;			-- eg MIJA
 						NumDual => \\numcase => hundred ;		-- eg MITEJN
 						_ => table {
-							NumNominative => hundred ++ "mija" ;	-- eg SEBA' MIJA
-							NumAdjectival => hundred ++ "mitt"		-- eg SEBA' MITT
+							NumNominative => hundred ++ "mija" ;	-- eg MIJA, SEBA' MIJA
+							NumAdjectival => hundred ++ "mitt"		-- eg MITT, SEBA' MITT
 						}
 					} ;
 					NOrd => case num of {
+						NumSg => \\numcase => addDefiniteArticle "mitt" ;			-- eg IL-MITT
 						NumDual => \\numcase => (addDefiniteArticle hundred) ;		-- eg IL-MITEJN
-						_ => \\numcase => (addDefiniteArticle hundred) ++ "mitt"	-- eg IS-SEBA' MITT
+						_ => \\numcase => addDefiniteArticle hundred ++ "mitt"		-- eg IS-SEBA' MITT
 					}
 				}
 			} ;
-			thou = thousand ; -- TODO: This can be pushed to runtime...?
-			n = num
+			thou = table {
+				NCard => thousand ;
+				NOrd => addDefiniteArticle thousand
+			} ;
+			n = num ;
+			unit_article = getDefiniteArticle unit ;
 		} ;
 
 {-
@@ -132,40 +154,50 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 -}
 
 	lin
-		--			Unit		Ord.Unit	Adjectival	Teen		Ten			Hundred		Thousand	Number
-		n2 = mkNum "tnejn"		"tieni" 	"żewġ"		"tnax"		"għoxrin"	"mitejn"	"elfejn"	NumDual ;
-		n3 = mkNum "tlieta"		"tielet"	"tliet"		"tlettax"	"tletin"	"tliet"		"tlitt"		NumPl ;
-		n4 = mkNum "erbgħa"		"raba'"		"erba'"		"erbatax"	"erbgħin"	"erba'"		"erbat"		NumPl ;
-		n5 = mkNum "ħamsa" 		"ħames"		"ħames"		"ħmistax"	"ħamsin"	"ħames"		"ħamest"	NumPl ;
-		n6 = mkNum "sitta"		"sitt"		"sitt"		"sittax"	"sitt"		"sitt"		"sitt"		NumPl ;
-		n7 = mkNum "sebgħa"		"seba'"		"seba'"		"sbatax"	"sebgħin"	"seba'"		"sebat"		NumPl ;
-		n8 = mkNum "tmienja"	"tmin"		"tmin"		"tmintax"	"tmenin"	"tmien"		"tmint"		NumPl ;
-		n9 = mkNum "disgħa"		"disa'"		"disa'"		"dsatax"	"disgħin"	"disa'"		"disat"		NumPl ;
+		--			Unit		Ord.Unit	Adjectival	Teen		Ten			Number
+		n2 = mkNum "tnejn"		"tieni" 	"żewġ"		"tnax"		"għoxrin"	NumDual ;
+		n3 = mkNum "tlieta"		"tielet"	"tliet"		"tlettax"	"tletin"	NumPl ;
+		n4 = mkNum "erbgħa"		"raba'"		"erba'"		"erbatax"	"erbgħin"	NumPl ;
+		n5 = mkNum "ħamsa" 		"ħames"		"ħames"		"ħmistax"	"ħamsin"	NumPl ;
+		n6 = mkNum "sitta"		"sitt"		"sitt"		"sittax"	"sittin"	NumPl ;
+		n7 = mkNum "sebgħa"		"seba'"		"seba'"		"sbatax"	"sebgħin"	NumPl ;
+		n8 = mkNum "tmienja"	"tmin"		"tmin"		"tmintax"	"tmenin"	NumPl ;
+		n9 = mkNum "disgħa"		"disa'"		"disa'"		"dsatax"	"disgħin"	NumPl ;
 
 	oper
 		-- Helper functions for below
 		mkForm2 : Form2 = overload {
 
 			-- Infer ordinal & thousands
+{-
 			mkForm2 : Str -> DForm -> Form2 = \card,form -> {
 				s = table {
 					NCard => \\numcase => card ;
 					NOrd => \\numcase => addDefiniteArticle card
 				} ;
-				thou = card ;
+				thou = table {
+					NCard => card ;
+					NOrd => addDefiniteArticle card
+				} ;
 				n = NumPl ;
 				f = form ;
+				unit_article = getDefiniteArticle card ;
 			} ;
+-}
 
 			-- Infer adjectival, thousands
-			mkForm2 : Str -> Str -> DForm -> Form2 = \card,ord,form -> {
+			mkForm2 : Str -> Str -> DForm -> Str -> Form2 = \card,ord,form,art -> {
 				s = table {
 					NCard => \\numcase => card ;
 					NOrd => \\numcase => ord
 				} ;
-				thou = card ; -- TODO
+				thou = table {
+					NCard => card ;
+					NOrd => ord
+				} ;
 				n = NumPl ;
 				f = form ;
+				unit_article = art ;
 			} ;
 
 			-- Infer thousands
@@ -175,31 +207,44 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 						NumNominative => card ;
 						NumAdjectival => adj
 					} ;
-					NOrd => \\numcase => ord
+					NOrd => \\numcase => addDefiniteArticle ord
 				} ;
-				thou = adj ; -- TODO
+				thou = table {
+					NCard => card ; -- TODO ?
+					NOrd => addDefiniteArticle ord -- TODO ?
+				} ;
 				n = NumPl ;
 				f = form ;
+				unit_article = getDefiniteArticle card ;
 			} ;
 
 			-- Given an existing table
-			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Form2 = \tab,form -> {
+			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Str -> Form2 = \tab,form,art -> {
 				s = tab ;
 				thou = case form of {
-					Teen => tab ! NCard ! NumAdjectival ;
-					_ => tab ! NCard ! NumNominative
+					Teen => table {
+						NCard => tab ! NCard ! NumAdjectival ;
+						NOrd => tab ! NOrd ! NumAdjectival
+					} ;
+					_ => table {
+						NCard => tab ! NCard ! NumNominative ;
+						NOrd => tab ! NOrd ! NumNominative
+					}
 				} ;
 				n = NumPl ;
 				f = form ;
+				unit_article = art ;
 			} ;
 
 
 		}; -- end of mkForm2 overload
 
+{-
 		joinTables : (Num_Case => Str) -> (Num_Case => Str) -> (Num_Case => Str) = \t1,t2 -> table {
 			NumNominative => t1 ! NumNominative ++ "u" ++ t2 ! NumNominative ;
-			NumAdjectival => t1 ! NumAdjectival ++ "u" ++ t2 ! NumAdjectival
+			NumAdjectival => t1 ! NumNominative ++ "u" ++ t2 ! NumAdjectival
 		};
+-}
 
 	lin
 
@@ -207,18 +252,41 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 		num x = x ;
 
 		-- Sub10 ; 1
-		pot01 = mkNum "wieħed" [] [] [] [] [] "ewwel" NumSg ;
+		--				Unit		Ord.Unit	Adjectival	Teen		Ten			Number
+		pot01 = mkNum	"wieħed"	"ewwel"		"wieħed"	[]			[]			NumSg ;
 
 		-- Digit -> Sub10 ; d * 1
 		pot0 d = d ** {n = case d.n of { NumDual => NumDual ; _ => NumPl } } ;
 
 		-- Sub100 ; 10, 11
-		pot110 = mkForm2 "għaxra"	"l-għaxar"		"għaxar"	Teen ;
-		pot111 = mkForm2 "ħdax"		"il-ħdax-il"	"ħdax-il"	Teen ;
+		--					Cardinal	Ordinal		Adjectival	Form
+		pot110 = mkForm2	"għaxra"	"għaxar"	"għaxar"	Unit ;
+		pot111 = mkForm2	"ħdax"		"ħdax-il"	"ħdax-il"	Teen ;
+{-
+		pot110 = {
+			s = table {
+				NCard => table {
+					NumNominative => "għaxra" ;
+					NumAdjectival => "għaxar"
+				} ;
+				NOrd => \\numcase => addDefiniteArticle "għaxar"
+			} ;
+			thou = table {
+				NCard => "għaxart" ;
+				NOrd =>  addDefiniteArticle "għaxart"
+			} ;
+			n = NumPl ;
+			f = Ten ;
+		} ;
+-}
 
 		-- Digit -> Sub100 ; 10 + d
-		--pot1to19 d = NumeralMlt.ss2 (d.s ! Teen ! NCard) (d.s ! TeenIl ! NCard);
-		pot1to19 d = mkForm2 (d.s ! Teen) Teen ;
+		pot1to19 d =
+			mkForm2
+				(d.s ! Teen)
+				Teen
+				d.unit_article
+			;
 
 		-- Sub10 -> Sub100 ; coercion of 1..9
 		pot0as1 d = {
@@ -226,92 +294,145 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open ResMlt in {
 			thou = d.thou ;
 			n = d.n ;
 			f = Unit ;
+			unit_article = d.unit_article ;
 		} ;
 
 		-- Digit -> Sub100 ; d * 10
-		--pot1 d = NumeralMlt.ss (d.s ! Ten ! NCard) ;
-		pot1 d = mkForm2 (d.s ! Ten) Ten ;
+		pot1 d =
+			mkForm2
+				(d.s ! Ten)
+				Ten
+				d.unit_article
+			;
 
 		-- Digit -> Sub10 -> Sub100 ; d * 10 + n
-		-- pot1plus d e = NumeralMlt.ss ((e.s ! Unit ! NCard) ++ "u" ++ (d.s ! Ten ! NCard)) ;
 		pot1plus d n =
+			let unit = (n.s ! Unit ! NCard ! NumNominative) in
 			mkForm2
-				((n.s ! Unit ! NCard ! NumNominative) ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
-				((n.s ! Unit ! NOrd ! NumNominative) ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
-				Ten ;
+				(unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
+				((n.unit_article) ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
+				Ten
+				n.unit_article
+			;
 
 		-- Sub100 -> Sub1000 ; coercion of 1..99
 		pot1as2 m = m ;
 
 		-- Sub10 -> Sub1000 ; m * 100
-		--pot2 d = NumeralMlt.ss (d.s ! Hund ! NCard) ;
-		pot2 m = mkForm2 (m.s ! Hund) Hund ;
+		pot2 m =
+			mkForm2
+				(m.s ! Hund)
+				Hund
+				m.unit_article
+			;
 
 		-- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
-		--pot2plus d e = NumeralMlt.ss2 ((d.s ! Hund ! NCard) ++ "u" ++ (e.s ! NCard)) ((d.s ! Hund ! NCard) ++ "u" ++ e.s2) ;
 		pot2plus m n =
 			mkForm2
 				(table {
+{-
 					NCard => joinTables (m.s ! Hund ! NCard) (n.s ! NCard) ;
-					NOrd => joinTables (m.s ! Hund ! NOrd)  (n.s ! NCard)
+					NOrd => joinTables (m.unit_article ++ m.s ! Hund ! NCard)  (n.s ! NCard)
+-}
+					NCard => table {
+						NumNominative => m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumNominative ;
+						NumAdjectival => m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumAdjectival
+					} ;
+					NOrd => table {
+						NumNominative => m.unit_article ++ m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumNominative ;
+						NumAdjectival => m.unit_article ++ m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumAdjectival
+					}
 				})
-				Hund ;
+				Hund
+				n.unit_article
+			;
 
 		-- Sub1000 -> Sub1000000 ; coercion of 1..999
-{-
-		pot2as3 n = {
-			s = \\cardord => n.s ! cardord ;
-			thou = n.thou ;
-			n = n.n ;
-		} ;
--}
 		pot2as3 m = m ;
 
 		-- Sub1000 -> Sub1000000 ; m * 1000
 		pot3 m = {
 			s =
-			let thou = case m.thou of { "mija" => "mitt" ; _ => m.thou } in
+			--let thou = case m.thou of { "mija" => "mitt" ; _ => m.thou } in -- TODO!!
 			case m.n of	{
+{-
 				NumSg => elf "elf" ;
 				NumDual => elf "elfejn" ;
 				NumPl => case m.f of {
 					Unit => elf2 thou "elef" ;
 					_ => elf2 thou "elf"
 				}
+-}
+				NumSg => numTable "elf" ;
+				NumDual => numTable "elfejn" ;
+				NumPl => case m.f of {
+					Unit => numTable m.thou "elef" ; -- 2-9
+					_ => numTable m.thou "elf"
+				}
 			} ;
 			thou = m.thou ;
 			n = NumPl ;
 			f = Hund ; -- NOT IMPORTANT
+			unit_article = m.unit_article ;
 		} ;
 
 		-- Sub1000 -> Sub1000 -> Sub1000000 ; m * 1000 + n
 		pot3plus m n = {
---			s = \\cardord => (elf m.thou) ! m.n ++ n.s ! cardord ;
 			s =
 			let ukemm = "u" ++ (n.s ! NCard ! NumNominative) in -- TODO
 			case m.n of	{
+{-
 				NumSg => elf2 "elf" ukemm ;
 				NumDual => elf2 "elfejn" ukemm ;
 				NumPl => case m.f of {
 					Unit => elf2 m.thou ("elef" ++ ukemm) ;
 					_ => elf2 m.thou ("elf" ++ ukemm)
 				}
+-}
+				NumSg => numTable "elf" ukemm ;
+				NumDual => numTable "elfejn" ukemm ;
+				NumPl => case m.f of {
+					Unit => numTable m.thou ("elef" ++ ukemm) ;
+					_ => numTable m.thou ("elf" ++ ukemm)
+				}
 			} ;
 			thou = m.thou ;
 			n = NumPl ;
 			f = Hund ; -- NOT IMPORTANT
+			unit_article = m.unit_article ;
 		} ;
 
 	oper
+			-- Build "x thousand" table
+			numTable : (CardOrd => Num_Case => Str) = overload {
+
+				numTable : Str -> (CardOrd => Num_Case => Str) = \thou -> table {
+					NCard => \\numcase => thou ;
+					NOrd => \\numcase => (addDefiniteArticle thou)
+				} ;
+
+				numTable : Str -> Str -> (CardOrd => Num_Case => Str) = \thou,attach -> table {
+					NCard => \\numcase => thou ++ attach ;
+					NOrd => \\numcase => (addDefiniteArticle thou) ++ attach
+				} ;
+
+				numTable : (CardOrd => Str) -> Str -> (CardOrd => Num_Case => Str) = \thou,attach -> table {
+					NCard => \\numcase => thou ! NCard ++ attach ;
+					NOrd => \\numcase => thou ! NOrd ++ attach
+				} ;
+
+			} ;
+{-
 --		elf : (CardOrd => Str) = overload {
 			elf : Str -> (CardOrd => Num_Case => Str) = \m -> table {
 				NCard => \\numcase => m ;
-				NOrd => \\numcase => (addDefiniteArticle m)
+				NOrd => \\numcase => addDefiniteArticle m
 			} ;
 			elf2 : Str -> Str -> (CardOrd => Num_Case => Str) = \m,n -> table {
 				NCard => \\numcase => m ++ n ;
 				NOrd => \\numcase => (addDefiniteArticle m) ++ n
 			} ;
+-}
 --		} ;
 
 {-

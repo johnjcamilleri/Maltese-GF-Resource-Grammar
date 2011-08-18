@@ -262,15 +262,17 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
 		{- ===== Useful helper functions ===== -}
 
-		-- When no preposition specified, assume "il"
+		addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
 		addDefiniteArticle = addDefinitePreposition "il" ;
+		getDefiniteArticle = getDefinitePreposition "il" ;
 
-		-- Correctly inflect definite preposition and join with noun
-		-- A more generic version of addDefiniteArticle
+		-- Correctly inflect definite preposition
+		-- A more generic version of getDefiniteArticle
 			-- Params:
 				-- preposition (eg TAL, MAL, BĦALL)
 				-- noun
-		addDefinitePreposition : Str -> Str -> Str = \prep,noun ->
+		-- NOTE trying to call this with a runtime string will cause a world of pain. Design around it.
+		getDefinitePreposition : Str -> Str -> Str = \prep,noun ->
 			let
 				-- Remove either 1 or 2 l's
 				prepStem : Str = case prep of {
@@ -279,34 +281,16 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 					_ => prep -- this should never happen, I don't think
 				}
 			in
-{-
 			case noun of {
-				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
-				("għ" | #Vowel) + _ => case prep of {
-					("fil"|"bil") => (Predef.take 1 prep) + "l-" + noun ;
-					_ => case prep of {
-						"il" => "l" + "-" + noun ;
-						_ => prep + "-" + noun
-					}
-				};
-				K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
-				#Consonant + _ => prep + "-" + noun ;
-				_ => []
-			} ;
--}
-			-- TODO: I am using ++ because you cannot glue runtime variables...
-			case noun of {
-				("s"|#LiquidCons) + #Consonant + _ => prep + "-i" ++ noun ;
-				("għ" | #Vowel) + _ => case prep of {
-					("fil"|"bil") => (Predef.take 1 prep) + "l-" ++ noun ;
-					_ => case prep of {
-						"il" => "l" + "-" ++ noun ;
-						_ => prep + "-" ++ noun
-					}
-				};
-				K@#CoronalConsonant + _ => prepStem + K + "-" ++ noun ;
-				#Consonant + _ => prep + "-" ++ noun ;
-				_ => []
+				("s"|#LiquidCons) + #Consonant + _ 	=> prep + "-i" ;		-- L-ISKOLA
+				("għ" | #Vowel) + _ 				=> case prep of {		-- L-GĦATBA...
+														("fil"|"bil")	=> (Predef.take 1 prep) + "l-" ;
+														"il" 			=> "l" + "-" ;
+														_ 				=> prep + "-"
+													};
+				K@#CoronalConsonant + _ 			=> prepStem + K + "-" ;	-- IĊ-ĊISK
+				#Consonant + _ 						=> prep + "-" ;			-- IL-QADDIS
+				_ 									=> []					-- ?
 			} ;
 
 }

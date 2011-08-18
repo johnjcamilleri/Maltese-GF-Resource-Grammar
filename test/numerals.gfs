@@ -3,7 +3,7 @@
 -- ./_gf < test/numerals.gfs > test/numerals.out
 
 se utf8
-i -retain AllMlt.gf
+i -retain NumeralMlt.gf
 
 cc -table -unqual num (pot3 (pot1as2 (pot0as1 pot01))) -- 1,000
 cc -table -unqual num (pot3 (pot1as2 (pot0as1 (pot0 n2)))) -- 2,000
@@ -31,51 +31,3 @@ cc -table -unqual num (pot3 (pot2plus pot01 (pot1plus n4 pot01))) -- 141,000
 cc -table -unqual num (pot3 (pot2plus pot01 (pot1 n6))) -- 160,000
 cc -table -unqual num (pot3 (pot2 (pot0 n2))) -- 200,000
 cc -table -unqual num (pot3 (pot2plus (pot0 n4) (pot1to19 n6))) -- 416,000
-
--- ---------------------------------------------
-
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 pot01))) -- 1
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))) -- 2
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))) -- 3
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n4)))) -- 4
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n5)))) -- 5
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n6)))) -- 6
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n7)))) -- 7
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n8)))) -- 8
-cc -table -unqual num (pot2as3 (pot1as2 (pot0as1 (pot0 n9)))) -- 9
-cc -table -unqual num (pot2as3 (pot1as2 pot110)) -- 10
-cc -table -unqual num (pot2as3 (pot1as2 pot111)) -- 11
-cc -table -unqual num (pot2as3 (pot1as2 (pot1to19 n3))) -- 13
-cc -table -unqual num (pot2as3 (pot1as2 (pot1to19 n4))) -- 14
-cc -table -unqual num (pot2as3 (pot1as2 (pot1 n7))) -- 70
-cc -table -unqual num (pot2as3 (pot2 pot01)) -- 100
-cc -table -unqual num (pot2as3 (pot2plus pot01 (pot1to19 n2))) -- 112
-cc -table -unqual num (pot2as3 (pot2plus pot01 (pot1to19 n4))) -- 114
-cc -table -unqual num (pot2as3 (pot2 (pot0 n4))) -- 400
-cc -table -unqual num (pot2as3 (pot2plus (pot0 n4) pot110)) -- 410
-cc -table -unqual num (pot2as3 (pot2plus (pot0 n5) (pot0as1 pot01))) -- 501
-cc -table -unqual num (pot2as3 (pot2 (pot0 n6))) -- 600
-cc -table -unqual num (pot2as3 (pot2 (pot0 n8))) -- 800
-cc -table -unqual num (pot2as3 (pot2plus (pot0 n9) pot111)) -- 911
-cc -table -unqual num (pot3 (pot1as2 (pot0as1 pot01))) -- 1,000
-cc -table -unqual num (pot3 (pot1as2 pot111)) -- 11,000
-cc -table -unqual num (pot3plus (pot1as2 pot111) (pot1as2 (pot1to19 n2))) -- 11,012
-cc -table -unqual num (pot3 (pot1as2 (pot1 n4))) -- 40,000
-cc -table -unqual num (pot3plus (pot1as2 (pot1plus n9 pot01)) (pot2 (pot0 n7))) -- 91,700
-cc -table -unqual num (pot3 (pot2 pot01)) -- 100,000
-cc -table -unqual num (pot3plus (pot2 pot01) (pot2 pot01)) -- 100,100
-cc -table -unqual num (pot3plus (pot2 pot01) (pot1as2 (pot1plus n3 pot01))) 100,031
-cc -table -unqual num (pot3 (pot2plus pot01 pot110)) -- 110,000
-cc -table -unqual num (pot3 (pot2plus pot01 pot111)) -- 111,000
-cc -table -unqual num (pot3plus (pot2plus pot01 (pot1plus n2 pot01)) (pot2 pot01)) -- 121,100
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1 n3))) -- 130,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1plus n4 pot01))) -- 141,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1 n6))) -- 160,000
-cc -table -unqual num (pot3 (pot2 (pot0 n2))) -- 200,000
-cc -table -unqual num (pot3plus (pot2 (pot0 n2)) (pot2plus (pot0 n4) pot110)) -- 200,410
-cc -table -unqual num (pot3 (pot2 (pot0 n6))) -- 600,000
-cc -table -unqual num (pot3plus (pot2plus (pot0 n6) pot110) (pot1as2 pot110)) -- 610,010
-cc -table -unqual num (pot3plus (pot2 (pot0 n7)) (pot2plus (pot0 n6) pot110)) -- 700,610
-cc -table -unqual num (pot3plus (pot2plus (pot0 n8) (pot1 n5)) (pot1as2 (pot1to19 n7))) -- 850,017
-cc -table -unqual num (pot3plus (pot2 (pot0 n9)) (pot2plus pot01 pot110)) -- 900,110
-cc -table -unqual num (pot3plus (pot2 (pot0 n9)) (pot2 (pot0 n2))) -- 900,200
