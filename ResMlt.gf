@@ -293,4 +293,19 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 				_ 									=> []					-- ?
 			} ;
 
+		definiteArticle : Str =
+			pre {
+				"il-" ;
+				"l-" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "ċ" ; "għ" } ;
+				"iċ-" / strs { "ċ" } ;
+				"id-" / strs { "d" } ;
+				"in-" / strs { "n" } ;
+				"ir-" / strs { "r" } ;
+				"is-" / strs { "s" } ;
+				"it-" / strs { "t" } ;
+				"ix-" / strs { "x" } ;
+				"iż-" / strs { "ż" } ;
+				"iz-" / strs { "z" }
+			} ;
+
 }

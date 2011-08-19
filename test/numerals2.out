@@ -52,19 +52,19 @@ s . NCard => NumAdjectival => tliet
 s . NOrd => NumNominative => it- tielet
 s . NOrd => NumAdjectival => it- tielet
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => erbgħa
 s . NCard => NumAdjectival => erba'
 s . NOrd => NumNominative => ir- raba'
 s . NOrd => NumAdjectival => ir- raba'
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => ħamsa
 s . NCard => NumAdjectival => ħames
 s . NOrd => NumNominative => il- ħames
 s . NOrd => NumAdjectival => il- ħames
 n . NumPl
-12 msec
+8 msec
 > s . NCard => NumNominative => sitta
 s . NCard => NumAdjectival => sitt
 s . NOrd => NumNominative => is- sitt
@@ -76,13 +76,13 @@ s . NCard => NumAdjectival => seba'
 s . NOrd => NumNominative => is- seba'
 s . NOrd => NumAdjectival => is- seba'
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => tmienja
 s . NCard => NumAdjectival => tmin
 s . NOrd => NumNominative => it- tmin
 s . NOrd => NumAdjectival => it- tmin
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => disgħa
 s . NCard => NumAdjectival => disa'
 s . NOrd => NumNominative => id- disa'
@@ -130,7 +130,7 @@ s . NCard => NumAdjectival => wieħed u għoxrin
 s . NOrd => NumNominative => il- wieħed u għoxrin
 s . NOrd => NumAdjectival => il- wieħed u għoxrin
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => tnejn u tletin
 s . NCard => NumAdjectival => tnejn u tletin
 s . NOrd => NumNominative => it- tnejn u tletin
@@ -148,7 +148,7 @@ s . NCard => NumAdjectival => sebgħin
 s . NOrd => NumNominative => is- sebgħin
 s . NOrd => NumAdjectival => is- sebgħin
 n . NumPl
-0 msec
+4 msec
 > s . NCard => NumNominative => disgħa u disgħin
 s . NCard => NumAdjectival => disgħa u disgħin
 s . NOrd => NumNominative => id- disgħa u disgħin
@@ -172,7 +172,7 @@ s . NCard => NumAdjectival => mija u żewġ
 s . NOrd => NumNominative => il- mija u tnejn
 s . NOrd => NumAdjectival => il- mija u żewġ
 n . NumPl
-4 msec
+0 msec
 > s . NCard => NumNominative => mija u disgħa
 s . NCard => NumAdjectival => mija u disa'
 s . NOrd => NumNominative => il- mija u disgħa
@@ -196,7 +196,7 @@ s . NCard => NumAdjectival => mija u tnax-il
 s . NOrd => NumNominative => il- mija u tnax
 s . NOrd => NumAdjectival => il- mija u tnax-il
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => mija u erbatax
 s . NCard => NumAdjectival => mija u erbatax-il
 s . NOrd => NumNominative => il- mija u erbatax
@@ -211,22 +211,42 @@ n . NumPl
 4 msec
 > s . NCard => NumNominative => erba' mija u għaxra
 s . NCard => NumAdjectival => erba' mija u għaxar
-s . NOrd => NumNominative => l- erba' mija u għaxra
-s . NOrd => NumAdjectival => l- erba' mija u għaxar
-n . NumPl
-8 msec
-> s . NCard => NumNominative => ħames mija u wieħed
-s . NCard => NumAdjectival => ħames mija u wieħed
-s . NOrd => NumNominative => il- ħames mija u wieħed
-s . NOrd => NumAdjectival => il- ħames mija u wieħed
+s . NOrd => NumNominative => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} erba' mija u għaxra
+s . NOrd => NumAdjectival => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} erba' mija u għaxar
 n . NumPl
 12 msec
+> s . NCard => NumNominative => ħames mija u wieħed
+s . NCard => NumAdjectival => ħames mija u wieħed
+s . NOrd => NumNominative => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} ħames mija u wieħed
+s . NOrd => NumAdjectival => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} ħames mija u wieħed
+n . NumPl
+4 msec
 > s . NCard => NumNominative => sitt mija
 s . NCard => NumAdjectival => sitt mitt
 s . NOrd => NumNominative => is- sitt mitt
 s . NOrd => NumAdjectival => is- sitt mitt
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => tmin mija
 s . NCard => NumAdjectival => tmin mitt
 s . NOrd => NumNominative => it- tmin mitt
@@ -235,8 +255,18 @@ n . NumPl
 4 msec
 > s . NCard => NumNominative => disa' mija u ħdax
 s . NCard => NumAdjectival => disa' mija u ħdax-il
-s . NOrd => NumNominative => id- disa' mija u ħdax
-s . NOrd => NumAdjectival => id- disa' mija u ħdax-il
+s . NOrd => NumNominative => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} disa' mija u ħdax
+s . NOrd => NumAdjectival => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} disa' mija u ħdax-il
 n . NumPl
 8 msec
 > s . NCard => NumNominative => elf
@@ -256,7 +286,7 @@ s . NCard => NumAdjectival => ħdax elf u tnax
 s . NOrd => NumNominative => il- ħdax-il elf u tnax
 s . NOrd => NumAdjectival => il- ħdax-il elf u tnax
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => erbgħin elf
 s . NCard => NumAdjectival => erbgħin elf
 s . NOrd => NumNominative => l- erbgħin elf
@@ -268,13 +298,13 @@ s . NCard => NumAdjectival => wieħed u disgħin elf u seba' mija
 s . NOrd => NumNominative => il- wieħed u disgħin elf u seba' mija
 s . NOrd => NumAdjectival => il- wieħed u disgħin elf u seba' mija
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => mija elf
 s . NCard => NumAdjectival => mija elf
 s . NOrd => NumNominative => il- mitt elf
 s . NOrd => NumAdjectival => il- mitt elf
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => mija elf u mija
 s . NCard => NumAdjectival => mija elf u mija
 s . NOrd => NumNominative => il- mitt elf u mija
@@ -298,7 +328,7 @@ s . NCard => NumAdjectival => mija u ħdax elf
 s . NOrd => NumNominative => il- mija u ħdax elf
 s . NOrd => NumAdjectival => il- mija u ħdax elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => mija u wieħed u għoxrin elf u mija
 s . NCard => NumAdjectival => mija u wieħed u għoxrin elf u mija
 s . NOrd => NumNominative => il- mija u wieħed u għoxrin elf u mija
@@ -310,19 +340,19 @@ s . NCard => NumAdjectival => mija u tletin elf
 s . NOrd => NumNominative => il- mija u tletin elf
 s . NOrd => NumAdjectival => il- mija u tletin elf
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => mija u wieħed u erbgħin elf
 s . NCard => NumAdjectival => mija u wieħed u erbgħin elf
 s . NOrd => NumNominative => il- mija u wieħed u erbgħin elf
 s . NOrd => NumAdjectival => il- mija u wieħed u erbgħin elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => mija u sittin elf
 s . NCard => NumAdjectival => mija u sittin elf
 s . NOrd => NumNominative => il- mija u sittin elf
 s . NOrd => NumAdjectival => il- mija u sittin elf
 n . NumPl
-12 msec
+8 msec
 > s . NCard => NumNominative => mitejn elf
 s . NCard => NumAdjectival => mitejn elf
 s . NOrd => NumNominative => il- mitejn elf
@@ -340,35 +370,55 @@ s . NCard => NumAdjectival => sitt mija elf
 s . NOrd => NumNominative => is- sitt mitt elf
 s . NOrd => NumAdjectival => is- sitt mitt elf
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => sitt mija u għaxra elf u għaxra
 s . NCard => NumAdjectival => sitt mija u għaxra elf u għaxra
-s . NOrd => NumNominative => is- sitt mija u għaxra elf u għaxra
-s . NOrd => NumAdjectival => is- sitt mija u għaxra elf u għaxra
+s . NOrd => NumNominative => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} sitt mija u għaxra elf u għaxra
+s . NOrd => NumAdjectival => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} sitt mija u għaxra elf u għaxra
 n . NumPl
-4 msec
+8 msec
 > s . NCard => NumNominative => seba' mija elf u sitt mija u għaxra
 s . NCard => NumAdjectival => seba' mija elf u sitt mija u għaxra
 s . NOrd => NumNominative => is- seba' mitt elf u sitt mija u għaxra
 s . NOrd => NumAdjectival => is- seba' mitt elf u sitt mija u għaxra
 n . NumPl
-12 msec
+8 msec
 > s . NCard => NumNominative => tmin mija u ħamsin elf u sbatax
 s . NCard => NumAdjectival => tmin mija u ħamsin elf u sbatax
-s . NOrd => NumNominative => it- tmin mija u ħamsin elf u sbatax
-s . NOrd => NumAdjectival => it- tmin mija u ħamsin elf u sbatax
+s . NOrd => NumNominative => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} tmin mija u ħamsin elf u sbatax
+s . NOrd => NumAdjectival => pre {"il-"; "l-" / strs {"a"; "e";
+                                                      "i"; "o"; "u"; "ċ"; "għ"};
+                                         "iċ-" / strs {"ċ"}; "id-" / strs {"d"}; "in-" / strs {"n"};
+                                         "ir-" / strs {"r"}; "is-" / strs {"s"}; "it-" / strs {"t"};
+                                         "ix-" / strs {"x"}; "iż-" / strs {"ż"};
+                                         "iz-" / strs {"z"}} tmin mija u ħamsin elf u sbatax
 n . NumPl
-12 msec
+4 msec
 > s . NCard => NumNominative => disa' mija elf u mija u għaxra
 s . NCard => NumAdjectival => disa' mija elf u mija u għaxra
 s . NOrd => NumNominative => id- disa' mitt elf u mija u għaxra
 s . NOrd => NumAdjectival => id- disa' mitt elf u mija u għaxra
 n . NumPl
-8 msec
+4 msec
 > s . NCard => NumNominative => disa' mija elf u mitejn
 s . NCard => NumAdjectival => disa' mija elf u mitejn
 s . NOrd => NumNominative => id- disa' mitt elf u mitejn
 s . NOrd => NumAdjectival => id- disa' mitt elf u mitejn
 n . NumPl
-8 msec
+16 msec
 > See you.

@@ -51,14 +51,14 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			s : DForm => CardOrd => Num_Case => Str ;
 			thou : CardOrd => Str ;
 			n : Num_Number ;
-			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
+--			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
 		} ;
 		Form2 = {
 			s : CardOrd => Num_Case => Str ;
 			thou : CardOrd => Str ;
 			n : Num_Number ;
 			f : DForm ;
-			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
+--			unit_article : Str ; -- I was trying to get these at runtime, but alas :(
 		} ;
 
 
@@ -137,7 +137,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 				NOrd => addDefiniteArticle thousand
 			} ;
 			n = num ;
-			unit_article = getDefiniteArticle unit ;
+--			unit_article = getDefiniteArticle unit ;
 		} ;
 
 {-
@@ -186,7 +186,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 -}
 
 			-- Infer adjectival, thousands
-			mkForm2 : Str -> Str -> DForm -> Str -> Form2 = \card,ord,form,art -> {
+--			mkForm2 : Str -> Str -> DForm -> Str -> Form2 = \card,ord,form,art -> {
+			mkForm2 : Str -> Str -> DForm -> Form2 = \card,ord,form -> {
 				s = table {
 					NCard => \\numcase => card ;
 					NOrd => \\numcase => ord
@@ -197,7 +198,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 				} ;
 				n = NumPl ;
 				f = form ;
-				unit_article = art ;
+--				unit_article = art ;
 			} ;
 
 			-- Infer thousands
@@ -215,11 +216,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 				} ;
 				n = NumPl ;
 				f = form ;
-				unit_article = getDefiniteArticle card ;
+--				unit_article = getDefiniteArticle card ;
 			} ;
 
 			-- Given an existing table
-			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Str -> Form2 = \tab,form,art -> {
+--			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Str -> Form2 = \tab,form,art -> {
+			mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Form2 = \tab,form -> {
 				s = tab ;
 				thou = case form of {
 					Teen => table {
@@ -233,7 +235,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 				} ;
 				n = NumPl ;
 				f = form ;
-				unit_article = art ;
+--				unit_article = art ;
 			} ;
 
 
@@ -285,7 +287,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			mkForm2
 				(d.s ! Teen)
 				Teen
-				d.unit_article
+--				d.unit_article
 			;
 
 		-- Sub10 -> Sub100 ; coercion of 1..9
@@ -294,7 +296,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			thou = d.thou ;
 			n = d.n ;
 			f = Unit ;
-			unit_article = d.unit_article ;
+--			unit_article = d.unit_article ;
 		} ;
 
 		-- Digit -> Sub100 ; d * 10
@@ -302,7 +304,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			mkForm2
 				(d.s ! Ten)
 				Ten
-				d.unit_article
+--				d.unit_article
 			;
 
 		-- Digit -> Sub10 -> Sub100 ; d * 10 + n
@@ -310,9 +312,10 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			let unit = (n.s ! Unit ! NCard ! NumNominative) in
 			mkForm2
 				(unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
-				((n.unit_article) ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
+				--((n.unit_article) ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
+				(definiteArticle ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
 				Ten
-				n.unit_article
+--				n.unit_article
 			;
 
 		-- Sub100 -> Sub1000 ; coercion of 1..99
@@ -323,11 +326,14 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			mkForm2
 				(m.s ! Hund)
 				Hund
-				m.unit_article
+--				m.unit_article
 			;
 
 		-- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
 		pot2plus m n =
+			let
+				hund : Str = m.s ! Hund ! NCard ! NumNominative
+			in
 			mkForm2
 				(table {
 {-
@@ -335,16 +341,20 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 					NOrd => joinTables (m.unit_article ++ m.s ! Hund ! NCard)  (n.s ! NCard)
 -}
 					NCard => table {
-						NumNominative => m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumNominative ;
-						NumAdjectival => m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumAdjectival
+						NumNominative => hund ++ "u" ++ n.s ! NCard ! NumNominative ;
+						NumAdjectival => hund ++ "u" ++ n.s ! NCard ! NumAdjectival
 					} ;
 					NOrd => table {
+{-
 						NumNominative => m.unit_article ++ m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumNominative ;
 						NumAdjectival => m.unit_article ++ m.s ! Hund ! NCard ! NumNominative ++ "u" ++ n.s ! NCard ! NumAdjectival
+-}
+						NumNominative => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumNominative ;
+						NumAdjectival => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumAdjectival
 					}
 				})
 				Hund
-				n.unit_article
+--				n.unit_article
 			;
 
 		-- Sub1000 -> Sub1000000 ; coercion of 1..999
@@ -373,7 +383,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			thou = m.thou ;
 			n = NumPl ;
 			f = Hund ; -- NOT IMPORTANT
-			unit_article = m.unit_article ;
+--			unit_article = m.unit_article ;
 		} ;
 
 		-- Sub1000 -> Sub1000 -> Sub1000000 ; m * 1000 + n
@@ -399,7 +409,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			thou = m.thou ;
 			n = NumPl ;
 			f = Hund ; -- NOT IMPORTANT
-			unit_article = m.unit_article ;
+--			unit_article = m.unit_article ;
 		} ;
 
 	oper
