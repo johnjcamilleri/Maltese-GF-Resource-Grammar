@@ -79,3 +79,44 @@ num (pot3 (pot2 (pot0 n2)))
 -- 416,000
 num (pot3 (pot2plus (pot0 n4) (pot1to19 n6)))
 
+
+
+
+-- 11,012
+num (pot3plus (pot1as2 pot111) (pot1as2 (pot1to19 n2)))
+
+-- 40,000
+num (pot3 (pot1as2 (pot1 n4)))
+
+-- 91,700
+num (pot3plus (pot1as2 (pot1plus n9 pot01)) (pot2 (pot0 n7)))
+
+-- 100,100
+num (pot3plus (pot2 pot01) (pot2 pot01))
+
+-- 100,031
+num (pot3plus (pot2 pot01) (pot1as2 (pot1plus n3 pot01)))
+
+-- 121,100
+num (pot3plus (pot2plus pot01 (pot1plus n2 pot01)) (pot2 pot01))
+
+-- 200,410
+num (pot3plus (pot2 (pot0 n2)) (pot2plus (pot0 n4) pot110))
+
+-- 600,000
+num (pot3 (pot2 (pot0 n6)))
+
+-- 610,010
+num (pot3plus (pot2plus (pot0 n6) pot110) (pot1as2 pot110))
+
+-- 700,610
+num (pot3plus (pot2 (pot0 n7)) (pot2plus (pot0 n6) pot110))
+
+-- 850,017
+num (pot3plus (pot2plus (pot0 n8) (pot1 n5)) (pot1as2 (pot1to19 n7)))
+
+-- 900,110
+num (pot3plus (pot2 (pot0 n9)) (pot2plus pot01 pot110))
+
+-- 900,200
+num (pot3plus (pot2 (pot0 n9)) (pot2 (pot0 n2)))

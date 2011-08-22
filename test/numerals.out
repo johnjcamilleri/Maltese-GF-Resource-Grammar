@@ -17,11 +17,11 @@ Bug reports: http://code.google.com/p/grammatical-framework/issues/list
 
 
 Languages:
-> 28 msec
-> 4 msec
+> 24 msec
 > 4 msec
 > 4 msec
 > 8 msec
+> 4 msec
 > + reading /home/john/GF (darcs)/lib/src/abstract/Common.gfo
 + reading /home/john/GF (darcs)/lib/src/abstract/Cat.gfo
 + reading /home/john/GF (darcs)/lib/src/abstract/Numeral.gfo
@@ -36,7 +36,7 @@ Languages:
 linking ... OK
 
 Languages: NumeralMlt
-64 msec
+72 msec
 Numeral> s NCard NumNominative : wieħed
 s NCard NumAdjectival : wieħed
 s NOrd NumNominative : l- ewwel
@@ -50,7 +50,7 @@ s NOrd NumAdjectival : it- tieni
 
 
 s NCard NumNominative : tlieta
-s NCard NumAdjectival : tliet
+s NCard NumAdjectival : tlett
 s NOrd NumNominative : it- tielet
 s NOrd NumAdjectival : it- tielet
 
@@ -122,7 +122,7 @@ s NOrd NumAdjectival : is- sebgħin
 
 
 s NCard NumNominative : mija
-s NCard NumAdjectival : mija
+s NCard NumAdjectival : mitt
 s NOrd NumNominative : il- mitt
 s NOrd NumAdjectival : il- mitt
 
@@ -175,138 +175,6 @@ s NOrd NumNominative : id- disa' mija u ħdax
 s NOrd NumAdjectival : id- disa' mija u ħdax-il
 
 
-s NCard NumNominative : elf
-s NCard NumAdjectival : elf
-s NOrd NumNominative : l- elf
-s NOrd NumAdjectival : l- elf
 
-
-s NCard NumNominative : ħdax elf
-s NCard NumAdjectival : ħdax elf
-s NOrd NumNominative : il- ħdax-il elf
-s NOrd NumAdjectival : il- ħdax-il elf
-
-
-s NCard NumNominative : ħdax elf u tnax
-s NCard NumAdjectival : ħdax elf u tnax
-s NOrd NumNominative : il- ħdax-il elf u tnax
-s NOrd NumAdjectival : il- ħdax-il elf u tnax
-
-
-s NCard NumNominative : erbgħin elf
-s NCard NumAdjectival : erbgħin elf
-s NOrd NumNominative : l- erbgħin elf
-s NOrd NumAdjectival : l- erbgħin elf
-
-
-s NCard NumNominative : wieħed u disgħin elf u seba' mija
-s NCard NumAdjectival : wieħed u disgħin elf u seba' mija
-s NOrd NumNominative : il- wieħed u disgħin elf u seba' mija
-s NOrd NumAdjectival : il- wieħed u disgħin elf u seba' mija
-
-
-s NCard NumNominative : mija elf
-s NCard NumAdjectival : mija elf
-s NOrd NumNominative : il- mitt elf
-s NOrd NumAdjectival : il- mitt elf
-
-
-s NCard NumNominative : mija elf u mija
-s NCard NumAdjectival : mija elf u mija
-s NOrd NumNominative : il- mitt elf u mija
-s NOrd NumAdjectival : il- mitt elf u mija
-
-
-s NCard NumNominative : mija elf u wieħed u tletin
-s NCard NumAdjectival : mija elf u wieħed u tletin
-s NOrd NumNominative : il- mitt elf u wieħed u tletin
-s NOrd NumAdjectival : il- mitt elf u wieħed u tletin
-
-
-s NCard NumNominative : mija u għaxra elf
-s NCard NumAdjectival : mija u għaxra elf
-s NOrd NumNominative : il- mija u għaxra elf
-s NOrd NumAdjectival : il- mija u għaxra elf
-
-
-s NCard NumNominative : mija u ħdax elf
-s NCard NumAdjectival : mija u ħdax elf
-s NOrd NumNominative : il- mija u ħdax elf
-s NOrd NumAdjectival : il- mija u ħdax elf
-
-
-s NCard NumNominative : mija u wieħed u għoxrin elf u mija
-s NCard NumAdjectival : mija u wieħed u għoxrin elf u mija
-s NOrd NumNominative : il- mija u wieħed u għoxrin elf u mija
-s NOrd NumAdjectival : il- mija u wieħed u għoxrin elf u mija
-
-
-s NCard NumNominative : mija u tletin elf
-s NCard NumAdjectival : mija u tletin elf
-s NOrd NumNominative : il- mija u tletin elf
-s NOrd NumAdjectival : il- mija u tletin elf
-
-
-s NCard NumNominative : mija u wieħed u erbgħin elf
-s NCard NumAdjectival : mija u wieħed u erbgħin elf
-s NOrd NumNominative : il- mija u wieħed u erbgħin elf
-s NOrd NumAdjectival : il- mija u wieħed u erbgħin elf
-
-
-s NCard NumNominative : mija u sittin elf
-s NCard NumAdjectival : mija u sittin elf
-s NOrd NumNominative : il- mija u sittin elf
-s NOrd NumAdjectival : il- mija u sittin elf
-
-
-s NCard NumNominative : mitejn elf
-s NCard NumAdjectival : mitejn elf
-s NOrd NumNominative : il- mitejn elf
-s NOrd NumAdjectival : il- mitejn elf
-
-
-s NCard NumNominative : mitejn elf u erba' mija u għaxra
-s NCard NumAdjectival : mitejn elf u erba' mija u għaxra
-s NOrd NumNominative : il- mitejn elf u erba' mija u għaxra
-s NOrd NumAdjectival : il- mitejn elf u erba' mija u għaxra
-
-
-s NCard NumNominative : sitt mija elf
-s NCard NumAdjectival : sitt mija elf
-s NOrd NumNominative : is- sitt mitt elf
-s NOrd NumAdjectival : is- sitt mitt elf
-
-
-s NCard NumNominative : sitt mija u għaxra elf u għaxra
-s NCard NumAdjectival : sitt mija u għaxra elf u għaxra
-s NOrd NumNominative : is- sitt mija u għaxra elf u għaxra
-s NOrd NumAdjectival : is- sitt mija u għaxra elf u għaxra
-
-
-s NCard NumNominative : seba' mija elf u sitt mija u għaxra
-s NCard NumAdjectival : seba' mija elf u sitt mija u għaxra
-s NOrd NumNominative : is- seba' mitt elf u sitt mija u għaxra
-s NOrd NumAdjectival : is- seba' mitt elf u sitt mija u għaxra
-
-
-s NCard NumNominative : tmin mija u ħamsin elf u sbatax
-s NCard NumAdjectival : tmin mija u ħamsin elf u sbatax
-s NOrd NumNominative : it- tmin mija u ħamsin elf u sbatax
-s NOrd NumAdjectival : it- tmin mija u ħamsin elf u sbatax
-
-
-s NCard NumNominative : disa' mija elf u mija u għaxra
-s NCard NumAdjectival : disa' mija elf u mija u għaxra
-s NOrd NumNominative : id- disa' mitt elf u mija u għaxra
-s NOrd NumAdjectival : id- disa' mitt elf u mija u għaxra
-
-
-s NCard NumNominative : disa' mija elf u mitejn
-s NCard NumAdjectival : disa' mija elf u mitejn
-s NOrd NumNominative : id- disa' mitt elf u mitejn
-s NOrd NumAdjectival : id- disa' mitt elf u mitejn
-
-
-
-96 msec
+44 msec
 Numeral> See you.

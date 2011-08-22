@@ -123,7 +123,7 @@ $HTML = <<<HTML
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<style type="text/css">
-		body { font: 18px/1.5 serif; }
+		body { font: 16px/1.5 serif; }
 		div { margin-left: 2em; }
 		#text-output { margin:0; color:#999; }
 		#text-output b { display: inline-block; width: 10em; font-weight:normal; }
