@@ -13,8 +13,6 @@ $outfile  = "test/{$type}.out";
 $htmlfile = "test/{$type}.out.html";
 $command  = "./_gf < {$infile} > {$outfile}";
 
-$TEXT = '';
-
 // ================
 
 // Execute GF stuff and capture output
@@ -32,7 +30,8 @@ if (@$GLOBALS['argv'][2] == '--cached') {
 	if ($return_status != 0)
 		die (" Failed.\n");
 }
-$output = file($outfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+//$output = file($outfile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$output = file($outfile, FILE_IGNORE_NEW_LINES);
 if ($output === false)
 	die (" Failed to read {$outfile}.\n");
 
@@ -54,19 +53,18 @@ $ix = 0; // item index
 $console_output = '';
 foreach ($output as $n => $line) {
 
-	// Skip timings
-	if (preg_match('/^(> )?\d+ msec/', $line)) continue;
+	// Have we reached a new entry?
+	if (strlen($line) == 0) {
+		$ix++;
+	}
 
 	// Process items
-	elseif (preg_match('/^(> )?(\w) \. (.*)/', $line, $matches)) {
+	//if (preg_match('/^(> )?(\w) \. (.*)/', $line, $matches)) {
+	elseif (preg_match('/^(\w+> )?(\w) ([^:]+):(.*)$/', $line, $matches)) {
 
-		// Have we reached a new entry?
-		if ($matches[1]) {
-			$ix++;
-		}
-
-		// Split at arrow and nest
-		$columns = explode('=>',$matches[3]);
+		// Split at space, add linearisation, trim, and nest
+		$columns = explode(' ',$matches[3]);
+		$columns[count($columns)-1] = $matches[4];
 		$columns = array_map('trim', $columns);
 		nest($columns, $tree[$ix][$matches[2]]);
 	}
@@ -113,6 +111,8 @@ foreach ($tree as $item) {
 $TEXT_out = ob_get_contents();
 ob_end_clean();
 
+$TEXT_title = "Tree linearisations for: $type";
+$TEXT_generated = sprintf("Generated %s", date('r'));
 
 // ================
 
@@ -123,9 +123,9 @@ $HTML = <<<HTML
 <head>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 	<style type="text/css">
-		body { font: 18px/1.5 serif; color:#999; }
+		body { font: 18px/1.5 serif; }
 		div { margin-left: 2em; }
-		#text-output { margin:0; }
+		#text-output { margin:0; color:#999; }
 		#text-output b { display: inline-block; width: 10em; font-weight:normal; }
 		#text-output em { font-style: italic; color:#000; }
 
@@ -138,6 +138,9 @@ $HTML = <<<HTML
 </head>
 <body>
 
+<h1>{$TEXT_title}</h1>
+<p><em>{$TEXT_generated}</em></p>
+<hr/>
 
 <div id="text-output">
 {$TEXT_out}
@@ -159,6 +162,7 @@ HTML;
 echo " Writing to file $htmlfile\n";
 @unlink($htmlfile);
 file_put_contents($htmlfile, $HTML);
+//file_put_contents($htmlfile, implode("\n", $output));
 
 // ================
 

@@ -296,7 +296,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 		definiteArticle : Str =
 			pre {
 				"il-" ;
-				"l-" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "ċ" ; "għ" } ;
+				"l-" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
 				"iċ-" / strs { "ċ" } ;
 				"id-" / strs { "d" } ;
 				"in-" / strs { "n" } ;

@@ -1,33 +1,7 @@
--- Treebank numerals test
+-- Treebank numerals test (<1000)
 -- Run using the following command:
 -- ./_gf < test/numerals.gfs > test/numerals.out
 
 se utf8
-i -retain NumeralMlt.gf
-
-cc -table -unqual num (pot3 (pot1as2 (pot0as1 pot01))) -- 1,000
-cc -table -unqual num (pot3 (pot1as2 (pot0as1 (pot0 n2)))) -- 2,000
-cc -table -unqual num (pot3 (pot1as2 (pot0as1 (pot0 n3)))) -- 3,000
-cc -table -unqual num (pot3 (pot1as2 (pot0as1 (pot0 n9)))) -- 9,000
-cc -table -unqual num (pot3 (pot1as2 pot110)) -- 10,000
-cc -table -unqual num (pot3 (pot1as2 pot111)) -- 11,000
-cc -table -unqual num (pot3 (pot1as2 (pot1to19 n2))) -- 12,000
-cc -table -unqual num (pot3 (pot1as2 (pot1to19 n3))) -- 14,000
-cc -table -unqual num (pot3 (pot1as2 (pot1to19 n9))) -- 19,000
-cc -table -unqual num (pot3 (pot1as2 (pot1 n2))) -- 20,000
-cc -table -unqual num (pot3 (pot1as2 (pot1plus n2 pot01))) -- 21,000
-cc -table -unqual num (pot3 (pot1as2 (pot1plus n2 (pot0 n2)))) -- 22,000
-cc -table -unqual num (pot3 (pot1as2 (pot1 n3))) -- 30,000
-cc -table -unqual num (pot3 (pot1as2 (pot1plus n3 pot01))) -- 31,000
-cc -table -unqual num (pot3 (pot1as2 (pot1plus n3 (pot0 n2)))) -- 32,000
-cc -table -unqual num (pot3 (pot1as2 (pot1plus n9 (pot0 n9)))) -- 99,000
-cc -table -unqual num (pot3 (pot2 pot01)) -- 100,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot0as1 pot01))) -- 101,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot0as1 (pot0 n6)))) -- 106,000
-cc -table -unqual num (pot3 (pot2plus pot01 pot110)) -- 110,000
-cc -table -unqual num (pot3 (pot2plus pot01 pot111)) -- 111,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1 n3))) -- 130,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1plus n4 pot01))) -- 141,000
-cc -table -unqual num (pot3 (pot2plus pot01 (pot1 n6))) -- 160,000
-cc -table -unqual num (pot3 (pot2 (pot0 n2))) -- 200,000
-cc -table -unqual num (pot3 (pot2plus (pot0 n4) (pot1to19 n6))) -- 416,000
+i NumeralMlt.gf
+rf -lines -tree -file=test/numerals.trees | l -table
