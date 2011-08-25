@@ -316,20 +316,13 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 			n = NumPl ;
 			f = Hund ;
 		} ;
-{-
-			mkForm2
-				(m.s ! Hund)
-				Hund
-			;
--}
 
 		-- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
 		pot2plus m n =
 			let
 				hund : Str = m.s ! Hund ! NCard ! NumNominative
-			in
-			mkForm2
-				(table {
+			in {
+				s = table {
 					NCard => table {
 						NumNominative => hund ++ "u" ++ n.s ! NCard ! NumNominative ;
 						NumAdjectival => hund ++ "u" ++ n.s ! NCard ! NumAdjectival
@@ -338,9 +331,11 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 						NumNominative => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumNominative ;
 						NumAdjectival => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumAdjectival
 					}
-				})
-				Hund
-			;
+				} ;
+				thou = hund ++ "u" ++ n.s ! NCard ! NumAdjectival ;
+				n = NumPl ;
+				f = n.f ; -- eg So that "106,000" is treated as "6,000"
+			} ;
 
 		-- Sub1000 -> Sub1000000 ; coercion of 1..999
 		pot2as3 m = m ;
@@ -349,14 +344,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 		pot3 m = {
 			s =
 			case m.n of	{
-{-
-				NumSg => elf "elf" ;
-				NumDual => elf "elfejn" ;
-				NumPl => case m.f of {
-					Unit => elf2 thou "elef" ;
-					_ => elf2 thou "elf"
-				}
--}
 				NumSg => numTable "elf" ;			-- 1 * 1000
 				NumDual => numTable "elfejn" ;		-- 2 * 2000
 				NumPl => case m.f of {
@@ -364,6 +351,16 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 					_ => numTable m.thou "elf"			-- 11+ * 1000
 				}
 			} ;
+{-
+			case m.f of	{
+				Unit => numTable m.thou "elef" ;		--
+				_ => case m.n of {
+					NumSg => numTable "elf" ;			--
+					NumDual => numTable "elfejn" ;		--
+					NumPl => numTable m.thou "elf"		--
+				}
+			} ;
+-}
 			thou = m.thou ;
 			n = NumPl ;
 			f = Hund ; -- NOT IMPORTANT
