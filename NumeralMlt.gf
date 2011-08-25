@@ -306,8 +306,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 						NumAdjectival => hund ++ "u" ++ n.s ! NCard ! NumAdjectival
 					} ;
 					NOrd => table {
-						NumNominative => definiteArticle ++ hund ++ "u" ++ n.s ! NOrd ! NumNominative ;
-						NumAdjectival => definiteArticle ++ hund ++ "u" ++ n.s ! NOrd ! NumAdjectival
+						NumNominative => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumNominative ;
+						NumAdjectival => definiteArticle ++ hund ++ "u" ++ n.s ! NCard ! NumAdjectival
 					}
 				} ;
 				thou = {
