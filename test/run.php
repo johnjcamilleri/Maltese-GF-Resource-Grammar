@@ -32,7 +32,7 @@ if (in_array('--cached', $GLOBALS['argv'])) {
 } else {
 	// Check infile exists
 	if (!file_exists($files['in']))
-		die (" Failed to read {$files['in']}.\n");
+		die (" Failed to read {$files['in']}\n");
 
 	// Run GF & capture output
 	echo " Reading from {$files['in']}\n";
@@ -41,20 +41,25 @@ if (in_array('--cached', $GLOBALS['argv'])) {
 	//exec("./_gf < {$files['in']} > {$files['out']}", $out, $return_status);
 	exec("./_gf < {$files['in']}", $out, $return_status);
 	if ($return_status != 0)
-		die (" Failed.\n");
+		die (" Failed\n");
+
+	// TODO: Check that the output contains "linking... OK"
+	if (strpos(implode("\n", $out), 'linking ... OK') === false)
+		die (" GF compilation failed\n");
 
 	// Clean output and write to file
 	$n = 0;
 	while (!preg_match('/^\w+>\s*\w+/', $out[$n])) $n++;
 	$out = array_slice($out, $n);
 	$out[0] = preg_replace('/^\w+>\s*/', '', $out[0]);
-	if (false === file_put_contents($files['out'], implode("\n", $out)))
-		die (" Failed.\n");
+	$out = implode("\n", $out);
+	if (false === file_put_contents($files['out'], $out))
+		die (" Failed to write to {$files['out']}\n");
 
 	// Write a gold file?
 	if (in_array('--generate', $GLOBALS['argv'])) {
 		if (file_exists($files['gold']))
-			die (" Gold standard file {$files['gold']} already exists, please delete in manually if you want to re-create it\n");
+			die (" Gold standard file {$files['gold']} already exists, please delete in manually if you want to re-generate it.\n");
 		echo " Writing gold standard file to {$files['gold']}\n";
 		if (false === file_put_contents($files['gold'], $out))
 			die (" Failed.\n");
@@ -128,11 +133,11 @@ function disp($branch, $depth=0) {
 	if (is_array($branch)) {
 		// Are we at the bottom OUT/GOLD case?
 		if (array_key_exists('out', $branch) && array_key_exists('out', $branch)) {
-			if ($branch['out'] == $branch['gold']) {
+			if (!empty($branch['gold']) && $branch['out'] == $branch['gold']) {
 				$scores['correct']++;
 				echo "<em>{$branch['out']}</em>" ;
 			} else {
-				echo "<em class='incorrect'>{$branch['out']}</em>\t&rarr;\t<em class='gold'>{$branch['gold']}</em>" ;
+				echo "<em class='incorrect'>{$branch['out']}</em> &rarr; <em class='gold'>{$branch['gold']}</em>" ;
 				$scores['incorrect']++;
 			}
 			$scores['total']++;
@@ -185,7 +190,7 @@ $HTML = <<<HTML
 		#text-output em { font-style: italic; color:#000; }
 		#text-output em.correct, .correct { color:green; }
 		#text-output em.incorrect, .incorrect { color:red; }
-		#text-output em.gold, .gold { color:gold; }
+		#text-output em.gold, .gold { background-color:gold; padding:0 5px; }
 
 		table { border-collapse:collapse; border-spacing:0; }
 		tr:nth-child(odd) { background-color:#eee; }
@@ -220,5 +225,5 @@ file_put_contents($files['html'], $HTML);
 // Stop timing & display stats
 $time_end = microtime(true);
 $time_taken = $time_end - $time_start;
-printf(" Done in %.2fs (completed at %s)\n", $time_taken, date('H:i'));
-printf(" %s linearisations total: %d correct, %d incorrect\n", $scores['total'], $scores['correct'], $scores['incorrect']);
+printf(" Done in %.2fs (completed at %s).\n", $time_taken, date('H:i'));
+printf(" %s linearisations total: %d correct, %d incorrect.\n", $scores['total'], $scores['correct'], $scores['incorrect']);
