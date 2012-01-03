@@ -1,6 +1,7 @@
-# Maltese GF Resource Grammar Library
+# Maltese GF Resource Grammar
 
-This is just my work-in-progress Maltese grammar for the [Grammatical Framework](http://www.grammaticalframework.org/) Resource Grammar Library.
-The grammar is still in early phases and this repository will change frequently with no real version numbers or anything; I simply set up this repository as a versioned, off-site copy of my work in progress. Eventually, a more complete version of this grammar will be integerated into GF's main darcs repository.
+This grammar is still in early phases and will be updated very irregularly.
+As far as I know, no one else has worked on a resource grammar for Maltese, but feel free to contact me if you are interested in contributing, or just curious.
 
-Feel free to contact me if you are interested in contributing, or just curious.
+John J. Camilleri  
+3 Jan 2012
