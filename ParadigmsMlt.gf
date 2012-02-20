@@ -109,11 +109,11 @@ resource ParadigmsMlt = open
         in
         {
           s = table {
-            Singular Singulative  => buildCaseTable sing ;
-            Singular Collective    => buildCaseTable coll ;
-            Dual          => buildCaseTable dual ;
-            Plural Determinate    => buildCaseTable det ;
-            Plural Indeterminate  => buildCaseTable ind
+            Singular Singulative  => buildNounTable sing ;
+            Singular Collective    => buildNounTable coll ;
+            Dual          => buildNounTable dual ;
+            Plural Determinate    => buildNounTable det ;
+            Plural Indeterminate  => buildNounTable ind
           } ;
           g = gender ;
         } ;
@@ -191,20 +191,28 @@ resource ParadigmsMlt = open
       -- Gender
     mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
       s = table {
-        Singular Singulative  => buildCaseTable sing ;
-        Singular Collective    => buildCaseTable coll ;
-        Dual          => buildCaseTable dual ;
-        Plural Determinate    => buildCaseTable det ;
-        Plural Indeterminate  => buildCaseTable ind
+        Singular Singulative  => buildNounTable sing ;
+        Singular Collective    => buildNounTable coll ;
+        Dual          => buildNounTable dual ;
+        Plural Determinate    => buildNounTable det ;
+        Plural Indeterminate  => buildNounTable ind
       } ;
       g = gen ;
     } ;
 
-
+    -- Build a definiteness table for a single noun number form
+    -- Params:
+      -- noun form (eg NEMLA, NEMEL, NEMLIET)
+    buildNounTable : Str -> (Definiteness => Str) = \noun ->
+      table {
+        Definite => addDefinitePreposition "il" noun ;
+        Indefinite => noun
+      };
+{-
     -- Build a definiteness/case table for a single noun number form
     -- Params:
       -- noun form (eg NEMLA, NEMEL, NEMLIET)
-    buildCaseTable : Str -> (Definiteness => Case => Str) = \noun ->
+    buildNounTable : Str -> (Definiteness => Case => Str) = \noun ->
       table {
         Definite => table {
           Benefactive  => addDefinitePreposition "għall" noun;
@@ -231,7 +239,7 @@ resource ParadigmsMlt = open
           Nominative  => noun
         }
       };
-
+-}
 {-
     -- Correctly abbreviate definite prepositions and join with noun
     -- Params:

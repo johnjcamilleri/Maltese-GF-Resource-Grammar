@@ -115,7 +115,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
       | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
     ;
 -}
-
+{-
     -- CASE AS DEFINED BY ME
     -- Noun cases (note my examples include DEFINITE ARTICLE)
     -- Commented lines mean that noun iflection is unchanged, not that the case does not occur in Maltese!
@@ -148,7 +148,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 --      | Translative  -- referent noun or adjective as result of process of change
 --      | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
     ;
-
+-}
 --    Person  = P1 | P2 | P3 ;
 --    State   = Def | Indef | Const ;
 --    Mood    = Ind | Cnj | Jus ;
@@ -244,7 +244,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
     } ;
 -}
     Noun : Type = {
-      s : Noun_Number => Definiteness => Case => Str ;
+      s : Noun_Number => Definiteness => Str ;
       g : Gender ;
     } ;
 
