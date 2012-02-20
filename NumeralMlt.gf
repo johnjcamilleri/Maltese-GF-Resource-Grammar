@@ -327,13 +327,11 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     -- Sub1000 -> Sub1000000 ; m * 1000
     pot3 m = {
       s =
-      case m.n of  {
-        NumSg => numTable "elf" ;        -- 1 * 1000
-        NumDual => numTable "elfejn" ;      -- 2 * 2000
-        NumPl => case m.thou.treatAs of {
-          Unit => numTable m.thou.s "elef" ;  -- 3-10 * 1000
-          _ => numTable m.thou.s "elf"    -- 11+ * 1000
-        }
+      case <m.n, m.thou.treatAs> of  {
+        <NumSg  ,_>     => numTable "elf" ;        -- 1 * 1000
+        <NumDual,_>     => numTable "elfejn" ;      -- 2 * 2000
+        <NumPl  ,Unit>  => numTable m.thou.s "elef" ;  -- 3-10 * 1000
+        <NumPl  ,_>     => numTable m.thou.s "elf"    -- 11+ * 1000
       } ;
 {-
       case m.f of  {
@@ -362,7 +360,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
           NumAdjectival => "u" ++ (n.s ! NCard ! NumAdjectival)
         }
       in
-      case m.n of  {
+        case <m.n, m.thou.treatAs> of  {
+          <NumSg  ,_>     => numTable "elf" ukemm ;
+          <NumDual,_>     => numTable "elfejn" ukemm ;
+          <NumPl  ,Unit>  => numTable (m.thou.s ++ "elef") ukemm ;
+          <NumPl  ,_>     => numTable (m.thou.s ++ "elf") ukemm
+        } ;
 {-
         NumSg => elf2 "elf" ukemm ;
         NumDual => elf2 "elfejn" ukemm ;
@@ -371,13 +374,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
           _ => elf2 m.thou ("elf" ++ ukemm)
         }
 -}
-        NumSg => numTable "elf" ukemm ;
-        NumDual => numTable "elfejn" ukemm ;
-        NumPl => case m.thou.treatAs of {
-          Unit => numTable (m.thou.s ++ "elef") ukemm ;
-          _ => numTable (m.thou.s ++ "elf") ukemm
-        }
-      } ;
       thou = {
         s = m.thou.s ;
         treatAs = m.f ;
