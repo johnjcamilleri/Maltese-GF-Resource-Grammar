@@ -1,7 +1,0 @@
--- Treebank numerals test (<1000)
--- Run using the following command:
--- ./_gf < test/numerals.gfs > test/numerals.out
-
-se utf8
-i NumeralMlt.gf
-rf -lines -tree -file=test/numerals.trees | l -table

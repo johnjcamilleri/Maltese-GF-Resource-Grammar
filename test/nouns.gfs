@@ -1,7 +1,0 @@
--- Treebank nouns test
--- Run using the following command:
--- ./_gf < test/nouns.gfs > test/nouns.out
-
-se utf8
-i AllMlt.gf
-rf -lines -tree -file=test/nouns.trees | l -table

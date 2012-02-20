@@ -10,6 +10,7 @@ if (!($type = @$GLOBALS['argv'][1]))
 $files = array (
 	'in' => "test/{$type}.gfs",
 	'out' => "test/{$type}.out",
+	'trees' => "test/{$type}.trees",
 	'gold' => "test/{$type}.gold",
 	'html' => "test/{$type}.html",
 );
@@ -30,22 +31,21 @@ $scores = array(
 if (in_array('--cached', $GLOBALS['argv'])) {
 	echo " Reading directly from {$files['out']}\n";
 } else {
-	// Check infile exists
-	if (!file_exists($files['in']))
-		die (" Failed to read {$files['in']}\n");
+	// Create infile
+	file_put_contents($files['in'], "i AllMlt.gf\nrf -lines -tree -file={$files['trees']} | l -table\n");
 
 	// Run GF & capture output
-	echo " Reading from {$files['in']}\n";
 	echo " Running GF\n";
-	chdir( dirname(__FILE__) . '/../' );
-	//exec("./_gf < {$files['in']} > {$files['out']}", $out, $return_status);
-	exec("./_gf < {$files['in']}", $out, $return_status);
+	exec("gf < {$files['in']}", $out, $return_status);
 	if ($return_status != 0)
 		die (" Failed\n");
 
-	// TODO: Check that the output contains "linking... OK"
+	// Check that the output contains "linking... OK"
 	if (strpos(implode("\n", $out), 'linking ... OK') === false)
 		die (" GF compilation failed\n");
+
+  // Delete infile
+  unlink($files['in']);
 
 	// Clean output and write to file
 	$n = 0;
