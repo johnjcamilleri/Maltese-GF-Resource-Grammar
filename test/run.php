@@ -53,6 +53,7 @@ if (in_array('--cached', $GLOBALS['argv'])) {
 	$out = array_slice($out, $n);
 	$out[0] = preg_replace('/^\w+>\s*/', '', $out[0]);
 	$out = implode("\n", $out);
+	echo " Saving output to {$files['out']}\n";
 	if (false === file_put_contents($files['out'], $out))
 		die (" Failed to write to {$files['out']}\n");
 
