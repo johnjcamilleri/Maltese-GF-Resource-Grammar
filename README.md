@@ -1,7 +1,8 @@
 # Maltese GF Resource Grammar
-## Overview
-_John J. Camilleri, 2009-2012_
+_John J. Camilleri, 2009-2012_  
 _Last updated: 2012-04-11_
+
+## Overview
 
 This is a work-in-progress implementation of a Maltese resource grammar in [GF][3].
 This grammar is in early phases and will be updated very irregularly. The code can be found in two places:
