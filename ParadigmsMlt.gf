@@ -10,7 +10,8 @@ resource ParadigmsMlt = open
   Predef,
   Prelude,
   MorphoMlt,
-  OrthoMlt,(ResMlt=ResMlt),
+  OrthoMlt,
+  ResMlt,
   CatMlt
   in {
 
@@ -401,7 +402,7 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     -- Return: Lookup table of Number against Str
-    conjStrongImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
+    conjStrongImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       let
         stem_sg = case (p.v1 + p.v2) of {
           "aa" => "i" + root.K + root.T + "o" + root.B ;
@@ -480,7 +481,7 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     -- Return: Lookup table of Number against Str
-    conjDefectiveImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
+    conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       let
         v1 = case p.v1 of { "e" => "i" ; _ => p.v1 } ;
         v_pl = case p.v1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
@@ -550,7 +551,7 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     -- Return: Lookup table of Number against Str
-    conjQuadImp : Root -> Pattern -> ( Person_Number => Str ) = \root,p ->
+    conjQuadImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       table {
         Sg => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Inti:  DARDAR
         Pl => root.K + p.v1 + root.T + root.B + root.L + "u"  -- Intom: DARDRU

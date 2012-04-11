@@ -6,19 +6,7 @@
 
 --# -path=.:../abstract:../common:../prelude
 
-{-
-  Verb types summary:
-  ===================
-  - Strong verb: none of radicals are semi-vowels    eg ĦAREĠ (Ħ-R-Ġ)
-  - Defective verb: third radical is semivowel GĦ    eg QATA' (Q-T-GĦ)
-  - Weak verb: third radical is semivowel J      eg MEXA (M-X-J)
-  - Hollow verb: long A or IE btw radicals 1 & 3    eg QAL (Q-W-L) or SAB (S-J-B)
-  - Double/Geminated verb: radicals 2 & 3 identical  eg ĦABB (Ħ-B-B)
-  - Quadriliteral verb: 4 radicals          eg QARMEĊ (Q-R-M-Ċ)
--}
-
-
-resource ResMlt = PatternsMlt ** open Prelude in {
+resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
   flags coding=utf8 ;
 
@@ -26,7 +14,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
 
     -- Used in the NumeralMlt module
     CardOrd = NCard | NOrd ;
-    DTail = T1 | T2 | T3 ; -- This is already defined in ParamX...
+
     Num_Number =
         NumSg
       | NumDual
@@ -44,29 +32,6 @@ resource ResMlt = PatternsMlt ** open Prelude in {
         NumNominative
       | NumAdjectival ;
 
-
-{-
-  Note: NNQ = Non-numerically quantifiable
-
-  Nouns can have the following forms:
-    o Singular
-      - Singulative (1, >10)
-      - Collective (NNQ)
-    o Dual (2)
-    o Plural
-      - Determinate (2-10)
-      - Indeterminate (NNQ)
-        - Sound
-        - Broken
-        - Plural of Plural
-
-  Typical combinations thereof  (* marks base form):
-    - Singulative, no plural!
-    - Singulative*, Plural
-    - Singulative* (1), Dual (2), Plural (>2)
-    - Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
-    - Singulative, Collective*, Determinate Plural, Indeterminate Plural -> very few nouns have these 4 forms
--}
     Noun_Sg_Type =
         Singulative  -- eg ĦUTA
       | Collective  -- eg ĦUT
@@ -166,13 +131,10 @@ resource ResMlt = PatternsMlt ** open Prelude in {
     -- Shortcut type
     -- GenNum = gn Gender Number2 ;
 
-
-    Person_Number = Sg | Pl ;
-
     -- Agreement features
     Agr =
-        Per1 Person_Number  -- Jiena, Aħna
-      | Per2 Person_Number  -- Inti, Intom
+        Per1 Number  -- Jiena, Aħna
+      | Per2 Number  -- Inti, Intom
       | Per3Sg Gender  -- Huwa, Hija
       | Per3Pl    -- Huma
     ;
@@ -191,7 +153,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
     VForm =
         VPerf Agr    -- Perfect tense in all pronoun cases
       | VImpf Agr    -- Imperfect tense in all pronoun cases
-      | VImp Person_Number  -- Imperative is always Per2, Sg & Pl
+      | VImp Number  -- Imperative is always Per2, Sg & Pl
       -- | VPresPart GenNum  -- Present Particible for Gender/Number
       -- | VPastPart GenNum  -- Past Particible for Gender/Number
       -- | VVerbalNoun      -- Verbal Noun
@@ -249,7 +211,7 @@ resource ResMlt = PatternsMlt ** open Prelude in {
     } ;
 
     Adj : Type = {
-      s : Gender => Person_Number => Str ;
+      s : Gender => Number => Str ;
       -- isPre : Bool ;
     } ;
 

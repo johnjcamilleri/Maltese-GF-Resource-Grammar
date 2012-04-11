@@ -5,3 +5,11 @@ _Last updated: 2012-04-11_
 Notes about the implementation of Maltese **verbs**.
 This file is both a documentaion, as well as a to-do list.
 
+## Verb types summary
+
+- Strong verb: none of radicals are semi-vowels. _eg ĦAREĠ (Ħ-R-Ġ)_
+- Defective verb: third radical is semivowel GĦ. _eg QATA' (Q-T-GĦ)_
+- Weak verb: third radical is semivowel J. _eg MEXA (M-X-J)_
+- Hollow verb: long A or IE btw radicals 1 & 3. _eg QAL (Q-W-L) or SAB (S-J-B)_
+- Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
+- Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_

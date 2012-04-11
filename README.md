@@ -7,7 +7,7 @@ _Last updated: 2012-04-11_
 This is a work-in-progress implementation of a Maltese resource grammar in [GF][3].
 This grammar is in early phases and will be updated very irregularly. The code can be found in two places:
 
-1. The [GitHub][1] repository contains all commits and auxiliary files. It may at times contain interim code which doesn't compile.
+1. The [GitHub repository][1] contains all commits and auxiliary files. It may at times contain interim code which doesn't compile.
 1. The official [GF repository][2] shall only be updated with significant updates, and should always be compilable.
 
 Feel free to contact me if you are interested in contributing, or just curious.
