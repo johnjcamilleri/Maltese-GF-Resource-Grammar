@@ -6,6 +6,7 @@
 
 --# -path=.:../abstract:../common:../prelude
 
+-- resource ResMlt = PatternsMlt ** open Prelude in {
 resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
   flags coding=utf8 ;

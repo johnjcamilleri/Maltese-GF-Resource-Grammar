@@ -10,6 +10,7 @@ This file is both a documentaion, as well as a to-do list.
 Note: NNQ = Non-numerically quantifiable
 
 Nouns can have the following forms:
+
 - Singular
   - Singulative (1, >10)
   - Collective (NNQ)
@@ -22,6 +23,7 @@ Nouns can have the following forms:
   - Plural of Plural
 
 Typical combinations thereof  (* marks base form):
+
 - Singulative, no plural!
 - Singulative*, Plural
 - Singulative* (1), Dual (2), Plural (>2)
