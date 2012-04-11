@@ -1,17 +1,15 @@
 # Maltese GF Resource Grammar
+## Overview
+_John J. Camilleri, 2009-2012_
+_Last updated: 2012-04-11_
 
-This grammar is in early phases and will be updated very irregularly. The code is mirrored in at least two places:
+This is a work-in-progress implementation of a Maltese resource grammar in [GF][3].
+This grammar is in early phases and will be updated very irregularly. The code can be found in two places:
 
-1. At the official [GF repository][2] _(commits will always be compilable)_
-1. On [GitHub][1] _(may contain interim code which doesn't compile)_
+1. The [GitHub][1] repository contains all commits and auxiliary files. It may at times contain interim code which doesn't compile.
+1. The official [GF repository][2] shall only be updated with significant updates, and should always be compilable.
 
-As far as I know, no one else has worked on a resource grammar for Maltese. Feel free to contact me if you are interested in contributing, or just curious.
-
-John J. Camilleri  
-Feb 2012
-
-[1]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar-Library
-[2]: http://www.grammaticalframework.org/lib/src/maltese/
+Feel free to contact me if you are interested in contributing, or just curious.
 
 ## Description of the `test` directory
 
@@ -30,7 +28,7 @@ I created this small script to automate the tasks above. It should be run from _
 
     maltese$ php test/run.php type [--generate] [--cached]
 
-Where:
+where:
 
 - `type` is the name of your trees file without the extension, e.g. `nouns`.
 - Use the `--generate` flag to save your gold standard file (which you should then correct manually).
@@ -39,3 +37,7 @@ Where:
 The tool will create a `*.html` file with color-coded comparisons of the output against the gold standard, along with some nice statistics.
 
 
+
+[1]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar-Library
+[2]: http://www.grammaticalframework.org/lib/src/maltese/
+[3]: http://www.grammaticalframework.org/
