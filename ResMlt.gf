@@ -47,16 +47,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | Plural Noun_Pl_Type    -- eg ĦUTIET / ĦWIET
     ;
 
-{-
-    Noun_PluralType =
-        Sound        -- External (affix), eg FERGĦA -> FERGĦAT
-      | Broken      -- Internal, eg FERGĦA -> FRIEGĦI
-      | Irregular      -- eg MARA -> NISA
-      | PluralOfPlural  -- eg TARF -> TRUF -> TRUFIJIET
-      | Foreign      -- eg KARTI, PRATTIĊI, TELEVIXINS
-    ;
--}
-
     Gender  = Masc | Fem ;
 
     Animacy =
@@ -69,52 +59,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | Indefinite  -- eg KARTA
     ;
 
-{-
-    -- CASE AS DEFINED BY GRAMMATIKA MALTIJA, p132
-    -- Noun cases
-    Case =
-        Nominative  -- referent as subject, eg IT-TARBIJA ...
-      | Genitive    -- referent as possessor, eg ... TAT-TARBIJA
-      | Accusative  -- referent as direct object
-      | Dative    -- referent as indirect object, eg ... LIT-TARBIJA
-      | Ablative    -- referent as instrument, cause, location, source or time, eg ... MINN TARBIJA
-      | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
-    ;
--}
-{-
-    -- CASE AS DEFINED BY ME
-    -- Noun cases (note my examples include DEFINITE ARTICLE)
-    -- Commented lines mean that noun iflection is unchanged, not that the case does not occur in Maltese!
-    Case =
---        Absessive    -- lack or absence of referent (MINGĦAJR)
---      | Ablative    -- referent as instrument, cause, location, source or time
---      | Absolutive  -- subject of intransitive or object of transitive verb (in ergative-absolutive languages)
---      | Accusative  -- referent as direct object (in nominative-accusative languages)
---      | Allative    -- motion towards referent (LEJN)
---      | Additive    -- synonym of Allative (above)
-      Benefactive    -- referent as recipient, eg GĦAT-TARBIJA. cf Dative.
---      | Causative    -- referent as the cause of a situation (MINĦABBA)
-      | Comitative  -- with, eg MAT-TARBIJA
-      | Dative    -- referent as indirect object, eg LIT-TARBIJA. cf Benefactive.
---      | Delative    -- motion downward from referent
-      | Elative    -- motion away from referent, eg MIT-TARBIJA
-      | Equative    -- likeness or identity, eg BĦAT-TARBIJA
---      | Ergative    -- subject of transitive verb (in ergative-absolutive languages)
---      | Essive    -- temporary state / while / in capacity of (BĦALA)
-      | Genitive    -- referent as possessor, eg TAT-TARBIJA
---      | Illative    -- motion into / towards referent, eg SAT-TARBIJA. cf Allative.
-      | Inessive    -- within referent, eg ĠOT-TARBIJA, FIT-TARBIJA
-      | Instrumental  -- referent as instrument, eg BIT-TARBIJA. cf Ablative.
-      | Lative    -- motion up to referent, eg SAT-TARBIJA
---      | Locative    -- location at referent
-      | Nominative  -- referent as subject, eg IT-TARBIJA
---      | Partitive    -- partial nature of referent
---      | Prolative    -- motion along / beside referent
---      | Superessive  -- on / upon (FUQ)
---      | Translative  -- referent noun or adjective as result of process of change
---      | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
-    ;
--}
 --    Person  = P1 | P2 | P3 ;
 --    State   = Def | Indef | Const ;
 --    Mood    = Ind | Cnj | Jus ;
