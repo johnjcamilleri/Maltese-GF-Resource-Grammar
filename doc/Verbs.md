@@ -15,8 +15,9 @@ This file is both a documentaion, as well as a to-do list.
   - Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
   - Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
 - Romance
-  - ?
-- English
+  - Strongly-integrated
+  - Loosely-integrated
+- English loan words
   - ?
 
 ## Tense

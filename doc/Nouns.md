@@ -82,3 +82,29 @@ Nouns typically have one of the following combinations of number forms  (* marks
     --| Vocative    -- referent being adressed, eg AA TARBIJA (lol)
     ;
 
+## Other
+
+### Gender
+
+Different gender treatment for different number forms; gender is somewhat inherent but can be "overridden".
+
+Gender inflection for animate nominals
+
+- ĦABIB/ĦABIBA, ĦIJA/OĦTI but ĦUTI SUBIEN / ĦUTI TFAJLIET
+- QATTUS/QATTUSA, BODBOD/MOGĦŻA but QANFUD RAĠEL / QANFUD MARA
+
+### Common plurals
+
+Loss of information in plural
+
+- ĦU/OĦT but AĦWA
+- TIFEL/TIFLA but TFAL
+
+### Collectives
+
+With collectives, I often put the female collective as the singulative of the same entry. Maybe that's wrong? eg ĠILD / ĠILDA
+
+### Diminutive
+
+e.g. ĠOBNA -> ĠBEJNA
+Is it just a different word? It's probably not common enough to introduce a parameter.
