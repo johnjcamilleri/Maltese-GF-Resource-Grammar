@@ -1,6 +1,6 @@
 # Maltese GF Resource Grammar: Nouns
 _John J. Camilleri, 2009-2012_  
-_Last updated: 2012-04-11_
+_Last updated: 2012-04-16_
 
 Notes about the implementation of Maltese **nouns**.
 This file is both a documentaion, as well as a to-do list.
@@ -17,13 +17,15 @@ _Note: NNQ = Non-numerically quantifiable_
   - Determinate (2-10)
   - Indeterminate (NNQ)
 
-Morphological processes for plurals:
+### Morphological processes for plurals
 
   - Sound (eternal/affix), e.g. FERGĦA -> FERGĦAT
   - Broken (internal), e.g. FERGĦA -> FRIEGĦI
   - Plural of Plural, e.g. TARF -> TRUF -> TRUFIJIET
   - Irregular, e.g. MARA -> NISA
   - Foreign, e.g. KARTI, PRATTIĊI, TELEVIXINS
+
+### Typical combinations
 
 Nouns typically have one of the following combinations of number forms  (* marks base form):
 

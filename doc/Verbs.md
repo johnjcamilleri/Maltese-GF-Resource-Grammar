@@ -1,11 +1,11 @@
 # Maltese GF Resource Grammar: Verbs
 _John J. Camilleri, 2009-2012_  
-_Last updated: 2012-04-11_
+_Last updated: 2012-04-16_
 
 Notes about the implementation of Maltese **verbs**.
 This file is both a documentaion, as well as a to-do list.
 
-## Verb types summary
+## Type
 
 - Semitic
   - Strong verb: none of radicals are semi-vowels. _eg ĦAREĠ (Ħ-R-Ġ)_

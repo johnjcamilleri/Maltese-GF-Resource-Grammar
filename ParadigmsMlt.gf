@@ -557,6 +557,4 @@ resource ParadigmsMlt = open
         Pl => root.K + p.v1 + root.T + root.B + root.L + "u"  -- Intom: DARDRU
       } ;
 
-
-
 }
