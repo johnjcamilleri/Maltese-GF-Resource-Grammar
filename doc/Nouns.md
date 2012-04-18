@@ -5,6 +5,16 @@ _Last updated: 2012-04-16_
 Notes about the implementation of Maltese **nouns**.
 This file is both a documentaion, as well as a to-do list.
 
+## Checklist
+
+Items marked with a `*` are not yet covered.
+
+1. Different number types (sing, collective, dual, determinate and indeterminate plural)
+1. Gender
+1. *Inflections for possession, e.g. _idi_ or _widnejhom_
+1. *Animacy, e.g. _karozza_ is always feminine, but you could have both _qattus_ and _qattusa_, _spiżjar_ or _spiżjara_
+1. *Smart paradigm
+
 ## Number
 
 _Note: NNQ = Non-numerically quantifiable_

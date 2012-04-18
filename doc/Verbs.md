@@ -5,6 +5,17 @@ _Last updated: 2012-04-16_
 Notes about the implementation of Maltese **verbs**.
 This file is both a documentaion, as well as a to-do list.
 
+## Checklist
+
+Items marked with a `*` are not yet covered.
+
+1. Conjugations for semitic verbs with 3 and 4 radicals in the root.
+1. *Non-semitic verbs (romance, English-loan)
+1. *Inflections for:
+  1. *Negation, e.g. _ma marritx_
+  1. *active/passive/continuous , e.g. _tela'_ vs _tiela_, _miktub_
+  1. *subject/object, e.g. _ħaditu_, _ġabuhielhom_
+
 ## Type
 
 - Semitic
