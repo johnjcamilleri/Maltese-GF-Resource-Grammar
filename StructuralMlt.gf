@@ -9,4 +9,6 @@ concrete StructuralMlt of Structural = CatMlt **
 
   flags optimize=all ;  coding=utf8 ;
 
+  lin language_title_Utt = ss "Malti" ;
+
 }
