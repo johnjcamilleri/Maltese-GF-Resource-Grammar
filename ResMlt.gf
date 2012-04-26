@@ -6,7 +6,6 @@
 
 --# -path=.:../abstract:../common:../prelude
 
--- resource ResMlt = PatternsMlt ** open Prelude in {
 resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
   flags coding=utf8 ;
@@ -132,26 +131,13 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     {- ===== Type declarations ===== -}
 
-    -- VP = {
-      -- v : Verb ;
-      -- clit : Str ;
-      -- clitAgr : ClitAgr ;
-      -- obj : Agr => Str
-    -- } ;
-
-    -- NP = {
-      -- s : Case => {clit,obj : Str ; isClit : Bool} ;
-      -- a : Agr
-    -- } ;
-
-{-
-    Noun : Type = {
-      s : Number5 => Str ;
-      g : Gender ;
-    } ;
--}
     Noun : Type = {
       s : Noun_Number => Str ;
+      g : Gender ;
+    } ;
+
+    ProperNoun : Type = {
+      s : Str ;
       g : Gender ;
     } ;
 
