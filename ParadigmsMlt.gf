@@ -52,40 +52,40 @@ resource ParadigmsMlt = open
 
     -- Overloaded function for building a noun
     -- Return: Noun
-    mkNoun : Noun = overload {
+    mkN : N = overload {
 
       -- Take the singular and infer gender & plural.
       -- Assume no special plural forms.
       -- Params:
         -- Singular, eg AJRUPLAN
-      mkNoun : Str -> Noun = \sing ->
+      mkN : Str -> N = \sing ->
         let
           plural = inferNounPlural sing ;
           gender = inferNounGender sing ;
         in
-          mkNounWorst sing [] [] plural [] gender ;
+          mkNWorst sing [] [] plural [] gender ;
 
       -- Take an explicit gender.
       -- Assume no special plural forms.
       -- Params:
         -- Singular, eg AJRUPLAN
         -- Gender
-      mkNoun : Str -> Gender -> Noun = \sing,gender ->
+      mkN : Str -> Gender -> N = \sing,gender ->
         let
           plural = inferNounPlural sing ;
         in
-          mkNounWorst sing [] [] plural [] gender ;
+          mkNWorst sing [] [] plural [] gender ;
 
       -- Take the singular, plural. Infer gender.
       -- Assume no special plural forms.
       -- Params:
         -- Singular, eg KTIEB
         -- Plural, eg KOTBA
-      mkNoun : Str -> Str -> Noun = \sing,plural ->
+      mkN : Str -> Str -> N = \sing,plural ->
         let
           gender = inferNounGender sing ;
         in
-          mkNounWorst sing [] [] plural [] gender ;
+          mkNWorst sing [] [] plural [] gender ;
 
       -- Take the singular, plural and gender.
       -- Assume no special plural forms.
@@ -93,8 +93,8 @@ resource ParadigmsMlt = open
         -- Singular, eg KTIEB
         -- Plural, eg KOTBA
         -- Gender
-      mkNoun : Str -> Str -> Gender -> Noun = \sing,plural,gender ->
-          mkNounWorst sing [] [] plural [] gender ;
+      mkN : Str -> Str -> Gender -> N = \sing,plural,gender ->
+          mkNWorst sing [] [] plural [] gender ;
 
 
       -- Takes all 5 forms, inferring gender
@@ -104,36 +104,36 @@ resource ParadigmsMlt = open
         -- Double, eg KOXXTEJN
         -- Determinate Plural, eg KOXXIET
         -- Indeterminate Plural
-      mkNoun : Str -> Str -> Str -> Str -> Str -> Noun = \sing,coll,dual,det,ind ->
+      mkN : Str -> Str -> Str -> Str -> Str -> N = \sing,coll,dual,det,ind ->
         let
           gender = if_then_else (Gender) (isNil sing) (inferNounGender coll) (inferNounGender sing) ;
         in
-          mkNounWorst sing coll dual det ind gender ;
+          mkNWorst sing coll dual det ind gender ;
 
-    } ; --end of mkNoun overload
+    } ; --end of mkN overload
 
     -- Take the singular and infer gender.
     -- No other plural forms.
     -- Params:
       -- Singular, eg ARTI
-    mkNounNoPlural : Noun = overload {
+    mkNNoPlural : N = overload {
 
-      mkNounNoPlural : Str -> Noun = \sing ->
+      mkNNoPlural : Str -> N = \sing ->
         let  gender = inferNounGender sing ;
-        in  mkNounWorst sing [] [] [] [] gender
+        in  mkNWorst sing [] [] [] [] gender
       ;
 
-      mkNounNoPlural : Str -> Gender -> Noun = \sing,gender ->
-        mkNounWorst sing [] [] [] [] gender
+      mkNNoPlural : Str -> Gender -> N = \sing,gender ->
+        mkNWorst sing [] [] [] [] gender
       ;
 
-    } ; --end of mkNounNoPlural overload
+    } ; --end of mkNNoPlural overload
 
 
     -- Take the singular and infer dual, plural & gender
     -- Params:
       -- Singular, eg AJRUPLAN
-    mkNounDual : Str -> Noun = \sing ->
+    mkNDual : Str -> N = \sing ->
       let
         dual : Str = case sing of {
           _ + ("għ"|"'") => sing + "ajn" ;
@@ -143,13 +143,13 @@ resource ParadigmsMlt = open
         plural = inferNounPlural sing ;
         gender = inferNounGender sing ;
       in
-        mkNounWorst sing [] dual plural [] gender ;
+        mkNWorst sing [] dual plural [] gender ;
 
 
     -- Take the collective, and infer singulative, determinate plural, and gender.
     -- Params:
       -- Collective Plural, eg TUFFIEĦ
-    mkNounColl : Str -> Noun = \coll ->
+    mkNColl : Str -> N = \coll ->
       let
         stem : Str = case coll of {
           -- This can only apply when there are 2 syllables in the word
@@ -167,7 +167,7 @@ resource ParadigmsMlt = open
         -- gender = inferNounGender sing ;
         gender = Masc ; -- Collective noun is always treated as Masculine
       in
-        mkNounWorst sing coll [] det [] gender ;
+        mkNWorst sing coll [] det [] gender ;
 
 
     -- Worst case
@@ -179,7 +179,7 @@ resource ParadigmsMlt = open
       -- Determinate Plural, eg KOXXIET
       -- Indeterminate Plural
       -- Gender
-    mkNounWorst : Str -> Str -> Str -> Str -> Str -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+    mkNWorst : Str -> Str -> Str -> Str -> Str -> Gender -> N = \sing,coll,dual,det,ind,gen -> lin N {
       s = table {
         Singular Singulative  => sing ;
         Singular Collective    => coll ;
@@ -252,6 +252,23 @@ resource ParadigmsMlt = open
 
       });
 
+
+    mkN2 = overload {
+      mkN2 : N -> Prep -> N2 = prepN2 ;
+      mkN2 : N -> Str -> N2 = \n,s -> prepN2 n (mkPrep s);
+--      mkN2 : Str -> Str -> N2 = \n,s -> prepN2 (regN n) (mkPrep s);
+      mkN2 : N -> N2         = \n -> prepN2 n (mkPrep "ta'") ;
+--      mkN2 : Str -> N2       = \s -> prepN2 (regN s) (mkPrep "ta'") 
+    } ;
+
+    prepN2 : N -> Prep -> N2 ;
+    prepN2 = \n,p -> lin N2 (n ** {c2 = p.s}) ;
+
+    mkPrep : Str -> Prep ; -- e.g. "in front of"
+    noPrep : Prep ;  -- no preposition
+
+    mkPrep p = lin Prep (ss p) ;
+    noPrep = mkPrep [] ;
 
     {- ========== Verb paradigms ========== -}
 
