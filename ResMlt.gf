@@ -12,6 +12,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
   param
 
+    NPCase = Nom | Gen ;
+
     -- Used in the NumeralMlt module
     CardOrd = NCard | NOrd ;
 
@@ -152,6 +154,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       o : Origin ;    -- Inherent - a verb of Semitic or Romance origins?
     } ;
 
+    {- ===== Conversions ===== -}
+
+    numnum2nounnum : Num_Number -> Noun_Number = \n ->
+      case n of {
+	NumSg => Singular Singulative ;
+	_ => Plural Determinate
+      } ;
+
 
     {- ===== Useful helper functions ===== -}
 
@@ -186,7 +196,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
         _                   => []          -- ?
       } ;
 
-    definiteArticle : Str =
+    artIndef = [] ;
+
+    artDef : Str =
       pre {
         "il-" ;
         "l-" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;

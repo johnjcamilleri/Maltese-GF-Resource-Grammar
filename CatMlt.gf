@@ -59,15 +59,17 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Noun
 
-    -- CN = {s : Number => Case => Str ; g : Gender} ;
-    -- NP = {s : NPCase => Str ; a : Agr} ;
+    CN = Noun ;
+    NP = {s : NPCase => Str ; a : Agr} ;
     -- Pron = {s : NPCase => Str ; sp : Case => Str ; a : Agr} ;
+    Det = {s : Str ; n : Num_Number ; hasNum : Bool} ;
     -- Det = {s : Str ; sp : NPCase => Str ; n : Number ; hasNum : Bool} ;
     -- Predet = {s : Str} ;
     -- Ord = { s : Case => Str } ;
-    -- Num  = {s : Case => Str ; n : Number ; hasCard : Bool} ;
+    Num  = {s : Num_Case => Str ; n : Num_Number ; hasCard : Bool} ;
     -- Card = {s : Case => Str ; n : Number} ;
     -- Quant = {s : Bool => Number => Str ; sp : Bool => Number => NPCase => Str} ;
+    Quant = {s : Bool => Num_Number => Str} ;
 
 -- Numeral
 
