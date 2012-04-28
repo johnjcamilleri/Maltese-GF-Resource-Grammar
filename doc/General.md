@@ -18,10 +18,10 @@ Items marked with a `*` are not yet covered.
 
 - Consonants: "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z"
 - Coronal Consonants ("konsonanti xemxin"): "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z"
-- Liquid Consonants ("konsonanti dgħajfin"): "l" | "m" | "n" | "r" | "għ"
+- Liquid Consonants ("konsonanti qamrin"): "l" | "m" | "n" | "r" | "għ"
 - Vowels: "a" | "e" | "i" | "o" | "u"
 - Digraphs: "ie"
-- Semi-Vowels: "għ" | "j"
+- Semi-Vowels ("konsonanti dgħajfin"?): "għ" | "j"
 
 ## Contributors
 
