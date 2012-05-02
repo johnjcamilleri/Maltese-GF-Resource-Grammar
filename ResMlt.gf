@@ -213,4 +213,25 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
         "iz-" / strs { "z" }
       } ;
 
+    {- ===== Worst-case functions ===== -}
+
+    -- Noun: Takes all forms and a gender
+    -- Params:
+      -- Singulative, eg KOXXA
+      -- Collective, eg KOXXOX
+      -- Double, eg KOXXTEJN
+      -- Determinate Plural, eg KOXXIET
+      -- Indeterminate Plural
+      -- Gender
+    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+      s = table {
+        Singular Singulative  => sing ;
+        Singular Collective    => coll ;
+        Dual          => dual ;
+        Plural Determinate    => det ;
+        Plural Indeterminate  => ind
+      } ;
+      g = gen ;
+    } ;
+
 }

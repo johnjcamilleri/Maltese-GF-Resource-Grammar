@@ -63,7 +63,7 @@ resource ParadigmsMlt = open
           plural = inferNounPlural sing ;
           gender = inferNounGender sing ;
         in
-          mkNWorst sing [] [] plural [] gender ;
+          mk5N sing [] [] plural [] gender ;
 
       -- Take an explicit gender.
       -- Assume no special plural forms.
@@ -74,7 +74,7 @@ resource ParadigmsMlt = open
         let
           plural = inferNounPlural sing ;
         in
-          mkNWorst sing [] [] plural [] gender ;
+          mk5N sing [] [] plural [] gender ;
 
       -- Take the singular, plural. Infer gender.
       -- Assume no special plural forms.
@@ -85,7 +85,7 @@ resource ParadigmsMlt = open
         let
           gender = inferNounGender sing ;
         in
-          mkNWorst sing [] [] plural [] gender ;
+          mk5N sing [] [] plural [] gender ;
 
       -- Take the singular, plural and gender.
       -- Assume no special plural forms.
@@ -94,7 +94,7 @@ resource ParadigmsMlt = open
         -- Plural, eg KOTBA
         -- Gender
       mkN : Str -> Str -> Gender -> N = \sing,plural,gender ->
-          mkNWorst sing [] [] plural [] gender ;
+          mk5N sing [] [] plural [] gender ;
 
 
       -- Takes all 5 forms, inferring gender
@@ -108,7 +108,7 @@ resource ParadigmsMlt = open
         let
           gender = if_then_else (Gender) (isNil sing) (inferNounGender coll) (inferNounGender sing) ;
         in
-          mkNWorst sing coll dual det ind gender ;
+          mk5N sing coll dual det ind gender ;
 
     } ; --end of mkN overload
 
@@ -120,11 +120,11 @@ resource ParadigmsMlt = open
 
       mkNNoPlural : Str -> N = \sing ->
         let  gender = inferNounGender sing ;
-        in  mkNWorst sing [] [] [] [] gender
+        in  mk5N sing [] [] [] [] gender
       ;
 
       mkNNoPlural : Str -> Gender -> N = \sing,gender ->
-        mkNWorst sing [] [] [] [] gender
+        mk5N sing [] [] [] [] gender
       ;
 
     } ; --end of mkNNoPlural overload
@@ -143,7 +143,7 @@ resource ParadigmsMlt = open
         plural = inferNounPlural sing ;
         gender = inferNounGender sing ;
       in
-        mkNWorst sing [] dual plural [] gender ;
+        mk5N sing [] dual plural [] gender ;
 
 
     -- Take the collective, and infer singulative, determinate plural, and gender.
@@ -167,28 +167,12 @@ resource ParadigmsMlt = open
         -- gender = inferNounGender sing ;
         gender = Masc ; -- Collective noun is always treated as Masculine
       in
-        mkNWorst sing coll [] det [] gender ;
+        mk5N sing coll [] det [] gender ;
 
-
-    -- Worst case
-    -- Takes all forms and a gender
-    -- Params:
-      -- Singulative, eg KOXXA
-      -- Collective, eg KOXXOX
-      -- Double, eg KOXXTEJN
-      -- Determinate Plural, eg KOXXIET
-      -- Indeterminate Plural
-      -- Gender
-    mkNWorst : Str -> Str -> Str -> Str -> Str -> Gender -> N = \sing,coll,dual,det,ind,gen -> lin N {
-      s = table {
-        Singular Singulative  => sing ;
-        Singular Collective    => coll ;
-        Dual          => dual ;
-        Plural Determinate    => det ;
-        Plural Indeterminate  => ind
-      } ;
-      g = gen ;
-    } ;
+    -- Build a noun using 5 forms, and a gender
+    mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
+    mk5N = \sing,coll,dual,det,ind,gen ->
+      lin N (mkNoun sing coll dual det ind gen) ;
 
 {-
     -- Correctly abbreviate definite prepositions and join with noun

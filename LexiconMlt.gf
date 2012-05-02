@@ -134,7 +134,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     egg_N = mkNColl "bajd" ;
 --    empty_A
     enemy_N = mkN "għadu" "għedewwa" ;
-    eye_N = mkNWorst "għajn" [] "għajnejn" "għajnejn" "għejun" Fem ;
+    eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" Fem ;
     factory_N = mkN "fabbrika" ;
 --    fall_V
 --    far_Adv
@@ -154,7 +154,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     flower_N = mkN "fjura" ;
 --    fly_V
     fog_N = mkN [] "ċpar" [] [] [] ;
-    foot_N = mkNWorst "sieq" [] "saqajn" "saqajn" [] Fem ;
+    foot_N = mk5N "sieq" [] "saqajn" "saqajn" [] Fem ;
     forest_N = mkN "foresta" ; -- also MASĠAR
 --    forget_V2
 --    freeze_V
@@ -171,11 +171,11 @@ concrete LexiconMlt of Lexicon = CatMlt **
     gold_N = mkN [] "deheb" [] "dehbijiet" [] ;
 --    good_A
     grammar_N = mkN "grammatika" ;
-    grass_N = mkNWorst "ħaxixa" "ħaxix" [] [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
+    grass_N = mk5N "ħaxixa" "ħaxix" [] [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
 --    green_A
     guts_N = mkN "musrana" [] [] "musraniet" "msaren" ;
     hair_N = mkN "xagħar" [] [] "xagħariet" "xgħur" ;
-    hand_N = mkNWorst "id" [] "idejn" "idejn" [] Fem ;
+    hand_N = mk5N "id" [] "idejn" "idejn" [] Fem ;
     harbour_N = mkN "port" "portijiet" ;
     hat_N = mkN "kappell" "kpiepel" ;
 --    hate_V2
@@ -196,7 +196,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     ice_N = mkN "silġ" "silġiet" ;
 --    important_A
     industry_N = mkN "industrija" ;
-    iron_N = mkNWorst "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" Masc ;
+    iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" Masc ;
 --    john_PN
 --    jump_V
 --    kill_V2
@@ -252,7 +252,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    paris_PN
     peace_N = mkN "paċi" "paċijiet" Fem ;
     pen_N = mkN "pinna" "pinen" ;
-    person_N = mkNWorst [] "persuna" [] "persuni" [] Masc ;
+    person_N = mk5N [] "persuna" [] "persuni" [] Masc ;
     planet_N = mkN "pjaneta" ;
     plastic_N = mkNNoPlural "plastik" ;
 --    play_V
@@ -276,7 +276,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     restaurant_N = mkN "restorant" ;
 --    right_Ord
     river_N = mkN "xmara" "xmajjar" ;
-    road_N = mkNWorst "triq" [] [] "triqat" "toroq" Fem ;
+    road_N = mk5N "triq" [] [] "triqat" "toroq" Fem ;
     rock_N = mkN "blata" "blat" [] "blatiet" "blajjiet" ; -- in dictionary BLAT and BLATA are separate!
     roof_N = mkN "saqaf" "soqfa" ;
     root_N = mkN "qħerq" "qħeruq" ;
