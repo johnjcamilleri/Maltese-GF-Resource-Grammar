@@ -7,7 +7,6 @@
 --# -path=.:../abstract:../common:../prelude
 
 concrete LexiconMlt of Lexicon = CatMlt **
-  --open ParadigmsMlt, ResMlt, Prelude in {
   open ParadigmsMlt, IrregMlt, ResMlt in {
 
   flags optimize=values ; coding=utf8 ;
@@ -35,9 +34,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
 
     {- ===== My Nouns ===== -}
 
-    --airplane_N = mkN "ajruplan" Masc ;
+    --airplane_N = mkN "ajruplan" masculine ;
     airplane_N = mkN "ajruplan" ;
-    --apple_N = mkN "tuffieħa" Fem ;
+    --apple_N = mkN "tuffieħa" feminine ;
     apple_N = mkNColl "tuffieħ" ;
 
     bench_N = mkN "bank" "bankijiet" ;
@@ -53,7 +52,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     animal_N = mkN "annimal" ;
 --    answer_V2S
     apartment_N = mkN "appartament" ;
-    art_N = mkNNoPlural "arti" Fem ;
+    art_N = mkNNoPlural "arti" feminine ;
 --    ashes_N = mkN "rmied" ;
 --    ask_V2Q
     baby_N = mkN "tarbija" "trabi" ;
@@ -100,7 +99,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     cheese_N = mkNColl "ġobon" ;
 --    child_N = mkN "tfajjel" ; -- Not an easy one...
     church_N = mkN "knisja" "knejjes" ;
-    city_N = mkN "belt" "bliet" Fem ;
+    city_N = mkN "belt" "bliet" feminine ;
 --    clean_A
 --    clever_A
 --    close_V2
@@ -128,13 +127,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    dull_A
     dust_N = mkNColl "trab" ; -- not sure but sounds right
     ear_N = mkNDual "widna" ;
-    earth_N = mkN "art" "artijiet" Fem ;
+    earth_N = mkN "art" "artijiet" feminine ;
 --    easy_A2V
 --    eat_V2
     egg_N = mkNColl "bajd" ;
 --    empty_A
     enemy_N = mkN "għadu" "għedewwa" ;
-    eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" Fem ;
+    eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" feminine ;
     factory_N = mkN "fabbrika" ;
 --    fall_V
 --    far_Adv
@@ -149,12 +148,12 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fire_N = mkN "nar" "nirien" ;
     fish_N = mkNColl "ħut" ;
 --    float_V
-    earth_N = mkN "art" "artijiet" Fem ;
+    earth_N = mkN "art" "artijiet" feminine ;
 --    flow_V
     flower_N = mkN "fjura" ;
 --    fly_V
     fog_N = mkN [] "ċpar" [] [] [] ;
-    foot_N = mk5N "sieq" [] "saqajn" "saqajn" [] Fem ;
+    foot_N = mk5N "sieq" [] "saqajn" "saqajn" [] feminine ;
     forest_N = mkN "foresta" ; -- also MASĠAR
 --    forget_V2
 --    freeze_V
@@ -171,17 +170,17 @@ concrete LexiconMlt of Lexicon = CatMlt **
     gold_N = mkN [] "deheb" [] "dehbijiet" [] ;
 --    good_A
     grammar_N = mkN "grammatika" ;
-    grass_N = mk5N "ħaxixa" "ħaxix" [] [] "ħxejjex" Masc ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
+    grass_N = mk5N "ħaxixa" "ħaxix" [] [] "ħxejjex" masculine ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
 --    green_A
     guts_N = mkN "musrana" [] [] "musraniet" "msaren" ;
     hair_N = mkN "xagħar" [] [] "xagħariet" "xgħur" ;
-    hand_N = mk5N "id" [] "idejn" "idejn" [] Fem ;
+    hand_N = mk5N "id" [] "idejn" "idejn" [] feminine ;
     harbour_N = mkN "port" "portijiet" ;
     hat_N = mkN "kappell" "kpiepel" ;
 --    hate_V2
-    head_N = mkN "ras" "rjus" Fem ;
+    head_N = mkN "ras" "rjus" feminine ;
 --    hear_V2
-    heart_N = mkN "qalb" "qlub" Fem ;
+    heart_N = mkN "qalb" "qlub" feminine ;
 --    heavy_A
     hill_N = mkN "għolja" "għoljiet" ;
 --    hit_V2
@@ -190,13 +189,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
     horn_N = mkN "ħorn" "ħornijiet" ;
     horse_N = mkN "żiemel" "żwiemel" ;
 --    hot_A
-    house_N = mkN "dar" "djar" Fem ;
+    house_N = mkN "dar" "djar" feminine ;
 --    hunt_V2
     husband_N = mkN "raġel" "rġiel" ;
     ice_N = mkN "silġ" "silġiet" ;
 --    important_A
     industry_N = mkN "industrija" ;
-    iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" Masc ;
+    iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" masculine ;
 --    john_PN
 --    jump_V
 --    kill_V2
@@ -230,7 +229,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     meat_N = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
     milk_N = mkN [] "ħalib" [] "ħalibijiet" "ħlejjeb" ;
     moon_N = mkN "qamar" "oqmra" ; -- qmura?
-    mother_N2 = mkN2 (mkN "omm" "ommijiet" Fem) (mkPrep "ta'") ;
+    mother_N2 = mkN2 (mkN "omm" "ommijiet" feminine) (mkPrep "ta'") ;
     mountain_N = mkN "muntanja" ;
     mouth_N = mkN "ħalq" "ħluq" ;
     music_N = mkN "musika" ; -- plural?
@@ -250,9 +249,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    paint_V2A
     paper_N = mkN "karta" ;
 --    paris_PN
-    peace_N = mkN "paċi" "paċijiet" Fem ;
+    peace_N = mkN "paċi" "paċijiet" feminine ;
     pen_N = mkN "pinna" "pinen" ;
-    person_N = mk5N [] "persuna" [] "persuni" [] Masc ;
+    person_N = mk5N [] "persuna" [] "persuni" [] masculine ;
     planet_N = mkN "pjaneta" ;
     plastic_N = mkNNoPlural "plastik" ;
 --    play_V
@@ -276,7 +275,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     restaurant_N = mkN "restorant" ;
 --    right_Ord
     river_N = mkN "xmara" "xmajjar" ;
-    road_N = mk5N "triq" [] [] "triqat" "toroq" Fem ;
+    road_N = mk5N "triq" [] [] "triqat" "toroq" feminine ;
     rock_N = mkN "blata" "blat" [] "blatiet" "blajjiet" ; -- in dictionary BLAT and BLATA are separate!
     roof_N = mkN "saqaf" "soqfa" ;
     root_N = mkN "qħerq" "qħeruq" ;
@@ -303,16 +302,16 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    sharp_A
     sheep_N = mkN "nagħġa" "nagħaġ" [] "nagħġiet" [] ;
     ship_N = mkN "vapur" ;
-    shirt_N = mkN "qmis" "qomos" Fem ;
+    shirt_N = mkN "qmis" "qomos" feminine ;
     shoe_N = mkN "żarbun" "żraben" ;
     shop_N = mkN "ħanut" "ħwienet" ;
 --    short_A
     silver_N = mkN "fidda" "fided" ;
 --    sing_V
-    sister_N = mkN "oħt" "aħwa" Fem ;
+    sister_N = mkN "oħt" "aħwa" feminine ;
 --    sit_V
     skin_N = mkN "ġilda" "ġildiet" ;
-    sky_N = mkN "sema" "smewwiet" Masc ;
+    sky_N = mkN "sema" "smewwiet" masculine ;
 --    sleep_V
 --    small_A
 --    smell_V
@@ -338,7 +337,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     student_N = mkN "student" ;
 --    stupid_A
 --    suck_V2
-    sun_N = mkN "xemx" "xmux" Fem ;
+    sun_N = mkN "xemx" "xmux" feminine ;
 --    swell_V
 --    swim_V
 --    switch8off_V2
@@ -373,7 +372,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    warm_A
 --    wash_V2
 --    watch_V2
-    water_N = mkN "ilma" "ilmijiet" Masc ;
+    water_N = mkN "ilma" "ilmijiet" masculine ;
 --    wet_A
 --    white_A
 --    wide_A

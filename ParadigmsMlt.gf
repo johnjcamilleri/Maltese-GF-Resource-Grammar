@@ -19,6 +19,17 @@ resource ParadigmsMlt = open
 
   oper
 
+    {- ===== Parameters ===== -}
+
+    -- To abstract over gender names, we define the following identifiers.
+    Gender : Type ; 
+    masculine : Gender ; --%
+    feminine : Gender ; --%
+
+    Gender = ResMlt.Gender ; 
+    masculine = Masc ;
+    feminine = Fem ;
+
     {- ===== Noun Paradigms ===== -}
 
     -- Helper function for inferring noun plural from singulative
