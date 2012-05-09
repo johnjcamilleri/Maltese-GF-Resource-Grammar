@@ -165,6 +165,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     {- ===== Useful helper functions ===== -}
 
+    glueTok : Str -> Str = \s -> "&+" ++ s ;
+
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;
     getDefiniteArticle = getDefinitePreposition "il" ;
