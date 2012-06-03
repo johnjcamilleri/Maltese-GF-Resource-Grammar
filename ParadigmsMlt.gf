@@ -10,12 +10,13 @@ resource ParadigmsMlt = open
   Predef,
   Prelude,
   MorphoMlt,
-  OrthoMlt,
   ResMlt,
   CatMlt
   in {
 
-  flags optimize=noexpand ; coding=utf8 ;
+  flags
+    optimize=noexpand ;
+    coding=utf8 ;
 
   oper
 

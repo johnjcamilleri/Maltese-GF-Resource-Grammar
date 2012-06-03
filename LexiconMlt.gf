@@ -7,9 +7,11 @@
 --# -path=.:../abstract:../common:../prelude
 
 concrete LexiconMlt of Lexicon = CatMlt **
-  open ParadigmsMlt, IrregMlt, ResMlt in {
+  open Prelude, ParadigmsMlt, IrregMlt in {
 
-  flags optimize=values ; coding=utf8 ;
+  flags
+    optimize=values ;
+    coding=utf8 ;
 
   lin
 
