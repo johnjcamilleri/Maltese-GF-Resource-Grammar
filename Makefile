@@ -1,3 +1,5 @@
+all: batch
+
 batch:
 	clear
 	gf --batch AllMlt.gf
