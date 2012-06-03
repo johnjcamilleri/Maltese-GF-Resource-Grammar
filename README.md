@@ -39,6 +39,6 @@ The tool will create a `*.html` file with color-coded comparisons of the output 
 
 
 
-[1]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar-Library
+[1]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar
 [2]: http://www.grammaticalframework.org/lib/src/maltese/
 [3]: http://www.grammaticalframework.org/
