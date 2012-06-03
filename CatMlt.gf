@@ -11,7 +11,8 @@ The same overall structure should be maintained.
 
 concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
-  flags optimize=all_subs ;
+  flags
+    optimize=all_subs ;
 
   lincat
 
