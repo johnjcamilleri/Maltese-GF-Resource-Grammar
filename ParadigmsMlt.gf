@@ -22,7 +22,7 @@ resource ParadigmsMlt = open
 
     {- ===== Parameters ===== -}
 
-    -- To abstract over gender names, we define the following identifiers.
+    -- Abstraction over gender names
     Gender : Type ; 
     masculine : Gender ; --%
     feminine : Gender ; --%
@@ -45,7 +45,7 @@ resource ParadigmsMlt = open
       } ;
 
     -- Helper function for inferring noun gender from singulative
-    -- Refer Maltese (Descriptive Grammars) pg190
+    -- Refer {MDG} pg190
     inferNounGender : Str -> Gender = \sing ->
       case sing of {
         _ + "aġni" => Fem ;
@@ -518,7 +518,7 @@ resource ParadigmsMlt = open
           VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
           VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
           VImp n =>    imp ! n
-        } ;
+          } ;
         t = Quad ;
         o = Semitic ;
       } ;
@@ -531,15 +531,15 @@ resource ParadigmsMlt = open
         stem_12 = root.K + p.v1 + root.T + root.B + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + root.L ;
         stem_3 = root.K + p.v1 + root.T + root.B + root.L ;
       in
-        table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
-          Per2 Sg    => stem_12 + "t" ;  -- Inti DARDART
-          Per3Sg Masc  => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Huwa DARDAR
-          Per3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
-          Per3Pl    => stem_3 + "u"  -- Huma DARDRU
-        } ;
+      table {
+        Per1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
+        Per2 Sg    => stem_12 + "t" ;  -- Inti DARDART
+        Per3Sg Masc  => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Huwa DARDAR
+        Per3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
+        Per1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
+        Per2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
+        Per3Pl    => stem_3 + "u"  -- Huma DARDRU
+      } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg ____), Imperative Plural (eg ___)
@@ -549,17 +549,17 @@ resource ParadigmsMlt = open
         prefix_dbl:Str = case stem_sg of {
           X@( "d" | "t" ) + _ => "i" + X ;
           _ => "t"
-        } ;
+          } ;
       in
-        table {
-          Per1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
-          Per2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
-          Per3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
-          Per3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
-          Per1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
-          Per2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
-          Per3Pl    => "i" + stem_pl      -- Huma IDARDRU
-        } ;
+      table {
+        Per1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
+        Per2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
+        Per3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
+        Per3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
+        Per1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
+        Per2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
+        Per3Pl    => "i" + stem_pl      -- Huma IDARDRU
+      } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
