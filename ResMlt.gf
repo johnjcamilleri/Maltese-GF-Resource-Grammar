@@ -123,9 +123,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     -- Root4 : Type = Root3 ** {L : Str} ;
     Root : Type = {K, T, B, L : Str} ;
 
-    -- Some classes. I need to include "c" because currently "ċ" gets downgraded to "c" in input :/
-    Consonant : pattern Str = #( "b" | "c" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
-    CoronalConsonant : pattern Str = #( "c" | "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
+    -- Some character classes
+    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
+    CoronalConsonant : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
     Digraph : pattern Str = #( "ie" );
