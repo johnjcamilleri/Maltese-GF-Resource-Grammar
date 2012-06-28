@@ -39,3 +39,4 @@ These resources are currently being used and can be referenced by name or citati
 1. _Id-Dizzjunarju Malti - u teżawru ta' Malti mħaddem_ by Mario Serracino Inglott. It-tielet edizzjoni. Merlin, 2011. {DM}
 1. _Maltese_ (part of "Descriptive Grammars" series) by Albert Borg and Marie Azzopardi-Alexander. Routledge, 1997. {MDG}
 1. _Grammatical Framework - Programming with Multilingual Grammars_ by Aarne Ranta. CSLI, 2011. {GF}
+1. _Basic Maltese Grammar_ by Grazio Falzon. <http://aboutmalta.com/grazio/maltesegrammar.html>, 1997 {BMG}
