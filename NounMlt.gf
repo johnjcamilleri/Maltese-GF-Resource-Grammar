@@ -5,7 +5,9 @@
 -- Licensed under LGPL
 
 concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
-  flags optimize=noexpand ;
+
+  flags
+    optimize=noexpand ;
 
   lin
     -- Det -> CN -> NP
