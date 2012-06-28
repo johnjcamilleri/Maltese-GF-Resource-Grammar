@@ -23,12 +23,12 @@ Items marked with a `*` are not yet covered.
 - Digraphs: "ie"
 - Semi-Vowels ("konsonanti dgħajfin"?): "għ" | "j"
 
-## Contributors
+<!-- ## Contributors -->
 
-Known authors and their initial stamps:
+<!-- Known authors and their initial stamps: -->
 
-- John J. Camilleri [JJC]
-- Angelo Zammit [AZ]
+<!-- - John J. Camilleri [JJC] -->
+<!-- - Angelo Zammit [AZ] -->
 
 ## References
 
