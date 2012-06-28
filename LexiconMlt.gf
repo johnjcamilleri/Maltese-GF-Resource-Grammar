@@ -59,22 +59,22 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    ask_V2Q
     baby_N = mkN "tarbija" "trabi" ;
     back_N = mkN "dahar" "dhur" ;
---    bad_A
+    bad_A = mkA "ħażin" "hżiena" "agħar" ;
     bank_N = mkN "bank" "bankijiet" ; -- BANEK is for lotto booths!
     bark_N = mkN "qoxra" "qoxriet" ;
---    beautiful_A
+    beautiful_A = mkA "sabiħ" "sbieħ" "isbaħ" ;
 --    become_VA
     beer_N = mkN "birra" "birer" ;
 --    beg_V2V
     belly_N = mkN "żaqq" "żquq" ;
---    big_A
+    big_A = mkA "kbir" "kbar" "ikbar" ;
     bike_N = mkN "rota" ;
     bird_N = mkN "għasfur" "għasafar" ; -- what about GĦASFURA?
 --    bite_V2
---    black_A
+    black_A = mkA "iswed" "sewda" "suwed" ;
     blood_N = mkN [] "demm" [] "dmija" [] ;
 --    blow_V
---    blue_A
+    blue_A = mkA "blu" ;
     boat_N = mkN "dgħajsa" "dgħajjes" ;
     bone_N = mkNColl "għadam" ;
     book_N = mkN "ktieb" "kotba" ;
@@ -85,9 +85,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    break_V2
     breast_N = mkN "sider" "sdur" ; -- also ISDRA
 --    breathe_V
---    broad_A
+    broad_A = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
     brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ;
---    brown_A
+    brown_A = mkA "kannella" ;
 --    burn_V
     butter_N = mkN [] "butir" [] "butirijiet" [] ;
 --    buy_V2
@@ -102,15 +102,15 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    child_N = mkN "tfajjel" ; -- Not an easy one...
     church_N = mkN "knisja" "knejjes" ;
     city_N = mkN "belt" "bliet" feminine ;
---    clean_A
---    clever_A
+    clean_A = brokenA "nadif" "nodfa" ;
+    clever_A = regA "bravu" ;
 --    close_V2
     cloud_N = mkNColl "sħab" ;
     coat_N = mkN "kowt" "kowtijiet" ;
---    cold_A
+    cold_A = mkA "kiesaħ" "kiesħa" "kesħin" ;
 --    come_V
     computer_N = mkN "kompjuter" "kompjuters" ;
---    correct_A
+    correct_A = regA "korrett" ;
 --    count_V2
     country_N = mkN "pajjiż" ;
     cousin_N = mkN "kuġin" ;
@@ -118,22 +118,22 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    cut_V2
     day_N = mkN "ġurnata" "ġranet" ;
 --    dig_V
---    dirty_A
+    dirty_A = regA "maħmuġ" ;
     distance_N3 = mkN "distanza" ;
 --    do_V2
     doctor_N = mkN "tabib" "tobba" ; -- what about TABIBA ?
     dog_N = mkN "kelb" "klieb" ;
     door_N = mkN "bieb" "bibien" ; -- what about BIEBA ?
 --    drink_V2
---    dry_A
---    dull_A
+    dry_A = regA "niexef" ;
+    dull_A = mkA "tad-dwejjaq" ;
     dust_N = mkNColl "trab" ; -- not sure but sounds right
     ear_N = mkNDual "widna" ;
     earth_N = mkN "art" "artijiet" feminine ;
 --    easy_A2V
 --    eat_V2
     egg_N = mkNColl "bajd" ;
---    empty_A
+    empty_A = mkA "vojt" "vojta" "vojta" ;
     enemy_N = mkN "għadu" "għedewwa" ;
     eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" feminine ;
     factory_N = mkN "fabbrika" ;
@@ -162,7 +162,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fridge_N = mkN "friġġ" "friġġijiet" ;
     friend_N = mkN "ħabib" "ħbieb" ;
     fruit_N = mkNColl "frott" ;
---    full_A
+    full_A = regA "mimli" ;
 --    fun_AV
     garden_N = mkN "ġnien" "ġonna" ;
     girl_N = mkN "tifla" "tfal" ;
@@ -170,10 +170,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
     glove_N = mkN "ingwanta" ;
 --    go_V
     gold_N = mkN [] "deheb" [] "dehbijiet" [] ;
---    good_A
+    good_A = mkA "tajjeb" "tajba" "tajbin" ;
     grammar_N = mkN "grammatika" ;
     grass_N = mk5N "ħaxixa" "ħaxix" [] [] "ħxejjex" masculine ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
---    green_A
+    green_A = mkA "aħdar" "ħadra" "ħodor" ;
     guts_N = mkN "musrana" [] [] "musraniet" "msaren" ;
     hair_N = mkN "xagħar" [] [] "xagħariet" "xgħur" ;
     hand_N = mk5N "id" [] "idejn" "idejn" [] feminine ;
@@ -183,19 +183,19 @@ concrete LexiconMlt of Lexicon = CatMlt **
     head_N = mkN "ras" "rjus" feminine ;
 --    hear_V2
     heart_N = mkN "qalb" "qlub" feminine ;
---    heavy_A
+    heavy_A = brokenA "tqil" "tqal" "itqal" ;
     hill_N = mkN "għolja" "għoljiet" ;
 --    hit_V2
 --    hold_V2
 --    hope_VS
     horn_N = mkN "ħorn" "ħornijiet" ;
     horse_N = mkN "żiemel" "żwiemel" ;
---    hot_A
+    hot_A = brokenA "sħun" "sħan" ;
     house_N = mkN "dar" "djar" feminine ;
 --    hunt_V2
     husband_N = mkN "raġel" "rġiel" ;
     ice_N = mkN "silġ" "silġiet" ;
---    important_A
+    important_A = mkA "importanti" ;
     industry_N = mkN "industrija" ;
     iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" masculine ;
 --    john_PN
@@ -221,7 +221,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    listen_V2
 --    live_V
     liver_N = mkN "fwied" [] [] [] "ifdwa" ;
---    long_A
+    long_A = mkA "twil" "twal" "itwal" ;
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
     love_N = mkN "mħabba" "mħabbiet" ; -- hmmm
@@ -236,17 +236,17 @@ concrete LexiconMlt of Lexicon = CatMlt **
     mouth_N = mkN "ħalq" "ħluq" ;
     music_N = mkN "musika" ; -- plural?
     name_N = mkN "isem" "ismijiet" ;
---    narrow_A
---    near_A
+    narrow_A = mkA "dejjaq" "dejqa" "dojoq" "idjaq" ;
+    near_A = regA "viċin" ;
     neck_N = mkN "għonq" "għenuq" ;
---    new_A
+    new_A = brokenA "ġdid" "ġodda" ;
     newspaper_N = mkN "gazzetta" ;
     night_N = mkN "lejl" "ljieli" ;
     nose_N = mkN "mnieħer" "mniħrijiet" ;
 --    now_Adv
     number_N = mkN "numru" ;
     oil_N = mkN "żejt" "żjut" ;
---    old_A
+    old_A = brokenA "qadim" "qodma" "eqdem" ;
 --    open_V2
 --    paint_V2A
     paper_N = mkN "karta" ;
@@ -270,9 +270,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
     rain_N = mkNNoPlural "xita" ;
 --    rain_V0
 --    read_V2
---    ready_A
+    ready_A = regA "lest" ;
     reason_N = mkN "raġun" "raġunijiet" ;
---    red_A
+    red_A = mkA "aħmar" "ħamra" "ħomor" ;
     religion_N = mkN "reliġjon" "reliġjonijiet" ;
     restaurant_N = mkN "restorant" ;
 --    right_Ord
@@ -282,8 +282,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
     roof_N = mkN "saqaf" "soqfa" ;
     root_N = mkN "qħerq" "qħeruq" ;
     rope_N = mkN "ħabel" "ħbula" ;
---    rotten_A
---    round_A
+    rotten_A = mkA "mħassar" "mħassra" "mħassrin" ;
+    round_A = regA "tond" ;
 --    rub_V2
     rubber_N = mkN "gomma" "gomom" ;
     rule_N = mkN "regola" ;
@@ -301,13 +301,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    sell_V3
 --    send_V3
 --    sew_V
---    sharp_A
+    sharp_A = mkA "jaqta" "taqta" "jaqtgħu" ; -- TODO: apostrophe?
     sheep_N = mkN "nagħġa" "nagħaġ" [] "nagħġiet" [] ;
     ship_N = mkN "vapur" ;
     shirt_N = mkN "qmis" "qomos" feminine ;
     shoe_N = mkN "żarbun" "żraben" ;
     shop_N = mkN "ħanut" "ħwienet" ;
---    short_A
+    short_A = brokenA "qasir" "qosra" "iqsar" ;
     silver_N = mkN "fidda" "fided" ;
 --    sing_V
     sister_N = mkN "oħt" "aħwa" feminine ;
@@ -315,10 +315,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
     skin_N = mkN "ġilda" "ġildiet" ;
     sky_N = mkN "sema" "smewwiet" masculine ;
 --    sleep_V
---    small_A
+    small_A = brokenA "zgħir" "zgħar" "iżgħar" ;
 --    smell_V
     smoke_N = mkN "duħħan" "dħaħen" ;
---    smooth_A
+    smooth_A = regA "lixx" ;
     snake_N = mkN "serp" "sriep" ;
     snow_N = mkN [] "borra" [] [] [] ;
     sock_N = mkN "kalzetta" ;
@@ -335,9 +335,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
     stone_N = mkN "ġebla" "ġebel" [] "ġebliet" "ġbiel" ;
 --    stop_V
     stove_N = mkN "kuker" "kukers" ; -- fuklar?
---    straight_A
+    straight_A = regA "dritt" ;
     student_N = mkN "student" ;
---    stupid_A
+    stupid_A = mkA "iblah" "belha" "boloh" ; -- these are really nouns...
 --    suck_V2
     sun_N = mkN "xemx" "xmux" feminine ;
 --    swell_V
@@ -350,8 +350,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    teach_V2
     teacher_N = mkN "għalliem" "għalliema" ; -- għalliema ?
     television_N = mkN "televixin" "televixins" ;
---    thick_A
---    thin_A
+    thick_A = mkA "oħxon" "ħoxna" "ħoxnin" "eħxen" ;
+    thin_A = brokenA "irqiq" "irqaq" "irqaq" ;
 --    think_V
 --    throw_V2
 --    tie_V2
@@ -362,8 +362,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    travel_V
     tree_N = mkN "siġra" "siġar" [] "siġriet" [] ;
 --    turn_V
---    ugly_A
---    uncertain_A
+    ugly_A = mkA "ikrah" "kerha" "koroh" ; -- ikreh?
+    uncertain_A = regA "inċert" ;
 --    understand_V2
     university_N = mkN "università" "universitàjiet" ;
     village_N = mkN "raħal" "rħula" ; -- villaġġ ?
@@ -371,13 +371,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    wait_V2
 --    walk_V
     war_N = mkN "gwerra" "gwerrer" ;
---    warm_A
+    warm_A = hot_A ;
 --    wash_V2
 --    watch_V2
     water_N = mkN "ilma" "ilmijiet" masculine ;
---    wet_A
---    white_A
---    wide_A
+    wet_A = mkA "imxarrab" "imxarrba" "imxarrbin" ;
+    white_A = mkA "abjad" "bajda" "bojod" ;
+    wide_A = broad_A ;
     wife_N = mkN "mara" "nisa" ;
 --    win_V2
     wind_N = mkN "riħ" [] [] "rjieħ" "rjiħat" ;
@@ -391,7 +391,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     worm_N = mkN "dudu" "dud" [] "dudiet" "dwied" ; -- duda
 --    write_V2
     year_N = mkN "sena" [] "sentejn" "snin" [] ;
---    yellow_A
---    young_A
+    yellow_A = mkA "isfar" "safra" "sofor" ;
+    young_A = small_A ;
 
 } ;

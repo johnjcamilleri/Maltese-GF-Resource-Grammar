@@ -570,4 +570,93 @@ resource ParadigmsMlt = open
         Pl => root.K + p.v1 + root.T + root.B + root.L + "u"  -- Intom: DARDRU
       } ;
 
+    {- ===== Adjective Paradigms ===== -}
+
+    -- Overloaded function for building an adjective
+    -- Return: Adjective
+    mkA : A = overload {
+
+      -- Same form for gender and number; no comparative form.
+      -- Params:
+        -- Adjective, eg BLU
+      mkA : Str -> A = \a ->
+        mk3A a a a ;
+
+      -- Infer feminine from masculine; no comparative form.
+      -- Params:
+        -- Masculine, eg SABIĦ
+        -- Plural, eg SBIEĦ
+      mkA : Str -> Str -> A = brokenA ;
+
+      -- Infer feminine from masculine; with comparative form.
+      -- Params:
+        -- Masculine, eg SABIĦ
+        -- Plural, eg SBIEĦ
+        -- Compartative, eg ISBAĦ
+      mkA : Str -> Str -> Str -> A = brokenA ;
+
+      -- Take all forms.
+      -- Params:
+        -- Masculine, eg SABIĦ
+        -- Feminine, eg SABIĦA
+        -- Plural, eg SBIEĦ
+        -- Compartative, eg ISBAĦ
+      mkA : Str -> Str -> Str -> Str -> A = mk4A ;
+
+    } ;
+
+    -- Regular adjective with predictable feminine and plural forms
+    regA : Str -> A ;
+    regA masc =
+      let
+        fem = determineAdjFem masc ;
+        plural = determineAdjPlural fem
+      in
+      mk3A masc fem plural ;
+
+    -- Adjective with predictable feminine but broken plural
+    brokenA = overload {
+
+      -- without comparative form
+      brokenA : Str -> Str -> A = \masc,plural ->
+        let
+          fem = determineAdjFem masc
+        in
+        mk3A masc fem plural ;
+
+      -- with comparative form
+      brokenA : Str -> Str -> Str -> A = \masc,plural,compar ->
+        let
+          fem = determineAdjFem masc
+        in
+        mk4A masc fem plural compar ;
+
+      } ;
+
+    -- Build an adjective noun using all 3 forms, when it has no comparative form
+    mk3A : (_,_,_ : Str) -> A ;
+    mk3A = \masc,fem,plural ->
+      lin A (mkAdjective masc fem plural []) ** {hasComp = False} ;
+
+    -- Build an adjective noun using all 4 forms (superlative is trivial)
+    mk4A : (_,_,_,_ : Str) -> A ;
+    mk4A = \masc,fem,plural,compar ->
+      lin A (mkAdjective masc fem plural compar) ** {hasComp = True} ;
+
+    -- Determine femininine form of adjective from masculine
+    determineAdjFem : Str -> Str ;
+    determineAdjFem masc = case masc of {
+      _ + "ef" => (tk 2 masc) + "fa" ; -- NIEXEF
+      _ + "u" => (init masc) + "a" ; -- BRAVU
+      _ + "i" => masc + "ja" ; -- MIMLI
+      _ => masc + "a" -- VOJT
+      } ;
+
+    -- Determine plural form of adjective from feminine
+    determineAdjPlural : Str -> Str ;
+    determineAdjPlural fem = case fem of {
+      _ + ("f"|"j"|"ġ") + "a" => (init fem) + "in" ; -- NIEXFA, MIMLIJA, MAĦMUĠA
+      _ => (init fem) + "i" -- BRAVA
+      } ;
+
 }

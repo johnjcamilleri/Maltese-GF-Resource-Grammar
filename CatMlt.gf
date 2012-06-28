@@ -56,7 +56,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Adjective
 
-    AP = {s : Agr => Str ; isPre : Bool} ; 
+--    AP = {s : Agr => Str ; isPre : Bool} ; 
+    AP = {s : GenNum => Str ; isPre : Bool} ; 
 
 -- Noun
 
@@ -105,8 +106,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;
 
     -- [JJC]
-    A = Adj ;
-    A2 = Adj ** {c2 : Str} ;
+    A = Adjective ** {hasComp : Bool} ; -- Does the adjective have a comparative form (e.g. ISBAĦ)?
+--    A2 = Adjective ** {c2 : Str} ;
 
     -- [JJC]
     N, N3 = Noun ;

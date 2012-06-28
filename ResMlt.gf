@@ -50,6 +50,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     Gender  = Masc | Fem ;
 
+    GenNum  = GSg Gender | GPl ; -- when marc/fem/plural, e.g. adjewctive inflection
+
     Animacy =
         Animate
       | Inanimate
@@ -115,6 +117,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | Quad    -- Quadliteral verb                  eg KARKAR (K-R-K-R), MAQDAR (M-Q-D-R), LEMBEB (L-M-B-B)
     ;
 
+    -- For Adjectives
+    AForm =
+--        AF Degree GenNum
+        APosit GenNum
+      | ACompar
+      | ASuperl
+    ;
+
   oper
 
     -- Roots & Patterns
@@ -143,9 +153,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       g : Gender ;
     } ;
 
-    Adj : Type = {
-      s : Gender => Number => Str ;
-      -- isPre : Bool ;
+    Adjective : Type = {
+      s : AForm => Str ;
     } ;
 
     Verb : Type = {
@@ -234,6 +243,24 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
         Plural Indeterminate  => ind
       } ;
       g = gen ;
+    } ;
+
+    -- Adjective: Takes all forms except superlative
+    -- Params:
+      -- Masculine, eg SABIĦ
+      -- Feminine, eg SABIĦA
+      -- Plural, eg SBIEĦ
+      -- Comparative, eg ISBAĦ
+    mkAdjective : (_,_,_,_ : Str) -> Adjective = \masc,fem,plural,compar -> {
+      s = table {
+        APosit gn => case gn of {
+          GSg Masc => masc ;
+          GSg Fem => fem ;
+          GPl => plural
+        } ;
+        ACompar => compar ;
+        ASuperl => addDefiniteArticle compar
+      } ;
     } ;
 
 }
