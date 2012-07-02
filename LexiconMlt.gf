@@ -59,22 +59,22 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    ask_V2Q
     baby_N = mkN "tarbija" "trabi" ;
     back_N = mkN "dahar" "dhur" ;
-    bad_A = mkA "ħażin" "hżiena" "agħar" ;
+    bad_A = brokenA "ħażin" "hżiena" "agħar" ;
     bank_N = mkN "bank" "bankijiet" ; -- BANEK is for lotto booths!
     bark_N = mkN "qoxra" "qoxriet" ;
-    beautiful_A = mkA "sabiħ" "sbieħ" "isbaħ" ;
+    beautiful_A = brokenA "sabiħ" "sbieħ" "isbaħ" ;
 --    become_VA
     beer_N = mkN "birra" "birer" ;
 --    beg_V2V
     belly_N = mkN "żaqq" "żquq" ;
-    big_A = mkA "kbir" "kbar" "ikbar" ;
+    big_A = brokenA "kbir" "kbar" "ikbar" ;
     bike_N = mkN "rota" ;
     bird_N = mkN "għasfur" "għasafar" ; -- what about GĦASFURA?
 --    bite_V2
     black_A = mkA "iswed" "sewda" "suwed" ;
     blood_N = mkN [] "demm" [] "dmija" [] ;
 --    blow_V
-    blue_A = mkA "blu" ;
+    blue_A = sameA "blu" ;
     boat_N = mkN "dgħajsa" "dgħajjes" ;
     bone_N = mkNColl "għadam" ;
     book_N = mkN "ktieb" "kotba" ;
@@ -87,7 +87,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    breathe_V
     broad_A = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
     brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ;
-    brown_A = mkA "kannella" ;
+    brown_A = sameA "kannella" ;
 --    burn_V
     butter_N = mkN [] "butir" [] "butirijiet" [] ;
 --    buy_V2
@@ -126,7 +126,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     door_N = mkN "bieb" "bibien" ; -- what about BIEBA ?
 --    drink_V2
     dry_A = regA "niexef" ;
-    dull_A = mkA "tad-dwejjaq" ;
+    dull_A = sameA "tad-dwejjaq" ;
     dust_N = mkNColl "trab" ; -- not sure but sounds right
     ear_N = mkNDual "widna" ;
     earth_N = mkN "art" "artijiet" feminine ;
@@ -195,7 +195,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    hunt_V2
     husband_N = mkN "raġel" "rġiel" ;
     ice_N = mkN "silġ" "silġiet" ;
-    important_A = mkA "importanti" ;
+    important_A = sameA "importanti" ;
     industry_N = mkN "industrija" ;
     iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" masculine ;
 --    john_PN
@@ -221,7 +221,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    listen_V2
 --    live_V
     liver_N = mkN "fwied" [] [] [] "ifdwa" ;
-    long_A = mkA "twil" "twal" "itwal" ;
+    long_A = brokenA "twil" "twal" "itwal" ;
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
     love_N = mkN "mħabba" "mħabbiet" ; -- hmmm

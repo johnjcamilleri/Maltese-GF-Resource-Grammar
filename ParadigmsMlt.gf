@@ -579,8 +579,7 @@ resource ParadigmsMlt = open
       -- Same form for gender and number; no comparative form.
       -- Params:
         -- Adjective, eg BLU
-      mkA : Str -> A = \a ->
-        mk3A a a a ;
+      mkA : Str -> A = sameA ;
 
       -- Infer feminine from masculine; no comparative form.
       -- Params:
@@ -588,19 +587,19 @@ resource ParadigmsMlt = open
         -- Plural, eg SBIEĦ
       mkA : Str -> Str -> A = brokenA ;
 
-      -- Infer feminine from masculine; with comparative form.
+      -- Infer feminine from masculine; no comparative form.
       -- Params:
         -- Masculine, eg SABIĦ
+        -- Feminine, eg SABIĦA
         -- Plural, eg SBIEĦ
-        -- Compartative, eg ISBAĦ
-      mkA : Str -> Str -> Str -> A = brokenA ;
+      mkA : Str -> Str -> Str -> A = mk3A ;
 
       -- Take all forms.
       -- Params:
         -- Masculine, eg SABIĦ
         -- Feminine, eg SABIĦA
         -- Plural, eg SBIEĦ
-        -- Compartative, eg ISBAĦ
+        -- Comparative, eg ISBAĦ
       mkA : Str -> Str -> Str -> Str -> A = mk4A ;
 
     } ;
@@ -613,6 +612,10 @@ resource ParadigmsMlt = open
         plural = determineAdjPlural fem
       in
       mk3A masc fem plural ;
+
+    -- Adjective with same forms for masculine, feminine and plural.
+    sameA : Str -> A ;
+    sameA a = mk3A a a a ;
 
     -- Adjective with predictable feminine but broken plural
     brokenA = overload {
