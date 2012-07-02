@@ -576,10 +576,10 @@ resource ParadigmsMlt = open
     -- Return: Adjective
     mkA : A = overload {
 
-      -- Same form for gender and number; no comparative form.
+      -- Regular adjective with predictable feminine and plural forms
       -- Params:
-        -- Adjective, eg BLU
-      mkA : Str -> A = sameA ;
+        -- Masculine, eg MAĦMUĠ
+      mkA : Str -> A = regA ;
 
       -- Infer feminine from masculine; no comparative form.
       -- Params:
