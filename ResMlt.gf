@@ -228,16 +228,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       -- Gender
     mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
       s = table {
-        Singular Singulative  => sing ;
-        Singular Collective    => coll ;
-        Dual          => dual ;
-        Plural Determinate    => det ;
-        Plural Indeterminate  => ind
+        Singular Singulative => sing ;
+        Singular Collective => coll ;
+        Dual => dual ;
+        Plural Determinate => det ;
+        Plural Indeterminate => ind
       } ;
       g = gen ;
+--      anim = Inanimate ;
     } ;
 
-    -- Adjective: Takes all forms except superlative
+    -- Adjective: Takes all forms (except superlative)
     -- Params:
       -- Masculine, eg SABIĦ
       -- Feminine, eg SABIĦA
