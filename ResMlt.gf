@@ -50,7 +50,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     Gender  = Masc | Fem ;
 
-    GenNum  = GSg Gender | GPl ; -- when marc/fem/plural, e.g. adjewctive inflection
+    GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
 
     Animacy =
         Animate
@@ -167,8 +167,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
 
     {- ===== Useful helper functions ===== -}
-
-    glueTok : Str -> Str = \s -> "&+" ++ s ;
 
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;
