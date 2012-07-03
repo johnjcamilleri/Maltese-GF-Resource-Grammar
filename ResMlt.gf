@@ -73,18 +73,12 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     ;
 --    Order   = Verbal | Nominal ;
 
-    -- Just for my own use
-    -- Mamma = Per3 Sg Masc ;
-
-    -- Shortcut type
-    -- GenNum = gn Gender Number2 ;
-
     -- Agreement features
     Agr =
-        Per1 Number  -- Jiena, Aħna
-      | Per2 Number  -- Inti, Intom
-      | Per3Sg Gender  -- Huwa, Hija
-      | Per3Pl    -- Huma
+        AgP1 Number  -- Jiena, Aħna
+      | AgP2 Number  -- Inti, Intom
+      | AgP3Sg Gender  -- Huwa, Hija
+      | AgP3Pl    -- Huma
     ;
 
     -- Possible tenses
@@ -101,7 +95,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     VForm =
         VPerf Agr    -- Perfect tense in all pronoun cases
       | VImpf Agr    -- Imperfect tense in all pronoun cases
-      | VImp Number  -- Imperative is always Per2, Sg & Pl
+      | VImp Number  -- Imperative is always P2, Sg & Pl
       -- | VPresPart GenNum  -- Present Particible for Gender/Number
       -- | VPastPart GenNum  -- Past Particible for Gender/Number
       -- | VVerbalNoun      -- Verbal Noun

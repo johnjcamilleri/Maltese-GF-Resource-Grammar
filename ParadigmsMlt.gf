@@ -270,7 +270,7 @@ resource ParadigmsMlt = open
 
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
-    -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+    -- Params: "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ)
     -- Return: Record with v:VType, r:Root, p:Pattern
     classifyVerb : Str -> { t:VType ; r:Root ; p:Pattern } = \mamma -> case mamma of {
       -- Quad
@@ -302,7 +302,7 @@ resource ParadigmsMlt = open
 
       -- Tries to do everything just from the mamma of the verb
       -- Params:
-        -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+        -- "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ)
       mkVerb : Str -> Verb = \mamma ->
         let
           class = classifyVerb mamma
@@ -318,7 +318,7 @@ resource ParadigmsMlt = open
 
       -- Same as above but also takes an Imperative of the word for when it behaves less predictably
       -- Params:
-        -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
+        -- "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ )
         -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
         -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
       mkVerb : Str -> Str -> Str -> Verb = \mamma,imp_sg,imp_pl ->
@@ -389,13 +389,13 @@ resource ParadigmsMlt = open
         stem_3 = root.K + p.v1 + root.T + root.B ;
       in
         table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena KTIBT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti KTIBT
-          Per3Sg Masc  => root.K + p.v1 + root.T + p.v2 + root.B ;  -- Huwa KITEB
-          Per3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna KTIBNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom KTIBTU
-          Per3Pl    => stem_3 + "u"  -- Huma KITBU
+          AgP1 Sg    => stem_12 + "t" ;  -- Jiena KTIBT
+          AgP2 Sg    => stem_12 + "t" ;  -- Inti KTIBT
+          AgP3Sg Masc  => root.K + p.v1 + root.T + p.v2 + root.B ;  -- Huwa KITEB
+          AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
+          AgP1 Pl    => stem_12 + "na" ;  -- Aħna KTIBNA
+          AgP2 Pl    => stem_12 + "tu" ;  -- Intom KTIBTU
+          AgP3Pl    => stem_3 + "u"  -- Huma KITBU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -403,13 +403,13 @@ resource ParadigmsMlt = open
     -- Return: Lookup table of Agr against Str
     conjStrongImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
       table {
-        Per1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
-        Per2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
-        Per3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
-        Per3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
-        Per1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
-        Per2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
-        Per3Pl    => "j" + stem_pl  -- Huma JIKTBU
+        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
+        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
+        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
+        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
+        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
+        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
+        AgP3Pl    => "j" + stem_pl  -- Huma JIKTBU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -468,13 +468,13 @@ resource ParadigmsMlt = open
         stem_3 = root.K + p.v1 + root.T + root.B ;
       in
         table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
-          Per3Sg Masc  => root.K + p.v1 + root.T + p.v2 + "'" ;  -- Huwa QALA'
-          Per3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
-          Per3Pl    => stem_3 + "u"  -- Huma QALGĦU
+          AgP1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
+          AgP2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
+          AgP3Sg Masc  => root.K + p.v1 + root.T + p.v2 + "'" ;  -- Huwa QALA'
+          AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
+          AgP1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
+          AgP2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
+          AgP3Pl    => stem_3 + "u"  -- Huma QALGĦU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -482,13 +482,13 @@ resource ParadigmsMlt = open
     -- Return: Lookup table of Agr against Str
     conjDefectiveImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
       table {
-        Per1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
-        Per2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
-        Per3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
-        Per3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
-        Per1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
-        Per2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
-        Per3Pl    => "j" + stem_pl  -- Huma JIKTBU
+        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
+        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
+        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
+        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
+        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
+        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
+        AgP3Pl    => "j" + stem_pl  -- Huma JIKTBU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -532,13 +532,13 @@ resource ParadigmsMlt = open
         stem_3 = root.K + p.v1 + root.T + root.B + root.L ;
       in
       table {
-        Per1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
-        Per2 Sg    => stem_12 + "t" ;  -- Inti DARDART
-        Per3Sg Masc  => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Huwa DARDAR
-        Per3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
-        Per1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
-        Per2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
-        Per3Pl    => stem_3 + "u"  -- Huma DARDRU
+        AgP1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
+        AgP2 Sg    => stem_12 + "t" ;  -- Inti DARDART
+        AgP3Sg Masc  => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Huwa DARDAR
+        AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
+        AgP1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
+        AgP2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
+        AgP3Pl    => stem_3 + "u"  -- Huma DARDRU
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -552,13 +552,13 @@ resource ParadigmsMlt = open
           } ;
       in
       table {
-        Per1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
-        Per2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
-        Per3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
-        Per3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
-        Per1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
-        Per2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
-        Per3Pl    => "i" + stem_pl      -- Huma IDARDRU
+        AgP1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
+        AgP2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
+        AgP3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
+        AgP3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
+        AgP1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
+        AgP2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
+        AgP3Pl    => "i" + stem_pl      -- Huma IDARDRU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
