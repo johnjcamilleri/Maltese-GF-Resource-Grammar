@@ -58,7 +58,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    ashes_N = mkN "rmied" ;
 --    ask_V2Q
     baby_N = mkN "tarbija" "trabi" ;
-    back_N = mkN "dahar" "dhur" ;
+    back_N = mkN "dahar" "dhur" ; -- pronSuffix
     bad_A = brokenA "ħażin" "hżiena" "agħar" ;
     bank_N = mkN "bank" "bankijiet" ; -- BANEK is for lotto booths!
     bark_N = mkN "qoxra" "qoxriet" ;
@@ -66,13 +66,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    become_VA
     beer_N = mkN "birra" "birer" ;
 --    beg_V2V
-    belly_N = mkN "żaqq" "żquq" ;
+    belly_N = mkN "żaqq" "żquq" ; -- pronSuffix
     big_A = brokenA "kbir" "kbar" "ikbar" ;
     bike_N = mkN "rota" ;
     bird_N = mkN "għasfur" "għasafar" ; -- what about GĦASFURA?
 --    bite_V2
     black_A = mkA "iswed" "sewda" "suwed" ;
-    blood_N = mkN [] "demm" [] "dmija" [] ;
+    blood_N = mkN [] "demm" [] "dmija" [] ; -- pronSuffix
 --    blow_V
     blue_A = sameA "blu" ;
     boat_N = mkN "dgħajsa" "dgħajjes" ;
@@ -83,10 +83,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
     boy_N = mkN "tifel" "tfal" ;
     bread_N = mkNColl "ħobż" ;
 --    break_V2
-    breast_N = mkN "sider" "sdur" ; -- also ISDRA
+    breast_N = mkN "sider" "sdur" ; -- also ISDRA -- pronSuffix
 --    breathe_V
     broad_A = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
-    brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ;
+    brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ; -- pronSuffix
     brown_A = sameA "kannella" ;
 --    burn_V
     butter_N = mkN [] "butir" [] "butirijiet" [] ;
@@ -101,7 +101,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     cheese_N = mkNColl "ġobon" ;
 --    child_N = mkN "tfajjel" ; -- Not an easy one...
     church_N = mkN "knisja" "knejjes" ;
-    city_N = mkN "belt" "bliet" feminine ;
+    city_N = mkN "belt" "bliet" feminine ; -- pronSuffix
     clean_A = brokenA "nadif" "nodfa" ;
     clever_A = regA "bravu" ;
 --    close_V2
@@ -112,8 +112,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
     computer_N = mkN "kompjuter" "kompjuters" ;
     correct_A = regA "korrett" ;
 --    count_V2
-    country_N = mkN "pajjiż" ;
-    cousin_N = mkN "kuġin" ;
+    country_N = mkN "pajjiż" ; -- pronSuffix
+    cousin_N = mkN "kuġin" ; -- pronSuffix
     cow_N = mkN "baqra" "baqar" "baqartejn" [] [] ;
 --    cut_V2
     day_N = mkN "ġurnata" "ġranet" ;
@@ -128,25 +128,25 @@ concrete LexiconMlt of Lexicon = CatMlt **
     dry_A = regA "niexef" ;
     dull_A = sameA "tad-dwejjaq" ;
     dust_N = mkNColl "trab" ; -- not sure but sounds right
-    ear_N = mkNDual "widna" ;
+    ear_N = mkNDual "widna" ; -- pronSuffix
     earth_N = mkN "art" "artijiet" feminine ;
 --    easy_A2V
 --    eat_V2
     egg_N = mkNColl "bajd" ;
     empty_A = mkA "vojt" "vojta" "vojta" ;
     enemy_N = mkN "għadu" "għedewwa" ;
-    eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" feminine ;
+    eye_N = mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" feminine ; -- pronSuffix
     factory_N = mkN "fabbrika" ;
 --    fall_V
 --    far_Adv
     fat_N = mkNColl "xaħam" ;
-    father_N2 = mkN2 (mkN "missier" "missierijiet") (mkPrep "ta'") ;
+    father_N2 = mkN2 (mkN "missier" "missierijiet") (mkPrep "ta'") ; -- pronSuffix
 --    fear_V2
 --    fear_VS
     feather_N = mkNColl "rix" ;
 --    fight_V2
 --    find_V2
-    fingernail_N = mkN "difer" [] "difrejn" "dwiefer" [] ;
+    fingernail_N = mkN "difer" [] "difrejn" "dwiefer" [] ; -- pronSuffix
     fire_N = mkN "nar" "nirien" ;
     fish_N = mkNColl "ħut" ;
 --    float_V
@@ -155,12 +155,12 @@ concrete LexiconMlt of Lexicon = CatMlt **
     flower_N = mkN "fjura" ;
 --    fly_V
     fog_N = mkN [] "ċpar" [] [] [] ;
-    foot_N = mk5N "sieq" [] "saqajn" "saqajn" [] feminine ;
+    foot_N = mk5N "sieq" [] "saqajn" "saqajn" [] feminine ; -- pronSuffix
     forest_N = mkN "foresta" ; -- also MASĠAR
 --    forget_V2
 --    freeze_V
     fridge_N = mkN "friġġ" "friġġijiet" ;
-    friend_N = mkN "ħabib" "ħbieb" ;
+    friend_N = mkN "ħabib" "ħbieb" ; -- pronSuffix
     fruit_N = mkNColl "frott" ;
     full_A = regA "mimli" ;
 --    fun_AV
@@ -174,15 +174,15 @@ concrete LexiconMlt of Lexicon = CatMlt **
     grammar_N = mkN "grammatika" ;
     grass_N = mk5N "ħaxixa" "ħaxix" [] [] "ħxejjex" masculine ; -- Dict says ĦAXIX = n.koll.m.s., f. -a, pl.ind. ĦXEJJEX
     green_A = mkA "aħdar" "ħadra" "ħodor" ;
-    guts_N = mkN "musrana" [] [] "musraniet" "msaren" ;
-    hair_N = mkN "xagħar" [] [] "xagħariet" "xgħur" ;
-    hand_N = mk5N "id" [] "idejn" "idejn" [] feminine ;
+    guts_N = mkN "musrana" [] [] "musraniet" "msaren" ; -- pronSuffix
+    hair_N = mkN "xagħar" [] [] "xagħariet" "xgħur" ; -- pronSuffix
+    hand_N = mk5N "id" [] "idejn" "idejn" [] feminine ; -- pronSuffix
     harbour_N = mkN "port" "portijiet" ;
     hat_N = mkN "kappell" "kpiepel" ;
 --    hate_V2
-    head_N = mkN "ras" "rjus" feminine ;
+    head_N = mkN "ras" "rjus" feminine ; -- pronSuffix
 --    hear_V2
-    heart_N = mkN "qalb" "qlub" feminine ;
+    heart_N = mkN "qalb" "qlub" feminine ; -- pronSuffix
     heavy_A = brokenA "tqil" "tqal" "itqal" ;
     hill_N = mkN "għolja" "għoljiet" ;
 --    hit_V2
@@ -193,7 +193,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     hot_A = brokenA "sħun" "sħan" ;
     house_N = mkN "dar" "djar" feminine ;
 --    hunt_V2
-    husband_N = mkN "raġel" "rġiel" ;
+    husband_N = mkN "raġel" "rġiel" ; -- pronSuffix ŻEWĠI
     ice_N = mkN "silġ" "silġiet" ;
     important_A = sameA "importanti" ;
     industry_N = mkN "industrija" ;
@@ -202,7 +202,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    jump_V
 --    kill_V2
     king_N = mkN "re" "rejjiet" ;
-    knee_N = mkN "rkoppa" [] "rkopptejn" "rkoppiet" [] ; -- TODO use mkNDual
+    knee_N = mkN "rkoppa" [] "rkopptejn" "rkoppiet" [] ; -- TODO use mkNDual  -- pronSuffix
 --    know_V2
 --    know_VQ
 --    know_VS
@@ -215,34 +215,34 @@ concrete LexiconMlt of Lexicon = CatMlt **
     leather_N = mkN "ġilda" "ġild" [] "ġildiet" "ġlud" ; -- mkNColl "ġild" ;
 --    leave_V2
 --    left_Ord
-    leg_N = mkN "riġel" [] "riġlejn" [] [] ; -- sieq?
+    leg_N = mkN "riġel" [] "riġlejn" [] [] ; -- sieq?  -- pronSuffix
 --    lie_V
 --    like_V2
 --    listen_V2
 --    live_V
-    liver_N = mkN "fwied" [] [] [] "ifdwa" ;
+    liver_N = mkN "fwied" [] [] [] "ifdwa" ; -- pronSuffix
     long_A = brokenA "twil" "twal" "itwal" ;
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
-    love_N = mkN "mħabba" "mħabbiet" ; -- hmmm
+    love_N = mkN "mħabba" "mħabbiet" ; -- hmmm  -- pronSuffix
 --    love_V2
     man_N = mkN "raġel" "rġiel" ;
 --    married_A2
     meat_N = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
     milk_N = mkN [] "ħalib" [] "ħalibijiet" "ħlejjeb" ;
     moon_N = mkN "qamar" "oqmra" ; -- qmura?
-    mother_N2 = mkN2 (mkN "omm" "ommijiet" feminine) (mkPrep "ta'") ;
+    mother_N2 = mkN2 (mkN "omm" "ommijiet" feminine) (mkPrep "ta'") ; -- pronSuffix
     mountain_N = mkN "muntanja" ;
-    mouth_N = mkN "ħalq" "ħluq" ;
+    mouth_N = mkN "ħalq" "ħluq" ; -- pronSuffix
     music_N = mkN "musika" ; -- plural?
-    name_N = mkN "isem" "ismijiet" ;
+    name_N = mkN "isem" "ismijiet" ; -- pronSuffix
     narrow_A = mkA "dejjaq" "dejqa" "dojoq" "idjaq" ;
     near_A = regA "viċin" ;
-    neck_N = mkN "għonq" "għenuq" ;
+    neck_N = mkN "għonq" "għenuq" ; -- pronSuffix
     new_A = brokenA "ġdid" "ġodda" ;
     newspaper_N = mkN "gazzetta" ;
     night_N = mkN "lejl" "ljieli" ;
-    nose_N = mkN "mnieħer" "mniħrijiet" ;
+    nose_N = mkN "mnieħer" "mniħrijiet" ; -- pronSuffix
 --    now_Adv
     number_N = mkN "numru" ;
     oil_N = mkN "żejt" "żjut" ;
@@ -310,7 +310,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     short_A = brokenA "qasir" "qosra" "iqsar" ;
     silver_N = mkN "fidda" "fided" ;
 --    sing_V
-    sister_N = mkN "oħt" "aħwa" feminine ;
+    sister_N = mkN "oħt" "aħwa" feminine ; -- pronSuffix
 --    sit_V
     skin_N = mkN "ġilda" "ġildiet" ;
     sky_N = mkN "sema" "smewwiet" masculine ;
@@ -345,7 +345,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    switch8off_V2
 --    switch8on_V2
     table_N = mkN "mejda" "mwejjed" ;
-    tail_N = mkN "denb" "dnieb" ;
+    tail_N = mkN "denb" "dnieb" ; -- pronSuffix
 --    talk_V3
 --    teach_V2
     teacher_N = mkN "għalliem" "għalliema" ; -- għalliema ?
@@ -356,8 +356,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    throw_V2
 --    tie_V2
 --    today_Adv
-    tongue_N = mkN "lsien" "ilsna" ;
-    tooth_N = mkN "sinna" [] [] "sinniet" "snien" ; -- darsa?
+    tongue_N = mkN "lsien" "ilsna" ; -- pronSuffix
+    tooth_N = mkN "sinna" [] [] "sinniet" "snien" ; -- darsa? -- pronSuffix
     train_N = mkN "ferrovija" ;
 --    travel_V
     tree_N = mkN "siġra" "siġar" [] "siġriet" [] ;
@@ -366,7 +366,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     uncertain_A = regA "inċert" ;
 --    understand_V2
     university_N = mkN "università" "universitàjiet" ;
-    village_N = mkN "raħal" "rħula" ; -- villaġġ ?
+    village_N = mkN "raħal" "rħula" ; -- villaġġ ? -- pronSuffix
 --    vomit_V
 --    wait_V2
 --    walk_V
@@ -378,7 +378,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     wet_A = mkA "imxarrab" "imxarrba" "imxarrbin" ;
     white_A = mkA "abjad" "bajda" "bojod" ;
     wide_A = broad_A ;
-    wife_N = mkN "mara" "nisa" ;
+    wife_N = mkN "mara" "nisa" ; -- pronSuffix MARTI
 --    win_V2
     wind_N = mkN "riħ" [] [] "rjieħ" "rjiħat" ;
     window_N = mkN "tieqa" "twieqi" ;
@@ -390,7 +390,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     wood_N = mkN "injam" "injamiet" ;
     worm_N = mkN "dudu" "dud" [] "dudiet" "dwied" ; -- duda
 --    write_V2
-    year_N = mkN "sena" [] "sentejn" "snin" [] ;
+    year_N = mkN "sena" [] "sentejn" "snin" [] ;  -- pronSuffix SNINI (only plural though!)
     yellow_A = mkA "isfar" "safra" "sofor" ;
     young_A = small_A ;
 
