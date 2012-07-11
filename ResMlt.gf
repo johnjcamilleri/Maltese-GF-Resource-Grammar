@@ -115,6 +115,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | Hollow  -- Hollow verb: long A or IE btw radicals 1 & 3    eg QAL (Q-W-L) or SAB (S-J-B)
       | Double  -- Double/Geminated verb: radicals 2 & 3 identical  eg ĦABB (Ħ-B-B)
       | Quad    -- Quadliteral verb                  eg KARKAR (K-R-K-R), MAQDAR (M-Q-D-R), LEMBEB (L-M-B-B)
+      | Loan    -- Loan (non-semitic) verb
     ;
 
     -- For Adjectives
@@ -159,8 +160,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     Verb : Type = {
       s : VForm => Str ;  -- Give me the form (tense, person etc) and I'll give you the string
-      t : VType ;      -- Inherent - Strong/Hollow etc
-      o : Origin ;    -- Inherent - a verb of Semitic or Romance origins?
+      t : VType ;      -- Strong/Hollow etc
+--      o : Origin ;    -- verb of Semitic or Romance origins?
     } ;
 
     {- ===== Conversions ===== -}

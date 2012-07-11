@@ -266,6 +266,7 @@ resource ParadigmsMlt = open
     mkPrep p = lin Prep (ss p) ;
     noPrep = mkPrep [] ;
 
+
     {- ========== Verb paradigms ========== -}
 
     -- Takes a verb as a string and returns the VType and root/pattern.
@@ -296,24 +297,24 @@ resource ParadigmsMlt = open
       _ => Predef.error ( "Unable to parse verb" )
     } ;
 
-    -- Smart paradigm for building a Verb, by calling correct corresponding mkXXX functions
+    -- Smart paradigm for building a verb
     -- Return: Verb
-    mkVerb : Verb = overload {
+    mkV : V = overload {
 
       -- Tries to do everything just from the mamma of the verb
       -- Params:
         -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-      mkVerb : Str -> Verb = \mamma ->
+      mkV : Str -> V = \mamma ->
         let
           class = classifyVerb mamma
         in
           case class.t of {
-            Strong => mkStrong class.r class.p ;
-            Defective => mkDefective class.r class.p ;
+            Strong => strongV class.r class.p ;
+            Defective => defectiveV class.r class.p ;
             Weak => Predef.error ( "WEAK" ) ;
             Hollow => Predef.error ( "HOLLOW" ) ;
             Double => Predef.error ( "DOUBLE" ) ;
-            Quad => mkQuad class.r class.p
+            Quad => quadV class.r class.p
           } ;
 
       -- Same as above but also takes an Imperative of the word for when it behaves less predictably
@@ -321,7 +322,7 @@ resource ParadigmsMlt = open
         -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
         -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
         -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
-      mkVerb : Str -> Str -> Str -> Verb = \mamma,imp_sg,imp_pl ->
+      mkV : Str -> Str -> Str -> V = \mamma,imp_sg,imp_pl ->
         let
           class = classifyVerb mamma
         in
@@ -332,7 +333,7 @@ resource ParadigmsMlt = open
                 VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
                 VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
+--              o = Semitic ;
               t = Strong ;
             } ;
             Defective => {
@@ -341,7 +342,7 @@ resource ParadigmsMlt = open
                 VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
                 VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
+--              o = Semitic ;
               t = Defective ;
             } ;
             Weak => Predef.error ( "WEAK" ) ;
@@ -353,21 +354,21 @@ resource ParadigmsMlt = open
                 VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
                 VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
+--              o = Semitic ;
               t = Quad ;
             }
           } ;
 
-    } ; --end of mkVerb overload
+    } ; --end of mkV overload
 
 
-    {- ===== STRONG VERB ===== -}
+    {- ----- Strong Verb ----- -}
 
-    -- Strong verb, eg ĦAREĠ (Ħ-R-Ġ)
+    -- strong verb, eg ĦAREĠ (Ħ-R-Ġ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
     -- Return: Verb
-    mkStrong : Root -> Pattern -> Verb = \r,p ->
+    strongV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjStrongImp r p ;
       in {
@@ -377,7 +378,7 @@ resource ParadigmsMlt = open
           VImp n =>    imp ! n
         } ;
         t = Strong ;
-        o = Semitic
+--        o = Semitic
       } ;
 
     -- Conjugate entire verb in PERFECT tense
@@ -440,13 +441,13 @@ resource ParadigmsMlt = open
         } ;
 
 
-    {- ===== DEFECTIVE VERB ===== -}
+    {- ----- Defective Verb ----- -}
 
     -- Defective verb, eg SAMA' (S-M-GĦ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
     -- Return: Verb
-    mkDefective : Root -> Pattern -> Verb = \r,p ->
+    defectiveV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjDefectiveImp r p ;
       in {
@@ -456,7 +457,7 @@ resource ParadigmsMlt = open
           VImp n =>    imp ! n
         } ;
         t = Defective ;
-        o = Semitic
+--        o = Semitic
       } ;
 
     -- Conjugate entire verb in PERFECT tense
@@ -504,13 +505,13 @@ resource ParadigmsMlt = open
           Pl => v1 + root.K + v_pl + root.T + root.B + "u"  -- Intom: AQILGĦU / IBŻGĦU
         } ;
 
-    {- ===== QUADRILITERAL VERB ===== -}
+    {- ----- Quadriliteral Verb ----- -}
 
     -- Make a Quad verb, eg QARMEĊ (Q-R-M-Ċ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
     -- Return: Verb
-    mkQuad : Root -> Pattern -> Verb = \r,p ->
+    quadV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjQuadImp r p ;
       in {
@@ -520,7 +521,7 @@ resource ParadigmsMlt = open
           VImp n =>    imp ! n
           } ;
         t = Quad ;
-        o = Semitic ;
+--        o = Semitic ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
@@ -569,6 +570,24 @@ resource ParadigmsMlt = open
         Sg => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Inti:  DARDAR
         Pl => root.K + p.v1 + root.T + root.B + root.L + "u"  -- Intom: DARDRU
       } ;
+
+
+    {- ----- Non-semitic verbs ----- -}
+
+    -- Make a loan verb, eg IPPARKJA
+    -- Params: Mamma
+    -- Return: Verb
+    loanV : Str -> V = \mamma ->
+      lin V {
+        s = table {
+          VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
+          VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+          } ;
+        t = Loan ;
+--        o = Semitic ;
+      } ;
+
 
     {- ===== Adjective Paradigms ===== -}
 
