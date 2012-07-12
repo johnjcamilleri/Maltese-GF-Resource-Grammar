@@ -303,63 +303,65 @@ resource ParadigmsMlt = open
 
       -- Tries to do everything just from the mamma of the verb
       -- Params:
-        -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
       mkV : Str -> V = \mamma ->
         let
           class = classifyVerb mamma
         in
-          case class.t of {
-            Strong => strongV class.r class.p ;
-            Defective => defectiveV class.r class.p ;
-            Weak => Predef.error ( "WEAK" ) ;
-            Hollow => Predef.error ( "HOLLOW" ) ;
-            Double => Predef.error ( "DOUBLE" ) ;
-            Quad => quadV class.r class.p
-          } ;
+        case class.t of {
+          Strong => strongV class.r class.p ;
+          Defective => defectiveV class.r class.p ;
+          Weak => Predef.error ( "WEAK" ) ;
+          Hollow => Predef.error ( "HOLLOW" ) ;
+          Double => Predef.error ( "DOUBLE" ) ;
+          Quad => quadV class.r class.p ;
+          Loan => loanV mamma
+        } ;
 
       -- Same as above but also takes an Imperative of the word for when it behaves less predictably
       -- Params:
-        -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
-        -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
-        -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
+      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
+      -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
+      -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
       mkV : Str -> Str -> Str -> V = \mamma,imp_sg,imp_pl ->
         let
           class = classifyVerb mamma
         in
-          case class.t of {
-            Strong => {
-              s = table {
-                VPerf pgn => ( conjStrongPerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+        case class.t of {
+          Strong => {
+            s = table {
+              VPerf pgn => ( conjStrongPerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
---              o = Semitic ;
-              t = Strong ;
+            --              o = Semitic ;
+            t = Strong ;
             } ;
-            Defective => {
-              s = table {
-                VPerf pgn => ( conjDefectivePerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+          Defective => {
+            s = table {
+              VPerf pgn => ( conjDefectivePerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
---              o = Semitic ;
-              t = Defective ;
+            --              o = Semitic ;
+            t = Defective ;
             } ;
-            Weak => Predef.error ( "WEAK" ) ;
-            Hollow => Predef.error ( "HOLLOW" ) ;
-            Double => Predef.error ( "DOUBLE" ) ;
-            Quad => {
-              s = table {
-                VPerf pgn => ( conjQuadPerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+          Weak => Predef.error ( "WEAK" ) ;
+          Hollow => Predef.error ( "HOLLOW" ) ;
+          Double => Predef.error ( "DOUBLE" ) ;
+          Quad => {
+            s = table {
+              VPerf pgn => ( conjQuadPerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
---              o = Semitic ;
-              t = Quad ;
-            }
-          } ;
+            --              o = Semitic ;
+            t = Quad ;
+            } ;
+          Loan => loanV mamma
+        } ;
 
-    } ; --end of mkV overload
+      } ; --end of mkV overload
 
 
     {- ----- Strong Verb ----- -}
@@ -371,7 +373,7 @@ resource ParadigmsMlt = open
     strongV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjStrongImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjStrongPerf r p ) ! pgn ;
           VImpf pgn => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
@@ -450,7 +452,7 @@ resource ParadigmsMlt = open
     defectiveV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjDefectiveImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjDefectivePerf r p ) ! pgn ;
           VImpf pgn => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
@@ -514,7 +516,7 @@ resource ParadigmsMlt = open
     quadV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjQuadImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
           VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
@@ -574,18 +576,77 @@ resource ParadigmsMlt = open
 
     {- ----- Non-semitic verbs ----- -}
 
-    -- Make a loan verb, eg IPPARKJA
-    -- Params: Mamma
-    -- Return: Verb
-    loanV : Str -> V = \mamma ->
-      lin V {
+
+    loanV : V = overload {
+
+    -- Loan verb: Italian integrated -ARE, eg KANTA
+    -- Follows Maltese weak verb class 2 {MDG pg249,379}
+    loanV : Str -> V = \kanta ->
+      let
+        kantaw = kanta + "w" ;
+      in lin V {
         s = table {
-          VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
-          VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
-          VImp n =>    imp ! n
+          VPerf pgn => table {
+            Per1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
+            Per2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
+            Per3Sg Masc  => kanta ; -- Huwa KANTA
+            Per3Sg Fem  => kanta + "t" ;  -- Hija KANTAT
+            Per1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
+            Per2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
+            Per3Pl    => kanta + "w"  -- Huma KANTAW
+            } ! pgn ;
+          VImpf pgn => table {
+            Per1 Sg    => "n" + kanta ;  -- Jiena NKANTA
+            Per2 Sg    => "t" + kanta ;  -- Inti TKANTA
+            Per3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
+            Per3Sg Fem  => "t" + kanta ;  -- Hija TKANTA
+            Per1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
+            Per2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
+            Per3Pl    => "j" + kantaw  -- Huma JKANTAW
+            } ! pgn ;
+          VImp n => table {
+            Sg => kanta ;  -- Inti:  KANTA
+            Pl => kantaw  -- Intom: KANTAW
+            } ! n
           } ;
         t = Loan ;
---        o = Semitic ;
+        } ;
+
+    -- Loan verb: Italian integrated -ERE/-IRE, eg VINĊA
+    -- Follows Maltese weak verb class 1 {MDG pg249,379}
+    loanV : Str -> Int -> V = \vinca,class ->
+      let
+        vinc = tk 1 vinca ;
+        vinci = vinc + "i" ;
+        vincu = vinc + "u" ;
+      in lin V {
+        s = table {
+          VPerf pgn => table {
+            Per1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
+            Per2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
+            Per3Sg Masc  => vinca ; -- Huwa VINĊA
+            Per3Sg Fem  => vinc + "iet" ;  -- Hija VINĊIET
+            Per1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
+            Per2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
+            Per3Pl    => vinc + "ew"  -- Huma VINĊEJTU
+            } ! pgn ;
+          VImpf pgn => table {
+            Per1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
+            Per2 Sg    => "t" + vinci ;  -- Inti TVINĊI
+            Per3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
+            Per3Sg Fem  => "t" + vinci ;  -- Hija TVINĊI
+            Per1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
+            Per2 Pl    => "t" + vincu ;  -- Intom TVINĊU
+            Per3Pl    => "j" + vincu  -- Huma JVINĊU
+            } ! pgn ;
+          VImp n => table {
+            Sg => vinci ;  -- Inti:  VINĊI
+            Pl => vincu  -- Intom: VINĊU
+            } ! n
+          } ;
+        t = Loan ;
+        } ;
+
       } ;
 
 

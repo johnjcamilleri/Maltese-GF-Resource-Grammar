@@ -14,9 +14,11 @@ Items marked with a `*` are not yet covered.
 1. *Inflections for:
   1. *Negation, e.g. _ma marritx_
   1. *active/passive/continuous , e.g. _tela'_ vs _tiela_, _miktub_
-  1. *subject/object, e.g. _ħaditu_, _ġabuhielhom_
+  1. *direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
 
 ## Type
+
+Verb classification according to {MDG}.
 
 - Semitic
   - Strong verb: none of radicals are semi-vowels. _eg ĦAREĠ (Ħ-R-Ġ)_
@@ -25,9 +27,16 @@ Items marked with a `*` are not yet covered.
   - Hollow verb: long A or IE btw radicals 1 & 3. _eg QAL (Q-W-L) or SAB (S-J-B)_
   - Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
   - Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
-- Romance/English loan words
+- Romance
   - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
-  - Loosely-integrated. _eg IPPROVDA, IKKOPJA, SKANDALIZZA_
+    - Italian _-are_: _eg KANTA_
+    - Italian _-ere_: _eg VINĊA_
+    - Italian _-ire_: _eg SERVA_
+  - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
+- English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
+  
+In the MRG, we gather all Romance and English loan verbs under the common verb type `Loan`.
+
 
 ## Tense
 
