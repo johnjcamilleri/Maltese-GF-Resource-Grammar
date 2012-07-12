@@ -25,11 +25,9 @@ Items marked with a `*` are not yet covered.
   - Hollow verb: long A or IE btw radicals 1 & 3. _eg QAL (Q-W-L) or SAB (S-J-B)_
   - Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
   - Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
-- Romance
-  - Strongly-integrated
-  - Loosely-integrated
-- English loan words
-  - ?
+- Romance/English loan words
+  - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
+  - Loosely-integrated. _eg IPPROVDA, IKKOPJA, SKANDALIZZA_
 
 ## Tense
 
@@ -38,4 +36,4 @@ Items marked with a `*` are not yet covered.
 - Imperative, e.g. ISRAQ
 - Present Particible: Intransitive and 'motion' verbs only, eg NIEŻEL
 - Past Particible: Both verbal & adjectival function, eg MISRUQ
-- Verbal Noun, e.g. SERQ
+
