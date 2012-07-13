@@ -21,12 +21,16 @@ Items marked with a `*` are not yet covered.
 Verb classification according to {MDG}.
 
 - Semitic
-  - Strong verb: none of radicals are semi-vowels. _eg ĦAREĠ (Ħ-R-Ġ)_
-  - Defective verb: third radical is semivowel GĦ. _eg QATA' (Q-T-GĦ)_
-  - Weak verb: third radical is semivowel J. _eg MEXA (M-X-J)_
-  - Hollow verb: long A or IE btw radicals 1 & 3. _eg QAL (Q-W-L) or SAB (S-J-B)_
-  - Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
-  - Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
+  - Strong ("sħiħ")
+    - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L), ĦAREĠ (Ħ-R-Ġ)_.
+    - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
+    - Reduplicated (also Doubled, Geminated): C2 & C3 are identical ("trux"), _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+  - Weak ("dgħajjef")
+    - Assimilative: C1 is weak ("assimilativ"), _eg WAQAF (W-Q-F), WASAL (W-S-L)_
+    - Hollow: C2 is weak, long A or IE between C1 & C3 ("moħfi"), _eg DAM (D-W-M), SAR (S-J-R), QAL (Q-W-L)_
+    - Weak-Final: C3 is weak ("nieqes"), _eg BEKA (B-K-J), MEXA (M-X-J)_
+    - Defective (silent-final): C3 is semivowel GĦ ("?"), _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+  - Quadriliteral: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
 - Romance
   - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
     - Italian _-are_: _eg KANTA_
@@ -34,7 +38,8 @@ Verb classification according to {MDG}.
     - Italian _-ire_: _eg SERVA_
   - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
-  
+
+
 In the MRG, we gather all Romance and English loan verbs under the common verb type `Loan`.
 
 
@@ -43,6 +48,7 @@ In the MRG, we gather all Romance and English loan verbs under the common verb t
 - Perfect (past), e.g. SERAQ
 - Imperfect (present), e.g. JISRAQ
 - Imperative, e.g. ISRAQ
+  - "The imperitive is formed from the imperfect form of the verb" {MDG pg238}
 - Present Particible: Intransitive and 'motion' verbs only, eg NIEŻEL
 - Past Particible: Both verbal & adjectival function, eg MISRUQ
 

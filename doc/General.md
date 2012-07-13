@@ -34,6 +34,8 @@ Other potentially useful resources:
 1. Manwel Mifsud (1995, _Loan Verbs in Maltese_. NY: Brill, pp. 272-295)
 1. Sutcliffe, Edmund F. 1936. _A grammar of the Maltese language with chrestomathy and vocabulary_. London: Oxford University Press.
 1. Borg, Albert. 1981. _A study of aspect in Maltese_. Ann Arbor: Karoma Publishers.
-1. Borg, Albert. 1988. in _Ilsienna: Studju grammatikali_. Malta.
-1. _Is-Suffissi tan-Nazzjonijiet fil-Malti_ - Michael Spagnol.
+1. Borg, Albert. 1988. ? in _Ilsienna: Studju grammatikali_. Malta.
+1. _Is-Suffissi tan-Nazzjonijiet fil-Malti_ - Michael Spagnol. (unpublished).
+1. _"Kelmet il-Malti" Facebook group - https://www.facebook.com/groups/246657308743181/
+1. _Korpus Malti_ - http://mlrs.research.um.edu.mt/corpusquery/cwb/malti01/
 
