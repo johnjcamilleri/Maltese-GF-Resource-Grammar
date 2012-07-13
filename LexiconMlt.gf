@@ -224,7 +224,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     long_A = brokenA "twil" "twal" "itwal" ;
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
-    love_N = mkN "mħabba" "mħabbiet" ; -- hmmm  -- pronSuffix
+    love_N = mkN "mħabba" "mħabbiet" ; -- hmmm
 --    love_V2
     man_N = mkN "raġel" "rġiel" ;
 --    married_A2

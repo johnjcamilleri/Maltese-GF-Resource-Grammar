@@ -57,7 +57,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Adjective
 
 --    AP = {s : Agr => Str ; isPre : Bool} ; 
-    AP = {s : GenNum => Str ; isPre : Bool} ; 
+    AP = {s : GenNum => Str ; isPre : Bool} ;
 
 -- Noun
 
