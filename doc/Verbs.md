@@ -24,12 +24,12 @@ Verb classification according to {MDG} and {T2M}.
   - Strong ("sħiħ")
      - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L)_.
      - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
-     - Reduplicated (also Doubled, Geminated): C2 & C3 are identical ("trux"), _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+     - Reduplicated/Doubled/Geminated ("trux"): C2 & C3 are identical, _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
   - Weak ("dgħajjef")
-     - Assimilative: C1 is weak ("assimilativ"), _eg WAQAF (W-Q-F), WASAL (W-S-L)_
-     - Hollow: C2 is weak, long A or IE between C1 & C3 ("moħfi"), _eg DAM (D-W-M), SAR (S-J-R), QAL (Q-W-L)_
-     - Weak-Final: C3 is weak ("nieqes"), _eg BEKA (B-K-J), MEXA (M-X-J)_
-     - Defective (silent-final): C3 is semivowel GĦ ("?"), _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+     - Assimilative ("assimilativ"): C1 is weak, _eg WAQAF (W-Q-F), WASAL (W-S-L)_
+     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R), QAL (Q-W-L)_
+     - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
+     - Defective: C3 is silen GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
   - Quadriliteral: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
 - Romance
   - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
