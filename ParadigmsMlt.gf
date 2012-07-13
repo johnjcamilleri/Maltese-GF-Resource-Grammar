@@ -23,11 +23,11 @@ resource ParadigmsMlt = open
     {- ===== Parameters ===== -}
 
     -- Abstraction over gender names
-    Gender : Type ; 
+    Gender : Type ;
     masculine : Gender ; --%
     feminine : Gender ; --%
 
-    Gender = ResMlt.Gender ; 
+    Gender = ResMlt.Gender ;
     masculine = Masc ;
     feminine = Fem ;
 
@@ -254,7 +254,7 @@ resource ParadigmsMlt = open
       mkN2 : N -> Str -> N2 = \n,s -> prepN2 n (mkPrep s);
 --      mkN2 : Str -> Str -> N2 = \n,s -> prepN2 (regN n) (mkPrep s);
       mkN2 : N -> N2         = \n -> prepN2 n (mkPrep "ta'") ;
---      mkN2 : Str -> N2       = \s -> prepN2 (regN s) (mkPrep "ta'") 
+--      mkN2 : Str -> N2       = \s -> prepN2 (regN s) (mkPrep "ta'")
     } ;
 
     prepN2 : N -> Prep -> N2 ;
@@ -266,172 +266,185 @@ resource ParadigmsMlt = open
     mkPrep p = lin Prep (ss p) ;
     noPrep = mkPrep [] ;
 
+
     {- ========== Verb paradigms ========== -}
 
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
-    -- Params: "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-    -- Return: Record with v:VType, r:Root, p:Pattern
-    classifyVerb : Str -> { t:VType ; r:Root ; p:Pattern } = \mamma -> case mamma of {
-      -- Quad
-      K@#Consonant + v1@#Vowel + T@#Consonant + B@#Consonant + v2@#Vowel + L@#Consonant => { t=Quad ; r={ K=K ; T=T ; B=B ; L=L } ; p={ v1=v1 ; v2=v2 } } ;
+    -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+    classifyVerb : Str -> { c:VClass ; r:Root ; p:Pattern } = \mamma -> case mamma of {
 
-      -- Hollow
-      K@#Consonant + v1@"a"  + B@#Consonant => { t=Hollow ; r={ K=K ; T="w" ; B=B ; L=[] } ; p={ v1=v1 ; v2="" } } ;
-      K@#Consonant + v1@"ie" + B@#Consonant => { t=Hollow ; r={ K=K ; T="j" ; B=B ; L=[] } ; p={ v1=v1 ; v2="" } } ;
+      -- Defective, BELA'
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@( "għ" | "'" ) =>
+        { c=Weak Defective ; r=(mkRoot c1 c2 "għ") ; p=(mkPattern v1 v2) } ;
 
-      -- Double
-      K@#Consonant + v1@#Vowel + T@#Consonant + B@#Consonant => { t=Double ; r={ K=K ; T=T ; B="j" ; L=[] } ; p={ v1=v1 ; v2="" } } ;
+      -- Weak Final, MEXA
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel =>
+        { c=Weak WeakFinal ; r=(mkRoot c1 c2 "j") ; p=(mkPattern v1 v2) } ;
 
-      -- Weak
-      K@#Consonant + v1@#Vowel + T@#Consonant + v2@#Vowel => { t=Weak ; r={ K=K ; T=T ; B="j" ; L=[] } ; p={ v1=v1 ; v2=v2 } } ;
+      -- Hollow, SAB
+      --- TODO determining of middle radical is not right, e.g. SAB = S-J-B
+      c1@#Consonant + v1@"a"  + c3@#Consonant =>
+        { c=Weak Hollow ; r=(mkRoot c1 "w" c3) ; p=(mkPattern v1) } ;
+      c1@#Consonant + v1@"ie" + c3@#Consonant =>
+        { c=Weak Hollow ; r=(mkRoot c1 "j" c3) ; p=(mkPattern v1) } ;
 
-      -- Defective
-      K@#Consonant + v1@#Vowel + T@#Consonant + v2@#Vowel + B@( "għ" | "'" ) => { t=Defective ; r={ K=K ; T=T ; B="għ" ; L=[] } ; p={ v1=v1 ; v2=v2 } } ;
+      -- Weak Assimilative, WAQAF
+      c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
+        { c=Weak Assimilative ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1 v2) } ;
 
-      -- Strong
-      K@#Consonant + v1@#Vowel + T@#Consonant + v2@#Vowel + B@(#Consonant | "ġ") => { t=Strong ; r={ K=K ; T=T ; B=B ; L=[] } ; p={ v1=v1 ; v2=v2 } } ;
+      -- Strong Reduplicated, ĦABB
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
+        { c=Strong Reduplicated ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1) } ;
 
-      -- Error :(
-      _ => Predef.error ( "Unable to parse verb" )
+      -- Strong LiquidMedial, ŻELAQ
+      c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
+        { c=Strong LiquidMedial ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1 v2) } ;
+
+      -- Strong Regular, QATEL
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
+        { c=Strong Regular ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1 v2) } ;
+
+      -- Quad, QAĊĊAT
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
+        { c=Quad ; r=(mkRoot c1 c2 c3 c4) ; p=(mkPattern v1 v2) } ;
+
+      -- Assume it is a loan verb
+      _ => { c=Loan ; r=mkRoot ; p=mkPattern }
     } ;
 
-    -- Smart paradigm for building a Verb, by calling correct corresponding mkXXX functions
-    -- Return: Verb
-    mkVerb : Verb = overload {
+    -- Smart paradigm for building a verb
+    mkV : V = overload {
 
       -- Tries to do everything just from the mamma of the verb
       -- Params:
-        -- "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-      mkVerb : Str -> Verb = \mamma ->
+      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+      mkV : Str -> V = \mamma ->
         let
           class = classifyVerb mamma
         in
-          case class.t of {
-            Strong => mkStrong class.r class.p ;
-            Defective => mkDefective class.r class.p ;
-            Weak => Predef.error ( "WEAK" ) ;
-            Hollow => Predef.error ( "HOLLOW" ) ;
-            Double => Predef.error ( "DOUBLE" ) ;
-            Quad => mkQuad class.r class.p
-          } ;
+        case class.c of {
+          Strong Regular => strongV class.r class.p ;
+          Strong LiquidMedial => liquidMedialV class.r class.p ;
+          Strong Reduplicated => reduplicatedV class.r class.p ;
+          Weak Assimilative  => assimilativeV class.r class.p ;
+          Weak Hollow => hollowV class.r class.p ;
+          Weak WeakFinal => weakFinalV class.r class.p ;
+          Weak Defective => defectiveV class.r class.p ;
+          Quad => quadV class.r class.p ;
+          Loan => loanV mamma
+--          _ => Predef.error("Unimplemented")
+        } ;
 
       -- Same as above but also takes an Imperative of the word for when it behaves less predictably
       -- Params:
-        -- "Mamma" (Perf AgP3 Sg Masc) as string (eg KITEB or ĦAREĠ )
-        -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
-        -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
-      mkVerb : Str -> Str -> Str -> Verb = \mamma,imp_sg,imp_pl ->
+      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
+      -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
+      -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
+      mkV : Str -> Str -> Str -> V = \mamma,imp_sg,imp_pl ->
         let
           class = classifyVerb mamma
         in
-          case class.t of {
-            Strong => {
-              s = table {
-                VPerf pgn => ( conjStrongPerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+        case class.c of {
+          Strong _ => {
+            s = table {
+              VPerf pgn => ( conjStrongPerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
-              t = Strong ;
+            c = class.c ;
             } ;
-            Defective => {
-              s = table {
-                VPerf pgn => ( conjDefectivePerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+          Weak Defective => {
+            s = table {
+              VPerf pgn => ( conjDefectivePerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
-              t = Defective ;
+            c = class.c ;
             } ;
-            Weak => Predef.error ( "WEAK" ) ;
-            Hollow => Predef.error ( "HOLLOW" ) ;
-            Double => Predef.error ( "DOUBLE" ) ;
-            Quad => {
-              s = table {
-                VPerf pgn => ( conjQuadPerf class.r class.p ) ! pgn ;
-                VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
-                VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+          Quad => {
+            s = table {
+              VPerf pgn => ( conjQuadPerf class.r class.p ) ! pgn ;
+              VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
+              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
               } ;
-              o = Semitic ;
-              t = Quad ;
-            }
-          } ;
+            c = class.c ;
+            } ;
+          Loan => loanV mamma ;
+          _ => Predef.error ( "Unimplemented" )
+        } ;
 
-    } ; --end of mkVerb overload
+      } ; --end of mkV overload
 
+    -- Conjugate imperfect tense from imperative by adding initial letters
+    -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
+    conjGenericImpf : Str -> Str -> (Agr => Str) = \stem_sg,stem_pl ->
+      table {
+        Per1 Sg    => "n" + stem_sg ;  -- Jiena NIŻLOQ
+        Per2 Sg    => "t" + stem_sg ;  -- Inti TIŻLOQ
+        Per3Sg Masc  => "j" + stem_sg ;  -- Huwa JIŻLOQ
+        Per3Sg Fem  => "t" + stem_sg ;  -- Hija TIŻLOQ
+        Per1 Pl    => "n" + stem_pl ;  -- Aħna NIŻOLQU
+        Per2 Pl    => "t" + stem_pl ;  -- Intom TIŻOLQU
+        Per3Pl    => "j" + stem_pl  -- Huma JIŻOLQU
+      } ;
 
-    {- ===== STRONG VERB ===== -}
+    {- ----- Strong Verb ----- -}
 
-    -- Strong verb, eg ĦAREĠ (Ħ-R-Ġ)
-    -- Make a verb by calling generate functions for each tense
+    -- Regular strong verb ("sħiħ"), eg KITEB
     -- Params: Root, Pattern
-    -- Return: Verb
-    mkStrong : Root -> Pattern -> Verb = \r,p ->
+    strongV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjStrongImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjStrongPerf r p ) ! pgn ;
           VImpf pgn => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
           VImp n =>    imp ! n
         } ;
-        t = Strong ;
-        o = Semitic
+        c = Strong Regular ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    -- Return: Lookup table of Agr against Str
-    conjStrongPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
+    conjStrongPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
-        stem_12 = root.K + root.T + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + root.B ;
-        stem_3 = root.K + p.v1 + root.T + root.B ;
+        ktib = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C3 ;
+        kitb = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          AgP1 Sg    => stem_12 + "t" ;  -- Jiena KTIBT
-          AgP2 Sg    => stem_12 + "t" ;  -- Inti KTIBT
-          AgP3Sg Masc  => root.K + p.v1 + root.T + p.v2 + root.B ;  -- Huwa KITEB
-          AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
-          AgP1 Pl    => stem_12 + "na" ;  -- Aħna KTIBNA
-          AgP2 Pl    => stem_12 + "tu" ;  -- Intom KTIBTU
-          AgP3Pl    => stem_3 + "u"  -- Huma KITBU
+          Per1 Sg    => ktib + "t" ;  -- Jiena KTIBT
+          Per2 Sg    => ktib + "t" ;  -- Inti KTIBT
+          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa KITEB
+          Per3Sg Fem  => kitb + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
+          Per1 Pl    => ktib + "na" ;  -- Aħna KTIBNA
+          Per2 Pl    => ktib + "tu" ;  -- Intom KTIBTU
+          Per3Pl    => kitb + "u"  -- Huma KITBU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-    -- Return: Lookup table of Agr against Str
-    conjStrongImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
-      table {
-        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
-        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
-        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
-        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
-        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
-        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
-        AgP3Pl    => "j" + stem_pl  -- Huma JIKTBU
-      } ;
+    conjStrongImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    -- Return: Lookup table of Number against Str
-    conjStrongImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+    conjStrongImp : Root -> Pattern -> (Number => Str) = \root,p ->
       let
-        stem_sg = case (p.v1 + p.v2) of {
-          "aa" => "i" + root.K + root.T + "o" + root.B ;
-          "ae" => "o" + root.K + root.T + "o" + root.B ;
-          "ee" => "i" + root.K + root.T + "e" + root.B ;
-          "ea" => "i" + root.K + root.T + "a" + root.B ;
-          "ie" => "i" + root.K + root.T + "e" + root.B ;
-          "oo" => "o" + root.K + root.T + "o" + root.B
+        stem_sg = case (p.V1 + p.V2) of {
+          "aa" => "o" + root.C1 + root.C2 + "o" + root.C3 ; -- RABAT > ORBOT
+          "ae" => "a" + root.C1 + root.C2 + "e" + root.C3 ; -- GĦAMEL > AGĦMEL
+          "ee" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- FEHEM > IFHEM
+          "ea" => "i" + root.C1 + root.C2 + "a" + root.C3 ; -- FETAĦ > IFTAĦ
+          "ie" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- KITEB > IKTEB
+          "oo" => "o" + root.C1 + root.C2 + "o" + root.C3   -- GĦOĠOB > OGĦĠOB
         } ;
-        stem_pl = case (p.v1 + p.v2) of {
-          "aa" => "i" + root.K + "o" + root.T + root.B ;
-          "ae" => "o" + root.K + "o" + root.T + root.B ;
-          "ee" => "i" + root.K + "e" + root.T + root.B ;
-          "ea" => "i" + root.K + "i" + root.T + root.B ;
-          "ie" => "i" + root.K + "e" + root.T + root.B ;
-          "oo" => "o" + root.K + "o" + root.T + root.B
+        stem_pl = case (p.V1 + p.V2) of {
+          "aa" => "o" + root.C1 + root.C2 + root.C3 ; -- RABAT > ORBTU
+          "ae" => "a" + root.C1 + root.C2 + root.C3 ; -- GĦAMEL > AGĦMLU
+          "ee" => "i" + root.C1 + root.C2 + root.C3 ; -- FEHEM > IFHMU
+          "ea" => "i" + root.C1 + root.C2 + root.C3 ; -- FETAĦ > IFTĦU
+          "ie" => "i" + root.C1 + root.C2 + root.C3 ; -- KITEB > IKTBU
+          "oo" => "o" + root.C1 + root.C2 + root.C3   -- GĦOĠOB > OGĦĠBU
         } ;
       in
         table {
@@ -439,88 +452,335 @@ resource ParadigmsMlt = open
           Pl => stem_pl + "u"  -- Intom: IKTBU
         } ;
 
+    {- ----- Liquid-Medial Verb ----- -}
 
-    {- ===== DEFECTIVE VERB ===== -}
+    -- Liquid-medial strong verb, eg ŻELAQ
+    -- Params: Root, Pattern
+    liquidMedialV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjLiquidMedialImp r p ;
+      in lin V {
+        s = table {
+          VPerf pgn => ( conjLiquidMedialPerf r p ) ! pgn ;
+          VImpf pgn => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+        } ;
+        c = Strong LiquidMedial ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjLiquidMedialPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+      let
+        zlaq = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C3 ;
+        zelq = root.C1 + p.V1 + root.C2 + root.C3 ;
+      in
+        table {
+          Per1 Sg    => zlaq + "t" ;  -- Jiena ŻLAQT
+          Per2 Sg    => zlaq + "t" ;  -- Inti ŻLAQT
+          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa ŻELAQ
+          Per3Sg Fem  => zelq + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija ŻELQET
+          Per1 Pl    => zlaq + "na" ;  -- Aħna ŻLAQNA
+          Per2 Pl    => zlaq + "tu" ;  -- Intom ŻLAQTU
+          Per3Pl    => zelq + "u"  -- Huma ŻELQU
+        } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg IŻLOQ), Imperative Plural (eg IŻOLQU)
+    conjLiquidMedialImpf = conjGenericImpf ;
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    conjLiquidMedialImp : Root -> Pattern -> (Number => Str) = \root,p ->
+      let
+        stem_sg = case (p.V1 + p.V2) of {
+          "aa" => "i" + root.C1 + root.C2 + "o" + root.C3 ; -- TALAB > ITLOB
+          "ae" => "o" + root.C1 + root.C2 + "o" + root.C3 ; -- ĦAREĠ > OĦROĠ
+          "ee" => "e" + root.C1 + root.C2 + "e" + root.C3 ; -- ĦELES > EĦLES
+          "ea" => "i" + root.C1 + root.C2 + "o" + root.C3 ; -- ŻELAQ > IŻLOQ
+          "ie" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- DILEK > IDLEK
+          "oo" => "i" + root.C1 + root.C2 + "o" + root.C3   -- XOROB > IXROB
+        } ;
+        stem_pl = case (p.V1 + p.V2) of {
+          "aa" => "i" + root.C1 + "o" + root.C2 + root.C3 ; -- TALAB > ITOLBU
+          "ae" => "o" + root.C1 + "o" + root.C2 + root.C3 ; -- ĦAREĠ > OĦORĠU
+          "ee" => "e" + root.C1 + "i" + root.C2 + root.C3 ; -- ĦELES > EĦILSU
+          "ea" => "i" + root.C1 + "o" + root.C2 + root.C3 ; -- ŻELAQ > IŻOLQU
+          "ie" => "i" + root.C1 + "i" + root.C2 + root.C3 ; -- DILEK > IDILKU
+          "oo" => "i" + root.C1 + "o" + root.C2 + root.C3   -- XOROB > IXORBU
+        } ;
+      in
+        table {
+          Sg => stem_sg ;  -- Inti: IŻLOQ
+          Pl => stem_pl + "u"  -- Intom: IŻOLQU
+        } ;
+
+    {- ----- Reduplicated Verb ----- -}
+
+    -- Reduplicated strong verb ("trux"), eg ĦABB
+    -- Params: Root, Pattern
+    reduplicatedV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjReduplicatedImp r p ;
+      in lin V {
+        s = table {
+          VPerf pgn => ( conjReduplicatedPerf r p ) ! pgn ;
+          VImpf pgn => ( conjReduplicatedImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+        } ;
+        c = Strong Reduplicated ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjReduplicatedPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+      let
+        habb = root.C1 + p.V1 + root.C2 + root.C3 ;
+      in
+        table {
+          Per1 Sg    => habb + "ejt" ;  -- Jiena ĦABBEJT
+          Per2 Sg    => habb + "ejt" ;  -- Inti ĦABBEJT
+          Per3Sg Masc  => habb ;  -- Huwa ĦABB
+          Per3Sg Fem  => habb + "et" ;  -- Hija ĦABBET
+          Per1 Pl    => habb + "ejna" ;  -- Aħna ĦABBEJNA
+          Per2 Pl    => habb + "ejtu" ;  -- Intom ĦABBEJTU
+          Per3Pl    => habb + "ew"  -- Huma ĦABBU/ĦABBEW
+        } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
+    conjReduplicatedImpf = conjGenericImpf ;
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    conjReduplicatedImp : Root -> Pattern -> (Number => Str) = \root,p ->
+      let
+        stem_sg = case p.V1 of {
+          "e" => root.C1 + p.V1 + root.C2 + root.C3 ; -- BEXX > BEXX (?)
+          _ => root.C1 + "o" + root.C2 + root.C3 -- ĦABB > ĦOBB
+        } ;
+      in
+        table {
+          Sg => stem_sg ;  -- Inti: ĦOBB
+          Pl => stem_sg + "u"  -- Intom: ĦOBBU
+        } ;
+
+    {- ----- Assimilative Verb ----- -}
+
+    -- Assimilative weak verb, eg WASAL
+    -- Params: Root, Pattern
+    assimilativeV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjAssimilativeImp r p ;
+      in lin V {
+        s = table {
+          VPerf pgn => ( conjAssimilativePerf r p ) ! pgn ;
+          VImpf pgn => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+        } ;
+        c = Weak Assimilative ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjAssimilativePerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+      let
+        wasal = root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;
+        wasl  = root.C1 + p.V1 + root.C2 + root.C3 ;
+      in
+        table {
+          Per1 Sg    => wasal + "t" ;  -- Jiena WASALT
+          Per2 Sg    => wasal + "t" ;  -- Inti WASALT
+          Per3Sg Masc  => wasal ;  -- Huwa WASAL
+          Per3Sg Fem  => wasl + "et" ;  -- Hija WASLET
+          Per1 Pl    => wasal + "na" ;  -- Aħna WASALNA
+          Per2 Pl    => wasal + "tu" ;  -- Intom WASALTU
+          Per3Pl    => wasl + "u"  -- Huma WASLU
+        } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg ASAL), Imperative Plural (eg ASLU)
+    conjAssimilativeImpf = conjGenericImpf ;
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    conjAssimilativeImp : Root -> Pattern -> (Number => Str) = \root,p ->
+      table {
+        Sg => p.V1 + root.C2 + p.V2 + root.C3 ;  -- Inti: ASAL
+        Pl => p.V1 + root.C2 + root.C3 + "u"  -- Intom: ASLU
+      } ;
+
+    {- ----- Hollow Verb ----- -}
+
+    -- Hollow weak verb, eg SAR (S-J-R)
+    -- Params: Root, Pattern
+    hollowV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjHollowImp r p ;
+      in lin V {
+        s = table {
+          VPerf pgn => ( conjHollowPerf r p ) ! pgn ;
+          VImpf pgn => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+        } ;
+        c = Weak Hollow ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+      let
+        sar = root.C1 + p.V1 + root.C3 ;
+        sir = case root.C2 of { --- this is not really backed up
+          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR-
+          "w" => root.C1 + "o" + root.C3 ; -- DAM (D-W-M) > DOM-
+          _ => root.C1 + p.V1 + root.C3
+          }
+      in
+      table {
+        Per1 Sg    => sir + "t" ;  -- Jiena SIRT
+        Per2 Sg    => sir + "t" ;  -- Inti SIRT
+        Per3Sg Masc  => sar ;  -- Huwa SAR
+        Per3Sg Fem  => sar + "et" ;  -- Hija SARET
+        Per1 Pl    => sir + "na" ;  -- Aħna SIRNA
+        Per2 Pl    => sir + "tu" ;  -- Intom SIRTU
+        Per3Pl    => sar + "u"  -- Huma SARU
+      } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
+    conjHollowImpf = conjGenericImpf ; --- TODO!
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    conjHollowImp : Root -> Pattern -> (Number => Str) = \root,p ->
+      let
+        sir = case root.C2 of { --- this is not really backed up
+          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR
+          "w" => root.C1 + "u" + root.C3 ; -- DAM (D-W-M) > DUM
+          _ => root.C1 + p.V1 + root.C3
+          }
+      in
+      table {
+        Sg => sir ;  -- Inti: SIR
+        Pl => sir + "u"  -- Intom: SIRU
+      } ;
+
+    {- ----- Weak-Final Verb ----- -}
+
+    -- Weak-Final verb, eg MEXA (M-X-J)
+    -- Make a verb by calling generate functions for each tense
+    weakFinalV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjWeakFinalImp r p ;
+      in lin V {
+        s = table {
+          VPerf pgn => ( conjWeakFinalPerf r p ) ! pgn ;
+          VImpf pgn => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VImp n =>    imp ! n
+        } ;
+        c = Weak WeakFinal ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjWeakFinalPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+      let
+        stem_12 = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ; -- "AGĦ" -> "AJ"
+        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
+      in
+        table {
+          Per1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
+          Per2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
+          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
+          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
+          Per1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
+          Per2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
+          Per3Pl    => stem_3 + "u"  -- Huma IMXEW
+        } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
+    conjWeakFinalImpf = conjGenericImpf ;
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    conjWeakFinalImp : Root -> Pattern -> (Number => Str) = \root,p ->
+      let
+        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
+        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
+      in
+        table {
+          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti: IMXI
+          Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: IMXU
+        } ;
+
+    {- ----- Defective Verb ----- -}
 
     -- Defective verb, eg SAMA' (S-M-GĦ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
-    -- Return: Verb
-    mkDefective : Root -> Pattern -> Verb = \r,p ->
+    defectiveV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjDefectiveImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjDefectivePerf r p ) ! pgn ;
           VImpf pgn => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
           VImp n =>    imp ! n
         } ;
-        t = Defective ;
-        o = Semitic
+        c = Weak Defective ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    -- Return: Lookup table of Agr against Str
     conjDefectivePerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
       let
-        stem_12 = root.K + root.T + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + "j" ; -- "AGĦ" -> "AJ"
-        stem_3 = root.K + p.v1 + root.T + root.B ;
+        stem_12 = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ; -- "AGĦ" -> "AJ"
+        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          AgP1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
-          AgP2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
-          AgP3Sg Masc  => root.K + p.v1 + root.T + p.v2 + "'" ;  -- Huwa QALA'
-          AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
-          AgP1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
-          AgP2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
-          AgP3Pl    => stem_3 + "u"  -- Huma QALGĦU
+          Per1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
+          Per2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
+          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa QALA'
+          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
+          Per1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
+          Per2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
+          Per3Pl    => stem_3 + "u"  -- Huma QALGĦU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-    -- Return: Lookup table of Agr against Str
-    conjDefectiveImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
-      table {
-        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIKTEB
-        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIKTEB
-        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIKTEB
-        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIKTEB
-        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIKTBU
-        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIKTBU
-        AgP3Pl    => "j" + stem_pl  -- Huma JIKTBU
-      } ;
+    conjDefectiveImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    -- Return: Lookup table of Number against Str
     conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       let
-        v1 = case p.v1 of { "e" => "i" ; _ => p.v1 } ;
-        v_pl = case p.v1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
+        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
+        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
       in
         table {
-          Sg => v1 + root.K + root.T + p.v2 + "'" ;  -- Inti:  AQLA' / IBŻA'
-          Pl => v1 + root.K + v_pl + root.T + root.B + "u"  -- Intom: AQILGĦU / IBŻGĦU
+          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti:  AQLA' / IBŻA'
+          Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: AQILGĦU / IBŻGĦU
         } ;
 
-    {- ===== QUADRILITERAL VERB ===== -}
+    {- ----- Quadriliteral Verb ----- -}
 
     -- Make a Quad verb, eg QARMEĊ (Q-R-M-Ċ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
     -- Return: Verb
-    mkQuad : Root -> Pattern -> Verb = \r,p ->
+    quadV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjQuadImp r p ;
-      in {
+      in lin V {
         s = table {
           VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
           VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
           VImp n =>    imp ! n
           } ;
-        t = Quad ;
-        o = Semitic ;
+        c = Quad ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
@@ -528,17 +788,17 @@ resource ParadigmsMlt = open
     -- Return: Lookup table of Agr against Str
     conjQuadPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
       let
-        stem_12 = root.K + p.v1 + root.T + root.B + (case p.v2 of {"e" => "i" ; _ => p.v2 }) + root.L ;
-        stem_3 = root.K + p.v1 + root.T + root.B + root.L ;
+        stem_12 = root.C1 + p.V1 + root.C2 + root.C3 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C4 ;
+        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 + root.C4 ;
       in
       table {
-        AgP1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
-        AgP2 Sg    => stem_12 + "t" ;  -- Inti DARDART
-        AgP3Sg Masc  => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Huwa DARDAR
-        AgP3Sg Fem  => stem_3 + (case p.v2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
-        AgP1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
-        AgP2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
-        AgP3Pl    => stem_3 + "u"  -- Huma DARDRU
+        Per1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
+        Per2 Sg    => stem_12 + "t" ;  -- Inti DARDART
+        Per3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Huwa DARDAR
+        Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
+        Per1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
+        Per2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
+        Per3Pl    => stem_3 + "u"  -- Huma DARDRU
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -552,13 +812,13 @@ resource ParadigmsMlt = open
           } ;
       in
       table {
-        AgP1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
-        AgP2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
-        AgP3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
-        AgP3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
-        AgP1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
-        AgP2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
-        AgP3Pl    => "i" + stem_pl      -- Huma IDARDRU
+        Per1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
+        Per2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
+        Per3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
+        Per3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
+        Per1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
+        Per2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
+        Per3Pl    => "i" + stem_pl      -- Huma IDARDRU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -566,9 +826,84 @@ resource ParadigmsMlt = open
     -- Return: Lookup table of Number against Str
     conjQuadImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       table {
-        Sg => root.K + p.v1 + root.T + root.B + p.v2 + root.L ;  -- Inti:  DARDAR
-        Pl => root.K + p.v1 + root.T + root.B + root.L + "u"  -- Intom: DARDRU
+        Sg => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Inti:  DARDAR
+        Pl => root.C1 + p.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DARDRU
       } ;
+
+
+    {- ----- Non-semitic verbs ----- -}
+
+    loanV : V = overload {
+
+    -- Loan verb: Italian integrated -ARE, eg KANTA
+    -- Follows Maltese weak verb class 2 {MDG pg249,379}
+    loanV : Str -> V = \kanta ->
+      let
+        kantaw = kanta + "w" ;
+      in lin V {
+        s = table {
+          VPerf pgn => table {
+            Per1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
+            Per2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
+            Per3Sg Masc  => kanta ; -- Huwa KANTA
+            Per3Sg Fem  => kanta + "t" ;  -- Hija KANTAT
+            Per1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
+            Per2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
+            Per3Pl    => kanta + "w"  -- Huma KANTAW
+            } ! pgn ;
+          VImpf pgn => table {
+            Per1 Sg    => "n" + kanta ;  -- Jiena NKANTA
+            Per2 Sg    => "t" + kanta ;  -- Inti TKANTA
+            Per3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
+            Per3Sg Fem  => "t" + kanta ;  -- Hija TKANTA
+            Per1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
+            Per2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
+            Per3Pl    => "j" + kantaw  -- Huma JKANTAW
+            } ! pgn ;
+          VImp n => table {
+            Sg => kanta ;  -- Inti:  KANTA
+            Pl => kantaw  -- Intom: KANTAW
+            } ! n
+          } ;
+        c = Loan ;
+        } ;
+
+    -- Loan verb: Italian integrated -ERE/-IRE, eg VINĊA
+    -- Follows Maltese weak verb class 1 {MDG pg249,379}
+    loanV : Str -> Str -> V = \vinca,vinci ->
+      let
+        vinc = tk 1 vinca ;
+        vincu = vinc + "u" ;
+      in lin V {
+        s = table {
+          VPerf pgn => table {
+            Per1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
+            Per2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
+            Per3Sg Masc  => vinca ; -- Huwa VINĊA
+            Per3Sg Fem  => vinc + "iet" ;  -- Hija VINĊIET
+            Per1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
+            Per2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
+            Per3Pl    => vinc + "ew"  -- Huma VINĊEJTU
+            } ! pgn ;
+          VImpf pgn => table {
+            Per1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
+            Per2 Sg    => "t" + vinci ;  -- Inti TVINĊI
+            Per3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
+            Per3Sg Fem  => "t" + vinci ;  -- Hija TVINĊI
+            Per1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
+            Per2 Pl    => "t" + vincu ;  -- Intom TVINĊU
+            Per3Pl    => "j" + vincu  -- Huma JVINĊU
+            } ! pgn ;
+          VImp n => table {
+            Sg => vinci ;  -- Inti:  VINĊI
+            Pl => vincu  -- Intom: VINĊU
+            } ! n
+          } ;
+        c = Loan ;
+        } ;
+
+      } ;
+
 
     {- ===== Adjective Paradigms ===== -}
 
@@ -576,10 +911,10 @@ resource ParadigmsMlt = open
     -- Return: Adjective
     mkA : A = overload {
 
-      -- Regular adjective with predictable feminine and plural forms
+      -- Same form for gender and number; no comparative form.
       -- Params:
-        -- Masculine, eg MAĦMUĠ
-      mkA : Str -> A = regA ;
+        -- Adjective, eg BLU
+      mkA : Str -> A = sameA ;
 
       -- Infer feminine from masculine; no comparative form.
       -- Params:

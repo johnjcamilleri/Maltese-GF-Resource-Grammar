@@ -13,3 +13,9 @@ tags:
 clean:
 	rm *.gfo
 	rm .gfbuild/*.gf-tags
+
+verbs:
+	gf -run < test/verbs.gfs
+
+loan_verbs:
+	gf -run < test/loan_verbs.gfs

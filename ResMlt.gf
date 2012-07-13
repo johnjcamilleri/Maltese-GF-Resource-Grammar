@@ -60,7 +60,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     Definiteness =
         Definite    -- eg IL-KARTA. In this context same as Determinate
       | Indefinite  -- eg KARTA
-    ;
+      ;
 
 --    Person  = P1 | P2 | P3 ;
 --    State   = Def | Indef | Const ;
@@ -70,7 +70,15 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
         Semitic
       | Romance
       | English
-    ;
+      ;
+
+    -- RomanceVType =
+    --     IntegratedARE
+    --   | IntegratedERE
+    --   | IntegratedIRE
+    --   | LooselyIntegrated
+    --   ;
+
 --    Order   = Verbal | Nominal ;
 
     -- Agreement features
@@ -101,15 +109,41 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       -- | VVerbalNoun      -- Verbal Noun
     ;
 
-    -- Possible verb types
-    VType =
-        Strong  -- Strong verb: none of radicals are semi-vowels  eg ĦAREĠ (Ħ-R-Ġ)
-      | Defective  -- Defective verb: third radical is semivowel GĦ  eg QATA' (Q-T-GĦ)
-      | Weak    -- Weak verb: third radicl is semivowel J      eg MEXA (M-X-J)
-      | Hollow  -- Hollow verb: long A or IE btw radicals 1 & 3    eg QAL (Q-W-L) or SAB (S-J-B)
-      | Double  -- Double/Geminated verb: radicals 2 & 3 identical  eg ĦABB (Ħ-B-B)
-      | Quad    -- Quadliteral verb                  eg KARKAR (K-R-K-R), MAQDAR (M-Q-D-R), LEMBEB (L-M-B-B)
-    ;
+    -- Verb classification
+    VClass =
+        Strong VStrongClass
+      | Weak VWeakClass
+      | Quad
+      | Loan --- temporary
+      -- | Romance
+      -- | English
+      ;
+
+    VStrongClass =
+        Regular
+      | LiquidMedial
+      | Reduplicated
+      ;
+
+    VWeakClass =
+        Assimilative
+      | Hollow
+      | WeakFinal
+      | Defective
+      ;
+
+    VRomanceClass =
+        Integrated
+      | NonIntegrated
+      ;
+
+    -- Inflection of verbs for pronominal suffixes
+    VSuffixForm =
+        VNone  -- eg FTAĦT
+      | VDirect Agr  -- eg FTAĦTU
+      | VIndirect Agr  -- eg FTAĦTLU
+      | VDirInd Agr Agr  -- eg FTAĦTHULU
+      ;
 
     -- For Adjectives
     AForm =
@@ -122,15 +156,34 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
   oper
 
     -- Roots & Patterns
-    Pattern : Type = {v1, v2 : Str} ; -- vowel1, vowel2
+    Pattern : Type = {V1, V2 : Str} ;
     -- Root3 : Type = {K, T, B : Str} ;
     -- Root4 : Type = Root3 ** {L : Str} ;
-    Root : Type = {K, T, B, L : Str} ;
+    Root : Type = {C1, C2, C3, C4 : Str} ;
+
+    mkRoot : Root = overload {
+      mkRoot : Root =
+        { C1=[] ; C2=[] ; C3=[] ; C4=[] } ;
+      mkRoot : Str -> Str -> Str -> Root = \c1,c2,c3 ->
+        { C1=c1 ; C2=c2 ; C3=c3 ; C4=[] } ;
+      mkRoot : Str -> Str -> Str -> Str -> Root = \c1,c2,c3,c4 ->
+        { C1=c1 ; C2=c2 ; C3=c3 ; C4=c4 } ;
+      } ;
+    
+    mkPattern : Pattern = overload {
+      mkPattern : Pattern =
+        { V1=[] ; V2=[] } ;
+      mkPattern : Str -> Pattern = \v1 ->
+        { V1=v1 ; V2=[] } ;
+      mkPattern : Str -> Str -> Pattern = \v1,v2 ->
+        { V1=v1 ; V2=v2 } ;
+      } ;
 
     -- Some character classes
     Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
-    CoronalConsonant : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
+    CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
+    WeakCons : pattern Str = #( "j" | "w" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
     Digraph : pattern Str = #( "ie" );
     SemiVowel : pattern Str = #( "għ" | "j" );
@@ -147,14 +200,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       g : Gender ;
     } ;
 
-    Adjective : Type = {
-      s : AForm => Str ;
+    Verb : Type = {
+      s : VForm => Str ;
+--      s : VForm => VSuffixForm => Str ;
+      c : VClass ;
     } ;
 
-    Verb : Type = {
-      s : VForm => Str ;  -- Give me the form (tense, person etc) and I'll give you the string
-      t : VType ;      -- Inherent - Strong/Hollow etc
-      o : Origin ;    -- Inherent - a verb of Semitic or Romance origins?
+    Adjective : Type = {
+      s : AForm => Str ;
     } ;
 
     {- ===== Conversions ===== -}
@@ -194,7 +247,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
                             "il"       => "l" + "-" ;
                             _         => prep + "-"
                           };
-        K@#CoronalConsonant + _       => prepStem + K + "-" ;  -- IĊ-ĊISK
+        K@#CoronalCons + _       => prepStem + K + "-" ;  -- IĊ-ĊISK
         #Consonant + _             => prep + "-" ;      -- IL-QADDIS
         _                   => []          -- ?
       } ;

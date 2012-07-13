@@ -14,28 +14,41 @@ Items marked with a `*` are not yet covered.
 1. *Inflections for:
   1. *Negation, e.g. _ma marritx_
   1. *active/passive/continuous , e.g. _tela'_ vs _tiela_, _miktub_
-  1. *subject/object, e.g. _ħaditu_, _ġabuhielhom_
+  1. *direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
 
 ## Type
 
+Verb classification according to {MDG} and {T2M}.
+
 - Semitic
-  - Strong verb: none of radicals are semi-vowels. _eg ĦAREĠ (Ħ-R-Ġ)_
-  - Defective verb: third radical is semivowel GĦ. _eg QATA' (Q-T-GĦ)_
-  - Weak verb: third radical is semivowel J. _eg MEXA (M-X-J)_
-  - Hollow verb: long A or IE btw radicals 1 & 3. _eg QAL (Q-W-L) or SAB (S-J-B)_
-  - Double/Geminated verb: radicals 2 & 3 identical. _eg ĦABB (Ħ-B-B)_
-  - Quadriliteral verb: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
+  - Strong ("sħiħ")
+     - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L)_.
+     - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
+     - Reduplicated/Doubled/Geminated ("trux"): C2 & C3 are identical, _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+  - Weak ("dgħajjef")
+     - Assimilative ("assimilativ"): C1 is weak, _eg WAQAF (W-Q-F), WASAL (W-S-L)_
+     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R)_
+     - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
+     - Defective: C3 is silen GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+  - Quadriliteral: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
+  - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU_
 - Romance
-  - Strongly-integrated
-  - Loosely-integrated
-- English loan words
-  - ?
+  - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
+     - Italian _-are_: _eg KANTA_
+     - Italian _-ere_: _eg VINĊA_
+     - Italian _-ire_: _eg SERVA_
+  - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
+- English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
+
+In the MRG, we gather all Romance and English loan verbs under the common verb type `Loan`.
+
 
 ## Tense
 
 - Perfect (past), e.g. SERAQ
 - Imperfect (present), e.g. JISRAQ
 - Imperative, e.g. ISRAQ
+  - "The imperitive is formed from the imperfect form of the verb" {MDG pg238}
 - Present Particible: Intransitive and 'motion' verbs only, eg NIEŻEL
 - Past Particible: Both verbal & adjectival function, eg MISRUQ
-- Verbal Noun, e.g. SERQ
+
