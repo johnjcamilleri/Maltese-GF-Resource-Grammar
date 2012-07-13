@@ -283,6 +283,7 @@ resource ParadigmsMlt = open
         { c=Weak WeakFinal ; r=(mkRoot c1 c2 "j") ; p=(mkPattern v1 v2) } ;
 
       -- Hollow, SAB
+      --- TODO determining of middle radical is not right, e.g. SAB = S-J-B
       c1@#Consonant + v1@"a"  + c3@#Consonant =>
         { c=Weak Hollow ; r=(mkRoot c1 "w" c3) ; p=(mkPattern v1) } ;
       c1@#Consonant + v1@"ie" + c3@#Consonant =>
@@ -566,7 +567,7 @@ resource ParadigmsMlt = open
 
     {- ----- Assimilative Verb ----- -}
 
-    -- Assimilative weak verb, eg WAQAF
+    -- Assimilative weak verb, eg WASAL
     -- Params: Root, Pattern
     assimilativeV : Root -> Pattern -> V = \r,p ->
       let
@@ -584,39 +585,35 @@ resource ParadigmsMlt = open
     -- Params: Root, Pattern
     conjAssimilativePerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
-        stem_12 = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ; -- "AGĦ" -> "AJ"
-        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
+        wasal = root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;
+        wasl  = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
-          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
-          Per3Pl    => stem_3 + "u"  -- Huma IMXEW
+          Per1 Sg    => wasal + "t" ;  -- Jiena WASALT
+          Per2 Sg    => wasal + "t" ;  -- Inti WASALT
+          Per3Sg Masc  => wasal ;  -- Huwa WASAL
+          Per3Sg Fem  => wasl + "et" ;  -- Hija WASLET
+          Per1 Pl    => wasal + "na" ;  -- Aħna WASALNA
+          Per2 Pl    => wasal + "tu" ;  -- Intom WASALTU
+          Per3Pl    => wasl + "u"  -- Huma WASLU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
-    -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
+    -- Params: Imperative Singular (eg ASAL), Imperative Plural (eg ASLU)
     conjAssimilativeImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     conjAssimilativeImp : Root -> Pattern -> (Number => Str) = \root,p ->
-      let
-        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
-        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
-      in
-        table {
-          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti: IMXI
-          Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: IMXU
-        } ;
+      table {
+        Sg => p.V1 + root.C2 + p.V2 + root.C3 ;  -- Inti: ASAL
+        Pl => p.V1 + root.C2 + root.C3 + "u"  -- Intom: ASLU
+      } ;
 
     {- ----- Hollow Verb ----- -}
 
     -- Hollow weak verb, eg SAR (S-J-R)
-    -- Make a verb by calling generate functions for each tense
+    -- Params: Root, Pattern
     hollowV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjHollowImp r p ;
@@ -633,34 +630,41 @@ resource ParadigmsMlt = open
     -- Params: Root, Pattern
     conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
-        stem_12 = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ; -- "AGĦ" -> "AJ"
-        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
+        sar = root.C1 + p.V1 + root.C3 ;
+        sir = case root.C2 of { --- this is not really backed up
+          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR-
+          "w" => root.C1 + "o" + root.C3 ; -- DAM (D-W-M) > DOM-
+          _ => root.C1 + p.V1 + root.C3
+          }
       in
-        table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
-          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
-          Per3Pl    => stem_3 + "u"  -- Huma IMXEW
-        } ;
+      table {
+        Per1 Sg    => sir + "t" ;  -- Jiena SIRT
+        Per2 Sg    => sir + "t" ;  -- Inti SIRT
+        Per3Sg Masc  => sar ;  -- Huwa SAR
+        Per3Sg Fem  => sar + "et" ;  -- Hija SARET
+        Per1 Pl    => sir + "na" ;  -- Aħna SIRNA
+        Per2 Pl    => sir + "tu" ;  -- Intom SIRTU
+        Per3Pl    => sar + "u"  -- Huma SARU
+      } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
-    conjHollowImpf = conjGenericImpf ;
+    conjHollowImpf = conjGenericImpf ; --- TODO!
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     conjHollowImp : Root -> Pattern -> (Number => Str) = \root,p ->
       let
-        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
-        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
+        sir = case root.C2 of { --- this is not really backed up
+          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR
+          "w" => root.C1 + "u" + root.C3 ; -- DAM (D-W-M) > DUM
+          _ => root.C1 + p.V1 + root.C3
+          }
       in
-        table {
-          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti: IMXI
-          Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: IMXU
-        } ;
+      table {
+        Sg => sir ;  -- Inti: SIR
+        Pl => sir + "u"  -- Intom: SIRU
+      } ;
 
     {- ----- Weak-Final Verb ----- -}
 
