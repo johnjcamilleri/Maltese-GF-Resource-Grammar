@@ -22,7 +22,7 @@ Verb classification according to {MDG}.
 
 - Semitic
   - Strong ("sħiħ")
-    - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L), ĦAREĠ (Ħ-R-Ġ)_.
+    - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L)_.
     - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
     - Reduplicated (also Doubled, Geminated): C2 & C3 are identical ("trux"), _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
   - Weak ("dgħajjef")
