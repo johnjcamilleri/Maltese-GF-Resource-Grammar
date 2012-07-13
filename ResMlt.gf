@@ -12,16 +12,25 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
   param
 
+    Gender  = Masc | Fem ;
+
     NPCase = Nom | Gen ;
 
-    -- Used in the NumeralMlt module
+    {- Numerals -}
+
     CardOrd = NCard | NOrd ;
 
     Num_Number =
-        NumSg
-      | NumDual
-      | NumPl
+        Num_Sg
+      | Num_Dl
+      | Num_Pl
     ;
+
+  -- oper
+  --   Num_Number : Type = { n : Number ; isDual : Bool } ;
+
+  param
+
     DForm =
         Unit    -- 0..10
       | Teen    -- 11-19
@@ -31,8 +40,10 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       --| Thou    -- 1000+
     ;
     Num_Case =
-        NumNominative
-      | NumAdjectival ;
+        NumNominative   -- TNEJN, ĦAMSA, TNAX, MIJA
+      | NumAdjectival ; -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
+
+    {- Nouns -}
 
     Noun_Sg_Type =
         Singulative  -- eg ĦUTA
@@ -48,7 +59,11 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | Plural Noun_Pl_Type    -- eg ĦUTIET / ĦWIET
     ;
 
-    Gender  = Masc | Fem ;
+    NForm =
+        NRegular -- WIĊĊ
+      | NPronSuffix Agr ; -- WIĊĊU
+
+    {- Other... -}
 
     GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
 
@@ -88,6 +103,11 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       | AgP3Sg Gender  -- Huwa, Hija
       | AgP3Pl    -- Huma
     ;
+
+    -- Agr : Type = {g : Gender ; n : Number ; p : Person} ;
+    -- Ag : Gender -> Number -> Person -> Agr = \g,n,p -> {g = g ; n = n ; p = p} ;
+    -- agrP1 : Number -> Agr = \n -> Ag {} n P1 ;
+    -- agrP3 : Gender -> Number -> Agr = \g,n -> Ag g n P3 ;
 
     -- Possible tenses
     Tense =
@@ -191,8 +211,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     {- ===== Type declarations ===== -}
 
     Noun : Type = {
-      s : Noun_Number => Str ;
+      s : Noun_Number => NForm => Str ;
       g : Gender ;
+--      anim : Animacy ; -- is the noun animate? e.g. TABIB
     } ;
 
     ProperNoun : Type = {
@@ -214,7 +235,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
     numnum2nounnum : Num_Number -> Noun_Number = \n ->
       case n of {
-	NumSg => Singular Singulative ;
+	Num_Sg => Singular Singulative ;
 	_ => Plural Determinate
       } ;
 
@@ -279,17 +300,84 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       -- Determinate Plural, eg KOXXIET
       -- Indeterminate Plural
       -- Gender
-    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
-      s = table {
-        Singular Singulative => sing ;
-        Singular Collective => coll ;
-        Dual => dual ;
-        Plural Determinate => det ;
-        Plural Indeterminate => ind
+--     mkNoun : (_,_,_,_,_ : NForm => Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+--       s = table {
+--         Singular Singulative => sing ;
+--         Singular Collective => coll ;
+--         Dual => dual ;
+--         Plural Determinate => det ;
+--         Plural Indeterminate => ind
+--       } ;
+--       g = gen ;
+-- --      anim = Inanimate ;
+--     } ;
+
+    -- Make a noun animate
+    animateNoun : Noun -> Noun ;
+    animateNoun = \n -> n ** {anim = Animate} ;
+
+    -- Build an empty pronominal suffix table
+    nullSuffixTable : Str -> (NForm => Str) ;
+    nullSuffixTable = \s -> table {
+      NRegular => s ;
+      NPronSuffix _ => []
       } ;
-      g = gen ;
---      anim = Inanimate ;
-    } ;
+
+    mkSuffixTable = overload {
+
+      mkSuffixTable : (_ : Str) -> (NForm => Str) = \wicc ->
+        table {
+          NRegular => wicc ;
+          NPronSuffix (AgP1 Sg) => wicc + "i" ;
+          NPronSuffix (AgP2 Sg) => wicc + "ek" ;
+          NPronSuffix (AgP3Sg Masc) => wicc + "u" ;
+          NPronSuffix (AgP3Sg Fem) => wicc + "ha" ;
+          NPronSuffix (AgP1 Pl) => wicc + "na" ;
+          NPronSuffix (AgP2 Pl) => wicc + "kom" ;
+          NPronSuffix (AgP3Pl) => wicc + "hom"
+        } ;
+
+      mkSuffixTable : (_,_,_,_,_,_,_,_ : Str) -> (NForm => Str) = \isem,ismi,ismek,ismu,isimha,isimna,isimkom,isimhom ->
+        table {
+          NRegular => isem ;
+          NPronSuffix (AgP1 Sg) => ismi ;
+          NPronSuffix (AgP2 Sg) => ismek ;
+          NPronSuffix (AgP3Sg Masc) => ismu ;
+          NPronSuffix (AgP3Sg Fem) => isimha ;
+          NPronSuffix (AgP1 Pl) => isimna ;
+          NPronSuffix (AgP2 Pl) => isimkom ;
+          NPronSuffix (AgP3Pl) => isimhom
+        } ;
+
+      } ;
+
+    mkNoun = overload {
+
+      mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+        s = table {
+          Singular Singulative => (nullSuffixTable sing) ;
+          Singular Collective => (nullSuffixTable coll) ;
+          Dual => (nullSuffixTable dual) ;
+          Plural Determinate => (nullSuffixTable det) ;
+          Plural Indeterminate => (nullSuffixTable ind)
+          } ;
+        g = gen ;
+        --      anim = Inanimate ;
+        } ;
+
+      mkNoun : (_,_,_,_,_ : NForm => Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+        s = table {
+          Singular Singulative => sing ;
+          Singular Collective => coll ;
+          Dual => dual ;
+          Plural Determinate => det ;
+          Plural Indeterminate => ind
+          } ;
+        g = gen ;
+        --      anim = Inanimate ;
+        } ;
+
+      } ;
 
     -- Adjective: Takes all forms (except superlative)
     -- Params:

@@ -12,10 +12,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
   lin
     -- Det -> CN -> NP
     DetCN det cn = {
-      s = \\c => det.s ++ cn.s ! numnum2nounnum det.n ; 
+      s = \\c => det.s ++ cn.s ! numnum2nounnum det.n ! NRegular ; 
       a = case (numnum2nounnum det.n) of {
-	Singular _ => Per3Sg cn.g ;
-	_ => Per3Pl
+	Singular _ => AgP3Sg cn.g ;
+	_ => AgP3Pl
       }
       -- s = \\c => det.s ++ cn.s ! det.n ! npcase2case c ; 
       -- a = agrgP3 det.n cn.g
@@ -43,8 +43,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     } ;
 
     -- Num
-    NumSg = {s = \\c => []; n = NumSg ; hasCard = False} ;
-    NumPl = {s = \\c => []; n = NumPl ; hasCard = False} ;
+    NumSg = {s = \\c => []; n = Num_Sg ; hasCard = False} ;
+    NumPl = {s = \\c => []; n = Num_Pl ; hasCard = False} ;
 
     UseN n = n ;
     UseN2 n = n ;
