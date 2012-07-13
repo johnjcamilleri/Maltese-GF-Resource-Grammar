@@ -27,10 +27,11 @@ Verb classification according to {MDG} and {T2M}.
      - Reduplicated/Doubled/Geminated ("trux"): C2 & C3 are identical, _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
   - Weak ("dgħajjef")
      - Assimilative ("assimilativ"): C1 is weak, _eg WAQAF (W-Q-F), WASAL (W-S-L)_
-     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R), QAL (Q-W-L)_
+     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R)_
      - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
      - Defective: C3 is silen GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
   - Quadriliteral: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
+  - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU_
 - Romance
   - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
      - Italian _-are_: _eg KANTA_
