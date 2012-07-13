@@ -380,13 +380,13 @@ resource ParadigmsMlt = open
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
     conjGenericImpf : Str -> Str -> (Agr => Str) = \stem_sg,stem_pl ->
       table {
-        Per1 Sg    => "n" + stem_sg ;  -- Jiena NIŻLOQ
-        Per2 Sg    => "t" + stem_sg ;  -- Inti TIŻLOQ
-        Per3Sg Masc  => "j" + stem_sg ;  -- Huwa JIŻLOQ
-        Per3Sg Fem  => "t" + stem_sg ;  -- Hija TIŻLOQ
-        Per1 Pl    => "n" + stem_pl ;  -- Aħna NIŻOLQU
-        Per2 Pl    => "t" + stem_pl ;  -- Intom TIŻOLQU
-        Per3Pl    => "j" + stem_pl  -- Huma JIŻOLQU
+        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIŻLOQ
+        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIŻLOQ
+        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIŻLOQ
+        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIŻLOQ
+        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIŻOLQU
+        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIŻOLQU
+        AgP3Pl    => "j" + stem_pl  -- Huma JIŻOLQU
       } ;
 
     {- ----- Strong Verb ----- -}
@@ -413,13 +413,13 @@ resource ParadigmsMlt = open
         kitb = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => ktib + "t" ;  -- Jiena KTIBT
-          Per2 Sg    => ktib + "t" ;  -- Inti KTIBT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa KITEB
-          Per3Sg Fem  => kitb + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
-          Per1 Pl    => ktib + "na" ;  -- Aħna KTIBNA
-          Per2 Pl    => ktib + "tu" ;  -- Intom KTIBTU
-          Per3Pl    => kitb + "u"  -- Huma KITBU
+          AgP1 Sg    => ktib + "t" ;  -- Jiena KTIBT
+          AgP2 Sg    => ktib + "t" ;  -- Inti KTIBT
+          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa KITEB
+          AgP3Sg Fem  => kitb + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija KITBET
+          AgP1 Pl    => ktib + "na" ;  -- Aħna KTIBNA
+          AgP2 Pl    => ktib + "tu" ;  -- Intom KTIBTU
+          AgP3Pl    => kitb + "u"  -- Huma KITBU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -476,13 +476,13 @@ resource ParadigmsMlt = open
         zelq = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => zlaq + "t" ;  -- Jiena ŻLAQT
-          Per2 Sg    => zlaq + "t" ;  -- Inti ŻLAQT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa ŻELAQ
-          Per3Sg Fem  => zelq + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija ŻELQET
-          Per1 Pl    => zlaq + "na" ;  -- Aħna ŻLAQNA
-          Per2 Pl    => zlaq + "tu" ;  -- Intom ŻLAQTU
-          Per3Pl    => zelq + "u"  -- Huma ŻELQU
+          AgP1 Sg    => zlaq + "t" ;  -- Jiena ŻLAQT
+          AgP2 Sg    => zlaq + "t" ;  -- Inti ŻLAQT
+          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa ŻELAQ
+          AgP3Sg Fem  => zelq + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija ŻELQET
+          AgP1 Pl    => zlaq + "na" ;  -- Aħna ŻLAQNA
+          AgP2 Pl    => zlaq + "tu" ;  -- Intom ŻLAQTU
+          AgP3Pl    => zelq + "u"  -- Huma ŻELQU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -538,13 +538,13 @@ resource ParadigmsMlt = open
         habb = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => habb + "ejt" ;  -- Jiena ĦABBEJT
-          Per2 Sg    => habb + "ejt" ;  -- Inti ĦABBEJT
-          Per3Sg Masc  => habb ;  -- Huwa ĦABB
-          Per3Sg Fem  => habb + "et" ;  -- Hija ĦABBET
-          Per1 Pl    => habb + "ejna" ;  -- Aħna ĦABBEJNA
-          Per2 Pl    => habb + "ejtu" ;  -- Intom ĦABBEJTU
-          Per3Pl    => habb + "ew"  -- Huma ĦABBU/ĦABBEW
+          AgP1 Sg    => habb + "ejt" ;  -- Jiena ĦABBEJT
+          AgP2 Sg    => habb + "ejt" ;  -- Inti ĦABBEJT
+          AgP3Sg Masc  => habb ;  -- Huwa ĦABB
+          AgP3Sg Fem  => habb + "et" ;  -- Hija ĦABBET
+          AgP1 Pl    => habb + "ejna" ;  -- Aħna ĦABBEJNA
+          AgP2 Pl    => habb + "ejtu" ;  -- Intom ĦABBEJTU
+          AgP3Pl    => habb + "ew"  -- Huma ĦABBU/ĦABBEW
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -589,13 +589,13 @@ resource ParadigmsMlt = open
         wasl  = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => wasal + "t" ;  -- Jiena WASALT
-          Per2 Sg    => wasal + "t" ;  -- Inti WASALT
-          Per3Sg Masc  => wasal ;  -- Huwa WASAL
-          Per3Sg Fem  => wasl + "et" ;  -- Hija WASLET
-          Per1 Pl    => wasal + "na" ;  -- Aħna WASALNA
-          Per2 Pl    => wasal + "tu" ;  -- Intom WASALTU
-          Per3Pl    => wasl + "u"  -- Huma WASLU
+          AgP1 Sg    => wasal + "t" ;  -- Jiena WASALT
+          AgP2 Sg    => wasal + "t" ;  -- Inti WASALT
+          AgP3Sg Masc  => wasal ;  -- Huwa WASAL
+          AgP3Sg Fem  => wasl + "et" ;  -- Hija WASLET
+          AgP1 Pl    => wasal + "na" ;  -- Aħna WASALNA
+          AgP2 Pl    => wasal + "tu" ;  -- Intom WASALTU
+          AgP3Pl    => wasl + "u"  -- Huma WASLU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -638,13 +638,13 @@ resource ParadigmsMlt = open
           }
       in
       table {
-        Per1 Sg    => sir + "t" ;  -- Jiena SIRT
-        Per2 Sg    => sir + "t" ;  -- Inti SIRT
-        Per3Sg Masc  => sar ;  -- Huwa SAR
-        Per3Sg Fem  => sar + "et" ;  -- Hija SARET
-        Per1 Pl    => sir + "na" ;  -- Aħna SIRNA
-        Per2 Pl    => sir + "tu" ;  -- Intom SIRTU
-        Per3Pl    => sar + "u"  -- Huma SARU
+        AgP1 Sg    => sir + "t" ;  -- Jiena SIRT
+        AgP2 Sg    => sir + "t" ;  -- Inti SIRT
+        AgP3Sg Masc  => sar ;  -- Huwa SAR
+        AgP3Sg Fem  => sar + "et" ;  -- Hija SARET
+        AgP1 Pl    => sir + "na" ;  -- Aħna SIRNA
+        AgP2 Pl    => sir + "tu" ;  -- Intom SIRTU
+        AgP3Pl    => sar + "u"  -- Huma SARU
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -690,13 +690,13 @@ resource ParadigmsMlt = open
         stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
-          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
-          Per3Pl    => stem_3 + "u"  -- Huma IMXEW
+          AgP1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
+          AgP2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
+          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
+          AgP3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
+          AgP1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
+          AgP2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
+          AgP3Pl    => stem_3 + "u"  -- Huma IMXEW
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -740,13 +740,13 @@ resource ParadigmsMlt = open
         stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
         table {
-          Per1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
-          Per2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
-          Per3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa QALA'
-          Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
-          Per1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
-          Per2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
-          Per3Pl    => stem_3 + "u"  -- Huma QALGĦU
+          AgP1 Sg    => stem_12 + "t" ;  -- Jiena QLAJT
+          AgP2 Sg    => stem_12 + "t" ;  -- Inti QLAJT
+          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa QALA'
+          AgP3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
+          AgP1 Pl    => stem_12 + "na" ;  -- Aħna QLAJNA
+          AgP2 Pl    => stem_12 + "tu" ;  -- Intom QLAJTU
+          AgP3Pl    => stem_3 + "u"  -- Huma QALGĦU
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -792,13 +792,13 @@ resource ParadigmsMlt = open
         stem_3 = root.C1 + p.V1 + root.C2 + root.C3 + root.C4 ;
       in
       table {
-        Per1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
-        Per2 Sg    => stem_12 + "t" ;  -- Inti DARDART
-        Per3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Huwa DARDAR
-        Per3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
-        Per1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
-        Per2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
-        Per3Pl    => stem_3 + "u"  -- Huma DARDRU
+        AgP1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
+        AgP2 Sg    => stem_12 + "t" ;  -- Inti DARDART
+        AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Huwa DARDAR
+        AgP3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
+        AgP1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
+        AgP2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
+        AgP3Pl    => stem_3 + "u"  -- Huma DARDRU
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -812,13 +812,13 @@ resource ParadigmsMlt = open
           } ;
       in
       table {
-        Per1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
-        Per2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
-        Per3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
-        Per3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
-        Per1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
-        Per2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
-        Per3Pl    => "i" + stem_pl      -- Huma IDARDRU
+        AgP1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
+        AgP2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
+        AgP3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
+        AgP3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
+        AgP1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
+        AgP2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
+        AgP3Pl    => "i" + stem_pl      -- Huma IDARDRU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -843,22 +843,22 @@ resource ParadigmsMlt = open
       in lin V {
         s = table {
           VPerf pgn => table {
-            Per1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
-            Per2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
-            Per3Sg Masc  => kanta ; -- Huwa KANTA
-            Per3Sg Fem  => kanta + "t" ;  -- Hija KANTAT
-            Per1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
-            Per2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
-            Per3Pl    => kanta + "w"  -- Huma KANTAW
+            AgP1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
+            AgP2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
+            AgP3Sg Masc  => kanta ; -- Huwa KANTA
+            AgP3Sg Fem  => kanta + "t" ;  -- Hija KANTAT
+            AgP1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
+            AgP2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
+            AgP3Pl    => kanta + "w"  -- Huma KANTAW
             } ! pgn ;
           VImpf pgn => table {
-            Per1 Sg    => "n" + kanta ;  -- Jiena NKANTA
-            Per2 Sg    => "t" + kanta ;  -- Inti TKANTA
-            Per3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
-            Per3Sg Fem  => "t" + kanta ;  -- Hija TKANTA
-            Per1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
-            Per2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
-            Per3Pl    => "j" + kantaw  -- Huma JKANTAW
+            AgP1 Sg    => "n" + kanta ;  -- Jiena NKANTA
+            AgP2 Sg    => "t" + kanta ;  -- Inti TKANTA
+            AgP3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
+            AgP3Sg Fem  => "t" + kanta ;  -- Hija TKANTA
+            AgP1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
+            AgP2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
+            AgP3Pl    => "j" + kantaw  -- Huma JKANTAW
             } ! pgn ;
           VImp n => table {
             Sg => kanta ;  -- Inti:  KANTA
@@ -877,22 +877,22 @@ resource ParadigmsMlt = open
       in lin V {
         s = table {
           VPerf pgn => table {
-            Per1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
-            Per2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
-            Per3Sg Masc  => vinca ; -- Huwa VINĊA
-            Per3Sg Fem  => vinc + "iet" ;  -- Hija VINĊIET
-            Per1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
-            Per2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
-            Per3Pl    => vinc + "ew"  -- Huma VINĊEJTU
+            AgP1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
+            AgP2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
+            AgP3Sg Masc  => vinca ; -- Huwa VINĊA
+            AgP3Sg Fem  => vinc + "iet" ;  -- Hija VINĊIET
+            AgP1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
+            AgP2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
+            AgP3Pl    => vinc + "ew"  -- Huma VINĊEJTU
             } ! pgn ;
           VImpf pgn => table {
-            Per1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
-            Per2 Sg    => "t" + vinci ;  -- Inti TVINĊI
-            Per3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
-            Per3Sg Fem  => "t" + vinci ;  -- Hija TVINĊI
-            Per1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
-            Per2 Pl    => "t" + vincu ;  -- Intom TVINĊU
-            Per3Pl    => "j" + vincu  -- Huma JVINĊU
+            AgP1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
+            AgP2 Sg    => "t" + vinci ;  -- Inti TVINĊI
+            AgP3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
+            AgP3Sg Fem  => "t" + vinci ;  -- Hija TVINĊI
+            AgP1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
+            AgP2 Pl    => "t" + vincu ;  -- Intom TVINĊU
+            AgP3Pl    => "j" + vincu  -- Huma JVINĊU
             } ! pgn ;
           VImp n => table {
             Sg => vinci ;  -- Inti:  VINĊI
