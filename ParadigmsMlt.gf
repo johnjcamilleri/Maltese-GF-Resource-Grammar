@@ -184,7 +184,14 @@ resource ParadigmsMlt = open
     -- Build a noun using 5 forms, and a gender
     mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
     mk5N = \sing,coll,dual,det,ind,gen ->
-      lin N (mkNoun sing coll dual det ind gen) ;
+--      lin N (mkNoun sing coll dual det ind gen) ;
+      lin N (mkNoun
+               (nullSuffixTable sing)
+               (nullSuffixTable coll)
+               (nullSuffixTable dual)
+               (nullSuffixTable det)
+               (nullSuffixTable ind)
+               gen) ;
 
 {-
     -- Correctly abbreviate definite prepositions and join with noun

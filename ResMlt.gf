@@ -323,7 +323,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
       NPronSuffix _ => []
       } ;
 
-    mkSuffixTable = overload {
+    -- Build a noun's pronominal suffix table
+    mkSuffixTable : (NForm => Str) = overload {
 
       mkSuffixTable : (_ : Str) -> (NForm => Str) = \wicc ->
         table {
@@ -351,19 +352,19 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
 
       } ;
 
-    mkNoun = overload {
+    -- mkNoun = overload {
 
-      mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
-        s = table {
-          Singular Singulative => (nullSuffixTable sing) ;
-          Singular Collective => (nullSuffixTable coll) ;
-          Dual => (nullSuffixTable dual) ;
-          Plural Determinate => (nullSuffixTable det) ;
-          Plural Indeterminate => (nullSuffixTable ind)
-          } ;
-        g = gen ;
-        --      anim = Inanimate ;
-        } ;
+    --   mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+    --     s = table {
+    --       Singular Singulative => (nullSuffixTable sing) ;
+    --       Singular Collective => (nullSuffixTable coll) ;
+    --       Dual => (nullSuffixTable dual) ;
+    --       Plural Determinate => (nullSuffixTable det) ;
+    --       Plural Indeterminate => (nullSuffixTable ind)
+    --       } ;
+    --     g = gen ;
+    --     --      anim = Inanimate ;
+    --     } ;
 
       mkNoun : (_,_,_,_,_ : NForm => Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
         s = table {
@@ -377,7 +378,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
         --      anim = Inanimate ;
         } ;
 
-      } ;
+      -- } ;
 
     -- Adjective: Takes all forms (except superlative)
     -- Params:
@@ -398,3 +399,4 @@ resource ResMlt = ParamX - [Tense] ** open Prelude in {
     } ;
 
 }
+
