@@ -819,7 +819,7 @@ resource ParadigmsMlt = open
     conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       let
         v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
-        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
+        v_pl : Str = case root.C2 of { #LiquidCons => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
       in
         table {
           Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti:  AQLA' / IBŻA'
