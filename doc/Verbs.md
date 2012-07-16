@@ -55,7 +55,9 @@ In the MRG, we currently gather all Romance and English loan verbs under the com
 
 ## Derived forms
 
-Information from {MDG pg247}
+All information from {MDG pg247}.
+
+### Triliteral roots
 
 | Form | Process | Example | Description |
 |:-----|:--------|:--------|:------------|
@@ -72,4 +74,12 @@ Information from {MDG pg247}
 |IX| Structure `1 2v: 3` | _ċkien_ | Change of state. |
 |X| Prefix _st-_ | _stagħġeb_ | - |
 
+### Quadriliteral roots
+
+| Form | Process | Example | Description |
+|:-----|:--------|:--------|:------------|
+|I| - | _ħarbat_ | Base form |
+|II| Prefix _t-_ | _tħarbat_ | Intransitive. Passive or reflexive. |
+|-| Prefix _m-_ | _mfarfar_ | Past participle. |
+|-| - | _tfarfir_ | Verbal noun. |
 
