@@ -344,13 +344,25 @@ resource ParadigmsMlt = open
         } ;
 
       -- Same as above but also takes an Imperative of the word for when it behaves less predictably
-      -- Params:
-      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ )
-      -- Imperative Singular as a string (eg IKTEB or OĦROĠ )
-      -- Imperative Plural as a string (eg IKTBU or OĦORĠU )
-      mkV : Str -> Str -> Str -> V = \mamma,imp_sg,imp_pl ->
+      -- Params: mamma, imperative P2Sg
+      mkV : Str -> Str -> V = \mamma,imp_sg ->
         let
-          class = classifyVerb mamma
+          class = classifyVerb mamma ;
+          imp_pl = case class.c of {
+              Strong Regular      => (take 3 imp_sg) + class.r.C3 + "u" ; -- IFTAĦ > IFTĦU
+              Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + class.r.C2 + class.r.C3 + "u" ; -- OĦROĠ > OĦORĠU
+              Strong Reduplicated => imp_sg + "u" ; -- ŻOMM > ŻOMMU
+              Weak Assimilative   => (take 2 imp_sg) + class.r.C3 + "u" ; -- ASAL > ASLU
+              Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
+              Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
+              Weak Defective      => (take 2 imp_sg) + "i" + class.r.C2 + "għu" ; -- ISMA' > ISIMGĦU
+              Quad                => (take 4 imp_sg) + class.r.C4 + "u" ; -- ĦARBAT > ĦARBTU
+              Loan                => case (dp 1 imp_sg) of {
+                "a" => imp_sg + "w" ; -- KANTA > KANTAW
+                "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
+                _ => "Unaccounted case FH4748J"
+                }
+            } ;
         in lin V {
           s = table {
             VPerf agr => case class.c of {
