@@ -324,11 +324,10 @@ resource ParadigmsMlt = open
     mkV : V = overload {
 
       -- Tries to do everything just from the mamma of the verb
-      -- Params:
-      -- "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+      -- Params: mamma
       mkV : Str -> V = \mamma ->
         let
-          class = classifyVerb mamma
+          class = classifyVerb mamma ;
         in
         case class.c of {
           Strong Regular      => strongV class.r class.p ;
@@ -343,7 +342,26 @@ resource ParadigmsMlt = open
 --          _ => Predef.error("Unimplemented")
         } ;
 
-      -- Same as above but also takes an Imperative of the word for when it behaves less predictably
+      -- Takes an explicit root, when it is not obvious from the mamma
+      -- Params: mamma, root
+      mkV : Str -> Root -> V = \mamma,root ->
+        let
+          class = classifyVerb mamma ;
+        in
+        case class.c of {
+          Strong Regular      => strongV root class.p ;
+          Strong LiquidMedial => liquidMedialV root class.p ;
+          Strong Reduplicated => reduplicatedV root class.p ;
+          Weak Assimilative   => assimilativeV root class.p ;
+          Weak Hollow         => hollowV root class.p ;
+          Weak WeakFinal      => weakFinalV root class.p ;
+          Weak Defective      => defectiveV root class.p ;
+          Quad                => quadV root class.p ;
+          Loan                => loanV mamma
+--          _ => Predef.error("Unimplemented")
+        } ;
+
+      -- Takes takes an Imperative of the word for when it behaves less predictably
       -- Params: mamma, imperative P2Sg
       mkV : Str -> Str -> V = \mamma,imp_sg ->
         let
@@ -396,15 +414,15 @@ resource ParadigmsMlt = open
 
     -- Conjugate imperfect tense from imperative by adding initial letters
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
-    conjGenericImpf : Str -> Str -> (Agr => Str) = \stem_sg,stem_pl ->
+    conjGenericImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       table {
-        AgP1 Sg    => "n" + stem_sg ;  -- Jiena NIŻLOQ
-        AgP2 Sg    => "t" + stem_sg ;  -- Inti TIŻLOQ
-        AgP3Sg Masc  => "j" + stem_sg ;  -- Huwa JIŻLOQ
-        AgP3Sg Fem  => "t" + stem_sg ;  -- Hija TIŻLOQ
-        AgP1 Pl    => "n" + stem_pl ;  -- Aħna NIŻOLQU
-        AgP2 Pl    => "t" + stem_pl ;  -- Intom TIŻOLQU
-        AgP3Pl    => "j" + stem_pl  -- Huma JIŻOLQU
+        AgP1 Sg    => "n" + imp_sg ;  -- Jiena NIŻLOQ
+        AgP2 Sg    => "t" + imp_sg ;  -- Inti TIŻLOQ
+        AgP3Sg Masc  => "j" + imp_sg ;  -- Huwa JIŻLOQ
+        AgP3Sg Fem  => "t" + imp_sg ;  -- Hija TIŻLOQ
+        AgP1 Pl    => "n" + imp_pl ;  -- Aħna NIŻOLQU
+        AgP2 Pl    => "t" + imp_pl ;  -- Intom TIŻOLQU
+        AgP3Pl    => "j" + imp_pl  -- Huma JIŻOLQU
       } ;
 
     {- ----- Strong Verb ----- -}
@@ -649,10 +667,9 @@ resource ParadigmsMlt = open
     conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
         sar = root.C1 + p.V1 + root.C3 ;
-        sir = case root.C2 of { --- this is not really backed up
-          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR-
-          "w" => root.C1 + "o" + root.C3 ; -- DAM (D-W-M) > DOM-
-          _ => root.C1 + p.V1 + root.C3
+        sir = case p.V1 + root.C2 of {
+          "aw" => root.C1 + "o" + root.C3 ; -- DAM, FAR, SAQ (most common case)
+          _ => root.C1 + "i" + root.C3
           }
       in
       table {
@@ -667,16 +684,28 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
-    conjHollowImpf = conjGenericImpf ; --- TODO!
+    conjHollowImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
+      table {
+        AgP1 Sg    => "n" + imp_sg ;  -- Jiena NIŻLOQ
+        AgP2 Sg    => "t" + imp_sg ;  -- Inti TIŻLOQ
+        AgP3Sg Masc  => "j" + imp_sg ;  -- Huwa JIŻLOQ
+        AgP3Sg Fem  => "t" + imp_sg ;  -- Hija TIŻLOQ
+        AgP1 Pl    => "n" + imp_pl ;  -- Aħna NIŻOLQU
+        AgP2 Pl    => "t" + imp_pl ;  -- Intom TIŻOLQU
+        AgP3Pl    => "j" + imp_pl  -- Huma JIŻOLQU
+      } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
+    -- Refer: http://blog.johnjcamilleri.com/2012/07/vowel-patterns-maltese-hollow-verb/
     conjHollowImp : Root -> Pattern -> (Number => Str) = \root,p ->
       let
-        sir = case root.C2 of { --- this is not really backed up
-          "j" => root.C1 + "i" + root.C3 ; -- SAR (S-J-R) > SIR
-          "w" => root.C1 + "u" + root.C3 ; -- DAM (D-W-M) > DUM
-          _ => root.C1 + p.V1 + root.C3
+        sir = case p.V1 + root.C2 of {
+          "aw" => root.C1 + "u" + root.C3 ; -- DAM, FAR, SAQ (most common case)
+          "aj" => root.C1 + "i" + root.C3 ; -- ĠAB, SAB, TAR
+          "iej" => root.C1 + "i" + root.C3 ; -- FIEQ, RIED, ŻIED
+          "iew" => root.C1 + "u" + root.C3 ; -- MIET
+          _ => Predef.error("Unhandled case in hollow verb. G390KDJ")
           }
       in
       table {

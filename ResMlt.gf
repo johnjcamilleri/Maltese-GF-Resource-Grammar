@@ -184,6 +184,12 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     mkRoot : Root = overload {
       mkRoot : Root =
         { C1=[] ; C2=[] ; C3=[] ; C4=[] } ;
+      mkRoot : Str -> Root = \root ->
+        let root = toLower root in
+        case (charAt 1 root) of {
+          "-" => { C1=(charAt 0 root) ; C2=(charAt 2 root) ; C3=(charAt 4 root) ; C4=(charAt 6 root) } ; -- "k-t-b"
+          _   => { C1=(charAt 0 root) ; C2=(charAt 1 root) ; C3=(charAt 2 root) ; C4=(charAt 3 root) }   -- "ktb"
+        } ;
       mkRoot : Str -> Str -> Str -> Root = \c1,c2,c3 ->
         { C1=c1 ; C2=c2 ; C3=c3 ; C4=[] } ;
       mkRoot : Str -> Str -> Str -> Str -> Root = \c1,c2,c3,c4 ->
