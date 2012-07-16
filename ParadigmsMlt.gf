@@ -331,15 +331,15 @@ resource ParadigmsMlt = open
           class = classifyVerb mamma
         in
         case class.c of {
-          Strong Regular => strongV class.r class.p ;
+          Strong Regular      => strongV class.r class.p ;
           Strong LiquidMedial => liquidMedialV class.r class.p ;
           Strong Reduplicated => reduplicatedV class.r class.p ;
-          Weak Assimilative  => assimilativeV class.r class.p ;
-          Weak Hollow => hollowV class.r class.p ;
-          Weak WeakFinal => weakFinalV class.r class.p ;
-          Weak Defective => defectiveV class.r class.p ;
-          Quad => quadV class.r class.p ;
-          Loan => loanV mamma
+          Weak Assimilative   => assimilativeV class.r class.p ;
+          Weak Hollow         => hollowV class.r class.p ;
+          Weak WeakFinal      => weakFinalV class.r class.p ;
+          Weak Defective      => defectiveV class.r class.p ;
+          Quad                => quadV class.r class.p ;
+          Loan                => loanV mamma
 --          _ => Predef.error("Unimplemented")
         } ;
 
@@ -351,34 +351,33 @@ resource ParadigmsMlt = open
       mkV : Str -> Str -> Str -> V = \mamma,imp_sg,imp_pl ->
         let
           class = classifyVerb mamma
-        in
-        case class.c of {
-          Strong _ => {
-            s = table {
-              VPerf pgn => ( conjStrongPerf class.r class.p ) ! pgn ;
-              VImpf pgn => ( conjStrongImpf imp_sg imp_pl ) ! pgn ;
-              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+        in lin V {
+          s = table {
+            VPerf agr => case class.c of {
+              Strong Regular      => (conjStrongPerf class.r class.p) ! agr ;
+              Strong LiquidMedial => (conjLiquidMedialPerf class.r class.p) ! agr ;
+              Strong Reduplicated => (conjReduplicatedPerf class.r class.p) ! agr ;
+              Weak Assimilative   => (conjAssimilativePerf class.r class.p) ! agr ;
+              Weak Hollow         => (conjHollowPerf class.r class.p) ! agr ;
+              Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ! agr ;
+              Weak Defective      => (conjDefectivePerf class.r class.p) ! agr ;
+              Quad                => (conjQuadPerf class.r class.p) ! agr ;
+              Loan                => (loanV mamma imp_sg).s ! VPerf agr
               } ;
-            c = class.c ;
-            } ;
-          Weak Defective => {
-            s = table {
-              VPerf pgn => ( conjDefectivePerf class.r class.p ) ! pgn ;
-              VImpf pgn => ( conjDefectiveImpf imp_sg imp_pl ) ! pgn ;
-              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
+            VImpf agr => case class.c of {
+              Strong Regular      => (conjStrongImpf imp_sg imp_pl) ! agr ;
+              Strong LiquidMedial => (conjLiquidMedialImpf imp_sg imp_pl) ! agr ;
+              Strong Reduplicated => (conjReduplicatedImpf imp_sg imp_pl) ! agr ;
+              Weak Assimilative   => (conjAssimilativeImpf imp_sg imp_pl) ! agr ;
+              Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ! agr ;
+              Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ! agr ;
+              Weak Defective      => (conjDefectiveImpf imp_sg imp_pl) ! agr ;
+              Quad                => (conjQuadImpf imp_sg imp_pl) ! agr ;
+              Loan                => (loanV mamma imp_sg).s ! VImpf agr
               } ;
-            c = class.c ;
+            VImp n => table { Sg => imp_sg ; Pl => imp_pl } ! n
             } ;
-          Quad => {
-            s = table {
-              VPerf pgn => ( conjQuadPerf class.r class.p ) ! pgn ;
-              VImpf pgn => ( conjQuadImpf imp_sg imp_pl ) ! pgn ;
-              VImp n =>    table { Sg => imp_sg ; Pl => imp_pl } ! n
-              } ;
-            c = class.c ;
-            } ;
-          Loan => loanV mamma ;
-          _ => Predef.error ( "Unimplemented" )
+          c = class.c ;
         } ;
 
       } ; --end of mkV overload
@@ -405,8 +404,8 @@ resource ParadigmsMlt = open
         imp = conjStrongImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjStrongPerf r p ) ! pgn ;
-          VImpf pgn => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjStrongPerf r p ) ! agr ;
+          VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Strong Regular ;
@@ -468,8 +467,8 @@ resource ParadigmsMlt = open
         imp = conjLiquidMedialImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjLiquidMedialPerf r p ) ! pgn ;
-          VImpf pgn => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjLiquidMedialPerf r p ) ! agr ;
+          VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Strong LiquidMedial ;
@@ -531,8 +530,8 @@ resource ParadigmsMlt = open
         imp = conjReduplicatedImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjReduplicatedPerf r p ) ! pgn ;
-          VImpf pgn => ( conjReduplicatedImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjReduplicatedPerf r p ) ! agr ;
+          VImpf agr => ( conjReduplicatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Strong Reduplicated ;
@@ -581,8 +580,8 @@ resource ParadigmsMlt = open
         imp = conjAssimilativeImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjAssimilativePerf r p ) ! pgn ;
-          VImpf pgn => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjAssimilativePerf r p ) ! agr ;
+          VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Weak Assimilative ;
@@ -626,8 +625,8 @@ resource ParadigmsMlt = open
         imp = conjHollowImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjHollowPerf r p ) ! pgn ;
-          VImpf pgn => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjHollowPerf r p ) ! agr ;
+          VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Weak Hollow ;
@@ -682,8 +681,8 @@ resource ParadigmsMlt = open
         imp = conjWeakFinalImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjWeakFinalPerf r p ) ! pgn ;
-          VImpf pgn => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjWeakFinalPerf r p ) ! agr ;
+          VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Weak WeakFinal ;
@@ -732,8 +731,8 @@ resource ParadigmsMlt = open
         imp = conjDefectiveImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjDefectivePerf r p ) ! pgn ;
-          VImpf pgn => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjDefectivePerf r p ) ! agr ;
+          VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
         c = Weak Defective ;
@@ -777,14 +776,13 @@ resource ParadigmsMlt = open
     -- Make a Quad verb, eg QARMEĊ (Q-R-M-Ċ)
     -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
-    -- Return: Verb
     quadV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjQuadImp r p ;
       in lin V {
         s = table {
-          VPerf pgn => ( conjQuadPerf r p ) ! pgn ;
-          VImpf pgn => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! pgn ;
+          VPerf agr => ( conjQuadPerf r p ) ! agr ;
+          VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
         c = Quad ;
@@ -844,12 +842,13 @@ resource ParadigmsMlt = open
 
     -- Loan verb: Italian integrated -ARE, eg KANTA
     -- Follows Maltese weak verb class 2 {MDG pg249,379}
+    -- Params: mamma
     loanV : Str -> V = \kanta ->
       let
         kantaw = kanta + "w" ;
       in lin V {
         s = table {
-          VPerf pgn => table {
+          VPerf agr => table {
             AgP1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
             AgP2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
             AgP3Sg Masc  => kanta ; -- Huwa KANTA
@@ -857,8 +856,8 @@ resource ParadigmsMlt = open
             AgP1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
             AgP2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
             AgP3Pl    => kanta + "w"  -- Huma KANTAW
-            } ! pgn ;
-          VImpf pgn => table {
+            } ! agr ;
+          VImpf agr => table {
             AgP1 Sg    => "n" + kanta ;  -- Jiena NKANTA
             AgP2 Sg    => "t" + kanta ;  -- Inti TKANTA
             AgP3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
@@ -866,7 +865,7 @@ resource ParadigmsMlt = open
             AgP1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
             AgP2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
             AgP3Pl    => "j" + kantaw  -- Huma JKANTAW
-            } ! pgn ;
+            } ! agr ;
           VImp n => table {
             Sg => kanta ;  -- Inti:  KANTA
             Pl => kantaw  -- Intom: KANTAW
@@ -877,13 +876,14 @@ resource ParadigmsMlt = open
 
     -- Loan verb: Italian integrated -ERE/-IRE, eg VINĊA
     -- Follows Maltese weak verb class 1 {MDG pg249,379}
+    -- Params: mamma, imperative P2Sg
     loanV : Str -> Str -> V = \vinca,vinci ->
       let
         vinc = tk 1 vinca ;
         vincu = vinc + "u" ;
       in lin V {
         s = table {
-          VPerf pgn => table {
+          VPerf agr => table {
             AgP1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
             AgP2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
             AgP3Sg Masc  => vinca ; -- Huwa VINĊA
@@ -891,8 +891,8 @@ resource ParadigmsMlt = open
             AgP1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
             AgP2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
             AgP3Pl    => vinc + "ew"  -- Huma VINĊEJTU
-            } ! pgn ;
-          VImpf pgn => table {
+            } ! agr ;
+          VImpf agr => table {
             AgP1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
             AgP2 Sg    => "t" + vinci ;  -- Inti TVINĊI
             AgP3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
@@ -900,7 +900,7 @@ resource ParadigmsMlt = open
             AgP1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
             AgP2 Pl    => "t" + vincu ;  -- Intom TVINĊU
             AgP3Pl    => "j" + vincu  -- Huma JVINĊU
-            } ! pgn ;
+            } ! agr ;
           VImp n => table {
             Sg => vinci ;  -- Inti:  VINĊI
             Pl => vincu  -- Intom: VINĊU
