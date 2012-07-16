@@ -732,7 +732,6 @@ resource ParadigmsMlt = open
     {- ----- Weak-Final Verb ----- -}
 
     -- Weak-Final verb, eg MEXA (M-X-J)
-    -- Make a verb by calling generate functions for each tense
     weakFinalV : Root -> Pattern -> V = \r,p ->
       let
         imp = conjWeakFinalImp r p ;
@@ -749,17 +748,20 @@ resource ParadigmsMlt = open
     -- Params: Root, Pattern
     conjWeakFinalPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
-        stem_12 = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ; -- "AGĦ" -> "AJ"
-        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 ;
+        mxej : Str = case root.C1 of {
+          #LiquidCons => "i" + root.C1 + root.C2 + p.V1 + root.C3 ;
+          _ => root.C1 + root.C2 + p.V1 + root.C3
+          } ;
       in
         table {
-          AgP1 Sg    => stem_12 + "t" ;  -- Jiena IMXEJT
-          AgP2 Sg    => stem_12 + "t" ;  -- Inti IMXEJT
-          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa MEXA
-          AgP3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija IMXIET
-          AgP1 Pl    => stem_12 + "na" ;  -- Aħna IMXEJNA
-          AgP2 Pl    => stem_12 + "tu" ;  -- Intom IMXEJTU
-          AgP3Pl    => stem_3 + "u"  -- Huma IMXEW
+          --- i tal-leħen needs to be added here!
+          AgP1 Sg    => mxej + "t" ;  -- Jiena IMXEJT
+          AgP2 Sg    => mxej + "t" ;  -- Inti IMXEJT
+          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 ;  -- Huwa MEXA
+          AgP3Sg Fem  => root.C1 + root.C2 + "iet" ;  -- Hija IMXIET
+          AgP1 Pl    => mxej + "na" ;  -- Aħna IMXEJNA
+          AgP2 Pl    => mxej + "tu" ;  -- Intom IMXEJTU
+          AgP3Pl    => root.C1 + root.C2 + "ew"  -- Huma IMXEW
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -769,14 +771,10 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     conjWeakFinalImp : Root -> Pattern -> (Number => Str) = \root,p ->
-      let
-        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
-        v_pl = case p.V1 of { "a" => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
-      in
-        table {
-          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti: IMXI
-          Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: IMXU
-        } ;
+      table {
+        Sg => "i" + root.C1 + root.C2 + "i" ;  -- Inti: IMXI
+        Pl => "i" + root.C1 + root.C2 + "u"  -- Intom: IMXU
+      } ;
 
     {- ----- Defective Verb ----- -}
 
