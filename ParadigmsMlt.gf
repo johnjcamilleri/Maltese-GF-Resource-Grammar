@@ -664,6 +664,7 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
+    -- Refer: http://blog.johnjcamilleri.com/2012/07/vowel-patterns-maltese-hollow-verb/
     conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
         sar = root.C1 + p.V1 + root.C3 ;
@@ -685,14 +686,29 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
     conjHollowImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
-      table {
-        AgP1 Sg    => "n" + imp_sg ;  -- Jiena NIŻLOQ
-        AgP2 Sg    => "t" + imp_sg ;  -- Inti TIŻLOQ
-        AgP3Sg Masc  => "j" + imp_sg ;  -- Huwa JIŻLOQ
-        AgP3Sg Fem  => "t" + imp_sg ;  -- Hija TIŻLOQ
-        AgP1 Pl    => "n" + imp_pl ;  -- Aħna NIŻOLQU
-        AgP2 Pl    => "t" + imp_pl ;  -- Intom TIŻOLQU
-        AgP3Pl    => "j" + imp_pl  -- Huma JIŻOLQU
+      let
+        d = take 1 imp_sg ;
+      in
+      case d of {
+        --- Basing the reduplication based on first letter alone is pure speculation. Seems fine though.
+        #ImpfDoublingCons => table {
+          AgP1 Sg    => "in" + imp_sg ;  -- Jiena INDUM
+          AgP2 Sg    => "i" + d + imp_sg ;  -- Inti IDDUM
+          AgP3Sg Masc  => "i" + imp_sg ;  -- Huwa IDUM
+          AgP3Sg Fem  => "i" + d + imp_sg ;  -- Hija IDDUM
+          AgP1 Pl    => "in" + imp_pl ;  -- Aħna INDUMU
+          AgP2 Pl    => "i" + d + imp_pl ;  -- Intom IDDUMU
+          AgP3Pl    => "i" + imp_pl  -- Huma IDUMU
+          } ;
+        _ => table {
+          AgP1 Sg    => "in" + imp_sg ;  -- Jiena INĦIT
+          AgP2 Sg    => "t" + imp_sg ;  -- Inti TĦIT
+          AgP3Sg Masc  => "i" + imp_sg ;  -- Huwa IĦIT
+          AgP3Sg Fem  => "t" + imp_sg ;  -- Hija TĦIT
+          AgP1 Pl    => "in" + imp_pl ;  -- Aħna INĦITU
+          AgP2 Pl    => "t" + imp_pl ;  -- Intom TĦITU
+          AgP3Pl    => "i" + imp_pl  -- Huma IĦITU
+          }
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns

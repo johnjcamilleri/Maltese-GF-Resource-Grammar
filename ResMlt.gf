@@ -208,6 +208,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     -- Some character classes
     Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
+    ImpfDoublingCons : pattern Str = #( "d" | "ġ" | "s" | "t" | "ż" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID. --- only used in hollow paradigm (?)
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
     WeakCons : pattern Str = #( "j" | "w" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
