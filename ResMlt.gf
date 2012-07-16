@@ -129,6 +129,19 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       -- | VVerbalNoun      -- Verbal Noun
     ;
 
+    VDerivedForm =
+        FormI
+      | FormII
+      | FormIII
+      | FormIV
+      | FormV
+      | FormVI
+      | FormVII
+      | FormVIII
+      | FormXI
+      | FormX
+      ;
+
     -- Verb classification
     VClass =
         Strong VStrongClass

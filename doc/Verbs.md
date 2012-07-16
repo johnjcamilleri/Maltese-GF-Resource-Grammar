@@ -9,14 +9,15 @@ This file is both a documentaion, as well as a to-do list.
 
 Items marked with a `*` are not yet covered.
 
-1. Conjugations for semitic verbs with 3 and 4 radicals in the root.
+1. Conjugations for first-form semitic verbs in Perfect, Imperfect, and Imperative tense.
+1. *Handling of derived-form verbs
 1. *Non-semitic verbs (romance, English-loan)
 1. *Inflections for:
   1. *Negation, e.g. _ma marritx_
   1. *active/passive/continuous , e.g. _tela'_ vs _tiela_, _miktub_
   1. *direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
 
-## Type
+## Classification
 
 Verb classification according to {MDG} and {T2M}.
 
@@ -40,7 +41,7 @@ Verb classification according to {MDG} and {T2M}.
   - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
-In the MRG, we gather all Romance and English loan verbs under the common verb type `Loan`.
+In the MRG, we currently gather all Romance and English loan verbs under the common verb type `Loan`.
 
 
 ## Tense
@@ -51,4 +52,24 @@ In the MRG, we gather all Romance and English loan verbs under the common verb t
   - "The imperitive is formed from the imperfect form of the verb" {MDG pg238}
 - Present Particible: Intransitive and 'motion' verbs only, eg NIEŻEL
 - Past Particible: Both verbal & adjectival function, eg MISRUQ
+
+## Derived forms
+
+Information from {MDG pg247}
+
+| Form | Process | Example | Description |
+|:-----|:--------|:--------|:------------|
+|I| - | _kiteb_ | Base form |
+|II| Reduplication/gemination of second radical | _daħħal_ | In general, intransitive Form I verbs are made transitive/causative. |
+|III| Long first vowel | _bierek_ | Similar to Form II, when reduplication of C2 is not possible. |
+|IV| - | _wera_ | Empty class. |
+|V| Prefix _t-_ to Form II | _farrak_ | Intransitive. Passive or reflexive. |
+|VI| Prefix of _t-_ to Form III  | _tbierek_ | Same as Form V. |
+|VII| Prefix of _n-_ to Form I | _nkiteb_ | In general, transitive Form I verbs are made intransitive.  |
+|VIII| Infix _-t-_ after C1 of Form 1 | _ftiehem_ | Intransitive (like V, VI, VII). |
+|〃| Prefix _nt-_ to Form 1 | _ntlaħaq_ | 〃 |
+|〃| Infix _n-t-_ to Form 1 | _nxteħet_ | 〃 |
+|IX| Structure `1 2v: 3` | _ċkien_ | Change of state. |
+|X| Prefix _st-_ | _stagħġeb_ | - |
+
 
