@@ -829,7 +829,6 @@ resource ParadigmsMlt = open
     {- ----- Quadriliteral Verb ----- -}
 
     -- Make a Quad verb, eg QARMEĊ (Q-R-M-Ċ)
-    -- Make a verb by calling generate functions for each tense
     -- Params: Root, Pattern
     quadV : Root -> Pattern -> V = \r,p ->
       let
@@ -845,7 +844,6 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    -- Return: Lookup table of Agr against Str
     conjQuadPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
       let
         stem_12 = root.C1 + p.V1 + root.C2 + root.C3 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C4 ;
@@ -863,7 +861,6 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg ____), Imperative Plural (eg ___)
-    -- Return: Lookup table of Agr against Str
     conjQuadImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
       let
         prefix_dbl:Str = case stem_sg of {
