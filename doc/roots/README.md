@@ -2,7 +2,8 @@
 
 ## About
 
-This folder contains Michael Spagnol's excellent Maltese verb roots compilation (reference below) as tab-delimited text files. The two main output files are:
+This folder contains Michael Spagnol's excellent Maltese verb roots compilation (reference below) as tab-delimited text files.  
+The two main output files are:
 
 - `roots.txt`
 - `roots-quad.txt`
@@ -77,7 +78,7 @@ Output:
 
 Command:
 
-    (head -n 1 roots.txt ; grep -e "ħ-.-ġ" roots.txt) | cat | column -n -t -c 1 -s $'\t'
+    (head -n 1 roots.txt ; grep "ħ-.-ġ" roots.txt) | cat | column -n -t -c 1 -s $'\t'
     
 Output:
 

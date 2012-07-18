@@ -1,9 +1,7 @@
 # Maltese GF Resource Grammar: Verbs
-_John J. Camilleri, 2009-2012_  
-_Last updated: 2012-04-16_
 
-Notes about the implementation of Maltese **verbs**.
-This file is both a documentaion, as well as a to-do list.
+Notes about the GF implementation of Maltese **verbs**.
+This file is both a documentaion, as well as a to-do list, and will be in flux a lot.
 
 ## Checklist
 
@@ -31,10 +29,14 @@ Verb classification according to {MDG} and {T2M}.
      - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R)_
      - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
      - Defective: C3 is silen GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
-  - Quadriliteral: 4 radicals. _eg QARMEĊ (Q-R-M-Ċ)_
-  - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU_
+  - Quadriliteral ("kwadrilitteru"): 4 radicals
+     - Repeated bi-radical base, _eg GEMGEM (G-M-G-M)_
+     - Repeated C3, _eg GERBEB (G-R-B-B)_
+     - Repeated C1 after C2, _eg ŻERŻAQ (Ż-R-Ż-Q)_
+     - Added C4 to triradical base, _eg ĦARBAT (Ħ-R-B-T)_
+  - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
-  - Strongly-integrated. _eg KANTA, SERREP, BANDAL, BAQQAN_
+  - Strongly-integrated, _eg KANTA, SERREP, BANDAL, BAQQAN_
      - Italian _-are_: _eg KANTA_
      - Italian _-ere_: _eg VINĊA_
      - Italian _-ire_: _eg SERVA_

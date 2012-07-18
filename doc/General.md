@@ -1,22 +1,21 @@
 # Maltese GF Resource Grammar: General
-_John J. Camilleri, 2009-2012_  
-_Last updated: 2012-04-26_
 
 General notes about the implementation of Maltese.
-This file is both a documentaion, as well as a to-do list.
+This file is both a documentaion, as well as a to-do list, and will be in flux a lot.
 
 ## Checklist
 
-Items marked with a `*` are not yet covered.
+Items marked with a `*` are not yet complete.
 
 1. Numerals - ordinal and cardinals (still buggy but ok)
-1. *Adjectives
+1. *Nouns, Adjectives, Verbs (see separate `.md` files)
 1. *Determiners and prepositions, e.g. _ir-ramel_, _lil huh_, _mis-sema_
+1. *Phrase-level categories, ie NP, VP, AP etc.
 1. *Everything else...
 
 ## References
 
-These resources are currently being used and can be referenced by name or citation stamp:
+These resources are currently being used and can be referenced by citation stamp:
 
 1. _Gwida għall-Ortografija_ by Carmel Azzopardi. It-tieni edizzjoni. Klabb Kotba Maltin, 2007. {GO}
 1. _Grammatika Maltija_ by Bro. Henry F.S.C. It-tieni ktieb, is-6 edizzjoni. De La Salle Brothers Publications, 1980. {GM}
