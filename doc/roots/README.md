@@ -13,7 +13,7 @@ Everything else is used in the conversion process.
 
 These files are ideal for `grep`ing (that's what they were made for), and the usual low-level stream base Unix commands. Here's some examples:
 
-**Find all derived forms**
+### Find all derived forms
 
 Command:
 
@@ -23,17 +23,26 @@ Output:
 
     ċ-ħ-d	ċaħad	ċaħħad		ċċaħħad		nċaħad		
     
-**Find all verbs with a given root**
+### Find all verbs with a given root
 
-    $ grep "ħ-s-l" roots.txt
+Command:
+
+    grep "ħ-s-l" roots.txt
+    
+Output:
+
     ħ-s-l¹	ħasel	ħassel				nħasel			
     ħ-s-l²	ħesel,	ħassel		tħassel					
     ħ-s-l²	ħasel,								
     ħ-s-l²	ħasal								
 
-**List all hollow verbs**
+### List all hollow verbs
 
-    $ grep -e "-[wj]-" roots.txt
+Command:
+
+    grep -e "-[wj]-" roots.txt
+    
+Output:
     
     b-j-d¹		bajjad		tbajjad				bjad	
     b-j-d²	bad,					nbad,			
@@ -60,11 +69,11 @@ Output:
     ċ-j-m		ċejjem							
     ...
     
-**Display neat table**
+### Display neat table
 
     column -n -t -c 1 -s $'\t' roots.txt
     
-**Combine output with table header and format as table**
+### Combine output with table header and format as table
 
 Command:
 
