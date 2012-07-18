@@ -2,13 +2,14 @@
 
 ## About
 
-This folder contains Michael Spagnol's excellent Maltese verb roots compilation (reference below) as tab-delimited text files.  
+This folder contains Michael Spagnol's excellent compilation of Maltese verb roots (reference below) as tab-delimited text files.  
 The two main output files are:
 
-- `roots.txt`
-- `roots-quad.txt`
+- [`roots.txt`](https://raw.github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/master/doc/roots/roots.txt)
+- [`roots-quad.txt`](https://raw.github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/master/doc/roots/roots-quad.txt)
 
 Everything else is used in the conversion process.
+The individual `.csv` files were produced by manually saving each worksheet from the [original XLS file](http://mlrs.research.um.edu.mt/dl/roots.xls) in CSV format, using LibreOffice 3's Calcapplication.
 
 ## Example usage
 
@@ -96,5 +97,4 @@ Output:
 ## References
 
 - Spagnol, Michael. 2011. _A Tale of Two Morphologies. Verb structure and argument alternations in Maltese._ Germany: University of Konstanz dissertation.
-
 - [MLRS: Maltese Language Resource Server](http://mlrs.research.um.edu.mt/index.php?page=33)
