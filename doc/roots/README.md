@@ -9,7 +9,7 @@ The two main output files are:
 - [`roots-quad.txt`](https://raw.github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/master/doc/roots/roots-quad.txt)
 
 Everything else is used in the conversion process.
-The individual `.csv` files were produced by manually saving each worksheet from the [original XLS file](http://mlrs.research.um.edu.mt/dl/roots.xls) in CSV format, using LibreOffice 3's Calcapplication.
+The individual `.csv` files were produced by manually saving each worksheet from the [original XLS file](http://mlrs.research.um.edu.mt/dl/roots.xls) in CSV format, using LibreOffice 3's Calc application.
 
 ## Example usage
 
