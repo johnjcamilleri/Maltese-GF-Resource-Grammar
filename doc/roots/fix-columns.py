@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-## Process .csv file (as exported from LibreOffice) and create
-## a single, cleaned up tab-delimited text file.
-## Version for Quad-consonantal roots
+## Fix columns (designed for quad.csv)
 ##
 ## John J. Camilleri
 
@@ -26,15 +24,17 @@ store = [[],[],[]]
 COL=r'([^\t]*\t[^\t]*\t[^\t]*)'
 regexp=re.compile(COL+'\t\t'+COL+'\t\t'+COL)
 for index,line in enumerate(content):
+    line = line[:-1]
 
     # Time to empty buffers?
     if re.match(r'^\t{3}', line):
         for n in range(len(store)):
-            if len(store[n]):
-                print "\n".join(store[n])
-                store[n] = []
+            p = "\n".join(store[n])
+            if not(re.match(r'^[\s]*$', p)):
+                print p
+            store[n] = []
     
-    # Else split into that shit
+    # Else split and save for later
     s = regexp.match(line)
     if s:
         for n in range(len(s.groups())):
