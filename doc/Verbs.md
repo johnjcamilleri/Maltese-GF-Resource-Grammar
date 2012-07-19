@@ -38,8 +38,8 @@ Verb classification according to {MDG}, {T2M} and {GM}.
   - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
   - Strongly-integrated, _eg KANTA, SERREP, BANDAL, BAQQAN_  
-  From Italian _-are_ (_eg KANTA_), _-ere_ (_eg VINĊA_), _-ire_ (_eg SERVA_)  
-  These are covered by the semitic paradigms above, they merely have a different etymology.
+  From Italian _-are_ (_eg KANTA_), _-ere_ (_eg VINĊA_), _-ire_ (_eg SERVA_).  
+  These are covered by the semitic paradigms above, they merely have a different etymology {T2M}.
   - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
