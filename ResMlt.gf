@@ -155,7 +155,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VStrongClass =
         Regular
       | LiquidMedial
-      | Reduplicated
+      | Reduplicative
       ;
 
     VWeakClass =

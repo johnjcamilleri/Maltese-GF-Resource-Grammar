@@ -300,9 +300,9 @@ resource ParadigmsMlt = open
       c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
         { c=Weak Assimilative ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1 v2) } ;
 
-      -- Strong Reduplicated, ĦABB
+      -- Strong Reduplicative, ĦABB
       c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
-        { c=Strong Reduplicated ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1) } ;
+        { c=Strong Reduplicative ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1) } ;
 
       -- Strong LiquidMedial, ŻELAQ
       c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
@@ -332,12 +332,13 @@ resource ParadigmsMlt = open
         case class.c of {
           Strong Regular      => strongV class.r class.p ;
           Strong LiquidMedial => liquidMedialV class.r class.p ;
-          Strong Reduplicated => reduplicatedV class.r class.p ;
+          Strong Reduplicative => reduplicativeV class.r class.p ;
           Weak Assimilative   => assimilativeV class.r class.p ;
           Weak Hollow         => hollowV class.r class.p ;
           Weak WeakFinal      => weakFinalV class.r class.p ;
           Weak Defective      => defectiveV class.r class.p ;
-          Quad                => quadV class.r class.p ;
+          Strong Quad         => quadV class.r class.p ;
+          Weak QuadWeakFinal  => quadWeakV class.r class.p ;
           Loan                => loanV mamma
 --          _ => Predef.error("Unimplemented")
         } ;
@@ -351,7 +352,7 @@ resource ParadigmsMlt = open
         case class.c of {
           Strong Regular      => strongV root class.p ;
           Strong LiquidMedial => liquidMedialV root class.p ;
-          Strong Reduplicated => reduplicatedV root class.p ;
+          Strong Reduplicative => reduplicativeV root class.p ;
           Weak Assimilative   => assimilativeV root class.p ;
           Weak Hollow         => hollowV root class.p ;
           Weak WeakFinal      => weakFinalV root class.p ;
@@ -369,7 +370,7 @@ resource ParadigmsMlt = open
           imp_pl = case class.c of {
               Strong Regular      => (take 3 imp_sg) + class.r.C3 + "u" ; -- IFTAĦ > IFTĦU
               Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + class.r.C2 + class.r.C3 + "u" ; -- OĦROĠ > OĦORĠU
-              Strong Reduplicated => imp_sg + "u" ; -- ŻOMM > ŻOMMU
+              Strong Reduplicative => imp_sg + "u" ; -- ŻOMM > ŻOMMU
               Weak Assimilative   => (take 2 imp_sg) + class.r.C3 + "u" ; -- ASAL > ASLU
               Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
               Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
@@ -386,7 +387,7 @@ resource ParadigmsMlt = open
             VPerf agr => case class.c of {
               Strong Regular      => (conjStrongPerf class.r class.p) ! agr ;
               Strong LiquidMedial => (conjLiquidMedialPerf class.r class.p) ! agr ;
-              Strong Reduplicated => (conjReduplicatedPerf class.r class.p) ! agr ;
+              Strong Reduplicative => (conjReduplicativePerf class.r class.p) ! agr ;
               Weak Assimilative   => (conjAssimilativePerf class.r class.p) ! agr ;
               Weak Hollow         => (conjHollowPerf class.r class.p) ! agr ;
               Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ! agr ;
@@ -397,7 +398,7 @@ resource ParadigmsMlt = open
             VImpf agr => case class.c of {
               Strong Regular      => (conjStrongImpf imp_sg imp_pl) ! agr ;
               Strong LiquidMedial => (conjLiquidMedialImpf imp_sg imp_pl) ! agr ;
-              Strong Reduplicated => (conjReduplicatedImpf imp_sg imp_pl) ! agr ;
+              Strong Reduplicative => (conjReduplicativeImpf imp_sg imp_pl) ! agr ;
               Weak Assimilative   => (conjAssimilativeImpf imp_sg imp_pl) ! agr ;
               Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ! agr ;
               Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ! agr ;
@@ -551,25 +552,25 @@ resource ParadigmsMlt = open
           Pl => stem_pl + "u"  -- Intom: IŻOLQU
         } ;
 
-    {- ----- Reduplicated Verb ----- -}
+    {- ----- Reduplicative Verb ----- -}
 
-    -- Reduplicated strong verb ("trux"), eg ĦABB
+    -- Reduplicative strong verb ("trux"), eg ĦABB
     -- Params: Root, Pattern
-    reduplicatedV : Root -> Pattern -> V = \r,p ->
+    reduplicativeV : Root -> Pattern -> V = \r,p ->
       let
-        imp = conjReduplicatedImp r p ;
+        imp = conjReduplicativeImp r p ;
       in lin V {
         s = table {
-          VPerf agr => ( conjReduplicatedPerf r p ) ! agr ;
-          VImpf agr => ( conjReduplicatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VPerf agr => ( conjReduplicativePerf r p ) ! agr ;
+          VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
-        c = Strong Reduplicated ;
+        c = Strong Reduplicative ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjReduplicatedPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjReduplicativePerf : Root -> Pattern -> (Agr => Str) = \root,p ->
       let
         habb = root.C1 + p.V1 + root.C2 + root.C3 ;
       in
@@ -585,11 +586,11 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-    conjReduplicatedImpf = conjGenericImpf ;
+    conjReduplicativeImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjReduplicatedImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjReduplicativeImp : Root -> Pattern -> (Number => Str) = \root,p ->
       let
         stem_sg = case p.V1 of {
           "e" => root.C1 + p.V1 + root.C2 + root.C3 ; -- BEXX > BEXX (?)
