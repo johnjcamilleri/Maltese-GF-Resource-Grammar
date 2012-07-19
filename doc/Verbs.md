@@ -17,34 +17,37 @@ Items marked with a `*` are not yet covered.
 
 ## Classification
 
-Verb classification according to {MDG} and {T2M}.
+Verb classification according to {MDG}, {T2M} and {GM}.
 
 - Semitic
   - Strong ("sħiħ")
      - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L)_.
      - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
      - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+     - Quadriliteral: 4 radicals
+        - Repeated bi-radical base, _eg GEMGEM (G-M-G-M)_
+        - Repeated C3, _eg GERBEB (G-R-B-B)_
+        - Repeated C1 after C2, _eg ŻERŻAQ (Ż-R-Ż-Q)_
+        - Added C4 to triradical base, _eg ĦARBAT (Ħ-R-B-T)_
   - Weak ("dgħajjef")
      - Assimilative ("assimilativ"): C1 is weak, _eg WAQAF (W-Q-F), WASAL (W-S-L)_
      - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R)_
      - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
-     - Defective: C3 is silen GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
-  - Quadriliteral ("kwadrilitteru"): 4 radicals
-     - Repeated bi-radical base, _eg GEMGEM (G-M-G-M)_
-     - Repeated C3, _eg GERBEB (G-R-B-B)_
-     - Repeated C1 after C2, _eg ŻERŻAQ (Ż-R-Ż-Q)_
-     - Added C4 to triradical base, _eg ĦARBAT (Ħ-R-B-T)_
+     - Defective: C3 is silent GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+     - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, _eg PINĠA (P-N-Ġ-J)_
   - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
-  - Strongly-integrated, _eg KANTA, SERREP, BANDAL, BAQQAN_
-     - Italian _-are_: _eg KANTA_
-     - Italian _-ere_: _eg VINĊA_
-     - Italian _-ire_: _eg SERVA_
+  - Strongly-integrated, _eg KANTA, SERREP, BANDAL, BAQQAN_  
+  From Italian _-are_ (_eg KANTA_), _-ere_ (_eg VINĊA_), _-ire_ (_eg SERVA_)  
+  These are covered by the semitic paradigms above, they merely have a different etymology.
   - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
 In the MRG, we currently gather all Romance and English loan verbs under the common verb type `Loan`.
 
+### Uncertainties
+
+- Is _WERŻAQ_ weak or strong? {T2M app} says strong, {GM pg48} says weak.
 
 ## Tense
 

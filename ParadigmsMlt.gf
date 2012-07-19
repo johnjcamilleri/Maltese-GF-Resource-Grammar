@@ -312,9 +312,13 @@ resource ParadigmsMlt = open
       c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
         { c=Strong Regular ; r=(mkRoot c1 c2 c3) ; p=(mkPattern v1 v2) } ;
 
-      -- Quad, QAĊĊAT
+      -- Strong Quad, QAĊĊAT
       c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-        { c=Quad ; r=(mkRoot c1 c2 c3 c4) ; p=(mkPattern v1 v2) } ;
+        { c=Strong Quad ; r=(mkRoot c1 c2 c3 c4) ; p=(mkPattern v1 v2) } ;
+
+      -- Weak-Final Quad, PINĠA
+      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
+        { c=Weak QuadWeakFinal ; r=(mkRoot c1 c2 c3 "j") ; p=(mkPattern v1 v2) } ;
 
       -- Assume it is a loan verb
       _ => { c=Loan ; r=mkRoot ; p=mkPattern }
@@ -357,7 +361,8 @@ resource ParadigmsMlt = open
           Weak Hollow         => hollowV root class.p ;
           Weak WeakFinal      => weakFinalV root class.p ;
           Weak Defective      => defectiveV root class.p ;
-          Quad                => quadV root class.p ;
+          Strong Quad         => quadV root class.p ;
+          Weak QuadWeakFinal  => quadWeakV root class.p ;
           Loan                => loanV mamma
 --          _ => Predef.error("Unimplemented")
         } ;
@@ -375,11 +380,16 @@ resource ParadigmsMlt = open
               Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
               Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
               Weak Defective      => (take 2 imp_sg) + "i" + class.r.C2 + "għu" ; -- ISMA' > ISIMGĦU
-              Quad                => (take 4 imp_sg) + class.r.C4 + "u" ; -- ĦARBAT > ĦARBTU
-              Loan                => case (dp 1 imp_sg) of {
+              Strong Quad         => (take 4 imp_sg) + class.r.C4 + "u" ; -- ĦARBAT > ĦARBTU
+              Weak QuadWeakFinal  => case (dp 1 imp_sg) of {
                 "a" => imp_sg + "w" ; -- KANTA > KANTAW
                 "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
                 _ => "Unaccounted case FH4748J"
+                } ;
+              Loan                => case (dp 1 imp_sg) of { --- This is totally untested
+                "a" => imp_sg + "w" ; -- KANTA > KANTAW
+                "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
+                _ => "Unaccounted case 8J4580J"
                 }
             } ;
         in lin V {
@@ -392,7 +402,8 @@ resource ParadigmsMlt = open
               Weak Hollow         => (conjHollowPerf class.r class.p) ! agr ;
               Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ! agr ;
               Weak Defective      => (conjDefectivePerf class.r class.p) ! agr ;
-              Quad                => (conjQuadPerf class.r class.p) ! agr ;
+              Strong Quad         => (conjQuadPerf class.r class.p) ! agr ;
+              Weak QuadWeakFinal  => (conjQuadWeakPerf class.r class.p) ! agr ;
               Loan                => (loanV mamma imp_sg).s ! VPerf agr
               } ;
             VImpf agr => case class.c of {
@@ -403,7 +414,8 @@ resource ParadigmsMlt = open
               Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ! agr ;
               Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ! agr ;
               Weak Defective      => (conjDefectiveImpf imp_sg imp_pl) ! agr ;
-              Quad                => (conjQuadImpf imp_sg imp_pl) ! agr ;
+              Strong Quad         => (conjQuadImpf imp_sg imp_pl) ! agr ;
+              Weak QuadWeakFinal  => (conjQuadWeakImpf imp_sg imp_pl) ! agr ;
               Loan                => (loanV mamma imp_sg).s ! VImpf agr
               } ;
             VImp n => table { Sg => imp_sg ; Pl => imp_pl } ! n
@@ -827,7 +839,7 @@ resource ParadigmsMlt = open
           Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: AQILGĦU / IBŻGĦU
         } ;
 
-    {- ----- Quadriliteral Verb ----- -}
+    {- ----- Quadriliteral Verb (Strong) ----- -}
 
     -- Make a Quad verb, eg QARMEĊ (Q-R-M-Ċ)
     -- Params: Root, Pattern
@@ -840,7 +852,7 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        c = Quad ;
+        c = Strong Quad ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
@@ -883,6 +895,67 @@ resource ParadigmsMlt = open
     -- Params: Root, Pattern
     -- Return: Lookup table of Number against Str
     conjQuadImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+      table {
+        Sg => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Inti:  DARDAR
+        Pl => root.C1 + p.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DARDRU
+      } ;
+
+    {- ----- Quadriliteral Verb (Weak Final) ----- -}
+
+    -- Make a weak-final Quad verb, eg KANTA (K-N-T-J)
+    -- Params: Root, Pattern
+    quadWeakV : Root -> Pattern -> V = \r,p ->
+      let
+        imp = conjQuadWeakImp r p ;
+      in lin V {
+        s = table {
+          VPerf agr => ( conjQuadWeakPerf r p ) ! agr ;
+          VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+        c = Weak QuadWeakFinal ;
+      } ;
+
+    -- Conjugate entire verb in PERFECT tense
+    -- Params: Root, Pattern
+    conjQuadWeakPerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
+      let
+        stem_12 = root.C1 + p.V1 + root.C2 + root.C3 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C4 ;
+        stem_3 = root.C1 + p.V1 + root.C2 + root.C3 + root.C4 ;
+      in
+      table {
+        AgP1 Sg    => stem_12 + "t" ;  -- Jiena DARDART
+        AgP2 Sg    => stem_12 + "t" ;  -- Inti DARDART
+        AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Huwa DARDAR
+        AgP3Sg Fem  => stem_3 + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DARDRET
+        AgP1 Pl    => stem_12 + "na" ;  -- Aħna DARDARNA
+        AgP2 Pl    => stem_12 + "tu" ;  -- Intom DARDARTU
+        AgP3Pl    => stem_3 + "u"  -- Huma DARDRU
+      } ;
+
+    -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
+    -- Params: Imperative Singular (eg ____), Imperative Plural (eg ___)
+    conjQuadWeakImpf : Str -> Str -> ( Agr => Str ) = \stem_sg,stem_pl ->
+      let
+        prefix_dbl:Str = case stem_sg of {
+          X@( "d" | "t" ) + _ => "i" + X ;
+          _ => "t"
+          } ;
+      in
+      table {
+        AgP1 Sg    => "in" + stem_sg ;      -- Jiena INDARDAR
+        AgP2 Sg    => prefix_dbl + stem_sg ;  -- Inti IDDARDAR
+        AgP3Sg Masc  => "i" + stem_sg ;      -- Huwa IDARDAR
+        AgP3Sg Fem  => prefix_dbl + stem_sg ;  -- Hija IDDARDAR
+        AgP1 Pl    => "in" + stem_pl ;      -- Aħna INDARDRU
+        AgP2 Pl    => prefix_dbl + stem_pl ;  -- Intom IDDARDRU
+        AgP3Pl    => "i" + stem_pl      -- Huma IDARDRU
+      } ;
+
+    -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
+    -- Params: Root, Pattern
+    -- Return: Lookup table of Number against Str
+    conjQuadWeakImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
       table {
         Sg => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Inti:  DARDAR
         Pl => root.C1 + p.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DARDRU

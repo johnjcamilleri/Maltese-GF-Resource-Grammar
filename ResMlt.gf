@@ -146,7 +146,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VClass =
         Strong VStrongClass
       | Weak VWeakClass
-      | Quad
       | Loan --- temporary
       -- | Romance
       -- | English
@@ -156,6 +155,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         Regular
       | LiquidMedial
       | Reduplicative
+      | Quad
       ;
 
     VWeakClass =
@@ -163,7 +163,15 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Hollow
       | WeakFinal
       | Defective
+      | QuadWeakFinal
       ;
+
+    -- VQuadClass =
+    --     BiradicalBase
+    --   | RepeatedC3
+    --   | RepeatedC1
+    --   | AdditionalC4
+    --   ;
 
     VRomanceClass =
         Integrated
