@@ -11,6 +11,8 @@ The two main output files are:
 Everything else is used in the conversion process.
 The individual `.csv` files were produced by manually saving each worksheet from the [original XLS file](http://mlrs.research.um.edu.mt/dl/roots.xls) in CSV format, using LibreOffice 3's Calc application.
 
+_**Disclaimer:** These text files are generated automatically and may contain conversion errors that have not been detected. In case of doubt, always consult the original source._
+
 ## Example usage
 
 These files are ideal for `grep`ing (that's what they were made for), and the usual low-level stream base Unix commands. Here's some examples:
