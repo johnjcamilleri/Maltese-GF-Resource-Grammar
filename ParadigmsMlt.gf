@@ -274,7 +274,7 @@ resource ParadigmsMlt = open
     noPrep = mkPrep [] ;
 
 
-    {- ========== Verb paradigms ========== -}
+    {- ===== Verb paradigms ===== -}
 
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
@@ -886,8 +886,8 @@ resource ParadigmsMlt = open
     -- Params: Imperative Singular (eg DENDEL), Imperative Plural (eg DENDLU)
     conjQuadImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        prefix_dbl:Str = case imp_sg of {
-          X@( "d" | "t" ) + _ => "i" + X ;
+        prefix_dbl : Str = case imp_sg of {
+          X@#ImpfDoublingCons + _ => "i" + X ;
           _ => "t"
           } ;
       in
@@ -964,8 +964,8 @@ resource ParadigmsMlt = open
     -- Params: Imperative Singular (eg SERVI), Imperative Plural (eg SERVU)
     conjQuadWeakImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        prefix_dbl:Str = case imp_sg of {
-          X@( "d" | "t" | "s" ) + _ => "i" + X ;
+        prefix_dbl : Str = case imp_sg of {
+          X@#ImpfDoublingCons + _ => "i" + X ;
           _ => "t"
           } ;
       in
