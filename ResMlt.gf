@@ -253,6 +253,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       s : VForm => Str ;
 --      s : VForm => VSuffixForm => Str ;
       c : VClass ;
+      f : VDerivedForm ;
     } ;
 
     Adjective : Type = {
