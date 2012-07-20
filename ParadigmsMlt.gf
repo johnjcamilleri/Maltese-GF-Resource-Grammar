@@ -392,34 +392,34 @@ resource ParadigmsMlt = open
                 "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
                 _ => Predef.error("Unaccounted case FH4748J")
                 } ;
-              Loan                => imp_sg + "w" -- IPPARKJA > IPPARKJAW
+              Loan                => (conjLoanImp mamma) ! Pl -- IPPARKJA > IPPARKJAW
             } ;
         in lin V {
           s = table {
             VPerf agr => case class.c of {
-              Strong Regular      => (conjStrongPerf class.r class.p) ! agr ;
-              Strong LiquidMedial => (conjLiquidMedialPerf class.r class.p) ! agr ;
-              Strong Reduplicative => (conjReduplicativePerf class.r class.p) ! agr ;
-              Weak Assimilative   => (conjAssimilativePerf class.r class.p) ! agr ;
-              Weak Hollow         => (conjHollowPerf class.r class.p) ! agr ;
-              Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ! agr ;
-              Weak Defective      => (conjDefectivePerf class.r class.p) ! agr ;
-              Strong Quad         => (conjQuadPerf class.r class.p) ! agr ;
-              Weak QuadWeakFinal  => (conjQuadWeakPerf imp_sg) ! agr ;
-              Loan                => (loanV mamma imp_sg).s ! VPerf agr
-              } ;
+              Strong Regular      => (conjStrongPerf class.r class.p) ;
+              Strong LiquidMedial => (conjLiquidMedialPerf class.r class.p) ;
+              Strong Reduplicative=> (conjReduplicativePerf class.r class.p) ;
+              Weak Assimilative   => (conjAssimilativePerf class.r class.p) ;
+              Weak Hollow         => (conjHollowPerf class.r class.p) ;
+              Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ;
+              Weak Defective      => (conjDefectivePerf class.r class.p) ;
+              Strong Quad         => (conjQuadPerf class.r class.p) ;
+              Weak QuadWeakFinal  => (conjQuadWeakPerf imp_sg) ;
+              Loan                => (conjLoanPerf mamma)
+              } ! agr ;
             VImpf agr => case class.c of {
-              Strong Regular      => (conjStrongImpf imp_sg imp_pl) ! agr ;
-              Strong LiquidMedial => (conjLiquidMedialImpf imp_sg imp_pl) ! agr ;
-              Strong Reduplicative => (conjReduplicativeImpf imp_sg imp_pl) ! agr ;
-              Weak Assimilative   => (conjAssimilativeImpf imp_sg imp_pl) ! agr ;
-              Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ! agr ;
-              Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ! agr ;
-              Weak Defective      => (conjDefectiveImpf imp_sg imp_pl) ! agr ;
-              Strong Quad         => (conjQuadImpf imp_sg imp_pl) ! agr ;
-              Weak QuadWeakFinal  => (conjQuadWeakImpf imp_sg imp_pl) ! agr ;
-              Loan                => (loanV mamma imp_sg).s ! VImpf agr
-              } ;
+              Strong Regular      => (conjStrongImpf imp_sg imp_pl) ;
+              Strong LiquidMedial => (conjLiquidMedialImpf imp_sg imp_pl) ;
+              Strong Reduplicative=> (conjReduplicativeImpf imp_sg imp_pl) ;
+              Weak Assimilative   => (conjAssimilativeImpf imp_sg imp_pl) ;
+              Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ;
+              Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ;
+              Weak Defective      => (conjDefectiveImpf imp_sg imp_pl) ;
+              Strong Quad         => (conjQuadImpf imp_sg imp_pl) ;
+              Weak QuadWeakFinal  => (conjQuadWeakImpf imp_sg imp_pl) ;
+              Loan                => (conjLoanImpf imp_sg imp_pl)
+              } ! agr ;
             VImp n => table { Sg => imp_sg ; Pl => imp_pl } ! n
             } ;
           c = class.c ;
@@ -992,77 +992,83 @@ resource ParadigmsMlt = open
 
     {- ----- Non-semitic verbs ----- -}
 
-    loanV : V = overload {
-
-    -- Loan verb: Italian integrated -ARE, eg KANTA
-    -- Follows Maltese weak verb class 2 {MDG pg249,379}
-    -- Params: mamma
-    loanV : Str -> V = \kanta ->
+    -- Make a weak-final Quad verb, eg SERVA (S-R-V-J)
+    -- Params: Root, Pattern
+    loanV : Str -> V = \mamma ->
       let
-        kantaw = kanta + "w" ;
+        imp = conjLoanImp mamma ;
       in lin V {
         s = table {
-          VPerf agr => table {
-            AgP1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
-            AgP2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
-            AgP3Sg Masc  => kanta ; -- Huwa KANTA
-            AgP3Sg Fem  => kanta + "t" ;  -- Hija KANTAT
-            AgP1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
-            AgP2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
-            AgP3Pl    => kanta + "w"  -- Huma KANTAW
-            } ! agr ;
-          VImpf agr => table {
-            AgP1 Sg    => "n" + kanta ;  -- Jiena NKANTA
-            AgP2 Sg    => "t" + kanta ;  -- Inti TKANTA
-            AgP3Sg Masc  => "j" + kanta ;  -- Huwa JKANTA
-            AgP3Sg Fem  => "t" + kanta ;  -- Hija TKANTA
-            AgP1 Pl    => "n" + kantaw ;  -- Aħna NKANTAW
-            AgP2 Pl    => "t" + kantaw ;  -- Intom TKANTAW
-            AgP3Pl    => "j" + kantaw  -- Huma JKANTAW
-            } ! agr ;
-          VImp n => table {
-            Sg => kanta ;  -- Inti:  KANTA
-            Pl => kantaw  -- Intom: KANTAW
-            } ! n
+          VPerf agr => ( conjLoanPerf mamma ) ! agr ;
+          VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
           } ;
         c = Loan ;
-        } ;
+        f = FormI ;
+      } ;
 
-    -- Loan verb: Italian integrated -ERE/-IRE, eg VINĊA
-    -- Follows Maltese weak verb class 1 {MDG pg249,379}
-    -- Params: mamma, imperative P2Sg
-    loanV : Str -> Str -> V = \vinca,vinci ->
+    -- Params: Mamma
+    conjLoanPerf : Str -> (Agr => Str) = \mamma ->
+      case mamma of {
+        _ + "ixxa" =>
+          let
+            issugger = tk 4 mamma ;
+          in
+          table {
+          AgP1 Sg    => issugger + "ejt" ;  -- Jiena ISSUĠĠEREJT
+          AgP2 Sg    => issugger + "ejt" ;  -- Inti ISSUĠĠEREJT
+          AgP3Sg Masc  => mamma ; -- Huwa ISSUĠĠERIXXA
+          AgP3Sg Fem  => issugger + "iet" ;  -- Hija ISSUĠĠERIET
+          AgP1 Pl    => issugger + "ejna" ;  -- Aħna ISSUĠĠEREJNA
+          AgP2 Pl    => issugger + "ejtu" ;  -- Intom ISSUĠĠEREJTU
+          AgP3Pl    => issugger + "ew"  -- Huma ISSUĠĠEREW
+          } ;
+        _ =>
+          let
+            ipparkja = mamma ;
+          in
+          table {
+          AgP1 Sg    => ipparkja + "jt" ;  -- Jiena IPPARKJAJT
+          AgP2 Sg    => ipparkja + "jt" ;  -- Inti IPPARKJAJT
+          AgP3Sg Masc  => ipparkja ; -- Huwa IPPARKJA
+          AgP3Sg Fem  => ipparkja + "t" ;  -- Hija IPPARKJAT
+          AgP1 Pl    => ipparkja + "jna" ;  -- Aħna IPPARKJAJNA
+          AgP2 Pl    => ipparkja + "jtu" ;  -- Intom IPPARKJAJTU
+          AgP3Pl    => ipparkja + "w"  -- Huma IPPARKJAW
+          }
+      } ;
+
+    -- Conjugate entire verb in IMPERFECT, given the IMPERATIVE
+    -- Params: Imperative Singular (eg IPPARKJA), Imperative Plural (eg IPPARKJAW)
+    conjLoanImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        vinc = tk 1 vinca ;
-        vincu = vinc + "u" ;
-      in lin V {
-        s = table {
-          VPerf agr => table {
-            AgP1 Sg    => vinc + "ejt" ;  -- Jiena VINĊEJT
-            AgP2 Sg    => vinc + "ejt" ;  -- Inti VINĊEJT
-            AgP3Sg Masc  => vinca ; -- Huwa VINĊA
-            AgP3Sg Fem  => vinc + "iet" ;  -- Hija VINĊIET
-            AgP1 Pl    => vinc + "ejna" ;  -- Aħna VINĊEJNA
-            AgP2 Pl    => vinc + "ejtu" ;  -- Intom VINĊEJTU
-            AgP3Pl    => vinc + "ew"  -- Huma VINĊEJTU
-            } ! agr ;
-          VImpf agr => table {
-            AgP1 Sg    => "in" + vinci ;  -- Jiena INVINĊI
-            AgP2 Sg    => "t" + vinci ;  -- Inti TVINĊI
-            AgP3Sg Masc  => "j" + vinci ;  -- Huwa JVINĊI
-            AgP3Sg Fem  => "t" + vinci ;  -- Hija TVINĊI
-            AgP1 Pl    => "n" + vincu ;  -- Aħna INVINĊU
-            AgP2 Pl    => "t" + vincu ;  -- Intom TVINĊU
-            AgP3Pl    => "j" + vincu  -- Huma JVINĊU
-            } ! agr ;
-          VImp n => table {
-            Sg => vinci ;  -- Inti:  VINĊI
-            Pl => vincu  -- Intom: VINĊU
-            } ! n
+        vocalvowel : Str = case take 1 imp_sg of {
+          #Consonant => "i" ; -- STABILIXXA > NISTABILIXXA
+          _ => []
           } ;
-        c = Loan ;
-        } ;
+      in
+      table {
+        AgP1 Sg    => "n" + vocalvowel + imp_sg ;      -- Jiena NIPPARKJA
+        AgP2 Sg    => "t" + vocalvowel + imp_sg ;  -- Inti TIPPARKJA
+        AgP3Sg Masc  => "j" + vocalvowel + imp_sg ;      -- Huwa JIPPARKJA
+        AgP3Sg Fem  => "t" + vocalvowel + imp_sg ;  -- Hija TIPPARKJA
+        AgP1 Pl    => "n" + vocalvowel + imp_pl ;      -- Aħna NIPPARKJAW
+        AgP2 Pl    => "t" + vocalvowel + imp_pl ;  -- Intom TIPPARKJAW
+        AgP3Pl    => "j" + vocalvowel + imp_pl      -- Huma JIPPARKJAW
+      } ;
 
+    -- Conjugate entire verb in IMPERATIVE tense
+    -- Params: Root, Pattern
+    conjLoanImp : Str -> (Number => Str) = \mamma ->
+      table {
+        Sg => case mamma of {
+          _ + "ixxa" => (tk 1 mamma) + "i" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXI
+          _ => mamma -- IPPARKJA > IPPARKJA
+          } ;
+        Pl => case mamma of {
+          _ + "ixxa" => (tk 1 mamma) + "u" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXU
+          _ => mamma + "w" -- IPPARKJA > IPPARKJAW
+          }
       } ;
 
 

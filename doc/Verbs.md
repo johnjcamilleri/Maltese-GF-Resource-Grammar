@@ -5,15 +5,11 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 
 ## Checklist
 
-Items marked with a `*` are not yet covered.
-
-1. Conjugations for first-form semitic verbs in Perfect, Imperfect, and Imperative tense.
-1. *Handling of derived-form verbs
-1. *Non-semitic verbs (romance, English-loan)
-1. *Inflections for:
-  1. *Negation, e.g. _ma marritx_
-  1. *active/passive/continuous , e.g. _tela'_ vs _tiela_, _miktub_
-  1. *direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
+1. ~~Conjugations for first-form semitic verbs in Perfect, Imperfect, and Imperative~~
+1. Handling of derived-form verbs
+1. Non-semitic verbs (romance, English-loan)
+1. Polarity, e.g. _oħroġ_ vs _toħroġx_
+1. Inflection for direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
 
 ## Classification
 
@@ -21,27 +17,27 @@ Verb classification according to {MDG}, {T2M} and {GM}.
 
 - Semitic
   - Strong ("sħiħ")
-     - Regular: all radicals strong & distinct, _eg QATEL (Q-T-L)_.
-     - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, _eg ŻELAQ (Ż-L-Q)_
-     - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, _eg ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+     - Regular: all radicals strong & distinct, e.g. _QATEL (Q-T-L)_.
+     - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
+     - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
      - Quadriliteral: 4 radicals
-        - Repeated bi-radical base, _eg GEMGEM (G-M-G-M)_
-        - Repeated C3, _eg GERBEB (G-R-B-B)_
-        - Repeated C1 after C2, _eg ŻERŻAQ (Ż-R-Ż-Q)_
-        - Added C4 to triradical base, _eg ĦARBAT (Ħ-R-B-T)_
+        - Repeated bi-radical base, e.g. _GEMGEM (G-M-G-M)_
+        - Repeated C3, e.g. _GERBEB (G-R-B-B)_
+        - Repeated C1 after C2, e.g. _ŻERŻAQ (Ż-R-Ż-Q)_
+        - Added C4 to triradical base, e.g. _ĦARBAT (Ħ-R-B-T)_
   - Weak ("dgħajjef")
-     - Assimilative ("assimilativ"): C1 is weak, _eg WAQAF (W-Q-F), WASAL (W-S-L)_
-     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, _eg DAM (D-W-M), SAR (S-J-R)_
-     - Weak-Final ("nieqes"): C3 is weak, _eg BEKA (B-K-J), MEXA (M-X-J)_
-     - Defective: C3 is silent GĦ, _eg BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
-     - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, _eg PINĠA (P-N-Ġ-J)_
+     - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
+     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
+     - Weak-Final ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
+     - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+     - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_
   - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
-  - Strongly-integrated, _eg KANTA, SERREP, BANDAL, BAQQAN_  
-  From Italian _-are_ (_eg KANTA_), _-ere_ (_eg VINĊA_), _-ire_ (_eg SERVA_).  
+  - Strongly-integrated, e.g. _KANTA, SERREP, BANDAL, BAQQAN_  
+  From Italian _-are_ (e.g. _KANTA_), _-ere_ (e.g. _VINĊA_), _-ire_ (e.g. _SERVA_).  
   These are covered by the semitic paradigms above, they merely have a different etymology {T2M}.
-  - Loosely-integrated. _eg ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
-- English loan words. _eg IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
+  - Loosely-integrated. e.g. _ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
+- English loan words. e.g. _IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
 In the MRG, we currently gather all Romance and English loan verbs under the common verb type `Loan`.
 
