@@ -47,7 +47,6 @@ These publications are currently being used and can be referenced by citation st
 1. _Id-Dizzjunarju Malti - u teżawru ta' Malti mħaddem_ by Mario Serracino Inglott. It-tielet edizzjoni. Merlin, 2011. {DM}
 1. _Maltese_ (part of "Descriptive Grammars" series) by Albert Borg and Marie Azzopardi-Alexander. Routledge, 1997. {MDG}
 1. _Grammatical Framework - Programming with Multilingual Grammars_ by Aarne Ranta. CSLI, 2011. {GF}
-1. _Basic Maltese Grammar_ by Grazio Falzon. <http://aboutmalta.com/grazio/maltesegrammar.html>, 1997. {BMG}
 1. _A Tale of Two Morphologies: Verb structure and argument alternations in Maltese_ by Michael Spagnol. University of Konstanz dissertation, Germany, 2011. {T2M}
 1. _Deċiżjonijiet 1_ by il-Kunsill Nazzjonali tal-Ilsien Malti, 2008. {D1}
 
@@ -56,9 +55,11 @@ Some sources of enlightenment:
 1. _Korpus Malti_ - <http://mlrs.research.um.edu.mt/corpusquery/cwb/malti01/>
 1. _"Kelmet il-Malti" Facebook group - <https://www.facebook.com/groups/246657308743181/>
 1. _Is-Suffissi tan-Nazzjonijiet fil-Malti_ - Michael Spagnol. (unpublished).
+1. _Basic Maltese Grammar_ by Grazio Falzon. <http://aboutmalta.com/grazio/maltesegrammar.html>, 1997. {BMG}
 
 Other potentially useful references:
 
+1. Spagnol, Michael. 2009. Lexical and grammatical aspect in Maltese. In Thomas Stolz (ed.), _Ilsienna_, 51--86. Bochum: Universitätsverlag Brockmeyer.
 1. Serracino-Inglott’s (1975-1989) monolingual dictionary
 1. Aquilina’s (1987-1990) bilingual dictionary
 1. Manwel Mifsud (1995, _Loan Verbs in Maltese_. NY: Brill, pp. 272-295)

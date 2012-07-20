@@ -39,7 +39,6 @@ Verb classification according to {MDG}, {T2M} and {GM}.
   - Loosely-integrated. e.g. _ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. e.g. _IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
-In the MRG, we currently gather all Romance and English loan verbs under the common verb type `Loan`.
 
 ### Uncertainties
 
@@ -47,12 +46,65 @@ In the MRG, we currently gather all Romance and English loan verbs under the com
 
 ## Tense
 
-- Perfect (past), e.g. SERAQ
-- Imperfect (present), e.g. JISRAQ
-- Imperative, e.g. ISRAQ
-  - "The imperitive is formed from the imperfect form of the verb" {MDG pg238}
-- Present Particible: Intransitive and 'motion' verbs only, eg NIEŻEL
-- Past Particible: Both verbal & adjectival function, eg MISRUQ
+This section taken from {GM}
+
+### Basics
+
+Mood:
+
+- Indicative
+- Imperative, e.g. _ISRAQ_  
+"The imperitive is formed from the imperfect form of the verb" {MDG pg238}
+
+Derived moods:
+
+- Conditional, e.g. _JEKK TIĠI_
+- Subjunctive, e.g. _BIEX INKELLEM_
+
+Tense-aspect:
+
+- Perfective, e.g. _SERAQ_
+- Imperfective, e.g. _JISRAQ_
+
+### Compound tenses
+
+- Present continuous, e.g. _JIEN QIEGĦED NAĦDEM_
+- Past continuous, e.g. _JIEN KONT QIEGĦED NAĦDEM_
+- Future continuous, e.g. _JIEN INKUN QIEGĦED NAĦDEM_
+- Perfective present continuous, e.g. _ILNI NAĦDEM SIEGĦA_
+- Pluperfett kontinwu, e.g. _JIEN KONT QGĦADT NAĦDEM_
+- Past imperfective, e.g. _JIEN KONT NAĦDEM_
+- Pluperfett, e.g. _JIEN KONT ĦDIMT_
+- Future imperfective, e.g. _JIEN INKUN NAĦDEM_
+- Future perfective, e.g. _JIEN INKUN ĦDIMT_
+
+### The RGL common tense-polarity system
+
+RGL tenses and how they are expressed in Maltese:
+
+| Anteriority | Temporal Order | Polarity | Description | Example |
+|:------------|:---------------|:---------|:------------|:--------|
+|Simultaneous | Present        | Positive |Imperfective|_jien norqod_|
+|Simultaneous | Present        | Negative |            |_jien ma norqodx_|
+|Simultaneous | Past           | Positive |Perfective|_jien irqadt_|
+|Simultaneous | Past           | Negative |          |_jien ma rqadtx_|
+|Simultaneous | Future         | Positive |Active participle SEJJER (SA/SE/SER/ĦA) + Imperfective|_jien sejjer norqod_|
+|Simultaneous | Future         | Negative |                                                      |_jien minix sejjer norqod_|
+|Simultaneous | Conditional    | Positive |Past Imperfective: Perfective _kien_ + Imperfective or Active Participle|_jien kont norqod [kieku]_|
+|Simultaneous | Conditional    | Negative |     |_jien ma kontx norqod [kieku]_|
+|Anterior     | Present        | Positive |  -  |     |
+|Anterior     | Present        | Negative |  -  |     |
+|Anterior     | Past           | Positive |"Pluperfett": Perfective _kien_ + Perfective|_jien kont irqadt_|
+|Anterior     | Past           | Negative |     |_jien ma kontx irqadt_|
+|Anterior     | Future         | Positive |Future perfective: Imperfective _kien_ + Imperfective|_jien inkun irqadt_|
+|Anterior     | Future         | Negative |     |_jien ma nkunx irqadt_(?)|
+|Anterior     | Conditional    | Positive |  -  |     |
+|Anterior     | Conditional    | Negative |  -  |     |
+
+**_Notes_**
+
+- _Future_ can also be expressed by means of: Imperfective + temporal adverb, e.g. _GĦADA MMUR NIXTRI_
+
 
 ## Derived forms
 
