@@ -280,55 +280,54 @@ resource ParadigmsMlt = open
     -- Used in smart paradigm below and elsewhere.
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
     classifyVerb : Str -> { c:VClass ; f:VDerivedForm ; r:Root ; p:Pattern } = \mamma ->
-
       let
         ret : VClass -> VDerivedForm -> Root -> Pattern -> { c:VClass ; f:VDerivedForm ; r:Root ; p:Pattern } = \c,f,r,p ->
         { c=c ; f=f ; r=r ; p=p } ;
       in
       case mamma of {
 
-      -- Defective, BELA'
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@( "għ" | "'" ) =>
-        ret (Weak Defective) FormI (mkRoot c1 c2 "għ") (mkPattern v1 v2) ;
+        -- Defective, BELA'
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@( "għ" | "'" ) =>
+          ret (Weak Defective) FormI (mkRoot c1 c2 "għ") (mkPattern v1 v2) ;
 
-      -- Weak Final, MEXA
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel =>
-        ret (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
+        -- Weak Final, MEXA
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel =>
+          ret (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
 
-      -- Hollow, SAB
-      --- TODO determining of middle radical is not right, e.g. SAB = S-J-B
-      c1@#Consonant + v1@"a"  + c3@#Consonant =>
-        ret (Weak Hollow) FormI (mkRoot c1 "w" c3) (mkPattern v1) ;
-      c1@#Consonant + v1@"ie" + c3@#Consonant =>
-        ret (Weak Hollow) FormI (mkRoot c1 "j" c3) (mkPattern v1) ;
+        -- Hollow, SAB
+  --- TODO determining of middle radical is not right, e.g. SAB = S-J-B
+        c1@#Consonant + v1@"a"  + c3@#Consonant =>
+          ret (Weak Hollow) FormI (mkRoot c1 "w" c3) (mkPattern v1) ;
+        c1@#Consonant + v1@"ie" + c3@#Consonant =>
+          ret (Weak Hollow) FormI (mkRoot c1 "j" c3) (mkPattern v1) ;
 
-      -- Weak Assimilative, WAQAF
-      c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
-        ret (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+        -- Weak Assimilative, WAQAF
+        c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
+          ret (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
-      -- Strong Reduplicative, ĦABB
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
-        ret (Strong Reduplicative) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
+        -- Strong Reduplicative, ĦABB
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
+          ret (Strong Reduplicative) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
 
-      -- Strong LiquidMedial, ŻELAQ
-      c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
-        ret (Strong LiquidMedial) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+        -- Strong LiquidMedial, ŻELAQ
+        c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
+          ret (Strong LiquidMedial) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
-      -- Strong Regular, QATEL
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
-        ret (Strong Regular) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+        -- Strong Regular, QATEL
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
+          ret (Strong Regular) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
-      -- Strong Quad, QAĊĊAT
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-        ret (Strong Quad) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
+        -- Strong Quad, QAĊĊAT
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
+          ret (Strong Quad) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
 
-      -- Weak-Final Quad, PINĠA
-      c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
-        ret (Weak QuadWeakFinal) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
+        -- Weak-Final Quad, PINĠA
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
+          ret (Weak QuadWeakFinal) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
 
-      -- Assume it is a loan verb
-      _ => ret Loan FormI mkRoot mkPattern
-    } ;
+        -- Assume it is a loan verb
+        _ => ret Loan FormI mkRoot mkPattern
+      } ;
 
     -- Smart paradigm for building a verb
     mkV : V = overload {
@@ -1042,19 +1041,19 @@ resource ParadigmsMlt = open
     -- Params: Imperative Singular (eg IPPARKJA), Imperative Plural (eg IPPARKJAW)
     conjLoanImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        vocalvowel : Str = case take 1 imp_sg of {
+        euphonicVowel : Str = case take 1 imp_sg of {
           #Consonant => "i" ; -- STABILIXXA > NISTABILIXXA
           _ => []
           } ;
       in
       table {
-        AgP1 Sg    => "n" + vocalvowel + imp_sg ;      -- Jiena NIPPARKJA
-        AgP2 Sg    => "t" + vocalvowel + imp_sg ;  -- Inti TIPPARKJA
-        AgP3Sg Masc  => "j" + vocalvowel + imp_sg ;      -- Huwa JIPPARKJA
-        AgP3Sg Fem  => "t" + vocalvowel + imp_sg ;  -- Hija TIPPARKJA
-        AgP1 Pl    => "n" + vocalvowel + imp_pl ;      -- Aħna NIPPARKJAW
-        AgP2 Pl    => "t" + vocalvowel + imp_pl ;  -- Intom TIPPARKJAW
-        AgP3Pl    => "j" + vocalvowel + imp_pl      -- Huma JIPPARKJAW
+        AgP1 Sg    => "n" + euphonicVowel + imp_sg ;      -- Jiena NIPPARKJA
+        AgP2 Sg    => "t" + euphonicVowel + imp_sg ;  -- Inti TIPPARKJA
+        AgP3Sg Masc  => "j" + euphonicVowel + imp_sg ;      -- Huwa JIPPARKJA
+        AgP3Sg Fem  => "t" + euphonicVowel + imp_sg ;  -- Hija TIPPARKJA
+        AgP1 Pl    => "n" + euphonicVowel + imp_pl ;      -- Aħna NIPPARKJAW
+        AgP2 Pl    => "t" + euphonicVowel + imp_pl ;  -- Intom TIPPARKJAW
+        AgP3Pl    => "j" + euphonicVowel + imp_pl      -- Huma JIPPARKJAW
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense
