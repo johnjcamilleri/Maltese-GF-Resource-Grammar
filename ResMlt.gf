@@ -63,10 +63,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         NRegular -- WIĊĊ
       | NPronSuffix Agr ; -- WIĊĊU
 
-    {- Other... -}
-
-    GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
-
     Animacy =
         Animate
       | Inanimate
@@ -77,24 +73,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Indefinite  -- eg KARTA
       ;
 
---    Person  = P1 | P2 | P3 ;
---    State   = Def | Indef | Const ;
---    Mood    = Ind | Cnj | Jus ;
---    Voice   = Act | Pas ;
-    Origin =
-        Semitic
-      | Romance
-      | English
-      ;
 
-    -- RomanceVType =
-    --     IntegratedARE
-    --   | IntegratedERE
-    --   | IntegratedIRE
-    --   | LooselyIntegrated
-    --   ;
-
---    Order   = Verbal | Nominal ;
+    {- Verb -}
 
     -- Agreement features
     Agr =
@@ -103,21 +83,10 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | AgP3Sg Gender  -- Huwa, Hija
       | AgP3Pl    -- Huma
     ;
-
     -- Agr : Type = {g : Gender ; n : Number ; p : Person} ;
     -- Ag : Gender -> Number -> Person -> Agr = \g,n,p -> {g = g ; n = n ; p = p} ;
     -- agrP1 : Number -> Agr = \n -> Ag {} n P1 ;
     -- agrP3 : Gender -> Number -> Agr = \g,n -> Ag g n P3 ;
-
-    -- Possible tenses
-    Tense =
-        Perf  -- Perfect tense, eg SERAQ
-      | Impf -- Imperfect tense, eg JISRAQ
-      | Imp  -- Imperative, eg ISRAQ
-      -- | PresPart  -- Present Particible. Intransitive and 'motion' verbs only, eg NIEŻEL
-      -- | PastPart  -- Past Particible. Both verbal & adjectival function, eg MISRUQ
-      -- | VerbalNoun  -- Verbal Noun, eg SERQ
-    ;
 
     -- Possible verb forms (tense + person)
     VForm =
@@ -180,13 +149,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     -- Inflection of verbs for pronominal suffixes
     VSuffixForm =
-        VNone  -- eg FTAĦT
-      | VDirect Agr  -- eg FTAĦTU
-      | VIndirect Agr  -- eg FTAĦTLU
-      | VDirInd Agr Agr  -- eg FTAĦTHULU
+        VSuffixNone  -- eg FTAĦT
+      | VSuffixDir Agr  -- eg FTAĦTU
+      | VSuffixInd Agr  -- eg FTAĦTLU
+      | VSuffixDirInd Agr Agr  -- eg FTAĦTHULU
       ;
 
-    -- For Adjectives
+
+    {- Adjective -}
+
+    GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
+
     AForm =
 --        AF Degree GenNum
         APosit GenNum
@@ -196,10 +169,46 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
   oper
 
-    -- Roots & Patterns
+    {- ===== Type declarations ===== -}
+
+    Noun : Type = {
+      s : Noun_Number => NForm => Str ;
+      g : Gender ;
+--      anim : Animacy ; -- is the noun animate? e.g. TABIB
+    } ;
+
+    ProperNoun : Type = {
+      s : Str ;
+      g : Gender ;
+    } ;
+
+    Verb : Type = {
+      s : VForm => Str ;
+--      s : VForm => VSuffixForm => Str ;
+      c : VClass ;
+      f : VDerivedForm ;
+    } ;
+
+    Adjective : Type = {
+      s : AForm => Str ;
+    } ;
+
+
+    {- ===== Some character classes ===== -}
+
+    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
+    CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
+    ImpfDoublingCons : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "t" | "x" | "ż" | "z" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b}
+    LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
+    WeakCons : pattern Str = #( "j" | "w" );
+    Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
+    Digraph : pattern Str = #( "ie" );
+    SemiVowel : pattern Str = #( "għ" | "j" );
+
+
+    {- ===== Roots & Patterns ===== -}
+
     Pattern : Type = {V1, V2 : Str} ;
-    -- Root3 : Type = {K, T, B : Str} ;
-    -- Root4 : Type = Root3 ** {L : Str} ;
     Root : Type = {C1, C2, C3, C4 : Str} ;
 
     mkRoot : Root = overload {
@@ -225,40 +234,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       mkPattern : Str -> Str -> Pattern = \v1,v2 ->
         { V1=v1 ; V2=v2 } ;
       } ;
-
-    -- Some character classes
-    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
-    CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
-    ImpfDoublingCons : pattern Str = #( "d" | "ġ" | "s" | "t" | "ż" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID. --- only used in hollow paradigm (?)
-    LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
-    WeakCons : pattern Str = #( "j" | "w" );
-    Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
-    Digraph : pattern Str = #( "ie" );
-    SemiVowel : pattern Str = #( "għ" | "j" );
-
-    {- ===== Type declarations ===== -}
-
-    Noun : Type = {
-      s : Noun_Number => NForm => Str ;
-      g : Gender ;
---      anim : Animacy ; -- is the noun animate? e.g. TABIB
-    } ;
-
-    ProperNoun : Type = {
-      s : Str ;
-      g : Gender ;
-    } ;
-
-    Verb : Type = {
-      s : VForm => Str ;
---      s : VForm => VSuffixForm => Str ;
-      c : VClass ;
-      f : VDerivedForm ;
-    } ;
-
-    Adjective : Type = {
-      s : AForm => Str ;
-    } ;
 
     {- ===== Conversions ===== -}
 
