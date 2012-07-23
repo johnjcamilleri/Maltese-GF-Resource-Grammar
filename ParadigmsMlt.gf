@@ -326,6 +326,36 @@ resource ParadigmsMlt = open
         -- Assume it is a loan verb
         _ => ret Loan FormI mkRoot mkPattern
       } ;
+{-
+    -- Smart paradigm for building a verb
+    mkV : V = overload {
+
+      -- Tries to do everything just from the mamma of the verb
+      -- Params: mamma
+      mkV : Str -> V = \mamma ->
+        let
+          class = classifyVerb mamma ;
+        in
+        mkVWorst mamma class.r class.p [] class.c class.f ;
+
+      -- Takes an explicit root, when it is not obvious from the mamma
+      -- Params: mamma, root
+      mkV : Str -> Root -> V = \mamma,root ->
+        let
+          class = classifyVerb mamma ;
+        in
+        mkVWorst mamma root class.p [] class.c class.f ;
+
+      -- Takes takes an Imperative of the word for when it behaves less predictably
+      -- Params: mamma, imperative P2Sg
+      mkV : Str -> Str -> V = \mamma,imp_sg ->
+        let
+          class = classifyVerb mamma ;
+        in
+        mkVWorst mamma class.r class.p imp_sg class.c class.f ;
+
+      } ; --end of mkV overload
+-}
 
     -- Smart paradigm for building a verb
     mkV : V = overload {
@@ -373,55 +403,48 @@ resource ParadigmsMlt = open
       mkV : Str -> Str -> V = \mamma,imp_sg ->
         let
           class = classifyVerb mamma ;
-          imp_pl = case class.c of {
-              Strong Regular      => (take 3 imp_sg) + class.r.C3 + "u" ; -- IFTAĦ > IFTĦU
-              Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + class.r.C2 + class.r.C3 + "u" ; -- OĦROĠ > OĦORĠU
-              Strong Reduplicative=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
-              Weak Assimilative   => (take 2 imp_sg) + class.r.C3 + "u" ; -- ASAL > ASLU
-              Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
-              Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
-              Weak Defective      => (take 2 imp_sg) + "i" + class.r.C2 + "għu" ; -- ISMA' > ISIMGĦU
-              Strong Quad         => (take 4 imp_sg) + class.r.C4 + "u" ; -- ĦARBAT > ĦARBTU
-              Weak QuadWeakFinal  => case (dp 1 imp_sg) of {
-                "a" => imp_sg + "w" ; -- KANTA > KANTAW
-                "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
-                _ => Predef.error("Unaccounted case FH4748J")
-                } ;
-              Loan                => (conjLoanImp mamma) ! Pl -- IPPARKJA > IPPARKJAW
-            } ;
-        in lin V {
-          s = table {
-            VPerf agr => case class.c of {
-              Strong Regular      => (conjStrongPerf class.r class.p) ;
-              Strong LiquidMedial => (conjLiquidMedialPerf class.r class.p) ;
-              Strong Reduplicative=> (conjReduplicativePerf class.r class.p) ;
-              Weak Assimilative   => (conjAssimilativePerf class.r class.p) ;
-              Weak Hollow         => (conjHollowPerf class.r class.p) ;
-              Weak WeakFinal      => (conjWeakFinalPerf class.r class.p) ;
-              Weak Defective      => (conjDefectivePerf class.r class.p) ;
-              Strong Quad         => (conjQuadPerf class.r class.p) ;
-              Weak QuadWeakFinal  => (conjQuadWeakPerf imp_sg) ;
-              Loan                => (conjLoanPerf mamma)
-              } ! agr ;
-            VImpf agr => case class.c of {
-              Strong Regular      => (conjStrongImpf imp_sg imp_pl) ;
-              Strong LiquidMedial => (conjLiquidMedialImpf imp_sg imp_pl) ;
-              Strong Reduplicative=> (conjReduplicativeImpf imp_sg imp_pl) ;
-              Weak Assimilative   => (conjAssimilativeImpf imp_sg imp_pl) ;
-              Weak Hollow         => (conjHollowImpf imp_sg imp_pl) ;
-              Weak WeakFinal      => (conjWeakFinalImpf imp_sg imp_pl) ;
-              Weak Defective      => (conjDefectiveImpf imp_sg imp_pl) ;
-              Strong Quad         => (conjQuadImpf imp_sg imp_pl) ;
-              Weak QuadWeakFinal  => (conjQuadWeakImpf imp_sg imp_pl) ;
-              Loan                => (conjLoanImpf imp_sg imp_pl)
-              } ! agr ;
-            VImp n => table { Sg => imp_sg ; Pl => imp_pl } ! n
-            } ;
-          c = class.c ;
-          f = class.f ;
+        in
+        case class.c of {
+          Strong Regular      => strongV class.r class.p imp_sg ;
+          Strong LiquidMedial => liquidMedialV class.r class.p imp_sg ;
+          Strong Reduplicative=> reduplicativeV class.r class.p imp_sg ;
+          Weak Assimilative   => assimilativeV class.r class.p imp_sg ;
+          Weak Hollow         => hollowV class.r class.p imp_sg ;
+          Weak WeakFinal      => weakFinalV class.r class.p imp_sg ;
+          Weak Defective      => defectiveV class.r class.p imp_sg ;
+          Strong Quad         => quadV class.r class.p imp_sg ;
+          Weak QuadWeakFinal  => quadWeakV class.r class.p imp_sg ;
+          Loan                => loanV mamma imp_sg
         } ;
 
+      --- Do we need a version for: mamma, root, imp_sg ?
+
       } ; --end of mkV overload
+
+
+    impPlFromSg : Root -> Pattern -> Str -> VClass = \root,patt,imp_sg,class ->
+      case class of {
+        Strong Regular      => (take 3 imp_sg) + root.C3 + "u" ; -- IFTAĦ > IFTĦU
+        Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" ; -- OĦROĠ > OĦORĠU
+        Strong Reduplicative=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
+        Weak Assimilative   => (take 2 imp_sg) + root.C3 + "u" ; -- ASAL > ASLU
+        Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
+        Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
+        Weak Defective      => (take 2 imp_sg) + "i" + root.C2 + "għu" ; -- ISMA' > ISIMGĦU
+        Strong Quad         => (take 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
+        Weak QuadWeakFinal  => case (dp 1 imp_sg) of {
+          "a" => imp_sg + "w" ; -- KANTA > KANTAW
+          "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
+          _ => Predef.error("Unaccounted case FH4748J")
+          } ;
+        Loan                => case imp_sg of {
+            _ + "ixxi" => (tk 1 imp_sg) + "u" ; -- IDDIŻUBIDIXXI > IDDIŻUBIDIXXU
+            _ => imp_sg + "w" -- IPPARKJA > IPPARKJAW
+          }
+      } ;
+
+
+    {- ~~~ General use verb operations ~~~ -}
 
     -- Conjugate imperfect tense from imperative by adding initial letters
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
@@ -849,10 +872,27 @@ resource ParadigmsMlt = open
 
     -- Regular strong verb ("sħiħ"), eg KITEB
     -- Params: Root, Pattern
-    strongV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjStrongImp r p ;
-      in lin V {
+    strongV : V = overload {
+
+      strongV : Root -> Pattern -> V = \root,patt ->
+        let
+          imp = conjStrongImp root patt ;
+        in
+        strongVWorst root patt imp ;
+
+      strongV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 3 imp_sg) + root.C3 + "u" ;
+            } ;
+        in
+        strongVWorst root patt imp ;
+
+      } ;
+
+    strongVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
           VPerf agr => ( conjStrongPerf r p ) ! agr ;
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
