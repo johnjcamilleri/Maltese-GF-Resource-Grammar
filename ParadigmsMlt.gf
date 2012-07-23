@@ -45,7 +45,7 @@ resource ParadigmsMlt = open
       } ;
 
     -- Helper function for inferring noun gender from singulative
-    -- Refer {MDG} pg190
+    -- Refer {MDG pg190}
     inferNounGender : Str -> Gender = \sing ->
       case sing of {
         _ + "aġni" => Fem ;
@@ -62,8 +62,7 @@ resource ParadigmsMlt = open
       } ;
 
 
-    -- Overloaded function for building a noun
-    -- Return: Noun
+    -- Smart paradigm for building a noun
     mkN : N = overload {
 
       -- Take the singular and infer gender & plural.
@@ -348,7 +347,6 @@ resource ParadigmsMlt = open
           Strong Quad         => quadV class.r class.p ;
           Weak QuadWeakFinal  => quadWeakV class.r class.p ;
           Loan                => loanV mamma
---          _ => Predef.error("Unimplemented")
         } ;
 
       -- Takes an explicit root, when it is not obvious from the mamma
@@ -368,7 +366,6 @@ resource ParadigmsMlt = open
           Strong Quad         => quadV root class.p ;
           Weak QuadWeakFinal  => quadWeakV root class.p ;
           Loan                => loanV mamma
---          _ => Predef.error("Unimplemented")
         } ;
 
       -- Takes takes an Imperative of the word for when it behaves less predictably
