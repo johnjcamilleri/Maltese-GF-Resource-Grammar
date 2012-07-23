@@ -98,6 +98,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       -- | VVerbalNoun      -- Verbal Noun
     ;
 
+    -- Inflection of verbs for pronominal suffixes
+    VSuffixForm =
+        VSuffixNone  -- eg FTAĦT
+      | VSuffixDir Agr  -- eg FTAĦTU
+      | VSuffixInd Agr  -- eg FTAĦTLU
+      | VSuffixDirInd GenNum Agr  -- eg FTAĦTHULU. D.O. is necessarily 3rd person.
+      ;
+
     VDerivedForm =
         FormI
       | FormII
@@ -119,14 +127,12 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       -- | Romance
       -- | English
       ;
-
     VStrongClass =
         Regular
       | LiquidMedial
       | Reduplicative
       | Quad
       ;
-
     VWeakClass =
         Assimilative
       | Hollow
@@ -134,26 +140,16 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Defective
       | QuadWeakFinal
       ;
-
     -- VQuadClass =
     --     BiradicalBase
     --   | RepeatedC3
     --   | RepeatedC1
     --   | AdditionalC4
     --   ;
-
-    VRomanceClass =
-        Integrated
-      | NonIntegrated
-      ;
-
-    -- Inflection of verbs for pronominal suffixes
-    VSuffixForm =
-        VSuffixNone  -- eg FTAĦT
-      | VSuffixDir Agr  -- eg FTAĦTU
-      | VSuffixInd Agr  -- eg FTAĦTLU
-      | VSuffixDirInd Agr Agr  -- eg FTAĦTHULU
-      ;
+    -- VRomanceClass =
+    --     Integrated
+    --   | NonIntegrated
+    --   ;
 
 
     {- Adjective -}
@@ -184,7 +180,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     Verb : Type = {
       s : VForm => Str ;
---      s : VForm => VSuffixForm => Str ;
+--      s : VForm => VSuffixForm => Polarity => Str ;
       c : VClass ;
       f : VDerivedForm ;
     } ;
@@ -214,7 +210,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     mkRoot : Root = overload {
       mkRoot : Root =
         { C1=[] ; C2=[] ; C3=[] ; C4=[] } ;
-      mkRoot : Str -> Root = \root ->
+      mkRoot : Str -> Root = \root -> --- this will fail when any of roots is GĦ (2 characters)!
         let root = toLower root in
         case (charAt 1 root) of {
           "-" => { C1=(charAt 0 root) ; C2=(charAt 2 root) ; C3=(charAt 4 root) ; C4=(charAt 6 root) } ; -- "k-t-b"

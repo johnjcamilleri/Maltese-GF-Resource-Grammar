@@ -169,7 +169,6 @@ resource ParadigmsMlt = open
 
           _ => coll
         } ;
-        -------
         sing : Str = case stem of {
           _ => stem + "a"
         } ;
@@ -295,7 +294,7 @@ resource ParadigmsMlt = open
           ret (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
 
         -- Hollow, SAB
-  --- TODO determining of middle radical is not right, e.g. SAB = S-J-B
+        -- --- determining of middle radical is not right, e.g. SAB = S-J-B
         c1@#Consonant + v1@"a"  + c3@#Consonant =>
           ret (Weak Hollow) FormI (mkRoot c1 "w" c3) (mkPattern v1) ;
         c1@#Consonant + v1@"ie" + c3@#Consonant =>
@@ -440,7 +439,416 @@ resource ParadigmsMlt = open
         AgP3Pl    => "j" + imp_pl  -- Huma JIŻOLQU
       } ;
 
-    {- ----- Strong Verb ----- -}
+    -- Build table of pronominal suffixes
+    -- Perfective tense
+    verbPerfPronSuffixTable : (Agr => Str) -> (Agr => VSuffixForm => Str) = \tbl ->
+      table {
+        AgP1 Sg => -- Jiena FTAĦT
+          let
+            ftaht = tbl ! AgP1 Sg ;
+          in
+          table {
+            VSuffixNone => ftaht ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftaht + "ek" ;  -- Jiena FTAĦTEK
+                AgP3Sg Masc  => ftaht + "u" ;  -- Jiena FTAĦTU
+                AgP3Sg Fem  => ftaht + "ha" ;  -- Jiena FTAĦTHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftaht + "kom" ;  -- Jiena FTAĦTKOM
+                AgP3Pl    => ftaht + "hom"  -- Jiena FTAĦTHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftaht + "lek" ;  -- Jiena FTAĦTLEK
+                AgP3Sg Masc  => ftaht + "lu" ;  -- Jiena FTAĦTLU
+                AgP3Sg Fem  => ftaht + "ilha" ;  -- Jiena FTAĦTILHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftaht + "ilkom" ;  -- Jiena FTAĦTILKOM
+                AgP3Pl    => ftaht + "ilhom"  -- Jiena FTAĦTILHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftaht + "hulek" ;  -- Jiena FTAĦTHULEK
+                AgP3Sg Masc  => ftaht + "hulu" ;  -- Jiena FTAĦTHULU
+                AgP3Sg Fem  => ftaht + "hulha" ;  -- Jiena FTAĦTHULHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftaht + "hulkom" ;  -- Jiena FTAĦTHULKOM
+                AgP3Pl    => ftaht + "hulhom"  -- Jiena FTAĦTHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftaht + "hielek" ;  -- Jiena FTAĦTHIELEK
+                AgP3Sg Masc  => ftaht + "hielu" ;  -- Jiena FTAĦTHIELU
+                AgP3Sg Fem  => ftaht + "hielha" ;  -- Jiena FTAĦTHIELHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftaht + "hielkom" ;  -- Jiena FTAĦTHIELKOM
+                AgP3Pl    => ftaht + "hielhom"  -- Jiena FTAĦTHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftaht + "homlok" ;  -- Jiena FTAĦTHOMLOK
+                AgP3Sg Masc  => ftaht + "homlu" ;  -- Jiena FTAĦTHOMLU
+                AgP3Sg Fem  => ftaht + "homlha" ;  -- Jiena FTAĦTOMHLA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftaht + "homlkom" ;  -- Jiena FTAĦTHOMLKOM
+                AgP3Pl    => ftaht + "homlhom"  -- Jiena FTAĦTHOMLHOM
+              }
+          } ;
+        AgP2 Sg => -- Inti FTAĦT
+          let
+            ftaht = tbl ! AgP2 Sg ;
+          in
+          table {
+            VSuffixNone => ftaht ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => ftaht + "ni" ; -- Inti FTAĦTNI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftaht + "u" ;  -- Inti FTAĦTU
+                AgP3Sg Fem  => ftaht + "ha" ;  -- Inti FTAĦTHA
+                AgP1 Pl    => ftaht + "na" ; -- Inti FTAĦTNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftaht + "hom"  -- Inti FTAĦTHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => ftaht + "li" ; -- Inti FTAĦTLI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftaht + "lu" ;  -- Inti FTAĦTLU
+                AgP3Sg Fem  => ftaht + "ilha" ;  -- Inti FTAĦTILHA
+                AgP1 Pl    => ftaht + "ilna" ; -- Inti FTAĦTILNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftaht + "ilhom"  -- Inti FTAĦTILHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => ftaht + "huli" ; -- Inti FTAĦTHULI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftaht + "hulu" ;  -- Inti FTAĦTHULU
+                AgP3Sg Fem  => ftaht + "hulha" ;  -- Inti FTAĦTHULHA
+                AgP1 Pl    => ftaht + "hulna" ; -- Inti FTAĦTHULNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftaht + "hulhom"  -- Inti FTAĦTHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => ftaht + "hieli" ; -- Inti FTAĦTHIELI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftaht + "hielu" ;  -- Inti FTAĦTHIELU
+                AgP3Sg Fem  => ftaht + "hielha" ;  -- Inti FTAĦTHIELHA
+                AgP1 Pl    => ftaht + "hielna" ; -- Inti FTAĦTHIELNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftaht + "hielhom"  -- Inti FTAĦTHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => ftaht + "homli" ; -- Inti FTAĦTHOMLI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftaht + "homlu" ;  -- Inti FTAĦTHOMLU
+                AgP3Sg Fem  => ftaht + "homlha" ;  -- Inti FTAĦTHOMLHA
+                AgP1 Pl    => ftaht + "homlna" ; -- Inti FTAĦTHOMLNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftaht + "homlhom"  -- Inti FTAĦTHOMLHOM
+              }
+          } ;
+        AgP3Sg Masc => -- Huwa FETAĦ
+          let
+            fetah = tbl ! AgP3Sg Masc ;
+            feth = tk 2 fetah + dp 1 fetah ; --- this will likely fail in many cases
+          in
+          table {
+            VSuffixNone => fetah ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => fetah + "ni" ; -- Huwa FETAĦNI
+                AgP2 Sg    => feth + "ek" ; -- Huwa FETĦEK
+                AgP3Sg Masc  => feth + "u" ;  -- Huwa FETĦU
+                AgP3Sg Fem  => fetah + "ha" ;  -- Huwa FETAĦHA
+                AgP1 Pl    => fetah + "na" ; -- Huwa FETAĦNA
+                AgP2 Pl    => fetah + "kom" ; -- Huwa FETAĦKOM
+                AgP3Pl    => fetah + "hom"  -- Huwa FETAĦHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => fetah + "li" ; -- Huwa FETAĦLI
+                AgP2 Sg    => fetah + "lek" ; -- Huwa FETAĦLEK
+                AgP3Sg Masc  => fetah + "lu" ;  -- Huwa FETAĦLU
+                AgP3Sg Fem  => feth + "ilha" ;  -- Huwa FETĦILHA
+                AgP1 Pl    => feth + "ilna" ; -- Huwa FETĦILNA
+                AgP2 Pl    => feth + "ilkom" ; -- Huwa FETĦILKOM
+                AgP3Pl    => feth + "ilhom"  -- Huwa FETĦILHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => fetah + "huli" ; -- Huwa FETAĦHULI
+                AgP2 Sg    => fetah + "hulek" ; -- Huwa FETAĦHULEK
+                AgP3Sg Masc  => fetah + "hulu" ;  -- Huwa FETAĦHULU
+                AgP3Sg Fem  => fetah + "hulha" ;  -- Huwa FETAĦHULHA
+                AgP1 Pl    => fetah + "hulna" ; -- Huwa FETAĦHULNA
+                AgP2 Pl    => fetah + "hulkom" ; -- Huwa FETAĦHULKOM
+                AgP3Pl    => fetah + "hulhom"  -- Huwa FETAĦHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => fetah + "hieli" ; -- Huwa FETAĦHIELI
+                AgP2 Sg    => fetah + "hielek" ; -- Huwa FETAĦHIELEK
+                AgP3Sg Masc  => fetah + "hielu" ;  -- Huwa FETAĦHIELU
+                AgP3Sg Fem  => fetah + "hielha" ;  -- Huwa FETAĦHIELHA
+                AgP1 Pl    => fetah + "hielna" ; -- Huwa FETAĦHIELNA
+                AgP2 Pl    => fetah + "hielkom" ; -- Huwa FETAĦIELKOM
+                AgP3Pl    => fetah + "hielhom"  -- Huwa FETAĦHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => fetah + "homli" ; -- Huwa FETAĦHOMLI
+                AgP2 Sg    => fetah + "homlok" ; -- Huwa FETAĦHOMLOK
+                AgP3Sg Masc  => fetah + "homlu" ;  -- Huwa FETAĦHOMLU
+                AgP3Sg Fem  => fetah + "homlha" ;  -- Huwa FETAĦHOMLHA
+                AgP1 Pl    => fetah + "homlna" ; -- Huwa FETAĦHOMLNA
+                AgP2 Pl    => fetah + "homlkom" ; -- Huwa FETAĦHOMLKOM
+                AgP3Pl    => fetah + "homlhom"  -- Huwa FETAĦHOMLHOM
+              }
+          } ;
+        AgP3Sg Fem => -- Hija FETĦET
+          let
+            fethet = tbl ! AgP3Sg Fem ;
+            fethit = tk 2 fethet + "it" ; --- this will likely fail in many cases
+          in
+          table {
+            VSuffixNone => fethet ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => fethit + "ni" ; -- Hija FETĦITNI
+                AgP2 Sg    => fethit + "ek" ; -- Hija FETĦITEK
+                AgP3Sg Masc  => fethit + "u" ;  -- Hija FETĦITU
+                AgP3Sg Fem  => fethit + "ha" ;  -- Hija FETĦITHA
+                AgP1 Pl    => fethit + "na" ; -- Hija FETĦITNA
+                AgP2 Pl    => fethit + "kom" ; -- Hija FETĦITKOM
+                AgP3Pl    => fethit + "hom"  -- Hija FETĦITHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => fethit + "li" ; -- Hija FETĦITLI
+                AgP2 Sg    => fethit + "lek" ; -- Hija FETĦITLEK
+                AgP3Sg Masc  => fethit + "lu" ;  -- Hija FETĦITLU
+                AgP3Sg Fem  => fethit + "ilha" ;  -- Hija FETĦITILHA
+                AgP1 Pl    => fethit + "ilna" ; -- Hija FETĦITILNA
+                AgP2 Pl    => fethit + "ilkom" ; -- Hija FETĦITILKOM
+                AgP3Pl    => fethit + "ilhom"  -- Hija FETĦITILHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => fethit + "huli" ; -- Hija FETĦITHULI
+                AgP2 Sg    => fethit + "hulek" ; -- Hija FETĦITHULEK
+                AgP3Sg Masc  => fethit + "hulu" ;  -- Hija FETĦITHULU
+                AgP3Sg Fem  => fethit + "hunlha" ;  -- Hija FETĦITHULHA
+                AgP1 Pl    => fethit + "hulna" ; -- Hija FETĦITHULNA
+                AgP2 Pl    => fethit + "hulkom" ; -- Hija FETĦITHULKOM
+                AgP3Pl    => fethit + "hulhom"  -- Hija FETĦITHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => fethit + "hieli" ; -- Hija FETĦITHIELI
+                AgP2 Sg    => fethit + "hielek" ; -- Hija FETĦITHIELEK
+                AgP3Sg Masc  => fethit + "hielu" ;  -- Hija FETĦITHIELU
+                AgP3Sg Fem  => fethit + "hielha" ;  -- Hija FETĦITHIELHA
+                AgP1 Pl    => fethit + "hielna" ; -- Hija FETĦITHIELNA
+                AgP2 Pl    => fethit + "hielkom" ; -- Hija FETĦITHIELKOM
+                AgP3Pl    => fethit + "hielhom"  -- Hija FETĦITHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => fethit + "homli" ; -- Hija FETĦITHOMLI
+                AgP2 Sg    => fethit + "homlok" ; -- Hija FETĦITHOMLOK
+                AgP3Sg Masc  => fethit + "homlu" ;  -- Hija FETĦITHOMLU
+                AgP3Sg Fem  => fethit + "homlha" ;  -- Hija FETĦITHOMLHA
+                AgP1 Pl    => fethit + "homlna" ; -- Hija FETĦITHOMLNA
+                AgP2 Pl    => fethit + "homlkom" ; -- Hija FETĦITHOMLKOM
+                AgP3Pl    => fethit + "homlhom"  -- Hija FETĦITHOMLHOM
+              }
+          } ;
+        AgP1 Pl => -- Aħna FTAĦNA
+          let
+            ftahna = tbl ! AgP1 Pl ;
+            ftahn = tk 1 ftahna ;
+          in
+          table {
+            VSuffixNone => ftahna ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftahn + "iek" ;  -- Aħna FTAĦNIEK
+                AgP3Sg Masc  => ftahn + "ieh" ;  -- Aħna FTAĦNIEH
+                AgP3Sg Fem  => ftahn + "ieha" ;  -- Aħna FTAĦNIEHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftahn + "iekom" ;  -- Aħna FTAĦNIEKOM
+                AgP3Pl    => ftahn + "iehom"  -- Aħna FTAĦNIEHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftahn + "ielek" ;  -- Aħna FTAĦNIELEK
+                AgP3Sg Masc  => ftahn + "ielu" ;  -- Aħna FTAĦNIELU
+                AgP3Sg Fem  => ftahn + "ielha" ;  -- Aħna FTAĦNIELHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftahn + "ielkom" ;  -- Aħna FTAĦNIELKOM
+                AgP3Pl    => ftahn + "ielhom"  -- Aħna FTAĦNIELHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftahn + "iehulek" ;  -- Aħna FTAĦNIEHULEK
+                AgP3Sg Masc  => ftahn + "iehulu" ;  -- Aħna FTAĦNIEHULU
+                AgP3Sg Fem  => ftahn + "iehulha" ;  -- Aħna FTAĦNIEHULHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftahn + "iehulkom" ;  -- Aħna FTAĦNIEHULKOM
+                AgP3Pl    => ftahn + "iehulhom"  -- Aħna FTAĦNIEHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftahn + "ihielek" ;  -- Aħna FTAĦNIHIELEK
+                AgP3Sg Masc  => ftahn + "ihielu" ;  -- Aħna FTAĦNIHIELU
+                AgP3Sg Fem  => ftahn + "ihielha" ;  -- Aħna FTAĦNIHIELHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftahn + "ihielkom" ;  -- Aħna FTAĦNIHIELKOM
+                AgP3Pl    => ftahn + "ihielhom"  -- Aħna FTAĦNIHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => [] ;
+                AgP2 Sg    => ftahn + "iehomlok" ;  -- Aħna FTAĦNIEHOMLOK
+                AgP3Sg Masc  => ftahn + "iehomlu" ;  -- Aħna FTAĦNIEHOMLU
+                AgP3Sg Fem  => ftahn + "iehomlha" ;  -- Aħna FTAĦNIEHOMLHA
+                AgP1 Pl    => [] ;
+                AgP2 Pl    => ftahn + "iehomlkom" ;  -- Aħna FTAĦNIEHOMLKOM
+                AgP3Pl    => ftahn + "iehomlhom"  -- Aħna FTAĦNIEHOMLHOM
+              }
+          } ;
+        AgP2 Pl => -- Intom FTAĦTU
+          let
+            ftahtu = tbl ! AgP2 Pl ;
+          in
+          table {
+            VSuffixNone => ftahtu ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => ftahtu + "ni" ; -- Intom FTAĦTUNI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftahtu + "h" ;  -- Intom FTAĦTUH
+                AgP3Sg Fem  => ftahtu + "ha" ;  -- Intom FTAĦTUHA
+                AgP1 Pl    => ftahtu + "na" ; -- Intom FTAĦTUNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftahtu + "hom"  -- Intom FTAĦTUHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => ftahtu + "li" ; -- Intom FTAĦTULI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftahtu + "lu" ;  -- Intom FTAĦTULU
+                AgP3Sg Fem  => ftahtu + "lha" ;  -- Intom FTAĦTULHA
+                AgP1 Pl    => ftahtu + "la" ; -- Intom FTAĦTULNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftahtu + "lhom"  -- Intom FTAĦTULHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => ftahtu + "huli" ; -- Intom FTAĦTUHULI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftahtu + "hulu" ;  -- Intom FTAĦTUHULU
+                AgP3Sg Fem  => ftahtu + "hulha" ;  -- Intom FTAĦTUHULHA
+                AgP1 Pl    => ftahtu + "hulna" ; -- Intom FTAĦTUHULNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftahtu + "hulhom"  -- Intom FTAĦTUHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => ftahtu + "hieli" ; -- Intom FTAĦTUHIELI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftahtu + "hielu" ;  -- Intom FTAĦTUHIELU
+                AgP3Sg Fem  => ftahtu + "hielha" ;  -- Intom FTAĦTUHIELHA
+                AgP1 Pl    => ftahtu + "hielna" ; -- Intom FTAĦTUHIELNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftahtu + "hielhom"  -- Intom FTAĦTUHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => ftahtu + "homli" ; -- Intom FTAĦTUHOMLI
+                AgP2 Sg    => [] ;
+                AgP3Sg Masc  => ftahtu + "homlu" ;  -- Intom FTAĦTUHOMLU
+                AgP3Sg Fem  => ftahtu + "homlha" ;  -- Intom FTAĦTUHOMLHA
+                AgP1 Pl    => ftahtu + "homlna" ; -- Intom FTAĦTUHOMLNA
+                AgP2 Pl    => [] ;
+                AgP3Pl    => ftahtu + "homlhom"  -- Intom FTAĦTUHOMLHOM
+              }
+          } ;
+        AgP3Pl => -- Huma FETĦU
+          let
+            fethu = tbl ! AgP3Pl ;
+          in
+          table {
+            VSuffixNone => fethu ;
+            VSuffixDir agr =>
+              case agr of {
+                AgP1 Sg    => fethu + "ni" ; -- Huma FETĦUNI
+                AgP2 Sg    => fethu + "k" ; -- Huma FETĦUK
+                AgP3Sg Masc  => fethu + "h" ;  -- Huma FETĦUH
+                AgP3Sg Fem  => fethu + "ha" ;  -- Huma FETĦUHA
+                AgP1 Pl    => fethu + "na" ; -- Huma FETĦUNA
+                AgP2 Pl    => fethu + "kom" ; -- Huma FETĦUKOM
+                AgP3Pl    => fethu + "hom"  -- Huma FETĦUHOM
+              } ;
+            VSuffixInd agr =>
+              case agr of {
+                AgP1 Sg    => fethu + "li" ; -- Huma FETĦULI
+                AgP2 Sg    => fethu + "lek" ; -- Huma FETĦULEK
+                AgP3Sg Masc  => fethu + "lu" ;  -- Huma FETĦULU
+                AgP3Sg Fem  => fethu + "lha" ;  -- Huma FETĦULHA
+                AgP1 Pl    => fethu + "lna" ; -- Huma FETĦULNA
+                AgP2 Pl    => fethu + "lkom" ; -- Huma FETĦULKOM
+                AgP3Pl    => fethu + "lhom"  -- Huma FETĦULHOM
+              } ;
+            VSuffixDirInd (GSg Masc) agr =>
+              case agr of {
+                AgP1 Sg    => fethu + "huli" ; -- Huma FETĦUHULI
+                AgP2 Sg    => fethu + "hulek" ; -- Huma FETĦUHULEK
+                AgP3Sg Masc  => fethu + "hulu" ;  -- Huma FETĦUHULU
+                AgP3Sg Fem  => fethu + "hulha" ;  -- Huma FETĦUHULHA
+                AgP1 Pl    => fethu + "hulna" ; -- Huma FETĦUHULNA
+                AgP2 Pl    => fethu + "hulkom" ; -- Huma FETĦUHULKOM
+                AgP3Pl    => fethu + "hulhom"  -- Huma FETĦUHULHOM
+              } ;
+            VSuffixDirInd (GSg Fem) agr =>
+              case agr of {
+                AgP1 Sg    => fethu + "hieli" ; -- Huma FETĦUHIELI
+                AgP2 Sg    => fethu + "hielek" ; -- Huma FETĦUHIELEK
+                AgP3Sg Masc  => fethu + "hielu" ;  -- Huma FETĦUHIELU
+                AgP3Sg Fem  => fethu + "hielha" ;  -- Huma FETĦUHIELHA
+                AgP1 Pl    => fethu + "hielna" ; -- Huma FETĦUHIELNA
+                AgP2 Pl    => fethu + "hielkom" ; -- Huma FETĦUHIELKOM
+                AgP3Pl    => fethu + "hielhom"  -- Huma FETĦUHIELHOM
+              } ;
+            VSuffixDirInd (GPl) agr =>
+              case agr of {
+                AgP1 Sg    => fethu + "homli" ; -- Huma FETĦUHOMLI
+                AgP2 Sg    => fethu + "homlok" ; -- Huma FETĦUHOMLOK
+                AgP3Sg Masc  => fethu + "homlu" ;  -- Huma FETĦUHOMLU
+                AgP3Sg Fem  => fethu + "homlha" ;  -- Huma FETĦUHOMLHA
+                AgP1 Pl    => fethu + "homlna" ; -- Huma FETĦUHOMLNA
+                AgP2 Pl    => fethu + "homlkom" ; -- Huma FETĦUHOMLKOM
+                AgP3Pl    => fethu + "homlhom"  -- Huma FETĦUHOMLHOM
+              }
+          }
+        } ;
+
+
+    {- ~~~ Strong Verb ~~~ -}
 
     -- Regular strong verb ("sħiħ"), eg KITEB
     -- Params: Root, Pattern
@@ -504,7 +912,7 @@ resource ParadigmsMlt = open
           Pl => stem_pl + "u"  -- Intom: IKTBU
         } ;
 
-    {- ----- Liquid-Medial Verb ----- -}
+    {- ~~~ Liquid-Medial Verb ~~~ -}
 
     -- Liquid-medial strong verb, eg ŻELAQ
     -- Params: Root, Pattern
@@ -568,7 +976,7 @@ resource ParadigmsMlt = open
           Pl => stem_pl + "u"  -- Intom: IŻOLQU
         } ;
 
-    {- ----- Reduplicative Verb ----- -}
+    {- ~~~ Reduplicative Verb ~~~ -}
 
     -- Reduplicative strong verb ("trux"), eg ĦABB
     -- Params: Root, Pattern
@@ -619,7 +1027,7 @@ resource ParadigmsMlt = open
           Pl => stem_sg + "u"  -- Intom: ĦOBBU
         } ;
 
-    {- ----- Assimilative Verb ----- -}
+    {- ~~~ Assimilative Verb ~~~ -}
 
     -- Assimilative weak verb, eg WASAL
     -- Params: Root, Pattern
@@ -665,7 +1073,7 @@ resource ParadigmsMlt = open
         Pl => p.V1 + root.C2 + root.C3 + "u"  -- Intom: ASLU
       } ;
 
-    {- ----- Hollow Verb ----- -}
+    {- ~~~ Hollow Verb ~~~ -}
 
     -- Hollow weak verb, eg SAR (S-J-R)
     -- Params: Root, Pattern
@@ -749,7 +1157,7 @@ resource ParadigmsMlt = open
         Pl => sir + "u"  -- Intom: SIRU
       } ;
 
-    {- ----- Weak-Final Verb ----- -}
+    {- ~~~ Weak-Final Verb ~~~ -}
 
     -- Weak-Final verb, eg MEXA (M-X-J)
     weakFinalV : Root -> Pattern -> V = \r,p ->
@@ -797,7 +1205,7 @@ resource ParadigmsMlt = open
         Pl => "i" + root.C1 + root.C2 + "u"  -- Intom: IMXU
       } ;
 
-    {- ----- Defective Verb ----- -}
+    {- ~~~ Defective Verb ~~~ -}
 
     -- Defective verb, eg QALA' (Q-L-GĦ)
     -- Make a verb by calling generate functions for each tense
@@ -848,7 +1256,7 @@ resource ParadigmsMlt = open
           Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: AQILGĦU / IBŻGĦU
         } ;
 
-    {- ----- Quadriliteral Verb (Strong) ----- -}
+    {- ~~~ Quadriliteral Verb (Strong) ~~~ -}
 
     -- Make a Quad verb, eg DENDEL (D-L-D-L)
     -- Params: Root, Pattern
@@ -909,7 +1317,7 @@ resource ParadigmsMlt = open
         Pl => root.C1 + p.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DENDLU
       } ;
 
-    {- ----- Quadriliteral Verb (Weak Final) ----- -}
+    {- ~~~ Quadriliteral Verb (Weak Final) ~~~ -}
 
     -- Make a weak-final Quad verb, eg SERVA (S-R-V-J)
     -- Params: Root, Pattern
@@ -989,7 +1397,7 @@ resource ParadigmsMlt = open
       } ;
 
 
-    {- ----- Non-semitic verbs ----- -}
+    {- ~~~ Non-semitic verbs ~~~ -}
 
     -- Make a weak-final Quad verb, eg SERVA (S-R-V-J)
     -- Params: Root, Pattern
