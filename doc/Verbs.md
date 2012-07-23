@@ -6,10 +6,11 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 ## Checklist
 
 1. ~~Conjugations for first-form semitic verbs in Perfect, Imperfect, and Imperative~~
-1. Handling of derived-form verbs
+1. Derived-form verbs
 1. Non-semitic verbs (romance, English-loan)
 1. Polarity, e.g. _oħroġ_ vs _toħroġx_
 1. Inflection for direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_
+1. Two-place verbs (V2)
 
 ## Classification
 
@@ -43,6 +44,25 @@ Verb classification according to {MDG}, {T2M} and {GM}.
 ### Uncertainties
 
 - Is _WERŻAQ_ weak or strong? {T2M app} says strong, {GM pg48} says weak.
+
+
+## Pronominal suffixes
+
+Verb can have the following pronominal suffix combinations:
+
+- None, e.g. _FTAĦT_
+- Direct Object, e.g. _FTAĦTU_
+- Indirect Object, e.g. _FTAĦTLU_
+- Direct Object + Indirect Object, .e.g _FTAĦTHULU_  
+  In this case the D.O. is necessarily 3rd person (Masc/Fem/Plural).
+
+## Polarity
+
+Verb inflects for polarity:
+
+- Positive, e.g. _FETAĦ_
+- Negative, e.g. _[MA] FETAĦX_  
+  The negative form typically follows the clitic _ma_, although there exist constructions where this is not the case, e.g. _mur ara jekk fetaħx_
 
 ## Tense
 

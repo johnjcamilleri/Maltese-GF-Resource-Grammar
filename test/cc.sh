@@ -1,5 +1,5 @@
 #! /bin/sh
-# Example: $ cc.sh mkV \"kiteb\"
+# Example: $ cc.sh 'mkV "kiteb"'
 
 echo "\
 i -retain ParadigmsMlt.gf
