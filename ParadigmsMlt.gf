@@ -326,36 +326,6 @@ resource ParadigmsMlt = open
         -- Assume it is a loan verb
         _ => ret Loan FormI mkRoot mkPattern
       } ;
-{-
-    -- Smart paradigm for building a verb
-    mkV : V = overload {
-
-      -- Tries to do everything just from the mamma of the verb
-      -- Params: mamma
-      mkV : Str -> V = \mamma ->
-        let
-          class = classifyVerb mamma ;
-        in
-        mkVWorst mamma class.r class.p [] class.c class.f ;
-
-      -- Takes an explicit root, when it is not obvious from the mamma
-      -- Params: mamma, root
-      mkV : Str -> Root -> V = \mamma,root ->
-        let
-          class = classifyVerb mamma ;
-        in
-        mkVWorst mamma root class.p [] class.c class.f ;
-
-      -- Takes takes an Imperative of the word for when it behaves less predictably
-      -- Params: mamma, imperative P2Sg
-      mkV : Str -> Str -> V = \mamma,imp_sg ->
-        let
-          class = classifyVerb mamma ;
-        in
-        mkVWorst mamma class.r class.p imp_sg class.c class.f ;
-
-      } ; --end of mkV overload
--}
 
     -- Smart paradigm for building a verb
     mkV : V = overload {
@@ -414,7 +384,7 @@ resource ParadigmsMlt = open
           Weak Defective      => defectiveV class.r class.p imp_sg ;
           Strong Quad         => quadV class.r class.p imp_sg ;
           Weak QuadWeakFinal  => quadWeakV class.r class.p imp_sg ;
-          Loan                => loanV mamma imp_sg
+          Loan                => loanV mamma
         } ;
 
       --- Do we need a version for: mamma, root, imp_sg ?
@@ -422,7 +392,7 @@ resource ParadigmsMlt = open
       } ; --end of mkV overload
 
 
-    impPlFromSg : Root -> Pattern -> Str -> VClass = \root,patt,imp_sg,class ->
+    impPlFromSg : Root -> Pattern -> Str -> VClass -> Str = \root,patt,imp_sg,class ->
       case class of {
         Strong Regular      => (take 3 imp_sg) + root.C3 + "u" ; -- IFTAĦ > IFTĦU
         Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" ; -- OĦROĠ > OĦORĠU
@@ -871,30 +841,29 @@ resource ParadigmsMlt = open
     {- ~~~ Strong Verb ~~~ -}
 
     -- Regular strong verb ("sħiħ"), eg KITEB
-    -- Params: Root, Pattern
     strongV : V = overload {
 
+      -- Params: root, pattern
       strongV : Root -> Pattern -> V = \root,patt ->
-        let
-          imp = conjStrongImp root patt ;
-        in
-        strongVWorst root patt imp ;
+        let imp = conjStrongImp root patt
+        in strongVWorst root patt imp ;
 
+      -- Params: root, pattern, imperative P2Sg
       strongV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 3 imp_sg) + root.C3 + "u" ;
+            Pl => (take 3 imp_sg) + root.C3 + "u" -- IFTAĦ > IFTĦU
             } ;
-        in
-        strongVWorst root patt imp ;
+        in strongVWorst root patt imp ;
 
       } ;
 
+    -- Worst case for strong verb
     strongVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjStrongPerf r p ) ! agr ;
+          VPerf agr => ( conjStrongPerf root patt ) ! agr ;
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -952,32 +921,48 @@ resource ParadigmsMlt = open
     {- ~~~ Liquid-Medial Verb ~~~ -}
 
     -- Liquid-medial strong verb, eg ŻELAQ
-    -- Params: Root, Pattern
-    liquidMedialV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjLiquidMedialImp r p ;
-      in lin V {
+    liquidMedialV : V = overload {
+
+      -- Params: root, pattern
+      liquidMedialV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjLiquidMedialImp root patt
+        in liquidMedialVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      liquidMedialV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" -- OĦROĠ > OĦORĠU
+            } ;
+        in liquidMedialVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for liquid medial strong verb
+    liquidMedialVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjLiquidMedialPerf r p ) ! agr ;
+          VPerf agr => ( conjLiquidMedialPerf root patt ) ! agr ;
           VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
-        } ;
+          } ;
         c = Strong LiquidMedial ;
         f = FormI ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjLiquidMedialPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjLiquidMedialPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        zlaq = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C3 ;
-        zelq = root.C1 + p.V1 + root.C2 + root.C3 ;
+        zlaq = root.C1 + root.C2 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + root.C3 ;
+        zelq = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
         table {
           AgP1 Sg    => zlaq + "t" ;  -- Jiena ŻLAQT
           AgP2 Sg    => zlaq + "t" ;  -- Inti ŻLAQT
-          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;  -- Huwa ŻELAQ
-          AgP3Sg Fem  => zelq + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija ŻELQET
+          AgP3Sg Masc  => root.C1 + patt.V1 + root.C2 + patt.V2 + root.C3 ;  -- Huwa ŻELAQ
+          AgP3Sg Fem  => zelq + (case patt.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija ŻELQET
           AgP1 Pl    => zlaq + "na" ;  -- Aħna ŻLAQNA
           AgP2 Pl    => zlaq + "tu" ;  -- Intom ŻLAQTU
           AgP3Pl    => zelq + "u"  -- Huma ŻELQU
@@ -989,9 +974,9 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjLiquidMedialImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjLiquidMedialImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        stem_sg = case (p.V1 + p.V2) of {
+        stem_sg = case (patt.V1 + patt.V2) of {
           "aa" => "i" + root.C1 + root.C2 + "o" + root.C3 ; -- TALAB > ITLOB
           "ae" => "o" + root.C1 + root.C2 + "o" + root.C3 ; -- ĦAREĠ > OĦROĠ
           "ee" => "e" + root.C1 + root.C2 + "e" + root.C3 ; -- ĦELES > EĦLES
@@ -999,7 +984,7 @@ resource ParadigmsMlt = open
           "ie" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- DILEK > IDLEK
           "oo" => "i" + root.C1 + root.C2 + "o" + root.C3   -- XOROB > IXROB
         } ;
-        stem_pl = case (p.V1 + p.V2) of {
+        stem_pl = case (patt.V1 + patt.V2) of {
           "aa" => "i" + root.C1 + "o" + root.C2 + root.C3 ; -- TALAB > ITOLBU
           "ae" => "o" + root.C1 + "o" + root.C2 + root.C3 ; -- ĦAREĠ > OĦORĠU
           "ee" => "e" + root.C1 + "i" + root.C2 + root.C3 ; -- ĦELES > EĦILSU
@@ -1016,13 +1001,29 @@ resource ParadigmsMlt = open
     {- ~~~ Reduplicative Verb ~~~ -}
 
     -- Reduplicative strong verb ("trux"), eg ĦABB
-    -- Params: Root, Pattern
-    reduplicativeV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjReduplicativeImp r p ;
-      in lin V {
+    reduplicativeV : V = overload {
+
+      -- Params: root, pattern
+      reduplicativeV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjReduplicativeImp root patt
+        in reduplicativeVWorst root patt imp ;
+        
+      -- Params: root, pattern, imperative P2Sg
+      reduplicativeV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => imp_sg + "u" -- ŻOMM > ŻOMMU
+            } ;
+        in reduplicativeVWorst root patt imp ;
+
+      };
+
+    -- Worst case for reduplicated verb
+    reduplicativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjReduplicativePerf r p ) ! agr ;
+          VPerf agr => ( conjReduplicativePerf root patt ) ! agr ;
           VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -1032,9 +1033,9 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjReduplicativePerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjReduplicativePerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        habb = root.C1 + p.V1 + root.C2 + root.C3 ;
+        habb = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
         table {
           AgP1 Sg    => habb + "ejt" ;  -- Jiena ĦABBEJT
@@ -1067,13 +1068,29 @@ resource ParadigmsMlt = open
     {- ~~~ Assimilative Verb ~~~ -}
 
     -- Assimilative weak verb, eg WASAL
-    -- Params: Root, Pattern
-    assimilativeV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjAssimilativeImp r p ;
-      in lin V {
+    assimilativeV : V = overload {
+
+      -- Params: root, pattern
+      assimilativeV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjAssimilativeImp root patt
+        in assimilativeVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      assimilativeV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 2 imp_sg) + root.C3 + "u" -- ASAL > ASLU
+            } ;
+        in assimilativeVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for assimilative verb
+    assimilativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjAssimilativePerf r p ) ! agr ;
+          VPerf agr => ( conjAssimilativePerf root patt ) ! agr ;
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -1083,10 +1100,10 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjAssimilativePerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjAssimilativePerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        wasal = root.C1 + p.V1 + root.C2 + p.V2 + root.C3 ;
-        wasl  = root.C1 + p.V1 + root.C2 + root.C3 ;
+        wasal = root.C1 + patt.V1 + root.C2 + patt.V2 + root.C3 ;
+        wasl  = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
         table {
           AgP1 Sg    => wasal + "t" ;  -- Jiena WASALT
@@ -1104,22 +1121,38 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjAssimilativeImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjAssimilativeImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       table {
-        Sg => p.V1 + root.C2 + p.V2 + root.C3 ;  -- Inti: ASAL
-        Pl => p.V1 + root.C2 + root.C3 + "u"  -- Intom: ASLU
+        Sg => patt.V1 + root.C2 + patt.V2 + root.C3 ;  -- Inti: ASAL
+        Pl => patt.V1 + root.C2 + root.C3 + "u"  -- Intom: ASLU
       } ;
 
     {- ~~~ Hollow Verb ~~~ -}
 
     -- Hollow weak verb, eg SAR (S-J-R)
-    -- Params: Root, Pattern
-    hollowV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjHollowImp r p ;
-      in lin V {
+    hollowV : V = overload {
+
+      -- Params: root, pattern
+      hollowV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjHollowImp root patt
+        in hollowVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      hollowV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => imp_sg + "u" -- SIR > SIRU
+            } ;
+        in hollowVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for hollow verb
+    hollowVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjHollowPerf r p ) ! agr ;
+          VPerf agr => ( conjHollowPerf root patt ) ! agr ;
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -1130,10 +1163,10 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
     -- Refer: http://blog.johnjcamilleri.com/2012/07/vowel-patterns-maltese-hollow-verb/
-    conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        sar = root.C1 + p.V1 + root.C3 ;
-        sir = case p.V1 + root.C2 of {
+        sar = root.C1 + patt.V1 + root.C3 ;
+        sir = case patt.V1 + root.C2 of {
           "aw" => root.C1 + "o" + root.C3 ; -- DAM, FAR, SAQ (most common case)
           _ => root.C1 + "i" + root.C3
           }
@@ -1179,9 +1212,9 @@ resource ParadigmsMlt = open
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
     -- Refer: http://blog.johnjcamilleri.com/2012/07/vowel-patterns-maltese-hollow-verb/
-    conjHollowImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjHollowImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        sir = case p.V1 + root.C2 of {
+        sir = case patt.V1 + root.C2 of {
           "aw" => root.C1 + "u" + root.C3 ; -- DAM, FAR, SAQ (most common case)
           "aj" => root.C1 + "i" + root.C3 ; -- ĠAB, SAB, TAR
           "iej" => root.C1 + "i" + root.C3 ; -- FIEQ, RIED, ŻIED
@@ -1197,12 +1230,29 @@ resource ParadigmsMlt = open
     {- ~~~ Weak-Final Verb ~~~ -}
 
     -- Weak-Final verb, eg MEXA (M-X-J)
-    weakFinalV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjWeakFinalImp r p ;
-      in lin V {
+    weakFinalV : V = overload {
+
+      -- Params: root, pattern
+      weakFinalV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjWeakFinalImp root patt
+        in weakFinalVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      weakFinalV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 3 imp_sg) + "u" -- IMXI > IMXU
+            } ;
+        in weakFinalVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for weakFinal verb
+    weakFinalVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjWeakFinalPerf r p ) ! agr ;
+          VPerf agr => ( conjWeakFinalPerf root patt ) ! agr ;
           VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -1212,18 +1262,18 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjWeakFinalPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjWeakFinalPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         mxej : Str = case root.C1 of {
-          #LiquidCons => "i" + root.C1 + root.C2 + p.V1 + root.C3 ;
-          _ => root.C1 + root.C2 + p.V1 + root.C3
+          #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
+          _ => root.C1 + root.C2 + patt.V1 + root.C3
           } ;
       in
         table {
           --- i tal-leħen needs to be added here!
           AgP1 Sg    => mxej + "t" ;  -- Jiena IMXEJT
           AgP2 Sg    => mxej + "t" ;  -- Inti IMXEJT
-          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 ;  -- Huwa MEXA
+          AgP3Sg Masc  => root.C1 + patt.V1 + root.C2 + patt.V2 ;  -- Huwa MEXA
           AgP3Sg Fem  => root.C1 + root.C2 + "iet" ;  -- Hija IMXIET
           AgP1 Pl    => mxej + "na" ;  -- Aħna IMXEJNA
           AgP2 Pl    => mxej + "tu" ;  -- Intom IMXEJTU
@@ -1236,7 +1286,7 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjWeakFinalImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjWeakFinalImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       table {
         Sg => "i" + root.C1 + root.C2 + "i" ;  -- Inti: IMXI
         Pl => "i" + root.C1 + root.C2 + "u"  -- Intom: IMXU
@@ -1245,14 +1295,29 @@ resource ParadigmsMlt = open
     {- ~~~ Defective Verb ~~~ -}
 
     -- Defective verb, eg QALA' (Q-L-GĦ)
-    -- Make a verb by calling generate functions for each tense
-    -- Params: Root, Pattern
-    defectiveV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjDefectiveImp r p ;
-      in lin V {
+    defectiveV : V = overload {
+
+      -- Params: root, pattern
+      defectiveV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjDefectiveImp root patt
+        in defectiveVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      defectiveV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 2 imp_sg) + "i" + root.C2 + "għu" -- ISMA' > ISIMGĦU
+            } ;
+        in defectiveVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for defective verb
+    defectiveVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjDefectivePerf r p ) ! agr ;
+          VPerf agr => ( conjDefectivePerf root patt ) ! agr ;
           VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
         } ;
@@ -1262,16 +1327,16 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjDefectivePerf : Root -> Pattern -> ( Agr => Str ) = \root,p ->
+    conjDefectivePerf : Root -> Pattern -> ( Agr => Str ) = \root,patt ->
       let
-        qlaj = root.C1 + root.C2 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + "j" ;
-        qalgh = root.C1 + p.V1 + root.C2 + root.C3 ;
+        qlaj = root.C1 + root.C2 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + "j" ;
+        qalgh = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
         table {
           AgP1 Sg    => qlaj + "t" ;  -- Jiena QLAJT
           AgP2 Sg    => qlaj + "t" ;  -- Inti QLAJT
-          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + p.V2 + "'" ;  -- Huwa QALA'
-          AgP3Sg Fem  => qalgh + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
+          AgP3Sg Masc  => root.C1 + patt.V1 + root.C2 + patt.V2 + "'" ;  -- Huwa QALA'
+          AgP3Sg Fem  => qalgh + (case patt.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija QALGĦET
           AgP1 Pl    => qlaj + "na" ;  -- Aħna QLAJNA
           AgP2 Pl    => qlaj + "tu" ;  -- Intom QLAJTU
           AgP3Pl    => qalgh + "u"  -- Huma QALGĦU
@@ -1283,45 +1348,61 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,p ->
+    conjDefectiveImp : Root -> Pattern -> ( Number => Str ) = \root,patt ->
       let
-        v1 = case p.V1 of { "e" => "i" ; _ => p.V1 } ;
+        v1 = case patt.V1 of { "e" => "i" ; _ => patt.V1 } ;
         v_pl : Str = case root.C2 of { #LiquidCons => "i" ; _ => "" } ; -- some verbs require "i" insertion in middle (eg AQILGĦU)
       in
         table {
-          Sg => v1 + root.C1 + root.C2 + p.V2 + "'" ;  -- Inti:  AQLA' / IBŻA'
+          Sg => v1 + root.C1 + root.C2 + patt.V2 + "'" ;  -- Inti:  AQLA' / IBŻA'
           Pl => v1 + root.C1 + v_pl + root.C2 + root.C3 + "u"  -- Intom: AQILGĦU / IBŻGĦU
         } ;
 
     {- ~~~ Quadriliteral Verb (Strong) ~~~ -}
 
     -- Make a Quad verb, eg DENDEL (D-L-D-L)
-    -- Params: Root, Pattern
-    quadV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjQuadImp r p ;
-      in lin V {
+    quadV : V = overload {
+
+      -- Params: root, pattern
+      quadV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjQuadImp root patt
+        in quadVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      quadV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => (take 4 imp_sg) + root.C4 + "u" -- ĦARBAT > ĦARBTU
+            } ;
+        in quadVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for quad verb
+    quadVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      lin V {
         s = table {
-          VPerf agr => ( conjQuadPerf r p ) ! agr ;
+          VPerf agr => ( conjQuadPerf root patt ) ! agr ;
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
-          } ;
+        } ;
         c = Strong Quad ;
         f = FormI ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjQuadPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
+    conjQuadPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        dendil = root.C1 + p.V1 + root.C2 + root.C3 + (case p.V2 of {"e" => "i" ; _ => p.V2 }) + root.C4 ;
-        dendl = root.C1 + p.V1 + root.C2 + root.C3 + root.C4 ;
+        dendil = root.C1 + patt.V1 + root.C2 + root.C3 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + root.C4 ;
+        dendl = root.C1 + patt.V1 + root.C2 + root.C3 + root.C4 ;
       in
       table {
         AgP1 Sg    => dendil + "t" ;  -- Jiena DENDILT
         AgP2 Sg    => dendil + "t" ;  -- Inti DENDILT
-        AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Huwa DENDIL
-        AgP3Sg Fem  => dendl + (case p.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DENDLET
+        AgP3Sg Masc  => root.C1 + patt.V1 + root.C2 + root.C3 + patt.V2 + root.C4 ;  -- Huwa DENDIL
+        AgP3Sg Fem  => dendl + (case patt.V2 of {"o" => "o" ; _ => "e"}) + "t" ;  -- Hija DENDLET
         AgP1 Pl    => dendil + "na" ;  -- Aħna DENDILNA
         AgP2 Pl    => dendil + "tu" ;  -- Intom DENDILTU
         AgP3Pl    => dendl + "u"  -- Huma DENDLU
@@ -1348,61 +1429,77 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjQuadImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjQuadImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       table {
-        Sg => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 + root.C4 ;  -- Inti:  DENDEL
-        Pl => root.C1 + p.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DENDLU
+        Sg => root.C1 + patt.V1 + root.C2 + root.C3 + patt.V2 + root.C4 ;  -- Inti:  DENDEL
+        Pl => root.C1 + patt.V1 + root.C2 + root.C3 + root.C4 + "u"  -- Intom: DENDLU
       } ;
 
     {- ~~~ Quadriliteral Verb (Weak Final) ~~~ -}
 
     -- Make a weak-final Quad verb, eg SERVA (S-R-V-J)
-    -- Params: Root, Pattern
-    quadWeakV : Root -> Pattern -> V = \r,p ->
-      let
-        imp = conjQuadWeakImp r p ;
-      in lin V {
+    quadWeakV : V = overload {
+
+      -- Params: root, pattern
+      quadWeakV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjQuadWeakImp root patt
+        in quadWeakVWorst root patt imp ;
+
+      -- Params: root, pattern, imperative P2Sg
+      quadWeakV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+        let
+          imp = table {
+            Sg => imp_sg ;
+            Pl => case (dp 1 imp_sg) of {
+              "a" => imp_sg + "w" ; -- KANTA > KANTAW
+              _ => (tk 1 imp_sg) + "u" -- SERVI > SERVU
+              }
+            } ;
+        in quadWeakVWorst root patt imp ;
+
+      } ;
+
+    -- Worst case for quadWeak verb
+    quadWeakVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp -> lin V {
         s = table {
-          VPerf agr => ( conjQuadWeakPerf r p ) ! agr ;
+          VPerf agr => ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
-          } ;
+        } ;
         c = Weak QuadWeakFinal ;
         f = FormI ;
       } ;
 
     -- Conjugate entire verb in PERFECT tense
-    conjQuadWeakPerf : (Agr => Str) = overload {
-
-      -- Params: Root, Pattern
-      conjQuadWeakPerf : Root -> Pattern -> (Agr => Str) = \root,p ->
-        let
-          --- this is known to fail for KANTA, but that seems like a less common case
-          serve = root.C1 + p.V1 + root.C2 + root.C3 + "e" ;
-        in
-        table {
-          AgP1 Sg    => serve + "jt" ;  -- Jiena SERVEJT
-          AgP2 Sg    => serve + "jt" ;  -- Inti SERVEJT
-          AgP3Sg Masc  => root.C1 + p.V1 + root.C2 + root.C3 + p.V2 ;  -- Huwa SERVA
-          AgP3Sg Fem  => root.C1 + p.V1 + root.C2 + root.C3 + "iet" ; -- Hija SERVIET
-          AgP1 Pl    => serve + "jna" ;  -- Aħna SERVEJNA
-          AgP2 Pl    => serve + "jtu" ;  -- Intom SERVEJTU
-          AgP3Pl    => serve + "w"  -- Huma SERVEW
-        } ;
-
-      -- This case exists for KANTA, and presumably any other Italian -are verbs.
-      -- Params: Stem
-      conjQuadWeakPerf : Str -> (Agr => Str) = \kanta ->
-        table {
-          AgP1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
-          AgP2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
-          AgP3Sg Masc  => kanta ;  -- Huwa KANTA
-          AgP3Sg Fem  => kanta + "t" ; -- Hija KANTAT
-          AgP1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
-          AgP2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
-          AgP3Pl    => kanta + "w"  -- Huma KANTAW
-        } ;
-
+    -- Params: Stem
+    conjQuadWeakPerf : Root -> Pattern -> Str -> (Agr => Str) = \root,patt,imp_sg ->
+      case dp 1 imp_sg of {
+        "a" => -- KANTA
+          let
+            kanta = imp_sg ;
+          in
+          table {
+            AgP1 Sg    => kanta + "jt" ;  -- Jiena KANTAJT
+            AgP2 Sg    => kanta + "jt" ;  -- Inti KANTAJT
+            AgP3Sg Masc  => kanta ;  -- Huwa KANTA
+            AgP3Sg Fem  => kanta + "t" ; -- Hija KANTAT
+            AgP1 Pl    => kanta + "jna" ;  -- Aħna KANTAJNA
+            AgP2 Pl    => kanta + "jtu" ;  -- Intom KANTAJTU
+            AgP3Pl    => kanta + "w"  -- Huma KANTAW
+          } ;
+        _ => -- SERVI
+          let
+            serve = root.C1 + patt.V1 + root.C2 + root.C3 + "e" ;
+          in
+          table {
+            AgP1 Sg    => serve + "jt" ;  -- Jiena SERVEJT
+            AgP2 Sg    => serve + "jt" ;  -- Inti SERVEJT
+            AgP3Sg Masc  => root.C1 + patt.V1 + root.C2 + root.C3 + patt.V2 ;  -- Huwa SERVA
+            AgP3Sg Fem  => root.C1 + patt.V1 + root.C2 + root.C3 + "iet" ; -- Hija SERVIET
+            AgP1 Pl    => serve + "jna" ;  -- Aħna SERVEJNA
+            AgP2 Pl    => serve + "jtu" ;  -- Intom SERVEJTU
+            AgP3Pl    => serve + "w"  -- Huma SERVEW
+          }
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
@@ -1426,18 +1523,18 @@ resource ParadigmsMlt = open
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjQuadWeakImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjQuadWeakImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       table {
         --- this is known to fail for KANTA, but that seems like a less common case
-        Sg => root.C1 + p.V1 + root.C2 + root.C3 + "i" ;  -- Inti: SERVI
-        Pl => root.C1 + p.V1 + root.C2 + root.C3 + "u"  -- Intom: SERVU
+        Sg => root.C1 + patt.V1 + root.C2 + root.C3 + "i" ;  -- Inti: SERVI
+        Pl => root.C1 + patt.V1 + root.C2 + root.C3 + "u"  -- Intom: SERVU
       } ;
 
 
     {- ~~~ Non-semitic verbs ~~~ -}
 
-    -- Make a weak-final Quad verb, eg SERVA (S-R-V-J)
-    -- Params: Root, Pattern
+    -- Make a loan verb, eg IPPARKJA
+    -- Params: mamma
     loanV : Str -> V = \mamma ->
       let
         imp = conjLoanImp mamma ;
@@ -1451,7 +1548,8 @@ resource ParadigmsMlt = open
         f = FormI ;
       } ;
 
-    -- Params: Mamma
+    -- Conjugate entire verb in PERFECTIVE tense
+    -- Params: mamma
     conjLoanPerf : Str -> (Agr => Str) = \mamma ->
       case mamma of {
         _ + "ixxa" =>
