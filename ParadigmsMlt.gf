@@ -164,7 +164,7 @@ resource ParadigmsMlt = open
       let
         stem : Str = case coll of {
           -- This can only apply when there are 2 syllables in the word
-          _ + #Vowel + #Consonant + #Vowel + K@#Consonant => tk 2 coll + K ; -- eg GĦADAM -> GĦADM-
+          _ + #Vowel + #Consonant + #Vowel + K@#Consonant => dropSfx 2 coll + K ; -- eg GĦADAM -> GĦADM-
 
           _ => coll
         } ;
@@ -200,15 +200,15 @@ resource ParadigmsMlt = open
       let
         -- Remove either 1 or 2 l's
         prepStem : Str = case prep of {
-          _ + "ll" => tk 2 prep ;
-          _ + "l"  => tk 1 prep ;
+          _ + "ll" => dropSfx 2 prep ;
+          _ + "l"  => dropSfx 1 prep ;
           _ => prep -- this should never happen, I don't think
         }
       in
       case noun of {
         ("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
         ("għ" | #Vowel) + _ => case prep of {
-          ("fil"|"bil") => (take 1 prep) + "l-" + noun ;
+          ("fil"|"bil") => (takePfx 1 prep) + "l-" + noun ;
           _ => prep + "-" + noun
         };
         K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
@@ -222,8 +222,8 @@ resource ParadigmsMlt = open
       -- noun
     abbrevPrepositionIndef : Str -> Str -> Str = \prep,noun ->
       let
-        initPrepLetter = take 1 prep ;
-        initNounLetter = take 1 noun
+        initPrepLetter = takePfx 1 prep ;
+        initNounLetter = takePfx 1 noun
       in
       if_then_Str (isNil noun) [] (
       case prep of {
@@ -407,7 +407,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 3 imp_sg) + root.C3 + "u" -- IFTAĦ > IFTĦU
+            Pl => (takePfx 3 imp_sg) + root.C3 + "u" -- IFTAĦ > IFTĦU
             } ;
         in strongVWorst root patt imp ;
 
@@ -417,9 +417,9 @@ resource ParadigmsMlt = open
     strongVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjStrongPerf root patt ) ! agr ;
-          VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjStrongPerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Strong Regular ;
         f = FormI ;
@@ -441,7 +441,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" -- OĦROĠ > OĦORĠU
+            Pl => (takePfx 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" -- OĦROĠ > OĦORĠU
             } ;
         in liquidMedialVWorst root patt imp ;
 
@@ -451,9 +451,9 @@ resource ParadigmsMlt = open
     liquidMedialVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjLiquidMedialPerf root patt ) ! agr ;
-          VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjLiquidMedialPerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
           } ;
         c = Strong LiquidMedial ;
         f = FormI ;
@@ -484,9 +484,9 @@ resource ParadigmsMlt = open
     reduplicativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjReduplicativePerf root patt ) ! agr ;
-          VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjReduplicativePerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Strong Reduplicative ;
         f = FormI ;
@@ -507,7 +507,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 2 imp_sg) + root.C3 + "u" -- ASAL > ASLU
+            Pl => (takePfx 2 imp_sg) + root.C3 + "u" -- ASAL > ASLU
             } ;
         in assimilativeVWorst root patt imp ;
 
@@ -517,9 +517,9 @@ resource ParadigmsMlt = open
     assimilativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjAssimilativePerf root patt ) ! agr ;
-          VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjAssimilativePerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Weak Assimilative ;
         f = FormI ;
@@ -550,9 +550,9 @@ resource ParadigmsMlt = open
     hollowVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjHollowPerf root patt ) ! agr ;
-          VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjHollowPerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Weak Hollow ;
         f = FormI ;
@@ -573,7 +573,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 3 imp_sg) + "u" -- IMXI > IMXU
+            Pl => (takePfx 3 imp_sg) + "u" -- IMXI > IMXU
             } ;
         in weakFinalVWorst root patt imp ;
 
@@ -583,9 +583,9 @@ resource ParadigmsMlt = open
     weakFinalVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjWeakFinalPerf root patt ) ! agr ;
-          VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjWeakFinalPerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Weak WeakFinal ;
         f = FormI ;
@@ -606,7 +606,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 2 imp_sg) + "i" + root.C2 + "għu" -- ISMA' > ISIMGĦU
+            Pl => (takePfx 2 imp_sg) + "i" + root.C2 + "għu" -- ISMA' > ISIMGĦU
             } ;
         in defectiveVWorst root patt imp ;
 
@@ -616,9 +616,9 @@ resource ParadigmsMlt = open
     defectiveVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjDefectivePerf root patt ) ! agr ;
-          VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjDefectivePerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Weak Defective ;
         f = FormI ;
@@ -639,7 +639,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (take 4 imp_sg) + root.C4 + "u" -- ĦARBAT > ĦARBTU
+            Pl => (takePfx 4 imp_sg) + root.C4 + "u" -- ĦARBAT > ĦARBTU
             } ;
         in quadVWorst root patt imp ;
 
@@ -649,9 +649,9 @@ resource ParadigmsMlt = open
     quadVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       lin V {
         s = table {
-          VPerf agr => ( conjQuadPerf root patt ) ! agr ;
-          VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjQuadPerf root patt ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Strong Quad ;
         f = FormI ;
@@ -672,9 +672,9 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => case (dp 1 imp_sg) of {
+            Pl => case (takeSfx 1 imp_sg) of {
               "a" => imp_sg + "w" ; -- KANTA > KANTAW
-              _ => (tk 1 imp_sg) + "u" -- SERVI > SERVU
+              _ => (dropSfx 1 imp_sg) + "u" -- SERVI > SERVU
               }
             } ;
         in quadWeakVWorst root patt imp ;
@@ -684,9 +684,9 @@ resource ParadigmsMlt = open
     -- Worst case for quadWeak verb
     quadWeakVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp -> lin V {
         s = table {
-          VPerf agr => ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
-          VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
         } ;
         c = Weak QuadWeakFinal ;
         f = FormI ;
@@ -701,9 +701,9 @@ resource ParadigmsMlt = open
         imp = conjLoanImp mamma ;
       in lin V {
         s = table {
-          VPerf agr => ( conjLoanPerf mamma ) ! agr ;
-          VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    imp ! n
+          VPerf agr => verbPerfPronSuffixTable ( conjLoanPerf mamma ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
           } ;
         c = Loan ;
         f = FormI ;
@@ -788,7 +788,7 @@ resource ParadigmsMlt = open
     -- Determine femininine form of adjective from masculine
     determineAdjFem : Str -> Str ;
     determineAdjFem masc = case masc of {
-      _ + "ef" => (tk 2 masc) + "fa" ; -- NIEXEF
+      _ + "ef" => (dropSfx 2 masc) + "fa" ; -- NIEXEF
       _ + "u" => (init masc) + "a" ; -- BRAVU
       _ + "i" => masc + "ja" ; -- MIMLI
       _ => masc + "a" -- VOJT

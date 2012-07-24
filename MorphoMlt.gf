@@ -1,4 +1,4 @@
--- MorphoMlt.gf: scary morphology operations which needs its own elbow space
+-- MorphoMlt.gf: scary morphology operations which needs their own elbow space
 --
 -- Maltese Resource Grammar Library
 -- John J. Camilleri, 2012
@@ -130,7 +130,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         AgP3Sg Masc => -- Huwa FETAĦ
           let
             fetah = tbl ! AgP3Sg Masc ;
-            feth = tk 2 fetah + dp 1 fetah ; --- this will likely fail in many cases
+            feth = dropSfx 2 fetah + takeSfx 1 fetah ; --- this will likely fail in many cases
           in
           table {
             VSuffixNone => fetah ;
@@ -188,7 +188,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         AgP3Sg Fem => -- Hija FETĦET
           let
             fethet = tbl ! AgP3Sg Fem ;
-            fethit = tk 2 fethet + "it" ; --- this will likely fail in many cases
+            fethit = dropSfx 2 fethet + "it" ; --- this will likely fail in many cases
           in
           table {
             VSuffixNone => fethet ;
@@ -246,7 +246,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         AgP1 Pl => -- Aħna FTAĦNA
           let
             ftahna = tbl ! AgP1 Pl ;
-            ftahn = tk 1 ftahna ;
+            ftahn = dropSfx 1 ftahna ;
           in
           table {
             VSuffixNone => ftahna ;
@@ -557,21 +557,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- -- Derive imperative plural from singular
     -- impPlFromSg : Root -> Pattern -> Str -> VClass -> Str = \root,patt,imp_sg,class ->
     --   case class of {
-    --     Strong Regular      => (take 3 imp_sg) + root.C3 + "u" ; -- IFTAĦ > IFTĦU
-    --     Strong LiquidMedial => (take 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" ; -- OĦROĠ > OĦORĠU
+    --     Strong Regular      => (takePfx 3 imp_sg) + root.C3 + "u" ; -- IFTAĦ > IFTĦU
+    --     Strong LiquidMedial => (takePfx 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" ; -- OĦROĠ > OĦORĠU
     --     Strong Reduplicative=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
-    --     Weak Assimilative   => (take 2 imp_sg) + root.C3 + "u" ; -- ASAL > ASLU
+    --     Weak Assimilative   => (takePfx 2 imp_sg) + root.C3 + "u" ; -- ASAL > ASLU
     --     Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
-    --     Weak WeakFinal      => (take 3 imp_sg) + "u" ; -- IMXI > IMXU
-    --     Weak Defective      => (take 2 imp_sg) + "i" + root.C2 + "għu" ; -- ISMA' > ISIMGĦU
-    --     Strong Quad         => (take 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
-    --     Weak QuadWeakFinal  => case (dp 1 imp_sg) of {
+    --     Weak WeakFinal      => (takePfx 3 imp_sg) + "u" ; -- IMXI > IMXU
+    --     Weak Defective      => (takePfx 2 imp_sg) + "i" + root.C2 + "għu" ; -- ISMA' > ISIMGĦU
+    --     Strong Quad         => (takePfx 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
+    --     Weak QuadWeakFinal  => case (takeSfx 1 imp_sg) of {
     --       "a" => imp_sg + "w" ; -- KANTA > KANTAW
-    --       "i" => (tk 1 imp_sg) + "u" ; -- SERVI > SERVU
+    --       "i" => (dropSfx 1 imp_sg) + "u" ; -- SERVI > SERVU
     --       _ => Predef.error("Unaccounted case FH4748J")
     --       } ;
     --     Loan                => case imp_sg of {
-    --         _ + "ixxi" => (tk 1 imp_sg) + "u" ; -- IDDIŻUBIDIXXI > IDDIŻUBIDIXXU
+    --         _ + "ixxi" => (dropSfx 1 imp_sg) + "u" ; -- IDDIŻUBIDIXXI > IDDIŻUBIDIXXU
     --         _ => imp_sg + "w" -- IPPARKJA > IPPARKJAW
     --       }
     --   } ;
@@ -769,7 +769,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
     conjHollowImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        d = take 1 imp_sg ;
+        d = takePfx 1 imp_sg ;
       in
       case d of {
         --- Basing the reduplication based on first letter alone is pure speculation. Seems fine though.
@@ -931,7 +931,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Conjugate entire verb in PERFECT tense
     -- Params: Stem
     conjQuadWeakPerf : Root -> Pattern -> Str -> (Agr => Str) = \root,patt,imp_sg ->
-      case dp 1 imp_sg of {
+      case takeSfx 1 imp_sg of {
         "a" => -- KANTA
           let
             kanta = imp_sg ;
@@ -997,7 +997,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       case mamma of {
         _ + "ixxa" =>
           let
-            issugger = tk 4 mamma ;
+            issugger = dropSfx 4 mamma ;
           in
           table {
           AgP1 Sg    => issugger + "ejt" ;  -- Jiena ISSUĠĠEREJT
@@ -1027,7 +1027,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Params: Imperative Singular (eg IPPARKJA), Imperative Plural (eg IPPARKJAW)
     conjLoanImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       let
-        euphonicVowel : Str = case take 1 imp_sg of {
+        euphonicVowel : Str = case takePfx 1 imp_sg of {
           #Consonant => "i" ; -- STABILIXXA > NISTABILIXXA
           _ => []
           } ;
@@ -1047,11 +1047,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjLoanImp : Str -> (Number => Str) = \mamma ->
       table {
         Sg => case mamma of {
-          _ + "ixxa" => (tk 1 mamma) + "i" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXI
+          _ + "ixxa" => (dropSfx 1 mamma) + "i" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXI
           _ => mamma -- IPPARKJA > IPPARKJA
           } ;
         Pl => case mamma of {
-          _ + "ixxa" => (tk 1 mamma) + "u" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXU
+          _ + "ixxa" => (dropSfx 1 mamma) + "u" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXU
           _ => mamma + "w" -- IPPARKJA > IPPARKJAW
           }
       } ;

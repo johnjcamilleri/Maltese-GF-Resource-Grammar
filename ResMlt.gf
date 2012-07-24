@@ -179,7 +179,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     } ;
 
     Verb : Type = {
-      s : VForm => Str ;
+--      s : VForm => Str ;
+      s : VForm => VSuffixForm => Str ;
 --      s : VForm => VSuffixForm => Polarity => Str ;
       c : VClass ;
       f : VDerivedForm ;
