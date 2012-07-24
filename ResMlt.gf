@@ -242,10 +242,16 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     {- ===== Useful helper functions ===== -}
 
+    -- New names for the pre/suffix operations
+    takePfx = Predef.take ;
+    dropPfx = Predef.drop ;
+    takeSfx = Predef.dp ;
+    dropSfx = Predef.tk ;
+
     -- Get the character at the specific index (0-based).
     -- Negative indexes behave as 0 (first character). Out of range indexes return the empty string.
     charAt : Int -> Str -> Str ;
-    charAt i s = take 1 (drop i s) ;
+    charAt i s = takePfx 1 (dropPfx i s) ;
 
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;
