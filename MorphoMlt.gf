@@ -9,6 +9,30 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
   oper
 
+    -- Build polarity table for verbs
+    verbPolarityTable : (VForm => VSuffixForm => Str) -> (VForm => VSuffixForm => Polarity => Str) = \tbl ->
+      \\vf,sfxf =>
+      let
+        s = tbl ! vf ! sfxf ;
+      in table {
+        Pos => s ;
+        Neg => case s of {
+          "" => [] ;
+          x + "ie" + y + "a" => x + "i" + y + "iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
+          x + "a" => x + "iex" ; -- FTAĦNA > FTAĦNIEX
+          x + "e" + y@#Consonant => x + "i" + y + "x" ; -- KITEB > KITIBX
+          _ => s + "x" -- KTIBT > KTIBTX
+          }
+      } ;
+
+    -- Build table of pronominal suffixes for verbs
+    verbPronSuffixTable : (VForm => Str) -> (VForm => VSuffixForm => Str) = \tbl ->
+      table {
+          VPerf agr => verbPerfPronSuffixTable ( \\a => tbl ! VPerf a ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable ( \\a => tbl ! VImpf a ) ! agr ;
+          VImp  num => verbImpPronSuffixTable  ( \\n => tbl ! VImp  n ) ! num
+        } ;
+
     -- Build table of pronominal suffixes
     -- Perfective tense
     verbPerfPronSuffixTable : (Agr => Str) -> (Agr => VSuffixForm => Str) = \tbl ->

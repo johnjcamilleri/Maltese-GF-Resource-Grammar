@@ -157,7 +157,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
 
     AForm =
---        AF Degree GenNum
         APosit GenNum
       | ACompar
       | ASuperl
@@ -179,9 +178,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     } ;
 
     Verb : Type = {
---      s : VForm => Str ;
-      s : VForm => VSuffixForm => Str ;
---      s : VForm => VSuffixForm => Polarity => Str ;
+      s : VForm => VSuffixForm => Polarity => Str ;
       c : VClass ;
       f : VDerivedForm ;
     } ;
@@ -193,7 +190,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     {- ===== Some character classes ===== -}
 
-    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "ħ" | "h" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
+    Alphabet : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
+    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
     ImpfDoublingCons : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "t" | "x" | "ż" | "z" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b}
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
@@ -243,7 +241,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     {- ===== Useful helper functions ===== -}
 
-    -- New names for the pre/suffix operations
+    -- New names for the drop/take operations
     takePfx = Predef.take ;
     dropPfx = Predef.drop ;
     takeSfx = Predef.dp ;
@@ -253,6 +251,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     -- Negative indexes behave as 0 (first character). Out of range indexes return the empty string.
     charAt : Int -> Str -> Str ;
     charAt i s = takePfx 1 (dropPfx i s) ;
+
+    -- Replace first substring
+    replace : Str -> Str -> Str -> Str ;
+    replace needle haystack replacement =
+      case haystack of {
+        x + needle + y => x + replacement + y ;
+        _ => haystack
+      } ;
 
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;

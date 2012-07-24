@@ -415,12 +415,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for strong verb
     strongVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjStrongPerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjStrongPerf root patt ) ! agr ;
+          VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Strong Regular ;
         f = FormI ;
       } ;
@@ -449,12 +451,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for liquid medial strong verb
     liquidMedialVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjLiquidMedialPerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjLiquidMedialPerf root patt ) ! agr ;
+          VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
           } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Strong LiquidMedial ;
         f = FormI ;
       } ;
@@ -482,12 +486,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for reduplicated verb
     reduplicativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjReduplicativePerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjReduplicativePerf root patt ) ! agr ;
+          VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Strong Reduplicative ;
         f = FormI ;
       } ;
@@ -515,12 +521,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for assimilative verb
     assimilativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjAssimilativePerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjAssimilativePerf root patt ) ! agr ;
+          VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Weak Assimilative ;
         f = FormI ;
       } ;
@@ -548,12 +556,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for hollow verb
     hollowVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjHollowPerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjHollowPerf root patt ) ! agr ;
+          VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Weak Hollow ;
         f = FormI ;
       } ;
@@ -581,12 +591,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for weakFinal verb
     weakFinalVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjWeakFinalPerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjWeakFinalPerf root patt ) ! agr ;
+          VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Weak WeakFinal ;
         f = FormI ;
       } ;
@@ -614,12 +626,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for defective verb
     defectiveVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjDefectivePerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjDefectivePerf root patt ) ! agr ;
+          VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Weak Defective ;
         f = FormI ;
       } ;
@@ -647,12 +661,14 @@ resource ParadigmsMlt = open
 
     -- Worst case for quad verb
     quadVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
-      lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjQuadPerf root patt ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjQuadPerf root patt ) ! agr ;
+          VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Strong Quad ;
         f = FormI ;
       } ;
@@ -682,12 +698,15 @@ resource ParadigmsMlt = open
       } ;
 
     -- Worst case for quadWeak verb
-    quadWeakVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp -> lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
-        } ;
+    quadWeakVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+      let
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
+          VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
+          } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Weak QuadWeakFinal ;
         f = FormI ;
       } ;
@@ -699,12 +718,13 @@ resource ParadigmsMlt = open
     loanV : Str -> V = \mamma ->
       let
         imp = conjLoanImp mamma ;
-      in lin V {
-        s = table {
-          VPerf agr => verbPerfPronSuffixTable ( conjLoanPerf mamma ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n =>    verbImpPronSuffixTable ( imp ) ! n
+        tbl : (VForm => Str) = table {
+          VPerf agr => ( conjLoanPerf mamma ) ! agr ;
+          VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VImp n =>    imp ! n
           } ;
+      in lin V {
+        s = verbPolarityTable (verbPronSuffixTable tbl) ;
         c = Loan ;
         f = FormI ;
       } ;
