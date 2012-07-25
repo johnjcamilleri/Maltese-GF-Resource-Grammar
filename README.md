@@ -20,20 +20,23 @@ Feel free to contact me if you are interested in contributing, or just curious.
 - This directory contains the grammar itself, split amongst various `.gf` files.
   Check out the [dependancy graph diagram][4] to see how the individual modules plug together.
 - Observations on Maltese grammar and implementation notes can be found in [`doc/`][5].
-- You can find tab-delimited plain text versions of Michael Spagnol's [compilation of Maltese verb roots][6] in the [`doc/roots/`][7] folder.
 - The [`test/`](https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/tree/master/test) directory contains stuff used for, you guessed it, testing.
 - Some more in-depth studies of Maltese grammar can be found in my [research blog][8], amongst other less exciting ramblings about my progress in general.
+
+If you are looking for the tab-delimited plain text versions of Michael Spagnol's [compilation of Maltese verb roots][6], they have now
+been moved to their own repository [here][7].
+
 
 [4]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/raw/master/doc/dependency_graph.png
 [5]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/tree/master/doc
 [6]: http://mlrs.research.um.edu.mt/index.php?page=33
-[7]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/tree/master/doc/roots
+[7]: https://github.com/johnjcamilleri/maltese-verb-roots-db
 [8]: http://blog.johnjcamilleri.com/category/academic/research/
 
 ## Checklist
 
 1. ~~Numerals - ordinal and cardinals~~ (still buggy but ok)
-1. Nouns, Adjectives, Verbs (see separate `.md` files)
+1. Nouns, Adjectives, Verbs (see separate `.md` files in [`doc/`][5])
 1. Determiners and prepositions, e.g. _ir-ramel_, _lil huh_, _mis-sema_
 1. Phrase-level categories, ie NP, VP, AP etc.
 1. Everything else...
