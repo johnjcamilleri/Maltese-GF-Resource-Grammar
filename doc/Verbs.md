@@ -17,27 +17,27 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 Verb classification according to {MDG}, {T2M} and {GM}.
 
 - Semitic
-  - Strong ("sħiħ")
-     - Regular: all radicals strong & distinct, e.g. _QATEL (Q-T-L)_.
-     - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
-     - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
-     - Quadriliteral: 4 radicals
-        - Repeated bi-radical base, e.g. _GEMGEM (G-M-G-M)_
-        - Repeated C3, e.g. _GERBEB (G-R-B-B)_
-        - Repeated C1 after C2, e.g. _ŻERŻAQ (Ż-R-Ż-Q)_
-        - Added C4 to triradical base, e.g. _ĦARBAT (Ħ-R-B-T)_
-  - Weak ("dgħajjef")
-     - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
-     - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
-     - Weak-Final ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
-     - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
-     - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_
-  - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
+    - Strong ("sħiħ")
+        - Regular: all radicals strong & distinct, e.g. _QATEL (Q-T-L)_.
+        - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
+        - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+        - Quadriliteral: 4 radicals
+            - Repeated bi-radical base, e.g. _GEMGEM (G-M-G-M)_
+            - Repeated C3, e.g. _GERBEB (G-R-B-B)_
+            - Repeated C1 after C2, e.g. _ŻERŻAQ (Ż-R-Ż-Q)_
+            - Added C4 to triradical base, e.g. _ĦARBAT (Ħ-R-B-T)_
+    - Weak ("dgħajjef")
+        - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
+        - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
+        - Weak-Final ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
+        - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_
+        - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_
+    - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
-  - Strongly-integrated, e.g. _KANTA, SERREP, BANDAL, BAQQAN_  
-  From Italian _-are_ (e.g. _KANTA_), _-ere_ (e.g. _VINĊA_), _-ire_ (e.g. _SERVA_).  
-  These are covered by the semitic paradigms above, they merely have a different etymology {T2M}.
-  - Loosely-integrated. e.g. _ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
+    - Strongly-integrated, e.g. _KANTA, SERREP, BANDAL, BAQQAN_  
+    From Italian _-are_ (e.g. _KANTA_), _-ere_ (e.g. _VINĊA_), _-ire_ (e.g. _SERVA_).  
+    These are covered by the semitic paradigms above, they merely have a different etymology {T2M}.
+    - Loosely-integrated. e.g. _ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. e.g. _IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
 
