@@ -11,13 +11,15 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     -- Build polarity table for verbs
     verbPolarityTable : (VForm => VSuffixForm => Str) -> (VForm => VSuffixForm => Polarity => Str) = \tbl ->
-      \\vf,sfxf =>
+      \\vf,sfxf => --- maybe the VForm needs to be used in the cases below
       let
         s = tbl ! vf ! sfxf ;
       in table {
         Pos => s ;
         Neg => case s of {
           "" => [] ;
+--          x + "iek" => x + "iekx" ; -- KTIBNIEK > KTIBNIEKX
+          x + "ek" => x + "ekx" ; -- KTIBTLEK > KTIBTLEKX
           x + "ie" + y + "a" => x + "i" + y + "iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
           x + "a" => x + "iex" ; -- FTAĦNA > FTAĦNIEX
           x + "e" + y@#Consonant => x + "i" + y + "x" ; -- KITEB > KITIBX
@@ -241,7 +243,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP1 Sg    => fethit + "huli" ; -- Hija FETĦITHULI
                 AgP2 Sg    => fethit + "hulek" ; -- Hija FETĦITHULEK
                 AgP3Sg Masc  => fethit + "hulu" ;  -- Hija FETĦITHULU
-                AgP3Sg Fem  => fethit + "hunlha" ;  -- Hija FETĦITHULHA
+                AgP3Sg Fem  => fethit + "hulha" ;  -- Hija FETĦITHULHA
                 AgP1 Pl    => fethit + "hulna" ; -- Hija FETĦITHULNA
                 AgP2 Pl    => fethit + "hulkom" ; -- Hija FETĦITHULKOM
                 AgP3Pl    => fethit + "hulhom"  -- Hija FETĦITHULHOM
@@ -505,7 +507,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         Pl => -- Intom IFTĦU
           let
-            ifthu = tbl ! Sg ;
+            ifthu = tbl ! Pl ;
           in
           table {
             VSuffixNone => ifthu ;
