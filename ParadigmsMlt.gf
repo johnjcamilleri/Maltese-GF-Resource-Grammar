@@ -277,54 +277,50 @@ resource ParadigmsMlt = open
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-    classifyVerb : Str -> { c:VClass ; f:VDerivedForm ; r:Root ; p:Pattern } = \mamma ->
-      let
-        ret : VClass -> VDerivedForm -> Root -> Pattern -> { c:VClass ; f:VDerivedForm ; r:Root ; p:Pattern } = \c,f,r,p ->
-        { c=c ; f=f ; r=r ; p=p } ;
-      in
+    classifyVerb : Str -> VerbInfo = \mamma ->
       case mamma of {
 
         -- Defective, BELA'
         c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@( "għ" | "'" ) =>
-          ret (Weak Defective) FormI (mkRoot c1 c2 "għ") (mkPattern v1 v2) ;
+          mkVerbInfo (Weak Defective) FormI (mkRoot c1 c2 "għ") (mkPattern v1 v2) ;
 
         -- Weak Final, MEXA
         c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel =>
-          ret (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
+          mkVerbInfo (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
 
         -- Hollow, SAB
         -- --- determining of middle radical is not right, e.g. SAB = S-J-B
         c1@#Consonant + v1@"a"  + c3@#Consonant =>
-          ret (Weak Hollow) FormI (mkRoot c1 "w" c3) (mkPattern v1) ;
+          mkVerbInfo (Weak Hollow) FormI (mkRoot c1 "w" c3) (mkPattern v1) ;
         c1@#Consonant + v1@"ie" + c3@#Consonant =>
-          ret (Weak Hollow) FormI (mkRoot c1 "j" c3) (mkPattern v1) ;
+          mkVerbInfo (Weak Hollow) FormI (mkRoot c1 "j" c3) (mkPattern v1) ;
 
         -- Weak Assimilative, WAQAF
         c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
-          ret (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+          mkVerbInfo (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
         -- Strong Reduplicative, ĦABB
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
-          ret (Strong Reduplicative) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
+          mkVerbInfo (Strong Reduplicative) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
 
         -- Strong LiquidMedial, ŻELAQ
         c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
-          ret (Strong LiquidMedial) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+          mkVerbInfo (Strong LiquidMedial) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
         -- Strong Regular, QATEL
         c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
-          ret (Strong Regular) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
+          mkVerbInfo (Strong Regular) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
         -- Strong Quad, QAĊĊAT
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-          ret (Strong Quad) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
+          mkVerbInfo (Strong Quad) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
 
         -- Weak-Final Quad, PINĠA
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
-          ret (Weak QuadWeakFinal) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
+          mkVerbInfo (Weak QuadWeakFinal) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
 
         -- Assume it is a loan verb
-        _ => ret Loan FormI mkRoot mkPattern
+        _ => mkVerbInfo Loan FormI
       } ;
 
     -- Smart paradigm for building a verb
@@ -334,18 +330,18 @@ resource ParadigmsMlt = open
       -- Params: mamma
       mkV : Str -> V = \mamma ->
         let
-          class = classifyVerb mamma ;
+          info = classifyVerb mamma ;
         in
-        case class.c of {
-          Strong Regular      => strongV class.r class.p ;
-          Strong LiquidMedial => liquidMedialV class.r class.p ;
-          Strong Reduplicative=> reduplicativeV class.r class.p ;
-          Weak Assimilative   => assimilativeV class.r class.p ;
-          Weak Hollow         => hollowV class.r class.p ;
-          Weak WeakFinal      => weakFinalV class.r class.p ;
-          Weak Defective      => defectiveV class.r class.p ;
-          Strong Quad         => quadV class.r class.p ;
-          Weak QuadWeakFinal  => quadWeakV class.r class.p ;
+        case info.class of {
+          Strong Regular      => strongV info.root info.patt ;
+          Strong LiquidMedial => liquidMedialV info.root info.patt ;
+          Strong Reduplicative=> reduplicativeV info.root info.patt ;
+          Weak Assimilative   => assimilativeV info.root info.patt ;
+          Weak Hollow         => hollowV info.root info.patt ;
+          Weak WeakFinal      => weakFinalV info.root info.patt ;
+          Weak Defective      => defectiveV info.root info.patt ;
+          Strong Quad         => quadV info.root info.patt ;
+          Weak QuadWeakFinal  => quadWeakV info.root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -353,18 +349,18 @@ resource ParadigmsMlt = open
       -- Params: mamma, root
       mkV : Str -> Root -> V = \mamma,root ->
         let
-          class = classifyVerb mamma ;
+          info = classifyVerb mamma ;
         in
-        case class.c of {
-          Strong Regular      => strongV root class.p ;
-          Strong LiquidMedial => liquidMedialV root class.p ;
-          Strong Reduplicative=> reduplicativeV root class.p ;
-          Weak Assimilative   => assimilativeV root class.p ;
-          Weak Hollow         => hollowV root class.p ;
-          Weak WeakFinal      => weakFinalV root class.p ;
-          Weak Defective      => defectiveV root class.p ;
-          Strong Quad         => quadV root class.p ;
-          Weak QuadWeakFinal  => quadWeakV root class.p ;
+        case info.class of {
+          Strong Regular      => strongV root info.patt ;
+          Strong LiquidMedial => liquidMedialV root info.patt ;
+          Strong Reduplicative=> reduplicativeV root info.patt ;
+          Weak Assimilative   => assimilativeV root info.patt ;
+          Weak Hollow         => hollowV root info.patt ;
+          Weak WeakFinal      => weakFinalV root info.patt ;
+          Weak Defective      => defectiveV root info.patt ;
+          Strong Quad         => quadV root info.patt ;
+          Weak QuadWeakFinal  => quadWeakV root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -372,18 +368,18 @@ resource ParadigmsMlt = open
       -- Params: mamma, imperative P2Sg
       mkV : Str -> Str -> V = \mamma,imp_sg ->
         let
-          class = classifyVerb mamma ;
+          info = classifyVerb mamma ;
         in
-        case class.c of {
-          Strong Regular      => strongV class.r class.p imp_sg ;
-          Strong LiquidMedial => liquidMedialV class.r class.p imp_sg ;
-          Strong Reduplicative=> reduplicativeV class.r class.p imp_sg ;
-          Weak Assimilative   => assimilativeV class.r class.p imp_sg ;
-          Weak Hollow         => hollowV class.r class.p imp_sg ;
-          Weak WeakFinal      => weakFinalV class.r class.p imp_sg ;
-          Weak Defective      => defectiveV class.r class.p imp_sg ;
-          Strong Quad         => quadV class.r class.p imp_sg ;
-          Weak QuadWeakFinal  => quadWeakV class.r class.p imp_sg ;
+        case info.class of {
+          Strong Regular      => strongV info.root info.patt imp_sg ;
+          Strong LiquidMedial => liquidMedialV info.root info.patt imp_sg ;
+          Strong Reduplicative=> reduplicativeV info.root info.patt imp_sg ;
+          Weak Assimilative   => assimilativeV info.root info.patt imp_sg ;
+          Weak Hollow         => hollowV info.root info.patt imp_sg ;
+          Weak WeakFinal      => weakFinalV info.root info.patt imp_sg ;
+          Weak Defective      => defectiveV info.root info.patt imp_sg ;
+          Strong Quad         => quadV info.root info.patt imp_sg ;
+          Weak QuadWeakFinal  => quadWeakV info.root info.patt imp_sg ;
           Loan                => loanV mamma
         } ;
 
@@ -423,8 +419,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Strong Regular ;
-        f = FormI ;
+        i = mkVerbInfo (Strong Regular) (FormI) root patt ;
       } ;
 
 
@@ -459,8 +454,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Strong LiquidMedial ;
-        f = FormI ;
+        i = mkVerbInfo (Strong LiquidMedial) (FormI) root patt ;
       } ;
 
     {- ~~~ Reduplicative Verb ~~~ -}
@@ -494,8 +488,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Strong Reduplicative ;
-        f = FormI ;
+        i = mkVerbInfo (Strong Reduplicative) (FormI) root patt ;
       } ;
 
     {- ~~~ Assimilative Verb ~~~ -}
@@ -529,8 +522,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Weak Assimilative ;
-        f = FormI ;
+        i = mkVerbInfo (Weak Assimilative) (FormI) root patt ;
       } ;
 
     {- ~~~ Hollow Verb ~~~ -}
@@ -564,8 +556,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Weak Hollow ;
-        f = FormI ;
+        i = mkVerbInfo (Weak Hollow) (FormI) root patt ;
       } ;
 
     {- ~~~ Weak-Final Verb ~~~ -}
@@ -599,8 +590,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Weak WeakFinal ;
-        f = FormI ;
+        i = mkVerbInfo (Weak WeakFinal) (FormI) root patt ;
       } ;
 
     {- ~~~ Defective Verb ~~~ -}
@@ -634,8 +624,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Weak Defective ;
-        f = FormI ;
+        i = mkVerbInfo (Weak Defective) (FormI) root patt ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Strong) ~~~ -}
@@ -669,8 +658,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Strong Quad ;
-        f = FormI ;
+        i = mkVerbInfo (Strong Quad) (FormI) root patt ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Weak Final) ~~~ -}
@@ -707,8 +695,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Weak QuadWeakFinal ;
-        f = FormI ;
+        i = mkVerbInfo (Weak QuadWeakFinal) (FormI) root patt ;
       } ;
 
     {- ~~~ Non-semitic verbs ~~~ -}
@@ -725,8 +712,7 @@ resource ParadigmsMlt = open
           } ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        c = Loan ;
-        f = FormI ;
+        i = mkVerbInfo (Loan) (FormI) ;
       } ;
 
 

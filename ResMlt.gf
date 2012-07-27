@@ -169,23 +169,31 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Noun : Type = {
       s : Noun_Number => NForm => Str ;
       g : Gender ;
---      anim : Animacy ; -- is the noun animate? e.g. TABIB
-    } ;
+      --      anim : Animacy ; -- is the noun animate? e.g. TABIB
+      } ;
 
     ProperNoun : Type = {
       s : Str ;
       g : Gender ;
-    } ;
+      } ;
 
     Verb : Type = {
       s : VForm => VSuffixForm => Polarity => Str ;
-      c : VClass ;
-      f : VDerivedForm ;
-    } ;
+      i : VerbInfo ;
+--      c : VClass ;
+--      f : VDerivedForm ;
+      } ;
+
+    VerbInfo : Type = {
+      class : VClass ;
+      form : VDerivedForm ;
+      root : Root ;
+      patt : Pattern ;
+      } ;
 
     Adjective : Type = {
       s : AForm => Str ;
-    } ;
+      } ;
 
 
     {- ===== Some character classes ===== -}
@@ -229,6 +237,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       mkPattern : Str -> Str -> Pattern = \v1,v2 ->
         { V1=v1 ; V2=v2 } ;
       } ;
+
+    mkVerbInfo : VerbInfo = overload {
+      mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern } ;
+      mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> VerbInfo = \c,f,r,p ->
+        { class=c ; form=f ; root=r ; patt=p } ;
+      } ;
+
 
     {- ===== Conversions ===== -}
 
