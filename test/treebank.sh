@@ -1,21 +1,26 @@
 #! /bin/bash
 
 TMP_GOLD=/tmp/gold.tmp
-TMP_CMD=/tmp/cmd.tmp
 TMP_OUT=/tmp/out.tmp
 TMP_DIFF=/tmp/diff.tmp
 
+DIR=test/verbs/
+FILES="kiteb fetaħ qata'"
+# FILES="qata'"
+
 clear
+rm $TMP_GOLD $TMP_OUT $TMP_DIFF
 
-# Select only desired regions of gold file
-sed -n -e '1,1154p;1155,2308p;16157,17310p' test/verbs.gold > $TMP_GOLD
+for FILENAME in $FILES ; do
+    FILE=$DIR$FILENAME.treebank
+    IX=3
 
-# Select only desired regions of command file
-sed -n -e '1,3p' test/strong_verbs.gfs > $TMP_CMD
-sed -n -e '12p' test/weak_verbs.gfs >> $TMP_CMD
+    # Append to gold
+    tail -n +`expr $IX + 1` $FILE >> $TMP_GOLD
 
-# Run and save output
-gf --run < $TMP_CMD > $TMP_OUT
+    # Run and append to out
+    head -n `expr $IX - 1` $FILE | gf --run >> $TMP_OUT
+done
 
 # Diff
 diff $TMP_OUT $TMP_GOLD > $TMP_DIFF
