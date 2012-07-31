@@ -7,6 +7,9 @@ batch:
 interactive:
 	gf AllMlt.gf
 
+wordlist:
+	echo "print_grammar -words" | gf --run AllMlt.gf | sed 's/ /\n/g' > test/wordlist.txt
+
 tags:
 	gf --tags --output-dir=.gfbuild AllMlt.gf
 
