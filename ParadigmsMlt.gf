@@ -383,7 +383,23 @@ resource ParadigmsMlt = open
           Loan                => loanV mamma
         } ;
 
-      --- Do we need a version for: mamma, root, imp_sg ?
+      -- Params: mamma, root, imperative P2Sg
+      -- mkV : Str -> Root -> Str -> V = \mamma,root,imp_sg ->
+      --   let
+      --     info = classifyVerb mamma ;
+      --   in
+      --   case info.class of {
+      --     Strong Regular      => strongV root info.patt imp_sg ;
+      --     Strong LiquidMedial => liquidMedialV root info.patt imp_sg ;
+      --     Strong Reduplicative=> reduplicativeV root info.patt imp_sg ;
+      --     Weak Assimilative   => assimilativeV root info.patt imp_sg ;
+      --     Weak Hollow         => hollowV root info.patt imp_sg ;
+      --     Weak WeakFinal      => weakFinalV root info.patt imp_sg ;
+      --     Weak Defective      => defectiveV root info.patt imp_sg ;
+      --     Strong Quad         => quadV root info.patt imp_sg ;
+      --     Weak QuadWeakFinal  => quadWeakV root info.patt imp_sg ;
+      --     Loan                => loanV mamma
+      --   } ;
 
       } ; --end of mkV overload
 
@@ -417,9 +433,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Strong Regular) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
 
@@ -452,9 +469,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Strong LiquidMedial) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Reduplicative Verb ~~~ -}
@@ -486,9 +504,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Strong Reduplicative) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Strong Reduplicative) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Assimilative Verb ~~~ -}
@@ -520,9 +539,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Weak Assimilative) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Hollow Verb ~~~ -}
@@ -554,9 +574,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Weak Hollow) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Weak-Final Verb ~~~ -}
@@ -588,9 +609,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Weak WeakFinal) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Weak WeakFinal) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Defective Verb ~~~ -}
@@ -622,9 +644,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Weak Defective) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Strong) ~~~ -}
@@ -656,9 +679,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Strong Quad) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Strong Quad) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Weak Final) ~~~ -}
@@ -693,9 +717,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Weak QuadWeakFinal) (FormI) root patt ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Weak QuadWeakFinal) (FormI) root patt ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
     {- ~~~ Non-semitic verbs ~~~ -}
@@ -710,9 +735,10 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
+        info : VerbInfo = mkVerbInfo (Loan) (FormI) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable tbl) ;
-        i = mkVerbInfo (Loan) (FormI) ;
+        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        i = info ;
       } ;
 
 

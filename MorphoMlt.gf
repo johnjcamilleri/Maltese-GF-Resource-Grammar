@@ -18,7 +18,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         Pos => s ;
         Neg => case s of {
           "" => [] ;
---          x + "iek" => x + "iekx" ; -- KTIBNIEK > KTIBNIEKX
+          x + "'" => x + "x" ; -- AQTA' > AQTAX
+          x + "iek" => x + "iekx" ; -- KTIBNIEK > KTIBNIEKX
+          x + "ieh" => x + "iehx" ; -- KTIBNIEH > KTIBNIEHX
           x + "ek" => x + "ekx" ; -- KTIBTLEK > KTIBTLEKX
           x + "ie" + y + "a" => x + "i" + y + "iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
           x + "a" => x + "iex" ; -- FTAĦNA > FTAĦNIEX
@@ -28,16 +30,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       } ;
 
     -- Build table of pronominal suffixes for verbs
-    verbPronSuffixTable : (VForm => Str) -> (VForm => VSuffixForm => Str) = \tbl ->
+    verbPronSuffixTable : VerbInfo -> (VForm => Str) -> (VForm => VSuffixForm => Str) = \info,tbl ->
       table {
-          VPerf agr => verbPerfPronSuffixTable ( \\a => tbl ! VPerf a ) ! agr ;
-          VImpf agr => verbImpfPronSuffixTable ( \\a => tbl ! VImpf a ) ! agr ;
-          VImp  num => verbImpPronSuffixTable  ( \\n => tbl ! VImp  n ) ! num
+          VPerf agr => verbPerfPronSuffixTable info ( \\a => tbl ! VPerf a ) ! agr ;
+          VImpf agr => verbImpfPronSuffixTable info ( \\a => tbl ! VImpf a ) ! agr ;
+          VImp  num => verbImpPronSuffixTable  info ( \\n => tbl ! VImp  n ) ! num
         } ;
 
     -- Build table of pronominal suffixes
     -- Perfective tense
-    verbPerfPronSuffixTable : (Agr => Str) -> (Agr => VSuffixForm => Str) = \tbl ->
+    verbPerfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       table {
         AgP1 Sg => -- Jiena FTAĦT
           let
@@ -155,11 +157,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP3Sg Masc => -- Huwa FETAĦ
           let
-            fetah = tbl ! AgP3Sg Masc ;
-            feth = dropSfx 2 fetah + takeSfx 1 fetah ; --- this will likely fail in many cases
+            fetah : Str = case (tbl ! AgP3Sg Masc) of {
+              x + "'" => x + "għ" ; -- QATA' > QATAGĦ
+              x + "e" + y => x + "i" + y ; -- KITEB > KITIB
+              x => x -- FETAĦ
+              } ;
+--            feth = dropSfx 2 fetah + takeSfx 1 fetah ; --- this will likely fail in many cases
+            feth = takePfx 3 fetah + info.root.C3 ;
           in
           table {
-            VSuffixNone => fetah ;
+            VSuffixNone => tbl ! AgP3Sg Masc ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => fetah + "ni" ; -- Huwa FETAĦNI
@@ -445,15 +452,18 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     verbImpfPronSuffixTable = verbPerfPronSuffixTable ;
 
-    verbImpPronSuffixTable : (Number => Str) -> (Number => VSuffixForm => Str) = \tbl ->
+    verbImpPronSuffixTable : VerbInfo -> (Number => Str) -> (Number => VSuffixForm => Str) = \info,tbl ->
       table {
         Sg => -- Inti IFTAĦ
           let
-            iftah = tbl ! Sg ;
-            ifth = dropSfx 2 iftah + takeSfx 1 iftah ; --- this will likely fail in many cases
+            iftah : Str = case (tbl ! Sg) of {
+              x + "'" => x + "għ" ; -- AQTA' > AQTAGĦ
+              x => x -- IFTAĦ
+              } ;
+            ifth = takePfx 3 iftah + info.root.C3 ;
           in
           table {
-            VSuffixNone => iftah ;
+            VSuffixNone => (tbl ! Sg) ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => iftah + "ni" ; -- Inti IFTAĦNI
@@ -469,10 +479,22 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP1 Sg    => iftah + "li" ; -- Inti IFTAĦLI
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc  => iftah + "lu" ;  -- Inti IFTAĦLU
-                AgP3Sg Fem  => ifth + "ilha" ;  -- Inti IFTĦILHA
-                AgP1 Pl    => ifth + "ilna" ; -- Inti IFTĦILNA
+--                AgP3Sg Fem  => ifth + "ilha" ;  -- Inti IFTĦILHA
+                AgP3Sg Fem  => case info.class of {
+                  Weak Defective => iftah + "lha" ; -- Inti AQTAGĦLHA
+                  _ => ifth + "ilha"  -- Inti IFTĦILHA
+                  } ;
+--                AgP1 Pl    => ifth + "ilna" ; -- Inti IFTĦILNA
+                AgP1 Pl    =>  case info.class of {
+                  Weak Defective => iftah + "lna" ; -- Inti AQTAGĦLNA
+                  _ => ifth + "ilna"  -- Inti IFTĦILNA
+                  } ;
                 AgP2 Pl    => [] ;
-                AgP3Pl    => ifth + "ilhom"  -- Inti IFTĦILHOM
+--                AgP3Pl    => ifth + "ilhom"  -- Inti IFTĦILHOM
+                AgP3Pl    =>  case info.class of {
+                  Weak Defective => iftah + "lhom" ; -- Inti AQTAGĦLHOM
+                  _ => ifth + "ilhom"  -- Inti IFTĦILHOM
+                  }
               } ;
             VSuffixDirInd (GSg Masc) agr =>
               case agr of {
