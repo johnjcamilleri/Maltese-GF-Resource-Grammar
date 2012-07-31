@@ -56,7 +56,7 @@ These publications are currently being used and can be referenced by citation st
 Some sources of enlightenment:
 
 1. _Korpus Malti_ - <http://mlrs.research.um.edu.mt/corpusquery/cwb/malti01/>
-1. _"Kelmet il-Malti" Facebook group - <https://www.facebook.com/groups/246657308743181/>
+1. _Kelmet il-Malti_ Facebook group - <https://www.facebook.com/groups/246657308743181/>
 1. _Is-Suffissi tan-Nazzjonijiet fil-Malti_ - Michael Spagnol. (unpublished).
 1. _Basic Maltese Grammar_ by Grazio Falzon. <http://aboutmalta.com/grazio/maltesegrammar.html>, 1997. {BMG}
 
