@@ -29,8 +29,8 @@ for FILENAME in $FILES ; do
 done
 
 # Try and see if something went wrong
-$LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
-$LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
+LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
+LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
 if [[ $LINES_OUT != $LINES_GOLD ]] ; then
     echo "Something went wrong:"
     echo "================================================================================"
