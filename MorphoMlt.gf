@@ -482,6 +482,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixInd agr =>
               let
                 nifthi = case info.class of {
+                  Strong LiquidMedial =>
+                    niftah + "i" -- NOĦROĠI-
+                    | takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI-
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
