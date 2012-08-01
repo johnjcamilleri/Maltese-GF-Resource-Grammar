@@ -56,6 +56,26 @@ Verb can have the following pronominal suffix combinations:
 - Indirect Object, e.g. _FTAĦTLU_
 - Direct Object + Indirect Object, .e.g _FTAĦTHULU_  
   In this case the D.O. is necessarily 3rd person (Masc/Fem/Plural).
+  
+### Variations
+
+For liquid-medial verbs some variations seem to exist, when adding pronominal suffixes.
+The following are standard:
+
+- noħorġilkom
+- noħorġilha
+- noħorġilhom
+- jisirqilhom
+
+However this alternate spelling seems to be relatively accepted (likely for some verbs more than others):
+
+- noħroġilkom
+- noħroġilha
+- noħroġilhom
+- jisraqilhom
+
+However in the RG we are currently considering only the first case. See [this discussion](https://www.facebook.com/groups/246657308743181/permalink/351277908281120/).
+The code for having this as a variant is there, but commented out.
 
 ## Polarity
 
