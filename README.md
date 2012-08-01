@@ -38,6 +38,7 @@ been moved to their own repository [here][7].
 1. ~~Numerals - ordinal and cardinals~~ (still buggy but ok)
 1. Nouns, Adjectives, Verbs (see separate `.md` files in [`doc/`][5])
 1. Determiners and prepositions, e.g. _ir-ramel_, _lil huh_, _mis-sema_
+1. Euphonic vowels ("vokali tal-leħen") and related issues
 1. Phrase-level categories, ie NP, VP, AP etc.
 1. Everything else...
 
