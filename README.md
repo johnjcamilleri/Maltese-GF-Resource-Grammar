@@ -54,6 +54,7 @@ These publications are currently being used and can be referenced by citation st
 1. _A Tale of Two Morphologies: Verb structure and argument alternations in Maltese_ by Michael Spagnol. University of Konstanz dissertation, Germany, 2011. {T2M}
 1. _Deċiżjonijiet 1_ by il-Kunsill Nazzjonali tal-Ilsien Malti, 2008. {D1}
 1. _Stem allomorphy in the Maltese Verb_ by Ray Fabri. In Ilsienna, Vol 1, 2009. {SA}
+1. _The tense and aspect system of Maltese_ in Tense Systems in European Languages II, 1995. {TAS}
 
 Some sources of enlightenment:
 
@@ -71,4 +72,5 @@ Other potentially useful references:
 1. Sutcliffe, Edmund F. 1936. _A grammar of the Maltese language with chrestomathy and vocabulary_. London: Oxford University Press.
 1. Borg, Albert. 1981. _A study of aspect in Maltese_. Ann Arbor: Karoma Publishers.
 1. Borg, Albert. 1988. ? in _Ilsienna: Studju grammatikali_. Malta.
+1. _Introducing Maltese Linguistics: Selected Papers from the 1st International Conference on Maltese Linguistics, Bremen, 18–20 October, 2007_, Edited by Bernard Comrie, Ray Fabri, Elizabeth Hume, Manwel Mifsud, Thomas Stolz and Martine Vanhove.
 
