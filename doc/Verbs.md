@@ -32,6 +32,7 @@ Verb classification according to {MDG}, {T2M} and {GM}.
         - Lacking ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
         - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_  
           Use _kiser_ as model (or _seraq_ when C2 is liquid). {GO pg169}
+          As {SA} notes, GĦ is not weak, thus these verbs are technically Strong. However, the behave inflectionally as weak verbs.
         - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_
     - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
@@ -41,6 +42,16 @@ Verb classification according to {MDG}, {T2M} and {GM}.
     - Loosely-integrated. e.g. _ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA_
 - English loan words. e.g. _IBBUKJA, IWWELDJA, ERTJA, IFFITTJA_
 
+{SA} clasifies loan verbs as follows:
+
+- Type 1:
+    - Verbs like _KANTA_ - modelled on _qara_ (based on imperative: _kanta/kantaw_, _aqra/aqraw_)
+    - Doubled initial consonant, e.g. _IKKONVINĊA, IMMONITERJA, ITTAJPJA_
+- Type 2:
+    - Verbs like _FALLA_ - modelled on _beka_ (based on imperative: _falli/fallu_, _ibki, ibku_)
+    - Italian ending _-isco_, e.g. _ISSUĠĠERIXXA_
+- Type 3:
+    - Fully integrated into Semitic pattern. Conjugated as triliteral 2nd form verb/quadriliteral verb. e.g. _SERREP_
 
 ### Uncertainties
 
