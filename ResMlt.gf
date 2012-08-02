@@ -136,7 +136,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VWeakClass =
         Assimilative
       | Hollow
-      | WeakFinal
+      | Lacking
       | Defective
       | QuadWeakFinal
       ;

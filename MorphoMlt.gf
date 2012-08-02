@@ -1061,7 +1061,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     --     Strong Reduplicative=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
     --     Weak Assimilative   => (takePfx 2 imp_sg) + root.C3 + "u" ; -- ASAL > ASLU
     --     Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
-    --     Weak WeakFinal      => (takePfx 3 imp_sg) + "u" ; -- IMXI > IMXU
+    --     Weak Lacking      => (takePfx 3 imp_sg) + "u" ; -- IMXI > IMXU
     --     Weak Defective      => (takePfx 2 imp_sg) + "i" + root.C2 + "għu" ; -- ISMA' > ISIMGĦU
     --     Strong Quad         => (takePfx 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
     --     Weak QuadWeakFinal  => case (takeSfx 1 imp_sg) of {
@@ -1310,11 +1310,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         Pl => sir + "u"  -- Intom: SIRU
       } ;
 
-    {- ~~~ Weak-Final Verb ~~~ -}
+    {- ~~~ Lacking Verb ~~~ -}
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjWeakFinalPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
+    conjLackingPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         mxej : Str = case root.C1 of {
           #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
@@ -1334,11 +1334,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
-    conjWeakFinalImpf = conjGenericImpf ;
+    conjLackingImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjWeakFinalImp : Root -> Pattern -> (Number => Str) = \root,patt ->
+    conjLackingImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       table {
         Sg => "i" + root.C1 + root.C2 + "i" ;  -- Inti: IMXI
         Pl => "i" + root.C1 + root.C2 + "u"  -- Intom: IMXU

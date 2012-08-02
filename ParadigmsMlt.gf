@@ -284,9 +284,9 @@ resource ParadigmsMlt = open
         c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@( "għ" | "'" ) =>
           mkVerbInfo (Weak Defective) FormI (mkRoot c1 c2 "għ") (mkPattern v1 v2) ;
 
-        -- Weak Final, MEXA
+        -- Lacking, MEXA
         c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel =>
-          mkVerbInfo (Weak WeakFinal) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
+          mkVerbInfo (Weak Lacking) FormI (mkRoot c1 c2 "j") (mkPattern v1 v2) ;
 
         -- Hollow, SAB
         -- --- determining of middle radical is not right, e.g. SAB = S-J-B
@@ -338,7 +338,7 @@ resource ParadigmsMlt = open
           Strong Reduplicative=> reduplicativeV info.root info.patt ;
           Weak Assimilative   => assimilativeV info.root info.patt ;
           Weak Hollow         => hollowV info.root info.patt ;
-          Weak WeakFinal      => weakFinalV info.root info.patt ;
+          Weak Lacking        => lackingV info.root info.patt ;
           Weak Defective      => defectiveV info.root info.patt ;
           Strong Quad         => quadV info.root info.patt ;
           Weak QuadWeakFinal  => quadWeakV info.root info.patt ;
@@ -357,7 +357,7 @@ resource ParadigmsMlt = open
           Strong Reduplicative=> reduplicativeV root info.patt ;
           Weak Assimilative   => assimilativeV root info.patt ;
           Weak Hollow         => hollowV root info.patt ;
-          Weak WeakFinal      => weakFinalV root info.patt ;
+          Weak Lacking        => lackingV root info.patt ;
           Weak Defective      => defectiveV root info.patt ;
           Strong Quad         => quadV root info.patt ;
           Weak QuadWeakFinal  => quadWeakV root info.patt ;
@@ -376,7 +376,7 @@ resource ParadigmsMlt = open
           Strong Reduplicative=> reduplicativeV info.root info.patt imp_sg ;
           Weak Assimilative   => assimilativeV info.root info.patt imp_sg ;
           Weak Hollow         => hollowV info.root info.patt imp_sg ;
-          Weak WeakFinal      => weakFinalV info.root info.patt imp_sg ;
+          Weak Lacking        => lackingV info.root info.patt imp_sg ;
           Weak Defective      => defectiveV info.root info.patt imp_sg ;
           Strong Quad         => quadV info.root info.patt imp_sg ;
           Weak QuadWeakFinal  => quadWeakV info.root info.patt imp_sg ;
@@ -394,7 +394,7 @@ resource ParadigmsMlt = open
       --     Strong Reduplicative=> reduplicativeV root info.patt imp_sg ;
       --     Weak Assimilative   => assimilativeV root info.patt imp_sg ;
       --     Weak Hollow         => hollowV root info.patt imp_sg ;
-      --     Weak WeakFinal      => weakFinalV root info.patt imp_sg ;
+      --     Weak Lacking        => lackingV root info.patt imp_sg ;
       --     Weak Defective      => defectiveV root info.patt imp_sg ;
       --     Strong Quad         => quadV root info.patt imp_sg ;
       --     Weak QuadWeakFinal  => quadWeakV root info.patt imp_sg ;
@@ -580,36 +580,36 @@ resource ParadigmsMlt = open
         i = info ;
       } ;
 
-    {- ~~~ Weak-Final Verb ~~~ -}
+    {- ~~~ Lacking Verb ~~~ -}
 
-    -- Weak-Final verb, eg MEXA (M-X-J)
-    weakFinalV : V = overload {
+    -- Lacking (nieqes) verb, eg MEXA (M-X-J)
+    lackingV : V = overload {
 
       -- Params: root, pattern
-      weakFinalV : Root -> Pattern -> V = \root,patt ->
-        let imp = conjWeakFinalImp root patt
-        in weakFinalVWorst root patt imp ;
+      lackingV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjLackingImp root patt
+        in lackingVWorst root patt imp ;
 
       -- Params: root, pattern, imperative P2Sg
-      weakFinalV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
+      lackingV : Root -> Pattern -> Str -> V =\root,patt,imp_sg ->
         let
           imp = table {
             Sg => imp_sg ;
             Pl => (takePfx 3 imp_sg) + "u" -- IMXI > IMXU
             } ;
-        in weakFinalVWorst root patt imp ;
+        in lackingVWorst root patt imp ;
 
       } ;
 
-    -- Worst case for weakFinal verb
-    weakFinalVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+    -- Worst case for lacking verb
+    lackingVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       let
         tbl : (VForm => Str) = table {
-          VPerf agr => ( conjWeakFinalPerf root patt ) ! agr ;
-          VImpf agr => ( conjWeakFinalImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VPerf agr => ( conjLackingPerf root patt ) ! agr ;
+          VImpf agr => ( conjLackingImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak WeakFinal) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable info tbl) ;
         i = info ;

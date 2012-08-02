@@ -29,7 +29,7 @@ Verb classification according to {MDG}, {T2M} and {GM}.
     - Weak ("dgħajjef")
         - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
         - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
-        - Weak-Final ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
+        - Lacking ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
         - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_  
           Use _kiser_ as model (or _seraq_ when C2 is liquid). {GO pg169}
         - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_

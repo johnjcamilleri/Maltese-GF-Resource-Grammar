@@ -53,6 +53,7 @@ These publications are currently being used and can be referenced by citation st
 1. _Grammatical Framework - Programming with Multilingual Grammars_ by Aarne Ranta. CSLI, 2011. {GF}
 1. _A Tale of Two Morphologies: Verb structure and argument alternations in Maltese_ by Michael Spagnol. University of Konstanz dissertation, Germany, 2011. {T2M}
 1. _Deċiżjonijiet 1_ by il-Kunsill Nazzjonali tal-Ilsien Malti, 2008. {D1}
+1. _Stem allomorphy in the Maltese Verb_ by Ray Fabri. In Ilsienna, Vol 1, 2009. {SA}
 
 Some sources of enlightenment:
 
