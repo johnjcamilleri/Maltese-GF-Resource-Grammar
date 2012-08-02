@@ -98,15 +98,13 @@ Verb inflects for polarity:
 
 ## Tense
 
-This section taken from {GM}
-
-### Basics
+### Basic definitions
 
 Mood:
 
 - Indicative
 - Imperative, e.g. _ISRAQ_  
-"The imperitive is formed from the imperfect form of the verb" {MDG pg238}
+  "The imperative is formed from the imperfect form of the verb" {MDG pg238}
 
 Derived moods:
 
@@ -118,21 +116,64 @@ Tense-aspect:
 - Perfective, e.g. _SERAQ_
 - Imperfective, e.g. _JISRAQ_
 
-### Compound tenses
+### Maltese tenses
 
-- Present continuous, e.g. _JIEN QIEGĦED NAĦDEM_
-- Past continuous, e.g. _JIEN KONT QIEGĦED NAĦDEM_
-- Future continuous, e.g. _JIEN INKUN QIEGĦED NAĦDEM_
-- Perfective present continuous, e.g. _ILNI NAĦDEM SIEGĦA_
-- Pluperfett kontinwu, e.g. _JIEN KONT QGĦADT NAĦDEM_
-- Past imperfective, e.g. _JIEN KONT NAĦDEM_
-- Pluperfett, e.g. _JIEN KONT ĦDIMT_
-- Future imperfective, e.g. _JIEN INKUN NAĦDEM_
-- Future perfective, e.g. _JIEN INKUN ĦDIMT_
+Tenses according to {SA} and {GM}.
+
+|Aux1|Aux2|Main verb|Meaning (name)|
+|:---|:---|:--------|:-------------|
+|-   |-   |sraqt    |simple past (Perfective)|
+|kont|-   |sraqt    |past perfect (Pluperfett)|
+|nkun|-   |sraqt    |future perfect|
+|-   |-   |nisraq   |habitual present (Imperfective)|
+|kont|-   |nisraq   |habitual past (Past Imperfective)|
+|-   |qed |nisraq   |present progressive (Present Continuous)|
+|kont|qed |nisraq   |past progressive (Past Continuous)|
+|nkun|-/qed|nisraq  |future progressive (Future Imperfective)|
+|-   |sa  |nisraq   |prospective        |
+|kont|sa  |nisraq   |past prospective   |
+|nkun|sa  |nisraq   |future prospective |
+
+**Notes**
+
+- _Future_ can also be expressed by means of: Imperfective + temporal adverb, e.g. _GĦADA MMUR NIXTRI_
+- Conditional clauses
+    - Counterfactual conditional with past reference: Perfective + Past Imperfective, e.g.:  
+    _Kieku rbaħt l-lotterija kont nixtri dar._
+    - Counterfactual with non-past time reference: Jekk/Kieku + Imperfective, e.g.:  
+    _Jekk nirbaħ l-lotterija nixtri dar._
+    - Imperfective with future meaning:  
+    _Kieku nirbaħ l-lotterija nixtri dar._
+- Future habituality is expressed using bare imperfective/prospective with adequate future adverbial {TAS pg335}
+- A few verbs in Maltese have no perfective form, and thus use _kien_ + Imperfective for simple/habitual past:
+    - _kont naf_
+    - _kont nixbaħ_
+    - _kien jisimni_
+- Progressive can be:
+    - Synthetic, e.g. _nieżel_ (Only possible when verb has an active participial form.) {TAS pg328}
+    - Analytic, e.g. _qed jinżel_
+- Some more complex (and lesser used) tense-aspect constructions:
+    - _Pawlu kien dejjem ikun jilgħab il-futboll_
+    - _Pawlu kien dejjem ikun qed jilgħab il-futboll_
+    - _Pawlu kien dejjem ikun sa jilgħab il-futboll_
+    - _Pawlu kien dejjem ikun lagħab il-futboll_
+- Still/yet:
+    - Pseudo-verb _għad_ + Imperfective:
+        - _Pawlu għadu jiekol_
+        - _Pawlu għadu qed jiekol_
+        - _Pawlu għadu sa jiekol_
+    - _għad_ + _kemm_ + Perfective: _Pawlu għadu kemm qam_
+- Insistence/repetition:
+    - _Pawlu joqgħod idejjaqni_
+    - _Pawlu jibqa' jaħdem tard_
+    - _Pawlu jkompli jispara fuq kull għasfur_
+- {GM} also notes two additional constuctions:
+    - Perfective present continuous, e.g. _ILNI NAĦDEM SIEGĦA_
+    - Pluperfett kontinwu, e.g. _JIEN KONT QGĦADT NAĦDEM_
 
 ### The RGL common tense-polarity system
 
-RGL tenses and how they are expressed in Maltese:
+RGL tenses and how they are expressed in Maltese (refer to table above):
 
 | Anteriority | Temporal Order | Polarity | Description | Example |
 |:------------|:---------------|:---------|:------------|:--------|
@@ -140,23 +181,18 @@ RGL tenses and how they are expressed in Maltese:
 |Simultaneous | Present        | Negative |            |_jien ma norqodx_|
 |Simultaneous | Past           | Positive |Perfective|_jien irqadt_|
 |Simultaneous | Past           | Negative |          |_jien ma rqadtx_|
-|Simultaneous | Future         | Positive |Active participle SEJJER (SA/SE/SER/ĦA) + Imperfective|_jien sejjer norqod_|
-|Simultaneous | Future         | Negative |                                                      |_jien minix sejjer norqod_|
-|Simultaneous | Conditional    | Positive |Past Imperfective: Perfective _kien_ + Imperfective or Active Participle|_jien kont norqod [kieku]_|
-|Simultaneous | Conditional    | Negative |     |_jien ma kontx norqod [kieku]_|
-|Anterior     | Present        | Positive |  -  |     |
-|Anterior     | Present        | Negative |  -  |     |
-|Anterior     | Past           | Positive |"Pluperfett": Perfective _kien_ + Perfective|_jien kont irqadt_|
-|Anterior     | Past           | Negative |     |_jien ma kontx irqadt_|
-|Anterior     | Future         | Positive |Future perfective: Imperfective _kien_ + Imperfective|_jien inkun irqadt_|
-|Anterior     | Future         | Negative |     |_jien ma nkunx irqadt_(?)|
-|Anterior     | Conditional    | Positive |  -  |     |
-|Anterior     | Conditional    | Negative |  -  |     |
-
-**_Notes_**
-
-- _Future_ can also be expressed by means of: Imperfective + temporal adverb, e.g. _GĦADA MMUR NIXTRI_
-
+|Simultaneous | Future         | Positive |Prospective|_jien se norqod_|
+|Simultaneous | Future         | Negative |           |_jien minix se norqod_|
+|Simultaneous | Conditional    | Positive |Past Imperfective|_jien kont norqod [kieku]_|
+|Simultaneous | Conditional    | Negative |                 |_jien ma kontx norqod [kieku]_|
+|Anterior     | Present        | Positive |_Same as Sim Past Pos_|     |
+|Anterior     | Present        | Negative |_Same as Sim Past Neg_|     |
+|Anterior     | Past           | Positive |Past Perfect|_jien kont irqadt_|
+|Anterior     | Past           | Negative |            |_jien ma kontx irqadt_|
+|Anterior     | Future         | Positive |Future Perfect|_jien inkun irqadt_|
+|Anterior     | Future         | Negative |              |_jien ma nkunx irqadt_(?)|
+|Anterior     | Conditional    | Positive |Past prospective|_jien kont se norqod [kieku]_|
+|Anterior     | Conditional    | Negative |                |_jien ma kontx se norqod [kieku]_|
 
 ## Derived forms
 
