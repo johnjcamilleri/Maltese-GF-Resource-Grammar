@@ -203,6 +203,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
     ImpfDoublingCons : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "t" | "x" | "ż" | "z" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b}
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
+    SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused.
     WeakCons : pattern Str = #( "j" | "w" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
     Digraph : pattern Str = #( "ie" );
