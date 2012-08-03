@@ -2,11 +2,12 @@
 
 ## Conventions
 
-### Standard forms
+### Initial vowels & standard forms
+
+In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet othertimes they are part of the word.
+This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference stick to that standard. Examples:
 
 **Nouns**
-
-Based on {DM}, in some nouns the initial "i" is part of the noun, and in others it is not. This is likely an etymological issue, but we will stick to that standard. Examples:
 
 - _mbuljuta_
 - _mgħarfa_
@@ -27,12 +28,26 @@ But:
 - _ispirazzjoni_
 - _istitut_
 
-**Verbs**
+**Semitic Verbs**
 
-{MDG} conjugates verbs with initial vowels: _insum, isum, inbierek, ibierek_ etc., 
-but others seem to leave them out and give the standard form without the euphonic vowels: _nsum, jsum, nbierek, jbierek_ etc.
+{MDG} gives verb conjugations **with** initial vowels: _insum, isum, inbierek, ibierek_ etc., 
+but others ({DM}, {OM}, {GM}) seem to leave them out and give the standard form without the euphonic vowels: _nsum, jsum, nbierek, jbierek_ etc.
 
-We will keep to the form **without** included vowels, since they are not part of the morphology.
+We will keep to the form **without** included vowels, since they are not part of the morphology and are really a syntactic phenomena.
+
+**Loan Verbs**
+
+- _mmatura_
+- _kkopja_
+- _pparkja_
+- _nnervja_
+
+But:
+
+- _immaġina_
+- _ikkoppja_ (he fished with a net)
+- _ipponta_
+- _innamra_
 
 **Adjectives**
 
