@@ -279,6 +279,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       m@#DoublingConsN => m + s ;
       _ => "n" + s
       } ;
+  
+    -- Add suffix, avoiding triple letters {GO pg96-7} --- add more cases?
+    sfx : Str -> Str -> Str = \a,b ->
+      case <a,takePfx 1 b> of {
+        <ke+"nn","n"> => ke+"n"+b ;
+        <ha+"kk","k"> => ha+"k"+b ;
+        <ho+"ll","l"> => ho+"l"+b ;
+        <si+"tt","t"> => si+"t"+b ;
+        <be+"xx","x"> => be+"x"+b ;
+        _ => a + b
+      } ;
     
     -- Add a definite preposition in front of your token
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;

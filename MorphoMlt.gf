@@ -18,6 +18,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         Pos => s ;
         Neg => case s of {
           "" => [] ;
+          _ + "xx" => s ; -- BEXX > BEXX
           x + "'" => x + "x" ; -- AQTA' > AQTAX
           x + "iek" => x + "iekx" ; -- KTIBNIEK > KTIBNIEKX
           x + "ieh" => x + "iehx" ; -- KTIBNIEH > KTIBNIEHX
@@ -168,19 +169,19 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixNone => tbl ! AgP3Sg Masc ;
             VSuffixDir agr =>
               case agr of {
-                AgP1 Sg    => fetah + "ni" ; -- Huwa FETAĦNI
+                AgP1 Sg    => sfx fetah "ni" ; -- Huwa FETAĦNI (n.b. KENN+NI)
                 AgP2 Sg    => feth + "ek" ; -- Huwa FETĦEK
                 AgP3Sg Masc  => feth + "u" ;  -- Huwa FETĦU
                 AgP3Sg Fem  => fetah + "ha" ;  -- Huwa FETAĦHA
-                AgP1 Pl    => fetah + "na" ; -- Huwa FETAĦNA
-                AgP2 Pl    => fetah + "kom" ; -- Huwa FETAĦKOM
+                AgP1 Pl    => sfx fetah "na" ; -- Huwa FETAĦNA (n.b. KENN+NA)
+                AgP2 Pl    => sfx fetah "kom" ; -- Huwa FETAĦKOM (n.b. ĦAKK+KOM)
                 AgP3Pl    => fetah + "hom"  -- Huwa FETAĦHOM
               } ;
             VSuffixInd agr =>
               case agr of {
-                AgP1 Sg    => fetah + "li" ; -- Huwa FETAĦLI
-                AgP2 Sg    => fetah + "lek" ; -- Huwa FETAĦLEK
-                AgP3Sg Masc  => fetah + "lu" ;  -- Huwa FETAĦLU
+                AgP1 Sg    => sfx fetah "li" ; -- Huwa FETAĦLI (n.b. ĦALL+LI)
+                AgP2 Sg    => sfx fetah "lek" ; -- Huwa FETAĦLEK (n.b. ĦALL+LEK)
+                AgP3Sg Masc  => sfx fetah "lu" ;  -- Huwa FETAĦLU (n.b. ĦALL+LU)
                 AgP3Sg Fem  => feth + "ilha" ;  -- Huwa FETĦILHA
                 AgP1 Pl    => feth + "ilna" ; -- Huwa FETĦILNA
                 AgP2 Pl    => feth + "ilkom" ; -- Huwa FETĦILKOM
@@ -476,7 +477,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP3Sg Masc  => nifth + "u" ;  -- Jiena NIFTĦU
                 AgP3Sg Fem  => niftah + "ha" ;  -- Jiena NIFTAĦHA
                 AgP1 Pl    => [] ;
-                AgP2 Pl    => niftah + "kom" ;  -- Jiena NIFTAĦKOM
+                AgP2 Pl    => sfx niftah "kom" ;  -- Jiena NIFTAĦKOM (n.b. NĦOKK+KOM)
                 AgP3Pl    => niftah + "hom"  -- Jiena NIFTAĦHOM
               } ;
             VSuffixInd agr =>
@@ -491,12 +492,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               in
               case agr of {
                 AgP1 Sg    => [] ;
-                AgP2 Sg    => niftah + "lek" ;  -- Jiena NIFTAĦLEK
-                AgP3Sg Masc  => niftah + "lu" ;  -- Jiena NIFTAĦLU
-                AgP3Sg Fem  => nifthi + "lha" ;  -- Jiena NIFTĦILHA
+                AgP2 Sg    => sfx niftah "lek" ;  -- Jiena NIFTAĦLEK (n.b. NĦOLL+LEK)
+                AgP3Sg Masc=> sfx niftah "lu" ;  -- Jiena NIFTAĦLU (n.b. NĦOLL+LU)
+                AgP3Sg Fem => nifthi + "lha" ;  -- Jiena NIFTĦILHA
                 AgP1 Pl    => [] ;
                 AgP2 Pl    => nifthi + "lkom" ;  -- Jiena NIFTĦILKOM
-                AgP3Pl    => nifthi + "lhom"  -- Jiena NIFTĦILHOM
+                AgP3Pl     => nifthi + "lhom"  -- Jiena NIFTĦILHOM
               } ;
             VSuffixDirInd (GSg Masc) agr =>
               case agr of {
@@ -542,11 +543,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixNone => tbl ! AgP2 Sg ;
             VSuffixDir agr =>
               case agr of {
-                AgP1 Sg    => tiftah + "ni" ; -- Inti TIFTAĦNI
+                AgP1 Sg    => sfx tiftah "ni" ; -- Inti TIFTAĦNI (n.b. TKENN+NI)
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc  => tifth + "u" ;  -- Inti TIFTĦU
                 AgP3Sg Fem  => tiftah + "ha" ;  -- Inti TIFTAĦHA
-                AgP1 Pl    => tiftah + "na" ; -- Inti TIFTAĦNA
+                AgP1 Pl    => sfx tiftah "na" ; -- Inti TIFTAĦNA (n.b. TKENN+NA)
                 AgP2 Pl    => [] ;
                 AgP3Pl    => tiftah + "hom"  -- Inti TIFTAĦHOM
               } ;
@@ -558,9 +559,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   } ;
               in
               case agr of {
-                AgP1 Sg    => tiftah + "li" ; -- Inti TIFTAĦLI
+                AgP1 Sg    => sfx tiftah "li" ; -- Inti TIFTAĦLI (n.b. TĦOLL+LI)
                 AgP2 Sg    => [] ;
-                AgP3Sg Masc  => tiftah + "lu" ;  -- Inti TIFTAĦLU
+                AgP3Sg Masc  => sfx tiftah "lu" ;  -- Inti TIFTAĦLU (n.b. TĦOLL+LU)
                 AgP3Sg Fem  => tifthi + "lha" ;  -- Inti TIFTĦILHA
                 AgP1 Pl    => tifthi + "lna" ; -- Inti TIFTĦILNA
                 AgP2 Pl    => [] ;
@@ -610,12 +611,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixNone => tbl ! AgP3Sg Masc ;
             VSuffixDir agr =>
               case agr of {
-                AgP1 Sg    => jiftah + "ni" ; -- Huwa JIFTAĦNI
+                AgP1 Sg    => sfx jiftah "ni" ; -- Huwa JIFTAĦNI (n.b. JKENN+NI)
                 AgP2 Sg    => jifth + "ek" ; -- Huwa JIFTĦEK
                 AgP3Sg Masc  => jifth + "u" ;  -- Huwa JIFTĦU
                 AgP3Sg Fem  => jiftah + "ha" ;  -- Huwa JIFTAĦHA
-                AgP1 Pl    => jiftah + "na" ; -- Huwa JIFTAĦNA
-                AgP2 Pl    => jiftah + "kom" ; -- Huwa JIFTAĦKOM
+                AgP1 Pl    => sfx jiftah "na" ; -- Huwa JIFTAĦNA (n.b. JKENN+NA)
+                AgP2 Pl    => sfx jiftah "kom" ; -- Huwa JIFTAĦKOM (n.b. JĦOKK+KOM)
                 AgP3Pl    => jiftah + "hom"  -- Huwa JIFTAĦHOM
               } ;
             VSuffixInd agr =>
@@ -626,9 +627,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   } ;
               in
               case agr of {
-                AgP1 Sg    => jiftah + "li" ; -- Huwa JIFTAĦLI
-                AgP2 Sg    => jiftah + "lek" ; -- Huwa JIFTAĦLEK
-                AgP3Sg Masc  => jiftah + "lu" ;  -- Huwa JIFTAĦLU
+                AgP1 Sg    => sfx jiftah "li" ; -- Huwa JIFTAĦLI (n.b. JĦOLL+LI)
+                AgP2 Sg    => sfx jiftah "lek" ; -- Huwa JIFTAĦLEK (n.b. JĦOLL+LEK)
+                AgP3Sg Masc  => sfx jiftah "lu" ;  -- Huwa JIFTAĦLU (n.b. JĦOLL+LU)
                 AgP3Sg Fem  => jifthi + "lha" ;  -- Huwa JIFTĦILHA
                 AgP1 Pl    => jifthi + "lna" ; -- Huwa JIFTĦILNA
                 AgP2 Pl    => jifthi + "lkom" ; -- Huwa JIFTĦILKOM
@@ -678,12 +679,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixNone => tbl ! AgP3Sg Fem ;
             VSuffixDir agr =>
               case agr of {
-                AgP1 Sg    => tiftah + "ni" ; -- Hija TIFTAĦNI
+                AgP1 Sg    => sfx tiftah "ni" ; -- Hija TIFTAĦNI (n.b. TKENN+NI)
                 AgP2 Sg    => tifth + "ek" ; -- Hija TIFTĦEK
                 AgP3Sg Masc  => tifth + "u" ;  -- Hija TIFTĦU
                 AgP3Sg Fem  => tiftah + "ha" ;  -- Hija TIFTAĦHA
-                AgP1 Pl    => tiftah + "na" ; -- Hija TIFTAĦNA
-                AgP2 Pl    => tiftah + "kom" ; -- Hija TIFTAĦKOM
+                AgP1 Pl    => sfx tiftah "na" ; -- Hija TIFTAĦNA (n.b. TKENN+NA)
+                AgP2 Pl    => sfx tiftah "kom" ; -- Hija TIFTAĦKOM (n.b. TĦOKK+KOM)
                 AgP3Pl    => tiftah + "hom"  -- Hija TIFTAĦHOM
               } ;
             VSuffixInd agr =>
@@ -694,9 +695,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   } ;
               in
               case agr of {
-                AgP1 Sg    => tiftah + "li" ; -- Hija TIFTAĦLI
-                AgP2 Sg    => tiftah + "lek" ; -- Hija TIFTAĦLEK
-                AgP3Sg Masc  => tiftah + "lu" ;  -- Hija TIFTAĦLU
+                AgP1 Sg    => sfx tiftah "li" ; -- Hija TIFTAĦLI (n.b. TĦOLL+LI)
+                AgP2 Sg    => sfx tiftah "lek" ; -- Hija TIFTAĦLEK (n.b. TĦOLL+LEK)
+                AgP3Sg Masc  => sfx tiftah "lu" ;  -- Hija TIFTAĦLU (n.b. TĦOLL+LU)
                 AgP3Sg Fem  => tifthi + "lha" ;  -- Hija TIFTĦILHA
                 AgP1 Pl    => tifthi + "lna" ; -- Hija TIFTĦILNA
                 AgP2 Pl    => tifthi + "lkom" ; -- Hija TIFTĦILKOM
@@ -923,11 +924,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixNone => (tbl ! Sg) ;
             VSuffixDir agr =>
               case agr of {
-                AgP1 Sg    => iftah + "ni" ; -- Inti IFTAĦNI
+                AgP1 Sg    => sfx iftah "ni" ; -- Inti IFTAĦNI (n.b. KENN+NI)
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc  => ifth + "u" ;  -- Inti IFTĦU
                 AgP3Sg Fem  => iftah + "ha" ;  -- Inti IFTAĦHA
-                AgP1 Pl    => iftah + "na" ; -- Inti IFTAĦNA
+                AgP1 Pl    => sfx iftah "na" ; -- Inti IFTAĦNA (n.b. KENN+NA)
                 AgP2 Pl    => [] ;
                 AgP3Pl    => iftah + "hom"  -- Inti IFTAĦHOM
               } ;
@@ -939,9 +940,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   } ;
               in
               case agr of {
-                AgP1 Sg    => iftah + "li" ; -- Inti IFTAĦLI
+                AgP1 Sg    => sfx iftah "li" ; -- Inti IFTAĦLI (n.b. ĦOLL+LI)
                 AgP2 Sg    => [] ;
-                AgP3Sg Masc  => iftah + "lu" ;  -- Inti IFTAĦLU
+                AgP3Sg Masc  => sfx iftah "lu" ;  -- Inti IFTAĦLU (n.b. ĦOLL+LU)
                 AgP3Sg Fem  => ifthi + "lha" ;  -- Inti IFTĦILHA
                 AgP1 Pl    => ifthi + "lna" ; -- Inti IFTĦILNA
                 AgP2 Pl    => [] ;
