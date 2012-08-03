@@ -4,7 +4,7 @@
 
 ### Initial vowels & standard forms
 
-In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet othertimes they are part of the word.
+In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet other times they are part of the word.
 This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference stick to that standard. Examples:
 
 **Nouns**
