@@ -1265,31 +1265,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
-    -- Params: Imperative Singular (eg IMXI), Imperative Plural (eg IMXU)
+    -- Params: Imperative Singular (eg DUM), Imperative Plural (eg DUMU)
     conjHollowImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
-      let
-        d = takePfx 1 imp_sg ;
-      in
-      case d of {
-        --- Basing the reduplication based on first letter alone is pure speculation. Seems fine though.
-        #ImpfDoublingCons => table {
-          AgP1 Sg    => "in" + imp_sg ;  -- Jiena INDUM
-          AgP2 Sg    => "i" + d + imp_sg ;  -- Inti IDDUM
-          AgP3Sg Masc  => "i" + imp_sg ;  -- Huwa IDUM
-          AgP3Sg Fem  => "i" + d + imp_sg ;  -- Hija IDDUM
-          AgP1 Pl    => "in" + imp_pl ;  -- Aħna INDUMU
-          AgP2 Pl    => "i" + d + imp_pl ;  -- Intom IDDUMU
-          AgP3Pl    => "i" + imp_pl  -- Huma IDUMU
-          } ;
-        _ => table {
-          AgP1 Sg    => "in" + imp_sg ;  -- Jiena INĦIT
-          AgP2 Sg    => "t" + imp_sg ;  -- Inti TĦIT
-          AgP3Sg Masc  => "i" + imp_sg ;  -- Huwa IĦIT
-          AgP3Sg Fem  => "t" + imp_sg ;  -- Hija TĦIT
-          AgP1 Pl    => "in" + imp_pl ;  -- Aħna INĦITU
-          AgP2 Pl    => "t" + imp_pl ;  -- Intom TĦITU
-          AgP3Pl    => "i" + imp_pl  -- Huma IĦITU
-          }
+      table {
+          AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NDUM / MMUR
+          AgP2 Sg    => pfx_T imp_sg ;  -- Inti DDUM / TMUR
+          AgP3Sg Masc  => "j" + imp_sg ;  -- Huwa JDUM / JMUR
+          AgP3Sg Fem  => pfx_T imp_sg ;  -- Hija DDUM / TMUR
+          AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NDUMU / MMORRU
+          AgP2 Pl    => pfx_T imp_pl ;  -- Intom DDUMU / TMORRU
+          AgP3Pl    => "j" + imp_pl  -- Huma JDUMU / JMORRU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -1401,20 +1386,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg DENDEL), Imperative Plural (eg DENDLU)
     conjQuadImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
-      let
-        prefix_dbl : Str = case imp_sg of {
-          X@#ImpfDoublingCons + _ => "i" + X ;
-          _ => "t"
-          } ;
-      in
       table {
-        AgP1 Sg    => "in" + imp_sg ;      -- Jiena INDENDEL
-        AgP2 Sg    => prefix_dbl + imp_sg ;  -- Inti IDDENDEL
-        AgP3Sg Masc  => "i" + imp_sg ;      -- Huwa IDENDEL
-        AgP3Sg Fem  => prefix_dbl + imp_sg ;  -- Hija IDDENDEL
-        AgP1 Pl    => "in" + imp_pl ;      -- Aħna INDENDLU
-        AgP2 Pl    => prefix_dbl + imp_pl ;  -- Intom IDDENDLU
-        AgP3Pl    => "i" + imp_pl      -- Huma IDENDLU
+        AgP1 Sg    => pfx_N imp_sg ;      -- Jiena NDENDEL
+        AgP2 Sg    => pfx_T imp_sg ;  -- Inti DDENDEL
+        AgP3Sg Masc  => "j" + imp_sg ;      -- Huwa JDENDEL
+        AgP3Sg Fem  => pfx_T imp_sg ;  -- Hija DDENDEL
+        AgP1 Pl    => pfx_N imp_pl ;      -- Aħna NDENDLU
+        AgP2 Pl    => pfx_T imp_pl ;  -- Intom DDENDLU
+        AgP3Pl    => "j" + imp_pl      -- Huma JDENDLU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -1462,20 +1441,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg SERVI), Imperative Plural (eg SERVU)
     conjQuadWeakImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
-      let
-        prefix_dbl : Str = case imp_sg of {
-          X@#ImpfDoublingCons + _ => "i" + X ;
-          _ => "t"
-          } ;
-      in
       table {
-        AgP1 Sg    => "in" + imp_sg ;      -- Jiena INSERVI
-        AgP2 Sg    => prefix_dbl + imp_sg ;  -- Inti ISSERVI
-        AgP3Sg Masc  => "i" + imp_sg ;      -- Huwa ISERVI
-        AgP3Sg Fem  => prefix_dbl + imp_sg ;  -- Hija ISSERVI
-        AgP1 Pl    => "in" + imp_pl ;      -- Aħna INSERVU
-        AgP2 Pl    => prefix_dbl + imp_pl ;  -- Intom ISSERVU
-        AgP3Pl    => "i" + imp_pl      -- Huma ISERVU
+        AgP1 Sg    => pfx_N imp_sg ;      -- Jiena NSERVI
+        AgP2 Sg    => pfx_T imp_sg ;  -- Inti SSERVI
+        AgP3Sg Masc  => "j" + imp_sg ;      -- Huwa JSERVI
+        AgP3Sg Fem  => pfx_T imp_sg ;  -- Hija SSERVI
+        AgP1 Pl    => pfx_N imp_pl ;      -- Aħna NSERVU
+        AgP2 Pl    => pfx_T imp_pl ;  -- Intom SSERVU
+        AgP3Pl    => "j" + imp_pl      -- Huma JSERVU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns

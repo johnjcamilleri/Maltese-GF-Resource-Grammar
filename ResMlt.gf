@@ -201,9 +201,12 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Alphabet : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
     Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
-    ImpfDoublingCons : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "t" | "x" | "ż" | "z" ); -- require doubling in imperfect, eg (inti) IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b}
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
-    SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused.
+    SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused, but see DoublingConsN below
+
+    DoublingConsT : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "x" | "ż" | "z" ); -- require doubling when prefixed with 't', eg IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b} {OM pg90}
+    DoublingConsN : pattern Str = #( "l" | "m" | "r" ); -- require doubling when prefixed with 'n', eg LLAĦĦAQ, MMUR, RRID {OM pg90}
+
     WeakCons : pattern Str = #( "j" | "w" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
     Digraph : pattern Str = #( "ie" );
@@ -277,6 +280,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         _ => haystack
       } ;
 
+    -- Prefix with a 't'/'n' or double initial consonant, as necessary. See {OM pg 90}
+    pfx_T : Str -> Str = \s -> case takePfx 1 s of {
+      d@#DoublingConsT => d + s ;
+      _ => "t" + s
+      } ;
+    pfx_N : Str -> Str = \s -> case takePfx 1 s of {
+      m@#DoublingConsN => m + s ;
+      _ => "n" + s
+      } ;
+    
+    -- Add a definite preposition in front of your token
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;
     getDefiniteArticle = getDefinitePreposition "il" ;
