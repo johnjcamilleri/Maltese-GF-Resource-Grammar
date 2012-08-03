@@ -483,8 +483,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               let
                 nifthi = case info.class of {
                   Strong LiquidMedial =>
-                    niftah + "i" -- NOĦROĠI-
-                    | takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI-
+                    -- niftah + "i" -- NOĦROĠI- | -- see note in Verbs.md about variant spelling
+                    takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI- --- not very robust
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
