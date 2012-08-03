@@ -12,24 +12,37 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
   param
 
+    {- General -}
+
     Gender  = Masc | Fem ;
 
+    GenNum  =
+        GSg Gender -- dak, dik
+      | GPl ; -- dawk
+
+    Agr =
+        AgP1 Number  -- jiena, aħna
+      | AgP2 Number  -- inti, intom
+      | AgP3Sg Gender  -- huwa, hija
+      | AgP3Pl    -- huma
+    ;
+
     NPCase = Nom | Gen ;
+
+    Animacy =
+        Animate
+      | Inanimate
+    ;
+
+    -- Definiteness =
+    --     Definite    -- eg IL-KARTA. In this context same as Determinate
+    --   | Indefinite  -- eg KARTA
+    --   ;
+
 
     {- Numerals -}
 
     CardOrd = NCard | NOrd ;
-
-    Num_Number =
-        Num_Sg
-      | Num_Dl
-      | Num_Pl
-    ;
-
-  -- oper
-  --   Num_Number : Type = { n : Number ; isDual : Bool } ;
-
-  param
 
     DForm =
         Unit    -- 0..10
@@ -39,9 +52,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Hund    -- 100..999
       --| Thou    -- 1000+
     ;
+
+    Num_Number =
+        Num_Sg
+      | Num_Dl
+      | Num_Pl
+    ;
+
     Num_Case =
         NumNominative   -- TNEJN, ĦAMSA, TNAX, MIJA
       | NumAdjectival ; -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
+
 
     {- Nouns -}
 
@@ -63,30 +84,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         NRegular -- WIĊĊ
       | NPronSuffix Agr ; -- WIĊĊU
 
-    Animacy =
-        Animate
-      | Inanimate
-    ;
-
-    Definiteness =
-        Definite    -- eg IL-KARTA. In this context same as Determinate
-      | Indefinite  -- eg KARTA
-      ;
-
 
     {- Verb -}
-
-    -- Agreement features
-    Agr =
-        AgP1 Number  -- Jiena, Aħna
-      | AgP2 Number  -- Inti, Intom
-      | AgP3Sg Gender  -- Huwa, Hija
-      | AgP3Pl    -- Huma
-    ;
-    -- Agr : Type = {g : Gender ; n : Number ; p : Person} ;
-    -- Ag : Gender -> Number -> Person -> Agr = \g,n,p -> {g = g ; n = n ; p = p} ;
-    -- agrP1 : Number -> Agr = \n -> Ag {} n P1 ;
-    -- agrP3 : Gender -> Number -> Agr = \g,n -> Ag g n P3 ;
 
     -- Possible verb forms (tense + person)
     VForm =
@@ -123,9 +122,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VClass =
         Strong VStrongClass
       | Weak VWeakClass
-      | Loan --- temporary
-      -- | Romance
-      -- | English
+      | Loan
+--      | Irregular
       ;
     VStrongClass =
         Regular
@@ -146,15 +144,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     --   | RepeatedC1
     --   | AdditionalC4
     --   ;
-    -- VRomanceClass =
-    --     Integrated
-    --   | NonIntegrated
-    --   ;
 
 
     {- Adjective -}
-
-    GenNum  = GSg Gender | GPl ; -- masc/fem/plural, e.g. adjective inflection
 
     AForm =
         APosit GenNum
@@ -180,8 +172,6 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Verb : Type = {
       s : VForm => VSuffixForm => Polarity => Str ;
       i : VerbInfo ;
---      c : VClass ;
---      f : VDerivedForm ;
       } ;
 
     VerbInfo : Type = {
