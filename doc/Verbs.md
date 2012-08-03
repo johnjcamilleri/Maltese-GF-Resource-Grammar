@@ -19,15 +19,33 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 1. IE-reduction when adding affixes needs to be more intelligent. See {GO pg92,100}
 ~~1. Avoid triples when adding suffixes, e.g. _ħakk_ + _kom_ = _ħakkom_~~
 
-### Edge cases
+### Test cases
 
-|Verb|Tests|
-|:---|:----|
-|_kenn_|Triple n with suffix _na_|
-|_ħakk_|Triple k with suffix _kom_|
-|_ħall_|Triple l with suffix _lu_|
-|_bexx_|Triple x in negation|
+When testing the verb morphology, each of these cases should be considered for the given reason(s). Ideally we will have gold standards for each.
 
+|Verb|Class|Tests|
+|:---|:----|:----|
+|_kiteb_|Regular strong|Vowel changes (_kitibli_)|
+|_lagħab_|Regular strong|Middle radical is 2 characters|
+|_ħareġ_|Liquid-medial strong|Vowel changes (_oħroġ_)|
+|_kenn_|Reduplicative strong|Triple n with suffix _na_|
+|_ħakk_|Reduplicative strong|Triple k with suffix _kom_|
+|_ħall_|Reduplicative strong|Triple l with suffix _lu_|
+|_bexx_|Reduplicative strong|Triple x in negation|
+|_waqaf_|Weak initial (assimilative)|-|
+|_saq_|Weak medial (hollow)|-|
+|_żied_|Weak medial (hollow)|Middle vowel is 2 characters|
+|_mexa_|Weak final (lacking)|-|
+|_beża'_|Defective|Treatment of apostrophe|
+|_ħarbat_|Quad strong|-|
+|_għargħax_|Quad strong|C1 repeated; C1 & C3 are 2 characters|
+|_kanta_|Weak quad (integrated loan)|Italian origin _-are_: imperative is _kanta_|
+|_serva_|Weak quad (integrated loan)|Italian origin _-ire_: imperative is _servi_|
+|_vinċa_|Weak quad (integrated loan)|Italian origin _-ere_: imperative is _vinċi_|
+|_żviluppa_|Loan|-|
+|_pperfezzjona_|Loan|Double first letter|
+|_antagonizza_|Loan|_-izza_ ending|
+|_ssuġġerixxa_|Loan|_-ixxa_ ending|
 
 ## Classification
 
