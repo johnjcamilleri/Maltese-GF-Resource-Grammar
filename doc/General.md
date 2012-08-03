@@ -4,8 +4,8 @@
 
 ### Initial vowels & standard forms
 
-In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet othertimes they are part of the word.
-This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference stick to that standard. Examples:
+In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet other times they are part of the word.
+This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference we abide by. Examples:
 
 **Nouns**
 
@@ -31,7 +31,7 @@ But:
 **Semitic Verbs**
 
 {MDG} gives verb conjugations **with** initial vowels: _insum, isum, inbierek, ibierek_ etc., 
-but others ({DM}, {OM}, {GM}) seem to leave them out and give the standard form without the euphonic vowels: _nsum, jsum, nbierek, jbierek_ etc.
+but others ({DM}, {OM}, {GM}) prefer to leave them out and give the standard form without the euphonic vowels: _nsum, jsum, nbierek, jbierek_ etc.
 
 We will keep to the form **without** included vowels, since they are not part of the morphology and are really a syntactic phenomena.
 
