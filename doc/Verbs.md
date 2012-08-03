@@ -7,7 +7,7 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 
 1. ~~Conjugations for first-form semitic verbs in Perfect, Imperfect, and Imperative~~
 1. Derived-form verbs
-1. Non-semitic verbs (romance, English-loan)
+1. ~~Non-semitic verbs (romance, English-loan)~~
 1. ~~Polarity, e.g. _oħroġ_ vs _toħroġx_~~
 1. ~~Inflection for direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_~~
 1. Two-place verbs (V2)
