@@ -39,8 +39,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImp  num => verbImpPronSuffixTable  info ( \\n => tbl ! VImp  n ) ! num
         } ;
 
-    -- Build table of pronominal suffixes
-    -- Perfective tense
+    -- Build table of pronominal suffixes: Perfective tense
+    -- Params: verb info, imperative table, perfective table
     verbPerfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       table {
         AgP1 Sg => -- Jiena FTAĦT
@@ -464,7 +464,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x + "e" + y => x + "i" + y ; -- NIKTEB > NIKTIB
               x => x -- NIFTAĦ
               } ;
-            nifth = takePfx 4 niftah + info.root.C3 ; --- GĦ
+            nifth = case info.class of {
+              Strong LiquidMedial => "n" + info.patt.V1 + info.root.C1 + info.patt.V2 + info.root.C2 + info.root.C3 ; -- NOĦORĠ
+              _ => takePfx 4 niftah + info.root.C3 --- GĦ
+              } ;
           in
           table {
             VSuffixNone => tbl ! AgP1 Sg ;
@@ -1122,29 +1125,35 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjStrongImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjStrongImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        stem_sg = case (p.V1 + p.V2) of {
-          "aa" => "o" + root.C1 + root.C2 + "o" + root.C3 ; -- RABAT > ORBOT
-          "ae" => "a" + root.C1 + root.C2 + "e" + root.C3 ; -- GĦAMEL > AGĦMEL
-          "ee" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- FEHEM > IFHEM
-          "ea" => "i" + root.C1 + root.C2 + "a" + root.C3 ; -- FETAĦ > IFTAĦ
-          "ie" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- KITEB > IKTEB
-          "oo" => "o" + root.C1 + root.C2 + "o" + root.C3   -- GĦOĠOB > OGĦĠOB
-        } ;
-        stem_pl = case (p.V1 + p.V2) of {
-          "aa" => "o" + root.C1 + root.C2 + root.C3 ; -- RABAT > ORBTU
-          "ae" => "a" + root.C1 + root.C2 + root.C3 ; -- GĦAMEL > AGĦMLU
-          "ee" => "i" + root.C1 + root.C2 + root.C3 ; -- FEHEM > IFHMU
-          "ea" => "i" + root.C1 + root.C2 + root.C3 ; -- FETAĦ > IFTĦU
-          "ie" => "i" + root.C1 + root.C2 + root.C3 ; -- KITEB > IKTBU
-          "oo" => "o" + root.C1 + root.C2 + root.C3   -- GĦOĠOB > OGĦĠBU
-        } ;
+        vwls = vowelChangesStrong patt ;
       in
         table {
-          Sg => stem_sg ;  -- Inti:  IKTEB
-          Pl => stem_pl + "u"  -- Intom: IKTBU
+          Sg => (vwls!Sg).V1 + root.C1 + root.C2 + (vwls!Sg).V2 + root.C3 ;  -- Inti:  IKTEB
+          Pl => (vwls!Pl).V1 + root.C1 + root.C2 + root.C3 + "u"  -- Intom: IKTBU
         } ;
+
+    -- Vowel changes for imperative
+    vowelChangesStrong : Pattern -> (Number => Pattern) = \patt ->
+      table {
+        Sg => case (patt.V1 + patt.V2) of {
+          "aa" => mkPattern "o" "o" ; -- RABAT > ORBOT
+          "ae" => mkPattern "a" "e" ; -- GĦAMEL > AGĦMEL
+          "ee" => mkPattern "i" "e" ; -- FEHEM > IFHEM
+          "ea" => mkPattern "i" "a" ; -- FETAĦ > IFTAĦ
+          "ie" => mkPattern "i" "e" ; -- KITEB > IKTEB
+          "oo" => mkPattern "o" "o"   -- GĦOĠOB > OGĦĠOB
+        };
+        Pl => case (patt.V1 + patt.V2) of {
+          "aa" => mkPattern "o" ; -- RABAT > ORBTU
+          "ae" => mkPattern "a" ; -- GĦAMEL > AGĦMLU
+          "ee" => mkPattern "i" ; -- FEHEM > IFHMU
+          "ea" => mkPattern "i" ; -- FETAĦ > IFTĦU
+          "ie" => mkPattern "i" ; -- KITEB > IKTBU
+          "oo" => mkPattern "o"   -- GĦOĠOB > OGĦĠBU
+        }
+      } ;
 
     {- ~~~ Liquid-Medial Verb ~~~ -}
 
@@ -1173,27 +1182,33 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Params: Root, Pattern
     conjLiquidMedialImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        stem_sg = case (patt.V1 + patt.V2) of {
-          "aa" => "i" + root.C1 + root.C2 + "o" + root.C3 ; -- TALAB > ITLOB
-          "ae" => "o" + root.C1 + root.C2 + "o" + root.C3 ; -- ĦAREĠ > OĦROĠ
-          "ee" => "e" + root.C1 + root.C2 + "e" + root.C3 ; -- ĦELES > EĦLES
-          "ea" => "i" + root.C1 + root.C2 + "o" + root.C3 ; -- ŻELAQ > IŻLOQ
-          "ie" => "i" + root.C1 + root.C2 + "e" + root.C3 ; -- DILEK > IDLEK
-          "oo" => "i" + root.C1 + root.C2 + "o" + root.C3   -- XOROB > IXROB
-        } ;
-        stem_pl = case (patt.V1 + patt.V2) of {
-          "aa" => "i" + root.C1 + "o" + root.C2 + root.C3 ; -- TALAB > ITOLBU
-          "ae" => "o" + root.C1 + "o" + root.C2 + root.C3 ; -- ĦAREĠ > OĦORĠU
-          "ee" => "e" + root.C1 + "i" + root.C2 + root.C3 ; -- ĦELES > EĦILSU
-          "ea" => "i" + root.C1 + "o" + root.C2 + root.C3 ; -- ŻELAQ > IŻOLQU
-          "ie" => "i" + root.C1 + "i" + root.C2 + root.C3 ; -- DILEK > IDILKU
-          "oo" => "i" + root.C1 + "o" + root.C2 + root.C3   -- XOROB > IXORBU
-        } ;
+        vwls = vowelChangesLiquidMedial patt ;
       in
         table {
-          Sg => stem_sg ;  -- Inti: IŻLOQ
-          Pl => stem_pl + "u"  -- Intom: IŻOLQU
+          Sg => (vwls!Sg).V1 + root.C1 + root.C2 + (vwls!Sg).V2 + root.C3 ;  -- Inti: IŻLOQ
+          Pl => (vwls!Pl).V1 + root.C1 + (vwls!Pl).V2 + root.C2 + root.C3 + "u"  -- Intom: IŻOLQU
         } ;
+
+    -- Vowel changes for imperative
+    vowelChangesLiquidMedial : Pattern -> (Number => Pattern) = \patt ->
+      table {
+        Sg => case (patt.V1 + patt.V2) of {
+          "aa" => mkPattern "i" "o" ; -- TALAB > ITLOB
+          "ae" => mkPattern "o" "o" ; -- ĦAREĠ > OĦROĠ
+          "ee" => mkPattern "e" "e" ; -- ĦELES > EĦLES
+          "ea" => mkPattern "i" "o" ; -- ŻELAQ > IŻLOQ
+          "ie" => mkPattern "i" "e" ; -- DILEK > IDLEK
+          "oo" => mkPattern "i" "o"   -- XOROB > IXROB
+        };
+        Pl => case (patt.V1 + patt.V2) of {
+          "aa" => mkPattern "i" "o" ; -- TALAB > ITOLBU
+          "ae" => mkPattern "o" "o" ; -- ĦAREĠ > OĦORĠU
+          "ee" => mkPattern "e" "i" ; -- ĦELES > EĦILSU
+          "ea" => mkPattern "i" "o" ; -- ŻELAQ > IŻOLQU
+          "ie" => mkPattern "i" "i" ; -- DILEK > IDILKU
+          "oo" => mkPattern "i" "o"   -- XOROB > IXORBU
+        }
+      } ;
 
     {- ~~~ Reduplicative Verb ~~~ -}
 
@@ -1219,17 +1234,23 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjReduplicativeImp : Root -> Pattern -> (Number => Str) = \root,p ->
+    conjReduplicativeImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        stem_sg = case p.V1 of {
-          "e" => root.C1 + p.V1 + root.C2 + root.C3 ; -- BEXX > BEXX (?)
-          _ => root.C1 + "o" + root.C2 + root.C3 -- ĦABB > ĦOBB
-        } ;
+        vwls = vowelChangesReduplicative patt ;
+        stem_sg = root.C1 + (vwls!Sg).V1 + root.C2 + root.C3 ;
       in
         table {
           Sg => stem_sg ;  -- Inti: ĦOBB
           Pl => stem_sg + "u"  -- Intom: ĦOBBU
         } ;
+
+    -- Vowel changes for imperative
+    vowelChangesReduplicative : Pattern -> (Number => Pattern) = \patt ->
+      \\n => case patt.V1 of {
+        "e" => mkPattern "e" ; -- BEXX > BEXX (?)
+        _ => mkPattern "o" -- ĦABB > ĦOBB
+      } ;
+
 
     {- ~~~ Assimilative Verb ~~~ -}
 
