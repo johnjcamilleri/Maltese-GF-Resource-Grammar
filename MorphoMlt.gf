@@ -1,4 +1,4 @@
--- MorphoMlt.gf: scary morphology operations which needs their own elbow space
+-- MorphoMlt.gf: scary morphology operations which need their own elbow space
 --
 -- Maltese Resource Grammar Library
 -- John J. Camilleri, 2012
@@ -23,6 +23,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           x + "iek" => x + "iekx" ; -- KTIBNIEK > KTIBNIEKX
           x + "ieh" => x + "iehx" ; -- KTIBNIEH > KTIBNIEHX
           x + "ek"  => x + "ekx" ; -- KTIBTLEK > KTIBTLEKX
+          x + "ew"  => x + "ewx" ; -- XAMMEW > XAMMEWX
           x + "ie" + y + "a" => x + "i" + y + "iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
           x + "a"   => x + "iex" ; -- FTAĦNA > FTAĦNIEX
           x + "e" + y@#Consonant => x + "i" + y + "x" ; -- KITEB > KITIBX
@@ -471,7 +472,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => [] ;
                 AgP2 Sg    => case info.class of {
-                  Weak Defective => nifth + "ak" ;  -- Jiena NAQTGĦAK --- criteria probably wrong
+                  Strong Reduplicative => nifth + "ok" ;  -- Jiena NXOMMOK --- criteria probably wrong
+                  Weak Defective => nifth + "ak" ;  -- Jiena NAQTGĦAK
                   _ => nifth + "ek"  -- Jiena NIFTĦEK
                   } ;
                 AgP3Sg Masc=> nifth + "u" ;  -- Jiena NIFTĦU
@@ -489,10 +491,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
+                lek = case info.class of {
+                  Strong Reduplicative => "lok" ;  -- Jiena NXOMMLOK
+                  _ => "lek"
+                  } ;
               in
               case agr of {
                 AgP1 Sg    => [] ;
-                AgP2 Sg    => sfx niftah "lek" ;  -- Jiena NIFTAĦLEK (n.b. NĦOLL+LEK)
+                AgP2 Sg    => sfx niftah lek ;  -- Jiena NIFTAĦLEK (n.b. NĦOLL+LEK)
                 AgP3Sg Masc=> sfx niftah "lu" ;  -- Jiena NIFTAĦLU (n.b. NĦOLL+LU)
                 AgP3Sg Fem => nifthi + "lha" ;  -- Jiena NIFTĦILHA
                 AgP1 Pl    => [] ;
@@ -612,7 +618,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => sfx jiftah "ni" ; -- Huwa JIFTAĦNI (n.b. JKENN+NI)
-                AgP2 Sg    => jifth + "ek" ; -- Huwa JIFTĦEK
+                AgP2 Sg    => case info.class of {
+                  Strong Reduplicative => jifth + "ok" ; -- Huwa JXOMMOK
+                  _ => jifth + "ek" -- Huwa JIFTĦEK
+                  } ;
                 AgP3Sg Masc=> jifth + "u" ;  -- Huwa JIFTĦU
                 AgP3Sg Fem => jiftah + "ha" ;  -- Huwa JIFTAĦHA
                 AgP1 Pl    => sfx jiftah "na" ; -- Huwa JIFTAĦNA (n.b. JKENN+NA)
@@ -625,10 +634,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => jifth + "a" ; -- JAQTGĦA-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
+                lek = case info.class of {
+                  Strong Reduplicative => "lok" ;  -- Huwa JXOMMLOK
+                  _ => "lek"
+                  } ;
               in
               case agr of {
                 AgP1 Sg    => sfx jiftah "li" ; -- Huwa JIFTAĦLI (n.b. JĦOLL+LI)
-                AgP2 Sg    => sfx jiftah "lek" ; -- Huwa JIFTAĦLEK (n.b. JĦOLL+LEK)
+                AgP2 Sg    => sfx jiftah lek ; -- Huwa JIFTAĦLEK (n.b. JĦOLL+LEK)
                 AgP3Sg Masc=> sfx jiftah "lu" ;  -- Huwa JIFTAĦLU (n.b. JĦOLL+LU)
                 AgP3Sg Fem => jifthi + "lha" ;  -- Huwa JIFTĦILHA
                 AgP1 Pl    => jifthi + "lna" ; -- Huwa JIFTĦILNA
@@ -680,7 +693,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => sfx tiftah "ni" ; -- Hija TIFTAĦNI (n.b. TKENN+NI)
-                AgP2 Sg    => tifth + "ek" ; -- Hija TIFTĦEK
+                AgP2 Sg    => case info.class of {
+                  Strong Reduplicative => tifth + "ok" ; -- Hija XXOMMOK
+                  _ => tifth + "ek" -- Hija TIFTĦEK
+                  } ;
                 AgP3Sg Masc=> tifth + "u" ;  -- Hija TIFTĦU
                 AgP3Sg Fem => tiftah + "ha" ;  -- Hija TIFTAĦHA
                 AgP1 Pl    => sfx tiftah "na" ; -- Hija TIFTAĦNA (n.b. TKENN+NA)
@@ -693,10 +709,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => tifth + "a" ; -- TAQTGĦA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
+                lek = case info.class of {
+                  Strong Reduplicative => "lok" ;  -- Hija XXOMMLOK
+                  _ => "lek"
+                  } ;
               in
               case agr of {
                 AgP1 Sg    => sfx tiftah "li" ; -- Hija TIFTAĦLI (n.b. TĦOLL+LI)
-                AgP2 Sg    => sfx tiftah "lek" ; -- Hija TIFTAĦLEK (n.b. TĦOLL+LEK)
+                AgP2 Sg    => sfx tiftah lek ; -- Hija TIFTAĦLEK (n.b. TĦOLL+LEK)
                 AgP3Sg Masc=> sfx tiftah "lu" ;  -- Hija TIFTAĦLU (n.b. TĦOLL+LU)
                 AgP3Sg Fem => tifthi + "lha" ;  -- Hija TIFTĦILHA
                 AgP1 Pl    => tifthi + "lna" ; -- Hija TIFTĦILNA
@@ -1045,12 +1065,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
     conjGenericImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       table {
-        AgP1 Sg    => "n" + imp_sg ;  -- Jiena NIŻLOQ
-        AgP2 Sg    => "t" + imp_sg ;  -- Inti TIŻLOQ
+        AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NIŻLOQ
+        AgP2 Sg    => pfx_T imp_sg ;  -- Inti TIŻLOQ
         AgP3Sg Masc=> "j" + imp_sg ;  -- Huwa JIŻLOQ
-        AgP3Sg Fem => "t" + imp_sg ;  -- Hija TIŻLOQ
-        AgP1 Pl    => "n" + imp_pl ;  -- Aħna NIŻOLQU
-        AgP2 Pl    => "t" + imp_pl ;  -- Intom TIŻOLQU
+        AgP3Sg Fem => pfx_T imp_sg ;  -- Hija TIŻLOQ
+        AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NIŻOLQU
+        AgP2 Pl    => pfx_T imp_pl ;  -- Intom TIŻOLQU
         AgP3Pl     => "j" + imp_pl    -- Huma JIŻOLQU
       } ;
 
