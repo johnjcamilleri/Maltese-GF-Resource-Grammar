@@ -17,7 +17,7 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 ### Known issues:
 
 1. IE-reduction when adding affixes needs to be more intelligent. See {GO pg92,100}
-~~1. Avoid triples when adding suffixes, e.g. _ħakk_ + _kom_ = _ħakkom_~~
+1. ~~Avoid triples when adding suffixes, e.g. _ħakk_ + _kom_ = _ħakkom_~~
 
 ### Test cases
 
