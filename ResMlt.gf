@@ -232,6 +232,19 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         { V1=v1 ; V2=v2 } ;
       } ;
 
+    -- Extract first two vowels from a token
+    -- Designed for semitic verb forms
+    extractPattern : Str -> Pattern = \s ->
+      case s of {
+        v1@"ie" + _ + v2@#Vowel + _ => mkPattern v1 v2 ; -- IEQAF
+        v1@#Vowel + _ + v2@#Vowel + _ => mkPattern v1 v2 ; -- IKTEB
+        _ + v1@"ie" + _ + v2@#Vowel + _ => mkPattern v1 v2 ; -- RIEQED
+        _ + v1@"ie" + _ => mkPattern v1 ; -- ŻIED
+        _ + v1@#Vowel + _ + v2@#Vowel + _ => mkPattern v1 v2 ; -- ĦARBAT
+        _ + v1@#Vowel + _ => mkPattern v1 ; -- ĦOBB
+        _ => mkPattern
+      } ;
+
     mkVerbInfo : VerbInfo = overload {
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
         { class=c ; form=f ; root=mkRoot ; patt=mkPattern } ;

@@ -453,9 +453,10 @@ resource ParadigmsMlt = open
       -- Params: root, pattern, imperative P2Sg
       liquidMedialV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
         let
+          vowels = extractPattern imp_sg ;
           imp = table {
             Sg => imp_sg ;
-            Pl => (takePfx 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" -- OĦROĠ > OĦORĠU
+            Pl => vowels.V1 + root.C1 + vowels.V2 + root.C2 + root.C3 + "u" -- OĦROĠ > OĦORĠU
             } ;
         in liquidMedialVWorst root patt imp ;
 

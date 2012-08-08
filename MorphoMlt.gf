@@ -164,7 +164,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x + "e" + y@#Consonant => x + "i" + y ; -- KITEB > KITIB
               x => x -- FETAĦ
               } ;
-            feth = takePfx 3 fetah + info.root.C3 ;  --- this will fail with GĦ
+            feth = info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ;
           in
           table {
             VSuffixNone => tbl ! AgP3Sg Masc ;
@@ -457,18 +457,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Imperfective tense
     verbImpfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       let
-        vowelsLM : (Number => Pattern) = vowelChangesLiquidMedial info.patt ;
+        -- vowels : (Number => Pattern) = table {
+        --   Sg => extractPattern (tbl ! AgP1 Sg) ;
+        --   Pl => extractPattern (tbl ! AgP1 Pl)
+        --   } ;          
+        vowels : Pattern = extractPattern (tbl ! AgP1 Sg) ; --- we are using the P1 vowel changes for all persons
         sg_dir_ek : Str = case info.class of {
-          Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
+          Strong LiquidMedial => case vowels.V2 of {
             "o" => "ok" ; -- Jiena NOĦORĠ-OK
             _ => "ek" -- Jiena NIDILK-EK
             };                      
           Strong Reduplicative => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
---          Weak Defective => "ak" | "ek" ;  -- Jiena NAQTGĦ-AK / NAQTGĦ-EK
           _ => "ek"  -- Jiena NIFTĦ-EK
           } ;
         sg_ind_lek : Str =  case info.class of {
-          Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
+          Strong LiquidMedial => case vowels.V2 of {
             "o" => "lok" ; -- Jiena NOĦROĠ-LOK
             _ => "lek" -- Jiena NIDLIK-LEK
             };                      
@@ -485,9 +488,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- NIFTAĦ
               } ;
             nifth = case info.class of {
-              Strong LiquidMedial =>
-                "n" + (vowelsLM!Sg).V1 + info.root.C1 + (vowelsLM!Sg).V2 + info.root.C2 + info.root.C3 ; -- NOĦORĠ
-              _ => takePfx 4 niftah + info.root.C3 --- GĦ
+              Strong LiquidMedial => "n" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- NOĦORĠ
+              Strong Reduplicative => niftah ; -- NĦOBB
+              _ => "n" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
               } ;
           in
           table {
@@ -505,9 +508,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixInd agr =>
               let
                 nifthi = case info.class of {
-                  Strong LiquidMedial =>
-                    -- niftah + "i" -- NOĦROĠI- | -- see note in Verbs.md about variant spelling
-                    takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI- --- not very robust
+                  -- Strong LiquidMedial =>
+                  --   -- niftah + "i" -- NOĦROĠI- | -- see note in Verbs.md about variant spelling
+                  --   takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI- --- not very robust
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
@@ -561,7 +564,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             tifth = case info.class of {
               Strong LiquidMedial =>
-                "t" + (vowelsLM!Pl).V1 + info.root.C1 + (vowelsLM!Pl).V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
+                "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
               _ => takePfx 4 tiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -633,7 +636,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             jifth = case info.class of {
               Strong LiquidMedial =>
-                "j" + (vowelsLM!Sg).V1 + info.root.C1 + (vowelsLM!Sg).V2 + info.root.C2 + info.root.C3 ; -- JOĦORĠ
+                "j" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- JOĦORĠ
               _ => takePfx 4 jiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -705,7 +708,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             tifth = case info.class of {
               Strong LiquidMedial =>
-                "t" + (vowelsLM!Sg).V1 + info.root.C1 + (vowelsLM!Sg).V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
+                "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
               _ => takePfx 4 tiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -947,18 +950,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       table {
         Sg => -- Inti IFTAĦ
           let
-            vowelsLM : (Number => Pattern) = vowelChangesLiquidMedial info.patt ;
+            vowels = extractPattern (tbl ! Sg) ;
             iftah : Str = case (tbl ! Sg) of {
               x + "'" => x + "għ" ; -- AQTA' > AQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- KITEB > KITIB
+              x + "e" + y@#Consonant => x + "i" + y ; -- IKTEB > IKTIB
               x => x -- IFTAĦ
               } ;
-            ifth = takePfx 3 iftah + info.root.C3 ; --- GĦ
---             ifth = case info.class of {
--- --              Strong LiquidMedial => (vowelsLM!Sg).V1 + info.root.C1 + info.root.C2 + (vowelsLM!Sg).V2 + info.root.C3 ; -- OĦROĠ
---               Strong LiquidMedial => (tbl!Sg) ; -- OĦROĠ
---               _ => takePfx 3 iftah + info.root.C3 --- GĦ
---               } ;
+            ifth = case info.class of {
+              Strong Reduplicative => iftah ; -- ĦOBB
+              _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
+              } ;
           in
           table {
             VSuffixNone => (tbl ! Sg) ;
@@ -967,7 +968,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP1 Sg    => sfx iftah "ni" ; -- Inti IFTAĦNI (n.b. KENN+NI)
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc=> case info.class of {
-                  Strong LiquidMedial => (vowelsLM!Sg).V1 + info.root.C1 + (vowelsLM!Sg).V2 + info.root.C2 + info.root.C3 + "u" ; -- Inti OĦORĠU
+                  Strong LiquidMedial => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 + "u" ; -- Inti OĦORĠU
                   _ => ifth + "u"  -- Inti IFTĦU
                   } ;
                 AgP3Sg Fem => iftah + "ha" ;  -- Inti IFTAĦHA
@@ -1159,7 +1160,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     vowelChangesStrong : Pattern -> (Number => Pattern) = \patt ->
       table {
         Sg => case (patt.V1 + patt.V2) of {
-          "aa" => mkPattern "o" "o" ; -- RABAT > ORBOT
+          "aa" => mkPattern "o" "o" ; -- RABAT > ORBOT (but: ITLOB, ILGĦAB, AĦBAT)
           "ae" => mkPattern "a" "e" ; -- GĦAMEL > AGĦMEL
           "ee" => mkPattern "i" "e" ; -- FEHEM > IFHEM
           "ea" => mkPattern "i" "a" ; -- FETAĦ > IFTAĦ

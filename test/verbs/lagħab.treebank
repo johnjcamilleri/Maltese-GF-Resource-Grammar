@@ -1,5 +1,5 @@
 i -retain ParadigmsMlt.gf
-cc -table -unqual mkV "lagħab"
+cc -table -unqual mkV "lagħab" "ilgħab"
 ---
 s . VPerf (AgP1 Sg) => VSuffixNone => Pos => lgħabt
 s . VPerf (AgP1 Sg) => VSuffixNone => Neg => lgħabtx
@@ -235,8 +235,8 @@ s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => lgħabtuhom
 s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => lgħabtuhomx
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => lgħabtuli
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => lgħabtulix
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => lgħabtuna
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => lgħabtuniex
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => lgħabtulna
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => lgħabtulniex
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
@@ -527,14 +527,14 @@ s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => nilgħablek
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => nilgħablekx
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => nilgħabilkom
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => nilgħabilkomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => nilagħbilkom
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => nilagħbilkomx
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => nilgħablu
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => nilgħablux
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => nilgħabilha
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => nilgħabilhiex
-s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => nilgħabilhom
-s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => nilgħabilhomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => nilagħbilha
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => nilagħbilhiex
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => nilagħbilhom
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => nilagħbilhomx
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
