@@ -357,7 +357,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc=> ftahtu + "lu" ;  -- Intom FTAĦTULU
                 AgP3Sg Fem => ftahtu + "lha" ;  -- Intom FTAĦTULHA
-                AgP1 Pl    => ftahtu + "la" ; -- Intom FTAĦTULNA
+                AgP1 Pl    => ftahtu + "lna" ; -- Intom FTAĦTULNA
                 AgP2 Pl    => [] ;
                 AgP3Pl     => ftahtu + "lhom"  -- Intom FTAĦTULHOM
               } ;
@@ -847,7 +847,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP2 Sg    => [] ;
                 AgP3Sg Masc=> tifthu + "lu" ;  -- Intom TIFTĦULU
                 AgP3Sg Fem => tifthu + "lha" ;  -- Intom TIFTĦULHA
-                AgP1 Pl    => tifthu + "la" ; -- Intom TIFTĦULNA
+                AgP1 Pl    => tifthu + "lna" ; -- Intom TIFTĦULNA
                 AgP2 Pl    => [] ;
                 AgP3Pl     => tifthu + "lhom"  -- Intom TIFTĦULHOM
               } ;
