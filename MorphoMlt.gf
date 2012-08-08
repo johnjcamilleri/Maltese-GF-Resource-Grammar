@@ -458,6 +458,23 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     verbImpfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       let
         vowelsLM : (Number => Pattern) = vowelChangesLiquidMedial info.patt ;
+        sg_dir_ek : Str = case info.class of {
+          Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
+            "o" => "ok" ; -- Jiena NOĦORĠ-OK
+            _ => "ek" -- Jiena NIDILK-EK
+            };                      
+          Strong Reduplicative => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
+--          Weak Defective => "ak" | "ek" ;  -- Jiena NAQTGĦ-AK / NAQTGĦ-EK
+          _ => "ek"  -- Jiena NIFTĦ-EK
+          } ;
+        sg_ind_lek : Str =  case info.class of {
+          Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
+            "o" => "lok" ; -- Jiena NOĦROĠ-LOK
+            _ => "lek" -- Jiena NIDLIK-LEK
+            };                      
+          Strong Reduplicative => "lok" ;  -- Jiena NXOMM-LOK
+          _ => "lek"
+          } ;
       in
       table {
         AgP1 Sg => -- Jiena NIFTAĦ
@@ -478,15 +495,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => [] ;
-                AgP2 Sg    => case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => nifth + "ok" ; -- Jiena NOĦORĠOK
-                    _ => nifth + "ek" -- Jiena NIDILKEK
-                    };                      
-                  Strong Reduplicative => nifth + "ok" ;  -- Jiena NXOMMOK --- criteria probably wrong
-                  Weak Defective => nifth + "ak" ;  -- Jiena NAQTGĦAK
-                  _ => nifth + "ek"  -- Jiena NIFTĦEK
-                  } ;
+                AgP2 Sg    => nifth + sg_dir_ek ; -- Jiena NIFTĦEK
                 AgP3Sg Masc=> nifth + "u" ;  -- Jiena NIFTĦU
                 AgP3Sg Fem => niftah + "ha" ;  -- Jiena NIFTAĦHA
                 AgP1 Pl    => [] ;
@@ -502,18 +511,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
-                lek = case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => "lok" ; -- Jiena NOĦROĠLOK
-                    _ => "lek" -- Jiena NIDLIKLEK
-                    };                      
-                  Strong Reduplicative => "lok" ;  -- Jiena NXOMMLOK
-                  _ => "lek"
-                  } ;
               in
               case agr of {
                 AgP1 Sg    => [] ;
-                AgP2 Sg    => sfx niftah lek ;  -- Jiena NIFTAĦLEK (n.b. NĦOLL+LEK)
+                AgP2 Sg    => sfx niftah sg_ind_lek ;  -- Jiena NIFTAĦLEK (n.b. NĦOLL+LEK)
                 AgP3Sg Masc=> sfx niftah "lu" ;  -- Jiena NIFTAĦLU (n.b. NĦOLL+LU)
                 AgP3Sg Fem => nifthi + "lha" ;  -- Jiena NIFTĦILHA
                 AgP1 Pl    => [] ;
@@ -641,14 +642,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => sfx jiftah "ni" ; -- Huwa JIFTAĦNI (n.b. JKENN+NI)
-                AgP2 Sg    => case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => jifth + "ok" ; -- Huwa JOĦORĠOK
-                    _ => jifth + "ek" -- Huwa JIDILKEK
-                    } ;                  
-                  Strong Reduplicative => jifth + "ok" ; -- Huwa JXOMMOK
-                  _ => jifth + "ek" -- Huwa JIFTĦEK
-                  } ;
+                AgP2 Sg    => jifth + sg_dir_ek ; -- Huwa JIFTĦEK
                 AgP3Sg Masc=> jifth + "u" ;  -- Huwa JIFTĦU
                 AgP3Sg Fem => jiftah + "ha" ;  -- Huwa JIFTAĦHA
                 AgP1 Pl    => sfx jiftah "na" ; -- Huwa JIFTAĦNA (n.b. JKENN+NA)
@@ -661,18 +655,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => jifth + "a" ; -- JAQTGĦA-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
-                lek = case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => "lok" ; -- Huwa JOĦROĠLOK
-                    _ => "lek" -- Huwa JIDLIKLEK
-                    };                      
-                  Strong Reduplicative => "lok" ;  -- Huwa JXOMMLOK
-                  _ => "lek"
-                  } ;
               in
               case agr of {
                 AgP1 Sg    => sfx jiftah "li" ; -- Huwa JIFTAĦLI (n.b. JĦOLL+LI)
-                AgP2 Sg    => sfx jiftah lek ; -- Huwa JIFTAĦLEK (n.b. JĦOLL+LEK)
+                AgP2 Sg    => sfx jiftah sg_ind_lek ; -- Huwa JIFTAĦLEK (n.b. JĦOLL+LEK)
                 AgP3Sg Masc=> sfx jiftah "lu" ;  -- Huwa JIFTAĦLU (n.b. JĦOLL+LU)
                 AgP3Sg Fem => jifthi + "lha" ;  -- Huwa JIFTĦILHA
                 AgP1 Pl    => jifthi + "lna" ; -- Huwa JIFTĦILNA
@@ -728,14 +714,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => sfx tiftah "ni" ; -- Hija TIFTAĦNI (n.b. TKENN+NI)
-                AgP2 Sg    => case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => tifth + "ok" ; -- Hija TOĦORĠOK
-                    _ => tifth + "ek" -- Hija TIDILKEK
-                    } ;                  
-                  Strong Reduplicative => tifth + "ok" ; -- Hija XXOMMOK
-                  _ => tifth + "ek" -- Hija TIFTĦEK
-                  } ;
+                AgP2 Sg    => tifth + sg_dir_ek ; -- Hija TIFTĦEK
                 AgP3Sg Masc=> tifth + "u" ;  -- Hija TIFTĦU
                 AgP3Sg Fem => tiftah + "ha" ;  -- Hija TIFTAĦHA
                 AgP1 Pl    => sfx tiftah "na" ; -- Hija TIFTAĦNA (n.b. TKENN+NA)
@@ -748,18 +727,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   Weak Defective => tifth + "a" ; -- TAQTGĦA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
-                lek = case info.class of {
-                  Strong LiquidMedial => case (vowelsLM!Sg).V2 of {
-                    "o" => "lok" ; -- Hija TOĦROĠLOK
-                    _ => "lek" -- Hija TIDLIKLEK
-                    };                      
-                  Strong Reduplicative => "lok" ;  -- Hija XXOMMLOK
-                  _ => "lek"
-                  } ;
               in
               case agr of {
                 AgP1 Sg    => sfx tiftah "li" ; -- Hija TIFTAĦLI (n.b. TĦOLL+LI)
-                AgP2 Sg    => sfx tiftah lek ; -- Hija TIFTAĦLEK (n.b. TĦOLL+LEK)
+                AgP2 Sg    => sfx tiftah sg_ind_lek ; -- Hija TIFTAĦLEK (n.b. TĦOLL+LEK)
                 AgP3Sg Masc=> sfx tiftah "lu" ;  -- Hija TIFTAĦLU (n.b. TĦOLL+LU)
                 AgP3Sg Fem => tifthi + "lha" ;  -- Hija TIFTĦILHA
                 AgP1 Pl    => tifthi + "lna" ; -- Hija TIFTĦILNA
@@ -983,10 +954,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- IFTAĦ
               } ;
             ifth = takePfx 3 iftah + info.root.C3 ; --- GĦ
-            -- ifth = case info.class of {
-            --   Strong LiquidMedial => (vowelsLM!Sg).V1 + info.root.C1 + info.root.C2 + (vowelsLM!Sg).V2 + info.root.C3 ; -- OĦROĠ
-            --   _ => takePfx 3 iftah + info.root.C3 --- GĦ
-            --   } ;
+--             ifth = case info.class of {
+-- --              Strong LiquidMedial => (vowelsLM!Sg).V1 + info.root.C1 + info.root.C2 + (vowelsLM!Sg).V2 + info.root.C3 ; -- OĦROĠ
+--               Strong LiquidMedial => (tbl!Sg) ; -- OĦROĠ
+--               _ => takePfx 3 iftah + info.root.C3 --- GĦ
+--               } ;
           in
           table {
             VSuffixNone => (tbl ! Sg) ;
@@ -994,7 +966,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => sfx iftah "ni" ; -- Inti IFTAĦNI (n.b. KENN+NI)
                 AgP2 Sg    => [] ;
-                AgP3Sg Masc=> ifth + "u" ;  -- Inti IFTĦU
+                AgP3Sg Masc=> case info.class of {
+                  Strong LiquidMedial => (vowelsLM!Sg).V1 + info.root.C1 + (vowelsLM!Sg).V2 + info.root.C2 + info.root.C3 + "u" ; -- Inti OĦORĠU
+                  _ => ifth + "u"  -- Inti IFTĦU
+                  } ;
                 AgP3Sg Fem => iftah + "ha" ;  -- Inti IFTAĦHA
                 AgP1 Pl    => sfx iftah "na" ; -- Inti IFTAĦNA (n.b. KENN+NA)
                 AgP2 Pl    => [] ;
@@ -1003,6 +978,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixInd agr =>
               let
                 ifthi = case info.class of {
+                  Strong LiquidMedial => (tbl!Sg) + "i" ; -- OĦROĠI-
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
