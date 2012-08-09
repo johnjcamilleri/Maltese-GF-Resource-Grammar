@@ -1183,7 +1183,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Params: Root, Pattern
     conjLiquidMedialPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        zlaq = root.C1 + root.C2 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + root.C3 ;
+        zlaq : Str = case root.C1 of {
+          #LiquidCons => root.C1 + patt.V1 + root.C2 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + root.C3 ; -- GĦAMIL-
+          _ => root.C1 + root.C2 + (case patt.V2 of {"e" => "i" ; _ => patt.V2 }) + root.C3 -- ŻLAQ-
+          } ;
         zelq = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
         table {
