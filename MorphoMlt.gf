@@ -283,7 +283,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             niftah : Str = case (tbl ! AgP1 Sg) of {
               x + "'" => x + "għ" ; -- NAQTA' > NAQTAGĦ
-              x + "e" + y => x + "i" + y ; -- NIKTEB > NIKTIB
+              x + "e" + y@#Consonant => x + "i" + y ; -- NIKTEB > NIKTIB
               x => x -- NIFTAĦ
               } ;
             nifth = case info.class of {
@@ -332,7 +332,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             tiftah : Str = case (tbl ! AgP2 Sg) of {
               x + "'" => x + "għ" ; -- TAQTA' > TAQTAGĦ
-              x + "e" + y => x + "i" + y ; -- TIKTEB > TIKTIB
+              x + "e" + y@#Consonant => x + "i" + y ; -- TIKTEB > TIKTIB
               x => x -- TIFTAĦ
               } ;
             tifth = case info.class of {
@@ -377,7 +377,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             jiftah : Str = case (tbl ! AgP3Sg Masc) of {
               x + "'" => x + "għ" ; -- JAQTA' > JAQTAGĦ
-              x + "e" + y => x + "i" + y ; -- JIKTEB > JIKTIB
+              x + "e" + y@#Consonant => x + "i" + y ; -- JIKTEB > JIKTIB
               x => x -- JIFTAĦ
               } ;
             jifth = case info.class of {
@@ -422,7 +422,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             tiftah : Str = case (tbl ! AgP3Sg Fem) of {
               x + "'" => x + "għ" ; -- TAQTA' > TAQTAGĦ
-              x + "e" + y => x + "i" + y ; -- TIKTEB > TIKTIB
+              x + "e" + y@#Consonant => x + "i" + y ; -- TIKTEB > TIKTIB
               x => x -- TIFTAĦ
               } ;
             tifth = case info.class of {
