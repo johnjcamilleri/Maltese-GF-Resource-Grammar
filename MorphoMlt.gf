@@ -287,7 +287,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- NIFTAĦ
               } ;
             nifth = case info.class of {
-              Strong LiquidMedial => "n" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- NOĦORĠ
+              Strong LiquidMedial => case info.root.C1 of {
+                "għ" => "n" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- NAGĦML
+                _ => "n" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- NOĦORĠ
+                } ;
               Strong Reduplicative => niftah ; -- NĦOBB
               _ => "n" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
               } ;
@@ -333,8 +336,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- TIFTAĦ
               } ;
             tifth = case info.class of {
-              Strong LiquidMedial =>
-                "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
+              Strong LiquidMedial => case info.root.C1 of {
+                "għ" => "t" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- TAGĦML
+                _ => "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- TOĦORĠ
+                } ;
               _ => takePfx 4 tiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -376,8 +381,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- JIFTAĦ
               } ;
             jifth = case info.class of {
-              Strong LiquidMedial =>
-                "j" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- JOĦORĠ
+              Strong LiquidMedial => case info.root.C1 of {
+                "għ" => "j" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- JAGĦML
+                _ => "j" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- JOĦORĠ
+                } ;
               _ => takePfx 4 jiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -419,8 +426,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- TIFTAĦ
               } ;
             tifth = case info.class of {
-              Strong LiquidMedial =>
-                "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 ; -- TOĦORĠ
+              Strong LiquidMedial => case info.root.C1 of {
+                "għ" => "t" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- TAGĦML
+                _ => "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- TOĦORĠ
+                } ;
               _ => takePfx 4 tiftah + info.root.C3 --- GĦ
               } ;
           in
@@ -553,6 +562,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- IFTAĦ
               } ;
             ifth = case info.class of {
+              Strong LiquidMedial => case info.root.C1 of {
+                "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- AGĦML
+                _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
+                } ;
               Strong Reduplicative => iftah ; -- ĦOBB
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
               } ;
@@ -563,10 +576,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => sfx iftah "ni" ; -- Inti IFTAĦNI (n.b. KENN+NI)
                 AgP2 Sg    => [] ;
-                AgP3Sg Masc=> case info.class of {
-                  Strong LiquidMedial => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 + "u" ; -- Inti OĦORĠU
-                  _ => ifth + "u"  -- Inti IFTĦU
-                  } ;
+                AgP3Sg Masc=> ifth + "u" ;  -- Inti IFTĦU
                 AgP3Sg Fem => iftah + "ha" ;  -- Inti IFTAĦHA
                 AgP1 Pl    => sfx iftah "na" ; -- Inti IFTAĦNA (n.b. KENN+NA)
                 AgP2 Pl    => [] ;
@@ -575,7 +585,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixInd agr =>
               let
                 ifthi = case info.class of {
-                  Strong LiquidMedial => (tbl!Sg) + "i" ; -- OĦROĠI-
+                  Strong LiquidMedial => case info.root.C1 of {
+                    "għ" => ifth + "i" ; -- AGĦMLI-
+                    _ => (tbl!Sg) + "i" -- OĦROĠI-
+                    } ;
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
