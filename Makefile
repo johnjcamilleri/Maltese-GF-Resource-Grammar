@@ -13,6 +13,11 @@ wordlist:
 tags:
 	gf --tags --output-dir=.gfbuild AllMlt.gf
 
+clean:
+	rm *.gfo
+	rm .gfbuild/*.gf-tags
+
+# Only ever add a treebank here if it's gold standard has been checked!
 treebank_strong_verbs:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
 
@@ -20,8 +25,5 @@ treebank_weak_verbs:
 	test/treebank.sh verbs "qata'"
 
 treebank_quad_verbs:
-	test/treebank.sh verbs "ċempel"
+	test/treebank.sh verbs "ċempel ħarbat għargħax"
 
-clean:
-	rm *.gfo
-	rm .gfbuild/*.gf-tags
