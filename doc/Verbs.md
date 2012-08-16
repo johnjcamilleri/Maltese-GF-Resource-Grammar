@@ -37,7 +37,10 @@ When testing the verb morphology, each of these cases should be considered for t
 |_żied_|Weak medial (hollow)|Middle vowel is 2 characters|
 |_mexa_|Weak final (lacking)|-|
 |_beża'_|Defective|Treatment of apostrophe|
-|_ħarbat_|Quad strong|-|
+|_ħarbat_|Quad strong|4 distinct radicals|
+|_gemgem_|Quad strong|Repeated biradical base|
+|_gerbeb_|Quad strong|Repeated C3|
+|_żerżaq_|Quad strong|Repeated C1 after C2|
 |_għargħax_|Quad strong|C1 repeated; C1 & C3 are 2 characters|
 |_kanta_|Weak quad (integrated loan)|Italian origin _-are_: imperative is _kanta_|
 |_serva_|Weak quad (integrated loan)|Italian origin _-ire_: imperative is _servi_|
