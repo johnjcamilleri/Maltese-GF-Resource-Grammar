@@ -283,14 +283,18 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         _ => haystack
       } ;
 
-    -- Prefix with a 't'/'n' or double initial consonant, as necessary. See {OM pg 90}
+    -- Prefix with a 'n'/'t' or double initial consonant, as necessary. See {OM pg 90}
+    pfx_N : Str -> Str = \s -> case takePfx 1 s of {
+      m@#DoublingConsN => m + s ;
+      _ => "n" + s
+      } ;
     pfx_T : Str -> Str = \s -> case takePfx 1 s of {
       d@#DoublingConsT => d + s ;
       _ => "t" + s
       } ;
-    pfx_N : Str -> Str = \s -> case takePfx 1 s of {
-      m@#DoublingConsN => m + s ;
-      _ => "n" + s
+    -- This is just here to standardise
+    pfx_J : Str -> Str = \s -> case takePfx 1 s of {
+      _ => "j" + s
       } ;
   
     -- Add suffix, avoiding triple letters {GO pg96-7} --- add more cases?

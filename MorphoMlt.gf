@@ -277,23 +277,28 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Strong Reduplicative => "lok" ;  -- Jiena NXOMM-LOK
           _ => "lek"
           } ;
+
+        -- This stem is prefixed with n/t/j/t/n/t/j
+        iftah : Str = case (tbl ! AgP1 Sg) of {
+          "n" + x + "'" => x + "għ" ; -- -AQTA' > -AQTAGĦ
+          "n" + x + "e" + y@#Consonant => x + "i" + y ; -- -IKTEB > -IKTIB
+          "n" + x => x -- -IFTAĦ
+          } ;
+        ifth = case info.class of {
+          Strong LiquidMedial => case info.root.C1 of {
+            "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
+            _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
+            } ;
+          Strong Reduplicative => iftah ; -- -ĦOBB
+          Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
+          _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
+          } ;
       in
       table {
         AgP1 Sg => -- Jiena NIFTAĦ
           let
-            niftah : Str = case (tbl ! AgP1 Sg) of {
-              x + "'" => x + "għ" ; -- NAQTA' > NAQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- NIKTEB > NIKTIB
-              x => x -- NIFTAĦ
-              } ;
-            nifth = case info.class of {
-              Strong LiquidMedial => case info.root.C1 of {
-                "għ" => "n" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- NAGĦML
-                _ => "n" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- NOĦORĠ
-                } ;
-              Strong Reduplicative => niftah ; -- NĦOBB
-              _ => "n" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
-              } ;
+            niftah = pfx_N iftah ;
+            nifth = pfx_N ifth ;
           in
           table {
             VSuffixNone => tbl ! AgP1 Sg ;
@@ -330,18 +335,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP2 Sg => -- Inti TIFTAĦ
           let
-            tiftah : Str = case (tbl ! AgP2 Sg) of {
-              x + "'" => x + "għ" ; -- TAQTA' > TAQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- TIKTEB > TIKTIB
-              x => x -- TIFTAĦ
-              } ;
-            tifth = case info.class of {
-              Strong LiquidMedial => case info.root.C1 of {
-                "għ" => "t" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- TAGĦML
-                _ => "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- TOĦORĠ
-                } ;
-              _ => takePfx 4 tiftah + info.root.C3 --- GĦ
-              } ;
+            tiftah = pfx_T iftah ;
+            tifth = pfx_T ifth ;
           in
           table {
             VSuffixNone => tbl ! AgP2 Sg ;
@@ -375,18 +370,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP3Sg Masc => -- Huwa JIFTAĦ
           let
-            jiftah : Str = case (tbl ! AgP3Sg Masc) of {
-              x + "'" => x + "għ" ; -- JAQTA' > JAQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- JIKTEB > JIKTIB
-              x => x -- JIFTAĦ
-              } ;
-            jifth = case info.class of {
-              Strong LiquidMedial => case info.root.C1 of {
-                "għ" => "j" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- JAGĦML
-                _ => "j" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- JOĦORĠ
-                } ;
-              _ => takePfx 4 jiftah + info.root.C3 --- GĦ
-              } ;
+            jiftah = pfx_J iftah ;
+            jifth = pfx_J ifth ;
           in
           table {
             VSuffixNone => tbl ! AgP3Sg Masc ;
@@ -420,18 +405,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP3Sg Fem => -- Hija TIFTAĦ
           let
-            tiftah : Str = case (tbl ! AgP3Sg Fem) of {
-              x + "'" => x + "għ" ; -- TAQTA' > TAQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- TIKTEB > TIKTIB
-              x => x -- TIFTAĦ
-              } ;
-            tifth = case info.class of {
-              Strong LiquidMedial => case info.root.C1 of {
-                "għ" => "t" + vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- TAGĦML
-                _ => "t" + vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- TOĦORĠ
-                } ;
-              _ => takePfx 4 tiftah + info.root.C3 --- GĦ
-              } ;
+            tiftah = pfx_T iftah ;
+            tifth = pfx_T ifth ;
           in
           table {
             VSuffixNone => tbl ! AgP3Sg Fem ;
