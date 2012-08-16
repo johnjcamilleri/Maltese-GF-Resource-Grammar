@@ -106,7 +106,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x + "e" + y@#Consonant => x + "i" + y ; -- KITEB > KITIB
               x => x -- FETAĦ
               } ;
-            feth = info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ;
+            feth = info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
           in
           table {
             VSuffixNone => tbl ! AgP3Sg Masc ;
@@ -542,6 +542,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
                 } ;
               Strong Reduplicative => iftah ; -- ĦOBB
+              Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
               } ;
           in
@@ -564,6 +565,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     "għ" => ifth + "i" ; -- AGĦMLI-
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
                     } ;
+                  Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
