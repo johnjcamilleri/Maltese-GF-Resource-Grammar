@@ -25,5 +25,5 @@ treebank_weak_verbs:
 	test/treebank.sh verbs "qata'"
 
 treebank_quad_verbs:
-	test/treebank.sh verbs "ċempel ħarbat għargħax"
+	test/treebank.sh verbs "ċempel ħarbat għargħax kanta"
 
