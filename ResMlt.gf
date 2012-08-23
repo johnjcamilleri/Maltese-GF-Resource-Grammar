@@ -315,6 +315,15 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         <be+"xx","x"> => be+"x"+b ;
         _ => a + b
       } ;
+
+    -- Replace any IE in the word with an I
+    ie2i : Str -> Str = \serviet ->
+      case serviet of {
+        x + "ie" => x + "i" ;
+        x + "ie" + y => x + "i" + y ;
+        x => x
+      } ;
+
     
     -- Add a definite preposition in front of your token
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
