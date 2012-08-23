@@ -122,21 +122,29 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VClass =
         Strong VStrongClass
       | Weak VWeakClass
+      | Quad VQuadClass
       | Loan
 --      | Irregular
       ;
     VStrongClass =
         Regular
       | LiquidMedial
-      | Reduplicative
-      | Quad
+--      | Reduplicative
+      | Geminated
       ;
     VWeakClass =
         Assimilative
       | Hollow
       | Lacking
       | Defective
-      | QuadWeakFinal
+      ;
+    VQuadClass =
+        QStrong
+      | QWeak VRomanceEnding
+      ;
+    VRomanceEnding =
+        _ARE -- kanta
+      | _ERE | _IRE -- vinċa, serva --- we don't need this distinction, just always use IRE
       ;
     -- VQuadClass =
     --     BiradicalBase

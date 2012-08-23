@@ -266,7 +266,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "o" => "ok" ; -- Jiena NOĦORĠ-OK
             _ => "ek" -- Jiena NIDILK-EK
             };                      
-          Strong Reduplicative => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
+          Strong Geminated => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
           _ => "ek"  -- Jiena NIFTĦ-EK
           } ;
         sg_ind_lek : Str =  case info.class of {
@@ -274,7 +274,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "o" => "lok" ; -- Jiena NOĦROĠ-LOK
             _ => "lek" -- Jiena NIDLIK-LEK
             };                      
-          Strong Reduplicative => "lok" ;  -- Jiena NXOMM-LOK
+          Strong Geminated => "lok" ;  -- Jiena NXOMM-LOK
           _ => "lek"
           } ;
 
@@ -289,8 +289,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
             _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
             } ;
-          Strong Reduplicative => iftah ; -- -ĦOBB
-          Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
+          Strong Geminated => iftah ; -- -ĦOBB
+          Quad _ => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT, -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
           } ;
       in
@@ -541,8 +541,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- AGĦML
                 _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
                 } ;
-              Strong Reduplicative => iftah ; -- ĦOBB
-              Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
+              Strong Geminated => iftah ; -- ĦOBB
+              Quad _ => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT, -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
               } ;
           in
@@ -565,7 +565,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     "għ" => ifth + "i" ; -- AGĦMLI-
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
                     } ;
-                  Strong Quad => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
+                  Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
@@ -701,17 +701,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     --   case class of {
     --     Strong Regular      => (takePfx 3 imp_sg) + root.C3 + "u" ; -- IFTAĦ > IFTĦU
     --     Strong LiquidMedial => (takePfx 2 imp_sg) + (charAt 3 imp_sg) + root.C2 + root.C3 + "u" ; -- OĦROĠ > OĦORĠU
-    --     Strong Reduplicative=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
+    --     Strong Geminated=> imp_sg + "u" ; -- ŻOMM > ŻOMMU
     --     Weak Assimilative   => (takePfx 2 imp_sg) + root.C3 + "u" ; -- ASAL > ASLU
     --     Weak Hollow         => imp_sg + "u" ; -- SIR > SIRU
     --     Weak Lacking      => (takePfx 3 imp_sg) + "u" ; -- IMXI > IMXU
     --     Weak Defective      => (takePfx 2 imp_sg) + "i" + root.C2 + "għu" ; -- ISMA' > ISIMGĦU
-    --     Strong Quad         => (takePfx 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
-    --     Weak QuadWeakFinal  => case (takeSfx 1 imp_sg) of {
-    --       "a" => imp_sg + "w" ; -- KANTA > KANTAW
-    --       "i" => (dropSfx 1 imp_sg) + "u" ; -- SERVI > SERVU
-    --       _ => Predef.error("Unaccounted case FH4748J")
-    --       } ;
+    --     Quad QStrong         => (takePfx 4 imp_sg) + root.C4 + "u" ; -- ĦARBAT > ĦARBTU
+    --     Quad QWeak _ARE  => imp_sg + "w" ; -- KANTA > KANTAW
+    --     Quad QWeak _ => (dropSfx 1 imp_sg) + "u" ; -- SERVI > SERVU
     --     Loan                => case imp_sg of {
     --         _ + "ixxi" => (dropSfx 1 imp_sg) + "u" ; -- IDDIŻUBIDIXXI > IDDIŻUBIDIXXU
     --         _ => imp_sg + "w" -- IPPARKJA > IPPARKJAW
@@ -832,11 +829,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         }
       } ;
 
-    {- ~~~ Reduplicative Verb ~~~ -}
+    {- ~~~ Geminated Verb ~~~ -}
 
     -- Conjugate entire verb in PERFECT tense
     -- Params: Root, Pattern
-    conjReduplicativePerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
+    conjGeminatedPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         habb = root.C1 + patt.V1 + root.C2 + root.C3 ;
       in
@@ -852,13 +849,13 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
     -- Params: Imperative Singular (eg IKTEB), Imperative Plural (eg IKTBU)
-    conjReduplicativeImpf = conjGenericImpf ;
+    conjGeminatedImpf = conjGenericImpf ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
     -- Params: Root, Pattern
-    conjReduplicativeImp : Root -> Pattern -> (Number => Str) = \root,patt ->
+    conjGeminatedImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        vwls = vowelChangesReduplicative patt ;
+        vwls = vowelChangesGeminated patt ;
         stem_sg = root.C1 + (vwls!Sg).V1 + root.C2 + root.C3 ;
       in
         table {
@@ -867,7 +864,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         } ;
 
     -- Vowel changes for imperative
-    vowelChangesReduplicative : Pattern -> (Number => Pattern) = \patt ->
+    vowelChangesGeminated : Pattern -> (Number => Pattern) = \patt ->
       \\n => case patt.V1 of {
         "e" => mkPattern "e" ; -- BEXX > BEXX (?)
         _ => mkPattern "o" -- ĦABB > ĦOBB

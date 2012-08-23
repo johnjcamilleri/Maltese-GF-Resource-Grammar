@@ -299,9 +299,9 @@ resource ParadigmsMlt = open
         c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
           mkVerbInfo (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
-        -- Strong Reduplicative, ĦABB
+        -- Strong Geminated, ĦABB
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
-          mkVerbInfo (Strong Reduplicative) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
+          mkVerbInfo (Strong Geminated) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
 
         -- Strong LiquidMedial, ŻELAQ
         c1@#Consonant + v1@#Vowel + c2@(#LiquidCons | "għ") + v2@#Vowel + c3@#Consonant =>
@@ -313,11 +313,11 @@ resource ParadigmsMlt = open
 
         -- Strong Quad, QAĊĊAT
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-          mkVerbInfo (Strong Quad) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
+          mkVerbInfo (Quad QStrong) FormI (mkRoot c1 c2 c3 c4) (mkPattern v1 v2) ;
 
         -- Weak-Final Quad, PINĠA
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
-          mkVerbInfo (Weak QuadWeakFinal) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
+          mkVerbInfo (Quad (QWeak _IRE)) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ; --- just assume -IRE ending
 
         -- Assume it is a loan verb
         _ => mkVerbInfo Loan FormI
@@ -335,13 +335,13 @@ resource ParadigmsMlt = open
         case info.class of {
           Strong Regular      => strongV info.root info.patt ;
           Strong LiquidMedial => liquidMedialV info.root info.patt ;
-          Strong Reduplicative=> reduplicativeV info.root info.patt ;
+          Strong Geminated=> geminatedV info.root info.patt ;
           Weak Assimilative   => assimilativeV info.root info.patt ;
           Weak Hollow         => hollowV info.root info.patt ;
           Weak Lacking        => lackingV info.root info.patt ;
           Weak Defective      => defectiveV info.root info.patt ;
-          Strong Quad         => quadV info.root info.patt ;
-          Weak QuadWeakFinal  => quadWeakV info.root info.patt ;
+          Quad QStrong        => quadV info.root info.patt ;
+          Quad (QWeak _)      => quadWeakV info.root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -354,13 +354,13 @@ resource ParadigmsMlt = open
         case info.class of {
           Strong Regular      => strongV root info.patt ;
           Strong LiquidMedial => liquidMedialV root info.patt ;
-          Strong Reduplicative=> reduplicativeV root info.patt ;
+          Strong Geminated    => geminatedV root info.patt ;
           Weak Assimilative   => assimilativeV root info.patt ;
           Weak Hollow         => hollowV root info.patt ;
           Weak Lacking        => lackingV root info.patt ;
           Weak Defective      => defectiveV root info.patt ;
-          Strong Quad         => quadV root info.patt ;
-          Weak QuadWeakFinal  => quadWeakV root info.patt ;
+          Quad QStrong        => quadV root info.patt ;
+          Quad (QWeak _)      => quadWeakV root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -373,13 +373,13 @@ resource ParadigmsMlt = open
         case info.class of {
           Strong Regular      => strongV info.root info.patt imp_sg ;
           Strong LiquidMedial => liquidMedialV info.root info.patt imp_sg ;
-          Strong Reduplicative=> reduplicativeV info.root info.patt imp_sg ;
+          Strong Geminated    => geminatedV info.root info.patt imp_sg ;
           Weak Assimilative   => assimilativeV info.root info.patt imp_sg ;
           Weak Hollow         => hollowV info.root info.patt imp_sg ;
           Weak Lacking        => lackingV info.root info.patt imp_sg ;
           Weak Defective      => defectiveV info.root info.patt imp_sg ;
-          Strong Quad         => quadV info.root info.patt imp_sg ;
-          Weak QuadWeakFinal  => quadWeakV info.root info.patt imp_sg ;
+          Quad QStrong        => quadV info.root info.patt imp_sg ;
+          Quad (QWeak _)      => quadWeakV info.root info.patt imp_sg ;
           Loan                => loanV mamma
         } ;
 
@@ -391,13 +391,13 @@ resource ParadigmsMlt = open
       --   case info.class of {
       --     Strong Regular      => strongV root info.patt imp_sg ;
       --     Strong LiquidMedial => liquidMedialV root info.patt imp_sg ;
-      --     Strong Reduplicative=> reduplicativeV root info.patt imp_sg ;
+      --     Strong Geminated    => geminatedV root info.patt imp_sg ;
       --     Weak Assimilative   => assimilativeV root info.patt imp_sg ;
       --     Weak Hollow         => hollowV root info.patt imp_sg ;
       --     Weak Lacking        => lackingV root info.patt imp_sg ;
       --     Weak Defective      => defectiveV root info.patt imp_sg ;
-      --     Strong Quad         => quadV root info.patt imp_sg ;
-      --     Weak QuadWeakFinal  => quadWeakV root info.patt imp_sg ;
+      --     Quad QStrong        => quadV root info.patt imp_sg ;
+      --     Quad (QWeak _)      => quadWeakV root info.patt imp_sg ;
       --     Loan                => loanV mamma
       --   } ;
 
@@ -479,36 +479,36 @@ resource ParadigmsMlt = open
         i = info ;
       } ;
 
-    {- ~~~ Reduplicative Verb ~~~ -}
+    {- ~~~ Geminated Verb ~~~ -}
 
-    -- Reduplicative strong verb ("trux"), eg ĦABB
-    reduplicativeV : V = overload {
+    -- Geminated strong verb ("trux"), eg ĦABB
+    geminatedV : V = overload {
 
       -- Params: root, pattern
-      reduplicativeV : Root -> Pattern -> V = \root,patt ->
-        let imp = conjReduplicativeImp root patt
-        in reduplicativeVWorst root patt imp ;
+      geminatedV : Root -> Pattern -> V = \root,patt ->
+        let imp = conjGeminatedImp root patt
+        in geminatedVWorst root patt imp ;
         
       -- Params: root, pattern, imperative P2Sg
-      reduplicativeV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
+      geminatedV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
         let
           imp = table {
             Sg => imp_sg ;
             Pl => imp_sg + "u" -- ŻOMM > ŻOMMU
             } ;
-        in reduplicativeVWorst root patt imp ;
+        in geminatedVWorst root patt imp ;
 
       };
 
     -- Worst case for reduplicated verb
-    reduplicativeVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
+    geminatedVWorst : Root -> Pattern -> (Number => Str) -> V = \root,patt,imp ->
       let
         tbl : (VForm => Str) = table {
-          VPerf agr => ( conjReduplicativePerf root patt ) ! agr ;
-          VImpf agr => ( conjReduplicativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
+          VPerf agr => ( conjGeminatedPerf root patt ) ! agr ;
+          VImpf agr => ( conjGeminatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Strong Reduplicative) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable info tbl) ;
         i = info ;
@@ -683,7 +683,7 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Strong Quad) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable info tbl) ;
         i = info ;
@@ -721,7 +721,11 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak QuadWeakFinal) (FormI) root patt ;
+        ending : VRomanceEnding = case takeSfx 1 (imp ! Sg) of {
+          _ + "a" => _ARE ; -- KANTA
+          _ => _IRE -- VINĊI, SERVI
+          } ;
+        info : VerbInfo = mkVerbInfo (Quad (QWeak ending)) (FormI) root patt ;
       in lin V {
         s = verbPolarityTable (verbPronSuffixTable info tbl) ;
         i = info ;
