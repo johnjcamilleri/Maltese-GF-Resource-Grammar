@@ -17,7 +17,7 @@ clean:
 	rm *.gfo
 	rm .gfbuild/*.gf-tags
 
-# Only ever add a treebank here if it's gold standard has been checked!
+# Only ever add a treebank here if its gold standard has been checked!
 treebank_strong_verbs:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
 
