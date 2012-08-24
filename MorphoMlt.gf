@@ -10,7 +10,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
   oper
 
     -- Build polarity table for verbs
-    verbPolarityTable : (VForm => VSuffixForm => Str) -> (VForm => VSuffixForm => Polarity => Str) = \tbl ->
+    verbPolarityTable : VerbInfo -> (VForm => VSuffixForm => Str) -> (VForm => VSuffixForm => Polarity => Str) = \info,tbl ->
       \\vf,sfxf => --- maybe the VForm needs to be used in the cases below
       let
         s = tbl ! vf ! sfxf ;
@@ -104,10 +104,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         AgP3Sg Masc => -- Huwa FETAĦ
           let
             mamma = tbl ! AgP3Sg Masc ;
-            fetah : Str = case <info.class, mamma> of {
-              <Weak Defective, x + "'"> => x + "għ" ; -- QATA' > QATAGĦ
-              <Quad (QWeak _ARE), _> =>  mamma ; -- KANTA > KANTA (i.e. Italian -are)
-              <Quad (QWeak _), serv + "a"> => serv + "ie" ; -- SERVA > SERVIE (i.e. Italian -ere/-ire)
+            fetah : Str = case <info.imp, mamma> of {
+              <_, x + "'"> => x + "għ" ; -- QATA' > QATAGĦ
+              <_ + "a", _> =>  mamma ; -- KANTA > KANTA (i.e. Italian -are)
+              <_, serv + "a"> => serv + "ie" ; -- SERVA > SERVIE (i.e. Italian -ere/-ire)
               <_, x + "e" + y@#Consonant> => x + "i" + y ; -- KITEB > KITIB
               <_, x> => x -- FETAĦ
               } ;
@@ -144,11 +144,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                fethi = case info.class of {
-                    Quad (QWeak _ARE) => feth + "a" ; -- KANTA-
-                    Quad (QWeak _) => feth + "ie" ; -- SERVIE-
-                    _ => feth + "i"
-                    } ;
+                fethi : Str = case info.imp of {
+                  _ + "a" => feth + "a" ; -- KANTA-
+                  _ + "i" => feth + "ie" ; -- SERVIE-
+                  _ => feth + "i"
+                  } ;
               in
               case agr of {
                 AgP1 Sg    => sfx fetah "li" ; -- Huwa FETAĦLI (n.b. ĦALL+LI)
@@ -159,8 +159,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP2 Pl    => fethi + "lkom" ; -- Huwa FETĦILKOM
                 AgP3Pl     => fethi + "lhom"  -- Huwa FETĦILHOM
               } ;
-            VSuffixDirInd do agr => case info.class of {
-              Quad (QWeak _IRE) => (verbDirIndSuffixTable (AgP3Sg Masc) do (feth+"i")) ! agr ; -- SERVI-
+            VSuffixDirInd do agr => case info.imp of {
+              _ + "i" => (verbDirIndSuffixTable (AgP3Sg Masc) do (feth+"i")) ! agr ; -- SERVI-
               _ => (verbDirIndSuffixTable (AgP3Sg Masc) do fetah) ! agr
               }
           } ;
@@ -303,8 +303,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ => "ek" -- Jiena NIDILK-EK
             };                      
           Strong Geminated => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
-          Quad (QWeak _ARE) => "ak" ; -- Huwa KANTAK
-          Quad (QWeak _) => "ik" ; -- Huwa SERVIK
+          Quad QWeak => case info.imp of {
+            _ + "a" => "ak" ; -- Huwa KANTAK
+            _ => "ik" -- Huwa SERVIK
+            } ;
           _ => "ek"  -- Jiena NIFTĦ-EK
           } ;
         p2sg_ind_lek : Str =  case info.class of {
@@ -315,9 +317,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Strong Geminated => "lok" ;  -- Jiena NXOMM-LOK
           _ => "lek"
           } ;
-        p3sg_dir_u : Str = case info.class of {
-          Quad (QWeak _ARE) => "ah" ; -- Huwa KANTAH
-          Quad (QWeak _) => "ieh" ; -- Huwa SERVIEH
+        p3sg_dir_u : Str = case info.imp of {
+          _ + "a" => "ah" ; -- Huwa KANTAH
+          _ + "i" => "ih" ; -- Huwa SERVIH
           _ => "u" -- Huwa FETĦU
           } ;
 
@@ -587,12 +589,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 } ;
               Strong Geminated => iftah ; -- ĦOBB
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
-              Quad (QWeak _) => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
+              Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
               } ;
-            p3sg_dir_u : Str = case info.class of {
-              Quad (QWeak _ARE) => "ah" ; -- KANTAH
-              Quad (QWeak _) => "ieh" ; -- SERVIEH
+            p3sg_dir_u : Str = case info.imp of {
+              _ + "a" => "ah" ; -- KANTAH
+              _ + "i" => "ih" ; -- SERVIH
               _ => "u" -- IFTĦU
               } ;
 

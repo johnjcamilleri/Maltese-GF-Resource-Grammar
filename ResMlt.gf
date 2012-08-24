@@ -140,12 +140,12 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       ;
     VQuadClass =
         QStrong
-      | QWeak VRomanceEnding
+      | QWeak
       ;
-    VRomanceEnding =
-        _ARE -- kanta
-      | _ERE | _IRE -- vinċa, serva --- we don't need this distinction, just always use IRE
-      ;
+    -- VRomanceEnding =
+    --     _ARE -- kanta
+    --   | _ERE | _IRE -- vinċa, serva --- we don't need this distinction, just always use IRE
+    --   ;
     -- VQuadClass =
     --     BiradicalBase
     --   | RepeatedC3
@@ -187,6 +187,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       form : VDerivedForm ;
       root : Root ;
       patt : Pattern ;
+      imp : Str ; -- Imperative Sg. Gives so much information jaħasra!
       } ;
 
     Adjective : Type = {
@@ -255,9 +256,13 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     mkVerbInfo : VerbInfo = overload {
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
-        { class=c ; form=f ; root=mkRoot ; patt=mkPattern } ;
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=[] } ;
+      mkVerbInfo : VClass -> VDerivedForm -> Str -> VerbInfo = \c,f,i ->
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=i } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> VerbInfo = \c,f,r,p ->
-        { class=c ; form=f ; root=r ; patt=p } ;
+        { class=c ; form=f ; root=r ; patt=p ; imp=[] } ;
+      mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Str -> VerbInfo = \c,f,r,p,i ->
+        { class=c ; form=f ; root=r ; patt=p ; imp=i } ;
       } ;
 
 

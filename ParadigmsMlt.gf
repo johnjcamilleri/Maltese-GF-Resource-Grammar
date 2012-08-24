@@ -317,7 +317,7 @@ resource ParadigmsMlt = open
 
         -- Weak-Final Quad, PINĠA
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel =>
-          mkVerbInfo (Quad (QWeak _IRE)) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ; --- just assume -IRE ending
+          mkVerbInfo (Quad QWeak) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
 
         -- Assume it is a loan verb
         _ => mkVerbInfo Loan FormI
@@ -341,7 +341,7 @@ resource ParadigmsMlt = open
           Weak Lacking        => lackingV info.root info.patt ;
           Weak Defective      => defectiveV info.root info.patt ;
           Quad QStrong        => quadV info.root info.patt ;
-          Quad (QWeak _)      => quadWeakV info.root info.patt ;
+          Quad QWeak          => quadWeakV info.root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -360,7 +360,7 @@ resource ParadigmsMlt = open
           Weak Lacking        => lackingV root info.patt ;
           Weak Defective      => defectiveV root info.patt ;
           Quad QStrong        => quadV root info.patt ;
-          Quad (QWeak _)      => quadWeakV root info.patt ;
+          Quad QWeak          => quadWeakV root info.patt ;
           Loan                => loanV mamma
         } ;
 
@@ -379,7 +379,7 @@ resource ParadigmsMlt = open
           Weak Lacking        => lackingV info.root info.patt imp_sg ;
           Weak Defective      => defectiveV info.root info.patt imp_sg ;
           Quad QStrong        => quadV info.root info.patt imp_sg ;
-          Quad (QWeak _)      => quadWeakV info.root info.patt imp_sg ;
+          Quad QWeak          => quadWeakV info.root info.patt imp_sg ;
           Loan                => loanV mamma
         } ;
 
@@ -397,7 +397,7 @@ resource ParadigmsMlt = open
       --     Weak Lacking        => lackingV root info.patt imp_sg ;
       --     Weak Defective      => defectiveV root info.patt imp_sg ;
       --     Quad QStrong        => quadV root info.patt imp_sg ;
-      --     Quad (QWeak _)      => quadWeakV root info.patt imp_sg ;
+      --     Quad QWeak          => quadWeakV root info.patt imp_sg ;
       --     Loan                => loanV mamma
       --   } ;
 
@@ -433,9 +433,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -473,9 +473,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -508,9 +508,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjGeminatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -543,9 +543,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -578,9 +578,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -613,9 +613,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjLackingImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -648,9 +648,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -683,9 +683,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -721,13 +721,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        ending : VRomanceEnding = case takeSfx 1 (imp ! Sg) of {
-          _ + "a" => _ARE ; -- KANTA
-          _ => _IRE -- VINĊI, SERVI
-          } ;
-        info : VerbInfo = mkVerbInfo (Quad (QWeak ending)) (FormI) root patt ;
+        info : VerbInfo = mkVerbInfo (Quad QWeak) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
@@ -743,9 +739,9 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Loan) (FormI) ;
+        info : VerbInfo = mkVerbInfo (Loan) (FormI) (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable (verbPronSuffixTable info tbl) ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
       } ;
 
