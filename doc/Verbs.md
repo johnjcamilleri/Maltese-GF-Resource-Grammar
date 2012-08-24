@@ -28,15 +28,16 @@ When testing the verb morphology, each of these cases should be considered for t
 |_kiteb_|Regular strong|Vowel changes (_kitibli_)|
 |_lagħab_|Regular strong|Middle radical is 2 characters|
 |_ħareġ_|Liquid-medial strong|Vowel changes (_oħroġ_)|
-|_kenn_|Reduplicative strong|Triple n with suffix _na_|
-|_ħakk_|Reduplicative strong|Triple k with suffix _kom_|
-|_ħall_|Reduplicative strong|Triple l with suffix _lu_|
-|_bexx_|Reduplicative strong|Triple x in negation|
+|_kenn_|Geminated strong|Triple n with suffix _na_|
+|_ħakk_|Geminated strong|Triple k with suffix _kom_|
+|_ħall_|Geminated strong|Triple l with suffix _lu_|
+|_bexx_|Geminated strong|Triple x in negation|
 |_waqaf_|Weak initial (assimilative)|-|
+|_wasal_|Weak initial (assimilative)|Liquid-medial|
 |_saq_|Weak medial (hollow)|-|
 |_żied_|Weak medial (hollow)|Middle vowel is 2 characters|
 |_mexa_|Weak final (lacking)|-|
-|_beża'_|Defective|Treatment of apostrophe|
+|_qata'_|Defective|Treatment of apostrophe|
 |_ħarbat_|Quad strong|4 distinct radicals|
 |_gemgem_|Quad strong|Repeated biradical base|
 |_gerbeb_|Quad strong|Repeated C3|
@@ -58,7 +59,7 @@ Verb classification according to {MDG}, {T2M} and {GM}.
     - Strong ("sħiħ")
         - Regular: all radicals strong & distinct, e.g. _QATEL (Q-T-L)_.
         - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
-        - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
+        - Geminated/Reduplicative/Doubled ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
     - Weak ("dgħajjef")
         - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
         - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
