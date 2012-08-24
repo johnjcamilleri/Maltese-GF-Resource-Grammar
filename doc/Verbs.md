@@ -59,11 +59,6 @@ Verb classification according to {MDG}, {T2M} and {GM}.
         - Regular: all radicals strong & distinct, e.g. _QATEL (Q-T-L)_.
         - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
         - Reduplicative/Doubled/Geminated ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
-        - Quadriliteral: 4 radicals
-            - Repeated bi-radical base, e.g. _GEMGEM (G-M-G-M)_
-            - Repeated C3, e.g. _GERBEB (G-R-B-B)_
-            - Repeated C1 after C2, e.g. _ŻERŻAQ (Ż-R-Ż-Q)_
-            - Added C4 to triradical base, e.g. _ĦARBAT (Ħ-R-B-T)_
     - Weak ("dgħajjef")
         - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
         - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
@@ -71,7 +66,14 @@ Verb classification according to {MDG}, {T2M} and {GM}.
         - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_  
           Use _kiser_ as model (or _seraq_ when C2 is liquid). {GO pg169}
           As {SA} notes, GĦ is not weak, thus these verbs are technically Strong. However, the behave inflectionally as weak verbs.
-        - Quadriliteral ("kwadrilitteru"): 4 radicals with C4 weak, e.g. _PINĠA (P-N-Ġ-J)_
+    - Quadriliteral: 4 radicals
+        - Strong
+            - Repeated bi-radical base, e.g. _GEMGEM (G-M-G-M)_
+            - Repeated C3, e.g. _GERBEB (G-R-B-B)_
+            - Repeated C1 after C2, e.g. _ŻERŻAQ (Ż-R-Ż-Q)_
+            - Added C4 to triradical base, e.g. _ĦARBAT (Ħ-R-B-T)_
+        - Weak-final: C4 weak, e.g. _PINĠA (P-N-Ġ-J)_  
+        These are generally strongly-integrated Romance verbs, e.g. _KANTA_ from Italian _cantare_.
     - Irregular: _ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN_
 - Romance
     - Strongly-integrated, e.g. _KANTA, SERREP, BANDAL, BAQQAN_  
