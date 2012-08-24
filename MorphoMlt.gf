@@ -27,7 +27,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           x + "ek"  => x + "ekx" ; -- KTIBTLEK > KTIBTLEKX
           x + "ew"  => x + "ewx" ; -- XAMMEW > XAMMEWX
 
-          x + "a"   => x + "iex" ; -- FTAĦNA > FTAĦNIEX
+          x + "a"   => case <info.imp, vf, sfxf> of {
+            <_ + "a", VPerf (AgP3Sg Masc), VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+            <_ + "a", VImpf _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+            <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+            _ => x + "iex" -- FTAĦNA > FTAĦNIEX
+            } ;
           x + "e" + y@#Consonant => x + "i" + y + "x" ; -- KITEB > KITIBX
           _ => s + "x" -- KTIBT > KTIBTX
           }
@@ -121,12 +126,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               Quad QStrong => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
               _ => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3
               } ;
-            p2sg_dir_ek : Str = case tbl ! AgP3Sg Masc of {
-              _ + "a" => "iek" ; -- Huwa SERVIEK --- but: KANTAK! ŻARMAK!
+            p2sg_dir_ek : Str = case <info.imp, mamma> of {
+              <_ + "a", _> => "ak" ; -- Huwa KANTAK
+              <_, _ + "a"> => "iek" ; -- Huwa SERVIEK
               _ => "ek" -- Huwa FETĦEK
               } ;
-            p3sg_dir_u : Str = case tbl ! AgP3Sg Masc of {
-              _ + "a" => "ieh" ; -- Huwa SERVIEH --- but: KANTAH! ŻARMAH!
+            p3sg_dir_u : Str = case <info.imp, mamma> of {
+              <_ + "a", _> => "ah" ; -- Huwa KANTAH
+              <_, _ + "a"> => "ieh" ; -- Huwa SERVIEH
               _ => "u" -- Huwa FETĦU
               } ;
           in
@@ -190,10 +197,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 AgP1 Sg    => fethit + "li" ; -- Hija FETĦITLI
                 AgP2 Sg    => fethit + "lek" ; -- Hija FETĦITLEK
                 AgP3Sg Masc=> fethit + "lu" ;  -- Hija FETĦITLU
-                AgP3Sg Fem => fethit + "ilha" ;  -- Hija FETĦITILHA
-                AgP1 Pl    => fethit + "ilna" ; -- Hija FETĦITILNA
-                AgP2 Pl    => fethit + "ilkom" ; -- Hija FETĦITILKOM
-                AgP3Pl     => fethit + "ilhom"  -- Hija FETĦITILHOM
+                AgP3Sg Fem => (ie2i fethit) + "ilha" ;  -- Hija FETĦITILHA
+                AgP1 Pl    => (ie2i fethit) + "ilna" ; -- Hija FETĦITILNA
+                AgP2 Pl    => (ie2i fethit) + "ilkom" ; -- Hija FETĦITILKOM
+                AgP3Pl     => (ie2i fethit) + "ilhom"  -- Hija FETĦITILHOM
               } ;
             VSuffixDirInd do agr => (verbDirIndSuffixTable (AgP3Sg Fem) do (ie2i fethit)) ! agr
           } ;
@@ -292,10 +299,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Imperfective tense
     verbImpfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       let
-        -- vowels : (Number => Pattern) = table {
-        --   Sg => extractPattern (tbl ! AgP1 Sg) ;
-        --   Pl => extractPattern (tbl ! AgP1 Pl)
-        --   } ;          
         vowels : Pattern = extractPattern (tbl ! AgP1 Sg) ; --- we are using the P1 vowel changes for all persons
         p2sg_dir_ek : Str = case info.class of {
           Strong LiquidMedial => case vowels.V2 of {
@@ -336,7 +339,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             } ;
           Strong Geminated => iftah ; -- -ĦOBB
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
-          Quad (QWeak _) => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
+          Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
           } ;
       in
@@ -365,6 +368,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   --   -- niftah + "i" -- NOĦROĠI- | -- see note in Verbs.md about variant spelling
                   --   takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI- --- not very robust
                   Weak Defective => nifth + "a" ; -- NAQTGĦA-
+                  Quad QWeak => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
               in
@@ -390,7 +394,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => sfx tiftah "ni" ; -- Inti TIFTAĦNI (n.b. TKENN+NI)
                 AgP2 Sg    => [] ;
-                AgP3Sg Masc=> tifth + "u" ;  -- Inti TIFTĦU
+                AgP3Sg Masc=> tifth + p3sg_dir_u ;  -- Inti TIFTĦU
                 AgP3Sg Fem => tiftah + "ha" ;  -- Inti TIFTAĦHA
                 AgP1 Pl    => sfx tiftah "na" ; -- Inti TIFTAĦNA (n.b. TKENN+NA)
                 AgP2 Pl    => [] ;
@@ -400,6 +404,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               let
                 tifthi = case info.class of {
                   Weak Defective => tifth + "a" ; -- TAQTGĦA-
+                  Quad QWeak => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -425,7 +430,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => sfx jiftah "ni" ; -- Huwa JIFTAĦNI (n.b. JKENN+NI)
                 AgP2 Sg    => jifth + p2sg_dir_ek ; -- Huwa JIFTĦEK
-                AgP3Sg Masc=> jifth + "u" ;  -- Huwa JIFTĦU
+                AgP3Sg Masc=> jifth + p3sg_dir_u ;  -- Huwa JIFTĦU
                 AgP3Sg Fem => jiftah + "ha" ;  -- Huwa JIFTAĦHA
                 AgP1 Pl    => sfx jiftah "na" ; -- Huwa JIFTAĦNA (n.b. JKENN+NA)
                 AgP2 Pl    => sfx jiftah "kom" ; -- Huwa JIFTAĦKOM (n.b. JĦOKK+KOM)
@@ -435,6 +440,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               let
                 jifthi = case info.class of {
                   Weak Defective => jifth + "a" ; -- JAQTGĦA-
+                  Quad QWeak => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
               in
@@ -460,7 +466,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               case agr of {
                 AgP1 Sg    => sfx tiftah "ni" ; -- Hija TIFTAĦNI (n.b. TKENN+NI)
                 AgP2 Sg    => tifth + p2sg_dir_ek ; -- Hija TIFTĦEK
-                AgP3Sg Masc=> tifth + "u" ;  -- Hija TIFTĦU
+                AgP3Sg Masc=> tifth + p3sg_dir_u ;  -- Hija TIFTĦU
                 AgP3Sg Fem => tiftah + "ha" ;  -- Hija TIFTAĦHA
                 AgP1 Pl    => sfx tiftah "na" ; -- Hija TIFTAĦNA (n.b. TKENN+NA)
                 AgP2 Pl    => sfx tiftah "kom" ; -- Hija TIFTAĦKOM (n.b. TĦOKK+KOM)
@@ -470,6 +476,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               let
                 tifthi = case info.class of {
                   Weak Defective => tifth + "a" ; -- TAQTGĦA-
+                  Quad QWeak => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -618,8 +625,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     "għ" => ifth + "i" ; -- AGĦMLI-
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
                     } ;
-                  Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
+                  Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
+                  Quad QWeak => tbl ! Sg ; -- KANTA-, SERVI-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
               in

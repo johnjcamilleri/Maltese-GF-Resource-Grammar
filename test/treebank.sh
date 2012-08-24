@@ -32,7 +32,7 @@ done
 LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
 LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
 if [[ $LINES_OUT != $LINES_GOLD ]] ; then
-    echo "Something went wrong:"
+    echo "Number of lines don't match! Something went wrong:"
     echo "================================================================================"
     cat "$TMP_OUT"
     exit 1
