@@ -21,8 +21,13 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           _ + "xx"  => s ; -- BEXX > BEXX
           aqta+"'" => aqta+"x" ; -- AQTA' > AQTAX
 
+          z+"ie"+d+"et" => z+"i"+d+"itx" ; -- ŻIEDET > ŻIDITX
+
           ftahth+"ie"+lh+"a" => ftahth+"i"+lh+"iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
-          ftahtuh+"ie"+li => ftahtuh+"i"+li+"x" ; -- FTAĦTUHIELI > FTAĦTUHILIX
+          ftahtuh+"ie"+li => case isMonoSyl s of {
+            True => s + "x" ; -- MIET > MIETX 
+            _ => ftahtuh+"i"+li+"x" -- FTAĦTUHIELI > FTAĦTUHILIX
+            } ;
 
           ktibtl+"ek"  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKX
           xamm+"ew"  => xamm+"ewx" ; -- XAMMEW > XAMMEWX
@@ -155,7 +160,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 fethi : Str = case info.imp of {
                   _ + "a" => feth + "a" ; -- KANTA-
                   _ + "i" => feth + "ie" ; -- SERVIE-
-                  _ => feth + "i"
+                  _ => (ie2i feth) + "i"
                   } ;
               in
               case agr of {
@@ -169,7 +174,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixDirInd do agr => case info.imp of {
               _ + "i" => (verbDirIndSuffixTable (AgP3Sg Masc) do (feth+"i")) ! agr ; -- SERVI-
-              _ => (verbDirIndSuffixTable (AgP3Sg Masc) do fetah) ! agr
+              _ => (verbDirIndSuffixTable (AgP3Sg Masc) do (ie2i fetah)) ! agr
               }
           } ;
         AgP3Sg Fem => -- Hija FETĦET
@@ -177,7 +182,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             fethet = tbl ! AgP3Sg Fem ;
             fethit : Str = case fethet of {
               _ + "iet" => fethet ; -- SERVIET
-              feth + "et" => feth + "it" ;
+              feth + "et" => (ie2i feth) + "it" ;
               _ => fethet --- unknown case
               } ;
           in
@@ -266,10 +271,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP3Pl => -- Huma FETĦU
           let
-            fethu = tbl ! AgP3Pl ;
+            fethu = ie2i (tbl ! AgP3Pl) ;
           in
           table {
-            VSuffixNone => fethu ;
+            VSuffixNone => tbl ! AgP3Pl ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => fethu + "ni" ; -- Huma FETĦUNI
