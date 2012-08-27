@@ -18,11 +18,13 @@ clean:
 	rm .gfbuild/*.gf-tags
 
 # Only ever add a treebank here if its gold standard has been checked!
+treebank_all: treebank_strong_verbs treebank_weak_verbs treebank_quad_verbs
+
 treebank_strong_verbs:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
 
 treebank_weak_verbs:
-	test/treebank.sh verbs "wasal waqaf żied qata'"
+	test/treebank.sh verbs "wasal waqaf sab qata'"
 
 treebank_quad_verbs:
 	test/treebank.sh verbs "ċempel ħarbat għargħax kanta serva"

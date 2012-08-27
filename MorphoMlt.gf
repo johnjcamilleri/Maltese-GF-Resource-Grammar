@@ -19,13 +19,13 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         Neg => case s of {
           "" => [] ;
           _ + "xx"  => s ; -- BEXX > BEXX
-          x + "'"   => x + "x" ; -- AQTA' > AQTAX
+          aqta+"'" => aqta+"x" ; -- AQTA' > AQTAX
 
-          x + "ie" + y + "a" => x + "i" + y + "iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
-          x + "ie" + y => x + "i" + y + "x" ; -- FTAĦTUHIELI > FTAĦTUHILIX
+          ftahth+"ie"+lh+"a" => ftahth+"i"+lh+"iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
+          ftahtuh+"ie"+li => ftahtuh+"i"+li+"x" ; -- FTAĦTUHIELI > FTAĦTUHILIX
 
-          x + "ek"  => x + "ekx" ; -- KTIBTLEK > KTIBTLEKX
-          x + "ew"  => x + "ewx" ; -- XAMMEW > XAMMEWX
+          ktibtl+"ek"  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKX
+          xamm+"ew"  => xamm+"ewx" ; -- XAMMEW > XAMMEWX
 
           x + "a"   => case <info.imp, vf, sfxf> of {
             <_ + "a", VPerf (AgP3Sg Masc), VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
@@ -33,7 +33,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
             _ => x + "iex" -- FTAĦNA > FTAĦNIEX
             } ;
-          x + "e" + y@#Consonant => x + "i" + y + "x" ; -- KITEB > KITIBX
+          ki+t@#Consonant+"e"+b@#Consonant => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
           _ => s + "x" -- KTIBT > KTIBTX
           }
       } ;
@@ -113,8 +113,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <_, x + "'"> => x + "għ" ; -- QATA' > QATAGĦ
               <_ + "a", _> =>  mamma ; -- KANTA > KANTA (i.e. Italian -are)
               <_, serv + "a"> => serv + "ie" ; -- SERVA > SERVIE (i.e. Italian -ere/-ire)
-              <_, x + "e" + y@#Consonant> => x + "i" + y ; -- KITEB > KITIB
-              <_, x> => x -- FETAĦ
+              <_, x + y@#Consonant + "e" + z@#Consonant> => x + y + "i" + z ; -- KITEB > KITIB
+              _ => mamma -- FETAĦ
               } ;
             -- fetah : Str = case (tbl ! AgP3Sg Masc) of {
             --   x + "'" => x + "għ" ; -- QATA' > QATAGĦ
@@ -123,6 +123,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             --   x => x -- FETAĦ
             --   } ;
             feth = case info.class of {
+              Weak Hollow => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
               Quad QStrong => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
               _ => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3
               } ;
@@ -328,10 +329,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
         -- This stem is prefixed with n/t/j/t/n/t/j
         iftah : Str = case (tbl ! AgP1 Sg) of {
-          "n" + "ie" + x => "i" + x ; -- -IEQAF > -IQAF
-          "n" + x + "'" => x + "għ" ; -- -AQTA' > -AQTAGĦ
-          "n" + x + "e" + y@#Consonant => x + "i" + y ; -- -IKTEB > -IKTIB
-          "n" + x => x -- -IFTAĦ
+          "nie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
+          "n"+aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
+          "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB
+          "n"+iftah => iftah -- -IFTAĦ
           } ;
         ifth = case info.class of {
           Strong LiquidMedial => case info.root.C1 of {
@@ -340,6 +341,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             } ;
           Strong Geminated => iftah ; -- -ĦOBB
           Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
+          Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
           Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
@@ -587,9 +589,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             vowels = extractPattern (tbl ! Sg) ;
             iftah : Str = case (tbl ! Sg) of {
-              "ie" + x => "i" + x ; -- IEQAF > IQAF
-              x + "'" => x + "għ" ; -- AQTA' > AQTAGĦ
-              x + "e" + y@#Consonant => x + "i" + y ; -- IKTEB > IKTIB
+              "ie"+qaf=> "i"+qaf ; -- IEQAF > IQAF
+              aqta+"'" => aqta+"għ" ; -- AQTA' > AQTAGĦ
+              ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB
               x => x -- IFTAĦ
               } ;
             ifth = case info.class of {
@@ -599,6 +601,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 } ;
               Strong Geminated => iftah ; -- ĦOBB
               Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
+              Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
