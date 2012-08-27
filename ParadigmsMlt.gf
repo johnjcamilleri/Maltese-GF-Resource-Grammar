@@ -631,7 +631,11 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (takePfx 3 imp_sg) + "u" -- IMXI > IMXU
+            Pl => case imp_sg of {
+              aqr+"a" => aqr+"aw" ; -- AQRA > AQRAW
+              imx+"i" => imx+"u" ; -- IMXI > IMXU
+              x => (dropSfx 1 x) + "u" --- unknown case
+              }
             } ;
         in lackingVWorst root patt imp ;
 

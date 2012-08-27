@@ -184,7 +184,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             fethit : Str = case fethet of {
               _ + "iet" => fethet ; -- SERVIET
               feth + "et" => (ie2i feth) + "it" ;
-              _ => fethet --- unknown case
+              _ => fethet -- QRAT
               } ;
           in
           table {
@@ -313,7 +313,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ => "ek" -- Jiena NIDILK-EK
             };                      
           Strong Geminated => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
-          Weak Lacking => "ik" ;  -- Jiena NIMX-IK
+          Weak Lacking => case vowels.V1 of {
+            "a" => "ak" ;  -- Jiena NAQR-AK
+            _ => "ik"  -- Jiena NIMX-IK
+            } ;
           Quad QWeak => case info.imp of {
             _ + "a" => "ak" ; -- Huwa KANTAK
             _ => "ik" -- Huwa SERVIK
@@ -375,12 +378,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                nifthi = case info.class of {
-                  -- Strong LiquidMedial =>
-                  --   -- niftah + "i" -- NOĦROĠI- | -- see note in Verbs.md about variant spelling
-                  --   takePfx 3 niftah + charAt 4 niftah + info.root.C2 + info.root.C3 + "i" ;  -- NOĦORĠI- --- not very robust
-                  Weak Defective => nifth + "a" ; -- NAQTGĦA-
-                  Quad QWeak => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
+                nifthi = case <info.class, vowels.V1> of {
+                  <Weak Defective, _> => nifth + "a" ; -- NAQTGĦA-
+                  <Weak Lacking, "a"> => nifth + "a" ;  -- NAQRA-
+                  <Quad QWeak, _> => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
               in
@@ -414,9 +415,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                tifthi = case info.class of {
-                  Weak Defective => tifth + "a" ; -- TAQTGĦA-
-                  Quad QWeak => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
+                tifthi = case <info.class, vowels.V1> of {
+                  <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
+                  <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
+                  <Quad QWeak, _> => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -450,9 +452,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                jifthi = case info.class of {
-                  Weak Defective => jifth + "a" ; -- JAQTGĦA-
-                  Quad QWeak => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
+                jifthi = case <info.class, vowels.V1> of {
+                  <Weak Defective, _> => jifth + "a" ; -- JAQTGĦA-
+                  <Weak Lacking, "a"> => jifth + "a" ;  -- JAQRA-
+                  <Quad QWeak, _> => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
               in
@@ -486,9 +489,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                tifthi = case info.class of {
-                  Weak Defective => tifth + "a" ; -- TAQTGĦA-
-                  Quad QWeak => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
+                tifthi = case <info.class, vowels.V1> of {
+                  <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
+                  <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
+                  <Quad QWeak, _> => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -642,6 +646,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
                     } ;
                   Weak Defective => ifth + "a" ; -- AQTGĦA-
+                  Weak Lacking => case vowels.V1 of {
+                    "a" => ifth + "a" ;  -- AQRA-
+                    _ => ifth + "i" -- IMXI-
+                    } ;
                   Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
                   Quad QWeak => tbl ! Sg ; -- KANTA-, SERVI-
                   _ => ifth + "i" -- IFTĦI-
@@ -1039,20 +1047,27 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Params: Root, Pattern
     conjLackingPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
-        mxej : Str = case root.C1 of {
---          #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
-          _ => root.C1 + root.C2 + patt.V1 + root.C3
-          } ;
+        mxej = root.C1 + root.C2 + patt.V1 + root.C3
+        -- mxej : Str = case root.C1 of {
+        --   #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
+        --   _ => root.C1 + root.C2 + patt.V1 + root.C3
+        --   } ;
       in
         table {
           --- i tal-leħen needs to be added here!
           AgP1 Sg    => mxej + "t" ;  -- Jiena IMXEJT
           AgP2 Sg    => mxej + "t" ;  -- Inti IMXEJT
           AgP3Sg Masc=> root.C1 + patt.V1 + root.C2 + patt.V2 ;  -- Huwa MEXA
-          AgP3Sg Fem => root.C1 + root.C2 + "iet" ;  -- Hija MXIET
+          AgP3Sg Fem => case patt.V1 of {
+            "a" => root.C1 + root.C2 + "at" ;  -- Hija QRAT
+            _ => root.C1 + root.C2 + "iet"  -- Hija MXIET
+            } ;
           AgP1 Pl    => mxej + "na" ;  -- Aħna IMXEJNA
           AgP2 Pl    => mxej + "tu" ;  -- Intom IMXEJTU
-          AgP3Pl     => root.C1 + root.C2 + "ew"  -- Huma IMXEW
+          AgP3Pl     => case patt.V1 of {
+            "a" => root.C1 + root.C2 + "aw" ;  -- Huma QRAW
+            _ => root.C1 + root.C2 + "ew"  -- Huma IMXEW
+            }
         } ;
 
     -- Conjugate entire verb in IMPERFECT tense, given the IMPERATIVE
