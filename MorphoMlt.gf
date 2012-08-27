@@ -129,6 +129,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             --   } ;
             feth = case info.class of {
               Weak Hollow => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
+              Weak Lacking => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
               Quad QStrong => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
               _ => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3
               } ;
@@ -312,6 +313,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ => "ek" -- Jiena NIDILK-EK
             };                      
           Strong Geminated => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
+          Weak Lacking => "ik" ;  -- Jiena NIMX-IK
           Quad QWeak => case info.imp of {
             _ + "a" => "ak" ; -- Huwa KANTAK
             _ => "ik" -- Huwa SERVIK
@@ -347,6 +349,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Strong Geminated => iftah ; -- -ĦOBB
           Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
           Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
+          Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
           Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
@@ -607,6 +610,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               Strong Geminated => iftah ; -- ĦOBB
               Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
               Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
+              Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
@@ -1036,7 +1040,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjLackingPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         mxej : Str = case root.C1 of {
-          #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
+--          #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
           _ => root.C1 + root.C2 + patt.V1 + root.C3
           } ;
       in
@@ -1045,7 +1049,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           AgP1 Sg    => mxej + "t" ;  -- Jiena IMXEJT
           AgP2 Sg    => mxej + "t" ;  -- Inti IMXEJT
           AgP3Sg Masc=> root.C1 + patt.V1 + root.C2 + patt.V2 ;  -- Huwa MEXA
-          AgP3Sg Fem => root.C1 + root.C2 + "iet" ;  -- Hija IMXIET
+          AgP3Sg Fem => root.C1 + root.C2 + "iet" ;  -- Hija MXIET
           AgP1 Pl    => mxej + "na" ;  -- Aħna IMXEJNA
           AgP2 Pl    => mxej + "tu" ;  -- Intom IMXEJTU
           AgP3Pl     => root.C1 + root.C2 + "ew"  -- Huma IMXEW
