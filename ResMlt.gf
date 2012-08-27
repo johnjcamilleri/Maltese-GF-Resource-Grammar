@@ -217,6 +217,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Pattern : Type = {V1, V2 : Str} ;
     Root : Type = {C1, C2, C3, C4 : Str} ;
 
+    -- Make a root object. Accepts following overloads:
+    -- mkRoot
+    -- mkRoot "k-t-b"
+    -- mkRoot "ktb"
+    -- mkRoot "k-t-b-l"
+    -- mkRoot "ktbl"
+    -- mkRoot "k" "t" "b"
+    -- mkRoot "k" "t" "b" "l"
     mkRoot : Root = overload {
       mkRoot : Root =
         { C1=[] ; C2=[] ; C3=[] ; C4=[] } ;
@@ -227,18 +235,18 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
           _   => { C1=(charAt 0 root) ; C2=(charAt 1 root) ; C3=(charAt 2 root) ; C4=(charAt 3 root) }   -- "ktb"
         } ;
       mkRoot : Str -> Str -> Str -> Root = \c1,c2,c3 ->
-        { C1=c1 ; C2=c2 ; C3=c3 ; C4=[] } ;
+        { C1=toLower c1 ; C2=toLower c2 ; C3=toLower c3 ; C4=[] } ;
       mkRoot : Str -> Str -> Str -> Str -> Root = \c1,c2,c3,c4 ->
-        { C1=c1 ; C2=c2 ; C3=c3 ; C4=c4 } ;
+        { C1=toLower c1 ; C2=toLower c2 ; C3=toLower c3 ; C4=toLower c4 } ;
       } ;
     
     mkPattern : Pattern = overload {
       mkPattern : Pattern =
         { V1=[] ; V2=[] } ;
       mkPattern : Str -> Pattern = \v1 ->
-        { V1=v1 ; V2=[] } ;
+        { V1=toLower v1 ; V2=[] } ;
       mkPattern : Str -> Str -> Pattern = \v1,v2 ->
-        { V1=v1 ; V2=v2 } ;
+        { V1=toLower v1 ; V2=toLower v2 } ;
       } ;
 
     -- Extract first two vowels from a token
