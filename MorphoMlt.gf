@@ -328,6 +328,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
         -- This stem is prefixed with n/t/j/t/n/t/j
         iftah : Str = case (tbl ! AgP1 Sg) of {
+          "n" + "ie" + x => "i" + x ; -- -IEQAF > -IQAF
           "n" + x + "'" => x + "għ" ; -- -AQTA' > -AQTAGĦ
           "n" + x + "e" + y@#Consonant => x + "i" + y ; -- -IKTEB > -IKTIB
           "n" + x => x -- -IFTAĦ
@@ -338,7 +339,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
             } ;
           Strong Geminated => iftah ; -- -ĦOBB
-          Weak Associative => vowels.V1 + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
+          Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
           Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
@@ -494,7 +495,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP1 Pl => -- Aħna NIFTĦU
           let
-            nifthu = tbl ! AgP1 Pl ;
+            nifthu = ie2i (tbl ! AgP1 Pl) ;
           in
           table {
             VSuffixNone => tbl ! AgP1 Pl ;
@@ -522,10 +523,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP2 Pl => -- Intom TIFTĦU
           let
-            tifthu = tbl ! AgP2 Pl ;
+            tifthu = ie2i (tbl ! AgP2 Pl) ;
           in
           table {
-            VSuffixNone => tifthu ;
+            VSuffixNone => tbl ! AgP2 Pl ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => tifthu + "ni" ; -- Intom TIFTĦUNI
@@ -550,10 +551,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         AgP3Pl => -- Huma JIFTĦU
           let
-            jifthu = tbl ! AgP3Pl ;
+            jifthu = ie2i (tbl ! AgP3Pl) ;
           in
           table {
-            VSuffixNone => jifthu ;
+            VSuffixNone => tbl ! AgP3Pl ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => jifthu + "ni" ; -- Huma JIFTĦUNI
@@ -586,6 +587,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             vowels = extractPattern (tbl ! Sg) ;
             iftah : Str = case (tbl ! Sg) of {
+              "ie" + x => "i" + x ; -- IEQAF > IQAF
               x + "'" => x + "għ" ; -- AQTA' > AQTAGĦ
               x + "e" + y@#Consonant => x + "i" + y ; -- IKTEB > IKTIB
               x => x -- IFTAĦ
@@ -596,7 +598,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
                 } ;
               Strong Geminated => iftah ; -- ĦOBB
-              Weak Associative => vowels.V1 + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
+              Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
@@ -646,10 +648,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         Pl => -- Intom IFTĦU
           let
-            ifthu = tbl ! Pl ;
+            ifthu = ie2i (tbl ! Pl) ;
           in
           table {
-            VSuffixNone => ifthu ;
+            VSuffixNone => tbl ! Pl ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => ifthu + "ni" ; -- Inti IFTĦUNI

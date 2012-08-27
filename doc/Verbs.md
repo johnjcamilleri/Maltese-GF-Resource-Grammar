@@ -32,7 +32,7 @@ When testing the verb morphology, each of these cases should be considered for t
 |_ħakk_|Geminated strong|Triple k with suffix _kom_|
 |_ħall_|Geminated strong|Triple l with suffix _lu_|
 |_bexx_|Geminated strong|Triple x in negation|
-|_waqaf_|Weak initial (assimilative)|-|
+|_waqaf_|Weak initial (assimilative)|Long vowel in Imp/Impf (_nieqaf_)|
 |_wasal_|Weak initial (assimilative)|Liquid-medial|
 |_saq_|Weak medial (hollow)|-|
 |_żied_|Weak medial (hollow)|Middle vowel is 2 characters|

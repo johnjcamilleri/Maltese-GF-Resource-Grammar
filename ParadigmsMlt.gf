@@ -529,7 +529,7 @@ resource ParadigmsMlt = open
         let
           imp = table {
             Sg => imp_sg ;
-            Pl => (takePfx 2 imp_sg) + root.C3 + "u" -- ASAL > ASLU
+            Pl => (dropSfx 2 imp_sg) + root.C3 + "u" -- ASAL > ASLU
             } ;
         in assimilativeVWorst root patt imp ;
 

@@ -22,7 +22,7 @@ treebank_strong_verbs:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
 
 treebank_weak_verbs:
-	test/treebank.sh verbs "qata'"
+	test/treebank.sh verbs "wasal waqaf qata'"
 
 treebank_quad_verbs:
 	test/treebank.sh verbs "ċempel ħarbat għargħax kanta serva"
