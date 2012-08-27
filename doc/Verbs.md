@@ -47,9 +47,8 @@ When testing the verb morphology, each of these cases should be considered for t
 |_serva_|Weak quad (integrated loan)|Italian origin _-ire_: imperative is _servi_|
 |_vinċa_|Weak quad (integrated loan)|Italian origin _-ere_: imperative is _vinċi_|
 |_żviluppa_|Loan|-|
-|_pperfezzjona_|Loan|Double first letter|
 |_antagonizza_|Loan|_-izza_ ending|
-|_ssuġġerixxa_|Loan|_-ixxa_ ending|
+|_ssuġġerixxa_|Loan|_-ixxa_ ending; Double first letter|
 
 ## Classification
 

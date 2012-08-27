@@ -322,7 +322,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ + "a" => "ak" ; -- Huwa KANTAK
             _ => "ik" -- Huwa SERVIK
             } ;
-          Loan => "ak" ; -- Huwa ŻVILUPPAK
+          Loan => case info.imp of {
+            _ + "ixxi" => "ik" ; -- Huwa SSUĠĠERIXXIK
+            _ => "ak" -- Huwa ŻVILUPPAK
+            } ;
           _ => "ek"  -- Jiena NIFTĦ-EK
           } ;
         p2sg_ind_lek : Str =  case info.class of {
@@ -385,7 +388,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => nifth + "a" ; -- NAQTGĦA-
                   <Weak Lacking, "a"> => nifth + "a" ;  -- NAQRA-
                   <Quad QWeak, _> => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
-                  <Loan, _> => nifth + "a" ; -- NIŻVILUPPA-
+                  <Loan, _> => nifth + (takeSfx 1 niftah) ; -- NISSUĠĠERIXXI-, NIŻVILUPPA-
+                  -- <Loan, _> case niftah of {
+                  --   _ + "ixxi" => nifth + "i" ; -- NISSUĠĠERIXXI-
+                  --   _ => nifth + "a" -- NIŻVILUPPA-
+                  --   } ;
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
               in
@@ -423,7 +430,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
                   <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
                   <Quad QWeak, _> => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
-                  <Loan, _> => tifth + "a" ; -- TIŻVILUPPA-
+                  <Loan, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -461,7 +468,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => jifth + "a" ; -- JAQTGĦA-
                   <Weak Lacking, "a"> => jifth + "a" ;  -- JAQRA-
                   <Quad QWeak, _> => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
-                  <Loan, _> => jifth + "a" ; -- JIŻVILUPPA-
+                  <Loan, _> => jifth + (takeSfx 1 jiftah) ; -- JISSUĠĠERIXXI-, JIŻVILUPPA-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
               in
@@ -499,7 +506,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
                   <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
                   <Quad QWeak, _> => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
-                  <Loan, _> => tifth + "a" ; -- TIŻVILUPPA-
+                  <Loan, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
