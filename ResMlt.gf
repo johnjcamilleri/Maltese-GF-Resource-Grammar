@@ -337,6 +337,22 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         x => x
       } ;
 
+    -- Is a word mono-syllabic?
+    isMonoSyl : Str -> Bool = \s ->
+      case s of {
+        #Consonant + ("ie" | #Vowel) => True ; -- ra
+        #Consonant + #Consonant + ("ie" | #Vowel) => True ; -- bla
+
+        ("ie" | #Vowel) + #Consonant => True ; -- af
+        ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- elf
+
+        #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- miet
+        #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- mort
+        #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- ħliet
+        #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- ħriġt
+        _ => False
+      } ;
+
     
     -- Add a definite preposition in front of your token
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
