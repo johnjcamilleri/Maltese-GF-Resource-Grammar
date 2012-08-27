@@ -401,6 +401,38 @@ resource ParadigmsMlt = open
       --     Loan                => loanV mamma
       --   } ;
 
+      -- All forms! :S
+      -- mkV (Strong Regular) (FormI) (mkRoot "k-t-b") (mkPattern "i" "e") "ktibt" "ktibt" "kiteb" "kitbet" "ktibna" "ktibtu" "kitbu" "nikteb" "tikteb" "jikteb" "tikteb" "niktbu" "tiktbu" "jiktbu" "ikteb" "iktbu"
+      mkV : VClass -> VDerivedForm -> Root -> Pattern -> (_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> V =
+        \class, form, root, patt,
+        perfP1Sg, perfP2Sg, perfP3SgMasc, perfP3SgFem, perfP1Pl, perfP2Pl, perfP3Pl,
+        impfP1Sg, impfP2Sg, impfP3SgMasc, impfP3SgFem, impfP1Pl, impfP2Pl, impfP3Pl,
+        impSg, impPl ->
+        let
+          tbl : (VForm => Str) = table {
+            VPerf (AgP1 Sg) => perfP1Sg ;
+            VPerf (AgP2 Sg) => perfP2Sg ;
+            VPerf (AgP3Sg Masc) => perfP3SgMasc ;
+            VPerf (AgP3Sg Fem) => perfP3SgFem ;
+            VPerf (AgP1 Pl) => perfP1Pl ;
+            VPerf (AgP2 Pl) => perfP2Pl ;
+            VPerf (AgP3Pl) => perfP3Pl ;
+            VImpf (AgP1 Sg) => impfP1Sg ;
+            VImpf (AgP2 Sg) => impfP2Sg ;
+            VImpf (AgP3Sg Masc) => impfP3SgMasc ;
+            VImpf (AgP3Sg Fem) => impfP3SgFem ;
+            VImpf (AgP1 Pl) => impfP1Pl ;
+            VImpf (AgP2 Pl) => impfP2Pl ;
+            VImpf (AgP3Pl) => impfP3Pl ;
+            VImp (Pl) => impSg ;
+            VImp (Sg) => impPl
+            } ;
+          info : VerbInfo = mkVerbInfo class form root patt impSg ;
+        in lin V  {
+          s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+          i = info ;
+        } ;
+
       } ; --end of mkV overload
 
 
