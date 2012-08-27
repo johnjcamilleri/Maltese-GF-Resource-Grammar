@@ -338,6 +338,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
             } ;
           Strong Geminated => iftah ; -- -ĦOBB
+          Weak Associative => vowels.V1 + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
           Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
@@ -595,6 +596,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                 _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
                 } ;
               Strong Geminated => iftah ; -- ĦOBB
+              Weak Associative => vowels.V1 + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
