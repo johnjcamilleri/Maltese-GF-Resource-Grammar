@@ -131,6 +131,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               Weak Hollow => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
               Weak Lacking => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
               Quad QStrong => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
+              Loan => dropSfx 1 mamma ; -- ŻVILUPP
               _ => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3
               } ;
             p2sg_dir_ek : Str = case <info.imp, mamma> of {
@@ -184,7 +185,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             fethit : Str = case fethet of {
               _ + "iet" => fethet ; -- SERVIET
               feth + "et" => (ie2i feth) + "it" ;
-              _ => fethet -- QRAT
+              _ => fethet -- QRAT, ŻVILUPPAT...
               } ;
           in
           table {
@@ -321,6 +322,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             _ + "a" => "ak" ; -- Huwa KANTAK
             _ => "ik" -- Huwa SERVIK
             } ;
+          Loan => "ak" ; -- Huwa ŻVILUPPAK
           _ => "ek"  -- Jiena NIFTĦ-EK
           } ;
         p2sg_ind_lek : Str =  case info.class of {
@@ -341,7 +343,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         iftah : Str = case (tbl ! AgP1 Sg) of {
           "nie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
           "n"+aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
-          "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB
+          "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- this is dangerous (and probably slow)
           "n"+iftah => iftah -- -IFTAĦ
           } ;
         ifth = case info.class of {
@@ -355,6 +357,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
           Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
           Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
+          Loan => dropSfx 1 iftah ; -- -ŻVILUPP
           _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
           } ;
       in
@@ -382,6 +385,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => nifth + "a" ; -- NAQTGĦA-
                   <Weak Lacking, "a"> => nifth + "a" ;  -- NAQRA-
                   <Quad QWeak, _> => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
+                  <Loan, _> => nifth + "a" ; -- NIŻVILUPPA-
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
               in
@@ -419,6 +423,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
                   <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
                   <Quad QWeak, _> => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
+                  <Loan, _> => tifth + "a" ; -- TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -456,6 +461,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => jifth + "a" ; -- JAQTGĦA-
                   <Weak Lacking, "a"> => jifth + "a" ;  -- JAQRA-
                   <Quad QWeak, _> => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
+                  <Loan, _> => jifth + "a" ; -- JIŻVILUPPA-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
               in
@@ -493,6 +499,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
                   <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
                   <Quad QWeak, _> => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
+                  <Loan, _> => tifth + "a" ; -- TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -617,6 +624,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
               Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
               Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
+              Loan => dropSfx 1 iftah ; -- ŻVILUPP
               _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
               } ;
             p3sg_dir_u : Str = case info.imp of {
@@ -652,6 +660,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     } ;
                   Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
                   Quad QWeak => tbl ! Sg ; -- KANTA-, SERVI-
+                  Loan => tbl ! Sg ; -- ŻVILUPPA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
               in
