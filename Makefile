@@ -30,5 +30,5 @@ treebank_quad_verbs:
 	test/treebank.sh verbs "ċempel ħarbat għargħax kanta serva"
 
 treebank_loan_verbs:
-	test/treebank.sh verbs "żviluppa ssuġġerixxa"
+	test/treebank.sh verbs "żviluppa antagonizza ssuġġerixxa"
 
