@@ -293,9 +293,14 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     dropSfx = Predef.tk ;
 
     -- Get the character at the specific index (0-based).
-    -- Negative indexes behave as 0 (first character). Out of range indexes return the empty string.
+    -- Negative indices behave as 0 (first character). Out of range indexes return the empty string.
     charAt : Int -> Str -> Str ;
     charAt i s = takePfx 1 (dropPfx i s) ;
+
+    -- Delete character at the specific index (0-based).
+    -- Out of range indices are just ignored.
+    delCharAt : Int -> Str -> Str ;
+    delCharAt i s = (takePfx i s) + (dropPfx (plus i 1) s) ;
 
     -- Replace first substring
     replace : Str -> Str -> Str -> Str ;
