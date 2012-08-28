@@ -23,6 +23,8 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 
 When testing the verb morphology, each of these cases should be considered for the given reason(s). Ideally we will have gold standards for each.
 
+#### Form I
+
 |Verb|Class|Tests|
 |:---|:----|:----|
 |_kiteb_|Regular strong|Vowel changes (_kitibli_)|
@@ -49,6 +51,99 @@ When testing the verb morphology, each of these cases should be considered for t
 |_żviluppa_|Loan|-|
 |_antagonizza_|Loan|_-izza_ ending|
 |_ssuġġerixxa_|Loan|_-ixxa_ ending; Double first letter|
+
+#### Form II
+
+_An asterix means there is no Form I verb form; in this case they come from nouns/adjectives._
+
+- libbes (L-B-S)
+- qajjem (Q-J-M)
+- ħabbat (Ħ-B-T)
+- qatta' (Q-T-GĦ)
+- kisser (K-S-R)
+- daħħak (D-Ħ-K)
+- kerrah (K-R-H)*
+- raqqad (R-Q-D)
+- waqqaf (W-Q-F)
+- baħħar (B-Ħ-R)*
+- ġedded (Ġ-D-D)*
+- sewwed (S-W-D)*
+
+#### Form III
+
+- qiegħed (Q-GĦ-D)
+- żiegħel (Ż-GĦ-L)
+- wiegħed (W-GĦ-D)
+- ħares (Ħ-R-S)
+- wieġeb (W-Ġ-B)
+- siefer (S-F-R)
+
+#### Form IV
+
+- wera
+- għama
+- għana
+
+#### Form V
+
+- tkisser (K-S-R)
+- tgħallaq (GĦ-L-Q)
+- ssellef (S-L-F)
+- tħammeġ (Ħ-M-Ġ)*
+- tniżżel (N-Ż-L)
+- tgħannaq (GĦ-N-Q)*
+- tħallat (Ħ-L-T)
+- ċċarrat (Ċ-R-T)
+- ssaħħan (S-Ħ-N)
+
+#### Form VI
+
+- tqiegħed (Q-GĦ-D)
+- tħabat (Ħ-B-T)
+- ġġieled (Ġ-L-D)
+- tqabad (Q-B-D)
+
+#### Form VII
+
+- nfirex (F-R-X)
+- nħasel (Ħ-S-L)
+- ntiżen (W-Ż-N)
+- ntlewa (L-W-J)
+- ntrifes (R-F-S)
+- ntgħaġen (GĦ-Ġ-N)
+- ntqal (Q-W-L)
+- nstab (S-J-B)
+- nxtamm (X-M-M)
+- nħeba (Ħ-B-J)
+- nxteħet (X-Ħ-T)
+
+#### Form VIII
+
+- mtela (T-L-GĦ)
+- xteħet (X-Ħ-T)
+- ltewa (L-W-J)
+- mtedd (M-D-D)
+- ntesa (N-S-J)
+- stabat (S-B-T)
+- ftaqar (F-Q-R)*
+
+#### Form IX
+
+- sfar (S-F-R)*
+- qsar (Q-S-R)*
+- blieh (B-L-H)*
+- bjad (B-J-D)*
+- krieh (K-R-H)*
+
+#### Form X
+
+- staħba (Ħ-B-J)
+- stagħġeb (GĦ-Ġ-B)
+- stenbaħ (N-B-Ħ)*
+- stħarreġ (Ħ-R-Ġ)
+- stenna ('-N-J)*
+- stieden ('-D-N)*
+- strieħ (S-R-Ħ)*
 
 ## Classification
 
