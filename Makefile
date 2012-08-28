@@ -32,3 +32,6 @@ treebank_quad_verbs:
 treebank_loan_verbs:
 	test/treebank.sh verbs "żviluppa antagonizza ssuġġerixxa"
 
+treebank_formII_verbs:
+	test/treebank.sh verbs "waqqaf"
+
