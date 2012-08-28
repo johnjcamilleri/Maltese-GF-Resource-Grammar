@@ -114,8 +114,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | FormVI
       | FormVII
       | FormVIII
-      | FormXI
+      | FormIX
       | FormX
+      | FormUnknown
       ;
 
     -- Verb classification
@@ -203,7 +204,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
     SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused, but see DoublingConsN below
 
-    DoublingConsT : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "x" | "ż" | "z" ); -- require doubling when prefixed with 't', eg IDDUM, IĠĠOR, ISSIB, ITTIR, IŻŻID {GM pg68,2b} {OM pg90}
+    DoublingConsT : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "x" | "ż" | "z" ); -- require doubling when prefixed with 't', eg DDUM, ĠĠORR, SSIB, TTIR, ŻŻID {GM pg68,2b} {OM pg90}
     DoublingConsN : pattern Str = #( "l" | "m" | "r" ); -- require doubling when prefixed with 'n', eg LLAĦĦAQ, MMUR, RRID {OM pg90}
 
     WeakCons : pattern Str = #( "j" | "w" );

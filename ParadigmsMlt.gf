@@ -274,6 +274,67 @@ resource ParadigmsMlt = open
 
     {- ===== Verb paradigms ===== -}
 
+    -- Takes a verb as a string determined derived form
+    -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
+    classifyDerivedVerb : Str -> VDerivedForm = \mamma ->
+      case mamma of {
+
+        -- Form II
+        -- c2 and c3 are equal
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- FETTAĦ
+          if_then_else VDerivedForm (pbool2bool (eqStr c2 c3)) FormII FormUnknown ;
+
+        -- Form III
+        -- v1 is long
+        c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormIII ; -- QIEGĦED
+
+        -- Form IV
+        "wera" => FormIV ;
+        "għama" => FormIV ;
+        "għana" => FormIV ;
+
+        -- Form V
+        -- c0 is T, OR c0 and c1 are equal
+        -- c2 and c3 are equal
+        "t" + c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- TWAQQAF
+          if_then_else VDerivedForm (pbool2bool (eqStr c2 c3)) FormV FormUnknown ;
+        c0@#DoublingConsT + c1@#DoublingConsT + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- SARRAF
+          if_then_else
+          VDerivedForm
+          (andB (pbool2bool (eqStr c0 c1)) (pbool2bool (eqStr c2 c3)))
+          FormV FormUnknown ;
+
+        -- Form VI
+        -- c0 is T, OR c0 and c1 are equal
+        -- v1 is long
+        "t" + c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormVI ; -- TQIEGĦED
+        c0@#DoublingConsT + c1@#DoublingConsT + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => -- ĠĠIELED
+          if_then_else VDerivedForm (pbool2bool (eqStr c0 c1)) FormVI FormUnknown ;
+
+        -- Form VII
+        -- c0 is N, OR c0 is NT, OR c0 is N-T
+        "n" + c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormVII ; -- NĦASEL
+        "nt" + c1@#Consonant + _ => FormVII ; -- NTQAL
+        "nt" + c1@#Vowel + _ => FormVII ; -- NTIŻEN
+        "nst" + _ => FormVII ; -- NSTAB
+        "nxt" + _ => FormVII ; -- NXTAMM
+
+        -- Form X
+        "st" + v1@#Vowel + c2@#Consonant + c2@#Consonant _ => FormX ; -- STAGĦĠEB, STAQSA
+
+        -- Form VIII
+        -- c2 is T
+        --- ambiguous case "ntesa": VII or VIII?
+        --- ambiguous case "stabat": VIII or X?
+        c1@#Consonant + "t" + v1@#Vowel + c3@#Consonant + _ => FormVIII ; -- MTEDD, XTEĦET
+
+        -- Form IX
+        c1@#Consonant + c2@#Consonant + v1@("a"|"ie") + c3@#Consonant => FormIX ; -- SFAR, BLIEH
+
+        -- boqq
+        _ => FormUnknown
+      } ;
+
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
