@@ -276,8 +276,12 @@ resource ParadigmsMlt = open
 
     -- Takes a verb as a string determined derived form
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-    classifyDerivedVerb : Str -> VDerivedForm = \mamma ->
+    classifyDerivedVerb : Str -> Root -> Pattern -> VDerivedForm = \mamma,root,patt ->
       case mamma of {
+
+        -- Form I
+        --- form III verbs with long A's will get incorrectly classified as I, e.g. ĦÂRES : impossible to detect!
+        c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormI ; -- FETAĦ
 
         -- Form II
         -- c2 and c3 are equal
@@ -285,8 +289,14 @@ resource ParadigmsMlt = open
           if_then_else VDerivedForm (pbool2bool (eqStr c2 c3)) FormII FormUnknown ;
 
         -- Form III
-        -- v1 is long
-        c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormIII ; -- QIEGĦED
+        -- v1 is long --- anything with v1==a would have already been caught above
+        c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
+          case <v1, patt.V1> of {
+--            <"a","a"> => FormI ; -- no vowel change; ĦAREĠ
+--            <"a",_> => FormIII ; -- ĦARES > ĦÂRES --- impossible to detect!
+            <"ie","ie"> => FormI ; -- no vowel change; MIET
+            _ => FormIII -- QAGĦAD > QIEGĦED
+            } ;
 
         -- Form IV
         "wera" => FormIV ;
@@ -315,21 +325,27 @@ resource ParadigmsMlt = open
         -- c0 is N, OR c0 is NT, OR c0 is N-T
         "n" + c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormVII ; -- NĦASEL
         "nt" + c1@#Consonant + _ => FormVII ; -- NTQAL
-        "nt" + c1@#Vowel + _ => FormVII ; -- NTIŻEN
+        "nt" + c1@#Vowel + _ => case root.C1 of {
+          "n" => FormVIII ; -- NTESA (N-S-J)
+          _ => FormVII -- NTIŻEN (W-Ż-N)
+          } ;
         "nst" + _ => FormVII ; -- NSTAB
         "nxt" + _ => FormVII ; -- NXTAMM
 
-        -- Form X
-        "st" + v1@#Vowel + c2@#Consonant + c2@#Consonant _ => FormX ; -- STAGĦĠEB, STAQSA
-
         -- Form VIII
         -- c2 is T
-        --- ambiguous case "ntesa": VII or VIII?
-        --- ambiguous case "stabat": VIII or X?
-        c1@#Consonant + "t" + v1@#Vowel + c3@#Consonant + _ => FormVIII ; -- MTEDD, XTEĦET
+        c1@#Consonant + "t" + v1@#Vowel + c3@#Consonant + _ =>
+          case <c1, root.C1> of {
+            <"s", "s"> => FormVIII ; -- STABAT (S-B-T)
+            <"s", _> => FormX ; -- STAĦBA (Ħ-B-A)
+            _ => FormVIII -- MTEDD, XTEĦET
+          } ;
 
         -- Form IX
         c1@#Consonant + c2@#Consonant + v1@("a"|"ie") + c3@#Consonant => FormIX ; -- SFAR, BLIEH
+
+        -- Form X
+        "st" + v1@#Vowel + c2@#Consonant + c2@#Consonant + _ => FormX ; -- STAGĦĠEB, STAQSA
 
         -- boqq
         _ => FormUnknown
@@ -360,7 +376,7 @@ resource ParadigmsMlt = open
         c1@#WeakCons + v1@#Vowel + c2@#Consonant + v2@#Vowel  + c3@#Consonant =>
           mkVerbInfo (Weak Assimilative) FormI (mkRoot c1 c2 c3) (mkPattern v1 v2) ;
 
-        -- Strong Geminated, ĦABB
+        -- Strong Geminated, ĦABB --- no checking that c2 and c3 are actually equal
         c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant =>
           mkVerbInfo (Strong Geminated) FormI (mkRoot c1 c2 c3) (mkPattern v1) ;
 
@@ -381,7 +397,7 @@ resource ParadigmsMlt = open
           mkVerbInfo (Quad QWeak) FormI (mkRoot c1 c2 c3 "j") (mkPattern v1 v2) ;
 
         -- Assume it is a loan verb
-        _ => mkVerbInfo Loan FormI
+        _ => mkVerbInfo Loan FormUnknown
       } ;
 
     -- Smart paradigm for building a verb
