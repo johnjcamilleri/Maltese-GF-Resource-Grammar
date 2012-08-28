@@ -513,54 +513,28 @@ resource ParadigmsMlt = open
       } ; --end of mkV overload
 
 
-    -- Create a form II verb from a base form
     mkV_II = overload {
+      
+      mkV_II : Str -> V -> \mamma ->
+        case mamma of {
+          c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
+            let
+              root = mkRoot c1 c2 c4 ;
+              patt = mkPatt v1 v2 ;
+              class = ... ;
+            in
+            conjFormII (mkVerbInfo class FormII root patt)
+          _ => Predef.error("Cannot make a Form II verb from: "++mamma)
+        };
+
+      -- Create a form II verb from a Form I verb
       mkV_II : V -> V = \v ->
-        let
-          -- mammaI : Str = v.s ! VPerf (AgP3Sg Masc) ! VSuffixNone ! Pos ;
-          -- root : Root = mkRoot v.i.root.C1 v.i.root.C2 v.i.root.C2 v.i.root.C3 ; -- makes it a quad root!
-          -- patt : Pattern = v.i.patt ;
-          -- imp_sg : Str = v.i.imp ;
-          waqqaf : Str = v.i.root.C1 + v.i.patt.V1 + v.i.root.C2 + v.i.root.C2 + v.i.patt.V2 + v.i.root.C3 ;
-          waqqf : Str = v.i.root.C1 + v.i.patt.V1 + v.i.root.C2 + v.i.root.C2 + v.i.root.C3 ;
-          waqqfu : Str = v.i.root.C1 + v.i.patt.V1 + v.i.root.C2 + v.i.root.C2 + v.i.root.C3 + "u" ;
-          perf : Agr => Str = table {
-            AgP1 Sg => waqqaf + "t" ;
-            AgP2 Sg => waqqaf + "t" ;
-            AgP3Sg Masc => waqqaf ;
-            AgP3Sg Fem => waqqf + "et" ;
-            AgP1 Pl => waqqaf + "na" ;
-            AgP2 Pl => waqqaf + "tu" ;
-            AgP3Pl => waqqfu
-            } ;
-          impf : Agr => Str = table {
-            AgP1 Sg => pfx_N waqqaf ;
-            AgP2 Sg => pfx_T waqqaf ;
-            AgP3Sg Masc => pfx_J waqqaf ;
-            AgP3Sg Fem => pfx_T waqqaf ;
-            AgP1 Pl => pfx_N waqqfu ;
-            AgP2 Pl => pfx_T waqqfu ;
-            AgP3Pl => pfx_J waqqfu
-            } ;
-          imp : Number => Str = table {
-            Sg => waqqaf ;
-            Pl => waqqfu
-            } ;
-          tbl : VForm => Str = table {
-            VPerf agr => perf ! agr ;
-            VImpf agr => impf ! agr ;
-            VImp num  => imp ! num
-            } ;
-          info : VerbInfo = mkVerbInfo v.i.class FormII v.i.root v.i.patt waqqaf
-        in
         case v.i.class of {
-          Strong _ | Weak _ => lin V {
-            s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
-            i = info ;
-            } ;
+          Strong _ | Weak _ => conjFormII v.i ;
           Quad _ => quadV v.i.root v.i.patt v.i.imp ;
           Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
         } ;
+
       } ; --end of mkV_II overload
 
 

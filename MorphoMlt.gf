@@ -1297,4 +1297,49 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           }
       } ;
 
+    {- ~~~ Form II verbs ~~~ -}
+
+    conjFormII : VerbInfo -> V = \i ->
+      let
+        -- mammaI : Str = v.s ! VPerf (AgP3Sg Masc) ! VSuffixNone ! Pos ;
+        -- root : Root = mkRoot v.i.root.C1 v.i.root.C2 v.i.root.C2 v.i.root.C3 ; -- makes it a quad root!
+        -- patt : Pattern = v.i.patt ;
+        -- imp_sg : Str = v.i.imp ;
+        waqqaf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 ;
+        waqqf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 ;
+        waqqfu : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 + "u" ;
+        perf : Agr => Str = table {
+          AgP1 Sg => waqqaf + "t" ;
+          AgP2 Sg => waqqaf + "t" ;
+          AgP3Sg Masc => waqqaf ;
+          AgP3Sg Fem => waqqf + "et" ;
+          AgP1 Pl => waqqaf + "na" ;
+          AgP2 Pl => waqqaf + "tu" ;
+          AgP3Pl => waqqfu
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => pfx_N waqqaf ;
+          AgP2 Sg => pfx_T waqqaf ;
+          AgP3Sg Masc => pfx_J waqqaf ;
+          AgP3Sg Fem => pfx_T waqqaf ;
+          AgP1 Pl => pfx_N waqqfu ;
+          AgP2 Pl => pfx_T waqqfu ;
+          AgP3Pl => pfx_J waqqfu
+          } ;
+        imp : Number => Str = table {
+          Sg => waqqaf ;
+          Pl => waqqfu
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf
+      in lin V {
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        i = info ;
+      } ;
+      
+
 }
