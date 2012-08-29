@@ -1299,12 +1299,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     {- ~~~ Form II verbs ~~~ -}
 
-    conjFormII : VerbInfo -> V = \i ->
+    conjFormII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
-        -- mammaI : Str = v.s ! VPerf (AgP3Sg Masc) ! VSuffixNone ! Pos ;
-        -- root : Root = mkRoot v.i.root.C1 v.i.root.C2 v.i.root.C2 v.i.root.C3 ; -- makes it a quad root!
-        -- patt : Pattern = v.i.patt ;
-        -- imp_sg : Str = v.i.imp ;
         waqqaf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 ;
         waqqf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 ;
         waqqfu : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 + "u" ;
@@ -1336,10 +1332,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImp num  => imp ! num
           } ;
         info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf
-      in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
-        i = info ;
-      } ;
-      
+      in
+        verbPolarityTable info (verbPronSuffixTable info tbl) ;
 
 }

@@ -515,22 +515,25 @@ resource ParadigmsMlt = open
 
     mkV_II = overload {
       
-      mkV_II : Str -> V -> \mamma ->
-        case mamma of {
-          c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-            let
-              root = mkRoot c1 c2 c4 ;
-              patt = mkPatt v1 v2 ;
-              class = ... ;
-            in
-            conjFormII (mkVerbInfo class FormII root patt)
-          _ => Predef.error("Cannot make a Form II verb from: "++mamma)
-        };
+      -- mkV_II : Str -> V -> \mamma ->
+      --   case mamma of {
+      --     c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
+      --       let
+      --         root = mkRoot c1 c2 c4 ;
+      --         patt = mkPatt v1 v2 ;
+      --         class = ... ;
+      --       in
+      --       conjFormII (mkVerbInfo class FormII root patt)
+      --     _ => Predef.error("Cannot make a Form II verb from: "++mamma)
+      --   };
 
-      -- Create a form II verb from a Form I verb
+      -- Create a Form II verb from a Form I verb
       mkV_II : V -> V = \v ->
         case v.i.class of {
-          Strong _ | Weak _ => conjFormII v.i ;
+          Strong _ | Weak _ => lin V {
+            s = conjFormII v.i ;
+            i = mkVerbInfo v.i FormII
+            } ;
           Quad _ => quadV v.i.root v.i.patt v.i.imp ;
           Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
         } ;
@@ -538,26 +541,20 @@ resource ParadigmsMlt = open
       } ; --end of mkV_II overload
 
 
-    -- Create a form III verb from a base form
+    -- Create a Form III verb from a Form I verb
+    -- No special conjugation is needed! Just change the form number.
     mkV_III = overload {
       mkV_III : V -> V = \v ->
         let
-          mammaI : Str = v.s ! VPerf (AgP3Sg Masc) ! VSuffixNone ! Pos ;
-          root : Root = mkRoot v.i.root.C1 (v.i.root.C2+v.i.root.C2) v.i.root.C3 ;
-          patt : Pattern = v.i.patt ;
-          imp_sg : Str = v.i.imp ;
+          newinfo = mkVerbInfo v.i FormIII ;
         in
         case v.i.class of {
-          Strong Regular      => strongV root patt imp_sg ;
-          Strong LiquidMedial => liquidMedialV root patt imp_sg ;
-          Strong Geminated    => geminatedV root patt imp_sg ;
-          Weak Assimilative   => assimilativeV root patt imp_sg ;
-          Weak Hollow         => hollowV root patt imp_sg ;
-          Weak Lacking        => lackingV root patt imp_sg ;
-          Weak Defective      => defectiveV root patt imp_sg ;
-          Quad QStrong        => quadV root patt imp_sg ;
-          Quad QWeak          => quadWeakV root patt imp_sg ;
-          Loan                => Predef.error("Loan verbs don't have derived forms, ġaħan.")
+          Strong _ | Weak _ => lin V {
+            s = v.s ;
+            i = newinfo ;
+            } ;
+          Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
+          Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
         } ;
       } ; --end of mkV_III overload
 
