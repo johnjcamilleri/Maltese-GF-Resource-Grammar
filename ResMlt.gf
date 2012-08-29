@@ -301,18 +301,18 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     charAt : Int -> Str -> Str ;
     charAt i s = takePfx 1 (dropPfx i s) ;
 
-    -- Delete character at the specific index (0-based).
-    -- Out of range indices are just ignored.
-    delCharAt : Int -> Str -> Str ;
-    delCharAt i s = (takePfx i s) + (dropPfx (plus i 1) s) ;
+    -- -- Delete character at the specific index (0-based).
+    -- -- Out of range indices are just ignored.
+    -- delCharAt : Int -> Str -> Str ;
+    -- delCharAt i s = (takePfx i s) + (dropPfx (plus i 1) s) ;
 
-    -- Replace first substring
-    replace : Str -> Str -> Str -> Str ;
-    replace needle haystack replacement =
-      case haystack of {
-        x + needle + y => x + replacement + y ;
-        _ => haystack
-      } ;
+    -- -- Replace first substring
+    -- replace : Str -> Str -> Str -> Str ;
+    -- replace needle haystack replacement =
+    --   case haystack of {
+    --     x + needle + y => x + replacement + y ;
+    --     _ => haystack
+    --   } ;
 
     -- Prefix with a 'n'/'t' or double initial consonant, as necessary. See {OM pg 90}
     pfx_N : Str -> Str = \s -> case takePfx 1 s of {

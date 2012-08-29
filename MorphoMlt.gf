@@ -389,10 +389,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   <Weak Lacking, "a"> => nifth + "a" ;  -- NAQRA-
                   <Quad QWeak, _> => tbl ! AgP1 Sg ; -- NKANTA-, NSERVI-
                   <Loan, _> => nifth + (takeSfx 1 niftah) ; -- NISSUĠĠERIXXI-, NIŻVILUPPA-
-                  -- <Loan, _> case niftah of {
-                  --   _ + "ixxi" => nifth + "i" ; -- NISSUĠĠERIXXI-
-                  --   _ => nifth + "a" -- NIŻVILUPPA-
-                  --   } ;
                   _ => nifth + "i" -- NIFTĦI-
                   } ;
               in
@@ -782,7 +778,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               }
       } ;
       
-      
 
     -- Conjugate imperfect tense from imperative by adding initial letters
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
@@ -1064,10 +1059,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjLackingPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         mxej = root.C1 + root.C2 + patt.V1 + root.C3
-        -- mxej : Str = case root.C1 of {
-        --   #LiquidCons => "i" + root.C1 + root.C2 + patt.V1 + root.C3 ;
-        --   _ => root.C1 + root.C2 + patt.V1 + root.C3
-        --   } ;
       in
         table {
           --- i tal-leħen needs to be added here!
@@ -1288,11 +1279,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjLoanImp : Str -> (Number => Str) = \mamma ->
       table {
         Sg => case mamma of {
-          _ + "ixxa" => (dropSfx 1 mamma) + "i" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXI
+          _ + "ixxa" => (dropSfx 1 mamma) + "i" ; -- STABILIXXA > STABILIXXI
           _ => mamma -- IPPARKJA > IPPARKJA
           } ;
         Pl => case mamma of {
-          _ + "ixxa" => (dropSfx 1 mamma) + "u" ; -- IDDIŻUBIDIXXA > IDDIŻUBIDIXXU
+          _ + "ixxa" => (dropSfx 1 mamma) + "u" ; -- STABILIXXA > STABILIXXU
           _ => mamma + "w" -- IPPARKJA > IPPARKJAW
           }
       } ;
