@@ -1322,8 +1322,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
+--        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in
-        verbPolarityTable info (verbPronSuffixTable info tbl) ;
+--      polSfxTbl ;
+--      \\tense,suffix,polarity => sfxTbl ! tense ! suffix ;
+      \\tense,suffix,polarity => sfxTbl ! tense ! VSuffixNone ;
+--      \\tense,suffix,polarity => tbl ! tense ; --- just to make things compile :(
+
+    {- ~~~ Form V verbs ~~~ -}
+
+    conjFormV : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+      let
+        formII = conjFormII i ;
+      in
+      \\f,s,p => pfx_T (formII ! f ! s ! p) ;
 
 }

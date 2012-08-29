@@ -273,7 +273,7 @@ resource ParadigmsMlt = open
 
 
     {- ===== Verb paradigms ===== -}
-
+{-
     -- Takes a verb as a string determined derived form
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
     classifyDerivedVerb : Str -> Root -> Pattern -> VDerivedForm = \mamma,root,patt ->
@@ -350,7 +350,7 @@ resource ParadigmsMlt = open
         -- boqq
         _ => FormUnknown
       } ;
-
+-}
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
@@ -544,19 +544,83 @@ resource ParadigmsMlt = open
     -- Create a Form III verb from a Form I verb
     -- No special conjugation is needed! Just change the form number.
     mkV_III = overload {
-      mkV_III : V -> V = \v ->
+
+      mkV_III : Str -> V = \mamma ->
         let
-          newinfo = mkVerbInfo v.i FormIII ;
+          v : V = mkV mamma ;
         in
         case v.i.class of {
           Strong _ | Weak _ => lin V {
             s = v.s ;
-            i = newinfo ;
+            i = mkVerbInfo v.i FormIII ;
             } ;
           Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
           Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
         } ;
+        
+      mkV_III : V -> V = \v ->
+        case v.i.class of {
+          Strong _ | Weak _ => lin V {
+            s = v.s ;
+            i = mkVerbInfo v.i FormIII ;
+            } ;
+          Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
+          Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
+        } ;
+
       } ; --end of mkV_III overload
+
+
+    {- ~~~ Derived Verb (all classes) ~~~ -}
+
+    derivedV = overload {
+
+      -- Try and do everything from the [derived] mamma
+      -- e.g.: derivedV FormII "waqqaf"
+      derivedV : VDerivedForm -> Str -> V = \form,mamma ->
+        case form of {
+          _ => variants { } --- TODO
+        } ;
+
+      -- Try and do everything from the [derived] mamma
+      -- e.g.: derivedV FormII "waqqaf"
+      derivedV : VDerivedForm -> V -> V = \form,v ->
+        case <form, v.i.class> of {
+
+          -- Some error catching
+          <FormI, _> => v ;
+          <_, Loan> => Predef.error("Loan verbs don't have derived forms, ġaħan.") ;
+          <-FormII, Quad _> => Predef.error("Quad verbs can only have a IInd form.") ;
+
+          -- Form II (tri.)
+          <FormII, Strong _ | Weak _> => lin V {
+            s = conjFormII v.i ;
+            i = mkVerbInfo v.i FormII ;
+            } ;
+
+          -- Form II (quad.)
+          <FormII, Quad _> => variants { } ; --- TODO
+
+          -- Form III
+          <FormIII, _> => lin V {
+            s = v.s ;
+            i = mkVerbInfo v.i FormIII ;
+            } ;
+
+          -- Form IV
+          <FormIV, _> => variants { } ; --- TODO
+
+          -- Form V
+          <FormV, _> => lin V {
+            s = conjFormV v.i ;
+            i = mkVerbInfo v.i FormV ;
+            } ;
+
+          _ => Predef.error("Unhandled case FDJ49D5")
+
+        } ;
+
+      } ; -- end of derivedV overload
 
 
     {- ~~~ Strong Verb ~~~ -}
