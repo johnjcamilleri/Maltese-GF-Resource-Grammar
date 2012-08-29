@@ -346,7 +346,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         iftah : Str = case (tbl ! AgP1 Sg) of {
           "nie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
           "n"+aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
-          "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- this is dangerous (and probably slow)
+ --         "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- this is dangerous (and probably slow)
           "n"+iftah => iftah -- -IFTAĦ
           } ;
         ifth = case info.class of {
@@ -785,11 +785,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       table {
         AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NIŻLOQ
         AgP2 Sg    => pfx_T imp_sg ;  -- Inti TIŻLOQ
-        AgP3Sg Masc=> "j" + imp_sg ;  -- Huwa JIŻLOQ
+        AgP3Sg Masc=> pfx_J imp_sg ;  -- Huwa JIŻLOQ
         AgP3Sg Fem => pfx_T imp_sg ;  -- Hija TIŻLOQ
         AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NIŻOLQU
         AgP2 Pl    => pfx_T imp_pl ;  -- Intom TIŻOLQU
-        AgP3Pl     => "j" + imp_pl    -- Huma JIŻOLQU
+        AgP3Pl     => pfx_J imp_pl    -- Huma JIŻOLQU
       } ;
 
     -- -- Derive imperative plural from singular
@@ -1027,11 +1027,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       table {
           AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NDUM / MMUR
           AgP2 Sg    => pfx_T imp_sg ;  -- Inti DDUM / TMUR
-          AgP3Sg Masc=> "j" + imp_sg ;  -- Huwa JDUM / JMUR
+          AgP3Sg Masc=> pfx_J imp_sg ;  -- Huwa JDUM / JMUR
           AgP3Sg Fem => pfx_T imp_sg ;  -- Hija DDUM / TMUR
           AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NDUMU / MMORRU
           AgP2 Pl    => pfx_T imp_pl ;  -- Intom DDUMU / TMORRU
-          AgP3Pl     => "j" + imp_pl    -- Huma JDUMU / JMORRU
+          AgP3Pl     => pfx_J imp_pl    -- Huma JDUMU / JMORRU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -1149,11 +1149,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       table {
         AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NDENDEL
         AgP2 Sg    => pfx_T imp_sg ;  -- Inti DDENDEL
-        AgP3Sg Masc=> "j" + imp_sg ;  -- Huwa JDENDEL
+        AgP3Sg Masc=> pfx_J imp_sg ;  -- Huwa JDENDEL
         AgP3Sg Fem => pfx_T imp_sg ;  -- Hija DDENDEL
         AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NDENDLU
         AgP2 Pl    => pfx_T imp_pl ;  -- Intom DDENDLU
-        AgP3Pl     => "j" + imp_pl    -- Huma JDENDLU
+        AgP3Pl     => pfx_J imp_pl    -- Huma JDENDLU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
@@ -1204,11 +1204,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       table {
         AgP1 Sg    => pfx_N imp_sg ;  -- Jiena NSERVI
         AgP2 Sg    => pfx_T imp_sg ;  -- Inti SSERVI
-        AgP3Sg Masc=> "j" + imp_sg ;  -- Huwa JSERVI
+        AgP3Sg Masc=> pfx_J imp_sg ;  -- Huwa JSERVI
         AgP3Sg Fem => pfx_T imp_sg ;  -- Hija SSERVI
         AgP1 Pl    => pfx_N imp_pl ;  -- Aħna NSERVU
         AgP2 Pl    => pfx_T imp_pl ;  -- Intom SSERVU
-        AgP3Pl     => "j" + imp_pl    -- Huma JSERVU
+        AgP3Pl     => pfx_J imp_pl    -- Huma JSERVU
       } ;
 
     -- Conjugate entire verb in IMPERATIVE tense, infers vowel patterns
