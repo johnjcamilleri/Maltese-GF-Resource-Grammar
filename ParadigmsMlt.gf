@@ -635,6 +635,9 @@ resource ParadigmsMlt = open
     --   } ; -- end of derivedV overload
 
     {- pi-pi-ri-pipiieee -}
+    
+    -- Just a shortcut
+    derivedV_I : Str -> V = mkV ;
 
     -- Make a Form II verb from it's [derived] mamma
     -- e.g.: derivedV_II "waqqaf"
@@ -714,6 +717,21 @@ resource ParadigmsMlt = open
             VImp num => \\suffix,pol => pfx_T (vIII.s ! VImp num ! suffix ! pol)
             } ;
           i = newinfo ;
+        } ;
+      } ;
+
+    -- Make a Form VII verb from it's [derived] mamma
+    -- e.g.: derivedV_VII "nħasel"
+    -- e.g.: derivedV_VII "ntiżen"
+    -- e.g.: derivedV_VII "ntrifes"
+    -- e.g.: derivedV_VII "nxteħet"
+    derivedV_VII : V = overload {
+      derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
+        let
+          a = "a" ;
+        in lin V {
+          s = variants {} ;
+          i = variants {} ;
         } ;
       } ;
 
