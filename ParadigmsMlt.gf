@@ -517,115 +517,205 @@ resource ParadigmsMlt = open
       } ; --end of mkV overload
 
 
-    mkV_II = overload {
+    -- mkV_II = overload {
       
-      -- mkV_II : Str -> V -> \mamma ->
-      --   case mamma of {
-      --     c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-      --       let
-      --         root = mkRoot c1 c2 c4 ;
-      --         patt = mkPatt v1 v2 ;
-      --         class = ... ;
-      --       in
-      --       conjFormII (mkVerbInfo class FormII root patt)
-      --     _ => Predef.error("Cannot make a Form II verb from: "++mamma)
-      --   };
+    --   -- mkV_II : Str -> V -> \mamma ->
+    --   --   case mamma of {
+    --   --     c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
+    --   --       let
+    --   --         root = mkRoot c1 c2 c4 ;
+    --   --         patt = mkPatt v1 v2 ;
+    --   --         class = ... ;
+    --   --       in
+    --   --       conjFormII (mkVerbInfo class FormII root patt)
+    --   --     _ => Predef.error("Cannot make a Form II verb from: "++mamma)
+    --   --   };
 
-      -- Create a Form II verb from a Form I verb
-      mkV_II : V -> V = \v ->
-        case v.i.class of {
-          Strong _ | Weak _ => lin V {
-            s = conjFormII v.i ;
-            i = mkVerbInfo v.i FormII
-            } ;
-          Quad _ => quadV v.i.root v.i.patt v.i.imp ;
-          Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-        } ;
+    --   -- Create a Form II verb from a Form I verb
+    --   mkV_II : V -> V = \v ->
+    --     case v.i.class of {
+    --       Strong _ | Weak _ => lin V {
+    --         s = conjFormII v.i ;
+    --         i = mkVerbInfo v.i FormII
+    --         } ;
+    --       Quad _ => quadV v.i.root v.i.patt v.i.imp ;
+    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
+    --     } ;
 
-      } ; --end of mkV_II overload
+    --   } ; --end of mkV_II overload
 
 
-    -- Create a Form III verb from a Form I verb
-    -- No special conjugation is needed! Just change the form number.
-    mkV_III = overload {
+    -- -- Create a Form III verb from a Form I verb
+    -- -- No special conjugation is needed! Just change the form number.
+    -- mkV_III = overload {
 
-      mkV_III : Str -> V = \mamma ->
-        let
-          v : V = mkV mamma ;
-        in
-        case v.i.class of {
-          Strong _ | Weak _ => lin V {
-            s = v.s ;
-            i = mkVerbInfo v.i FormIII ;
-            } ;
-          Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
-          Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-        } ;
+    --   mkV_III : Str -> V = \mamma ->
+    --     let
+    --       v : V = mkV mamma ;
+    --     in
+    --     case v.i.class of {
+    --       Strong _ | Weak _ => lin V {
+    --         s = v.s ;
+    --         i = mkVerbInfo v.i FormIII ;
+    --         } ;
+    --       Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
+    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
+    --     } ;
         
-      mkV_III : V -> V = \v ->
-        case v.i.class of {
-          Strong _ | Weak _ => lin V {
-            s = v.s ;
-            i = mkVerbInfo v.i FormIII ;
-            } ;
-          Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
-          Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-        } ;
+    --   mkV_III : V -> V = \v ->
+    --     case v.i.class of {
+    --       Strong _ | Weak _ => lin V {
+    --         s = v.s ;
+    --         i = mkVerbInfo v.i FormIII ;
+    --         } ;
+    --       Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
+    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
+    --     } ;
 
-      } ; --end of mkV_III overload
+    --   } ; --end of mkV_III overload
 
 
     {- ~~~ Derived Verb (all classes) ~~~ -}
 
-    derivedV = overload {
+    -- derivedV = overload {
 
-      -- Try and do everything from the [derived] mamma
-      -- e.g.: derivedV FormII "waqqaf"
-      derivedV : VDerivedForm -> Str -> V = \form,mamma ->
-        case form of {
-          _ => variants { } --- TODO
+    --   -- Try and do everything from the [derived] mamma
+    --   -- e.g.: derivedV FormII "waqqaf"
+    --   derivedV : VDerivedForm -> Str -> V = \form,mamma ->
+    --     case form of {
+    --       _ => variants { } --- TODO
+    --     } ;
+
+    --   -- Take a Form I verb and convert to desired derived Form
+    --   -- e.g.: derivedV FormII (mkV "waqaf")
+    --   derivedV : VDerivedForm -> V -> V = \form,v ->
+    --     case <form, v.i.class> of {
+
+    --       -- Some error catching
+    --       <FormI, _> => v ;
+    --       <_, Loan> => Predef.error("Loan verbs don't have derived forms, ġaħan.") ;
+    --       <-FormII, Quad _> => Predef.error("Quad verbs can only have a IInd form.") ;
+
+    --       -- Form II (tri.)
+    --       <FormII, Strong _ | Weak _> => lin V {
+    --         s = conjFormII v.i ;
+    --         i = mkVerbInfo v.i FormII ;
+    --         } ;
+
+    --       -- Form II (quad.)
+    --       <FormII, Quad _> => variants { } ; --- TODO
+
+    --       -- Form III
+    --       -- No special conjugation, just change form number
+    --       <FormIII, _> => lin V {
+    --         s = v.s ;
+    --         i = mkVerbInfo v.i FormIII ;
+    --         } ;
+
+    --       -- Form IV
+    --       <FormIV, _> => variants { } ; --- TODO
+
+    --       -- Form V
+    --       <FormV, _> => lin V {
+    --         s = conjFormV v.i ;
+    --         i = mkVerbInfo v.i FormV ;
+    --         } ;
+
+    --       -- Form VI
+    --       -- Prefix regular conjugation ("Form III") with T
+    --       <FormVI, _> => lin V {
+    --         s = \\tense,suffix,pol => pfx_T (v.s ! tense ! suffix ! pol) ;
+    --         i = mkVerbInfo v.i FormVI ;
+    --         } ;
+
+    --       _ => Predef.error("Unhandled case FDJ49D5")
+
+    --     } ;
+
+    --   } ; -- end of derivedV overload
+
+    {- pi-pi-ri-pipiieee -}
+
+    -- Make a Form II verb from it's [derived] mamma
+    -- e.g.: derivedV_II "waqqaf"
+    derivedV_II : V = overload {
+      derivedV_II : Str -> V = \mammaII ->
+        --- TODO: Quad Form II
+        let
+          mammaI : Str = delCharAt 3 mammaII ; --- this works because the only verb with a duplicated GĦ is ŻAGĦGĦAR (make smaller)
+          info : VerbInfo = classifyVerb mammaI ;
+          newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
+        in lin V {
+          s = conjFormII newinfo ;
+          i = newinfo ;
         } ;
+      } ;
 
-      -- Try and do everything from the [derived] mamma
-      -- e.g.: derivedV FormII "waqqaf"
-      derivedV : VDerivedForm -> V -> V = \form,v ->
-        case <form, v.i.class> of {
-
-          -- Some error catching
-          <FormI, _> => v ;
-          <_, Loan> => Predef.error("Loan verbs don't have derived forms, ġaħan.") ;
-          <-FormII, Quad _> => Predef.error("Quad verbs can only have a IInd form.") ;
-
-          -- Form II (tri.)
-          <FormII, Strong _ | Weak _> => lin V {
-            s = conjFormII v.i ;
-            i = mkVerbInfo v.i FormII ;
-            } ;
-
-          -- Form II (quad.)
-          <FormII, Quad _> => variants { } ; --- TODO
-
-          -- Form III
-          <FormIII, _> => lin V {
-            s = v.s ;
-            i = mkVerbInfo v.i FormIII ;
-            } ;
-
-          -- Form IV
-          <FormIV, _> => variants { } ; --- TODO
-
-          -- Form V
-          <FormV, _> => lin V {
-            s = conjFormV v.i ;
-            i = mkVerbInfo v.i FormV ;
-            } ;
-
-          _ => Predef.error("Unhandled case FDJ49D5")
-
+    -- Make a Form III verb from it's [derived] mamma
+    -- e.g.: derivedV_III "qiegħed"
+    derivedV_III : V = overload {
+      derivedV_III : Str -> V = \mammaIII ->
+        let
+          vowels : Pattern = extractPattern mammaIII;
+          info : VerbInfo = classifyVerb (ie2i mammaIII) ;
+          newinfo : VerbInfo = mkVerbInfo info.class FormII info.root vowels mammaIII ; --- assumption: mamma III is also imperative
+        in lin V {
+          s = conjFormIII newinfo ;
+          i = newinfo ;
         } ;
+      } ;
 
-      } ; -- end of derivedV overload
+    derivedV_IV : V = variants {} ; --- TODO
 
+    -- Make a Form V verb from it's [derived] mamma
+    -- e.g.: derivedV_V "twaqqaf"
+    derivedV_V : V = overload {
+      derivedV_V : Str -> V = \mammaV ->
+        let
+          -- use the Form II conjugation, just prefixing a T
+          mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
+          vII : V = derivedV_II mammaII ;
+          newinfo : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
+        in lin V {
+          s = table {
+            VPerf agr => \\suffix,pol => pfx_T (vII.s ! VPerf agr ! suffix ! pol) ;
+            VImpf (AgP1 Sg) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg) ! suffix ! pol)) ;
+            VImpf (AgP2 Sg) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg) ! suffix ! pol)) ;
+            VImpf (AgP3Sg Masc) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol)) ;
+            VImpf (AgP3Sg Fem)  => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol)) ;
+            VImpf (AgP1 Pl) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl) ! suffix ! pol)) ;
+            VImpf (AgP2 Pl) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl) ! suffix ! pol)) ;
+            VImpf (AgP3Pl) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl) ! suffix ! pol)) ;
+            VImp num => \\suffix,pol => pfx_T (vII.s ! VImp num ! suffix ! pol)
+            } ;
+          i = newinfo ;
+        } ;
+      } ;
+
+    -- Make a Form VI verb from it's [derived] mamma
+    -- e.g.: derivedV_VI "tqiegħed"
+    derivedV_VI : V = overload {
+      derivedV_VI : Str -> V = \mammaVI ->
+        let
+          -- use the Form III conjugation, just prefixing a T
+          mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
+          vIII : V = derivedV_III mammaIII ;
+          newinfo : VerbInfo = mkVerbInfo vIII.i.class FormVI vIII.i.root vIII.i.patt mammaVI ;
+        in lin V {
+          s = table {
+            VPerf agr => \\suffix,pol => pfx_T (vIII.s ! VPerf agr ! suffix ! pol) ;
+            VImpf (AgP1 Sg) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg) ! suffix ! pol)) ;
+            VImpf (AgP2 Sg) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg) ! suffix ! pol)) ;
+            VImpf (AgP3Sg Masc) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol)) ;
+            VImpf (AgP3Sg Fem)  => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol)) ;
+            VImpf (AgP1 Pl) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl) ! suffix ! pol)) ;
+            VImpf (AgP2 Pl) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl) ! suffix ! pol)) ;
+            VImpf (AgP3Pl) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl) ! suffix ! pol)) ;
+            VImp num => \\suffix,pol => pfx_T (vIII.s ! VImp num ! suffix ! pol)
+            } ;
+          i = newinfo ;
+        } ;
+      } ;
 
     {- ~~~ Strong Verb ~~~ -}
 

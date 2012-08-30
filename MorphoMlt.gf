@@ -1293,15 +1293,19 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjFormII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
         waqqaf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 ;
-        waqqf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 ;
-        waqqfu : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.root.C3 + "u" ;
+        bexxix : Str = case <i.patt.V1,i.patt.V2> of {
+          <_,"e"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" + i.root.C3 ;
+          _ => waqqaf -- no change
+          } ;
+        waqqf : Str = sfx (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2) i.root.C3 ;
+        waqqfu : Str = waqqf + "u" ;
         perf : Agr => Str = table {
-          AgP1 Sg => waqqaf + "t" ;
-          AgP2 Sg => waqqaf + "t" ;
+          AgP1 Sg => bexxix + "t" ;
+          AgP2 Sg => bexxix + "t" ;
           AgP3Sg Masc => waqqaf ;
           AgP3Sg Fem => waqqf + "et" ;
-          AgP1 Pl => waqqaf + "na" ;
-          AgP2 Pl => waqqaf + "tu" ;
+          AgP1 Pl => bexxix + "na" ;
+          AgP2 Pl => bexxix + "tu" ;
           AgP3Pl => waqqfu
           } ;
         impf : Agr => Str = table {
@@ -1328,14 +1332,49 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       in
       polSfxTbl ;
 
+    {- ~~~ Form III verbs ~~~ -}
 
-    {- ~~~ Form V verbs ~~~ -}
-
-    -- Same conjugation as Form II, with a prefixed T, e.g. TFAĊĊA
-    conjFormV : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormIII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
-        formII = conjFormII i ;
+        wiegeb : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3 ;
+        wegib : Str = case <i.patt.V1,i.patt.V2> of {
+          <"ie","e"> => i.root.C1 + "e" + i.root.C2 + "i" + i.root.C3 ;
+          <v1,"e"> => i.root.C1 + v1 + i.root.C2 + "i" + i.root.C3 ;
+          _ => wiegeb -- no change
+          } ;
+        wiegb : Str = sfx (i.root.C1 + i.patt.V1 + i.root.C2) i.root.C3 ;
+        wiegbu : Str = wiegb + "u" ;
+        perf : Agr => Str = table {
+          AgP1 Sg => wegib + "t" ;
+          AgP2 Sg => wegib + "t" ;
+          AgP3Sg Masc => wiegeb ;
+          AgP3Sg Fem => wiegb + "et" ;
+          AgP1 Pl => wegib + "na" ;
+          AgP2 Pl => wegib + "tu" ;
+          AgP3Pl => wiegbu
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => pfx_N wiegeb ;
+          AgP2 Sg => pfx_T wiegeb ;
+          AgP3Sg Masc => pfx_J wiegeb ;
+          AgP3Sg Fem => pfx_T wiegeb ;
+          AgP1 Pl => pfx_N wiegbu ;
+          AgP2 Pl => pfx_T wiegbu ;
+          AgP3Pl => pfx_J wiegbu
+          } ;
+        imp : Number => Str = table {
+          Sg => wiegeb ;
+          Pl => wiegbu
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt wiegeb ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in
-      \\f,s,p => pfx_T (formII ! f ! s ! p) ;
+      polSfxTbl ;
 
 }

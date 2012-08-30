@@ -56,94 +56,105 @@ When testing the verb morphology, each of these cases should be considered for t
 
 _An asterix means there is no Form I verb form; in this case they come from nouns/adjectives._
 
-- libbes (L-B-S)
-- qajjem (Q-J-M)
-- ħabbat (Ħ-B-T)
-- qatta' (Q-T-GĦ)
-- kisser (K-S-R)
-- daħħak (D-Ħ-K)
-- kerrah (K-R-H)*
-- raqqad (R-Q-D)
-- waqqaf (W-Q-F)
-- baħħar (B-Ħ-R)*
-- ġedded (Ġ-D-D)*
-- sewwed (S-W-D)*
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-----|-----|:----|
+|_ħabbat_|Ħ-B-T|_ħabat_|Strong|  |
+|_kisser_|K-S-R|_kiser_|Strong liquid-medial|  |
+|_bexxex_|B-X-X|_bexx_|Geminated|Vowel change (_bexxixt_); Avoid triple _xxx_|
+|_waqqaf_|W-Q-F|_waqaf_|Weak-initial|  |
+|_qajjem_|Q-J-M|_qam_|Weak-medial|  |
+|_neħħa_ |N-Ħ-J|-|Weak-final|  |
+|_qatta'_|Q-T-GĦ|_qata'_|Defective|  |
+|_kerrah_|K-R-H|-|-|Formed from adjective _ikrah_|
+
+|_libbes_|L-B-S|_libes_|Strong|  |
+|_raqqad_|R-Q-D|_raqad_|Strong|  |
+|_daħħak_|D-Ħ-K|_daħak_|Strong|  |
+|_baħħar_|B-Ħ-R|-|-|Formed from noun _baħar_|
+|_ġedded_|Ġ-D-D|-|-|Formed from adjective _ġdid_|
+|_sewwed_|S-W-D|-|-|Formed from adjective _iswed_|
 
 #### Form III
 
-- qiegħed (Q-GĦ-D)
-- żiegħel (Ż-GĦ-L)
-- wiegħed (W-GĦ-D)
-- ħares (Ħ-R-S)
-- wieġeb (W-Ġ-B)
-- siefer (S-F-R)
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-----|-----|:----|
+|_qiegħed_|Q-GĦ-D|_qagħad_|Strong|  |
+|_żiegħel_|Ż-GĦ-L|_żiegħel_|Strong|V1 and C2 are two chars long|
+|_wiegħed_|W-GĦ-D|_wegħed_ (Hyp.)|Weak-initial|  |
+
+|_ħares_|Ħ-R-S|-|Strong|  |
+|_siefer_|S-F-R|-|Strong|  |
+|_wieġeb_|W-Ġ-B|-|Weak-initial|  |
 
 #### Form IV
 
-- wera
-- għama
-- għana
+|_wera_|
+|_għama_|
+|_għana_|
 
 #### Form V
 
-- tkisser (K-S-R)
-- tgħallaq (GĦ-L-Q)
-- ssellef (S-L-F)
-- tħammeġ (Ħ-M-Ġ)*
-- tniżżel (N-Ż-L)
-- tgħannaq (GĦ-N-Q)*
-- tħallat (Ħ-L-T)
-- ċċarrat (Ċ-R-T)
-- ssaħħan (S-Ħ-N)
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-----|-----|:----|
+|_tkisser_|K-S-R|_kiser_|Strong liquid-medial|  |
+|_tfaċċa_|F-Ċ-J|-|Weak-final|  |
+|_tgħallaq_|GĦ-L-Q|_għalaq_|Strong liquid-medial|  |
+|_ssellef_|S-L-F|_silef_|Strong liquid-medial|  |
+|_tħammeġ_|Ħ-M-Ġ|-|-|From noun _ħmieġ_|
+|_tniżżel_|N-Ż-L|_niżel_|Strong|  |
+|_tgħannaq_|GĦ-N-Q|-|-|  |
+|_tħallat_|Ħ-L-T|_ħalat_|Strong liquid-medial|  |
+|_ċċarrat_|Ċ-R-T|-|-|Assimilation of T|
+|_ssaħħan_|S-Ħ-N|_saħan_|Strong|Assimilation of T|
 
 #### Form VI
 
-- tqiegħed (Q-GĦ-D)
-- tħabat (Ħ-B-T)
-- ġġieled (Ġ-L-D)
-- tqabad (Q-B-D)
+|_tqiegħed_|Q-GĦ-D|  |  |
+|_tħabat_|Ħ-B-T|  |  |
+|_ġġieled_|Ġ-L-D|  |  |
+|_tqabad_|Q-B-D|  |  |
 
 #### Form VII
 
-- nfirex (F-R-X)
-- nħasel (Ħ-S-L)
-- ntiżen (W-Ż-N)
-- ntlewa (L-W-J)
-- ntrifes (R-F-S)
-- ntgħaġen (GĦ-Ġ-N)
-- ntqal (Q-W-L)
-- nstab (S-J-B)
-- nxtamm (X-M-M)
-- nħeba (Ħ-B-J)
-- nxteħet (X-Ħ-T)
+|_nfirex_|F-R-X|  |  |
+|_nħasel_|Ħ-S-L|  |  |
+|_ntiżen_|W-Ż-N|  |  |
+|_ntlewa_|L-W-J|  |  |
+|_ntrifes_|R-F-S|  |  |
+|_ntgħaġen_|GĦ-Ġ-N|  |  |
+|_ntqal_|Q-W-L|  |  |
+|_nstab_|S-J-B|  |  |
+|_nxtamm_|X-M-M|  |  |
+|_nħeba_|Ħ-B-J|  |  |
+|_nxteħet_|X-Ħ-T|  |  |
 
 #### Form VIII
 
-- mtela (T-L-GĦ)
-- xteħet (X-Ħ-T)
-- ltewa (L-W-J)
-- mtedd (M-D-D)
-- ntesa (N-S-J)
-- stabat (S-B-T)
-- ftaqar (F-Q-R)*
+|_mtela_|T-L-GĦ|  |  |
+|_xteħet_|X-Ħ-T|  |  |
+|_ltewa_|L-W-J|  |  |
+|_mtedd_|M-D-D|  |  |
+|_ntesa_|N-S-J|  |  |
+|_stabat_|S-B-T|  |  |
+|_ftaqar_|F-Q-R| n/a |  |
 
 #### Form IX
 
-- sfar (S-F-R)*
-- qsar (Q-S-R)*
-- blieh (B-L-H)*
-- bjad (B-J-D)*
-- krieh (K-R-H)*
+|_sfar_|S-F-R| n/a |  |
+|_qsar_|Q-S-R| n/a |  |
+|_blieh_|B-L-H| n/a |  |
+|_bjad_|B-J-D| n/a |  |
+|_krieh_|K-R-H| n/a |  |
 
 #### Form X
 
-- staħba (Ħ-B-J)
-- stagħġeb (GĦ-Ġ-B)
-- stenbaħ (N-B-Ħ)*
-- stħarreġ (Ħ-R-Ġ)
-- stenna ('-N-J)*
-- stieden ('-D-N)*
-- strieħ (S-R-Ħ)*
+|_staħba_|Ħ-B-J|  |  |
+|_stagħġeb_|GĦ-Ġ-B|  |  |
+|_stenbaħ_|N-B-Ħ| n/a |  |
+|_stħarreġ_|Ħ-R-Ġ|  |  |
+|_stenna_|'-N-J| n/a |  |
+|_stieden_|'-D-N| n/a |  |
+|_strieħ_|S-R-Ħ| n/a |  |
 
 ## Classification
 
