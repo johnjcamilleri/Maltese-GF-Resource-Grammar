@@ -400,6 +400,10 @@ resource ParadigmsMlt = open
         _ => mkVerbInfo Loan FormUnknown
       } ;
 
+    -- Just get the non-suffixed forms of a verb, for quick testing
+    plainVerbTable : V -> (VForm => Str) = \v ->
+      \\tense => v.s ! tense ! VSuffixNone ! Pos ;
+
     -- Smart paradigm for building a verb
     mkV : V = overload {
 
