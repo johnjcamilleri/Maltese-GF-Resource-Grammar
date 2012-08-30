@@ -639,7 +639,7 @@ resource ParadigmsMlt = open
     -- Just a shortcut
     derivedV_I : Str -> V = mkV ;
 
-    -- Make a Form II verb from it's [derived] mamma
+    -- Make a Form II verb
     -- e.g.: derivedV_II "waqqaf"
     derivedV_II : V = overload {
       derivedV_II : Str -> V = \mammaII ->
@@ -654,7 +654,7 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
-    -- Make a Form III verb from it's [derived] mamma
+    -- Make a Form III verb
     -- e.g.: derivedV_III "qiegħed"
     derivedV_III : V = overload {
       derivedV_III : Str -> V = \mammaIII ->
@@ -670,7 +670,7 @@ resource ParadigmsMlt = open
 
     derivedV_IV : V = variants {} ; --- TODO
 
-    -- Make a Form V verb from it's [derived] mamma
+    -- Make a Form V verb
     -- e.g.: derivedV_V "twaqqaf"
     derivedV_V : V = overload {
       derivedV_V : Str -> V = \mammaV ->
@@ -695,7 +695,7 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
-    -- Make a Form VI verb from it's [derived] mamma
+    -- Make a Form VI verb
     -- e.g.: derivedV_VI "tqiegħed"
     derivedV_VI : V = overload {
       derivedV_VI : Str -> V = \mammaVI ->
@@ -720,7 +720,7 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
-    -- Make a Form VII verb from it's [derived] mamma
+    -- Make a Form VII verb
     -- e.g.: derivedV_VII "nħasel"
     -- e.g.: derivedV_VII "ntiżen"
     -- e.g.: derivedV_VII "ntrifes"
@@ -728,10 +728,16 @@ resource ParadigmsMlt = open
     derivedV_VII : V = overload {
       derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
         let
-          a = "a" ;
+          vI : V = mkV mammaI ;
+          newinfo : VerbInfo = mkVerbInfo vI.i.class FormVII vI.i.root vI.i.patt mammaVII ;
+          pfx : Str -> Str = \s -> "n" + s ; --- Needs to replace I initial with VII; n+, nt+, etc.
         in lin V {
-          s = variants {} ;
-          i = variants {} ;
+          s = table {
+            VPerf agr => \\suffix,pol => pfx (vI.s ! VPerf agr ! suffix ! pol) ;
+            VImpf agr => variants{};
+            VImp num => variants{} 
+            } ;
+          i = newinfo ;
         } ;
       } ;
 
