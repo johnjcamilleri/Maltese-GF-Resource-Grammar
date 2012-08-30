@@ -849,21 +849,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Vowel changes for imperative
     vowelChangesStrong : Pattern -> (Number => Pattern) = \patt ->
       table {
-        Sg => case (patt.V1 + patt.V2) of {
-          "aa" => mkPattern "o" "o" ; -- RABAT > ORBOT (but: ITLOB, ILGĦAB, AĦBAT)
-          "ae" => mkPattern "a" "e" ; -- GĦAMEL > AGĦMEL
-          "ee" => mkPattern "i" "e" ; -- FEHEM > IFHEM
-          "ea" => mkPattern "i" "a" ; -- FETAĦ > IFTAĦ
-          "ie" => mkPattern "i" "e" ; -- KITEB > IKTEB
-          "oo" => mkPattern "o" "o"   -- GĦOĠOB > OGĦĠOB
+        Sg => case <patt.V1,patt.V2> of {
+          <"a","a"> => mkPattern "o" "o" ; -- RABAT > ORBOT (but: ITLOB, ILGĦAB, AĦBAT)
+          <"a","e"> => mkPattern "a" "e" ; -- GĦAMEL > AGĦMEL
+          <"e","e"> => mkPattern "i" "e" ; -- FEHEM > IFHEM
+          <"e","a"> => mkPattern "i" "a" ; -- FETAĦ > IFTAĦ
+          <"i","e"> => mkPattern "i" "e" ; -- KITEB > IKTEB
+          <"o","o"> => mkPattern "o" "o"   -- GĦOĠOB > OGĦĠOB
         };
-        Pl => case (patt.V1 + patt.V2) of {
-          "aa" => mkPattern "o" ; -- RABAT > ORBTU
-          "ae" => mkPattern "a" ; -- GĦAMEL > AGĦMLU
-          "ee" => mkPattern "i" ; -- FEHEM > IFHMU
-          "ea" => mkPattern "i" ; -- FETAĦ > IFTĦU
-          "ie" => mkPattern "i" ; -- KITEB > IKTBU
-          "oo" => mkPattern "o"   -- GĦOĠOB > OGĦĠBU
+        Pl => case <patt.V1,patt.V2> of {
+          <"a","a"> => mkPattern "o" ; -- RABAT > ORBTU
+          <"a","e"> => mkPattern "a" ; -- GĦAMEL > AGĦMLU
+          <"e","e"> => mkPattern "i" ; -- FEHEM > IFHMU
+          <"e","a"> => mkPattern "i" ; -- FETAĦ > IFTĦU
+          <"i","e"> => mkPattern "i" ; -- KITEB > IKTBU
+          <"o","o"> => mkPattern "o"   -- GĦOĠOB > OGĦĠBU
         }
       } ;
 
@@ -907,21 +907,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Vowel changes for imperative
     vowelChangesLiquidMedial : Pattern -> (Number => Pattern) = \patt ->
       table {
-        Sg => case (patt.V1 + patt.V2) of {
-          "aa" => mkPattern "i" "o" ; -- TALAB > ITLOB
-          "ae" => mkPattern "o" "o" ; -- ĦAREĠ > OĦROĠ
-          "ee" => mkPattern "e" "e" ; -- ĦELES > EĦLES
-          "ea" => mkPattern "i" "o" ; -- ŻELAQ > IŻLOQ
-          "ie" => mkPattern "i" "e" ; -- DILEK > IDLEK
-          "oo" => mkPattern "i" "o"   -- XOROB > IXROB
+        Sg => case <patt.V1,patt.V2> of {
+          <"a","a"> => mkPattern "i" "o" ; -- TALAB > ITLOB
+          <"a","e"> => mkPattern "o" "o" ; -- ĦAREĠ > OĦROĠ
+          <"e","e"> => mkPattern "e" "e" ; -- ĦELES > EĦLES
+          <"e","a"> => mkPattern "i" "o" ; -- ŻELAQ > IŻLOQ
+          <"i","e"> => mkPattern "i" "e" ; -- DILEK > IDLEK
+          <"o","o"> => mkPattern "i" "o"   -- XOROB > IXROB
         };
-        Pl => case (patt.V1 + patt.V2) of {
-          "aa" => mkPattern "i" "o" ; -- TALAB > ITOLBU
-          "ae" => mkPattern "o" "o" ; -- ĦAREĠ > OĦORĠU
-          "ee" => mkPattern "e" "i" ; -- ĦELES > EĦILSU
-          "ea" => mkPattern "i" "o" ; -- ŻELAQ > IŻOLQU
-          "ie" => mkPattern "i" "i" ; -- DILEK > IDILKU
-          "oo" => mkPattern "i" "o"   -- XOROB > IXORBU
+        Pl => case <patt.V1,patt.V2> of {
+          <"a","a"> => mkPattern "i" "o" ; -- TALAB > ITOLBU
+          <"a","e"> => mkPattern "o" "o" ; -- ĦAREĠ > OĦORĠU
+          <"e","e"> => mkPattern "e" "i" ; -- ĦELES > EĦILSU
+          <"e","a"> => mkPattern "i" "o" ; -- ŻELAQ > IŻOLQU
+          <"i","e"> => mkPattern "i" "i" ; -- DILEK > IDILKU
+          <"o","o"> => mkPattern "i" "o"   -- XOROB > IXORBU
         }
       } ;
 
@@ -1006,8 +1006,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjHollowPerf : Root -> Pattern -> (Agr => Str) = \root,patt ->
       let
         sar = root.C1 + patt.V1 + root.C3 ;
-        sir = case patt.V1 + root.C2 of {
-          "aw" => root.C1 + "o" + root.C3 ; -- DAM, FAR, SAQ (most common case)
+        sir = case <patt.V1,root.C2> of {
+          <"a","w"> => root.C1 + "o" + root.C3 ; -- DAM, FAR, SAQ (most common case)
           _ => root.C1 + "i" + root.C3
           }
       in
@@ -1039,11 +1039,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Refer: http://blog.johnjcamilleri.com/2012/07/vowel-patterns-maltese-hollow-verb/
     conjHollowImp : Root -> Pattern -> (Number => Str) = \root,patt ->
       let
-        sir = case patt.V1 + root.C2 of {
-          "aw" => root.C1 + "u" + root.C3 ; -- DAM, FAR, SAQ (most common case)
-          "aj" => root.C1 + "i" + root.C3 ; -- ĠAB, SAB, TAR
-          "iej" => root.C1 + "i" + root.C3 ; -- FIEQ, RIED, ŻIED
-          "iew" => root.C1 + "u" + root.C3 ; -- MIET
+        sir = case <patt.V1,root.C2> of {
+          <"a","w"> => root.C1 + "u" + root.C3 ; -- DAM, FAR, SAQ (most common case)
+          <"a","j"> => root.C1 + "i" + root.C3 ; -- ĠAB, SAB, TAR
+          <"ie","j"> => root.C1 + "i" + root.C3 ; -- FIEQ, RIED, ŻIED
+          <"ie","w"> => root.C1 + "u" + root.C3 ; -- MIET
           _ => Predef.error("Unhandled case in hollow verb. G390KDJ")
           }
       in
