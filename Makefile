@@ -1,21 +1,24 @@
 all: batch
 
 batch:
-	clear
-	gf --batch AllMlt.gf
+#	time gf +RTS -K1000M -RTS --batch AllMlt.gf
+	time gf --batch AllMlt.gf
 
 interactive:
 	gf AllMlt.gf
 
-wordlist:
-	echo "print_grammar -words" | gf --run AllMlt.gf | sed 's/ /\n/g' > test/wordlist.txt
+clean:
+	rm --force *.gfo
+	rm --force .gfbuild/*.gf-tags
+
+rebuild: clean batch
 
 tags:
 	gf --tags --output-dir=.gfbuild AllMlt.gf
 
-clean:
-	rm *.gfo
-	rm .gfbuild/*.gf-tags
+wordlist:
+	echo "print_grammar -words" | gf --run AllMlt.gf | sed 's/ /\n/g' > test/wordlist.txt
+
 
 # Only ever add a treebank here if its gold standard has been checked!
 treebank_all: treebank_strong_verbs treebank_weak_verbs treebank_quad_verbs treebank_loan_verbs

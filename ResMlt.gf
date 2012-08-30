@@ -250,8 +250,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         { V1=toLower v1 ; V2=toLower v2 } ;
       } ;
 
-    -- Extract first two vowels from a token
-    -- Designed for semitic verb forms
+    -- Extract first two vowels from a token (designed for semitic verb forms)
+    --- potentially slow
     extractPattern : Str -> Pattern = \s ->
       case s of {
         v1@"ie" + _ + v2@#Vowel + _ => mkPattern v1 v2 ; -- IEQAF
@@ -328,7 +328,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       _ => "j" + s
       } ;
   
-    -- Add suffix, avoiding triple letters {GO pg96-7} --- add more cases?
+    -- Add suffix, avoiding triple letters {GO pg96-7}
+    --- add more cases?
+    --- potentially slow
     sfx : Str -> Str -> Str = \a,b ->
       case <a,takePfx 1 b> of {
         <ke+"nn","n"> => ke+"n"+b ;
@@ -340,6 +342,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       } ;
 
     -- Replace any IE in the word with an I
+    --- potentially slow
     ie2i : Str -> Str = \serviet ->
       case serviet of {
         x + "ie" => x + "i" ;
@@ -348,6 +351,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       } ;
 
     -- Is a word mono-syllabic?
+    --- potentially slow
     isMonoSyl : Str -> Bool = \s ->
       case s of {
         #Consonant + ("ie" | #Vowel) => True ; -- ra

@@ -5,7 +5,8 @@
 -- Licensed under LGPL
 
 resource MorphoMlt = ResMlt ** open Prelude in {
-  flags optimize=all ; coding=utf8 ;
+
+  flags optimize=noexpand ; coding=utf8 ;
 
   oper
 
@@ -307,7 +308,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- Imperfective tense
     verbImpfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
       let
-        vowels : Pattern = extractPattern (tbl ! AgP1 Sg) ; --- we are using the P1 vowel changes for all persons
+        vowels : Pattern = extractPattern info.imp ;
         p2sg_dir_ek : Str = case info.class of {
           Strong LiquidMedial => case vowels.V2 of {
             "o" => "ok" ; -- Jiena NOĦORĠ-OK
@@ -343,11 +344,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
 
         -- This stem is prefixed with n/t/j/t/n/t/j
-        iftah : Str = case (tbl ! AgP1 Sg) of {
-          "nie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
-          "n"+aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
- --         "n"+ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- this is dangerous (and probably slow)
-          "n"+iftah => iftah -- -IFTAĦ
+        iftah : Str = case dropPfx 1 (tbl ! AgP1 Sg) of {
+          "ie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
+          aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
+          ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- potentially slow
+          iftah => iftah -- -IFTAĦ
           } ;
         ifth = case info.class of {
           Strong LiquidMedial => case info.root.C1 of {
@@ -613,7 +614,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             iftah : Str = case (tbl ! Sg) of {
               "ie"+qaf=> "i"+qaf ; -- IEQAF > IQAF
               aqta+"'" => aqta+"għ" ; -- AQTA' > AQTAGĦ
-              ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB
+              ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB --- potentially slow
               x => x -- IFTAĦ
               } ;
             ifth = case info.class of {
@@ -635,7 +636,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               _ + "i" => "ih" ; -- SERVIH
               _ => "u" -- IFTĦU
               } ;
-
           in
           table {
             VSuffixNone => (tbl ! Sg) ;
@@ -1324,15 +1324,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
---        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in
---      polSfxTbl ;
---      \\tense,suffix,polarity => sfxTbl ! tense ! suffix ;
-      \\tense,suffix,polarity => sfxTbl ! tense ! VSuffixNone ;
---      \\tense,suffix,polarity => tbl ! tense ; --- just to make things compile :(
+      polSfxTbl ;
+
 
     {- ~~~ Form V verbs ~~~ -}
 
+    -- Same conjugation as Form II, with a prefixed T, e.g. TFAĊĊA
     conjFormV : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
         formII = conjFormII i ;
