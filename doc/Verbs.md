@@ -16,7 +16,7 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 
 ### Known issues:
 
-1. IE-reduction when adding affixes needs to be more intelligent. See {GO pg92,100}
+1. ~~IE-reduction when adding affixes needs to be more intelligent. See {GO pg92,100}~~
 1. ~~Avoid triples when adding suffixes, e.g. _ħakk_ + _kom_ = _ħakkom_~~
 
 ### Test cases
@@ -25,7 +25,7 @@ When testing the verb morphology, each of these cases should be considered for t
 
 #### Form I
 
-|Verb|Class|Tests|
+|Verb|Class|Notes|
 |:---|:----|:----|
 |_kiteb_|Regular strong|Vowel changes (_kitibli_)|
 |_lagħab_|Regular strong|Middle radical is 2 characters|
@@ -109,10 +109,13 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form VI
 
-|_tqiegħed_|Q-GĦ-D|  |  |
-|_tħabat_|Ħ-B-T|  |  |
-|_ġġieled_|Ġ-L-D|  |  |
-|_tqabad_|Q-B-D|  |  |
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-----|-----|:----|
+|_tħabat_|Ħ-B-T|_ħabat_|Strong|Long vowel Â|
+|_tqiegħed_|Q-GĦ-D|_qagħad_|Strong|Long vowel IE|
+|_twiegħed_|W-GĦ-D|_wegħed_|Weak-initial|  |
+|_tgara_|G-R-J|-|Weak-final|  |
+|_ġġieled_|Ġ-L-D|-|Strong|Assimilation of T|
 
 #### Form VII
 
