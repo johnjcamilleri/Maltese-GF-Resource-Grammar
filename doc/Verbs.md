@@ -94,28 +94,28 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form V
 
-|Derived mamma|Root|Form I|Class|Notes|
+|Derived mamma|Root|Form I/II|Class|Notes|
 |:------------|:---|:-----|-----|:----|
-|_tkisser_|K-S-R|_kiser_|Strong liquid-medial|  |
-|_tfaċċa_|F-Ċ-J|-|Weak-final|  |
-|_tgħallaq_|GĦ-L-Q|_għalaq_|Strong liquid-medial|  |
-|_ssellef_|S-L-F|_silef_|Strong liquid-medial|  |
-|_tħammeġ_|Ħ-M-Ġ|-|-|From noun _ħmieġ_|
-|_tniżżel_|N-Ż-L|_niżel_|Strong|  |
-|_tgħannaq_|GĦ-N-Q|-|-|  |
-|_tħallat_|Ħ-L-T|_ħalat_|Strong liquid-medial|  |
-|_ċċarrat_|Ċ-R-T|-|-|Assimilation of T|
-|_ssaħħan_|S-Ħ-N|_saħan_|Strong|Assimilation of T|
+|_tkisser_|K-S-R|_kiser_/_kisser_|Strong liquid-medial|  |
+|_tfaċċa_|F-Ċ-J|_faċċa_|Weak-final|  |
+|_tgħallaq_|GĦ-L-Q|_għalaq_/_għallaq_|Strong liquid-medial|  |
+|_ssellef_|S-L-F|_silef_/_sellef_|Strong liquid-medial|  |
+|_tħammeġ_|Ħ-M-Ġ|_ħammeġ_|-|From noun _ħmieġ_|
+|_tniżżel_|N-Ż-L|_niżel_/_niżżel_|Strong|  |
+|_tgħannaq_|GĦ-N-Q|_għannaq_|-|  |
+|_tħallat_|Ħ-L-T|_ħalat_/_ħallat_|Strong liquid-medial|  |
+|_ċċarrat_|Ċ-R-T|_ċarrat_|-|Assimilation of T|
+|_ssaħħan_|S-Ħ-N|_saħan_/_saħħan_|Strong|Assimilation of T|
 
 #### Form VI
 
-|Derived mamma|Root|Form I|Class|Notes|
-|:------------|:---|:-----|-----|:----|
+|Derived mamma|Root|Form I/III|Class|Notes|
+|:------------|:---|:-------|-----|:----|
 |_tħabat_|Ħ-B-T|_ħabat_|Strong|Long vowel Â|
-|_tqiegħed_|Q-GĦ-D|_qagħad_|Strong|Long vowel IE|
-|_twiegħed_|W-GĦ-D|_wegħed_|Weak-initial|  |
-|_tgara_|G-R-J|-|Weak-final|  |
-|_ġġieled_|Ġ-L-D|-|Strong|Assimilation of T|
+|_tqiegħed_|Q-GĦ-D|_qagħad_/_qiegħed_|Strong|Long vowel IE|
+|_twiegħed_|W-GĦ-D|_wegħed_/_wiegħed_|Weak-initial|  |
+|_tgara_|G-R-J|_gara_|Weak-final|  |
+|_ġġieled_|Ġ-L-D|_ġieled_|Strong|Assimilation of T|
 
 #### Form VII
 
