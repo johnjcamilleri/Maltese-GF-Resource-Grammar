@@ -721,10 +721,7 @@ resource ParadigmsMlt = open
       } ;
 
     -- Make a Form VII verb
-    -- e.g.: derivedV_VII "nħasel"
-    -- e.g.: derivedV_VII "ntiżen"
-    -- e.g.: derivedV_VII "ntrifes"
-    -- e.g.: derivedV_VII "nxteħet"
+    -- e.g.: derivedV_VII "xeħet" "nxteħet"
     derivedV_VII : V = overload {
       derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
         let
@@ -737,10 +734,24 @@ resource ParadigmsMlt = open
             "n" + c@#Consonant + _ => "n"+c ; -- NĦ-ASEL
             _ => "nt" --- unknown case
             } ;
-          conjinfo : VerbInfo = mkVerbInfo info.class FormVII (mkRoot c1 info.root.C2 info.root.C3) info.patt mammaVII ; -- used just for conjugation
           newinfo : VerbInfo = mkVerbInfo info.class FormVII info.root info.patt mammaVII ;
         in lin V {
-          s = conjFormVII conjinfo ;
+          s = conjFormVII newinfo c1 ;
+          i = newinfo ;
+        } ;
+      } ;
+
+    -- Make a Form VIII verb
+    -- e.g.: derivedV_VIII "xteħet"
+    derivedV_VIII : V = overload {
+      derivedV_VIII : Str -> V = \mammaVIII ->
+        let
+          mammaI : Str = delCharAt 1 mammaVIII ;
+          info : VerbInfo = classifyVerb mammaI ;
+          c1 : Str = info.root.C1+"t";
+          newinfo : VerbInfo = mkVerbInfo info.class FormVIII info.root info.patt mammaVIII ;
+        in lin V {
+          s = conjFormVII newinfo c1 ;
           i = newinfo ;
         } ;
       } ;

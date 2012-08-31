@@ -1380,25 +1380,25 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     {- ~~~ Form VII verbs ~~~ -}
 
     -- C1 of verbinfo should contain the entire consontant cluster
-    conjFormVII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormVII : VerbInfo -> Str -> (VForm => VSuffixForm => Polarity => Str) = \i,C1 ->
       let
         nhasel : Str = case i.class of {
-          Weak Hollow => i.root.C1 + i.patt.V1 + i.root.C3 ;
-          Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 ;
-          _ => i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3
+          Weak Hollow => C1 + i.patt.V1 + i.root.C3 ;
+          Weak Lacking => C1 + i.patt.V1 + i.root.C2 + i.patt.V2 ;
+          _ => C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3
           } ;
         v1 : Str = case i.patt.V1 of { "ie" => "e" ; v => v } ;
         v2 : Str = case i.patt.V2 of { "e" => "i" ; v => v } ;
         nhsil : Str = case <i.class,i.root.C1> of {
-          <Strong Regular,-"ntgħ"> => i.root.C1 + i.root.C2 + v2 + i.root.C3 ;
-          <Weak Hollow,_> => i.root.C1 + v1 + i.root.C3 ;
-          <Weak Lacking,_> => i.root.C1 + i.root.C2 + v1 + i.root.C3 ;
-          _ => i.root.C1 + v1 + i.root.C2 + v2 + i.root.C3
+          <Strong Regular,#LiquidCons|"s"> => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
+          <Weak Hollow,_> => C1 + v1 + i.root.C3 ;
+          <Weak Lacking,_> => C1 + i.root.C2 + v1 + i.root.C3 ;
+          _ => C1 + v1 + i.root.C2 + v2 + i.root.C3
           } ;
         nhasl : Str = case i.class of {
-          Weak Hollow => i.root.C1 + i.patt.V1 + i.root.C3 ;
-          Weak Lacking => i.root.C1 + i.root.C2 ;
-          _ => sfx (i.root.C1 + i.patt.V1 + i.root.C2) i.root.C3
+          Weak Hollow => C1 + i.patt.V1 + i.root.C3 ;
+          Weak Lacking => C1 + i.root.C2 ;
+          _ => sfx (C1 + i.patt.V1 + i.root.C2) i.root.C3
           } ;
         nhaslu : Str = case i.class of {
           Weak Lacking => nhasl + "ew" ;

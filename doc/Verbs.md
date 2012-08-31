@@ -135,13 +135,15 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form VIII
 
-|_mtela_|T-L-GĦ|  |  |
-|_xteħet_|X-Ħ-T|  |  |
-|_ltewa_|L-W-J|  |  |
-|_mtedd_|M-D-D|  |  |
-|_ntesa_|N-S-J|  |  |
-|_stabat_|S-B-T|  |  |
-|_ftaqar_|F-Q-R| n/a |  |
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-------|-----|:----|
+|_mtela_|T-L-GĦ|_mela_|Defetive|  |
+|_xteħet_|X-Ħ-T|_xeħet_|Strong|  |
+|_ltewa_|L-W-J|_lewa_|Weak-final|  |
+|_mtedd_|M-D-D|_medd_|Strong geminated|  |
+|_ntesa_|N-S-J|_nesa_|Weak-final|
+|_stabat_|S-B-T|_sabat_|Strong|  |
+|_ftaqar_|F-Q-R|-|-|Formed from noun _faqar_/adjective _fqir_|
 
 #### Form IX
 
