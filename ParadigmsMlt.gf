@@ -728,15 +728,19 @@ resource ParadigmsMlt = open
     derivedV_VII : V = overload {
       derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
         let
-          vI : V = mkV mammaI ;
-          newinfo : VerbInfo = mkVerbInfo vI.i.class FormVII vI.i.root vI.i.patt mammaVII ;
-          pfx : Str -> Str = \s -> "n" + s ; --- Needs to replace I initial with VII; n+, nt+, etc.
-        in lin V {
-          s = table {
-            VPerf agr => \\suffix,pol => pfx (vI.s ! VPerf agr ! suffix ! pol) ;
-            VImpf agr => variants{};
-            VImp num => variants{} 
+          info : VerbInfo = classifyVerb mammaI ;
+          c1 : Str = case mammaVII of {
+            "n" + c@#Consonant + "t" + _ => "n"+c+"t" ; -- NXT-EĦET
+            "nt" + c@#Consonant + _ => "nt"+c ; -- NTR-IFES
+            "nt" + #Vowel + _ => "nt" ; -- NT-IŻEN
+            "n" + c@#Consonant + _ => "n"+c ; -- NĦ-ASEL
+            _ => "nt" --- unknown case
             } ;
+          conjinfo : VerbInfo = mkVerbInfo info.class FormVII (mkRoot c1 info.root.C2 info.root.C3) info.patt mammaVII ;
+          newinfo : VerbInfo = mkVerbInfo info.class FormVII info.root info.patt mammaVII ;
+        in lin V {
+          s = conjFormVII conjinfo ;
+--          s = conjFormIII conjinfo ; --- turns out III is just fine!
           i = newinfo ;
         } ;
       } ;

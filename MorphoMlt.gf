@@ -1377,4 +1377,49 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       in
       polSfxTbl ;
 
+    {- ~~~ Form VII verbs ~~~ -}
+
+    -- C1 of verbinfo should contain the entire consontant cluster
+    conjFormVII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+      let
+        nhasel : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3 ;
+        nhsil : Str = case <i.patt.V1,i.patt.V2> of {
+          <"ie","e"> => i.root.C1 + "e" + i.root.C2 + "i" + i.root.C3 ;
+          <v1,"e"> => i.root.C1 + v1 + i.root.C2 + "i" + i.root.C3 ;
+          _ => nhasel -- no change
+          } ;
+        nhasl : Str = sfx (i.root.C1 + i.patt.V1 + i.root.C2) i.root.C3 ;
+        nhaslu : Str = nhasl + "u" ;
+        perf : Agr => Str = table {
+          AgP1 Sg => nhsil + "t" ;
+          AgP2 Sg => nhsil + "t" ;
+          AgP3Sg Masc => nhasel ;
+          AgP3Sg Fem => nhasl + "et" ;
+          AgP1 Pl => nhsil + "na" ;
+          AgP2 Pl => nhsil + "tu" ;
+          AgP3Pl => nhaslu
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => "ni" + nhasel ;
+          AgP2 Sg => "ti" + nhasel ;
+          AgP3Sg Masc => "ji" + nhasel ;
+          AgP3Sg Fem => "ti" + nhasel ;
+          AgP1 Pl => "ni" + nhaslu ;
+          AgP2 Pl => "ti" + nhaslu ;
+          AgP3Pl => "ji" + nhaslu
+          } ;
+        imp : Number => Str = table {
+          Sg => nhasel ;
+          Pl => nhaslu
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
+      in
+      polSfxTbl ;
+
 }
