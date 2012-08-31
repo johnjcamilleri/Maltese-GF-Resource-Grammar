@@ -96,7 +96,7 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 |Derived mamma|Root|Form I/II|Class|Notes|
 |:------------|:---|:-----|-----|:----|
-|_tkisser_|K-S-R|_kiser_/_kisser_|Strong liquid-medial|  |
+|_tkisser_|K-S-R|_kiser_/_kisser_|Strong|  |
 |_tfaċċa_|F-Ċ-J|_faċċa_|Weak-final|  |
 |_tgħallaq_|GĦ-L-Q|_għalaq_/_għallaq_|Strong liquid-medial|  |
 |_ssellef_|S-L-F|_silef_/_sellef_|Strong liquid-medial|  |
