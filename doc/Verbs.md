@@ -119,17 +119,19 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form VII
 
-|_nfirex_|F-R-X|  |  |
-|_nħasel_|Ħ-S-L|  |  |
-|_ntiżen_|W-Ż-N|  |  |
-|_ntlewa_|L-W-J|  |  |
-|_ntrifes_|R-F-S|  |  |
-|_ntgħaġen_|GĦ-Ġ-N|  |  |
-|_ntqal_|Q-W-L|  |  |
-|_nstab_|S-J-B|  |  |
-|_nxtamm_|X-M-M|  |  |
-|_nħeba_|Ħ-B-J|  |  |
-|_nxteħet_|X-Ħ-T|  |  |
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-------|-----|:----|
+|_nħasel_|Ħ-S-L|_ħasel_|Strong|N prefix|
+|_nfirex_|F-R-X|_firex_|Strong liquid-medial|  |
+|_ntrifes_|R-F-S|_rifes_|Strong|NT prefix|
+|_nxteħet_|X-Ħ-T|_xeħet_|Strong|N-T infix|
+|_ntgħaġen_|GĦ-Ġ-N|_għaġen_|Strong|C1 is two characters|
+|_nxtamm_|X-M-M|_xamm_|Strong geminated|  |
+|_ntiżen_|W-Ż-N|_wiżen_|Weak-inital|NT prefix with dropped C1|
+|_nstab_|S-J-B|_sab_|Weal-medial|  |
+|_nħeba_|Ħ-B-J|_ħeba_|Weak-final|  |
+|_ntlewa_|L-W-J|_lewa_|Weak-final|  |
+|_ntqal_|Q-W-L|_qal_|Weak-medial/Irreg|_qal_ is irregular in the imperfective|
 
 #### Form VIII
 

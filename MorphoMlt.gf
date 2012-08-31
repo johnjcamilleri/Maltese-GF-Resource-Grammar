@@ -1382,19 +1382,36 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     -- C1 of verbinfo should contain the entire consontant cluster
     conjFormVII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
-        nhasel : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3 ;
-        nhsil : Str = case <i.patt.V1,i.patt.V2> of {
-          <"ie","e"> => i.root.C1 + "e" + i.root.C2 + "i" + i.root.C3 ;
-          <v1,"e"> => i.root.C1 + v1 + i.root.C2 + "i" + i.root.C3 ;
-          _ => nhasel -- no change
+        nhasel : Str = case i.class of {
+          Weak Hollow => i.root.C1 + i.patt.V1 + i.root.C3 ;
+          Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 ;
+          _ => i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3
           } ;
-        nhasl : Str = sfx (i.root.C1 + i.patt.V1 + i.root.C2) i.root.C3 ;
-        nhaslu : Str = nhasl + "u" ;
+        v1 : Str = case i.patt.V1 of { "ie" => "e" ; v => v } ;
+        v2 : Str = case i.patt.V2 of { "e" => "i" ; v => v } ;
+        nhsil : Str = case <i.class,i.root.C1> of {
+          <Strong Regular,-"ntgħ"> => i.root.C1 + i.root.C2 + v2 + i.root.C3 ;
+          <Weak Hollow,_> => i.root.C1 + v1 + i.root.C3 ;
+          <Weak Lacking,_> => i.root.C1 + i.root.C2 + v1 + i.root.C3 ;
+          _ => i.root.C1 + v1 + i.root.C2 + v2 + i.root.C3
+          } ;
+        nhasl : Str = case i.class of {
+          Weak Hollow => i.root.C1 + i.patt.V1 + i.root.C3 ;
+          Weak Lacking => i.root.C1 + i.root.C2 ;
+          _ => sfx (i.root.C1 + i.patt.V1 + i.root.C2) i.root.C3
+          } ;
+        nhaslu : Str = case i.class of {
+          Weak Lacking => nhasl + "ew" ;
+          _ => nhasl + "u"
+          } ;
         perf : Agr => Str = table {
           AgP1 Sg => nhsil + "t" ;
           AgP2 Sg => nhsil + "t" ;
           AgP3Sg Masc => nhasel ;
-          AgP3Sg Fem => nhasl + "et" ;
+          AgP3Sg Fem => case i.class of {
+            Weak Lacking => nhasl + "iet" ;
+            _ => nhasl + "et"
+            } ;
           AgP1 Pl => nhsil + "na" ;
           AgP2 Pl => nhsil + "tu" ;
           AgP3Pl => nhaslu
