@@ -147,11 +147,13 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form IX
 
-|_sfar_|S-F-R| n/a |  |
-|_qsar_|Q-S-R| n/a |  |
-|_blieh_|B-L-H| n/a |  |
-|_bjad_|B-J-D| n/a |  |
-|_krieh_|K-R-H| n/a |  |
+|Derived mamma|Root|Notes|
+|:------------|:---|:----|
+|_sfar_|S-F-R|  |
+|_qsar_|Q-S-R|  |
+|_blieh_|B-L-H|  |
+|_bjad_|B-J-D|  |
+|_krieh_|K-R-H|  |
 
 #### Form X
 

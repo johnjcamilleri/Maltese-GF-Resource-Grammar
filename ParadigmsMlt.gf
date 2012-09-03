@@ -756,6 +756,37 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
+    -- Make a Form IX verb
+    -- e.g.: derivedV_IX "sfar"
+    derivedV_IX : V = overload {
+      derivedV_IX : Str -> V = \mammaIX ->
+        case mammaIX of {
+          c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
+            let
+              root : Root = mkRoot c1 c2 c3 ;
+              patt : Pattern = mkPattern v1 ;
+              newinfo : VerbInfo = mkVerbInfo (Strong Regular) FormIX root patt mammaIX ;
+            in lin V {
+              s = conjFormIX newinfo ;
+              i = newinfo ;
+            } ;
+          _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
+        } ;
+      } ;
+
+    -- Make a Form X verb
+    -- e.g.: derivedV_X "għaġeb" "stagħġeb"
+    derivedV_X : V = overload {
+      derivedV_X : Str -> V = \mammaI,mammaX ->
+        let
+          info : VerbInfo = classifyVerb mammaI ;
+          newinfo : VerbInfo = mkVerbInfo info.class FormX info.root info.patt mammaX ;
+        in lin V {
+          s = conjFormX newinfo ;
+          i = newinfo ;
+        } ;
+      } ;
+
     {- ~~~ Strong Verb ~~~ -}
 
     -- Regular strong verb ("sħiħ"), eg KITEB

@@ -1439,4 +1439,42 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       in
       polSfxTbl ;
 
+    {- ~~~ Form IX verbs ~~~ -}
+
+    conjFormIX : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+      let
+        sfar = i.imp ;
+        sfaru = sfar + "u" ;
+        perf : Agr => Str = table {
+          AgP1 Sg => sfar + "t" ;
+          AgP2 Sg => sfar + "t" ;
+          AgP3Sg Masc => sfar ;
+          AgP3Sg Fem => sfar + "et" ;
+          AgP1 Pl => sfar + "na" ;
+          AgP2 Pl => sfar + "tu" ;
+          AgP3Pl => sfaru
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => "ni" + sfar ;
+          AgP2 Sg => "ti" + sfar ;
+          AgP3Sg Masc => "ji" + sfar ;
+          AgP3Sg Fem => "ti" + sfar ;
+          AgP1 Pl => "ni" + sfaru ;
+          AgP2 Pl => "ti" + sfaru ;
+          AgP3Pl => "ji" + sfaru
+          } ;
+        imp : Number => Str = table {
+          Sg => sfar ;
+          Pl => sfaru
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
+      in
+      polSfxTbl ;
+
 }
