@@ -538,19 +538,40 @@ resource ParadigmsMlt = open
     -- Make a Form I verb (just a shortcut)
     derivedV_I : Str -> V = mkV ;
 
-    -- Make a Form II verb
+    -- Make a Form II verb. Accepts both Tri & Quad roots, then delegates.
     -- e.g.: derivedV_II "waqqaf"
     derivedV_II : V = overload {
       derivedV_II : Str -> V = \mammaII ->
-        --- TODO: Quad Form II
-        let
-          mammaI : Str = delCharAt 3 mammaII ; --- this works because the only verb with a duplicated GĦ is ŻAGĦGĦAR (make smaller)
-          info : VerbInfo = classifyVerb mammaI ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
-        in lin V {
-          s = conjFormII newinfo ;
-          i = newinfo ;
+        case mammaII of {
+            -- Quad Form II
+            "t" + #Consonant + _ => derivedV_QuadII mammaII ; -- TFIXKEL
+            #DoublingConsT + #DoublingConsT + _ => derivedV_QuadII mammaII ; -- DDARDAR
+            
+            -- Tri Form II
+            _ => derivedV_TriII mammaII
         } ;
+      } ;
+
+    -- Make a Tri-Consonantal Form II verb
+    derivedV_TriII : Str -> V = \mammaII ->
+      let
+        mammaI : Str = delCharAt 3 mammaII ; --- this works because the only verb with a duplicated GĦ is ŻAGĦGĦAR (make smaller)
+        info : VerbInfo = classifyVerb mammaI ;
+        newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
+      in lin V {
+        s = conjFormII newinfo ;
+        i = newinfo ;
+      } ;
+
+    -- Make a Quadri-Consonantal Form II verb
+    derivedV_QuadII : Str -> V = \mammaII ->
+      let
+        mammaI : Str = dropPfx 1 mammaII ;
+        info : VerbInfo = classifyVerb mammaI ;
+        newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
+      in lin V {
+        s = conjFormII newinfo ;
+        i = newinfo ;
       } ;
 
     -- Make a Form III verb
@@ -567,7 +588,7 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
-    derivedV_IV : V = variants {} ; --- TODO
+    -- No point having a paradigm for Form IV
 
     -- Make a Form V verb
     -- e.g.: derivedV_V "twaqqaf"
