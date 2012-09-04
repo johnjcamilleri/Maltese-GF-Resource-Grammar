@@ -406,12 +406,14 @@ resource ParadigmsMlt = open
         <#WeakCons, #Consonant, #Consonant, ""> => Weak Assimilative ;
         <#Consonant, #WeakCons, #Consonant, ""> => Weak Hollow ;
         <#Consonant, #Consonant, #WeakCons, ""> => Weak Lacking ;
-        <#Consonant, #Consonant, ("għ"|"'" ), ""> => Weak Defective ;
-        <#Consonant, #LiquidCons, #Consonant, ""> => Strong LiquidMedial ;
+        <#Consonant, #Consonant, "għ", ""> => Weak Defective ;
         <#Consonant, c2@#Consonant, c3@#Consonant, ""> =>
           if_then_else VClass (pbool2bool (eqStr c2 c3))
           (Strong Geminated)
-          (Strong Regular) ;
+          (case c2 of {
+            #LiquidCons => Strong LiquidMedial ;
+            _ => Strong Regular
+          }) ;
         <#Consonant, #Consonant, #Consonant, #WeakCons> => Quad QWeak ;
         <#Consonant, #Consonant, #Consonant, #Consonant> => Quad QStrong ;
         _ => Predef.error("Cannot classify root: "++r.C1++"-"++r.C2++"-"++r.C3++"-"++r.C4) --- this should never happen
