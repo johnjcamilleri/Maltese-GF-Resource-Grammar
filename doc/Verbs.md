@@ -157,13 +157,14 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 
 #### Form X
 
-|_staħba_|Ħ-B-J|  |  |
-|_stagħġeb_|GĦ-Ġ-B|  |  |
-|_stenbaħ_|N-B-Ħ| n/a |  |
-|_stħarreġ_|Ħ-R-Ġ|  |  |
-|_stenna_|'-N-J| n/a |  |
-|_stieden_|'-D-N| n/a |  |
-|_strieħ_|S-R-Ħ| n/a |  |
+|Derived mamma|Root|Form I/II|Class|Notes|
+|:------------|:---|:-------|-----|:----|
+|_stagħġeb_|GĦ-Ġ-B|II:_għaġġeb_|Strong|  |
+|_stenbaħ_|N-B-Ħ|II:_nebbaħ_|Strong|  |
+|_stħarreġ_|Ħ-R-Ġ|I:_ħareġ_|Strong liquid-medial|Stem is in second form (double _R_)|
+|_staħba_|Ħ-B-J|I:_ħeba_|Weak-Final|  |
+|_stenna_|'-N-J|-|Irregular|  |
+|_stieden_|'-D-N|-|Irregualr|  |
 
 ## Classification
 

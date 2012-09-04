@@ -1477,4 +1477,84 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       in
       polSfxTbl ;
 
+    {- ~~~ Form X verbs ~~~ -}
+
+    conjFormX : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+      let
+        mamma : Str = i.imp ; --- is it naughty to pass the mamma as imp?
+        perf : Agr => Str = case mamma of {
+          -- STAĦBA
+          stahb + v@#Vowel =>
+            let
+              stahba : Str = mamma ;
+            in
+            table {
+            AgP1 Sg => stahb + "ejt" ;
+            AgP2 Sg => stahb + "ejt" ;
+            AgP3Sg Masc => mamma ;
+            AgP3Sg Fem => stahb + "et" ;
+            AgP1 Pl => stahb + "ejna" ;
+            AgP2 Pl => stahb + "ejtu" ;
+            AgP3Pl => stahb + "ew"
+            } ;
+          -- STKENN
+          _ + #Consonant + #Consonant =>
+            let
+              stkenn : Str = mamma ;
+            in
+            table {
+            AgP1 Sg => stkenn + "ejt" ;
+            AgP2 Sg => stkenn + "ejt" ;
+            AgP3Sg Masc => stkenn ;
+            AgP3Sg Fem => stkenn + "et" ;
+            AgP1 Pl => stkenn + "ejna" ;
+            AgP2 Pl => stkenn + "ejtu" ;
+            AgP3Pl => stkenn + "ew"
+            } ;
+          -- STĦARREĠ
+          _ =>
+            let
+              stharrig : Str = case mamma of {
+                stharr + "e" + g@#Consonant => stharr+"i"+g ;
+                stenbah => stenbah
+                } ;
+              stharrg : Str = case mamma of {
+                _ + "għ" + #Vowel + #Consonant => mamma ;
+                stharr + #Vowel + g@#Consonant => stharr+g ;
+                x => x --- unknown case
+                } ;
+            in
+            table {
+            AgP1 Sg => stharrig + "t" ;
+            AgP2 Sg => stharrig + "t" ;
+            AgP3Sg Masc => mamma ;
+            AgP3Sg Fem => stharrg + "et" ;
+            AgP1 Pl => stharrig + "na" ;
+            AgP2 Pl => stharrig + "tu" ;
+            AgP3Pl => stharrg + "u"
+            }
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => "ni" + mamma ;
+          AgP2 Sg => "ti" + mamma ;
+          AgP3Sg Masc => "ji" + mamma ;
+          AgP3Sg Fem => "ti" + mamma ;
+          AgP1 Pl => "ni" + (perf!AgP3Pl) ;
+          AgP2 Pl => "ti" + (perf!AgP3Pl) ;
+          AgP3Pl => "ji" + (perf!AgP3Pl)
+          } ;
+        imp : Number => Str = table {
+          Sg => (perf!AgP3Sg Masc) ;
+          Pl => (perf!AgP3Pl)
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
+      in
+      polSfxTbl ;
+
 }

@@ -400,6 +400,23 @@ resource ParadigmsMlt = open
         _ => mkVerbInfo Loan FormUnknown
       } ;
 
+    -- Return the class for a given root
+    classifyRoot : Root -> VClass = \r ->
+      case <r.C1,r.C2,r.C3,r.C4> of {
+        <#WeakCons, #Consonant, #Consonant, ""> => Weak Assimilative ;
+        <#Consonant, #WeakCons, #Consonant, ""> => Weak Hollow ;
+        <#Consonant, #Consonant, #WeakCons, ""> => Weak Lacking ;
+        <#Consonant, #Consonant, ("għ"|"'" ), ""> => Weak Defective ;
+        <#Consonant, #LiquidCons, #Consonant, ""> => Strong LiquidMedial ;
+        <#Consonant, c2@#Consonant, c3@#Consonant, ""> =>
+          if_then_else VClass (pbool2bool (eqStr c2 c3))
+          (Strong Geminated)
+          (Strong Regular) ;
+        <#Consonant, #Consonant, #Consonant, #WeakCons> => Quad QWeak ;
+        <#Consonant, #Consonant, #Consonant, #Consonant> => Quad QStrong ;
+        _ => Predef.error("Cannot classify root: "++r.C1++"-"++r.C2++"-"++r.C3++"-"++r.C4) --- this should never happen
+      } ;
+
     -- Just get the non-suffixed forms of a verb, for quick testing
     plainVerbTable : V -> (VForm => Str) = \v ->
       \\tense => v.s ! tense ! VSuffixNone ! Pos ;
@@ -516,127 +533,7 @@ resource ParadigmsMlt = open
 
       } ; --end of mkV overload
 
-
-    -- mkV_II = overload {
-      
-    --   -- mkV_II : Str -> V -> \mamma ->
-    --   --   case mamma of {
-    --   --     c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant =>
-    --   --       let
-    --   --         root = mkRoot c1 c2 c4 ;
-    --   --         patt = mkPatt v1 v2 ;
-    --   --         class = ... ;
-    --   --       in
-    --   --       conjFormII (mkVerbInfo class FormII root patt)
-    --   --     _ => Predef.error("Cannot make a Form II verb from: "++mamma)
-    --   --   };
-
-    --   -- Create a Form II verb from a Form I verb
-    --   mkV_II : V -> V = \v ->
-    --     case v.i.class of {
-    --       Strong _ | Weak _ => lin V {
-    --         s = conjFormII v.i ;
-    --         i = mkVerbInfo v.i FormII
-    --         } ;
-    --       Quad _ => quadV v.i.root v.i.patt v.i.imp ;
-    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-    --     } ;
-
-    --   } ; --end of mkV_II overload
-
-
-    -- -- Create a Form III verb from a Form I verb
-    -- -- No special conjugation is needed! Just change the form number.
-    -- mkV_III = overload {
-
-    --   mkV_III : Str -> V = \mamma ->
-    --     let
-    --       v : V = mkV mamma ;
-    --     in
-    --     case v.i.class of {
-    --       Strong _ | Weak _ => lin V {
-    --         s = v.s ;
-    --         i = mkVerbInfo v.i FormIII ;
-    --         } ;
-    --       Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
-    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-    --     } ;
-        
-    --   mkV_III : V -> V = \v ->
-    --     case v.i.class of {
-    --       Strong _ | Weak _ => lin V {
-    --         s = v.s ;
-    --         i = mkVerbInfo v.i FormIII ;
-    --         } ;
-    --       Quad _ => Predef.error("Quad verbs don't have a IIIrd form.") ;
-    --       Loan => Predef.error("Loan verbs don't have derived forms, ġaħan.")
-    --     } ;
-
-    --   } ; --end of mkV_III overload
-
-
-    {- ~~~ Derived Verb (all classes) ~~~ -}
-
-    -- derivedV = overload {
-
-    --   -- Try and do everything from the [derived] mamma
-    --   -- e.g.: derivedV FormII "waqqaf"
-    --   derivedV : VDerivedForm -> Str -> V = \form,mamma ->
-    --     case form of {
-    --       _ => variants { } --- TODO
-    --     } ;
-
-    --   -- Take a Form I verb and convert to desired derived Form
-    --   -- e.g.: derivedV FormII (mkV "waqaf")
-    --   derivedV : VDerivedForm -> V -> V = \form,v ->
-    --     case <form, v.i.class> of {
-
-    --       -- Some error catching
-    --       <FormI, _> => v ;
-    --       <_, Loan> => Predef.error("Loan verbs don't have derived forms, ġaħan.") ;
-    --       <-FormII, Quad _> => Predef.error("Quad verbs can only have a IInd form.") ;
-
-    --       -- Form II (tri.)
-    --       <FormII, Strong _ | Weak _> => lin V {
-    --         s = conjFormII v.i ;
-    --         i = mkVerbInfo v.i FormII ;
-    --         } ;
-
-    --       -- Form II (quad.)
-    --       <FormII, Quad _> => variants { } ; --- TODO
-
-    --       -- Form III
-    --       -- No special conjugation, just change form number
-    --       <FormIII, _> => lin V {
-    --         s = v.s ;
-    --         i = mkVerbInfo v.i FormIII ;
-    --         } ;
-
-    --       -- Form IV
-    --       <FormIV, _> => variants { } ; --- TODO
-
-    --       -- Form V
-    --       <FormV, _> => lin V {
-    --         s = conjFormV v.i ;
-    --         i = mkVerbInfo v.i FormV ;
-    --         } ;
-
-    --       -- Form VI
-    --       -- Prefix regular conjugation ("Form III") with T
-    --       <FormVI, _> => lin V {
-    --         s = \\tense,suffix,pol => pfx_T (v.s ! tense ! suffix ! pol) ;
-    --         i = mkVerbInfo v.i FormVI ;
-    --         } ;
-
-    --       _ => Predef.error("Unhandled case FDJ49D5")
-
-    --     } ;
-
-    --   } ; -- end of derivedV overload
-
-    {- pi-pi-ri-pipiieee -}
-    
-    -- Just a shortcut
+    -- Make a Form I verb (just a shortcut)
     derivedV_I : Str -> V = mkV ;
 
     -- Make a Form II verb
@@ -775,12 +672,24 @@ resource ParadigmsMlt = open
       } ;
 
     -- Make a Form X verb
-    -- e.g.: derivedV_X "għaġeb" "stagħġeb"
     derivedV_X : V = overload {
-      derivedV_X : Str -> V = \mammaI,mammaX ->
+      -- e.g.: derivedV_X "stagħġeb" (mkRoot "għ-ġ-b")
+      derivedV_X : Str -> Root -> V = \mammaX,root ->
         let
-          info : VerbInfo = classifyVerb mammaI ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormX info.root info.patt mammaX ;
+          class : VClass = classifyRoot root ;
+          patt : Pattern = mkPattern ;
+          newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
+        in lin V {
+          s = conjFormX newinfo ;
+          i = newinfo ;
+        } ;
+      -- e.g.: derivedV_X "stagħġeb" "għ-ġ-b"
+      derivedV_X : Str -> Str -> V = \mammaX,str_root ->
+        let
+          root : Root = mkRoot str_root ;
+          class : VClass = classifyRoot root ;
+          patt : Pattern = mkPattern ;
+          newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
         in lin V {
           s = conjFormX newinfo ;
           i = newinfo ;
