@@ -54,8 +54,6 @@ When testing the verb morphology, each of these cases should be considered for t
 
 #### Form II
 
-_An asterix means there is no Form I verb form; in this case they come from nouns/adjectives._
-
 |Derived mamma|Root|Form I|Class|Notes|
 |:------------|:---|:-----|-----|:----|
 |_ħabbat_|Ħ-B-T|_ħabat_|Strong|  |
@@ -67,12 +65,24 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 |_qatta'_|Q-T-GĦ|_qata'_|Defective|  |
 |_kerrah_|K-R-H|-|-|Formed from adjective _ikrah_|
 
-|_libbes_|L-B-S|_libes_|Strong|  |
-|_raqqad_|R-Q-D|_raqad_|Strong|  |
-|_daħħak_|D-Ħ-K|_daħak_|Strong|  |
-|_baħħar_|B-Ħ-R|-|-|Formed from noun _baħar_|
-|_ġedded_|Ġ-D-D|-|-|Formed from adjective _ġdid_|
-|_sewwed_|S-W-D|-|-|Formed from adjective _iswed_|
+Others:
+
+- _libbes_ L-B-S
+- _raqqad_ R-Q-D
+- _daħħak_ D-Ħ-K
+- _baħħar_ B-Ħ-R
+- _ġedded_ Ġ-D-D
+- _sewwed_ S-W-D
+
+#### Quad. Form II
+
+|Derived mamma|Root|Form I|Class|Notes|
+|:------------|:---|:-----|-----|:----|
+|_tfixkel_|F-X-K-L|_fixkel_|Strong|  |
+|_ddardar_|D-R-D-R|_dardar_|Strong|Assimilation of T|
+|_tkanta_|K-N-T-J|_kanta_|Weak-final|  |
+|_sserva_|S-R-V-J|_serva_|Weak-final|Assimilation of T|
+
 
 #### Form III
 
@@ -82,9 +92,11 @@ _An asterix means there is no Form I verb form; in this case they come from noun
 |_żiegħel_|Ż-GĦ-L|_żiegħel_|Strong|V1 and C2 are two chars long|
 |_wiegħed_|W-GĦ-D|_wegħed_ (Hyp.)|Weak-initial|  |
 
-|_ħares_|Ħ-R-S|-|Strong|  |
-|_siefer_|S-F-R|-|Strong|  |
-|_wieġeb_|W-Ġ-B|-|Weak-initial|  |
+Others:
+
+- _ħares_ Ħ-R-S
+- _siefer_ S-F-R
+- _wieġeb_ W-Ġ-B
 
 #### Form IV
 
