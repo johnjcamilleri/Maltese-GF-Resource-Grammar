@@ -83,7 +83,7 @@ Examples
 
 - Noun
     - _ħafna nbid_ - _ftit **i**nbid_
-    - _ħafna ~~i~~njam_ - _ftit injam_
+    - _ħafna njam_ - _ftit injam_
 - Verb
     - _jiena nħobb_ - _jekk **i**nħobb_
     - _huwa jmur_ - _is-sibt **i**mur_
