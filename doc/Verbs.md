@@ -60,7 +60,7 @@ When testing the verb morphology, each of these cases should be considered for t
 |_kisser_|K-S-R|_kiser_|Strong liquid-medial|  |
 |_bexxex_|B-X-X|_bexx_|Geminated|Vowel change (_bexxixt_); Avoid triple _xxx_|
 |_waqqaf_|W-Q-F|_waqaf_|Weak-initial|  |
-|_qajjem_|Q-J-M|_qam_|Weak-medial|  |
+|_qajjem_|Q-J-M|_qam_|Weak-medial|Double j/w can only occur when a vowel follows. i.e. _qajmek_, not ~~_qajjmek_~~|
 |_neħħa_ |N-Ħ-J|-|Weak-final|  |
 |_qatta'_|Q-T-GĦ|_qata'_|Defective|  |
 |_kerrah_|K-R-H|-|-|Formed from adjective _ikrah_|
@@ -188,7 +188,7 @@ Verb classification according to {MDG}, {T2M} and {GM}.
         - Liquid-Medial: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. _ŻELAQ (Ż-L-Q)_
         - Geminated/Reduplicative/Doubled ("trux"): C2 & C3 are identical, e.g. _ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)_
     - Weak ("dgħajjef")
-        - Assimilative ("assimilativ"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
+        - Assimilative ("assimilativ"/"xebbiehi"): C1 is weak, e.g. _WAQAF (W-Q-F), WASAL (W-S-L)_
         - Hollow ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. _DAM (D-W-M), SAR (S-J-R)_
         - Lacking ("nieqes"): C3 is weak, e.g. _BEKA (B-K-J), MEXA (M-X-J)_
         - Defective: C3 is silent GĦ, e.g. _BELA' (B-L-GĦ), QATA' (Q-T-GĦ)_  

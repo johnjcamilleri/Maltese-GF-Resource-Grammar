@@ -36,5 +36,5 @@ treebank_loan_verbs:
 	test/treebank.sh verbs "żviluppa antagonizza ssuġġerixxa"
 
 treebank_formII_verbs:
-	test/treebank.sh verbs "ħabbat kisser bexxex waqqaf"
+	test/treebank.sh verbs "ħabbat kisser bexxex waqqaf qajjem"
 
