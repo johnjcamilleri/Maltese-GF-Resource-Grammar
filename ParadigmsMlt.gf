@@ -535,7 +535,15 @@ resource ParadigmsMlt = open
 
       } ; --end of mkV overload
 
-    -- Make a Form I verb (just a shortcut)
+    -- Some shortcut function names (haven't decided on naming yet)
+    mkV_II : Str -> V = \s -> derivedV_II s ;
+    mkV_III : Str -> V = \s -> derivedV_III s ;
+    mkV_V : Str -> V = \s -> derivedV_V s ;
+    mkV_VI : Str -> V = \s -> derivedV_VI s ;
+    mkV_VII : Str -> Str -> V = \s,t -> derivedV_VII s t ;
+    mkV_VIII : Str -> V = \s -> derivedV_VIII s ;
+    mkV_IX : Str -> V = \s -> derivedV_IX s ;
+    mkV_X : Str -> Str -> V = \s,t -> derivedV_X s t ;
     derivedV_I : Str -> V = mkV ;
 
     -- Make a Form II verb. Accepts both Tri & Quad roots, then delegates.
