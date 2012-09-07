@@ -63,3 +63,44 @@ But:
 - _inċert_
 - _isfar_
 
+### Handling euphonic vowels - different cases
+
+Examples
+
+- Noun
+    - Without vowel: _nbid, mqarrun, skola_
+    - With vowel: _injam, ilma (Masc)_
+    - Take no vowel: _nemla, maqrut, serp_
+- Verb
+    - Without vowel: _nħobb, mmorru, mxejt_
+    - Changing I/J: _jmur_
+    - Take no vowel: _bkejt_
+- Adj
+    - With vowel: _isfar_
+    - Without: _rqiq_
+
+#### Preceding word
+
+- Noun
+    - _ħafna nbid_ - _ftit **i**nbid_
+    - _ħafna ~~i~~njam_ - _ftit injam_
+- Verb
+    - _jiena nħobb_ - _jekk **i**nħobb_
+    - _huwa jmur_ - _is-sibt **i**mur_
+    - _aħna mmorru_ - _is-sibt **i**mmorru_
+    - _jiena mxejt_ - _is-sibt **i**mxejt_
+    - _jiena bkejt_ - _is-sibt bkejt_
+- Adj
+    - _mara rqiqa_ - _raġel **i**rqiq_
+    - _ilma **i**sfar_ - _injam isfar_
+
+#### Article
+
+- Noun
+    - _**l-i**nbid, **l-i**mqarrun, **l-i**skola_
+    - _**l-**injam, **l-**inbid_
+    - _**in-**nemla, **il-**maqrut, **is-**serp_
+- Adj
+    - _**l-**isfar_
+    - _**l-i**rqiq_
+    
