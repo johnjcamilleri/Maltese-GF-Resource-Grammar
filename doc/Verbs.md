@@ -184,9 +184,9 @@ Others:
 Adapted from {MDG}
 
 |Class|II|III|IV|V |VI|VII|VIII|IX|X |
-|:----|:-|:--|:-|:-|:-|:--|:---|:-|:-|
+|-----|---|---|---|---|---|---|----|---|---|
 |Strong|_daħħal_|_bierek_|_wera_|_tfarrak_|_tbierek_|_nġabar_|_ntefaq_|_ħdar_|_stkerraħ_|
-|Geminated|_ħabbeb_|_qarar_||_tħabbeb_||_ntemm_|_mtedd_|_rqar_|_stqarr_|
+|Geminated|_ħabbeb_|_qarar_||_tħabbeb_||_ntemm_|_mtedd_|_rqaq_|_stqarr_|
 |Defective (GĦ-final)|_beżża'_|||_tbeżża'_||_nqata'_|_ltaqa'_|||
 |Assimilative (Weak-initial)|_wassal_|_wieġeb_||_twassal_|_twieġeb_|_ntiżen_||||
 |Hollow (Weak-medial)|_fejjaq_|||_tfejjaq_||_nġieb_|_xtaq_|_twal_|_strieħ_|
