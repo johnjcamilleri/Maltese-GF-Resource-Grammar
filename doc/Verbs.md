@@ -187,10 +187,10 @@ Adapted from {MDG}
 |-----|---|---|---|---|---|---|----|---|---|
 |Strong|_daħħal_|_bierek_|_wera_|_tfarrak_|_tbierek_|_nġabar_|_ntefaq_|_ħdar_|_stkerraħ_|
 |Geminated|_ħabbeb_|_qarar_||_tħabbeb_||_ntemm_|_mtedd_|_rqaq_|_stqarr_|
-|Defective (GĦ-final)|_beżża'_|||_tbeżża'_||_nqata'_|_ltaqa'_|||
 |Assimilative (Weak-initial)|_wassal_|_wieġeb_||_twassal_|_twieġeb_|_ntiżen_||||
 |Hollow (Weak-medial)|_fejjaq_|||_tfejjaq_||_nġieb_|_xtaq_|_twal_|_strieħ_|
 |Lacking (Weak-final)|_mexxa_|_miera_||_tmexxa_|_tkaża_|_nbeda_|_mtela_||_staħba_|
+|Defective (GĦ-final)|_beżża'_|||_tbeżża'_||_nqata'_|_ltaqa'_|||
 |Quad Strong|_tħarbat_|||||||||
 |Quad Weak-final|_sserva_|||||||||
 
