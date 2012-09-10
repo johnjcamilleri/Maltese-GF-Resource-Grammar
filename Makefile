@@ -39,5 +39,5 @@ treebank_formII_verbs:
 	test/treebank.sh verbs "ħabbat kisser bexxex waqqaf qajjem neħħa qatta'"
 
 treebank_formII_quad_verbs:
-	test/treebank.sh verbs "tħarbat"
+	test/treebank.sh verbs "tħarbat sserva"
 

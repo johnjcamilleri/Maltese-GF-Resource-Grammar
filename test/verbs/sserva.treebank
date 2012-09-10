@@ -1,0 +1,1164 @@
+i -retain ParadigmsMlt.gf
+cc -table -unqual mkV_II "sserva"
+---
+s . VPerf (AgP1 Sg) => VSuffixNone => Pos => sservejt
+s . VPerf (AgP1 Sg) => VSuffixNone => Neg => sservejtx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => sservejtek
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => sservejtekx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => sservejtkom
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => sservejtkomx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => sservejtu
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => sservejtux
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => sservejtha
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => sservejthiex
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => sservejthom
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => sservejthomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => sservejtlek
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => sservejtlekx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => sservejtilkom
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => sservejtilkomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => sservejtlu
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => sservejtlux
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => sservejtilha
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => sservejtilhiex
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => sservejtilhom
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => sservejtilhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => sservejthulek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => sservejthulekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => sservejthulkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => sservejthulkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservejthulu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservejthulux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservejthulha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservejthulhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservejthulhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservejthulhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => sservejthielek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => sservejthilekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => sservejthielkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => sservejthilkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservejthielu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservejthilux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservejthielha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservejthilhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservejthielhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservejthilhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => sservejthomlok
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => sservejthomlokx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => sservejthomlkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => sservejthomlkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservejthomlu
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservejthomlux
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservejthomlha
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservejthomlhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => sservejthomlhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => sservejthomlhomx
+s . VPerf (AgP1 Pl) => VSuffixNone => Pos => sservejna
+s . VPerf (AgP1 Pl) => VSuffixNone => Neg => sservejniex
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => sservejniek
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => sservejnikx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => sservejniekom
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => sservejnikomx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => sservejnieh
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => sservejnihx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => sservejnieha
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => sservejnihiex
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => sservejniehom
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => sservejnihomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => sservejnielek
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => sservejnilekx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => sservejnielkom
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => sservejnilkomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => sservejnielu
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => sservejnilux
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => sservejnielha
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => sservejnilhiex
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => sservejnielhom
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => sservejnilhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => sservejnihulek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => sservejnihulekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => sservejnihulkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => sservejnihulkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservejnihulu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservejnihulux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservejnihulha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservejnihulhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservejnihulhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservejnihulhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => sservejnihielek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => sservejnihilekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => sservejnihielkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => sservejnihilkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservejnihielu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservejnihilux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservejnihielha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservejnihilhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservejnihielhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservejnihilhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => sservejnihomlok
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => sservejnihomlokx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => sservejnihomlkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => sservejnihomlkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservejnihomlu
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservejnihomlux
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservejnihomlha
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservejnihomlhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => sservejnihomlhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => sservejnihomlhomx
+s . VPerf (AgP2 Sg) => VSuffixNone => Pos => sservejt
+s . VPerf (AgP2 Sg) => VSuffixNone => Neg => sservejtx
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => sservejtni
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => sservejtnix
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => sservejtna
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => sservejtniex
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => sservejtu
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => sservejtux
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => sservejtha
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => sservejthiex
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => sservejthom
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => sservejthomx
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => sservejtli
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => sservejtlix
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => sservejtilna
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => sservejtilniex
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => sservejtlu
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => sservejtlux
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => sservejtilha
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => sservejtilhiex
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => sservejtilhom
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => sservejtilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservejthuli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservejthulix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservejthulna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservejthulniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservejthulu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservejthulux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservejthulha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservejthulhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservejthulhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservejthulhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservejthieli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservejthilix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservejthielna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservejthilniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservejthielu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservejthilux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservejthielha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservejthilhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservejthielhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservejthilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservejthomli
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservejthomlix
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservejthomlna
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservejthomlniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservejthomlu
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservejthomlux
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservejthomlha
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservejthomlhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => sservejthomlhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => sservejthomlhomx
+s . VPerf (AgP2 Pl) => VSuffixNone => Pos => sservejtu
+s . VPerf (AgP2 Pl) => VSuffixNone => Neg => sservejtux
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => sservejtuni
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => sservejtunix
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => sservejtuna
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => sservejtuniex
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => sservejtuh
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => sservejtuhx
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => sservejtuha
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => sservejtuhiex
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => sservejtuhom
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => sservejtuhomx
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => sservejtuli
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => sservejtulix
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => sservejtulna
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => sservejtulniex
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => sservejtulu
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => sservejtulux
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => sservejtulha
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => sservejtulhiex
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => sservejtulhom
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => sservejtulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservejtuhuli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservejtuhulix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservejtuhulna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservejtuhulniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservejtuhulu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservejtuhulux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservejtuhulha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservejtuhulhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservejtuhulhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservejtuhulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservejtuhieli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservejtuhilix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservejtuhielna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservejtuhilniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservejtuhielu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservejtuhilux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservejtuhielha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservejtuhilhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservejtuhielhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservejtuhilhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservejtuhomli
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservejtuhomlix
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservejtuhomlna
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservejtuhomlniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservejtuhomlu
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservejtuhomlux
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservejtuhomlha
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservejtuhomlhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => sservejtuhomlhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => sservejtuhomlhomx
+s . VPerf (AgP3Sg Masc) => VSuffixNone => Pos => sserva
+s . VPerf (AgP3Sg Masc) => VSuffixNone => Neg => sserviex
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Pos => sservieni
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Neg => sservinix
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Pos => sserviena
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Neg => sserviniex
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Pos => sserviek
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Neg => sservikx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Pos => sserviekom
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Neg => sservikomx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Pos => sservieh
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Neg => sservihx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Pos => sservieha
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Neg => sservihiex
+s . VPerf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Pos => sserviehom
+s . VPerf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Neg => sservihomx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Pos => sservieli
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Neg => sservilix
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Pos => sservielna
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Neg => sservilniex
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Pos => sservielek
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Neg => sservilekx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Pos => sservielkom
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Neg => sservilkomx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Pos => sservielu
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Neg => sservilux
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Pos => sservielha
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Neg => sservilhiex
+s . VPerf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Pos => sservielhom
+s . VPerf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Neg => sservilhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservihuli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservihulix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservihulna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservihulniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => sservihulek
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => sservihulekx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => sservihulkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => sservihulkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservihulu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservihulux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservihulha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservihulhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservihulhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservihulhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservihieli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservihilix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservihielna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservihilniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => sservihielek
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => sservihilekx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => sservihielkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => sservihilkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservihielu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservihilux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservihielha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservihilhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservihielhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservihilhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservihomli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservihomlix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservihomlna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservihomlniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Pos => sservihomlok
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Neg => sservihomlokx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Pos => sservihomlkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Neg => sservihomlkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservihomlu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservihomlux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservihomlha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservihomlhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Pos => sservihomlhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Neg => sservihomlhomx
+s . VPerf (AgP3Sg Fem) => VSuffixNone => Pos => sserviet
+s . VPerf (AgP3Sg Fem) => VSuffixNone => Neg => sservitx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Pos => sservietni
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Neg => sservitnix
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Pos => sservietna
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Neg => sservitniex
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Pos => sservietek
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Neg => sservitekx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Pos => sservietkom
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Neg => sservitkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Pos => sservietu
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Neg => sservitux
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Pos => sservietha
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Neg => sservithiex
+s . VPerf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Pos => sserviethom
+s . VPerf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Neg => sservithomx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Pos => sservietli
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Neg => sservitlix
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Pos => sservitilna
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Neg => sservitilniex
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Pos => sservietlek
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Neg => sservitlekx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Pos => sservitilkom
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Neg => sservitilkomx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Pos => sservietlu
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Neg => sservitlux
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Pos => sservitilha
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Neg => sservitilhiex
+s . VPerf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Pos => sservitilhom
+s . VPerf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Neg => sservitilhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservithuli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservithulix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservithulna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservithulniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => sservithulek
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => sservithulekx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => sservithulkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => sservithulkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservithulu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservithulux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservithulha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservithulhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservithulhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservithulhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservithieli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservithilix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservithielna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservithilniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => sservithielek
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => sservithilekx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => sservithielkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => sservithilkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservithielu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservithilux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservithielha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservithilhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservithielhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservithilhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservithomli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservithomlix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservithomlna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservithomlniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Pos => sservithomlok
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Neg => sservithomlokx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Pos => sservithomlkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Neg => sservithomlkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservithomlu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservithomlux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservithomlha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservithomlhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Pos => sservithomlhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Neg => sservithomlhomx
+s . VPerf AgP3Pl => VSuffixNone => Pos => sservu
+s . VPerf AgP3Pl => VSuffixNone => Neg => sservux
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Sg) => Pos => sservuni
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Sg) => Neg => sservunix
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Pl) => Pos => sservuna
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Pl) => Neg => sservuniex
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Sg) => Pos => sservuk
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Sg) => Neg => sservukx
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Pl) => Pos => sservukom
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Pl) => Neg => sservukomx
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Pos => sservuh
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Neg => sservuhx
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Pos => sservuha
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Neg => sservuhiex
+s . VPerf AgP3Pl => VSuffixDir AgP3Pl => Pos => sservuhom
+s . VPerf AgP3Pl => VSuffixDir AgP3Pl => Neg => sservuhomx
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Sg) => Pos => sservuli
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Sg) => Neg => sservulix
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Pl) => Pos => sservulna
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Pl) => Neg => sservulniex
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Sg) => Pos => sservulek
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Sg) => Neg => sservulekx
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Pl) => Pos => sservulkom
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Pl) => Neg => sservulkomx
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Pos => sservulu
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Neg => sservulux
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Pos => sservulha
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Neg => sservulhiex
+s . VPerf AgP3Pl => VSuffixInd AgP3Pl => Pos => sservulhom
+s . VPerf AgP3Pl => VSuffixInd AgP3Pl => Neg => sservulhomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservuhuli
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservuhulix
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservuhulna
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservuhulniex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => sservuhulek
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => sservuhulekx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => sservuhulkom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => sservuhulkomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservuhulu
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservuhulux
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservuhulha
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservuhulhiex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservuhulhom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservuhulhomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservuhieli
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservuhilix
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservuhielna
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservuhilniex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => sservuhielek
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => sservuhilekx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => sservuhielkom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => sservuhilkomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservuhielu
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservuhilux
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservuhielha
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservuhilhiex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservuhielhom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservuhilhomx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservuhomli
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservuhomlix
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservuhomlna
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservuhomlniex
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => sservuhomlok
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => sservuhomlokx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => sservuhomlkom
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => sservuhomlkomx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservuhomlu
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservuhomlux
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservuhomlha
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservuhomlhiex
+s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Pos => sservuhomlhom
+s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Neg => sservuhomlhomx
+s . VImpf (AgP1 Sg) => VSuffixNone => Pos => nisservi
+s . VImpf (AgP1 Sg) => VSuffixNone => Neg => nisservix
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => nisservik
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => nisservikx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => nisservikom
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => nisservikomx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => nisservih
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => nisservihx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => nisserviha
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => nisservihiex
+s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => nisservihom
+s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => nisservihomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => nisservilek
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => nisservilekx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => nisservilkom
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => nisservilkomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => nisservilu
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => nisservilux
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => nisservilha
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => nisservilhiex
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => nisservilhom
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => nisservilhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => nisservihulek
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => nisservihulekx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => nisservihulkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => nisservihulkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => nisservihulu
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => nisservihulux
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => nisservihulha
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => nisservihulhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => nisservihulhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => nisservihulhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => nisservihielek
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => nisservihilekx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => nisservihielkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => nisservihilkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => nisservihielu
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => nisservihilux
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => nisservihielha
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => nisservihilhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => nisservihielhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => nisservihilhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => nisservihomlok
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => nisservihomlokx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => nisservihomlkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => nisservihomlkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => nisservihomlu
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => nisservihomlux
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => nisservihomlha
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => nisservihomlhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => nisservihomlhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => nisservihomlhomx
+s . VImpf (AgP1 Pl) => VSuffixNone => Pos => nisservu
+s . VImpf (AgP1 Pl) => VSuffixNone => Neg => nisservux
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => nisservuk
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => nisservukx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => nisservukom
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => nisservukomx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => nisservuh
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => nisservuhx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => nisservuha
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => nisservuhiex
+s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => nisservuhom
+s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => nisservuhomx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => nisservulek
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => nisservulekx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => nisservulkom
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => nisservulkomx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => nisservulu
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => nisservulux
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => nisservulha
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => nisservulhiex
+s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => nisservulhom
+s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => nisservulhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => nisservuhulek
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => nisservuhulekx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => nisservuhulkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => nisservuhulkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => nisservuhulu
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => nisservuhulux
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => nisservuhulha
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => nisservuhulhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => nisservuhulhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => nisservuhulhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => nisservuhielek
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => nisservuhilekx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => nisservuhielkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => nisservuhilkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => nisservuhielu
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => nisservuhilux
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => nisservuhielha
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => nisservuhilhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => nisservuhielhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => nisservuhilhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => nisservuhomlok
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => nisservuhomlokx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => nisservuhomlkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => nisservuhomlkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => nisservuhomlu
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => nisservuhomlux
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => nisservuhomlha
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => nisservuhomlhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => nisservuhomlhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => nisservuhomlhomx
+s . VImpf (AgP2 Sg) => VSuffixNone => Pos => tisservi
+s . VImpf (AgP2 Sg) => VSuffixNone => Neg => tisservix
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => tisservini
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => tisservinix
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => tisservina
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => tisserviniex
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => tisservih
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => tisservihx
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => tisserviha
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => tisservihiex
+s . VImpf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => tisservihom
+s . VImpf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => tisservihomx
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => tisservili
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => tisservilix
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => tisservilna
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => tisservilniex
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => tisservilu
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => tisservilux
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => tisservilha
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => tisservilhiex
+s . VImpf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => tisservilhom
+s . VImpf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => tisservilhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => tisservihuli
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => tisservihulix
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => tisservihulna
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => tisservihulniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => tisservihulu
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => tisservihulux
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => tisservihulha
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => tisservihulhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => tisservihulhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => tisservihulhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => tisservihieli
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => tisservihilix
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => tisservihielna
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => tisservihilniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => tisservihielu
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => tisservihilux
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => tisservihielha
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => tisservihilhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => tisservihielhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => tisservihilhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => tisservihomli
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => tisservihomlix
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => tisservihomlna
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => tisservihomlniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => tisservihomlu
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => tisservihomlux
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => tisservihomlha
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => tisservihomlhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => tisservihomlhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => tisservihomlhomx
+s . VImpf (AgP2 Pl) => VSuffixNone => Pos => tisservu
+s . VImpf (AgP2 Pl) => VSuffixNone => Neg => tisservux
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => tisservuni
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => tisservunix
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => tisservuna
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => tisservuniex
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => tisservuh
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => tisservuhx
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => tisservuha
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => tisservuhiex
+s . VImpf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => tisservuhom
+s . VImpf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => tisservuhomx
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => tisservuli
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => tisservulix
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => tisservulna
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => tisservulniex
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => tisservulu
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => tisservulux
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => tisservulha
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => tisservulhiex
+s . VImpf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => tisservulhom
+s . VImpf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => tisservulhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => tisservuhuli
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => tisservuhulix
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => tisservuhulna
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => tisservuhulniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => tisservuhulu
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => tisservuhulux
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => tisservuhulha
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => tisservuhulhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => tisservuhulhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => tisservuhulhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => tisservuhieli
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => tisservuhilix
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => tisservuhielna
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => tisservuhilniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => tisservuhielu
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => tisservuhilux
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => tisservuhielha
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => tisservuhilhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => tisservuhielhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => tisservuhilhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => tisservuhomli
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => tisservuhomlix
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => tisservuhomlna
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => tisservuhomlniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => tisservuhomlu
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => tisservuhomlux
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => tisservuhomlha
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => tisservuhomlhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => tisservuhomlhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => tisservuhomlhomx
+s . VImpf (AgP3Sg Masc) => VSuffixNone => Pos => jisservi
+s . VImpf (AgP3Sg Masc) => VSuffixNone => Neg => jisservix
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Pos => jisservini
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Neg => jisservinix
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Pos => jisservina
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Neg => jisserviniex
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Pos => jisservik
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Neg => jisservikx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Pos => jisservikom
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Neg => jisservikomx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Pos => jisservih
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Neg => jisservihx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Pos => jisserviha
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Neg => jisservihiex
+s . VImpf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Pos => jisservihom
+s . VImpf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Neg => jisservihomx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Pos => jisservili
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Neg => jisservilix
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Pos => jisservilna
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Neg => jisservilniex
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Pos => jisservilek
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Neg => jisservilekx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Pos => jisservilkom
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Neg => jisservilkomx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Pos => jisservilu
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Neg => jisservilux
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Pos => jisservilha
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Neg => jisservilhiex
+s . VImpf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Pos => jisservilhom
+s . VImpf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Neg => jisservilhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => jisservihuli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => jisservihulix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => jisservihulna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => jisservihulniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => jisservihulek
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => jisservihulekx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => jisservihulkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => jisservihulkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => jisservihulu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => jisservihulux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => jisservihulha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => jisservihulhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => jisservihulhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => jisservihulhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => jisservihieli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => jisservihilix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => jisservihielna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => jisservihilniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => jisservihielek
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => jisservihilekx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => jisservihielkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => jisservihilkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => jisservihielu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => jisservihilux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => jisservihielha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => jisservihilhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => jisservihielhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => jisservihilhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Pos => jisservihomli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Neg => jisservihomlix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Pos => jisservihomlna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Neg => jisservihomlniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Pos => jisservihomlok
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Neg => jisservihomlokx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Pos => jisservihomlkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Neg => jisservihomlkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => jisservihomlu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => jisservihomlux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => jisservihomlha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => jisservihomlhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Pos => jisservihomlhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Neg => jisservihomlhomx
+s . VImpf (AgP3Sg Fem) => VSuffixNone => Pos => tisservi
+s . VImpf (AgP3Sg Fem) => VSuffixNone => Neg => tisservix
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Pos => tisservini
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Neg => tisservinix
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Pos => tisservina
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Neg => tisserviniex
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Pos => tisservik
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Neg => tisservikx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Pos => tisservikom
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Neg => tisservikomx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Pos => tisservih
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Neg => tisservihx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Pos => tisserviha
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Neg => tisservihiex
+s . VImpf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Pos => tisservihom
+s . VImpf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Neg => tisservihomx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Pos => tisservili
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Neg => tisservilix
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Pos => tisservilna
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Neg => tisservilniex
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Pos => tisservilek
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Neg => tisservilekx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Pos => tisservilkom
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Neg => tisservilkomx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Pos => tisservilu
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Neg => tisservilux
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Pos => tisservilha
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Neg => tisservilhiex
+s . VImpf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Pos => tisservilhom
+s . VImpf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Neg => tisservilhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => tisservihuli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => tisservihulix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => tisservihulna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => tisservihulniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => tisservihulek
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => tisservihulekx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => tisservihulkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => tisservihulkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => tisservihulu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => tisservihulux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => tisservihulha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => tisservihulhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => tisservihulhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => tisservihulhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => tisservihieli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => tisservihilix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => tisservihielna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => tisservihilniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => tisservihielek
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => tisservihilekx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => tisservihielkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => tisservihilkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => tisservihielu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => tisservihilux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => tisservihielha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => tisservihilhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => tisservihielhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => tisservihilhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Pos => tisservihomli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Neg => tisservihomlix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Pos => tisservihomlna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Neg => tisservihomlniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Pos => tisservihomlok
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Neg => tisservihomlokx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Pos => tisservihomlkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Neg => tisservihomlkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => tisservihomlu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => tisservihomlux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => tisservihomlha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => tisservihomlhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Pos => tisservihomlhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Neg => tisservihomlhomx
+s . VImpf AgP3Pl => VSuffixNone => Pos => jisservu
+s . VImpf AgP3Pl => VSuffixNone => Neg => jisservux
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Sg) => Pos => jisservuni
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Sg) => Neg => jisservunix
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Pl) => Pos => jisservuna
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Pl) => Neg => jisservuniex
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Sg) => Pos => jisservuk
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Sg) => Neg => jisservukx
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Pl) => Pos => jisservukom
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Pl) => Neg => jisservukomx
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Pos => jisservuh
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Neg => jisservuhx
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Pos => jisservuha
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Neg => jisservuhiex
+s . VImpf AgP3Pl => VSuffixDir AgP3Pl => Pos => jisservuhom
+s . VImpf AgP3Pl => VSuffixDir AgP3Pl => Neg => jisservuhomx
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Sg) => Pos => jisservuli
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Sg) => Neg => jisservulix
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Pl) => Pos => jisservulna
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Pl) => Neg => jisservulniex
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Sg) => Pos => jisservulek
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Sg) => Neg => jisservulekx
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Pl) => Pos => jisservulkom
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Pl) => Neg => jisservulkomx
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Pos => jisservulu
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Neg => jisservulux
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Pos => jisservulha
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Neg => jisservulhiex
+s . VImpf AgP3Pl => VSuffixInd AgP3Pl => Pos => jisservulhom
+s . VImpf AgP3Pl => VSuffixInd AgP3Pl => Neg => jisservulhomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => jisservuhuli
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => jisservuhulix
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => jisservuhulna
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => jisservuhulniex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => jisservuhulek
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => jisservuhulekx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => jisservuhulkom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => jisservuhulkomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => jisservuhulu
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => jisservuhulux
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => jisservuhulha
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => jisservuhulhiex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => jisservuhulhom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => jisservuhulhomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => jisservuhieli
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => jisservuhilix
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => jisservuhielna
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => jisservuhilniex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => jisservuhielek
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => jisservuhilekx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => jisservuhielkom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => jisservuhilkomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => jisservuhielu
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => jisservuhilux
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => jisservuhielha
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => jisservuhilhiex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => jisservuhielhom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => jisservuhilhomx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => jisservuhomli
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => jisservuhomlix
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => jisservuhomlna
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => jisservuhomlniex
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => jisservuhomlok
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => jisservuhomlokx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => jisservuhomlkom
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => jisservuhomlkomx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => jisservuhomlu
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => jisservuhomlux
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => jisservuhomlha
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => jisservuhomlhiex
+s . VImpf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Pos => jisservuhomlhom
+s . VImpf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Neg => jisservuhomlhomx
+s . VImp Sg => VSuffixNone => Pos => sservi
+s . VImp Sg => VSuffixNone => Neg => sservix
+s . VImp Sg => VSuffixDir (AgP1 Sg) => Pos => sservini
+s . VImp Sg => VSuffixDir (AgP1 Sg) => Neg => sservinix
+s . VImp Sg => VSuffixDir (AgP1 Pl) => Pos => sservina
+s . VImp Sg => VSuffixDir (AgP1 Pl) => Neg => sserviniex
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Pos => []
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Neg => []
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Pos => []
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Pos => servu
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Neg => servux
+s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Pos => sserviha
+s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Neg => sservihiex
+s . VImp Sg => VSuffixDir AgP3Pl => Pos => sservihom
+s . VImp Sg => VSuffixDir AgP3Pl => Neg => sservihomx
+s . VImp Sg => VSuffixInd (AgP1 Sg) => Pos => sservili
+s . VImp Sg => VSuffixInd (AgP1 Sg) => Neg => sservilix
+s . VImp Sg => VSuffixInd (AgP1 Pl) => Pos => sservilna
+s . VImp Sg => VSuffixInd (AgP1 Pl) => Neg => sservilniex
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Pos => []
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Neg => []
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Pos => []
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Pos => sservilu
+s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Neg => sservilux
+s . VImp Sg => VSuffixInd (AgP3Sg Fem) => Pos => sservilha
+s . VImp Sg => VSuffixInd (AgP3Sg Fem) => Neg => sservilhiex
+s . VImp Sg => VSuffixInd AgP3Pl => Pos => sservilhom
+s . VImp Sg => VSuffixInd AgP3Pl => Neg => sservilhomx
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservihuli
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservihulix
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservihulna
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservihulniex
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservihulu
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservihulux
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservihulha
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservihulhiex
+s . VImp Sg => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservihulhom
+s . VImp Sg => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservihulhomx
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservihieli
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservihilix
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservihielna
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservihilniex
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservihielu
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservihilux
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservihielha
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservihilhiex
+s . VImp Sg => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservihielhom
+s . VImp Sg => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservihilhomx
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservihomli
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservihomlix
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservihomlna
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservihomlniex
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservihomlu
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservihomlux
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservihomlha
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservihomlhiex
+s . VImp Sg => VSuffixDirInd GPl AgP3Pl => Pos => sservihomlhom
+s . VImp Sg => VSuffixDirInd GPl AgP3Pl => Neg => sservihomlhomx
+s . VImp Pl => VSuffixNone => Pos => sservu
+s . VImp Pl => VSuffixNone => Neg => sservux
+s . VImp Pl => VSuffixDir (AgP1 Sg) => Pos => sservuni
+s . VImp Pl => VSuffixDir (AgP1 Sg) => Neg => sservunix
+s . VImp Pl => VSuffixDir (AgP1 Pl) => Pos => sservuna
+s . VImp Pl => VSuffixDir (AgP1 Pl) => Neg => sservuniex
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Pos => []
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Neg => []
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Pos => []
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Pos => sservuh
+s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Neg => sservuhx
+s . VImp Pl => VSuffixDir (AgP3Sg Fem) => Pos => sservuha
+s . VImp Pl => VSuffixDir (AgP3Sg Fem) => Neg => sservuhiex
+s . VImp Pl => VSuffixDir AgP3Pl => Pos => sservuhom
+s . VImp Pl => VSuffixDir AgP3Pl => Neg => sservuhomx
+s . VImp Pl => VSuffixInd (AgP1 Sg) => Pos => sservuli
+s . VImp Pl => VSuffixInd (AgP1 Sg) => Neg => sservulix
+s . VImp Pl => VSuffixInd (AgP1 Pl) => Pos => sservulna
+s . VImp Pl => VSuffixInd (AgP1 Pl) => Neg => sservulniex
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Pos => []
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Neg => []
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Pos => []
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Pos => sservulu
+s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Neg => sservulux
+s . VImp Pl => VSuffixInd (AgP3Sg Fem) => Pos => sservulha
+s . VImp Pl => VSuffixInd (AgP3Sg Fem) => Neg => sservulhiex
+s . VImp Pl => VSuffixInd AgP3Pl => Pos => sservulhom
+s . VImp Pl => VSuffixInd AgP3Pl => Neg => sservulhomx
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => sservuhuli
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => sservuhulix
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => sservuhulna
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => sservuhulniex
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => sservuhulu
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => sservuhulux
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => sservuhulha
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => sservuhulhiex
+s . VImp Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => sservuhulhom
+s . VImp Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => sservuhulhomx
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => sservuhieli
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => sservuhilix
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => sservuhielna
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => sservuhilniex
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => sservuhielu
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => sservuhilux
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => sservuhielha
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => sservuhilhiex
+s . VImp Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => sservuhielhom
+s . VImp Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => sservuhilhomx
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => sservuhomli
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => sservuhomlix
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => sservuhomlna
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => sservuhomlniex
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => sservuhomlu
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => sservuhomlux
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => sservuhomlha
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => sservuhomlhiex
+s . VImp Pl => VSuffixDirInd GPl AgP3Pl => Pos => sservuhomlhom
+s . VImp Pl => VSuffixDirInd GPl AgP3Pl => Neg => sservuhomlhomx
+i . class . Quad QWeak
+i . form . FormII
+i . imp . sservi
+i . patt . V1 . e
+i . patt . V2 . a
+i . root . C1 . s
+i . root . C2 . r
+i . root . C3 . v
+i . root . C4 . j
