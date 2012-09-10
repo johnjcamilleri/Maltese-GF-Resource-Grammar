@@ -78,7 +78,8 @@ Others:
 
 |Derived mamma|Root|Form I|Class|Notes|
 |:------------|:---|:-----|-----|:----|
-|_tfixkel_|F-X-K-L|_fixkel_|Strong|  |
+|_tħarbat_|Ħ-R-B-T|_ħarbat_|Strong|  |
+|_tfixkel_|F-X-K-L|_fixkel_|Strong|Final L causes dubious cases, e.g. _tfixkillilna_|
 |_ddardar_|D-R-D-R|_dardar_|Strong|Assimilation of T|
 |_tkanta_|K-N-T-J|_kanta_|Weak-final|  |
 |_sserva_|S-R-V-J|_serva_|Weak-final|Assimilation of T|
