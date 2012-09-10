@@ -89,15 +89,16 @@ Others:
 
 |Derived mamma|Root|Form I|Class|Notes|
 |:------------|:---|:-----|-----|:----|
-|_qiegħed_|Q-GĦ-D|_qagħad_|Strong|  |
-|_żiegħel_|Ż-GĦ-L|_żiegħel_|Strong|V1 and C2 are two chars long|
-|_wiegħed_|W-GĦ-D|_wegħed_ (Hyp.)|Weak-initial|  |
+|_ħares_|Ħ-R-S|-|Strong liquid-medial|  |
+|_qiegħed_|Q-GĦ-D|_qagħad_|Strong|C2 is 2 chars|
+|_wieġeb_|W-Ġ-B|-|Weak-initial|_ie_ is shortened to _e_, not _i_|
+|_miera_|M-R-J|-|Weak-final|  |
 
 Others:
 
-- _ħares_ Ħ-R-S
+- _bierek_ B-R-K
 - _siefer_ S-F-R
-- _wieġeb_ W-Ġ-B
+- _żiegħel_ Ż-GĦ-L
 
 #### Form IV
 
