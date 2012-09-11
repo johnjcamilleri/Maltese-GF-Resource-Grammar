@@ -96,7 +96,7 @@ Others:
 
 Others:
 
-- _bierek_ B-R-K
+- _bierek_ B-R-K (use as model for _qiegħed_)
 - _siefer_ S-F-R
 - _żiegħel_ Ż-GĦ-L
 
@@ -111,15 +111,23 @@ Others:
 |Derived mamma|Root|Form I/II|Class|Notes|
 |:------------|:---|:-----|-----|:----|
 |_tkisser_|K-S-R|_kiser_/_kisser_|Strong|  |
-|_tfaċċa_|F-Ċ-J|_faċċa_|Weak-final|  |
-|_tgħallaq_|GĦ-L-Q|_għalaq_/_għallaq_|Strong liquid-medial|  |
-|_ssellef_|S-L-F|_silef_/_sellef_|Strong liquid-medial|  |
-|_tħammeġ_|Ħ-M-Ġ|_ħammeġ_|-|From noun _ħmieġ_|
 |_tniżżel_|N-Ż-L|_niżel_/_niżżel_|Strong|  |
-|_tgħannaq_|GĦ-N-Q|_għannaq_|-|  |
-|_tħallat_|Ħ-L-T|_ħalat_/_ħallat_|Strong liquid-medial|  |
-|_ċċarrat_|Ċ-R-T|_ċarrat_|-|Assimilation of T|
-|_ssaħħan_|S-Ħ-N|_saħan_/_saħħan_|Strong|Assimilation of T|
+|_tgħallaq_|GĦ-L-Q|_għalaq_/_għallaq_|Strong liquid-medial|C1 is two chars|
+|_ssellef_|S-L-F|_silef_/_sellef_|Strong liquid-medial|Assimilation of T|
+|_twassal_|W-S-L|_wasal_|Weak-initial|  |
+|_tfejjaq_|F-J-Q|_fieq_|Weak-medial|  |
+|_tfaċċa_|F-Ċ-J|_faċċa_|Weak-final|  |
+|_tbeżża'_|B-Ż-GĦ|_beża'_|Weak defective|  |
+
+Others
+
+- _tħallat_ Ħ-L-T
+- _ssaħħan_ S-Ħ-N
+- _tħammeġ_ Ħ-M-Ġ
+- _tgħannaq_ GĦ-N-Q
+- _ċċarrat_ Ċ-R-T
+- _tmexxa_ M-X-J
+
 
 #### Form VI
 

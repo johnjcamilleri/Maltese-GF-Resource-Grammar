@@ -44,3 +44,6 @@ treebank_formII_quad_verbs:
 treebank_formIII_verbs:
 	test/treebank.sh verbs "ħares qiegħed wieġeb"
 
+treebank_formV_verbs:
+	test/treebank.sh verbs "tniżżel" #  ssellef twassal tfejjaq tfaċċa tbeżża'
+
