@@ -314,15 +314,18 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     -- Prefix with a 'n'/'t' or double initial consonant, as necessary. See {OM pg 90}
     pfx_N : Str -> Str = \s -> case takePfx 1 s of {
+      "" => [] ;
       m@#DoublingConsN => m + s ;
       _ => "n" + s
       } ;
     pfx_T : Str -> Str = \s -> case takePfx 1 s of {
+      "" => [] ;
       d@#DoublingConsT => d + s ;
       _ => "t" + s
       } ;
     -- This is just here to standardise
     pfx_J : Str -> Str = \s -> case takePfx 1 s of {
+      "" => [] ;
       _ => "j" + s
       } ;
   
@@ -331,6 +334,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     --- potentially slow
     sfx : Str -> Str -> Str = \a,b ->
       case <a,takePfx 1 b> of {
+        <"",_> => [] ;
         <ke+"nn","n"> => ke+"n"+b ;
         <ha+"kk","k"> => ha+"k"+b ;
         <ho+"ll","l"> => ho+"l"+b ;
@@ -339,12 +343,13 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         _ => a + b
       } ;
 
-    -- Replace any IE in the word with an I
-    --- potentially slow
-    ie2i : Str -> Str = \serviet ->
+    -- Replace any IE in the word with an I or E    --- potentially slow
+    ie2i : Str -> Str = ie2x "i" ;
+    ie2e : Str -> Str = ie2x "e" ;
+    ie2x : Str -> Str -> Str = \serviet,iore ->
       case serviet of {
-        x + "ie" => x + "i" ;
-        x + "ie" + y => x + "i" + y ;
+        x + "ie" => x + iore ;
+        x + "ie" + y => x + iore + y ;
         x => x
       } ;
 
