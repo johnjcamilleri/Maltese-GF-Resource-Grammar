@@ -42,6 +42,5 @@ treebank_formII_quad_verbs:
 	test/treebank.sh verbs "tħarbat sserva"
 
 treebank_formIII_verbs:
-	test/treebank.sh verbs "ħares wieġeb"
-#	test/treebank.sh verbs "ħares qiegħed wieġeb"
+	test/treebank.sh verbs "ħares qiegħed wieġeb"
 
