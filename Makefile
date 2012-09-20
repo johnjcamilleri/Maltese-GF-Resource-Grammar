@@ -47,3 +47,18 @@ treebank_formIII_verbs:
 treebank_formV_verbs:
 	test/treebank.sh verbs "tniżżel ssellef" #   twassal tfejjaq tfaċċa tbeżża'
 
+treebank_formVI_verbs:
+	test/treebank.sh verbs "" #  tħabat tqiegħed ġġieled tbierek twieġeb tkaża
+
+treebank_formVII_verbs:
+	test/treebank.sh verbs "" #  nġabar nħasel nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ntiżen nstab nbeda ntlewa nqata'
+
+treebank_formVIII_verbs:
+	test/treebank.sh verbs "" #  ntefaq mtedd xtaq mtela ltaqa'
+
+treebank_formIX_verbs:
+	test/treebank.sh verbs "" #  ħdar rqaq twal
+
+treebank_formX_verbs:
+	test/treebank.sh verbs "" #  stagħġeb stħarreġ stqarr strieħ staħba
+

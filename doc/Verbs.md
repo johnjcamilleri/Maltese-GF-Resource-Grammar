@@ -134,48 +134,72 @@ Others
 |Derived mamma|Root|Form I/III|Class|Notes|
 |:------------|:---|:-------|-----|:----|
 |_tħabat_|Ħ-B-T|_ħabat_|Strong|Long vowel Â|
-|_tqiegħed_|Q-GĦ-D|_qagħad_/_qiegħed_|Strong|Long vowel IE|
+|_tqiegħed_|Q-GĦ-D|_qagħad_/_qiegħed_|Strong|Long vowel IE; C2 is GĦ|
+|_ġġieled_|Ġ-L-D|_ġieled_|Strong liquid-medial|Assimilation of T|
+|_tbierek_|B-R-K|_bierek_|Strong liquid-medial|  |
+|_twieġeb_|W-Ġ-B|_wieġeb_|Weak-initial|  |
 |_twiegħed_|W-GĦ-D|_wegħed_/_wiegħed_|Weak-initial|  |
+|_tkaża_|K-Ż-J|_tkaża_|Weak-final|  |
 |_tgara_|G-R-J|_gara_|Weak-final|  |
-|_ġġieled_|Ġ-L-D|_ġieled_|Strong|Assimilation of T|
 
 #### Form VII
 
 |Derived mamma|Root|Form I|Class|Notes|
 |:------------|:---|:-------|-----|:----|
+|_nġabar_|Ġ-B-R|_ġabar_|Strong|  |
 |_nħasel_|Ħ-S-L|_ħasel_|Strong|N prefix|
 |_nfirex_|F-R-X|_firex_|Strong liquid-medial|  |
 |_ntrifes_|R-F-S|_rifes_|Strong|NT prefix|
 |_nxteħet_|X-Ħ-T|_xeħet_|Strong|N-T infix|
-|_ntgħaġen_|GĦ-Ġ-N|_għaġen_|Strong|C1 is two characters|
-|_nxtamm_|X-M-M|_xamm_|Strong geminated|  |
+|_ntgħaġen_|GĦ-Ġ-N|_għaġen_|Strong|C1 is GĦ, NT prefix|
+|_nxtamm_|X-M-M|_xamm_|Geminated|N-T infix|
+|_ntemm_|T-M-M|_temm_|Geminated|N prefix|
 |_ntiżen_|W-Ż-N|_wiżen_|Weak-inital|NT prefix with dropped C1|
-|_nstab_|S-J-B|_sab_|Weal-medial|  |
-|_nħeba_|Ħ-B-J|_ħeba_|Weak-final|  |
-|_ntlewa_|L-W-J|_lewa_|Weak-final|  |
+|_nstab_|S-J-B|_sab_|Weak-medial|  |
+|_nbeda_|B-D-J|_beda_|Weak-final|  |
+|_ntlewa_|L-W-J|_lewa_|Weak-final|NT prefix|
+|_nqata'_|Q-T-GĦ|_qata'_|Defective|  |
 |_ntqal_|Q-W-L|_qal_|Weak-medial/Irreg|_qal_ is irregular in the imperfective|
+
+Others
+
+- _nġieb_ Ġ-J-B
+- _nħeba_ Ħ-B-J
+
 
 #### Form VIII
 
 |Derived mamma|Root|Form I|Class|Notes|
 |:------------|:---|:-------|-----|:----|
-|_mtela_|T-L-GĦ|_mela_|Defetive|  |
 |_xteħet_|X-Ħ-T|_xeħet_|Strong|  |
-|_ltewa_|L-W-J|_lewa_|Weak-final|  |
-|_mtedd_|M-D-D|_medd_|Strong geminated|  |
-|_ntesa_|N-S-J|_nesa_|Weak-final|
-|_stabat_|S-B-T|_sabat_|Strong|  |
-|_ftaqar_|F-Q-R|-|-|Formed from noun _faqar_/adjective _fqir_|
+|_mtedd_|M-D-D|_medd_|Geminated|  |
+|_xtaq_|X-W-Q|_xaq_|Weak-medial|  |
+|_mtela_|T-L-J|_tela_|Weak-final|  |
+|_ltaqa'_|L-Q-GĦ|_laqa'_|Defective|  |
+
+Others
+
+- _ntefaq_ N-F-Q
+- _stabat_ S-B-T
+- _ltewa_ L-W-J
+- _ntesa_ N-S-J
+- _ftaqar_ F-Q-R
 
 #### Form IX
 
-|Derived mamma|Root|Notes|
-|:------------|:---|:----|
-|_sfar_|S-F-R|  |
-|_qsar_|Q-S-R|  |
-|_blieh_|B-L-H|  |
-|_bjad_|B-J-D|  |
-|_krieh_|K-R-H|  |
+|Derived mamma|Root|Class|Notes|
+|:------------|:---|:----|:----|
+|_ħdar_|Ħ-D-R|Strong|  |
+|_rqaq_|R-Q-Q|Geminated|  |
+|_twal_|T-W-L|Weak Medial|  |
+
+Others:
+
+- _sfar_ S-F-R
+- _qsar_ Q-S-R
+- _blieh_ B-L-H
+- _bjad_ B-J-D
+- _krieh_ K-R-H
 
 #### Form X
 
@@ -184,6 +208,9 @@ Others
 |_stagħġeb_|GĦ-Ġ-B|II:_għaġġeb_|Strong|  |
 |_stenbaħ_|N-B-Ħ|II:_nebbaħ_|Strong|  |
 |_stħarreġ_|Ħ-R-Ġ|I:_ħareġ_|Strong liquid-medial|Stem is in second form (double _R_)|
+|_stkerrah_|K-R-H|II:_kerrah_|Strong liquid-medial|  |
+|_stqarr_|Q-R-R|I:_qarr_|Geminated|  |
+|_strieħ_|S-R-Ħ|II:_serraħ_|Weak-medial|  |
 |_staħba_|Ħ-B-J|I:_ħeba_|Weak-Final|  |
 |_stenna_|'-N-J|-|Irregular|  |
 |_stieden_|'-D-N|-|Irregular|  |
@@ -194,7 +221,7 @@ Adapted from {MDG}
 
 |Class|II|III|IV|V |VI|VII|VIII|IX|X |
 |-----|---|---|---|---|---|---|----|---|---|
-|Strong|_daħħal_|_bierek_|_wera_|_tfarrak_|_tbierek_|_nġabar_|_ntefaq_|_ħdar_|_stkerraħ_|
+|Strong|_daħħal_|_bierek_|_wera_|_tfarrak_|_tbierek_|_nġabar_|_ntefaq_|_ħdar_|_stkerrah_|
 |Geminated|_ħabbeb_|_qarar_||_tħabbeb_||_ntemm_|_mtedd_|_rqaq_|_stqarr_|
 |Assimilative (Weak-initial)|_wassal_|_wieġeb_||_twassal_|_twieġeb_|_ntiżen_||||
 |Hollow (Weak-medial)|_fejjaq_|||_tfejjaq_||_nġieb_|_xtaq_|_twal_|_strieħ_|
