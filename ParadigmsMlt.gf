@@ -548,7 +548,7 @@ resource ParadigmsMlt = open
 
     -- Make a Form II verb. Accepts both Tri & Quad roots, then delegates.
     -- e.g.: derivedV_II "waqqaf"
-    derivedV_II : V = overload {
+--    derivedV_II : V = overload {
       derivedV_II : Str -> V = \mammaII ->
         case mammaII of {
             -- Quad Form II
@@ -558,7 +558,7 @@ resource ParadigmsMlt = open
             -- Tri Form II
             _ => derivedV_TriII mammaII
         } ;
-      } ;
+--      } ;
 
     -- Make a Tri-Consonantal Form II verb
     derivedV_TriII : Str -> V = \mammaII ->
@@ -584,7 +584,7 @@ resource ParadigmsMlt = open
 
     -- Make a Form III verb
     -- e.g.: derivedV_III "qiegħed"
-    derivedV_III : V = overload {
+--    derivedV_III : V = overload {
       derivedV_III : Str -> V = \mammaIII ->
         let
           vowels : Pattern = extractPattern mammaIII;
@@ -594,13 +594,13 @@ resource ParadigmsMlt = open
           s = conjFormIII newinfo ;
           i = newinfo ;
         } ;
-      } ;
+--      } ;
 
     -- No point having a paradigm for Form IV
 
     -- Make a Form V verb
     -- e.g.: derivedV_V "twaqqaf"
-    derivedV_V : V = overload {
+--    derivedV_V : V = overload {
       derivedV_V : Str -> V = \mammaV ->
         let
           -- use the Form II conjugation, just prefixing a T
@@ -621,11 +621,11 @@ resource ParadigmsMlt = open
             } ;
           i = newinfo ;
         } ;
-      } ;
+--      } ;
 
     -- Make a Form VI verb
     -- e.g.: derivedV_VI "tqiegħed"
-    derivedV_VI : V = overload {
+--    derivedV_VI : V = overload {
       derivedV_VI : Str -> V = \mammaVI ->
         let
           -- use the Form III conjugation, just prefixing a T
@@ -646,11 +646,11 @@ resource ParadigmsMlt = open
             } ;
           i = newinfo ;
         } ;
-      } ;
+--      } ;
 
     -- Make a Form VII verb
     -- e.g.: derivedV_VII "xeħet" "nxteħet"
-    derivedV_VII : V = overload {
+--    derivedV_VII : V = overload {
       derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
         let
           info : VerbInfo = classifyVerb mammaI ;
@@ -667,11 +667,11 @@ resource ParadigmsMlt = open
           s = conjFormVII newinfo c1 ;
           i = newinfo ;
         } ;
-      } ;
+--      } ;
 
     -- Make a Form VIII verb
     -- e.g.: derivedV_VIII "xteħet"
-    derivedV_VIII : V = overload {
+--    derivedV_VIII : V = overload {
       derivedV_VIII : Str -> V = \mammaVIII ->
         let
           mammaI : Str = delCharAt 1 mammaVIII ;
@@ -682,11 +682,11 @@ resource ParadigmsMlt = open
           s = conjFormVII newinfo c1 ;
           i = newinfo ;
         } ;
-      } ;
+--      } ;
 
     -- Make a Form IX verb
     -- e.g.: derivedV_IX "sfar"
-    derivedV_IX : V = overload {
+--    derivedV_IX : V = overload {
       derivedV_IX : Str -> V = \mammaIX ->
         case mammaIX of {
           c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
@@ -700,7 +700,7 @@ resource ParadigmsMlt = open
             } ;
           _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
         } ;
-      } ;
+--      } ;
 
     -- Make a Form X verb
     derivedV_X : V = overload {
