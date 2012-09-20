@@ -346,7 +346,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     -- Replace any IE in the word with an I or E    --- potentially slow
     ie2i : Str -> Str = ie2x "i" ;
     ie2e : Str -> Str = ie2x "e" ;
-    ie2x : Str -> Str -> Str = \serviet,iore ->
+    ie2x : Str -> Str -> Str = \iore,serviet ->
       case serviet of {
         x + "ie" => x + iore ;
         x + "ie" + y => x + iore + y ;
