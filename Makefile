@@ -45,7 +45,7 @@ treebank_formIII_verbs:
 	test/treebank.sh verbs "ħares qiegħed wieġeb"
 
 treebank_formV_verbs:
-	test/treebank.sh verbs "tniżżel ssellef" #   twassal tfejjaq tfaċċa tbeżża'
+	test/treebank.sh verbs "tniżżel ssellef twassal" # tfejjaq tfaċċa tbeżża'
 
 treebank_formVI_verbs:
 	test/treebank.sh verbs "" #  tħabat tqiegħed ġġieled tbierek twieġeb tkaża
