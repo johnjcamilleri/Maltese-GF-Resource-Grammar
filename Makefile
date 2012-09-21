@@ -60,5 +60,5 @@ treebank_formIX_verbs:
 	test/treebank.sh verbs "ħdar twal" #  ... rqaq ...
 
 treebank_formX_verbs:
-	test/treebank.sh verbs "" #  stagħġeb stħarreġ stqarr strieħ staħba
+	test/treebank.sh verbs "stagħġeb stħarreġ" #    stqarr strieħ staħba
 
