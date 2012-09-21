@@ -57,7 +57,7 @@ treebank_formVIII_verbs:
 	test/treebank.sh verbs "ntefaq" #   mtedd xtaq mtela ltaqa'
 
 treebank_formIX_verbs:
-	test/treebank.sh verbs "" #  ħdar rqaq twal
+	test/treebank.sh verbs "ħdar twal" #  ... rqaq ...
 
 treebank_formX_verbs:
 	test/treebank.sh verbs "" #  stagħġeb stħarreġ stqarr strieħ staħba
