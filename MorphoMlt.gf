@@ -128,11 +128,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             --   x + "e" + y@#Consonant => x + "i" + y ; -- KITEB > KITIB
             --   x => x -- FETAĦ
             --   } ;
-            feth = case info.class of {
-              Weak Hollow => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
-              Weak Lacking => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
-              Quad QStrong => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
-              Loan => dropSfx 1 mamma ; -- ŻVILUPP
+            feth : Str = case <info.form, info.class> of {
+              <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
+              <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
+              <FormII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- ĦABB
+              <_, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
+              <_, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
+              <_, Quad QStrong> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
+              <_, Loan> => dropSfx 1 mamma ; -- ŻVILUPP
               _ => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3
               } ;
             p2sg_dir_ek : Str = case <info.imp, mamma> of {
@@ -311,6 +314,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 --        iftah : Str = info.imp ; --- is there no way to avoid the iftah parameter?
       in
       case <info.form, info.class> of {
+        <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
+        <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
@@ -777,7 +782,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       } ;
       
 
-    -- Conjugate imperfect tense from imperative by adding initial letters
+    -- Conugate imperfect tense from imperative by adding initial letters
     -- Ninu, Toninu, Jaħasra, Toninu; Ninu, Toninu, Jaħasra
     conjGenericImpf : Str -> Str -> (Agr => Str) = \imp_sg,imp_pl ->
       table {
@@ -1290,33 +1295,51 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     conjFormII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
-        waqqaf : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 ;
-        bexxix : Str = case <i.patt.V1,i.patt.V2> of {
-          <_,"e"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" + i.root.C3 ;
-          _ => waqqaf -- no change
+        mamma : Str = case i.class of {
+          Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 ; -- NEĦĦA
+          _ => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 -- WAQQAF
           } ;
-        waqqf : Str = sfx (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2) i.root.C3 ;
+        nehhi : Str = case i.class of {
+          Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" ; -- NEĦĦI
+          _ => mamma -- WAQQAF
+          } ;
+        bexxix : Str = case <i.patt.V1,i.patt.V2> of {
+          <"e","a"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "e" + i.root.C3 ; -- NEĦĦEJ
+          <_,"e"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" + i.root.C3 ;
+          _ => nehhi -- no change
+          } ;
+        waqqf : Str = case i.class of {
+          Weak Hollow => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 ; -- QAJM
+          Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 ; -- NEĦĦ
+          _ => sfx (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2) i.root.C3 
+          } ;
         waqqfu : Str = waqqf + "u" ;
         perf : Agr => Str = table {
           AgP1 Sg => bexxix + "t" ;
           AgP2 Sg => bexxix + "t" ;
-          AgP3Sg Masc => waqqaf ;
-          AgP3Sg Fem => waqqf + "et" ;
+          AgP3Sg Masc => mamma ;
+          AgP3Sg Fem => case <i.patt.V1, i.patt.V2> of {
+            <"e","a"> => waqqf + "iet" ; -- NEĦĦIET
+            _ => waqqf + "et"
+            } ;
           AgP1 Pl => bexxix + "na" ;
           AgP2 Pl => bexxix + "tu" ;
-          AgP3Pl => waqqfu
+          AgP3Pl => case <i.patt.V1, i.patt.V2> of {
+            <"e","a"> => waqqf + "ew" ; -- NEĦĦEW
+            _ => waqqf + "u"
+            }
           } ;
         impf : Agr => Str = table {
-          AgP1 Sg => pfx_N waqqaf ;
-          AgP2 Sg => pfx_T waqqaf ;
-          AgP3Sg Masc => pfx_J waqqaf ;
-          AgP3Sg Fem => pfx_T waqqaf ;
+          AgP1 Sg => pfx_N nehhi ;
+          AgP2 Sg => pfx_T nehhi ;
+          AgP3Sg Masc => pfx_J nehhi ;
+          AgP3Sg Fem => pfx_T nehhi ;
           AgP1 Pl => pfx_N waqqfu ;
           AgP2 Pl => pfx_T waqqfu ;
           AgP3Pl => pfx_J waqqfu
           } ;
         imp : Number => Str = table {
-          Sg => waqqaf ;
+          Sg => nehhi ;
           Pl => waqqfu
           } ;
         tbl : VForm => Str = table {
@@ -1324,7 +1347,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt waqqaf ;
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt nehhi ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
         polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in

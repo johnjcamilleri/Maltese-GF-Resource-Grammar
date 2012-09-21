@@ -548,46 +548,51 @@ resource ParadigmsMlt = open
 
     -- Make a Form II verb. Accepts both Tri & Quad roots, then delegates.
     -- e.g.: derivedV_II "waqqaf"
---    derivedV_II : V = overload {
+    derivedV_II : V = overload {
       derivedV_II : Str -> V = \mammaII ->
         case mammaII of {
             -- Quad Form II
-            "t" + #Consonant + _ => derivedV_QuadII mammaII ; -- TFIXKEL
-            #DoublingConsT + #DoublingConsT + _ => derivedV_QuadII mammaII ; -- DDARDAR
+--            "t" + #Consonant + _ => derivedV_QuadII mammaII root4 ; -- TFIXKEL
+--            #DoublingConsT + #DoublingConsT + _ => derivedV_QuadII mammaII root4 ; -- DDARDAR
+            #Consonant + #Consonant + _ => derivedV_QuadII mammaII root4 where {
+              mammaI4 : Str = dropPfx 1 mammaII ;          
+              root4 : Root = (classifyVerb mammaI4).root ;
+              } ; -- DDARDAR
             
             -- Tri Form II
-            _ => derivedV_TriII mammaII
+            _ => derivedV_TriII mammaII root3 where {
+              mammaI3 : Str = delCharAt 3 mammaII ; --- this works because the only verb with a duplicated GĦ is ŻAGĦGĦAR (make smaller)
+              root3 : Root = (classifyVerb mammaI3).root ;
+              }
         } ;
---      } ;
+      derivedV_II : Str -> Root -> V = \mammaII, root ->
+        case root.C4 of {
+          "" => derivedV_TriII mammaII root ;
+          _  => derivedV_QuadII mammaII root
+        } ;
+      } ;
 
     -- Make a Tri-Consonantal Form II verb
-    derivedV_TriII : Str -> V = \mammaII ->
+    derivedV_TriII : Str -> Root -> V = \mammaII, root ->
       let
-        mammaI : Str = delCharAt 3 mammaII ; --- this works because the only verb with a duplicated GĦ is ŻAGĦGĦAR (make smaller)
-        info : VerbInfo = classifyVerb mammaI ;
-        newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
+        class : VClass = classifyRoot root ;
+        patt : Pattern = extractPattern mammaII ;
+        newinfo : VerbInfo = mkVerbInfo class FormII root patt mammaII ;
+        --- assumption: mamma II is also imperative. this fails for NEĦĦA/I, but not realy important
       in lin V {
         s = conjFormII newinfo ;
         i = newinfo ;
       } ;
 
     -- Make a Quadri-Consonantal Form II verb
-    derivedV_QuadII : Str -> V = \mammaII ->
-      let
-        mammaI : Str = dropPfx 1 mammaII ;
-        info : VerbInfo = classifyVerb mammaI ;
-        newinfo : VerbInfo = mkVerbInfo info.class FormII info.root info.patt mammaII ; --- assumption: mamma II is also imperative
-      in lin V {
-        s = conjFormII newinfo ;
-        i = newinfo ;
-      } ;
+    derivedV_QuadII : Str -> Root -> V = derivedV_TriII ;
 
     -- Make a Form III verb
     -- e.g.: derivedV_III "qiegħed"
 --    derivedV_III : V = overload {
       derivedV_III : Str -> V = \mammaIII ->
         let
-          vowels : Pattern = extractPattern mammaIII;
+          vowels : Pattern = extractPattern mammaIII ;
           info : VerbInfo = classifyVerb (ie2i mammaIII) ;
           newinfo : VerbInfo = mkVerbInfo info.class FormII info.root vowels mammaIII ; --- assumption: mamma III is also imperative
         in lin V {
