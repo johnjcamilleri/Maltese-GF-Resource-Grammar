@@ -597,6 +597,7 @@ resource ParadigmsMlt = open
 --      } ;
 
     -- No point having a paradigm for Form IV
+    -- derivedV_IV
 
     -- Make a Form V verb
     -- e.g.: derivedV_V "twaqqaf"

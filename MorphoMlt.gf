@@ -304,6 +304,30 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
 -- ========================================================================
 
+    -- Used in both Imp & Impf functions
+    verbImpStem : VerbInfo -> Str -> Str = \info,iftah ->
+      let
+        vowels : Pattern = extractPattern info.imp ;
+--        iftah : Str = info.imp ; --- is there no way to avoid the iftah parameter?
+      in
+      case <info.form, info.class> of {
+        <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
+        <_, Strong LiquidMedial> => case info.root.C1 of {
+          "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
+          _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
+          } ;
+        <_, Strong Geminated> => iftah ; -- -ĦOBB
+        <_, Weak Assimilative> => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
+        <_, Weak Hollow> => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
+        <_, Weak Lacking> => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
+        <_, Quad QStrong> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
+        <_, Quad QWeak> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
+        <_, Loan> => dropSfx 1 iftah ; -- -ŻVILUPP
+        _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
+      } ;
+
+-- ------------------------------------------------------------------------
+
     -- Build table of pronominal suffixes
     -- Imperfective tense
     verbImpfPronSuffixTable : VerbInfo -> (Agr => Str) -> (Agr => VSuffixForm => Str) = \info,tbl ->
@@ -350,20 +374,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- potentially slow
           iftah => iftah -- -IFTAĦ
           } ;
-        ifth = case info.class of {
-          Strong LiquidMedial => case info.root.C1 of {
-            "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
-            _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
-            } ;
-          Strong Geminated => iftah ; -- -ĦOBB
-          Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
-          Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
-          Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
-          Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
-          Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
-          Loan => dropSfx 1 iftah ; -- -ŻVILUPP
-          _ => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3
-          } ;
+        ifth : Str = verbImpStem info iftah ;
       in
       table {
         AgP1 Sg => -- Jiena NIFTAĦ
@@ -617,20 +628,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB --- potentially slow
               x => x -- IFTAĦ
               } ;
-            ifth = case info.class of {
-              Strong LiquidMedial => case info.root.C1 of {
-                "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- AGĦML
-                _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- OĦORĠ
-                } ;
-              Strong Geminated => iftah ; -- ĦOBB
-              Weak Assimilative => (ie2i vowels.V1) + info.root.C2 + info.root.C3 ; -- -ASL (WASAL)
-              Weak Hollow => info.root.C1 + vowels.V1 + info.root.C3 ; -- -SIB
-              Weak Lacking => vowels.V1 + info.root.C1 + info.root.C2 ; -- -IMX
-              Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -ĦARBT
-              Quad QWeak => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -SERV, -KANT
-              Loan => dropSfx 1 iftah ; -- ŻVILUPP
-              _ => takePfx 1 iftah + info.root.C1 + info.root.C2 + info.root.C3 -- IFTĦ
-              } ;
+            ifth : Str = verbImpStem info iftah ;
             p3sg_dir_u : Str = case info.imp of {
               _ + "a" => "ah" ; -- KANTAH
               _ + "i" => "ih" ; -- SERVIH
