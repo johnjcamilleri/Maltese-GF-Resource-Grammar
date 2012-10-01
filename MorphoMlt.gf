@@ -129,6 +129,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             --   x => x -- FETAĦ
             --   } ;
             feth : Str = case <info.form, info.class> of {
+              <FormII, Strong Geminated> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- BEXX
               <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
               <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
               <FormII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- ĦABB
@@ -164,6 +165,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             VSuffixInd agr =>
               let
                 fethi : Str = case info.imp of {
+                  _ + "a'" => feth + "a" ; -- QATTA' > QATTGĦALNA --- very specific
                   _ + "a" => feth + "a" ; -- KANTA-
                   _ + "i" => feth + "ie" ; -- SERVIE-
                   _ => (ie2i feth) + "i"
@@ -187,6 +189,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             fethet = tbl ! AgP3Sg Fem ;
             fethit : Str = case fethet of {
+              _ + "għet" => (dropSfx 2 fethet) + "at" ; -- QATTGĦET > QATTGĦATNI...  --- very specific
               _ + "iet" => fethet ; -- SERVIET
               feth + "et" => (ie2i feth) + "it" ;
               _ => fethet -- QRAT, ŻVILUPPAT...
@@ -314,6 +317,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 --        iftah : Str = info.imp ; --- is there no way to avoid the iftah parameter?
       in
       case <info.form, info.class> of {
+        <FormII, Strong Geminated> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- BEXX
         <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
         <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
@@ -343,7 +347,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "o" => "ok" ; -- Jiena NOĦORĠ-OK
             _ => "ek" -- Jiena NIDILK-EK
             };                      
-          Strong Geminated => "ok" ;  -- Jiena NXOMM-OK --- criteria probably wrong
+          Strong Geminated => case vowels.V1 of {
+            "o" => "ok" ; -- Jiena NXOMM-OK
+            _ => "ek" -- Jiena NBEXX-EK
+            };
+          Weak Defective => "ak" ; -- Jiena NQATTGĦAK
           Weak Lacking => case vowels.V1 of {
             "a" => "ak" ;  -- Jiena NAQR-AK
             _ => "ik"  -- Jiena NIMX-IK
@@ -363,7 +371,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "o" => "lok" ; -- Jiena NOĦROĠ-LOK
             _ => "lek" -- Jiena NIDLIK-LEK
             };                      
-          Strong Geminated => "lok" ;  -- Jiena NXOMM-LOK
+          Strong Geminated => case vowels.V1 of {
+            "o" => "lok" ; -- Jiena NXOMM-LOK
+            _ => "lek" -- Jiena NBEXX-LEK
+            };
           _ => "lek"
           } ;
         p3sg_dir_u : Str = case info.imp of {
@@ -1296,6 +1307,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjFormII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
         mamma : Str = case i.class of {
+          Weak Defective => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + "'" ; -- QATTA'
           Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 ; -- NEĦĦA
           _ => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + i.root.C3 -- WAQQAF
           } ;
@@ -1303,9 +1315,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Weak Lacking => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" ; -- NEĦĦI
           _ => mamma -- WAQQAF
           } ;
-        bexxix : Str = case <i.patt.V1,i.patt.V2> of {
-          <"e","a"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "e" + i.root.C3 ; -- NEĦĦEJ
-          <_,"e"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" + i.root.C3 ;
+        bexxix : Str = case <i.class,i.patt.V1,i.patt.V2> of {
+          <Weak Defective,_,_> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + "j" ; -- QATTAJ
+          <_,"e","a"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "e" + i.root.C3 ; -- NEĦĦEJ
+          <_,_,"e"> => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + "i" + i.root.C3 ;
           _ => nehhi -- no change
           } ;
         waqqf : Str = case i.class of {

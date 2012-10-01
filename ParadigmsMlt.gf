@@ -577,8 +577,11 @@ resource ParadigmsMlt = open
       let
         class : VClass = classifyRoot root ;
         patt : Pattern = extractPattern mammaII ;
-        newinfo : VerbInfo = mkVerbInfo class FormII root patt mammaII ;
-        --- assumption: mamma II is also imperative. this fails for NEĦĦA/I, but not realy important
+        imp : Str = case mammaII of {
+          nehh + "a" => nehh + "i" ; --- maybe too generic?
+          _ => mammaII --- assumption: mamma II is also imperative
+          } ;
+        newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
       in lin V {
         s = conjFormII newinfo ;
         i = newinfo ;
