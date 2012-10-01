@@ -1360,7 +1360,63 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt nehhi ;
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt (imp ! Sg) ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
+      in
+      polSfxTbl ;
+
+    conjFormII_quad : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+      let
+        mamma : Str = case i.class of {
+          Quad QWeak => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2) ; -- SSERVA
+          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 + i.root.C4) -- T-ĦARBAT
+          } ;
+        tharbat : Str = case i.class of {
+          Quad QWeak => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4) ; -- SSERVEJ --- probably needs tweaking
+          _ => mamma
+          } ;
+        tharb : Str = case i.class of {
+          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3)
+          } ;
+        tharbt : Str = case i.class of {
+          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.root.C4)
+          } ;
+        tharbtu : Str = tharbt + "u" ;
+        perf : Agr => Str = table {
+          AgP1 Sg => tharbat + "t" ;
+          AgP2 Sg => tharbat + "t" ;
+          AgP3Sg Masc => mamma ;
+          AgP3Sg Fem => case <i.patt.V1, i.patt.V2> of {
+            <"e","a"> => tharb + "iet" ; -- SSERVIET
+            _ => tharbt + "et"
+            } ;
+          AgP1 Pl => tharbat + "na" ;
+          AgP2 Pl => tharbat + "tu" ;
+          AgP3Pl => case <i.patt.V1, i.patt.V2> of {
+            <"e","a"> => tharb + "ew" ; -- SSERVEW
+            _ => tharbt + "u"
+            }
+          } ;
+        impf : Agr => Str = table {
+          AgP1 Sg => "ni" + tharbat ;
+          AgP2 Sg => "ti" + tharbat ;
+          AgP3Sg Masc => "ji" + tharbat ;
+          AgP3Sg Fem => "ti" + tharbat ;
+          AgP1 Pl => "ni" + tharbtu ;
+          AgP2 Pl => "ti" + tharbtu ;
+          AgP3Pl => "ji" + tharbtu
+          } ;
+        imp : Number => Str = table {
+          Sg => tharbat ;
+          Pl => tharbtu
+          } ;
+        tbl : VForm => Str = table {
+          VPerf agr => perf ! agr ;
+          VImpf agr => impf ! agr ;
+          VImp num  => imp ! num
+          } ;
+        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt (imp ! Sg) ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
         polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in

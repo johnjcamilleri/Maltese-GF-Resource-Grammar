@@ -588,7 +588,16 @@ resource ParadigmsMlt = open
       } ;
 
     -- Make a Quadri-Consonantal Form II verb
-    derivedV_QuadII : Str -> Root -> V = derivedV_TriII ;
+    derivedV_QuadII : Str -> Root -> V = \mammaII, root ->
+      let
+        class : VClass = classifyRoot root ;
+        patt : Pattern = extractPattern mammaII ;
+        imp : Str = mammaII ; --- assumption: mamma II is also imperative
+        newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
+      in lin V {
+        s = conjFormII_quad newinfo ;
+        i = newinfo ;
+      } ;
 
     -- Make a Form III verb
     -- e.g.: derivedV_III "qiegħed"
