@@ -323,6 +323,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
         <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
         <FormII, Quad QStrong> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -TĦARBT
+        <FormII, Quad QWeak> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -TKANT
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
@@ -1377,6 +1378,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     conjFormII_quad : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
+        vowels = extractPattern i.imp ;
         mamma : Str = case i.class of {
           Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 ; -- SSERVA
           _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 + i.root.C4 -- T-ĦARBAT
@@ -1388,11 +1390,17 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 ; -- SSERV
           _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.root.C4
           } ;
-        tharbtu : Str = tharbt + "u" ;
+        -- tharbtu : Str = tharbt + "u" ;
+        tharbtu : Str = case <i.class, vowels.V2> of {
+          <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
+          <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
+          _ => tharbt + "u"
+          } ;
         perf : Agr => Str =
           let
-            tharbat : Str = case i.class of {
-              Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4 ; -- SSERVEJ --- probably needs tweaking
+            tharbat : Str = case <i.class,vowels.V2> of {
+              <Quad QWeak,"i"> => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4 ; -- SSERVEJ
+              <Quad QWeak,"a"> => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "a" + i.root.C4 ; -- TKANTAJ
               _ => mamma
               } ;
           in
@@ -1400,16 +1408,19 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             AgP1 Sg => tharbat + "t" ;
             AgP2 Sg => tharbat + "t" ;
             AgP3Sg Masc => mamma ;
-            AgP3Sg Fem => case <i.patt.V1, i.patt.V2> of {
-              <"e","a"> => tharb + "iet" ; -- SSERVIET
+            AgP3Sg Fem => case <i.class,vowels.V2> of {
+              <Quad QWeak,"i"> => tharb + "iet" ; -- SSERVIET
+              <Quad QWeak,"a"> => tharb + "at" ; -- TKANTAT
               _ => tharbt + "et"
               } ;
             AgP1 Pl => tharbat + "na" ;
             AgP2 Pl => tharbat + "tu" ;
-            AgP3Pl => case <i.patt.V1, i.patt.V2> of {
-              <"e","a"> => tharb + "ew" ; -- SSERVEW
-              _ => tharbt + "u"
-              }
+            AgP3Pl => tharbtu
+            -- AgP3Pl => case <i.class, vowels.V2> of {
+            --   <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
+            --   <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
+            --   _ => tharbt + "u"
+            --   }
           } ;
         impf : Agr => Str =
           let
