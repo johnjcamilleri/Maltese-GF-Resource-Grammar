@@ -570,6 +570,11 @@ resource ParadigmsMlt = open
           "" => derivedV_TriII mammaII root ;
           _  => derivedV_QuadII mammaII root
         } ;
+      derivedV_II : Str -> Str -> Root -> V = \mammaII, imp, root ->
+        case root.C4 of {
+          "" => derivedV_TriII mammaII root ;
+          _  => derivedV_QuadII mammaII imp root
+        } ;
       } ;
 
     -- Make a Tri-Consonantal Form II verb
@@ -588,15 +593,26 @@ resource ParadigmsMlt = open
       } ;
 
     -- Make a Quadri-Consonantal Form II verb
-    derivedV_QuadII : Str -> Root -> V = \mammaII, root ->
-      let
-        class : VClass = classifyRoot root ;
-        patt : Pattern = extractPattern mammaII ;
-        imp : Str = mammaII ; --- assumption: mamma II is also imperative
-        newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
-      in lin V {
-        s = conjFormII_quad newinfo ;
-        i = newinfo ;
+    derivedV_QuadII : V = overload {
+      derivedV_QuadII : Str -> Root -> V = \mammaII, root ->
+        let
+          class : VClass = classifyRoot root ;
+          patt : Pattern = extractPattern mammaII ;
+          imp : Str = mammaII ; --- assumption: mamma II is also imperative
+          newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
+        in lin V {
+          s = conjFormII_quad newinfo ;
+          i = newinfo ;
+        } ;
+      derivedV_QuadII : Str -> Str -> Root -> V = \mammaII, imp, root ->
+        let
+          class : VClass = classifyRoot root ;
+          patt : Pattern = extractPattern mammaII ;
+          newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
+        in lin V {
+          s = conjFormII_quad newinfo ;
+          i = newinfo ;
+        } ;
       } ;
 
     -- Make a Form III verb
