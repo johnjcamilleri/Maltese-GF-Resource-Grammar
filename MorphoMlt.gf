@@ -132,6 +132,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <FormII, Strong Geminated> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- BEXX
               <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
               <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
+              <FormII, Quad QStrong> => pfx_T info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- TĦARBT
+              <FormII, Quad QWeak> => pfx_T info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- SSERV
               <FormII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- ĦABB
               <_, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
               <_, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
@@ -320,6 +322,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         <FormII, Strong Geminated> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- BEXX
         <FormII, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- QAJM
         <FormII, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 ; -- NEĦĦ
+        <FormII, Quad QStrong> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -TĦARBT
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
@@ -390,7 +393,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- potentially slow
           iftah => iftah -- -IFTAĦ
           } ;
-        ifth : Str = verbImpStem info iftah ;
+        ifth : Str = case <info.form, info.class> of {
+          <FormII, Quad _> => "i" + verbImpStem info iftah ;
+          _ => verbImpStem info iftah
+          } ;
       in
       table {
         AgP1 Sg => -- Jiena NIFTAĦ
@@ -675,7 +681,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                     "a" => ifth + "a" ;  -- AQRA-
                     _ => ifth + "i" -- IMXI-
                     } ;
-                  Quad QStrong => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- -ĦARBTI
+                  Quad QStrong => case info.form of {
+                    FormII => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- TĦARBTI-
+                    _ => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" -- ĦARBTI-
+                    } ;
                   Quad QWeak => tbl ! Sg ; -- KANTA-, SERVI-
                   Loan => tbl ! Sg ; -- ŻVILUPPA-
                   _ => ifth + "i" -- IFTĦI-
@@ -1369,47 +1378,59 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     conjFormII_quad : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
       let
         mamma : Str = case i.class of {
-          Quad QWeak => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2) ; -- SSERVA
-          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 + i.root.C4) -- T-ĦARBAT
-          } ;
-        tharbat : Str = case i.class of {
-          Quad QWeak => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4) ; -- SSERVEJ --- probably needs tweaking
-          _ => mamma
+          Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 ; -- SSERVA
+          _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.patt.V2 + i.root.C4 -- T-ĦARBAT
           } ;
         tharb : Str = case i.class of {
-          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3)
+          _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3
           } ;
         tharbt : Str = case i.class of {
-          _ => pfx_T (i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.root.C4)
+          Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 ; -- SSERV
+          _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.root.C4
           } ;
         tharbtu : Str = tharbt + "u" ;
-        perf : Agr => Str = table {
-          AgP1 Sg => tharbat + "t" ;
-          AgP2 Sg => tharbat + "t" ;
-          AgP3Sg Masc => mamma ;
-          AgP3Sg Fem => case <i.patt.V1, i.patt.V2> of {
-            <"e","a"> => tharb + "iet" ; -- SSERVIET
-            _ => tharbt + "et"
-            } ;
-          AgP1 Pl => tharbat + "na" ;
-          AgP2 Pl => tharbat + "tu" ;
-          AgP3Pl => case <i.patt.V1, i.patt.V2> of {
-            <"e","a"> => tharb + "ew" ; -- SSERVEW
-            _ => tharbt + "u"
-            }
+        perf : Agr => Str =
+          let
+            tharbat : Str = case i.class of {
+              Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4 ; -- SSERVEJ --- probably needs tweaking
+              _ => mamma
+              } ;
+          in
+          table {
+            AgP1 Sg => tharbat + "t" ;
+            AgP2 Sg => tharbat + "t" ;
+            AgP3Sg Masc => mamma ;
+            AgP3Sg Fem => case <i.patt.V1, i.patt.V2> of {
+              <"e","a"> => tharb + "iet" ; -- SSERVIET
+              _ => tharbt + "et"
+              } ;
+            AgP1 Pl => tharbat + "na" ;
+            AgP2 Pl => tharbat + "tu" ;
+            AgP3Pl => case <i.patt.V1, i.patt.V2> of {
+              <"e","a"> => tharb + "ew" ; -- SSERVEW
+              _ => tharbt + "u"
+              }
           } ;
-        impf : Agr => Str = table {
-          AgP1 Sg => "ni" + tharbat ;
-          AgP2 Sg => "ti" + tharbat ;
-          AgP3Sg Masc => "ji" + tharbat ;
-          AgP3Sg Fem => "ti" + tharbat ;
-          AgP1 Pl => "ni" + tharbtu ;
-          AgP2 Pl => "ti" + tharbtu ;
-          AgP3Pl => "ji" + tharbtu
+        impf : Agr => Str =
+          let
+            tharbat : Str = mamma ;
+          in
+          table {
+            AgP1 Sg => "ni" + tharbat ;
+            AgP2 Sg => "ti" + tharbat ;
+            AgP3Sg Masc => "ji" + tharbat ;
+            AgP3Sg Fem => "ti" + tharbat ;
+            AgP1 Pl => "ni" + tharbtu ;
+            AgP2 Pl => "ti" + tharbtu ;
+            AgP3Pl => "ji" + tharbtu
           } ;
-        imp : Number => Str = table {
-          Sg => tharbat ;
-          Pl => tharbtu
+        imp : Number => Str =
+          let
+            tharbat : Str = mamma ;
+          in
+          table {
+            Sg => tharbat ;
+            Pl => tharbtu
           } ;
         tbl : VForm => Str = table {
           VPerf agr => perf ! agr ;
