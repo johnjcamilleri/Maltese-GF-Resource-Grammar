@@ -32,9 +32,9 @@ done
 LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
 LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
 if [[ $LINES_OUT != $LINES_GOLD ]] ; then
-    echo "Number of lines don't match! Something went wrong:"
+    echo "Number of lines doesn't match! Something went wrong..."
     echo "================================================================================"
-    colordiff "$TMP_OUT" "$TMP_GOLD"
+    # colordiff "$TMP_OUT" "$TMP_GOLD"
     exit 1
 fi
 
