@@ -360,8 +360,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             "a" => "ak" ;  -- Jiena NAQR-AK
             _ => "ik"  -- Jiena NIMX-IK
             } ;
-          Quad QWeak => case info.imp of {
-            _ + "a" => "ak" ; -- Huwa KANTAK
+          Quad QWeak => case vowels.V2 of {
+            "a" => "ak" ; -- Huwa KANTAK
             _ => "ik" -- Huwa SERVIK
             } ;
           Loan => case info.imp of {
@@ -1390,18 +1390,17 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Quad QWeak => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 ; -- SSERV
           _ => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + i.root.C4
           } ;
-        -- tharbtu : Str = tharbt + "u" ;
-        tharbtu : Str = case <i.class, vowels.V2> of {
-          <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
-          <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
-          _ => tharbt + "u"
-          } ;
         perf : Agr => Str =
           let
             tharbat : Str = case <i.class,vowels.V2> of {
               <Quad QWeak,"i"> => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "e" + i.root.C4 ; -- SSERVEJ
               <Quad QWeak,"a"> => pfx_T i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C3 + "a" + i.root.C4 ; -- TKANTAJ
               _ => mamma
+              } ;
+            tharbtu : Str = case <i.class, vowels.V2> of {
+              <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
+              <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
+              _ => tharbt + "u"
               } ;
           in
           table {
@@ -1424,7 +1423,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         impf : Agr => Str =
           let
-            tharbat : Str = mamma ;
+            tharbat : Str = case <i.class,vowels.V2> of {
+              <Quad QWeak,"i"> => tharb + "i" ; -- SSERVI
+              -- <Quad QWeak,"a"> => tharb + "at" ; -- TKANTA
+              _ => mamma
+              } ;
+            tharbtu : Str = case <i.class, vowels.V2> of {
+              -- <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
+              <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
+              _ => tharbt + "u"
+              } ;
           in
           table {
             AgP1 Sg => "ni" + tharbat ;
@@ -1437,10 +1445,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         imp : Number => Str =
           let
-            tharbat : Str = mamma ;
+            tharbtu : Str = case <i.class, vowels.V2> of {
+              -- <Quad QWeak,"i"> => tharb + "ew" ; -- SSERVEW
+              <Quad QWeak,"a"> => tharb + "aw" ; -- TKANTAW
+              _ => tharbt + "u"
+              } ;
           in
           table {
-            Sg => tharbat ;
+            Sg => i.imp ;
             Pl => tharbtu
           } ;
         tbl : VForm => Str = table {
