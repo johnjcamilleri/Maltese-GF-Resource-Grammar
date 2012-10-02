@@ -1,5 +1,5 @@
 i -retain ParadigmsMlt.gf
-cc -table -unqual mkV_II "sserva"
+cc -table -unqual derivedV_II "sserva" "sservi" (mkRoot "s-r-v-j")
 ---
 s . VPerf (AgP1 Sg) => VSuffixNone => Pos => sservejt
 s . VPerf (AgP1 Sg) => VSuffixNone => Neg => sservejtx
@@ -1019,8 +1019,8 @@ s . VImp Sg => VSuffixDir (AgP2 Sg) => Pos => []
 s . VImp Sg => VSuffixDir (AgP2 Sg) => Neg => []
 s . VImp Sg => VSuffixDir (AgP2 Pl) => Pos => []
 s . VImp Sg => VSuffixDir (AgP2 Pl) => Neg => []
-s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Pos => servu
-s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Neg => servux
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Pos => sservih
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Neg => sservihx
 s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Pos => sserviha
 s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Neg => sservihiex
 s . VImp Sg => VSuffixDir AgP3Pl => Pos => sservihom
