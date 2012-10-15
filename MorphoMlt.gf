@@ -325,6 +325,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         <FormII, Quad QStrong> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- -TĦARBT
         <FormII, Quad QWeak> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -TKANT
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
+        <FormIII, Strong LiquidMedial> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -ĦARS
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
           _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
@@ -672,22 +673,23 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                ifthi = case info.class of {
-                  Strong LiquidMedial => case info.root.C1 of {
+                ifthi = case <info.form, info.class> of {
+                  <FormIII, Strong LiquidMedial> => ifth + "i" ; -- ĦARSI-
+                  <_, Strong LiquidMedial> => case info.root.C1 of {
                     "għ" => ifth + "i" ; -- AGĦMLI-
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
                     } ;
-                  Weak Defective => ifth + "a" ; -- AQTGĦA-
-                  Weak Lacking => case vowels.V1 of {
+                  <_, Weak Defective> => ifth + "a" ; -- AQTGĦA-
+                  <_, Weak Lacking> => case vowels.V1 of {
                     "a" => ifth + "a" ;  -- AQRA-
                     _ => ifth + "i" -- IMXI-
                     } ;
-                  Quad QStrong => case info.form of {
+                  <_, Quad QStrong> => case info.form of {
                     FormII => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" ; -- TĦARBTI-
                     _ => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 + info.root.C4 + "i" -- ĦARBTI-
                     } ;
-                  Quad QWeak => tbl ! Sg ; -- KANTA-, SERVI-
-                  Loan => tbl ! Sg ; -- ŻVILUPPA-
+                  <_, Quad QWeak> => tbl ! Sg ; -- KANTA-, SERVI-
+                  <_, Loan> => tbl ! Sg ; -- ŻVILUPPA-
                   _ => ifth + "i" -- IFTĦI-
                   } ;
               in
@@ -1505,7 +1507,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt wiegeb ;
+        info : VerbInfo = mkVerbInfo i.class FormIII i.root i.patt wiegeb ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
         polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in

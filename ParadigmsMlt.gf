@@ -622,7 +622,7 @@ resource ParadigmsMlt = open
         let
           vowels : Pattern = extractPattern mammaIII ;
           info : VerbInfo = classifyVerb (ie2i mammaIII) ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormII info.root vowels mammaIII ; --- assumption: mamma III is also imperative
+          newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels mammaIII ; --- assumption: mamma III is also imperative
         in lin V {
           s = conjFormIII newinfo ;
           i = newinfo ;
