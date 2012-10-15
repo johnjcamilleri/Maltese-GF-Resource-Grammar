@@ -17,30 +17,33 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         s = tbl ! vf ! sfxf ;
       in table {
         Pos => s ;
-        Neg => case s of {
-          "" => [] ;
-          _ + "xx"  => s ; -- BEXX > BEXX
-          aqta+"'" => aqta+"x" ; -- AQTA' > AQTAX
+        Neg =>
+          case <info, s> of {
+            <_, ""> => [] ;
+            <{form=FormIII}, (w@#Consonant)+"ie"+(g@#Consonant)+"e"+(b@#Consonant)> => w+"i"+g+"i"+b+"x" ; -- WIEĠEB > WIĠIBX
+            <{form=FormIII}, (n@#Consonant)+(w@#Consonant)+"ie"+(g@#Consonant)+"e"+(b@#Consonant)> => n+w+"i"+g+"i"+b+"x" ; -- NWIEĠEB > NWIĠIBX
+            <_, _> + "xx"  => s ; -- BEXX > BEXX
+            <_, aqta+"'"> => aqta+"x" ; -- AQTA' > AQTAX
 
-          z+"ie"+d+"et" => z+"i"+d+"itx" ; -- ŻIEDET > ŻIDITX
+            <_, z+"ie"+d+"et"> => z+"i"+d+"itx" ; -- ŻIEDET > ŻIDITX
 
-          ftahth+"ie"+lh+"a" => ftahth+"i"+lh+"iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
-          ftahtuh+"ie"+li => case isMonoSyl s of {
-            True => s + "x" ; -- MIET > MIETX 
-            _ => ftahtuh+"i"+li+"x" -- FTAĦTUHIELI > FTAĦTUHILIX
-            } ;
+            <_, ftahth+"ie"+lh+"a"> => ftahth+"i"+lh+"iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
+            <_, ftahtuh+"ie"+li> => case isMonoSyl s of {
+              True => s + "x" ; -- MIET > MIETX 
+              _ => ftahtuh+"i"+li+"x" -- FTAĦTUHIELI > FTAĦTUHILIX
+              } ;
 
-          ktibtl+"ek"  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKX
-          xamm+"ew"  => xamm+"ewx" ; -- XAMMEW > XAMMEWX
+            <_, ktibtl+"ek">  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKX
+            <_, xamm+"ew">  => xamm+"ewx" ; -- XAMMEW > XAMMEWX
 
-          x + "a"   => case <info.imp, vf, sfxf> of {
-            <_ + "a", VPerf (AgP3Sg Masc), VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
-            <_ + "a", VImpf _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
-            <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
-            _ => x + "iex" -- FTAĦNA > FTAĦNIEX
-            } ;
-          ki+t@#Consonant+"e"+b@#Consonant => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
-          _ => s + "x" -- KTIBT > KTIBTX
+            <_, x + "a">   => case <info.imp, vf, sfxf> of {
+              <_ + "a", VPerf (AgP3Sg Masc), VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+              <_ + "a", VImpf _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+              <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
+              _ => x + "iex" -- FTAĦNA > FTAĦNIEX
+              } ;
+            <_, ki+t@#Consonant+"e"+b@#Consonant> => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
+            _ => s + "x" -- KTIBT > KTIBTX
           }
       } ;
 
@@ -115,10 +118,11 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         AgP3Sg Masc => -- Huwa FETAĦ
           let
             mamma = tbl ! AgP3Sg Masc ;
-            fetah : Str = case <info.imp, mamma> of {
+            fetah : Str = case <info, mamma> of {
               <_, x + "'"> => x + "għ" ; -- QATA' > QATAGĦ
-              <_ + "a", _> =>  mamma ; -- KANTA > KANTA (i.e. Italian -are)
+              <{imp = _ + "a"}, _> =>  mamma ; -- KANTA > KANTA (i.e. Italian -are)
               <_, serv + "a"> => serv + "ie" ; -- SERVA > SERVIE (i.e. Italian -ere/-ire)
+              <{form = FormIII}, w@#Consonant + "ie" + geb> => w + "i" + info.root.C2 + "i" + info.root.C3 ; -- WIEĠEB > WIĠIB
               <_, x + y@#Consonant + "e" + z@#Consonant> => x + y + "i" + z ; -- KITEB > KITIB
               _ => mamma -- FETAĦ
               } ;
@@ -326,6 +330,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         <FormII, Quad QWeak> => pfx_T info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -TKANT
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
         <FormIII, Strong LiquidMedial> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -ĦARS
+        <FormIII, Weak Assimilative> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -WIEĠB
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
           _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
