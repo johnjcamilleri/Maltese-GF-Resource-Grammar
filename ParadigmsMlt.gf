@@ -620,9 +620,14 @@ resource ParadigmsMlt = open
 --    derivedV_III : V = overload {
       derivedV_III : Str -> V = \mammaIII ->
         let
-          vowels : Pattern = extractPattern mammaIII ;
           info : VerbInfo = classifyVerb (ie2i mammaIII) ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels mammaIII ; --- assumption: mamma III is also imperative
+          vowels : Pattern = extractPattern mammaIII ;
+          vowels2 : Pattern = case <info.root, vowels> of { -- see {GO pg93}
+            <{C2="għ"},{V1="ie";V2="e"}> => mkPattern "e" "i" ; -- QIEGĦED > QEGĦIDKOM
+            <_,{V1="ie";V2="e"}> => mkPattern "i" "i" ; -- WIEĠEB > WIĠIBKOM
+            _ => vowels
+            } ;
+          newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
         in lin V {
           s = conjFormIII newinfo ;
           i = newinfo ;

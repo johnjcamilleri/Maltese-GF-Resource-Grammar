@@ -20,8 +20,22 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         Neg =>
           case <info, s> of {
             <_, ""> => [] ;
-            <{form=FormIII}, (w@#Consonant)+"ie"+(g@#Consonant)+"e"+(b@#Consonant)> => w+"i"+g+"i"+b+"x" ; -- WIEĠEB > WIĠIBX
-            <{form=FormIII}, (n@#Consonant)+(w@#Consonant)+"ie"+(g@#Consonant)+"e"+(b@#Consonant)> => n+w+"i"+g+"i"+b+"x" ; -- NWIEĠEB > NWIĠIBX
+
+            -- Standard Fem DO + IO endings
+            <_, x+"hieli"> => x+"hilix" ;
+            <_, x+"hielek"> => x+"hilekx" ;
+            <_, x+"hielu"> => x+"hilux" ;
+            <_, x+"hielha"> => x+"hilhiex" ;
+            <_, x+"hielna"> => x+"hilniex" ;
+            <_, x+"hielkom"> => x+"hilkomx" ;
+            <_, x+"hielhom"> => x+"hilhomx" ;
+
+            --- These stem rewrites need to go in a PREVIOUS STEP!!
+            <{form=FormIII}, (w@#C)+"ie"+(g@#C)+"e"+(b)> => w+(info.patt2.V1)+g+(info.patt2.V2)+b+"x" ; -- WIEĠEB > WIĠIBX
+            <{form=FormIII}, (n@#C)+(w@#C)+"ie"+(g@#C)+"e"+(b)> => n+w+(info.patt2.V1)+g+(info.patt2.V2)+b+"x" ; -- NWIEĠEB > NWIĠIBX
+            <{form=FormIII}, (q@#C)+"ie"+(ghdek)> => q+(info.patt2.V1)+ghdek+"x" ; -- QIEGĦDEK > QEGĦDEKX
+            <{form=FormIII}, (n@#C)+(q@#C)+"ie"+(ghdek)> => n+q+(info.patt2.V1)+ghdek+"x" ; -- NQIEGĦDEK > NQEGĦDEKX
+
             <_, _> + "xx"  => s ; -- BEXX > BEXX
             <_, aqta+"'"> => aqta+"x" ; -- AQTA' > AQTAX
 
@@ -203,7 +217,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
           in
           table {
-            VSuffixNone => fethet ;
+            VSuffixNone => tbl ! AgP3Sg Fem ;
             VSuffixDir agr =>
               case agr of {
                 AgP1 Sg    => fethit + "ni" ; -- Hija FETĦITNI
@@ -1518,7 +1532,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = mkVerbInfo i.class FormIII i.root i.patt wiegeb ;
+        info : VerbInfo = i ** {form=FormIII ; imp=wiegeb} ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
         polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in
