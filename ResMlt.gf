@@ -185,8 +185,11 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     VerbInfo : Type = {
       class : VClass ;
       form : VDerivedForm ;
-      root : Root ;
-      patt : Pattern ;
+      root : Root ; -- radicals
+      patt : Pattern ; -- vowels extracted from mamma
+      patt2: Pattern ; -- vowel changes; default to patt (experimental)
+      -- in particular, patt2 is used to indicate whether an IE sould be shortened
+      -- to an I or an E (same for entire verb)
       imp : Str ; -- Imperative Sg. Gives so much information jaħasra!
       } ;
 
@@ -269,17 +272,20 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     mkVerbInfo : VerbInfo = overload {
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
-        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=[] } ;
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; patt2=mkPattern ; imp=[] } ;
       mkVerbInfo : VClass -> VDerivedForm -> Str -> VerbInfo = \c,f,i ->
-        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=i } ;
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; patt2=mkPattern ; imp=i } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> VerbInfo = \c,f,r,p ->
-        { class=c ; form=f ; root=r ; patt=p ; imp=[] } ;
+        { class=c ; form=f ; root=r ; patt=p ; patt2=p ; imp=[] } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Str -> VerbInfo = \c,f,r,p,i ->
-        { class=c ; form=f ; root=r ; patt=p ; imp=i } ;
+        { class=c ; form=f ; root=r ; patt=p ; patt2=p ; imp=i } ;
+      mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Pattern -> Str -> VerbInfo = \c,f,r,p,p2,i ->
+        { class=c ; form=f ; root=r ; patt=p ; patt2=p2 ; imp=i } ;
 
       -- Change the derived form of a VerbInfo record
       mkVerbInfo : VerbInfo -> VDerivedForm -> VerbInfo = \i,f ->
-        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; imp=i.imp } ;
+        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
+
       } ;
 
 
@@ -350,9 +356,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       } ;
 
     -- Replace any IE in the word with an I or E    --- potentially slow
-    ie2i : Str -> Str = ie2x "i" ;
-    ie2e : Str -> Str = ie2x "e" ;
-    ie2x : Str -> Str -> Str = \iore,serviet ->
+    ie2i : Str -> Str = ie2_ "i" ;
+    ie2e : Str -> Str = ie2_ "e" ;
+    ie2_ : Str -> Str -> Str = \iore,serviet ->
       case serviet of {
         x + "ie" => x + iore ;
         x + "ie" + y => x + iore + y ;
