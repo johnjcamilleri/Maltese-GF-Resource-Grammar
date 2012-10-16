@@ -28,21 +28,18 @@ for FILENAME in $FILES ; do
     head -n `expr $IX - 1` "$FILE" | gf --run >> "$TMP_OUT"
 done
 
-# Try and see if something went wrong
-LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
-LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
-if [[ $LINES_OUT != $LINES_GOLD ]] ; then
-    echo "Number of lines doesn't match! Something went wrong..."
-    echo "================================================================================"
-    # colordiff "$TMP_OUT" "$TMP_GOLD"
-    exit 1
-fi
-
 # Diff
 diff "$TMP_OUT" "$TMP_GOLD" > "$TMP_DIFF"
 
 # Output
-#echo "================================================================================"
-#cat "$TMP_DIFF" | colordiff
-#echo "================================================================================"
 cat "$TMP_DIFF" | diffstat
+
+# Try and see if something went wrong
+LINES_OUT=`wc -l "$TMP_OUT" | cut -f1 -d' '`
+LINES_GOLD=`wc -l "$TMP_GOLD" | cut -f1 -d' '`
+if [[ $LINES_OUT != $LINES_GOLD ]] ; then
+    echo "Line numbers don't match! Check for compilation errors / changes in lintypes"
+    echo "================================================================================"
+    # colordiff "$TMP_OUT" "$TMP_GOLD"
+    exit 1
+fi
