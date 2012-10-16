@@ -396,6 +396,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         -- This stem is prefixed with n/t/j/t/n/t/j
         iftah : Str = case dropPfx 1 (tbl ! AgP1 Sg) of {
           "ie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
+          w+"ie"+g+"e"+b => w+"i"+g+"i"+b ; -- -WIEĠEB > -WIĠIB --- IorE?
           aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
           ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- potentially slow
           iftah => iftah -- -IFTAĦ
@@ -463,11 +464,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                tifthi = case <info.class, vowels.V1> of {
-                  <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
-                  <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
-                  <Quad QWeak, _> => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
-                  <Loan, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
+                tifthi = case <info, vowels.V1> of {
+                  <{form=FormIII}, "ie"> => (ie2i tifth) + "i" ; -- TWIĠIB-
+                  <{class=Weak Defective}, _> => tifth + "a" ; -- TAQTGĦA-
+                  <{class=Weak Lacking}, "a"> => tifth + "a" ;  -- TAQRA-
+                  <{class=Quad QWeak}, _> => tbl ! AgP2 Sg ; -- TKANTA-, SSERVI-
+                  <{class=Loan}, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -501,11 +503,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                jifthi = case <info.class, vowels.V1> of {
-                  <Weak Defective, _> => jifth + "a" ; -- JAQTGĦA-
-                  <Weak Lacking, "a"> => jifth + "a" ;  -- JAQRA-
-                  <Quad QWeak, _> => tbl ! AgP3Sg Masc ; -- JKANTA-, JSERVI-
-                  <Loan, _> => jifth + (takeSfx 1 jiftah) ; -- JISSUĠĠERIXXI-, JIŻVILUPPA-
+                jifthi = case <info, vowels.V1> of {
+                  <{form=FormIII}, "ie"> => (ie2i jifth) + "i" ; -- JWIĠIB-
+                  <{class=Weak Defective}, _> => jifth + "a" ; -- JAQTGĦA-
+                  <{class=Weak Lacking}, "a"> => jifth + "a" ;  -- JAQRA-
+                  <{class=Quad QWeak}, _> => tbl ! AgP3Sg Masc ; -- JKANTA-, SSERVI-
+                  <{class=Loan}, _> => jifth + (takeSfx 1 jiftah) ; -- JISSUĠĠERIXXI-, JIŻVILUPPA-
                   _ => jifth + "i" -- JIFTĦI-
                   } ;
               in
@@ -539,11 +542,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                tifthi = case <info.class, vowels.V1> of {
-                  <Weak Defective, _> => tifth + "a" ; -- TAQTGĦA-
-                  <Weak Lacking, "a"> => tifth + "a" ;  -- TAQRA-
-                  <Quad QWeak, _> => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
-                  <Loan, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
+                tifthi = case <info, vowels.V1> of {
+                  <{form=FormIII}, "ie"> => (ie2i tifth) + "i" ; -- TWIĠIB-
+                  <{class=Weak Defective}, _> => tifth + "a" ; -- TAQTGĦA-
+                  <{class=Weak Lacking}, "a"> => tifth + "a" ;  -- TAQRA-
+                  <{class=Quad QWeak}, _> => tbl ! AgP3Sg Fem ; -- TKANTA-, SSERVI-
+                  <{class=Loan}, _> => tifth + (takeSfx 1 tiftah) ; -- TISSUĠĠERIXXI-, TIŻVILUPPA-
                   _ => tifth + "i" -- TIFTĦI-
                   } ;
               in
@@ -652,6 +656,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             vowels = extractPattern (tbl ! Sg) ;
             iftah : Str = case (tbl ! Sg) of {
+              w+"ie"+g+"e"+b => w+"i"+g+"i"+b ; -- -WIEĠEB > -WIĠIB --- IorE?
               "ie"+qaf=> "i"+qaf ; -- IEQAF > IQAF
               aqta+"'" => aqta+"għ" ; -- AQTA' > AQTAGĦ
               ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB --- potentially slow
@@ -678,8 +683,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               } ;
             VSuffixInd agr =>
               let
-                ifthi = case <info.form, info.class> of {
-                  <FormIII, Strong LiquidMedial> => ifth + "i" ; -- ĦARSI-
+                ifthi : Str = case <info.form, info.class> of {
+                  <FormIII, _> => ie2i ifth + "i" ; -- ĦARSI-
                   <_, Strong LiquidMedial> => case info.root.C1 of {
                     "għ" => ifth + "i" ; -- AGĦMLI-
                     _ => (tbl!Sg) + "i" -- OĦROĠI-
