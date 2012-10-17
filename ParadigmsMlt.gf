@@ -905,7 +905,11 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt (imp ! Sg) ;
+        patt2 : Pattern = case (imp!Sg) of {
+          "ie"+_ => mkPattern "i" patt.V2 ; -- (WAQAF) IEQAF > TIQAFLI
+          _ => patt -- (WASAL) ASAL > TASALLI
+          } ;
+        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
         s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
@@ -940,7 +944,11 @@ resource ParadigmsMlt = open
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n =>    imp ! n
           } ;
-        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt (imp ! Sg) ;
+        patt2 : Pattern = case patt.V1 of {
+          "ie" => mkPattern "i" patt.V2 ; -- (ŻIED) ŻID > ŻIDLI
+          _ => patt -- (MAR) MUR > MURLI
+          } ;
+        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
         s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;

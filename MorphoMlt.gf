@@ -211,7 +211,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             fethet = tbl ! AgP3Sg Fem ;
             fethit : Str = case fethet of {
-              q@#Consonant + "ie" + ghdet => q+(info.patt2.V1)+info.root.C2+info.root.C3+"it" ; -- WIEĠBET > WIĠBIT
+              q@#C+ "ie" + #C + #C + _ => q+(info.patt2.V1)+info.root.C2+info.root.C3+"it" ; -- WIEĠBET > WIĠBIT
               _ + "għet" => (dropSfx 2 fethet) + "at" ; -- QATTGĦET > QATTGĦATNI...  --- very specific
               _ + "iet" => fethet ; -- SERVIET
               feth + "et" => (ie2i feth) + "it" ;

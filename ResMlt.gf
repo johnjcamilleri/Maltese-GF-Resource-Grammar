@@ -254,7 +254,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       mkPattern : Str -> Pattern = \v1 ->
         { V1=toLower v1 ; V2=[] } ;
       mkPattern : Str -> Str -> Pattern = \v1,v2 ->
-        { V1=toLower v1 ; V2=toLower v2 } ;
+        { V1=toLower v1 ; V2=case v2 of {"" => [] ; _ => toLower v2}} ;
       } ;
 
     -- Extract first two vowels from a token (designed for semitic verb forms)
