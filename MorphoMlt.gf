@@ -49,7 +49,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               _ => ftahtuh+"i"+li+"x" -- FTAĦTUHIELI > FTAĦTUHILIX
               } ;
 
-            <_, ktibtl+"ek">  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKX
+            <_, ktibtl+"ek">  => ktibtl+"ekx" ; -- KTIBTLEK > KTIBTLEKXb
             <_, xamm+"ew">  => xamm+"ewx" ; -- XAMMEW > XAMMEWX
 
             <_, x + "a">   => case <info.imp, vf, sfxf> of {
@@ -190,7 +190,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
                   _ + "a'" => feth + "a" ; -- QATTA' > QATTGĦALNA --- very specific
                   _ + "a" => feth + "a" ; -- KANTA-
                   _ + "i" => feth + "ie" ; -- SERVIE-
-                  _ => (ie2i feth) + "i"
+                  _ => (ie2_ info.patt2.V1 feth) + "i"
                   } ;
               in
               case agr of {
