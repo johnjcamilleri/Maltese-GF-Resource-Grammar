@@ -15,10 +15,18 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       \\vf,sfxf => --- maybe the VForm needs to be used in the cases below
       let
         s = tbl ! vf ! sfxf ;
+        -- First some pre-processing of stem
+        s2 : Str = case <info, s> of {
+            <{form=FormIII}, (w@#C)+"ie"+(g@#C)+"e"+(b)> => w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- WIEĠEB > WIĠIB-
+            <{form=FormIII}, (n@#C)+(w@#C)+"ie"+(g@#C)+"e"+(b)> => n+w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- NWIEĠEB > NWIĠIB-
+            <{form=FormIII}, (q@#C)+"ie"+(ghdek)> => q+(info.patt2.V1)+ghdek ; -- QIEGĦDEK > QEGĦDEK-
+            <{form=FormIII}, (n@#C)+(q@#C)+"ie"+(ghdek)> => n+q+(info.patt2.V1)+ghdek ; -- NQIEGĦDEK > NQEGĦDEK-
+            _ => s
+          } ;
       in table {
         Pos => s ;
         Neg =>
-          case <info, s> of {
+          case <info, s2> of {
             <_, ""> => [] ;
 
             -- Standard Fem DO + IO endings
@@ -30,20 +38,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             <_, x+"hielkom"> => x+"hilkomx" ;
             <_, x+"hielhom"> => x+"hilhomx" ;
 
-            --- These stem rewrites need to go in a PREVIOUS STEP!!
-            <{form=FormIII}, (w@#C)+"ie"+(g@#C)+"e"+(b)> => w+(info.patt2.V1)+g+(info.patt2.V2)+b+"x" ; -- WIEĠEB > WIĠIBX
-            <{form=FormIII}, (n@#C)+(w@#C)+"ie"+(g@#C)+"e"+(b)> => n+w+(info.patt2.V1)+g+(info.patt2.V2)+b+"x" ; -- NWIEĠEB > NWIĠIBX
-            <{form=FormIII}, (q@#C)+"ie"+(ghdek)> => q+(info.patt2.V1)+ghdek+"x" ; -- QIEGĦDEK > QEGĦDEKX
-            <{form=FormIII}, (n@#C)+(q@#C)+"ie"+(ghdek)> => n+q+(info.patt2.V1)+ghdek+"x" ; -- NQIEGĦDEK > NQEGĦDEKX
-
-            <_, _> + "xx"  => s ; -- BEXX > BEXX
+            <_, _+"xx">  => s2 ; -- BEXX > BEXX
             <_, aqta+"'"> => aqta+"x" ; -- AQTA' > AQTAX
 
             <_, z+"ie"+d+"et"> => z+"i"+d+"itx" ; -- ŻIEDET > ŻIDITX
 
             <_, ftahth+"ie"+lh+"a"> => ftahth+"i"+lh+"iex" ; -- FTAĦTHIELHA > FTAĦTHILHIEX
-            <_, ftahtuh+"ie"+li> => case isMonoSyl s of {
-              True => s + "x" ; -- MIET > MIETX 
+            <_, ftahtuh+"ie"+li> => case isMonoSyl s2 of {
+              True => s2 + "x" ; -- MIET > MIETX 
               _ => ftahtuh+"i"+li+"x" -- FTAĦTUHIELI > FTAĦTUHILIX
               } ;
 
@@ -56,8 +58,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
               _ => x + "iex" -- FTAĦNA > FTAĦNIEX
               } ;
-            <_, ki+t@#Consonant+"e"+b@#Consonant> => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
-            _ => s + "x" -- KTIBT > KTIBTX
+            <_, ki+t@#C+"e"+b@#C> => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
+            _ => s2 + "x" -- KTIBT > KTIBTX
           }
       } ;
 
