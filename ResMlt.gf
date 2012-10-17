@@ -336,9 +336,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       _ => "t" + s
       } ;
     -- This is just here to standardise
-    pfx_J : Str -> Str = \s -> case takePfx 1 s of {
-      "" => [] ;
-      _ => "j" + s
+    -- pfx_J : Str -> Str = \s -> case takePfx 1 s of {
+    --   "" => [] ;
+    --   _ => "j" + s
+    --   } ;
+    pfx_J : Str -> Str = \s -> pfx "j" s ;
+
+    -- Generically prefix a string (avoiding empty strings)
+    pfx : Str -> Str -> Str = \p,s -> case <p,s> of {
+      <_, ""> => [] ;
+      <"", str> => str ;
+      <px, str> => px + str
       } ;
   
     -- Add suffix, avoiding triple letters {GO pg96-7}
