@@ -22,50 +22,50 @@ wordlist:
 
 # Only ever add a treebank here if its gold standard has been checked!
 treebank_all: \
-	treebank_strong_verbs \
-	treebank_weak_verbs \
-	treebank_quad_verbs \
-	treebank_loan_verbs \
-	treebank_formII_verbs \
-	treebank_formII_quad_verbs \
-	treebank_formIII_verbs
+	treebank_verbs_strong \
+	treebank_verbs_weak \
+	treebank_verbs_quad \
+	treebank_verbs_loan \
+	treebank_verbs_formII \
+	treebank_verbs_formII_quad \
+	treebank_verbs_formIII
 
-treebank_strong_verbs:
+treebank_verbs_strong:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
 
-treebank_weak_verbs:
+treebank_verbs_weak:
 	test/treebank.sh verbs "wasal waqaf sab żied mexa qara qata'"
 
-treebank_quad_verbs:
+treebank_verbs_quad:
 	test/treebank.sh verbs "ċempel ħarbat għargħax kanta serva"
 
-treebank_loan_verbs:
+treebank_verbs_loan:
 	test/treebank.sh verbs "żviluppa antagonizza ssuġġerixxa"
 
-treebank_formII_verbs:
+treebank_verbs_formII:
 	test/treebank.sh verbs "ħabbat kisser bexxex waqqaf qajjem neħħa qatta'"
 
-treebank_formII_quad_verbs:
+treebank_verbs_formII_quad:
 	test/treebank.sh verbs "tħarbat sserva tkanta"
 
-treebank_formIII_verbs:
+treebank_verbs_formIII:
 	test/treebank.sh verbs "ħares qiegħed wieġeb"
 
-treebank_formV_verbs:
+treebank_verbs_formV:
 	test/treebank.sh verbs "tniżżel ssellef twassal" # tfejjaq tfaċċa tbeżża'
 
-treebank_formVI_verbs:
+treebank_verbs_formVI:
 	test/treebank.sh verbs "tqiegħed ġġieled" #  tħabat ... tbierek twieġeb tkaża
 
-treebank_formVII_verbs:
+treebank_verbs_formVII:
 	test/treebank.sh verbs "nħasel ntiżen'" #  nġabar ... nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ... nstab nbeda ntlewa nqata'
 
-treebank_formVIII_verbs:
+treebank_verbs_formVIII:
 	test/treebank.sh verbs "ntefaq" #   mtedd xtaq mtela ltaqa'
 
-treebank_formIX_verbs:
+treebank_verbs_formIX:
 	test/treebank.sh verbs "ħdar twal" #  ... rqaq ...
 
-treebank_formX_verbs:
+treebank_verbs_formX:
 	test/treebank.sh verbs "stagħġeb stħarreġ" #    stqarr strieħ staħba
 
