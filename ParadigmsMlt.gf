@@ -649,13 +649,13 @@ resource ParadigmsMlt = open
         in lin V {
           s = table {
             VPerf agr => \\suffix,pol => pfx_T (vII.s ! VPerf agr ! suffix ! pol) ;
-            VImpf (AgP1 Sg) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg) ! suffix ! pol)) ;
-            VImpf (AgP2 Sg) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg) ! suffix ! pol)) ;
-            VImpf (AgP3Sg Masc) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol)) ;
-            VImpf (AgP3Sg Fem)  => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol)) ;
-            VImpf (AgP1 Pl) => \\suffix,pol => "ni" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl) ! suffix ! pol)) ;
-            VImpf (AgP2 Pl) => \\suffix,pol => "ti" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl) ! suffix ! pol)) ;
-            VImpf (AgP3Pl) => \\suffix,pol => "ji" + pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl) ! suffix ! pol)) ;
+            VImpf (AgP1 Sg) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg) ! suffix ! pol))) ;
+            VImpf (AgP2 Sg) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg) ! suffix ! pol))) ;
+            VImpf (AgP3Sg Masc) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol))) ;
+            VImpf (AgP3Sg Fem)  => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol))) ;
+            VImpf (AgP1 Pl) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl) ! suffix ! pol))) ;
+            VImpf (AgP2 Pl) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl) ! suffix ! pol))) ;
+            VImpf (AgP3Pl) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl) ! suffix ! pol))) ;
             VImp num => \\suffix,pol => pfx_T (vII.s ! VImp num ! suffix ! pol)
             } ;
           i = newinfo ;
