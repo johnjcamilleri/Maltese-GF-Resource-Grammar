@@ -102,9 +102,11 @@ Others:
 
 #### Form IV
 
-|_wera_|
-|_għama_|
-|_għana_|
+|Derived mamma|Root|Notes|
+|:------------|:---|:----|
+|_wera_|R-'-J|  |
+|_għama_|GĦ-M-J|  |
+|_għana_|GĦ-N-J|  |
 
 #### Form V
 
@@ -215,6 +217,35 @@ Others:
 |_stenna_|'-N-J|-|Irregular|  |
 |_stieden_|'-D-N|-|Irregular|  |
 
+### Other examples
+
+### Strong verbs
+
+- kiteb, fetaħ, rabat
+- ħareġ, żelaq
+- ħabb, bexx
+
+#### Quad verbs
+
+- gemgem, karkar, għargħax
+- gerbeb
+- żerżaq
+- ħarbat, qarben, xengel
+- kanta, serva, vinċa
+
+#### Loan verbs
+
+- żviluppa
+- pperfezzjona
+- antagonizza
+- bbukkja
+- wweldja
+- ertja
+- ffittja
+- ssuġġerixxa
+- stabilixxa
+
+
 ### Table of derived forms by verb class
 
 Adapted from {MDG}
@@ -288,7 +319,7 @@ A verb can have the following pronominal suffix combinations:
 - Direct Object + Indirect Object, .e.g _FTAĦTHULU_  
   In this case the D.O. is necessarily 3rd person (Masc/Fem/Plural).
   
-### Variations
+## Variations
 
 For liquid-medial verbs some variations seem to exist, when adding pronominal suffixes.
 The following are standard:
