@@ -32,7 +32,8 @@ treebank_all: \
 	treebank_verbs_formV \
 	treebank_verbs_formVI \
 	treebank_verbs_formVII \
-	treebank_verbs_formVIII
+	treebank_verbs_formVIII \
+	treebank_verbs_formIX
 
 treebank_verbs_strong:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
@@ -68,7 +69,7 @@ treebank_verbs_formVIII:
 	test/treebank.sh verbs "ntefaq mtedd ltaqa'" #  ... xtaq mtela ...
 
 treebank_verbs_formIX:
-	test/treebank.sh verbs "ħdar twal" #  ... rqaq ...
+	test/treebank.sh verbs "ħdar rqaq twal"
 
 treebank_verbs_formX:
 	test/treebank.sh verbs "stagħġeb stħarreġ" #    stqarr strieħ staħba
