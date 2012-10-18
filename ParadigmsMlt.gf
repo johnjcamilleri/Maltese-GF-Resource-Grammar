@@ -748,7 +748,7 @@ resource ParadigmsMlt = open
       derivedV_X : Str -> Root -> V = \mammaX,root ->
         let
           class : VClass = classifyRoot root ;
-          patt : Pattern = mkPattern ;
+          patt : Pattern = extractPattern mammaX ;
           newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
         in lin V {
           s = conjFormX newinfo ;
@@ -759,7 +759,7 @@ resource ParadigmsMlt = open
         let
           root : Root = mkRoot str_root ;
           class : VClass = classifyRoot root ;
-          patt : Pattern = mkPattern ;
+          patt : Pattern = extractPattern mammaX ;
           newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
         in lin V {
           s = conjFormX newinfo ;
