@@ -670,8 +670,7 @@ resource ParadigmsMlt = open
           -- use the Form III conjugation, just prefixing a T
           mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
           vIII : V = derivedV_III mammaIII ;
-          newinfo : VerbInfo = mkVerbInfo vIII.i.class FormVI vIII.i.root vIII.i.patt vIII.i.patt2 mammaVI ;
---          newinfo : VerbInfo = vIII.i ** {form=FormVI ; imp=mammaVI } ;
+          newinfo : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
         in lin V {
           s = table {
             VPerf agr => \\suffix,pol => pfx_T (vIII.s ! VPerf agr ! suffix ! pol) ;

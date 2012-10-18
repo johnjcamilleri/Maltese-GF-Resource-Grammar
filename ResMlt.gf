@@ -281,10 +281,17 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         { class=c ; form=f ; root=r ; patt=p ; patt2=p ; imp=i } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Pattern -> Str -> VerbInfo = \c,f,r,p,p2,i ->
         { class=c ; form=f ; root=r ; patt=p ; patt2=p2 ; imp=i } ;
+      } ;
+
+    updateVerbInfo : VerbInfo = overload {
 
       -- Change the derived form of a VerbInfo record
-      mkVerbInfo : VerbInfo -> VDerivedForm -> VerbInfo = \i,f ->
+      updateVerbInfo : VerbInfo -> VDerivedForm -> VerbInfo = \i,f ->
         { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
+
+      -- Change the derived form and imperative of a VerbInfo record
+      updateVerbInfo : VerbInfo -> VDerivedForm -> Str -> VerbInfo = \i,f,imp ->
+        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=imp } ;
 
       } ;
 

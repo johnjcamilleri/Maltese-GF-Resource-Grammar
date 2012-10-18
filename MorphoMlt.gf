@@ -1534,7 +1534,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        info : VerbInfo = i ** {form=FormIII ; imp=wiegeb} ;
+        info : VerbInfo = updateVerbInfo i FormIII wiegeb ;
         sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
         polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
       in
