@@ -420,7 +420,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         ifth : Str = case <info.form, info.class> of {
           <FormII, Quad _> => "i" + verbImpStem info iftah ;
-          <FormVII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; --INĦASL
+          <FormVII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INĦASL
+          <FormVIII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INTEFAQ
           _ => verbImpStem info iftah
           } ;
       in
@@ -681,7 +682,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- IFTAĦ
               } ;
             ifth : Str = case info.form of {
-              FormVII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; --NĦASL
+              FormVII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NĦASL
+              FormVIII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NTEFAQ
               _ => verbImpStem info iftah 
               } ;
             p3sg_dir_u : Str = case info.imp of {
@@ -1544,9 +1546,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
       in
       polSfxTbl ;
 
-    {- ~~~ Form VII verbs ~~~ -}
+    {- ~~~ Form VII and VIII verbs ~~~ -}
 
-    -- C1 contains the entire initial consontant cluster, e.g. NTR in ntrifes
+    -- C1 contains the entire initial consonant cluster, e.g. NTR in NTRIFES
     conjFormVII : VerbInfo -> Str -> (VForm => VSuffixForm => Polarity => Str) = \i,C1 ->
       let
         nhasel : Str = case i.class of {

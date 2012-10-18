@@ -716,9 +716,9 @@ resource ParadigmsMlt = open
           mammaI : Str = delCharAt 1 mammaVIII ;
           info : VerbInfo = classifyVerb mammaI ;
           c1 : Str = info.root.C1+"t";
-          newinfo : VerbInfo = mkVerbInfo info.class FormVIII info.root info.patt mammaVIII ;
+          newinfo : VerbInfo = updateVerbInfo info FormVIII mammaVIII ;
         in lin V {
-          s = conjFormVII newinfo c1 ;
+          s = conjFormVII newinfo c1 ; -- note we use conjFormVIII ! 
           i = newinfo ;
         } ;
 --      } ;
