@@ -1,294 +1,294 @@
 i -retain ParadigmsMlt.gf
 cc -table -unqual mkV_VIII "mtedd"
 ---
-s . VPerf (AgP1 Sg) => VSuffixNone => Pos => mteddt
-s . VPerf (AgP1 Sg) => VSuffixNone => Neg => mteddtx
+s . VPerf (AgP1 Sg) => VSuffixNone => Pos => mteddejt
+s . VPerf (AgP1 Sg) => VSuffixNone => Neg => mteddejtx
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => mteddtek
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => mteddtekx
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => mteddtkom
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => mteddtkomx
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => mteddtu
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => mteddtux
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => mteddtha
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => mteddthiex
-s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => mteddthom
-s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => mteddthomx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => mteddejtek
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => mteddejtekx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => mteddejtkom
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => mteddejtkomx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => mteddejtu
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => mteddejtux
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => mteddejtha
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => mteddejthiex
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => mteddejthom
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => mteddejthomx
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => mteddtlek
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => mteddtlekx
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => mteddtilkom
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => mteddtilkomx
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => mteddtlu
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => mteddtlux
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => mteddtilha
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => mteddtilhiex
-s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => mteddtilhom
-s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => mteddtilhomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => mteddejtlek
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => mteddejtlekx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => mteddejtilkom
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => mteddejtilkomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => mteddejtlu
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => mteddejtlux
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => mteddejtilha
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => mteddejtilhiex
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => mteddejtilhom
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => mteddejtilhomx
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => mteddthulek
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => mteddthulekx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => mteddthulkom
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => mteddthulkomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddthulu
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddthulux
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddthulha
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddthulhiex
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddthulhom
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddthulhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => mteddejthulek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => mteddejthulekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => mteddejthulkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => mteddejthulkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddejthulu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddejthulux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddejthulha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddejthulhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddejthulhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddejthulhomx
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => mteddthielek
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => mteddthilekx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => mteddthielkom
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => mteddthilkomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddthielu
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddthilux
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddthielha
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddthilhiex
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddthielhom
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddthilhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => mteddejthielek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => mteddejthilekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => mteddejthielkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => mteddejthilkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddejthielu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddejthilux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddejthielha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddejthilhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddejthielhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddejthilhomx
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => mteddthomlok
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => mteddthomlokx
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => mteddthomlkom
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => mteddthomlkomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddthomlu
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddthomlux
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddthomlha
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddthomlhiex
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => mteddthomlhom
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => mteddthomlhomx
-s . VPerf (AgP1 Pl) => VSuffixNone => Pos => mteddna
-s . VPerf (AgP1 Pl) => VSuffixNone => Neg => mteddniex
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => mteddejthomlok
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => mteddejthomlokx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => mteddejthomlkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => mteddejthomlkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddejthomlu
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddejthomlux
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddejthomlha
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddejthomlhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => mteddejthomlhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => mteddejthomlhomx
+s . VPerf (AgP1 Pl) => VSuffixNone => Pos => mteddejna
+s . VPerf (AgP1 Pl) => VSuffixNone => Neg => mteddejniex
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => mteddniek
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => mteddnikx
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => mteddniekom
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => mteddnikomx
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => mteddnieh
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => mteddnihx
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => mteddnieha
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => mteddnihiex
-s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => mteddniehom
-s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => mteddnihomx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => mteddejniek
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => mteddejnikx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => mteddejniekom
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => mteddejnikomx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => mteddejnieh
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => mteddejnihx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => mteddejnieha
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => mteddejnihiex
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => mteddejniehom
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => mteddejnihomx
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => mteddnielek
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => mteddnilekx
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => mteddnielkom
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => mteddnilkomx
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => mteddnielu
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => mteddnilux
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => mteddnielha
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => mteddnilhiex
-s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => mteddnielhom
-s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => mteddnilhomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => mteddejnielek
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => mteddejnilekx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => mteddejnielkom
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => mteddejnilkomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => mteddejnielu
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => mteddejnilux
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => mteddejnielha
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => mteddejnilhiex
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => mteddejnielhom
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => mteddejnilhomx
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => mteddnihulek
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => mteddnihulekx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => mteddnihulkom
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => mteddnihulkomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddnihulu
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddnihulux
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddnihulha
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddnihulhiex
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddnihulhom
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddnihulhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => mteddejnihulek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => mteddejnihulekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => mteddejnihulkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => mteddejnihulkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddejnihulu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddejnihulux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddejnihulha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddejnihulhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddejnihulhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddejnihulhomx
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => mteddnihielek
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => mteddnihilekx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => mteddnihielkom
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => mteddnihilkomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddnihielu
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddnihilux
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddnihielha
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddnihilhiex
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddnihielhom
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddnihilhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => mteddejnihielek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => mteddejnihilekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => mteddejnihielkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => mteddejnihilkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddejnihielu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddejnihilux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddejnihielha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddejnihilhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddejnihielhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddejnihilhomx
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => mteddnihomlok
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => mteddnihomlokx
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => mteddnihomlkom
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => mteddnihomlkomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddnihomlu
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddnihomlux
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddnihomlha
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddnihomlhiex
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => mteddnihomlhom
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => mteddnihomlhomx
-s . VPerf (AgP2 Sg) => VSuffixNone => Pos => mteddt
-s . VPerf (AgP2 Sg) => VSuffixNone => Neg => mteddtx
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => mteddtni
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => mteddtnix
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => mteddtna
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => mteddtniex
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => mteddejnihomlok
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => mteddejnihomlokx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => mteddejnihomlkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => mteddejnihomlkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddejnihomlu
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddejnihomlux
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddejnihomlha
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddejnihomlhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => mteddejnihomlhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => mteddejnihomlhomx
+s . VPerf (AgP2 Sg) => VSuffixNone => Pos => mteddejt
+s . VPerf (AgP2 Sg) => VSuffixNone => Neg => mteddejtx
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => mteddejtni
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => mteddejtnix
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => mteddejtna
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => mteddejtniex
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => mteddtu
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => mteddtux
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => mteddtha
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => mteddthiex
-s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => mteddthom
-s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => mteddthomx
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => mteddtli
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => mteddtlix
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => mteddtilna
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => mteddtilniex
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => mteddejtu
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => mteddejtux
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => mteddejtha
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => mteddejthiex
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => mteddejthom
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => mteddejthomx
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => mteddejtli
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => mteddejtlix
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => mteddejtilna
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => mteddejtilniex
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => mteddtlu
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => mteddtlux
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => mteddtilha
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => mteddtilhiex
-s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => mteddtilhom
-s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => mteddtilhomx
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => mteddthuli
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => mteddthulix
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => mteddthulna
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => mteddthulniex
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => mteddejtlu
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => mteddejtlux
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => mteddejtilha
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => mteddejtilhiex
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => mteddejtilhom
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => mteddejtilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => mteddejthuli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => mteddejthulix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => mteddejthulna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => mteddejthulniex
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddthulu
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddthulux
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddthulha
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddthulhiex
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddthulhom
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddthulhomx
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => mteddthieli
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => mteddthilix
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => mteddthielna
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => mteddthilniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddejthulu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddejthulux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddejthulha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddejthulhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddejthulhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddejthulhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => mteddejthieli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => mteddejthilix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => mteddejthielna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => mteddejthilniex
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddthielu
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddthilux
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddthielha
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddthilhiex
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddthielhom
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddthilhomx
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => mteddthomli
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => mteddthomlix
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => mteddthomlna
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => mteddthomlniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddejthielu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddejthilux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddejthielha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddejthilhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddejthielhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddejthilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => mteddejthomli
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => mteddejthomlix
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => mteddejthomlna
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => mteddejthomlniex
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddthomlu
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddthomlux
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddthomlha
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddthomlhiex
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => mteddthomlhom
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => mteddthomlhomx
-s . VPerf (AgP2 Pl) => VSuffixNone => Pos => mteddtu
-s . VPerf (AgP2 Pl) => VSuffixNone => Neg => mteddtux
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => mteddtuni
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => mteddtunix
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => mteddtuna
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => mteddtuniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddejthomlu
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddejthomlux
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddejthomlha
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddejthomlhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => mteddejthomlhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => mteddejthomlhomx
+s . VPerf (AgP2 Pl) => VSuffixNone => Pos => mteddejtu
+s . VPerf (AgP2 Pl) => VSuffixNone => Neg => mteddejtux
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => mteddejtuni
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => mteddejtunix
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => mteddejtuna
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => mteddejtuniex
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => mteddtuh
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => mteddtuhx
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => mteddtuha
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => mteddtuhiex
-s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => mteddtuhom
-s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => mteddtuhomx
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => mteddtuli
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => mteddtulix
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => mteddtulna
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => mteddtulniex
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => mteddejtuh
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => mteddejtuhx
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => mteddejtuha
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => mteddejtuhiex
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => mteddejtuhom
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => mteddejtuhomx
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => mteddejtuli
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => mteddejtulix
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => mteddejtulna
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => mteddejtulniex
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => mteddtulu
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => mteddtulux
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => mteddtulha
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => mteddtulhiex
-s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => mteddtulhom
-s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => mteddtulhomx
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => mteddtuhuli
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => mteddtuhulix
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => mteddtuhulna
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => mteddtuhulniex
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => mteddejtulu
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => mteddejtulux
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => mteddejtulha
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => mteddejtulhiex
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => mteddejtulhom
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => mteddejtulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => mteddejtuhuli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => mteddejtuhulix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => mteddejtuhulna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => mteddejtuhulniex
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddtuhulu
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddtuhulux
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddtuhulha
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddtuhulhiex
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddtuhulhom
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddtuhulhomx
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => mteddtuhieli
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => mteddtuhilix
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => mteddtuhielna
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => mteddtuhilniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => mteddejtuhulu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => mteddejtuhulux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => mteddejtuhulha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => mteddejtuhulhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => mteddejtuhulhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => mteddejtuhulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => mteddejtuhieli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => mteddejtuhilix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => mteddejtuhielna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => mteddejtuhilniex
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddtuhielu
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddtuhilux
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddtuhielha
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddtuhilhiex
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddtuhielhom
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddtuhilhomx
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => mteddtuhomli
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => mteddtuhomlix
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => mteddtuhomlna
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => mteddtuhomlniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => mteddejtuhielu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => mteddejtuhilux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => mteddejtuhielha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => mteddejtuhilhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => mteddejtuhielhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => mteddejtuhilhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => mteddejtuhomli
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => mteddejtuhomlix
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => mteddejtuhomlna
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => mteddejtuhomlniex
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddtuhomlu
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddtuhomlux
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddtuhomlha
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddtuhomlhiex
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => mteddtuhomlhom
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => mteddtuhomlhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => mteddejtuhomlu
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => mteddejtuhomlux
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => mteddejtuhomlha
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => mteddejtuhomlhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => mteddejtuhomlhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => mteddejtuhomlhomx
 s . VPerf (AgP3Sg Masc) => VSuffixNone => Pos => mtedd
 s . VPerf (AgP3Sg Masc) => VSuffixNone => Neg => mteddx
 s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Pos => mteddni
