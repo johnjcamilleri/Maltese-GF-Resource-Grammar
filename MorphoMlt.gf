@@ -1554,6 +1554,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         nhasel : Str = case i.class of {
           Weak Hollow => C1 + i.patt.V1 + i.root.C3 ;
           Weak Lacking => C1 + i.patt.V1 + i.root.C2 + i.patt.V2 ;
+          Weak Defective => C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + "'" ;
           _ => C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3
           } ;
         v1 : Str = case i.patt.V1 of { "ie" => "e" ; v => v } ;
@@ -1570,6 +1571,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Strong LiquidMedial => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
           Weak Hollow => C1 + v1 + i.root.C3 ;
           Weak Lacking => C1 + i.root.C2 + v1 + i.root.C3 ;
+          Weak Defective => C1 + i.root.C2 + v1 + "j" ;
           _ => C1 + v1 + i.root.C2 + v2 + i.root.C3
           } ;
         nhasl : Str = case i.class of {
