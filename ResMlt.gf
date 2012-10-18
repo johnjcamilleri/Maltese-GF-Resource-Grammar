@@ -270,6 +270,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         _ => mkPattern
       } ;
 
+    -- Create a VerbInfo record, optionally omitting various fields
     mkVerbInfo : VerbInfo = overload {
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
         { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; patt2=mkPattern ; imp=[] } ;
@@ -283,13 +284,18 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         { class=c ; form=f ; root=r ; patt=p ; patt2=p2 ; imp=i } ;
       } ;
 
+    -- Change certain fields of a VerbInfo record
     updateVerbInfo : VerbInfo = overload {
 
-      -- Change the derived form of a VerbInfo record
+      -- Root
+      updateVerbInfo : VerbInfo -> Root -> VerbInfo = \i,r ->
+        { class=i.class ; form=i.form ; root=r ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
+
+      -- DerivedForm
       updateVerbInfo : VerbInfo -> VDerivedForm -> VerbInfo = \i,f ->
         { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
 
-      -- Change the derived form and imperative of a VerbInfo record
+      -- DerivedForm, Imperative
       updateVerbInfo : VerbInfo -> VDerivedForm -> Str -> VerbInfo = \i,f,imp ->
         { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=imp } ;
 
