@@ -1569,6 +1569,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         nhsil : Str = case i.class of {
           Strong Regular => C1 + i.root.C2 + v2 + i.root.C3 ;
           Strong LiquidMedial => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
+          Strong Geminated => C1 + v1 + i.root.C2 + i.root.C3 + "ej" ; -- MTEDDEJ-
           Weak Hollow => C1 + v1 + i.root.C3 ;
           Weak Lacking => C1 + i.root.C2 + v1 + i.root.C3 ;
           Weak Defective => C1 + i.root.C2 + v1 + "j" ;
