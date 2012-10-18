@@ -60,7 +60,7 @@ treebank_verbs_formVI:
 	test/treebank.sh verbs "tqiegħed ġġieled" #  tħabat ... tbierek twieġeb tkaża
 
 treebank_verbs_formVII:
-	test/treebank.sh verbs "nħasel ntiżen'" #  nġabar ... nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ... nstab nbeda ntlewa nqata'
+	test/treebank.sh verbs "nħasel ntiżen" #  nġabar ... nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ... nstab nbeda ntlewa nqata'
 
 treebank_verbs_formVIII:
 	test/treebank.sh verbs "ntefaq" #   mtedd xtaq mtela ltaqa'
