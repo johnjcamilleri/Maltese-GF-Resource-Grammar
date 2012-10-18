@@ -732,7 +732,8 @@ resource ParadigmsMlt = open
             let
               root : Root = mkRoot c1 c2 c3 ;
               patt : Pattern = mkPattern v1 ;
-              newinfo : VerbInfo = mkVerbInfo (Strong Regular) FormIX root patt mammaIX ;
+              class : VClass = classifyRoot root ;
+              newinfo : VerbInfo = mkVerbInfo class FormIX root patt mammaIX ;
             in lin V {
               s = conjFormIX newinfo ;
               i = newinfo ;
