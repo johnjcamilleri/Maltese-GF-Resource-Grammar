@@ -420,6 +420,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         ifth : Str = case <info.form, info.class> of {
           <FormII, Quad _> => "i" + verbImpStem info iftah ;
+          <FormVII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; --INĦASL
           _ => verbImpStem info iftah
           } ;
       in
@@ -679,7 +680,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB --- potentially slow
               x => x -- IFTAĦ
               } ;
-            ifth : Str = verbImpStem info iftah ;
+            ifth : Str = case info.form of {
+              FormVII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; --NĦASL
+              _ => verbImpStem info iftah 
+              } ;
             p3sg_dir_u : Str = case info.imp of {
               _ + "a" => "ah" ; -- KANTAH
               _ + "i" => "ih" ; -- SERVIH
@@ -1542,7 +1546,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     {- ~~~ Form VII verbs ~~~ -}
 
-    -- C1 of verbinfo should contain the entire consontant cluster
+    -- C1 contains the entire initial consontant cluster, e.g. NTR in ntrifes
     conjFormVII : VerbInfo -> Str -> (VForm => VSuffixForm => Polarity => Str) = \i,C1 ->
       let
         nhasel : Str = case i.class of {
@@ -1552,10 +1556,18 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         v1 : Str = case i.patt.V1 of { "ie" => "e" ; v => v } ;
         v2 : Str = case i.patt.V2 of { "e" => "i" ; v => v } ;
-        nhsil : Str = case <i.class,i.root.C1> of {
-          <Strong Regular,#LiquidCons|"s"> => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
-          <Weak Hollow,_> => C1 + v1 + i.root.C3 ;
-          <Weak Lacking,_> => C1 + i.root.C2 + v1 + i.root.C3 ;
+        -- nhsil : Str = case <i.class,i.root.C1> of {
+        --   <Strong Regular,_> => C1 + i.root.C2 + v2 + i.root.C3 ;
+        --   <Strong LiquidMedial,_> => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
+        --   <Weak Hollow,_> => C1 + v1 + i.root.C3 ;
+        --   <Weak Lacking,_> => C1 + i.root.C2 + v1 + i.root.C3 ;
+        --   _ => C1 + v1 + i.root.C2 + v2 + i.root.C3
+        --   } ;
+        nhsil : Str = case i.class of {
+          Strong Regular => C1 + i.root.C2 + v2 + i.root.C3 ;
+          Strong LiquidMedial => C1 + v1 + i.root.C2 + v2 + i.root.C3 ;
+          Weak Hollow => C1 + v1 + i.root.C3 ;
+          Weak Lacking => C1 + i.root.C2 + v1 + i.root.C3 ;
           _ => C1 + v1 + i.root.C2 + v2 + i.root.C3
           } ;
         nhasl : Str = case i.class of {
@@ -1597,8 +1609,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           VImpf agr => impf ! agr ;
           VImp num  => imp ! num
           } ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
+        fakeinfo : VerbInfo = updateVerbInfo i (mkRoot C1 i.root.C2 i.root.C3) ;
+        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable fakeinfo tbl ;
+        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable fakeinfo sfxTbl ;
       in
       polSfxTbl ;
 

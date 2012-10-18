@@ -30,7 +30,8 @@ treebank_all: \
 	treebank_verbs_formII_quad \
 	treebank_verbs_formIII \
 	treebank_verbs_formV \
-	treebank_verbs_formVI
+	treebank_verbs_formVI \
+	treebank_verbs_formVII
 
 treebank_verbs_strong:
 	test/treebank.sh verbs "fetaħ kiteb ħass xamm ħareġ lagħab għamel"
