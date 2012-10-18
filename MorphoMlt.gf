@@ -155,6 +155,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <FormII, Quad QStrong> => pfx_T info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ; -- TĦARBT
               <FormII, Quad QWeak> => pfx_T info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- SSERV
               <FormII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- ĦABB
+              <FormIX, _> => mamma ; -- info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- ĦDAR
               <_, Weak Hollow> => info.root.C1 + info.patt.V1 + info.root.C3 ; -- SAB
               <_, Weak Lacking> => info.root.C1 + info.patt.V1 + info.root.C2 ; -- MEX
               <_, Quad QStrong> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 + info.root.C4 ;
@@ -422,6 +423,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           <FormII, Quad _> => "i" + verbImpStem info iftah ;
           <FormVII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INĦASL
           <FormVIII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INTEFAQ
+          <FormIX, _> => "i" + info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- -IĦDAR
           _ => verbImpStem info iftah
           } ;
       in
@@ -684,6 +686,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             ifth : Str = case info.form of {
               FormVII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NĦASL
               FormVIII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NTEFAQ
+              FormIX => info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- ĦDAR
               _ => verbImpStem info iftah 
               } ;
             p3sg_dir_u : Str = case info.imp of {
