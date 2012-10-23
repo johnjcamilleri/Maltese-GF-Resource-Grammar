@@ -20,6 +20,18 @@ for FILENAME in $FILES ; do
     FILE="$DIR$FILENAME.treebank"
     IX=`grep -m 1 -n "^---" "$FILE" | cut -f1 -d':'`
 
+    # Check and confirm if file is already non-empty
+    LINES=`wc -l "$FILE" | cut -f1 -d' '`
+    if [ $LINES -gt 10 ]; then
+        read -p "$FILE is not empty, are you sure [y/n]? " -n 1
+        echo
+        if [[ ! $REPLY =~ ^[Yy]$ ]]
+        then
+            echo "File skipped"
+            continue
+        fi
+    fi    
+
     # Run
     head -n `expr $IX` "$FILE" > "$TMP_CMD"
     head -n `expr $IX - 1` "$FILE" | gf --run > "$TMP_OUT"
@@ -30,5 +42,5 @@ for FILENAME in $FILES ; do
 done
 
 # Output
-echo "================================================================================"
+echo
 echo "Done - remember to manually check your gold standard files"
