@@ -436,7 +436,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           <FormVIII, _>    => "i" + verbImpStem info iftah ;
           <FormIX, _>      => "i" + verbImpStem info iftah ;
           <FormX, _> => case info.imp of {
---            str + "ie" + b@#Cns => "i" + str + info.patt2.V1 + b ; -- -ISTRIĦ
+--            str + "ie" + b@#Cns => "i" + info.imp ; -- -ISTRIĦ
             staghg + e@#Vwl + b@#Cns => "i" + staghg + b ; -- -ISTAGĦĠB, -ISTĦARRĠ
             _ => "i" + info.imp -- ISTQARR
             } ;
