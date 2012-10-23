@@ -41,7 +41,7 @@ for FILENAME in $FILES ; do
     # Combine to treebank
     cat "$TMP_CMD" "$TMP_OUT" > "$FILE"
     echo "Wrote to ${FILE}"
-    $COUNTER++
+    COUNTER=$(($COUNTER+1))
 done
 
 # Output
