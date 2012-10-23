@@ -354,6 +354,9 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         <FormII, _> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- -ĦABBT
         <FormIII, Strong LiquidMedial> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -ĦARS
         <FormIII, Weak Assimilative> => info.root.C1 + vowels.V1 + info.root.C2 + info.root.C3 ; -- -WIEĠB
+        <FormVII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -NĦASL
+        <FormVIII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -NTEFAQ
+        <FormIX, _> => info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- -ĦDAR
         <_, Strong LiquidMedial> => case info.root.C1 of {
           "għ" => vowels.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -AGĦML
           _ => vowels.V1 + info.root.C1 + vowels.V2 + info.root.C2 + info.root.C3 -- -OĦORĠ
@@ -426,15 +429,14 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
         ifth : Str = case <info.form, info.class> of {
           <FormII, Quad _> => "i" + verbImpStem info iftah ;
-          <FormVII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INĦASL
-          <FormVIII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INTEFAQ
-          <FormIX, _> => "i" + info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- -IĦDAR
+          <FormVII, _>     => "i" + verbImpStem info iftah ;
+          <FormVIII, _>    => "i" + verbImpStem info iftah ;
+          <FormIX, _>      => "i" + verbImpStem info iftah ;
           <FormX, _> => case info.imp of {
 --            str + "ie" + b@#Cns => "i" + str + info.patt2.V1 + b ; -- -ISTRIĦ
             staghg + e@#Vwl + b@#Cns => "i" + staghg + b ; -- -ISTAGĦĠB, -ISTĦARRĠ
             _ => "i" + info.imp -- ISTQARR
             } ;
-          -- <FormX, _> => "ist" + info.patt.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -ISTAGĦĠEB
           _ => verbImpStem info iftah
           } ;
       in
@@ -695,9 +697,6 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               x => x -- IFTAĦ
               } ;
             ifth : Str = case info.form of {
-              FormVII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NĦASL
-              FormVIII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NTEFAQ
-              FormIX => info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- ĦDAR
               FormX => case info.imp of {
                 staghg + e@#Vwl + b@#Cns => staghg + b ; -- STAGĦĠB, STĦARRĠ
                 _ => info.imp -- STQARR
