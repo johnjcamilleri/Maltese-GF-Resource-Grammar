@@ -694,11 +694,11 @@ resource ParadigmsMlt = open
         let
           info : VerbInfo = classifyVerb mammaI ;
           c1 : Str = case mammaVII of {
-            "n" + c@#C + "t" + _ => "n"+c+"t" ; -- NXT-EĦET
+            "n" + c@#Cns + "t" + _ => "n"+c+"t" ; -- NXT-EĦET
             "ntgħ" + _ => "ntgħ" ; -- NTGĦ-AĠEN
-            "nt" + c@#C + _ => "nt"+c ; -- NTR-IFES
+            "nt" + c@#Cns + _ => "nt"+c ; -- NTR-IFES
             "nt" + #Vowel + _ => "nt" ; -- NT-IŻEN
-            "n" + c@#C + _ => "n"+c ; -- NĦ-ASEL
+            "n" + c@#Cns + _ => "n"+c ; -- NĦ-ASEL
             _ => "nt" --- unknown case
             } ;
           newinfo : VerbInfo = mkVerbInfo info.class FormVII info.root info.patt mammaVII ;

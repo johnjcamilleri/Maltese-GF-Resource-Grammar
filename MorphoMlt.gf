@@ -17,10 +17,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         s = tbl ! vf ! sfxf ;
         -- First some pre-processing of stem
         s2 : Str = case <info, s> of {
-            <{form=FormIII}, (w@#C)+"ie"+(g@#C)+"e"+(b)> => w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- WIEĠEB > WIĠIB-
-            <{form=FormIII}, (n@#C)+(w@#C)+"ie"+(g@#C)+"e"+(b)> => n+w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- NWIEĠEB > NWIĠIB-
-            <{form=FormIII}, (q@#C)+"ie"+(ghdek)> => q+(info.patt2.V1)+ghdek ; -- QIEGĦDEK > QEGĦDEK-
-            <{form=FormIII}, (n@#C)+(q@#C)+"ie"+(ghdek)> => n+q+(info.patt2.V1)+ghdek ; -- NQIEGĦDEK > NQEGĦDEK-
+            <{form=FormIII}, (w@#Cns)+"ie"+(g@#Cns)+"e"+(b)> => w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- WIEĠEB > WIĠIB-
+            <{form=FormIII}, (n@#Cns)+(w@#Cns)+"ie"+(g@#Cns)+"e"+(b)> => n+w+(info.patt2.V1)+g+(info.patt2.V2)+b ; -- NWIEĠEB > NWIĠIB-
+            <{form=FormIII}, (q@#Cns)+"ie"+(ghdek)> => q+(info.patt2.V1)+ghdek ; -- QIEGĦDEK > QEGĦDEK-
+            <{form=FormIII}, (n@#Cns)+(q@#Cns)+"ie"+(ghdek)> => n+q+(info.patt2.V1)+ghdek ; -- NQIEGĦDEK > NQEGĦDEK-
             _ => s
           } ;
       in table {
@@ -58,7 +58,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <_ + "a", VImp _, VSuffixNone> => x + "ax" ; -- KANTA > KANTAX
               _ => x + "iex" -- FTAĦNA > FTAĦNIEX
               } ;
-            <_, ki+t@#C+"e"+b@#C> => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
+            <_, ki+t@#Cns+"e"+b@#Cns> => ki+t+"i"+b+"x" ; -- KITEB > KITIBX
             _ => s2 + "x" -- KTIBT > KTIBTX
           }
       } ;
@@ -157,7 +157,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               <FormII, _> => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C2 + info.root.C3 ; -- ĦABB
               <FormIX, _> => mamma ; -- info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- ĦDAR
               <FormX, _> => case info.imp of {
-                staghg + e@#V + b@#C => staghg + b ; -- STAGĦĠB, STĦARRĠ
+                staghg + e@#Vwl + b@#Cns => staghg + b ; -- STAGĦĠB, STĦARRĠ
                 _ => info.imp -- STQARR
                 } ;
               -- <FormX, _> => "st" + info.patt.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- STAGĦĠB
@@ -217,7 +217,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             fethet = tbl ! AgP3Sg Fem ;
             fethit : Str = case fethet of {
-              q@#C+ "ie" + #C + #C + _ => q+(info.patt2.V1)+info.root.C2+info.root.C3+"it" ; -- WIEĠBET > WIĠBIT
+              q@#Cns+ "ie" + #Cns + #Cns + _ => q+(info.patt2.V1)+info.root.C2+info.root.C3+"it" ; -- WIEĠBET > WIĠBIT
               _ + "għet" => (dropSfx 2 fethet) + "at" ; -- QATTGĦET > QATTGĦATNI...  --- very specific
               _ + "iet" => fethet ; -- SERVIET
               feth + "et" => (ie2i feth) + "it" ;
@@ -430,7 +430,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           <FormVIII, _> => "i" + info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- -INTEFAQ
           <FormIX, _> => "i" + info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- -IĦDAR
           <FormX, _> => case info.imp of {
-            staghg + e@#V + b@#C => "i" + staghg + b ; -- -ISTAGĦĠB, -ISTĦARRĠ
+--            str + "ie" + b@#Cns => "i" + str + info.patt2.V1 + b ; -- -ISTRIĦ
+            staghg + e@#Vwl + b@#Cns => "i" + staghg + b ; -- -ISTAGĦĠB, -ISTĦARRĠ
             _ => "i" + info.imp -- ISTQARR
             } ;
           -- <FormX, _> => "ist" + info.patt.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- -ISTAGĦĠEB
@@ -698,7 +699,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
               FormVIII => info.root.C1 + info.patt.V1 + info.root.C2 + info.root.C3 ; -- NTEFAQ
               FormIX => info.root.C1 + info.root.C2 + info.patt.V1 + info.root.C3 ; -- ĦDAR
               FormX => case info.imp of {
-                staghg + e@#V + b@#C => staghg + b ; -- STAGĦĠB, STĦARRĠ
+                staghg + e@#Vwl + b@#Cns => staghg + b ; -- STAGĦĠB, STĦARRĠ
                 _ => info.imp -- STQARR
                 } ;
               -- FormX => "st" + info.patt.V1 + info.root.C1 + info.root.C2 + info.root.C3 ; -- STAGĦĠEB

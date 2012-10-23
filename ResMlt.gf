@@ -213,9 +213,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Digraph : pattern Str = #( "ie" );
     SemiVowel : pattern Str = #( "għ" | "j" );
 
-    V = Vowel ;
-    C = Consonant ;
-    LC = LiquidCons ;
+    Vwl = Vowel ;
+    Cns = Consonant ;
+    LCns = LiquidCons ;
 
     EorI : Str = "e" | "i" ;
     IorE : Str = "i" | "e" ;
