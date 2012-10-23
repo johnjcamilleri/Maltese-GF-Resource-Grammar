@@ -16,6 +16,7 @@ FILES="$2"
 #set -e
 rm --force "$TMP_CMD" "$TMP_OUT"
 
+COUNTER=0
 for FILENAME in $FILES ; do
     FILE="$DIR$FILENAME.treebank"
     IX=`grep -m 1 -n "^---" "$FILE" | cut -f1 -d':'`
@@ -24,13 +25,14 @@ for FILENAME in $FILES ; do
     LINES=`wc -l "$FILE" | cut -f1 -d' '`
     if [ $LINES -gt 10 ]; then
         read -p "$FILE is not empty, are you sure [y/n]? " -n 1
-        echo
         if [[ ! $REPLY =~ ^[Yy]$ ]]
         then
-            echo "File skipped"
+            echo " File skipped"
             continue
+        else
+            echo
         fi
-    fi    
+    fi
 
     # Run
     head -n `expr $IX` "$FILE" > "$TMP_CMD"
@@ -39,8 +41,11 @@ for FILENAME in $FILES ; do
     # Combine to treebank
     cat "$TMP_CMD" "$TMP_OUT" > "$FILE"
     echo "Wrote to ${FILE}"
+    $COUNTER++
 done
 
 # Output
-echo
-echo "Done - remember to manually check your gold standard files"
+echo "$COUNTER files processed"
+if [[ $COUNTER > 0 ]]; then
+    echo "Remember to manually check your gold standard files"
+fi
