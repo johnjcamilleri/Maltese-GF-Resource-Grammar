@@ -622,11 +622,7 @@ resource ParadigmsMlt = open
         let
           info : VerbInfo = classifyVerb (ie2i mammaIII) ;
           vowels : Pattern = extractPattern mammaIII ;
-          vowels2 : Pattern = case <info.root, vowels> of { -- see {GO pg93}
-            <{C2="għ"},{V1="ie";V2="e"}> => mkPattern "e" "i" ; -- QIEGĦED > QEGĦIDKOM
-            <_,{V1="ie";V2="e"}> => mkPattern "i" "i" ; -- WIEĠEB > WIĠIBKOM
-            _ => vowels
-            } ;
+          vowels2 : Pattern = vowelChangesIE info.root vowels ;
           newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
         in lin V {
           s = conjFormIII newinfo ;
@@ -749,7 +745,8 @@ resource ParadigmsMlt = open
         let
           class : VClass = classifyRoot root ;
           patt : Pattern = extractPattern mammaX ;
-          newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
+          patt2 : Pattern = vowelChangesIE root patt ;
+          newinfo : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
         in lin V {
           s = conjFormX newinfo ;
           i = newinfo ;
@@ -760,7 +757,8 @@ resource ParadigmsMlt = open
           root : Root = mkRoot str_root ;
           class : VClass = classifyRoot root ;
           patt : Pattern = extractPattern mammaX ;
-          newinfo : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
+          patt2 : Pattern = vowelChangesIE root patt ;
+          newinfo : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
         in lin V {
           s = conjFormX newinfo ;
           i = newinfo ;

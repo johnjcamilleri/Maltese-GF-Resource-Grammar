@@ -893,6 +893,15 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     --       }
     --   } ;
 
+    -- IE/I vowel changes
+    -- so far only used in derived verbs
+    vowelChangesIE : Root -> Pattern -> Pattern = \root,vowels ->
+      case <root, vowels> of { -- see {GO pg93}
+        <{C2="għ"},{V1="ie";V2="e"}> => mkPattern "e" "i" ; -- QIEGĦED > QEGĦIDKOM
+        <_,{V1="ie";V2="e"}> => mkPattern "i" "i" ; -- WIEĠEB > WIĠIBKOM
+        <_,{V1="ie";V2=""}> => mkPattern "i" ; -- STRIEĦ > STRIĦAJT
+        _ => vowels
+      } ;
 
     {- ~~~ Strong Verb ~~~ -}
 
