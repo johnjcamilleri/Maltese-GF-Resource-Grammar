@@ -420,9 +420,12 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           } ;
 
         -- This stem is prefixed with n/t/j/t/n/t/j
+        --- this table must really be cleaned up with some better criteria.
+        --- this table is essentially duplicated in verbImpPronSuffixTable
         iftah : Str = case dropPfx 1 (tbl ! AgP1 Sg) of {
           "ie"+qaf => "i"+qaf ; -- -IEQAF > -IQAF
-          w+"ie"+g+"e"+b => w+(info.patt2.V1)+g+"i"+b ; -- -WIEĠEB > -WIĠIB --- IorE?
+          w+"ie"+g+"e"+b => w+(info.patt2.V1)+g+"i"+b ; -- -WIEĠEB > -WIĠIB
+          str+"ie"+h => str+(info.patt2.V1)+h ; -- -STRIEĦ > -STRIĦ --- to general?
           aqta+"'" => aqta+"għ" ; -- -AQTA' > -AQTAGĦ
           ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- -IKTEB > -IKTIB --- potentially slow
           iftah => iftah -- -IFTAĦ
@@ -690,7 +693,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           let
             vowels = extractPattern (tbl ! Sg) ;
             iftah : Str = case (tbl ! Sg) of {
-              w+"ie"+g+"e"+b => w+(info.patt2.V1)+g+"i"+b ; -- -WIEĠEB > -WIĠIB --- IorE?
+              w+"ie"+g+"e"+b => w+(info.patt2.V1)+g+"i"+b ; -- -WIEĠEB > -WIĠIB
+              str+"ie"+h@#Cns => str+(info.patt2.V1)+h ; -- -STRIEĦ > -STRIĦ --- too general?
               "ie"+qaf=> "i"+qaf ; -- IEQAF > IQAF
               aqta+"'" => aqta+"għ" ; -- AQTA' > AQTAGĦ
               ik+t@#Consonant+"e"+b@#Consonant => ik+t+"i"+b ; -- IKTEB > IKTIB --- potentially slow
@@ -1710,6 +1714,22 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             AgP1 Pl => stkenn + "ejna" ;
             AgP2 Pl => stkenn + "ejtu" ;
             AgP3Pl => stkenn + "ew"
+            } ;
+          -- STRIEĦ
+          _ + "ie" + #Consonant =>
+            let
+              strieh : Str = mamma ;
+              strih : Str = ie2_ i.patt2.V1 strieh ;
+              strihaj : Str = strih + "aj"
+            in
+            table {
+            AgP1 Sg => strihaj + "t" ;
+            AgP2 Sg => strihaj + "t" ;
+            AgP3Sg Masc => mamma ;
+            AgP3Sg Fem => strieh + "et" ;
+            AgP1 Pl => strihaj + "na" ;
+            AgP2 Pl => strihaj + "tu" ;
+            AgP3Pl => strieh + "u"
             } ;
           -- STĦARREĠ
           _ =>
