@@ -718,7 +718,7 @@ resource ParadigmsMlt = open
           c1 : Str = info.root.C1+"t";
           newinfo : VerbInfo = updateVerbInfo info FormVIII mammaVIII ;
         in lin V {
-          s = conjFormVII newinfo c1 ; -- note we use conjFormVIII ! 
+          s = conjFormVII newinfo c1 ; -- note we use conjFormVII !
           i = newinfo ;
         } ;
 --      } ;
