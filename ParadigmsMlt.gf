@@ -273,6 +273,9 @@ resource ParadigmsMlt = open
 
 
     {- ===== Verb paradigms ===== -}
+
+    mkRoot = ResMlt.mkRoot ;
+
 {-
     -- Takes a verb as a string determined derived form
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)

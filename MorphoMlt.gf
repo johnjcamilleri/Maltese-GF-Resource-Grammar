@@ -6,7 +6,9 @@
 
 resource MorphoMlt = ResMlt ** open Prelude in {
 
-  flags optimize=noexpand ; coding=utf8 ;
+  flags
+    optimize=noexpand ;
+    coding=utf8 ;
 
   oper
 
