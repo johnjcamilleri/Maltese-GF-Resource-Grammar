@@ -1,5 +1,8 @@
 all: batch
 
+rgl:
+	runghc ../Make lang api langs=Mlt
+
 batch:
 #	time gf +RTS -K1000M -RTS --batch AllMlt.gf
 	time gf --batch AllMlt.gf
