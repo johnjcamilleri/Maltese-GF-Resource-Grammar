@@ -3,10 +3,10 @@ cc -table -unqual mkV_VIII "ntefaq"
 ---
 s . VPerf (AgP1 Sg) => VSuffixNone => Pos => ntfaqt
 s . VPerf (AgP1 Sg) => VSuffixNone => Neg => ntfaqtx
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => ntfaqtek
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => ntfaqtekx
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => ntfaqtkom
@@ -17,10 +17,10 @@ s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => ntfaqtha
 s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => ntfaqthiex
 s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => ntfaqthom
 s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => ntfaqthomx
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => ntfaqtlek
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => ntfaqtlekx
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => ntfaqtilkom
@@ -31,10 +31,10 @@ s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => ntfaqtilha
 s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => ntfaqtilhiex
 s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => ntfaqtilhom
 s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => ntfaqtilhomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ntfaqthulek
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ntfaqthulekx
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ntfaqthulkom
@@ -45,10 +45,10 @@ s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntfaqthul
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ntfaqthulhiex
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ntfaqthulhom
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ntfaqthulhomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ntfaqthielek
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ntfaqthilekx
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ntfaqthielkom
@@ -59,10 +59,10 @@ s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntfaqthiel
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ntfaqthilhiex
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ntfaqthielhom
 s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ntfaqthilhomx
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ntfaqthomlok
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ntfaqthomlokx
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ntfaqthomlkom
@@ -75,10 +75,10 @@ s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => ntfaqthomlhom
 s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => ntfaqthomlhomx
 s . VPerf (AgP1 Pl) => VSuffixNone => Pos => ntfaqna
 s . VPerf (AgP1 Pl) => VSuffixNone => Neg => ntfaqniex
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => ntfaqniek
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => ntfaqnikx
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => ntfaqniekom
@@ -89,10 +89,10 @@ s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => ntfaqnieha
 s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => ntfaqnihiex
 s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => ntfaqniehom
 s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => ntfaqnihomx
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => ntfaqnielek
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => ntfaqnilekx
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => ntfaqnielkom
@@ -103,10 +103,10 @@ s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => ntfaqnielha
 s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => ntfaqnilhiex
 s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => ntfaqnielhom
 s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => ntfaqnilhomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ntfaqnihulek
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ntfaqnihulekx
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ntfaqnihulkom
@@ -117,10 +117,10 @@ s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntfaqnihu
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ntfaqnihulhiex
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ntfaqnihulhom
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ntfaqnihulhomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ntfaqnihielek
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ntfaqnihilekx
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ntfaqnihielkom
@@ -131,10 +131,10 @@ s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntfaqnihie
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ntfaqnihilhiex
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ntfaqnihielhom
 s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ntfaqnihilhomx
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
-s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ntfaqnihomlok
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ntfaqnihomlokx
 s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ntfaqnihomlkom
@@ -151,10 +151,10 @@ s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => ntfaqtni
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => ntfaqtnix
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => ntfaqtna
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => ntfaqtniex
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => ntfaqtu
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => ntfaqtux
 s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => ntfaqtha
@@ -165,10 +165,10 @@ s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => ntfaqtli
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => ntfaqtlix
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => ntfaqtilna
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => ntfaqtilniex
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => ntfaqtlu
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => ntfaqtlux
 s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => ntfaqtilha
@@ -179,10 +179,10 @@ s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ntfaqthuli
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ntfaqthulix
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ntfaqthulna
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ntfaqthulniex
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ntfaqthulu
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ntfaqthulux
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntfaqthulha
@@ -193,10 +193,10 @@ s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ntfaqthieli
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ntfaqthilix
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ntfaqthielna
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ntfaqthilniex
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ntfaqthielu
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ntfaqthilux
 s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntfaqthielha
@@ -207,10 +207,10 @@ s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ntfaqthomli
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ntfaqthomlix
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ntfaqthomlna
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ntfaqthomlniex
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ntfaqthomlu
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ntfaqthomlux
 s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ntfaqthomlha
@@ -223,10 +223,10 @@ s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => ntfaqtuni
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => ntfaqtunix
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => ntfaqtuna
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => ntfaqtuniex
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => ntfaqtuh
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => ntfaqtuhx
 s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => ntfaqtuha
@@ -237,10 +237,10 @@ s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => ntfaqtuli
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => ntfaqtulix
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => ntfaqtulna
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => ntfaqtulniex
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => ntfaqtulu
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => ntfaqtulux
 s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => ntfaqtulha
@@ -251,10 +251,10 @@ s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ntfaqtuhuli
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ntfaqtuhulix
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ntfaqtuhulna
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ntfaqtuhulniex
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ntfaqtuhulu
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ntfaqtuhulux
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntfaqtuhulha
@@ -265,10 +265,10 @@ s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ntfaqtuhieli
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ntfaqtuhilix
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ntfaqtuhielna
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ntfaqtuhilniex
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ntfaqtuhielu
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ntfaqtuhilux
 s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntfaqtuhielha
@@ -279,10 +279,10 @@ s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ntfaqtuhomli
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ntfaqtuhomlix
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ntfaqtuhomlna
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ntfaqtuhomlniex
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ntfaqtuhomlu
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ntfaqtuhomlux
 s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ntfaqtuhomlha
@@ -507,10 +507,10 @@ s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Pos => ntefquhomlhom
 s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Neg => ntefquhomlhomx
 s . VImpf (AgP1 Sg) => VSuffixNone => Pos => nintefaq
 s . VImpf (AgP1 Sg) => VSuffixNone => Neg => nintefaqx
-s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => nintefqek
 s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => nintefqekx
 s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => nintefaqkom
@@ -521,10 +521,10 @@ s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => nintefaqha
 s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => nintefaqhiex
 s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => nintefaqhom
 s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => nintefaqhomx
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => nintefaqlek
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => nintefaqlekx
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => nintefqilkom
@@ -535,10 +535,10 @@ s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => nintefqilha
 s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => nintefqilhiex
 s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => nintefqilhom
 s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => nintefqilhomx
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => nintefaqhulek
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => nintefaqhulekx
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => nintefaqhulkom
@@ -549,10 +549,10 @@ s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => nintefaqh
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => nintefaqhulhiex
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => nintefaqhulhom
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => nintefaqhulhomx
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => nintefaqhielek
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => nintefaqhilekx
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => nintefaqhielkom
@@ -563,10 +563,10 @@ s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => nintefaqhi
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => nintefaqhilhiex
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => nintefaqhielhom
 s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => nintefaqhilhomx
-s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => nintefaqhomlok
 s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => nintefaqhomlokx
 s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => nintefaqhomlkom
@@ -579,10 +579,10 @@ s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => nintefaqhomlhom
 s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => nintefaqhomlhomx
 s . VImpf (AgP1 Pl) => VSuffixNone => Pos => nintefqu
 s . VImpf (AgP1 Pl) => VSuffixNone => Neg => nintefqux
-s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => nintefquk
 s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => nintefqukx
 s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => nintefqukom
@@ -593,10 +593,10 @@ s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => nintefquha
 s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => nintefquhiex
 s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => nintefquhom
 s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => nintefquhomx
-s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => nintefqulek
 s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => nintefqulekx
 s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => nintefqulkom
@@ -607,10 +607,10 @@ s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => nintefqulha
 s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => nintefqulhiex
 s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => nintefqulhom
 s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => nintefqulhomx
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => nintefquhulek
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => nintefquhulekx
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => nintefquhulkom
@@ -621,10 +621,10 @@ s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => nintefquh
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => nintefquhulhiex
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => nintefquhulhom
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => nintefquhulhomx
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => nintefquhielek
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => nintefquhilekx
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => nintefquhielkom
@@ -635,10 +635,10 @@ s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => nintefquhi
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => nintefquhilhiex
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => nintefquhielhom
 s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => nintefquhilhomx
-s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => []
-s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => []
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
 s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => nintefquhomlok
 s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => nintefquhomlokx
 s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => nintefquhomlkom
@@ -655,10 +655,10 @@ s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => tintefaqni
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => tintefaqnix
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => tintefaqna
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => tintefaqniex
-s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => tintefqu
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => tintefqux
 s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => tintefaqha
@@ -669,10 +669,10 @@ s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => tintefaqli
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => tintefaqlix
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => tintefqilna
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => tintefqilniex
-s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => tintefaqlu
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => tintefaqlux
 s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => tintefqilha
@@ -683,10 +683,10 @@ s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => tintefaqhuli
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => tintefaqhulix
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => tintefaqhulna
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => tintefaqhulniex
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => tintefaqhulu
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => tintefaqhulux
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => tintefaqhulha
@@ -697,10 +697,10 @@ s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => tintefaqhieli
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => tintefaqhilix
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => tintefaqhielna
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => tintefaqhilniex
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => tintefaqhielu
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => tintefaqhilux
 s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => tintefaqhielha
@@ -711,10 +711,10 @@ s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => tintefaqhomli
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => tintefaqhomlix
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => tintefaqhomlna
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => tintefaqhomlniex
-s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => tintefaqhomlu
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => tintefaqhomlux
 s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => tintefaqhomlha
@@ -727,10 +727,10 @@ s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => tintefquni
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => tintefqunix
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => tintefquna
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => tintefquniex
-s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => tintefquh
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => tintefquhx
 s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => tintefquha
@@ -741,10 +741,10 @@ s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => tintefquli
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => tintefqulix
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => tintefqulna
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => tintefqulniex
-s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => tintefqulu
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => tintefqulux
 s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => tintefqulha
@@ -755,10 +755,10 @@ s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => tintefquhuli
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => tintefquhulix
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => tintefquhulna
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => tintefquhulniex
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => tintefquhulu
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => tintefquhulux
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => tintefquhulha
@@ -769,10 +769,10 @@ s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => tintefquhieli
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => tintefquhilix
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => tintefquhielna
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => tintefquhilniex
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => tintefquhielu
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => tintefquhilux
 s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => tintefquhielha
@@ -783,10 +783,10 @@ s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => tintefquhomli
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => tintefquhomlix
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => tintefquhomlna
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => tintefquhomlniex
-s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => tintefquhomlu
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => tintefquhomlux
 s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => tintefquhomlha
@@ -1015,10 +1015,10 @@ s . VImp Sg => VSuffixDir (AgP1 Sg) => Pos => ntefaqni
 s . VImp Sg => VSuffixDir (AgP1 Sg) => Neg => ntefaqnix
 s . VImp Sg => VSuffixDir (AgP1 Pl) => Pos => ntefaqna
 s . VImp Sg => VSuffixDir (AgP1 Pl) => Neg => ntefaqniex
-s . VImp Sg => VSuffixDir (AgP2 Sg) => Pos => []
-s . VImp Sg => VSuffixDir (AgP2 Sg) => Neg => []
-s . VImp Sg => VSuffixDir (AgP2 Pl) => Pos => []
-s . VImp Sg => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Pos => ntefqu
 s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Neg => ntefqux
 s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Pos => ntefaqha
@@ -1029,10 +1029,10 @@ s . VImp Sg => VSuffixInd (AgP1 Sg) => Pos => ntefaqli
 s . VImp Sg => VSuffixInd (AgP1 Sg) => Neg => ntefaqlix
 s . VImp Sg => VSuffixInd (AgP1 Pl) => Pos => ntefqilna
 s . VImp Sg => VSuffixInd (AgP1 Pl) => Neg => ntefqilniex
-s . VImp Sg => VSuffixInd (AgP2 Sg) => Pos => []
-s . VImp Sg => VSuffixInd (AgP2 Sg) => Neg => []
-s . VImp Sg => VSuffixInd (AgP2 Pl) => Pos => []
-s . VImp Sg => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Pos => ntefaqlu
 s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Neg => ntefaqlux
 s . VImp Sg => VSuffixInd (AgP3Sg Fem) => Pos => ntefqilha
@@ -1043,10 +1043,10 @@ s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ntefaqhuli
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ntefaqhulix
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ntefaqhulna
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ntefaqhulniex
-s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ntefaqhulu
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ntefaqhulux
 s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntefaqhulha
@@ -1057,10 +1057,10 @@ s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ntefaqhieli
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ntefaqhilix
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ntefaqhielna
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ntefaqhilniex
-s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ntefaqhielu
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ntefaqhilux
 s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntefaqhielha
@@ -1071,10 +1071,10 @@ s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Pos => ntefaqhomli
 s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Neg => ntefaqhomlix
 s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Pos => ntefaqhomlna
 s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Neg => ntefaqhomlniex
-s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ntefaqhomlu
 s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ntefaqhomlux
 s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ntefaqhomlha
@@ -1087,10 +1087,10 @@ s . VImp Pl => VSuffixDir (AgP1 Sg) => Pos => ntefquni
 s . VImp Pl => VSuffixDir (AgP1 Sg) => Neg => ntefqunix
 s . VImp Pl => VSuffixDir (AgP1 Pl) => Pos => ntefquna
 s . VImp Pl => VSuffixDir (AgP1 Pl) => Neg => ntefquniex
-s . VImp Pl => VSuffixDir (AgP2 Sg) => Pos => []
-s . VImp Pl => VSuffixDir (AgP2 Sg) => Neg => []
-s . VImp Pl => VSuffixDir (AgP2 Pl) => Pos => []
-s . VImp Pl => VSuffixDir (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
 s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Pos => ntefquh
 s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Neg => ntefquhx
 s . VImp Pl => VSuffixDir (AgP3Sg Fem) => Pos => ntefquha
@@ -1101,10 +1101,10 @@ s . VImp Pl => VSuffixInd (AgP1 Sg) => Pos => ntefquli
 s . VImp Pl => VSuffixInd (AgP1 Sg) => Neg => ntefqulix
 s . VImp Pl => VSuffixInd (AgP1 Pl) => Pos => ntefqulna
 s . VImp Pl => VSuffixInd (AgP1 Pl) => Neg => ntefqulniex
-s . VImp Pl => VSuffixInd (AgP2 Sg) => Pos => []
-s . VImp Pl => VSuffixInd (AgP2 Sg) => Neg => []
-s . VImp Pl => VSuffixInd (AgP2 Pl) => Pos => []
-s . VImp Pl => VSuffixInd (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
 s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Pos => ntefqulu
 s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Neg => ntefqulux
 s . VImp Pl => VSuffixInd (AgP3Sg Fem) => Pos => ntefqulha
@@ -1115,10 +1115,10 @@ s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ntefquhuli
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ntefquhulix
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ntefquhulna
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ntefquhulniex
-s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => []
-s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => []
-s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => []
-s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ntefquhulu
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ntefquhulux
 s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ntefquhulha
@@ -1129,10 +1129,10 @@ s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ntefquhieli
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ntefquhilix
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ntefquhielna
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ntefquhilniex
-s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => []
-s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => []
-s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => []
-s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ntefquhielu
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ntefquhilux
 s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ntefquhielha
@@ -1143,10 +1143,10 @@ s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => ntefquhomli
 s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => ntefquhomlix
 s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => ntefquhomlna
 s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => ntefquhomlniex
-s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => []
-s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => []
-s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => []
-s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => []
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
 s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ntefquhomlu
 s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ntefquhomlux
 s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ntefquhomlha

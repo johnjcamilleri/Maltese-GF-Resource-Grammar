@@ -313,11 +313,20 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
     {- ===== Useful helper functions ===== -}
 
+    -- Non-existant form
+    --- If changed, also see: MorphoMlt.verbPolarityTable
+    noexist : Str = "NOEXIST" ;
+
     -- New names for the drop/take operations
-    takePfx = Predef.take ;
-    dropPfx = Predef.drop ;
-    takeSfx = Predef.dp ;
-    dropSfx = Predef.tk ;
+    --- dependent on defn of ResMlt.noexist
+    takePfx : Int -> Str -> Str = \n,s -> case s of { "NOEXIST" => noexist ; _ => Predef.take n s } ;
+    dropPfx : Int -> Str -> Str = \n,s -> case s of { "NOEXIST" => noexist ; _ => Predef.drop n s } ;
+    takeSfx : Int -> Str -> Str = \n,s -> case s of { "NOEXIST" => noexist ; _ => Predef.dp n s } ;
+    dropSfx : Int -> Str -> Str = \n,s -> case s of { "NOEXIST" => noexist ; _ => Predef.tk n s } ;
+    -- takePfx = Predef.take ;
+    -- dropPfx = Predef.drop ;
+    -- takeSfx = Predef.dp ;
+    -- dropSfx = Predef.tk ;
 
     -- Get the character at the specific index (0-based).
     -- Negative indices behave as 0 (first character). Out of range indexes return the empty string.
@@ -338,27 +347,26 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     --   } ;
 
     -- Prefix with a 'n'/'t' or double initial consonant, as necessary. See {OM pg 90}
-    pfx_N : Str -> Str = \s -> case takePfx 1 s of {
+    pfx_N : Str -> Str = \s -> case s of {
       "" => [] ;
-      m@#DoublingConsN => m + s ;
+      "NOEXIST" => noexist ; --- dependent on defn of ResMlt.noexist
+      m@#DoublingConsN + _ => m + s ;
       _ => "n" + s
       } ;
-    pfx_T : Str -> Str = \s -> case takePfx 1 s of {
+    pfx_T : Str -> Str = \s -> case s of {
       "" => [] ;
-      d@#DoublingConsT => d + s ;
+      "NOEXIST" => noexist ; --- dependent on defn of ResMlt.noexist
+      d@#DoublingConsT + _ => d + s ;
       _ => "t" + s
       } ;
-    -- This is just here to standardise
-    -- pfx_J : Str -> Str = \s -> case takePfx 1 s of {
-    --   "" => [] ;
-    --   _ => "j" + s
-    --   } ;
     pfx_J : Str -> Str = \s -> pfx "j" s ;
 
     -- Generically prefix a string (avoiding empty strings)
     pfx : Str -> Str -> Str = \p,s -> case <p,s> of {
       <_, ""> => [] ;
       <"", str> => str ;
+      <_, "NOEXIST"> => noexist ; --- dependent on defn of ResMlt.noexist
+      <"NOEXIST", str> => str ; --- dependent on defn of ResMlt.noexist
       <px, str> => px + str
       } ;
   
@@ -368,6 +376,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     sfx : Str -> Str -> Str = \a,b ->
       case <a,takePfx 1 b> of {
         <"",_> => [] ;
+        <"NOEXIST",_> => noexist ; --- dependent on defn of ResMlt.noexist
         <ke+"nn","n"> => ke+"n"+b ;
         <ha+"kk","k"> => ha+"k"+b ;
         <ho+"ll","l"> => ho+"l"+b ;
