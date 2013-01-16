@@ -274,7 +274,20 @@ resource ParadigmsMlt = open
 
     {- ===== Verb paradigms ===== -}
 
-    mkRoot = ResMlt.mkRoot ;
+    -- Re-export ResMlt.mkRoot
+    mkRoot = overload {
+      mkRoot : Root = ResMlt.mkRoot ;
+      mkRoot : Str -> Root = \s0 -> ResMlt.mkRoot s0 ;
+      mkRoot : Str -> Str -> Str -> Root = \s0,s1,s2 -> ResMlt.mkRoot s0 s1 s2 ;
+      mkRoot : Str -> Str -> Str -> Str -> Root = \s0,s1,s2,s3 -> ResMlt.mkRoot s0 s1 s2 s3 ;
+      } ;
+
+    -- Re-export ResMlt.mkPattern
+    mkPattern = overload {
+      mkPattern : Pattern = ResMlt.mkPattern ;
+      mkPattern : Str -> Pattern = \s0 -> ResMlt.mkPattern s0 ;
+      mkPattern : Str -> Str -> Pattern = \s0,s1 -> ResMlt.mkPattern s0 s1 ;
+      } ;
 
 {-
     -- Takes a verb as a string determined derived form
