@@ -64,8 +64,21 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | NumAdjectival ; -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
 
 
-    {- Nouns -}
+  {- Nouns -}
 
+  oper
+    Noun : Type = {
+      s : Noun_Number => NForm => Str ;
+      g : Gender ;
+      --      anim : Animacy ; -- is the noun animate? e.g. TABIB
+      } ;
+
+    ProperNoun : Type = {
+      s : Str ;
+      g : Gender ;
+      } ;
+
+  param
     Noun_Sg_Type =
         Singulative  -- eg ĦUTA
       | Collective  -- eg ĦUT
@@ -85,8 +98,32 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | NPronSuffix Agr ; -- WIĊĊU
 
 
-    {- Verb -}
+  {- Verb -}
 
+  oper
+    AgrV : Type = {
+      sub : Agr ;
+      dir_obj : Agr ;
+      ind_obj : Agr ;
+      } ;
+
+    Verb : Type = {
+      s : VForm => Str ;
+      i : VerbInfo ;
+      } ;
+
+    VerbInfo : Type = {
+      class : VClass ;
+      form : VDerivedForm ;
+      root : Root ; -- radicals
+      patt : Pattern ; -- vowels extracted from mamma
+      patt2: Pattern ; -- vowel changes; default to patt (experimental)
+      -- in particular, patt2 is used to indicate whether an IE sould be shortened
+      -- to an I or an E (same for entire verb)
+      imp : Str ; -- Imperative Sg. Gives so much information jaħasra!
+      } ;
+
+  param
     -- Possible verb forms (tense + person)
     VForm =
         VPerf Agr    -- Perfect tense in all pronoun cases
@@ -154,52 +191,24 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     --   ;
 
 
-    {- Adjective -}
+  {- Adjective -}
+  oper
+    Adjective : Type = {
+      s : AForm => Str ;
+      } ;
 
+  param
     AForm =
         APosit GenNum
       | ACompar
       | ASuperl
     ;
 
+
   oper
 
-    {- ===== Type declarations ===== -}
-
-    Noun : Type = {
-      s : Noun_Number => NForm => Str ;
-      g : Gender ;
-      --      anim : Animacy ; -- is the noun animate? e.g. TABIB
-      } ;
-
-    ProperNoun : Type = {
-      s : Str ;
-      g : Gender ;
-      } ;
-
-    Verb : Type = {
-      s : VForm => VSuffixForm => Polarity => Str ;
-      i : VerbInfo ;
-      } ;
-
-    VerbInfo : Type = {
-      class : VClass ;
-      form : VDerivedForm ;
-      root : Root ; -- radicals
-      patt : Pattern ; -- vowels extracted from mamma
-      patt2: Pattern ; -- vowel changes; default to patt (experimental)
-      -- in particular, patt2 is used to indicate whether an IE sould be shortened
-      -- to an I or an E (same for entire verb)
-      imp : Str ; -- Imperative Sg. Gives so much information jaħasra!
-      } ;
-
-    Adjective : Type = {
-      s : AForm => Str ;
-      } ;
-
-
     {- ===== Some character classes ===== -}
-
+    
     Letter : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
     Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"

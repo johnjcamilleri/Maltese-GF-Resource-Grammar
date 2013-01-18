@@ -289,84 +289,6 @@ resource ParadigmsMlt = open
       mkPattern : Str -> Str -> Pattern = \s0,s1 -> ResMlt.mkPattern s0 s1 ;
       } ;
 
-{-
-    -- Takes a verb as a string determined derived form
-    -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
-    classifyDerivedVerb : Str -> Root -> Pattern -> VDerivedForm = \mamma,root,patt ->
-      case mamma of {
-
-        -- Form I
-        --- form III verbs with long A's will get incorrectly classified as I, e.g. ĦÂRES : impossible to detect!
-        c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormI ; -- FETAĦ
-
-        -- Form II
-        -- c2 and c3 are equal
-        c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- FETTAĦ
-          if_then_else VDerivedForm (pbool2bool (eqStr c2 c3)) FormII FormUnknown ;
-
-        -- Form III
-        -- v1 is long --- anything with v1==a would have already been caught above
-        c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant =>
-          case <v1, patt.V1> of {
---            <"a","a"> => FormI ; -- no vowel change; ĦAREĠ
---            <"a",_> => FormIII ; -- ĦARES > ĦÂRES --- impossible to detect!
-            <"ie","ie"> => FormI ; -- no vowel change; MIET
-            _ => FormIII -- QAGĦAD > QIEGĦED
-            } ;
-
-        -- Form IV
-        "wera" => FormIV ;
-        "għama" => FormIV ;
-        "għana" => FormIV ;
-
-        -- Form V
-        -- c0 is T, OR c0 and c1 are equal
-        -- c2 and c3 are equal
-        "t" + c1@#Consonant + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- TWAQQAF
-          if_then_else VDerivedForm (pbool2bool (eqStr c2 c3)) FormV FormUnknown ;
-        c0@#DoublingConsT + c1@#DoublingConsT + v1@#Vowel + c2@#Consonant + c3@#Consonant + v2@#Vowel + c4@#Consonant => -- SARRAF
-          if_then_else
-          VDerivedForm
-          (andB (pbool2bool (eqStr c0 c1)) (pbool2bool (eqStr c2 c3)))
-          FormV FormUnknown ;
-
-        -- Form VI
-        -- c0 is T, OR c0 and c1 are equal
-        -- v1 is long
-        "t" + c1@#Consonant + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormVI ; -- TQIEGĦED
-        c0@#DoublingConsT + c1@#DoublingConsT + v1@("a"|"ie") + c2@#Consonant + v2@#Vowel + c3@#Consonant => -- ĠĠIELED
-          if_then_else VDerivedForm (pbool2bool (eqStr c0 c1)) FormVI FormUnknown ;
-
-        -- Form VII
-        -- c0 is N, OR c0 is NT, OR c0 is N-T
-        "n" + c1@#Consonant + v1@#Vowel + c2@#Consonant + v2@#Vowel + c3@#Consonant => FormVII ; -- NĦASEL
-        "nt" + c1@#Consonant + _ => FormVII ; -- NTQAL
-        "nt" + c1@#Vowel + _ => case root.C1 of {
-          "n" => FormVIII ; -- NTESA (N-S-J)
-          _ => FormVII -- NTIŻEN (W-Ż-N)
-          } ;
-        "nst" + _ => FormVII ; -- NSTAB
-        "nxt" + _ => FormVII ; -- NXTAMM
-
-        -- Form VIII
-        -- c2 is T
-        c1@#Consonant + "t" + v1@#Vowel + c3@#Consonant + _ =>
-          case <c1, root.C1> of {
-            <"s", "s"> => FormVIII ; -- STABAT (S-B-T)
-            <"s", _> => FormX ; -- STAĦBA (Ħ-B-A)
-            _ => FormVIII -- MTEDD, XTEĦET
-          } ;
-
-        -- Form IX
-        c1@#Consonant + c2@#Consonant + v1@("a"|"ie") + c3@#Consonant => FormIX ; -- SFAR, BLIEH
-
-        -- Form X
-        "st" + v1@#Vowel + c2@#Consonant + c2@#Consonant + _ => FormX ; -- STAGĦĠEB, STAQSA
-
-        -- boqq
-        _ => FormUnknown
-      } ;
--}
     -- Takes a verb as a string and returns the VType and root/pattern.
     -- Used in smart paradigm below and elsewhere.
     -- Params: "Mamma" (Perf Per3 Sg Masc) as string (eg KITEB or ĦAREĠ)
@@ -436,8 +358,8 @@ resource ParadigmsMlt = open
       } ;
 
     -- Just get the non-suffixed forms of a verb, for quick testing
-    plainVerbTable : V -> (VForm => Str) = \v ->
-      \\tense => v.s ! tense ! VSuffixNone ! Pos ;
+    -- plainVerbTable : V -> (VForm => Str) = \v ->
+    --   \\tense => v.s ! tense ! VSuffixNone ! Pos ;
 
     -- Smart paradigm for building a verb
     mkV : V = overload {
@@ -545,7 +467,7 @@ resource ParadigmsMlt = open
             } ;
           info : VerbInfo = mkVerbInfo class form root patt impSg ;
         in lin V  {
-          s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+          s = tbl ;
           i = info ;
         } ;
 
@@ -660,15 +582,15 @@ resource ParadigmsMlt = open
           newinfo : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
         in lin V {
           s = table {
-            VPerf agr => \\suffix,pol => pfx_T (vII.s ! VPerf agr ! suffix ! pol) ;
-            VImpf (AgP1 Sg) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg) ! suffix ! pol))) ;
-            VImpf (AgP2 Sg) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg) ! suffix ! pol))) ;
-            VImpf (AgP3Sg Masc) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol))) ;
-            VImpf (AgP3Sg Fem)  => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol))) ;
-            VImpf (AgP1 Pl) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl) ! suffix ! pol))) ;
-            VImpf (AgP2 Pl) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl) ! suffix ! pol))) ;
-            VImpf (AgP3Pl) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl) ! suffix ! pol))) ;
-            VImp num => \\suffix,pol => pfx_T (vII.s ! VImp num ! suffix ! pol)
+            VPerf agr => pfx_T (vII.s ! VPerf agr) ;
+            VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg)))) ;
+            VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg)))) ;
+            VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc)))) ;
+            VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem)))) ;
+            VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl)))) ;
+            VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl)))) ;
+            VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl)))) ;
+            VImp num => pfx_T (vII.s ! VImp num)
             } ;
           i = newinfo ;
         } ;
@@ -685,15 +607,15 @@ resource ParadigmsMlt = open
           newinfo : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
         in lin V {
           s = table {
-            VPerf agr => \\suffix,pol => pfx_T (vIII.s ! VPerf agr ! suffix ! pol) ;
-            VImpf (AgP1 Sg) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg) ! suffix ! pol))) ;
-            VImpf (AgP2 Sg) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg) ! suffix ! pol))) ;
-            VImpf (AgP3Sg Masc) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol))) ;
-            VImpf (AgP3Sg Fem)  => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol))) ;
-            VImpf (AgP1 Pl) => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl) ! suffix ! pol))) ;
-            VImpf (AgP2 Pl) => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl) ! suffix ! pol))) ;
-            VImpf (AgP3Pl) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl) ! suffix ! pol))) ;
-            VImp num => \\suffix,pol => pfx_T (vIII.s ! VImp num ! suffix ! pol)
+            VPerf agr => pfx_T (vIII.s ! VPerf agr) ;
+            VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg)))) ;
+            VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg)))) ;
+            VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc)))) ;
+            VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem)))) ;
+            VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl)))) ;
+            VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl)))) ;
+            VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl)))) ;
+            VImp num => pfx_T (vIII.s ! VImp num)
             } ;
           i = newinfo ;
         } ;
@@ -812,7 +734,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -852,7 +774,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -887,7 +809,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -926,7 +848,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -965,7 +887,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -1004,7 +926,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -1039,7 +961,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -1074,7 +996,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -1112,7 +1034,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Quad QWeak) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 
@@ -1130,7 +1052,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Loan) (FormI) (imp ! Sg) ;
       in lin V {
-        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
+        s = tbl ;
         i = info ;
       } ;
 

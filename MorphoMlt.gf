@@ -1383,7 +1383,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
     {- ~~~ Form II verbs ~~~ -}
 
-    conjFormII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormII : VerbInfo -> (VForm => Str) = \i ->
       let
         mamma : Str = case i.class of {
           Weak Defective => i.root.C1 + i.patt.V1 + i.root.C2 + i.root.C2 + i.patt.V2 + "'" ; -- QATTA'
@@ -1434,18 +1434,13 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Sg => nehhi ;
           Pl => waqqfu
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt (imp ! Sg) ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
-    conjFormII_quad : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormII_quad : VerbInfo -> (VForm => Str) = \i ->
       let
         vowels = extractPattern i.imp ;
         mamma : Str = case i.class of {
@@ -1524,20 +1519,15 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             Sg => i.imp ;
             Pl => tharbtu
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        info : VerbInfo = mkVerbInfo i.class FormII i.root i.patt (imp ! Sg) ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
     {- ~~~ Form III verbs ~~~ -}
 
-    conjFormIII : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormIII : VerbInfo -> (VForm => Str) = \i ->
       let
         wiegeb : Str = i.root.C1 + i.patt.V1 + i.root.C2 + i.patt.V2 + i.root.C3 ;
         wegib : Str = case <i.patt.V1,i.patt.V2> of {
@@ -1569,21 +1559,16 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Sg => wiegeb ;
           Pl => wiegbu
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        info : VerbInfo = updateVerbInfo i FormIII wiegeb ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable info tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable info sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
     {- ~~~ Form VII and VIII verbs ~~~ -}
 
     -- C1 contains the entire initial consonant cluster, e.g. NTR in NTRIFES
-    conjFormVII : VerbInfo -> Str -> (VForm => VSuffixForm => Polarity => Str) = \i,C1 ->
+    conjFormVII : VerbInfo -> Str -> (VForm => Str) = \i,C1 ->
       let
         nhasel : Str = case i.class of {
           Weak Hollow => C1 + i.patt.V1 + i.root.C3 ;
@@ -1643,20 +1628,15 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Sg => nhasel ;
           Pl => nhaslu
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        fakeinfo : VerbInfo = updateVerbInfo i (mkRoot C1 i.root.C2 i.root.C3) ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable fakeinfo tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable fakeinfo sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
     {- ~~~ Form IX verbs ~~~ -}
 
-    conjFormIX : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormIX : VerbInfo -> (VForm => Str) = \i ->
       let
         sfar = i.imp ;
         sfaru = sfar + "u" ;
@@ -1682,19 +1662,15 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Sg => sfar ;
           Pl => sfaru
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
     {- ~~~ Form X verbs ~~~ -}
 
-    conjFormX : VerbInfo -> (VForm => VSuffixForm => Polarity => Str) = \i ->
+    conjFormX : VerbInfo -> (VForm => Str) = \i ->
       let
         mamma : Str = i.imp ; --- is it naughty to pass the mamma as imp?
         perf : Agr => Str = case mamma of {
@@ -1778,14 +1754,10 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           Sg => (perf!AgP3Sg Masc) ;
           Pl => (perf!AgP3Pl)
           } ;
-        tbl : VForm => Str = table {
-          VPerf agr => perf ! agr ;
-          VImpf agr => impf ! agr ;
-          VImp num  => imp ! num
-          } ;
-        sfxTbl : (VForm => VSuffixForm => Str) = verbPronSuffixTable i tbl ;
-        polSfxTbl : (VForm => VSuffixForm => Polarity => Str) = verbPolarityTable i sfxTbl ;
-      in
-      polSfxTbl ;
+      in table {
+        VPerf agr => perf ! agr ;
+        VImpf agr => impf ! agr ;
+        VImp num  => imp ! num
+      } ;
 
 }
