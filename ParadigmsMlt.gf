@@ -474,14 +474,18 @@ resource ParadigmsMlt = open
       } ; --end of mkV overload
 
     -- Some shortcut function names (haven't decided on naming yet)
-    mkV_II : Str -> V = \s -> derivedV_II s ;
+    mkV_II = overload {
+      mkV_II : Str -> V = \s -> derivedV_II s ;
+      mkV_II : Str -> Root -> V = \s,r -> derivedV_II s r ;
+      mkV_II : Str -> Str -> Root -> V = \s,i,r -> derivedV_II s i r ;
+      } ;
     mkV_III : Str -> V = \s -> derivedV_III s ;
     mkV_V : Str -> V = \s -> derivedV_V s ;
     mkV_VI : Str -> V = \s -> derivedV_VI s ;
     mkV_VII : Str -> Str -> V = \s,t -> derivedV_VII s t ;
     mkV_VIII : Str -> V = \s -> derivedV_VIII s ;
     mkV_IX : Str -> V = \s -> derivedV_IX s ;
-    mkV_X : Str -> Str -> V = \s,t -> derivedV_X s t ;
+    mkV_X : Str -> Root -> V = \s,r -> derivedV_X s r ;
     derivedV_I : Str -> V = mkV ;
 
     -- Make a Form II verb. Accepts both Tri & Quad roots, then delegates.
@@ -555,152 +559,126 @@ resource ParadigmsMlt = open
 
     -- Make a Form III verb
     -- e.g.: derivedV_III "qiegħed"
---    derivedV_III : V = overload {
-      derivedV_III : Str -> V = \mammaIII ->
-        let
-          info : VerbInfo = classifyVerb (ie2i mammaIII) ;
-          vowels : Pattern = extractPattern mammaIII ;
-          vowels2 : Pattern = vowelChangesIE info.root vowels ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
-        in lin V {
-          s = conjFormIII newinfo ;
-          i = newinfo ;
-        } ;
---      } ;
+    derivedV_III : Str -> V = \mammaIII ->
+      let
+        info : VerbInfo = classifyVerb (ie2i mammaIII) ;
+        vowels : Pattern = extractPattern mammaIII ;
+        vowels2 : Pattern = vowelChangesIE info.root vowels ;
+        newinfo : VerbInfo = mkVerbInfo info.class FormIII info.root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
+      in lin V {
+        s = conjFormIII newinfo ;
+        i = newinfo ;
+      } ;
 
     -- No point having a paradigm for Form IV
     -- derivedV_IV
 
     -- Make a Form V verb
     -- e.g.: derivedV_V "twaqqaf"
---    derivedV_V : V = overload {
-      derivedV_V : Str -> V = \mammaV ->
-        let
-          -- use the Form II conjugation, just prefixing a T
-          mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
-          vII : V = derivedV_II mammaII ;
-          newinfo : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
-        in lin V {
-          s = table {
-            VPerf agr => pfx_T (vII.s ! VPerf agr) ;
-            VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg)))) ;
-            VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg)))) ;
-            VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc)))) ;
-            VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem)))) ;
-            VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl)))) ;
-            VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl)))) ;
-            VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl)))) ;
-            VImp num => pfx_T (vII.s ! VImp num)
-            } ;
-          i = newinfo ;
-        } ;
---      } ;
+    derivedV_V : Str -> V = \mammaV ->
+      let
+        -- use the Form II conjugation, just prefixing a T
+        mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
+        vII : V = derivedV_II mammaII ;
+        newinfo : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
+      in lin V {
+        s = table {
+          VPerf agr => pfx_T (vII.s ! VPerf agr) ;
+          VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg)))) ;
+          VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg)))) ;
+          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc)))) ;
+          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem)))) ;
+          VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl)))) ;
+          VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl)))) ;
+          VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl)))) ;
+          VImp num => pfx_T (vII.s ! VImp num)
+          } ;
+        i = newinfo ;
+      } ;
 
     -- Make a Form VI verb
     -- e.g.: derivedV_VI "tqiegħed"
---    derivedV_VI : V = overload {
-      derivedV_VI : Str -> V = \mammaVI ->
-        let
-          -- use the Form III conjugation, just prefixing a T
-          mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
-          vIII : V = derivedV_III mammaIII ;
-          newinfo : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
-        in lin V {
-          s = table {
-            VPerf agr => pfx_T (vIII.s ! VPerf agr) ;
-            VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg)))) ;
-            VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg)))) ;
-            VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc)))) ;
-            VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem)))) ;
-            VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl)))) ;
-            VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl)))) ;
-            VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl)))) ;
-            VImp num => pfx_T (vIII.s ! VImp num)
-            } ;
-          i = newinfo ;
-        } ;
---      } ;
+    derivedV_VI : Str -> V = \mammaVI ->
+      let
+        -- use the Form III conjugation, just prefixing a T
+        mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
+        vIII : V = derivedV_III mammaIII ;
+        newinfo : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
+      in lin V {
+        s = table {
+          VPerf agr => pfx_T (vIII.s ! VPerf agr) ;
+          VImpf (AgP1 Sg) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg)))) ;
+          VImpf (AgP2 Sg) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg)))) ;
+          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc)))) ;
+          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem)))) ;
+          VImpf (AgP1 Pl) => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl)))) ;
+          VImpf (AgP2 Pl) => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl)))) ;
+          VImpf (AgP3Pl) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl)))) ;
+          VImp num => pfx_T (vIII.s ! VImp num)
+          } ;
+        i = newinfo ;
+      } ;
 
     -- Make a Form VII verb
     -- e.g.: derivedV_VII "xeħet" "nxteħet"
---    derivedV_VII : V = overload {
-      derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
-        let
-          info : VerbInfo = classifyVerb mammaI ;
-          c1 : Str = case mammaVII of {
-            "n" + c@#Cns + "t" + _ => "n"+c+"t" ; -- NXT-EĦET
-            "ntgħ" + _ => "ntgħ" ; -- NTGĦ-AĠEN
-            "nt" + c@#Cns + _ => "nt"+c ; -- NTR-IFES
-            "nt" + #Vowel + _ => "nt" ; -- NT-IŻEN
-            "n" + c@#Cns + _ => "n"+c ; -- NĦ-ASEL
-            _ => "nt" --- unknown case
-            } ;
-          newinfo : VerbInfo = mkVerbInfo info.class FormVII info.root info.patt mammaVII ;
-        in lin V {
-          s = conjFormVII newinfo c1 ;
-          i = newinfo ;
-        } ;
---      } ;
+    derivedV_VII : Str -> Str -> V = \mammaI,mammaVII ->
+      let
+        info : VerbInfo = classifyVerb mammaI ;
+        c1 : Str = case mammaVII of {
+          "n" + c@#Cns + "t" + _ => "n"+c+"t" ; -- NXT-EĦET
+          "ntgħ" + _ => "ntgħ" ; -- NTGĦ-AĠEN
+          "nt" + c@#Cns + _ => "nt"+c ; -- NTR-IFES
+          "nt" + #Vowel + _ => "nt" ; -- NT-IŻEN
+          "n" + c@#Cns + _ => "n"+c ; -- NĦ-ASEL
+          _ => "nt" --- unknown case
+          } ;
+        newinfo : VerbInfo = mkVerbInfo info.class FormVII info.root info.patt mammaVII ;
+      in lin V {
+        s = conjFormVII newinfo c1 ;
+        i = newinfo ;
+      } ;
 
     -- Make a Form VIII verb
     -- e.g.: derivedV_VIII "xteħet"
---    derivedV_VIII : V = overload {
-      derivedV_VIII : Str -> V = \mammaVIII ->
-        let
-          mammaI : Str = delCharAt 1 mammaVIII ;
-          info : VerbInfo = classifyVerb mammaI ;
-          c1 : Str = info.root.C1+"t";
-          newinfo : VerbInfo = updateVerbInfo info FormVIII mammaVIII ;
-        in lin V {
-          s = conjFormVII newinfo c1 ; -- note we use conjFormVII !
-          i = newinfo ;
-        } ;
---      } ;
+    derivedV_VIII : Str -> V = \mammaVIII ->
+      let
+        mammaI : Str = delCharAt 1 mammaVIII ;
+        info : VerbInfo = classifyVerb mammaI ;
+        c1 : Str = info.root.C1+"t";
+        newinfo : VerbInfo = updateVerbInfo info FormVIII mammaVIII ;
+      in lin V {
+        s = conjFormVII newinfo c1 ; -- note we use conjFormVII !
+        i = newinfo ;
+      } ;
 
     -- Make a Form IX verb
     -- e.g.: derivedV_IX "sfar"
---    derivedV_IX : V = overload {
-      derivedV_IX : Str -> V = \mammaIX ->
-        case mammaIX of {
-          c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
-            let
-              root : Root = mkRoot c1 c2 c3 ;
-              patt : Pattern = mkPattern v1 ;
-              class : VClass = classifyRoot root ;
-              newinfo : VerbInfo = mkVerbInfo class FormIX root patt mammaIX ;
-            in lin V {
-              s = conjFormIX newinfo ;
-              i = newinfo ;
-            } ;
-          _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
-        } ;
---      } ;
+    derivedV_IX : Str -> V = \mammaIX ->
+      case mammaIX of {
+        c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
+          let
+            root : Root = mkRoot c1 c2 c3 ;
+            patt : Pattern = mkPattern v1 ;
+            class : VClass = classifyRoot root ;
+            newinfo : VerbInfo = mkVerbInfo class FormIX root patt mammaIX ;
+          in lin V {
+            s = conjFormIX newinfo ;
+            i = newinfo ;
+          } ;
+        _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
+      } ;
 
     -- Make a Form X verb
-    derivedV_X : V = overload {
-      -- e.g.: derivedV_X "stagħġeb" (mkRoot "għ-ġ-b")
-      derivedV_X : Str -> Root -> V = \mammaX,root ->
-        let
-          class : VClass = classifyRoot root ;
-          patt : Pattern = extractPattern mammaX ;
-          patt2 : Pattern = vowelChangesIE root patt ;
-          newinfo : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
-        in lin V {
-          s = conjFormX newinfo ;
-          i = newinfo ;
-        } ;
-      -- e.g.: derivedV_X "stagħġeb" "għ-ġ-b"
-      derivedV_X : Str -> Str -> V = \mammaX,str_root ->
-        let
-          root : Root = mkRoot str_root ;
-          class : VClass = classifyRoot root ;
-          patt : Pattern = extractPattern mammaX ;
-          patt2 : Pattern = vowelChangesIE root patt ;
-          newinfo : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
-        in lin V {
-          s = conjFormX newinfo ;
-          i = newinfo ;
-        } ;
+    -- e.g.: derivedV_X "stagħġeb" (mkRoot "għ-ġ-b")
+    derivedV_X : Str -> Root -> V = \mammaX,root ->
+      let
+        class : VClass = classifyRoot root ;
+        patt : Pattern = extractPattern mammaX ;
+        patt2 : Pattern = vowelChangesIE root patt ;
+        newinfo : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
+      in lin V {
+        s = conjFormX newinfo ;
+        i = newinfo ;
       } ;
 
     {- ~~~ Strong Verb ~~~ -}
