@@ -572,7 +572,8 @@ resource ParadigmsMlt = open
     -- e.g.: derivedV_IX "sfar"
     derivedV_IX : Str -> Root -> V = \mammaIX, root ->
       case mammaIX of {
-        c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
+        -- c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
+        _  + v1@("ie"|"a"|"â") + _ => 
           let
             patt : Pattern = mkPattern v1 ;
             class : VClass = classifyRoot root ;
