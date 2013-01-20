@@ -313,8 +313,8 @@ resource ParadigmsMlt = open
         <_,_,"'",_> => Irregular ;
         <_,_,_,"'"> => Irregular ;
 
-        <_,_,_,""> => Predef.error("Cannot classify root: "++r.C1+"-"+r.C2+"-"+r.C3) ;
-        <_,_,_,_>  => Predef.error("Cannot classify root: "++r.C1+"-"+r.C2+"-"+r.C3+"-"+r.C4)
+        <_,_,_,""> => Predef.error("Cannot classify root:"++r.C1+"-"+r.C2+"-"+r.C3) ;
+        <_,_,_,_>  => Predef.error("Cannot classify root:"++r.C1+"-"+r.C2+"-"+r.C3+"-"+r.C4)
       } ;
 
     -- Just get the non-suffixed forms of a verb, for quick testing
@@ -345,7 +345,7 @@ resource ParadigmsMlt = open
           Weak Defective      => defectiveV root patt ;
           Quad QStrong        => quadV root patt ;
           Quad QWeak          => quadWeakV root patt ;
-          Irregular           => Predef.error("Cannot use smart paradigm for irregular verb: "++mamma) ;
+          Irregular           => Predef.error("Cannot use smart paradigm for irregular verb:"++mamma) ;
           Loan                => loanV mamma --- this should probably be an error
         } ;
 
@@ -366,7 +366,7 @@ resource ParadigmsMlt = open
           Weak Defective      => defectiveV root patt imp_sg ;
           Quad QStrong        => quadV root patt imp_sg ;
           Quad QWeak          => quadWeakV root patt imp_sg ;
-          Irregular           => Predef.error("Cannot use smart paradigm for irregular verb: "++mamma) ;
+          Irregular           => Predef.error("Cannot use smart paradigm for irregular verb:"++mamma) ;
           Loan                => loanV mamma
         } ;
 

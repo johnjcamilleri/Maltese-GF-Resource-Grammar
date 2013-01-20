@@ -247,7 +247,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         case toLower s of {
           c1 + "-" + c2 + "-" + c3 + "-" + c4 => { C1=c1 ; C2=c2 ; C3=c3 ; C4=c4 } ; -- "k-t-b-l"
           c1 + "-" + c2 + "-" + c3 => { C1=c1 ; C2=c2 ; C3=c3 ; C4=[] } ; -- "k-t-b"
-          _ => Predef.error("Cannot make root from: "++s)
+          _ => Predef.error("Cannot make root from:"++s)
         } ;
       mkRoot : Str -> Str -> Str -> Root = \c1,c2,c3 ->
         { C1=toLower c1 ; C2=toLower c2 ; C3=toLower c3 ; C4=[] } ;
