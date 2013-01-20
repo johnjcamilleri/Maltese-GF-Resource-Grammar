@@ -162,7 +162,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Weak VWeakClass
       | Quad VQuadClass
       | Loan
---      | Irregular
+      | Irregular
       ;
     VStrongClass =
         Regular
@@ -210,7 +210,8 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     {- ===== Some character classes ===== -}
     
     Letter : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
-    Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
+    Consonant : pattern Str = #(       "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
+    Radical : pattern Str   = #( "'" | "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
     LiquidCons : pattern Str = #( "l" | "m" | "n" | "r" | "għ" );
     SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused, but see DoublingConsN below
@@ -245,9 +246,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         { C1=[] ; C2=[] ; C3=[] ; C4=[] } ;
       mkRoot : Str -> Root = \root ->
         case toLower root of {
-          c1@#Consonant + "-" + c2@#Consonant + "-" + c3@#Consonant =>
+          c1@#Radical + "-" + c2@#Radical + "-" + c3@#Radical =>
             { C1=c1 ; C2=c2 ; C3=c3 ; C4=[] } ; -- "k-t-b"
-          c1@#Consonant + "-" + c2@#Consonant + "-" + c3@#Consonant + "-" + c4@#Consonant =>
+          c1@#Radical + "-" + c2@#Radical + "-" + c3@#Radical + "-" + c4@#Radical =>
             { C1=c1 ; C2=c2 ; C3=c3 ; C4=c4 } ; -- "k-t-b-l"
           _   => { C1=(charAt 0 root) ; C2=(charAt 1 root) ; C3=(charAt 2 root) ; C4=(charAt 3 root) }   -- "ktb" (not recommended)
         } ;
