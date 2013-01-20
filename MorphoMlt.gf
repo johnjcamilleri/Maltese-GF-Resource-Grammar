@@ -1137,7 +1137,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           <"a","j"> => root.C1 + "i" + root.C3 ; -- ĠAB, SAB, TAR
           <"ie","j"> => root.C1 + "i" + root.C3 ; -- FIEQ, RIED, ŻIED
           <"ie","w"> => root.C1 + "u" + root.C3 ; -- MIET
-          _ => Predef.error("Unhandled case in hollow verb. G390KDJ")
+          _ => Predef.error("Unhandled case in hollow verb: "+root.C1+patt.V1+root.C2+patt.V2+root.C3)
           }
       in
       table {

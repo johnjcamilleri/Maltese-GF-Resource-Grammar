@@ -292,9 +292,10 @@ resource ParadigmsMlt = open
     -- Return the class for a given root
     classifyRoot : Root -> VClass = \r ->
       case <r.C1,r.C2,r.C3,r.C4> of {
-        <#WeakCons, #Consonant, #Consonant, ""> => Weak Assimilative ;
-        <#Consonant, #WeakCons, #Consonant, ""> => Weak Hollow ;
-        <#Consonant, #Consonant, #WeakCons, ""> => Weak Lacking ;
+        <#WeakCons, #StrongCons, #StrongCons, ""> => Weak Assimilative ;
+        <#StrongCons, #WeakCons, #StrongCons, ""> => Weak Hollow ;
+        <#StrongCons, #StrongCons, #WeakCons, ""> => Weak Lacking ;
+        <#StrongCons, #WeakCons, #WeakCons, ""> => Weak Lacking ;
         <#Consonant, #Consonant, "għ", ""> => Weak Defective ;
         <#Consonant, c2@#Consonant, c3@#Consonant, ""> =>
           if_then_else VClass (pbool2bool (eqStr c2 c3))

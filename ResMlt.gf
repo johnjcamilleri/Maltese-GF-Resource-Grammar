@@ -216,6 +216,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     SonorantCons : pattern Str = #( "l" | "m" | "n" | "r" ); -- See {SA pg13}. Currently unused, but see DoublingConsN below
     DoublingConsT : pattern Str = #( "ċ" | "d" | "ġ" | "s" | "x" | "ż" | "z" ); -- require doubling when prefixed with 't', eg DDUM, ĠĠORR, SSIB, TTIR, ŻŻID {GM pg68,2b} {OM pg90}
     DoublingConsN : pattern Str = #( "l" | "m" | "r" ); -- require doubling when prefixed with 'n', eg LLAĦĦAQ, MMUR, RRID {OM pg90}
+    StrongCons : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "x" | "ż" | "z" );
     WeakCons : pattern Str = #( "j" | "w" );
     Vowel : pattern Str = #( "a" | "e" | "i" | "o" | "u" );
     VowelIE : pattern Str = #( "a" | "e" | "i" | "ie" | "o" | "u" );
