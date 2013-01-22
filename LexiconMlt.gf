@@ -191,7 +191,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
     love_N = mkN "mħabba" "mħabbiet" ; -- hmmm
---    love_V2
+    love_V2 = mkV "ħabb" (mkRoot "ħ-b-b") ;
     man_N = mkN "raġel" "rġiel" ;
 --    married_A2
     meat_N = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
