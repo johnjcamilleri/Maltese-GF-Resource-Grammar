@@ -16,14 +16,25 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
   oper
     -- [AZ]
-    mkPronoun : (_,_ : Str) -> Gender -> Number -> Person -> Pronoun = \jien,
-      tieghi, gen, num, pers -> {
-        s = table {
-          Personal => jien ; -- Nominative case
-          Possessive => tieghi; -- Genitive case
-          Suffixed => [] -- Suffix provided by noun/verb/preposition
-          } ;
-        a = mkAgr gen num pers;
+    mkPron : Pronoun = overload {
+      mkPron : (_,_ : Str) -> Number -> Person -> Gender -> Pronoun =
+        \jien, tieghi, num, pers, gen -> {
+          s = table {
+            Personal => jien ; -- Nominative case
+            Possessive => tieghi; -- Genitive case
+            Suffixed => [] -- Suffix provided by noun/verb/preposition
+            } ;
+          a = mkAgr gen num pers ;
+        } ;
+      mkPron : (_,_ : Str) -> Number -> Person -> Pronoun =
+        \jien, tieghi, num, pers -> {
+          s = table {
+            Personal => jien ; -- Nominative case
+            Possessive => tieghi ; -- Genitive case
+            Suffixed => [] -- Suffix provided by noun/verb/preposition
+            } ;
+          a = mkAgr Masc num pers ; --- sorry ladies
+        } ;
       } ;
 
   {- Verb ----------------------------------------------------------------- -}

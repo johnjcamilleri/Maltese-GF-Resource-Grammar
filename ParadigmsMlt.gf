@@ -31,6 +31,9 @@ resource ParadigmsMlt = open
     masculine = Masc ;
     feminine = Fem ;
 
+    singular : Number = Sg ;
+    plural : Number = Pl ;
+
     {- Noun paradigms ----------------------------------------------------- -}
 
     -- Helper function for inferring noun plural from singulative
