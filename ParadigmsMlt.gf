@@ -20,7 +20,7 @@ resource ParadigmsMlt = open
 
   oper
 
-    {- ===== Parameters ===== -}
+    {- Parameters --------------------------------------------------------- -}
 
     -- Abstraction over gender names
     Gender : Type ;
@@ -31,7 +31,7 @@ resource ParadigmsMlt = open
     masculine = Masc ;
     feminine = Fem ;
 
-    {- ===== Noun Paradigms ===== -}
+    {- Noun paradigms ----------------------------------------------------- -}
 
     -- Helper function for inferring noun plural from singulative
     -- Nouns with collective & determinate forms should not use this...
@@ -182,14 +182,7 @@ resource ParadigmsMlt = open
     -- Build a noun using 5 forms, and a gender
     mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
     mk5N = \sing,coll,dual,det,ind,gen ->
---      lin N (mkNoun sing coll dual det ind gen) ;
-      lin N (mkNoun
-               (nullSuffixTable sing)
-               (nullSuffixTable coll)
-               (nullSuffixTable dual)
-               (nullSuffixTable det)
-               (nullSuffixTable ind)
-               gen) ;
+      lin N (mkNoun sing coll dual det ind gen) ;
 
 {-
     -- Correctly abbreviate definite prepositions and join with noun
@@ -253,7 +246,6 @@ resource ParadigmsMlt = open
 
       });
 
-
     mkN2 = overload {
       mkN2 : N -> Prep -> N2 = prepN2 ;
       mkN2 : N -> Str -> N2 = \n,s -> prepN2 n (mkPrep s);
@@ -272,7 +264,7 @@ resource ParadigmsMlt = open
     noPrep = mkPrep [] ;
 
 
-    {- ===== Verb paradigms ===== -}
+    {- Verb paradigms ----------------------------------------------------- -}
 
     -- Re-export ResMlt.mkRoot
     mkRoot : Root = overload {
@@ -952,7 +944,7 @@ resource ParadigmsMlt = open
       } ;
 
 
-    {- ===== Adjective Paradigms ===== -}
+    {- Adjective paradigms ------------------------------------------------ -}
 
     -- Overloaded function for building an adjective
     mkA : A = overload {

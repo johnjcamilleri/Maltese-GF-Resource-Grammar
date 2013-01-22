@@ -1,7 +1,8 @@
 -- ResMlt.gf: Language-specific parameter types, morphology, VP formation
 --
 -- Maltese Resource Grammar Library
--- John J. Camilleri, 2012
+-- John J. Camilleri 2009 -- 2013
+-- Angelo Zammit 2012
 -- Licensed under LGPL
 
 --# -path=.:../abstract:../common:../prelude
@@ -10,29 +11,52 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
 
   flags coding=utf8 ;
 
+  {- General -------------------------------------------------------------- -}
+
   param
 
-    {- General -}
-
-    Gender  = Masc | Fem ;
+    Gender = Masc | Fem ;
 
     GenNum  =
         GSg Gender -- dak, dik
-      | GPl ; -- dawk
+      | GPl -- dawk
+      ;
 
-    Agr =
+  oper
+    -- Agreement system corrected based on comments by [AZ]
+    Agr : Type = { g : Gender ; n : Number ; p : Person } ;
+
+    mkAgr : Gender -> Number -> Person -> Agr = \g,n,p -> {g = g ; n = n ; p = p} ;
+
+    toVAgr : Agr -> VAgr = \agr ->
+      case <agr.p,agr.n> of {
+        <P1,num> => AgP1 num;
+        <P2,num> => AgP2 num;
+        <P3,Sg> => AgP3Sg agr.g;
+        <P3,Pl> => AgP3Pl
+      } ;
+    
+    toAgr : VAgr -> Agr = \vagr ->
+      case vagr of {
+        AgP1 num => mkAgr Masc num P1 ; --- sorry ladies
+        AgP2 num => mkAgr Masc num P2 ;
+        AgP3Sg gen => mkAgr gen Pl P3 ;
+        AgP3Pl => mkAgr Masc Pl P3
+      } ;
+
+  param
+    -- Agreement for verbs
+    VAgr =
         AgP1 Number  -- jiena, aħna
       | AgP2 Number  -- inti, intom
       | AgP3Sg Gender  -- huwa, hija
       | AgP3Pl    -- huma
-    ;
+      ;
 
+  param
     NPCase = Nom | Gen ;
 
-    Animacy =
-        Animate
-      | Inanimate
-    ;
+    -- Animacy = Animate | Inanimate ;
 
     -- Definiteness =
     --     Definite    -- eg IL-KARTA. In this context same as Determinate
@@ -40,7 +64,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     --   ;
 
 
-    {- Numerals -}
+  {- Numeral -------------------------------------------------------------- -}
 
     CardOrd = NCard | NOrd ;
 
@@ -51,24 +75,25 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | Ten    -- 20-99
       | Hund    -- 100..999
       --| Thou    -- 1000+
-    ;
+      ;
 
     Num_Number =
         Num_Sg
       | Num_Dl
       | Num_Pl
-    ;
+      ;
 
     Num_Case =
-        NumNominative   -- TNEJN, ĦAMSA, TNAX, MIJA
-      | NumAdjectival ; -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
+        NumNominative -- TNEJN, ĦAMSA, TNAX, MIJA
+      | NumAdjectival -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
+      ;
 
 
-  {- Nouns -}
+  {- Nouns ---------------------------------------------------------------- -}
 
   oper
     Noun : Type = {
-      s : Noun_Number => NForm => Str ;
+      s : Noun_Number => Str ;
       g : Gender ;
       --      anim : Animacy ; -- is the noun animate? e.g. TABIB
       } ;
@@ -82,31 +107,36 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Noun_Sg_Type =
         Singulative  -- eg ĦUTA
       | Collective  -- eg ĦUT
-    ;
+      ;
     Noun_Pl_Type =
         Determinate  -- eg ĦUTIET
       | Indeterminate  -- eg ĦWIET
-    ;
+      ;
     Noun_Number =
         Singular Noun_Sg_Type    -- eg ĦUTA / ĦUT
       | Dual            -- eg WIDNEJN
       | Plural Noun_Pl_Type    -- eg ĦUTIET / ĦWIET
-    ;
+      ;
 
-    NForm =
-        NRegular -- WIĊĊ
-      | NPronSuffix Agr ; -- WIĊĊU
-
-
-  {- Verb -}
+  {- Pronoun -------------------------------------------------------------- -}
 
   oper
-    AgrV : Type = {
-      sub : Agr ;
-      dir_obj : Agr ;
-      ind_obj : Agr ;
+    -- [AZ]
+    Pronoun = {
+      s : PronForm => Str ;
+      a : Agr ;
       } ;
 
+  param
+    PronForm =
+        Personal -- JIEN
+      | Possessive -- TIEGĦI
+      | Suffixed -- 
+      ;
+
+  {- Verb ----------------------------------------------------------------- -}
+
+  oper
     Verb : Type = {
       s : VForm => Str ;
       i : VerbInfo ;
@@ -126,21 +156,13 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
   param
     -- Possible verb forms (tense + person)
     VForm =
-        VPerf Agr    -- Perfect tense in all pronoun cases
-      | VImpf Agr    -- Imperfect tense in all pronoun cases
+        VPerf VAgr    -- Perfect tense in all pronoun cases
+      | VImpf VAgr    -- Imperfect tense in all pronoun cases
       | VImp Number  -- Imperative is always P2, Sg & Pl
       -- | VPresPart GenNum  -- Present Particible for Gender/Number
       -- | VPastPart GenNum  -- Past Particible for Gender/Number
       -- | VVerbalNoun      -- Verbal Noun
     ;
-
-    -- Inflection of verbs for pronominal suffixes
-    VSuffixForm =
-        VSuffixNone  -- eg FTAĦT
-      | VSuffixDir Agr  -- eg FTAĦTU
-      | VSuffixInd Agr  -- eg FTAĦTLU
-      | VSuffixDirInd GenNum Agr  -- eg FTAĦTHULU. D.O. is necessarily 3rd person.
-      ;
 
     VDerivedForm =
         FormI
@@ -179,19 +201,9 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         QStrong
       | QWeak
       ;
-    -- VRomanceEnding =
-    --     _ARE -- kanta
-    --   | _ERE | _IRE -- vinċa, serva --- we don't need this distinction, just always use IRE
-    --   ;
-    -- VQuadClass =
-    --     BiradicalBase
-    --   | RepeatedC3
-    --   | RepeatedC1
-    --   | AdditionalC4
-    --   ;
 
+  {- Adjective ------------------------------------------------------------ -}
 
-  {- Adjective -}
   oper
     Adjective : Type = {
       s : AForm => Str ;
@@ -202,12 +214,13 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         APosit GenNum
       | ACompar
       | ASuperl
-    ;
+      ;
 
+  {- Other ---------------------------------------------------------------- -}
 
   oper
 
-    {- ===== Some character classes ===== -}
+    {- ~~~ Some character classes ~~~ -}
     
     Letter : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
     Consonant : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
@@ -230,7 +243,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     EorI : Str = "e" | "i" ;
     IorE : Str = "i" | "e" ;
 
-    {- ===== Roots & Patterns ===== -}
+    {- ~~~ Roots & Patterns ~~~ -}
 
     Pattern : Type = {V1, V2 : Str} ;
     Root : Type = {C1, C2, C3, C4 : Str} ;
@@ -309,7 +322,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       } ;
 
 
-    {- ===== Conversions ===== -}
+    {- ~~~ Conversions ~~~ -}
 
     numnum2nounnum : Num_Number -> Noun_Number = \n ->
       case n of {
@@ -318,7 +331,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       } ;
 
 
-    {- ===== Useful helper functions ===== -}
+    {- ~~~ Useful helper functions ~~~ -}
 
     -- Non-existant form
     --- If changed, also see: MorphoMlt.verbPolarityTable
@@ -469,97 +482,29 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
         "iz-" / strs { "z" }
       } ;
 
-    {- ===== Worst-case functions ===== -}
+    {- ~~~ Worst-case functions ~~~ -}
 
     -- Noun: Takes all forms and a gender
     -- Params:
-      -- Singulative, eg KOXXA
-      -- Collective, eg KOXXOX
-      -- Double, eg KOXXTEJN
-      -- Determinate Plural, eg KOXXIET
-      -- Indeterminate Plural
-      -- Gender
---     mkNoun : (_,_,_,_,_ : NForm => Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
---       s = table {
---         Singular Singulative => sing ;
---         Singular Collective => coll ;
---         Dual => dual ;
---         Plural Determinate => det ;
---         Plural Indeterminate => ind
---       } ;
---       g = gen ;
--- --      anim = Inanimate ;
---     } ;
-
-    -- Make a noun animate
-    animateNoun : Noun -> Noun ;
-    animateNoun = \n -> n ** {anim = Animate} ;
-
-    -- Build an empty pronominal suffix table
-    nullSuffixTable : Str -> (NForm => Str) ;
-    nullSuffixTable = \s -> table {
-      NRegular => s ;
-      NPronSuffix _ => []
+    -- Singulative, eg KOXXA
+    -- Collective, eg KOXXOX
+    -- Double, eg KOXXTEJN
+    -- Determinate Plural, eg KOXXIET
+    -- Indeterminate Plural
+    -- Gender
+    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+      s = table {
+        Singular Singulative => sing ;
+        Singular Collective => coll ;
+        Dual => dual ;
+        Plural Determinate => det ;
+        Plural Indeterminate => ind
+        } ;
+      g = gen ;
+      -- anim = Inanimate ;
       } ;
 
-    -- Build a noun's pronominal suffix table
-    mkSuffixTable : (NForm => Str) = overload {
-
-      mkSuffixTable : (_ : Str) -> (NForm => Str) = \wicc ->
-        table {
-          NRegular => wicc ;
-          NPronSuffix (AgP1 Sg) => wicc + "i" ;
-          NPronSuffix (AgP2 Sg) => wicc + "ek" ;
-          NPronSuffix (AgP3Sg Masc) => wicc + "u" ;
-          NPronSuffix (AgP3Sg Fem) => wicc + "ha" ;
-          NPronSuffix (AgP1 Pl) => wicc + "na" ;
-          NPronSuffix (AgP2 Pl) => wicc + "kom" ;
-          NPronSuffix (AgP3Pl) => wicc + "hom"
-        } ;
-
-      mkSuffixTable : (_,_,_,_,_,_,_,_ : Str) -> (NForm => Str) = \isem,ismi,ismek,ismu,isimha,isimna,isimkom,isimhom ->
-        table {
-          NRegular => isem ;
-          NPronSuffix (AgP1 Sg) => ismi ;
-          NPronSuffix (AgP2 Sg) => ismek ;
-          NPronSuffix (AgP3Sg Masc) => ismu ;
-          NPronSuffix (AgP3Sg Fem) => isimha ;
-          NPronSuffix (AgP1 Pl) => isimna ;
-          NPronSuffix (AgP2 Pl) => isimkom ;
-          NPronSuffix (AgP3Pl) => isimhom
-        } ;
-
-      } ;
-
-    -- mkNoun = overload {
-
-    --   mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
-    --     s = table {
-    --       Singular Singulative => (nullSuffixTable sing) ;
-    --       Singular Collective => (nullSuffixTable coll) ;
-    --       Dual => (nullSuffixTable dual) ;
-    --       Plural Determinate => (nullSuffixTable det) ;
-    --       Plural Indeterminate => (nullSuffixTable ind)
-    --       } ;
-    --     g = gen ;
-    --     --      anim = Inanimate ;
-    --     } ;
-
-      mkNoun : (_,_,_,_,_ : NForm => Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
-        s = table {
-          Singular Singulative => sing ;
-          Singular Collective => coll ;
-          Dual => dual ;
-          Plural Determinate => det ;
-          Plural Indeterminate => ind
-          } ;
-        g = gen ;
-        --      anim = Inanimate ;
-        } ;
-
-      -- } ;
-
-    -- Adjective: Takes all forms (except superlative)
+    -- adjective: Takes all forms (except superlative)
     -- Params:
       -- Masculine, eg SABIĦ
       -- Feminine, eg SABIĦA

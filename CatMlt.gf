@@ -63,6 +63,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     CN = Noun ;
     NP = {s : NPCase => Str ; a : Agr} ;
+    Pron = Pronoun ;
     -- Pron = {s : NPCase => Str ; sp : Case => Str ; a : Agr} ;
     Det = {s : Str ; n : Num_Number ; hasNum : Bool} ;
     -- Det = {s : Str ; sp : NPCase => Str ; n : Number ; hasNum : Bool} ;
@@ -99,8 +100,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Open lexical classes, e.g. Lexicon
 
-    V, VS, VQ, VA = Verb ; -- = {s : VForm => Str} ;
-    V2, V2A, V2Q, V2S = Verb ** {c2 : Str} ;
+    V, VS, VQ, VA = Verb ;
+    V2, V2A, V2Q, V2S = Verb ; -- ** {c2 : Str} ;
     V3 = Verb ** {c2, c3 : Str} ;
     -- VV = {s : VVForm => Str ; typ : VVType} ;
     -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;
