@@ -25,7 +25,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Sentence
 
-    -- Cl = {s : ResMlt.Tense => Anteriority => Polarity => Order => Str} ;
+    Cl = {s : Tense => Anteriority => Polarity => Str} ;
     -- ClSlash = {
     --   s : ResMlt.Tense => Anteriority => Polarity => Order => Str ;
     --   c2 : Str
@@ -50,9 +50,9 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Verb
 
-    -- VP = ResMlt.VP ;
+    VP = ResMlt.VP ;
     -- VPSlash = ResMlt.VP ** {c2 : Str} ;
-    -- Comp = {s : Agr => Str} ; 
+    -- Comp = {s : Agr => Str} ;
 
 -- Adjective
 

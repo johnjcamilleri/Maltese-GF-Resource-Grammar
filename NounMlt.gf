@@ -42,6 +42,12 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       --   }
     } ;
 
+    -- Pron -> NP
+    UsePron p = {
+      s = \\npcase => (p.s ! Personal).c1 ;
+      a = p.a
+      } ;
+
     -- Num
     NumSg = {s = \\c => []; n = Num_Sg ; hasCard = False} ;
     NumPl = {s = \\c => []; n = Num_Pl ; hasCard = False} ;

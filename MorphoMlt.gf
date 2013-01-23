@@ -16,25 +16,34 @@ resource MorphoMlt = ResMlt ** open Prelude in {
 
   oper
     -- [AZ]
-    mkPron : Pronoun = overload {
-      mkPron : (_,_ : Str) -> Number -> Person -> Gender -> Pronoun =
-        \jien, tieghi, num, pers, gen -> {
+    mkPron = overload {
+      
+      -- jiena, inti, huwa
+      mkPron : (_,_,_,_,_,_ : Str) -> Number -> Person -> Gender -> Pronoun =
+        \jien, _i, _ja, _ek, _k, _li, num, pers, gen -> {
           s = table {
-            Personal => jien ; -- Nominative case
-            Possessive => tieghi; -- Genitive case
-            Suffixed => [] -- Suffix provided by noun/verb/preposition
+            Personal     => {c1 = jien ; c2 = []} ;
+            Possessive   => {c1 = "tiegħ" + _i ; c2 = []} ;
+            Suffixed Acc => {c1 = _ek ; c2 = _k} ; -- rajtek, rak
+            Suffixed Dat => {c1 = _li ; c2 = []} ; -- rajtli
+            Suffixed Gen => {c1 = _i ; c2 = _ja} -- qalbi, idejja
             } ;
           a = mkAgr gen num pers ;
         } ;
-      mkPron : (_,_ : Str) -> Number -> Person -> Pronoun =
-        \jien, tieghi, num, pers -> {
+
+      -- hija, aħna, intom, huma
+      mkPron : (_,_ : Str) -> Number -> Person -> Gender -> Pronoun =
+        \hi, _ha, num, pers, gen -> {
           s = table {
-            Personal => jien ; -- Nominative case
-            Possessive => tieghi ; -- Genitive case
-            Suffixed => [] -- Suffix provided by noun/verb/preposition
+            Personal     => {c1 = hi ; c2 = []} ;
+            Possessive   => {c1 = "tagħ" + _ha ; c2 = []} ;
+            Suffixed Acc => {c1 = _ha ; c2 = []} ;
+            Suffixed Dat => {c1 = "l"+_ha ; c2 = []} ;
+            Suffixed Gen => {c1 = _ha ; c2 = []}
             } ;
-          a = mkAgr Masc num pers ; --- sorry ladies
+          a = mkAgr gen num pers ;
         } ;
+      
       } ;
 
   {- Verb ----------------------------------------------------------------- -}

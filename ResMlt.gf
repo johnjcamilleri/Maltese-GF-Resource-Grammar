@@ -7,7 +7,7 @@
 
 --# -path=.:../abstract:../common:../prelude
 
-resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
+resource ResMlt = ParamX ** open Prelude, Predef in {
 
   flags coding=utf8 ;
 
@@ -54,7 +54,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       ;
 
   param
-    NPCase = Nom | Gen ;
+    NPCase = Nom | CPrep ; -- [AZ]
 
     -- Animacy = Animate | Inanimate ;
 
@@ -123,15 +123,21 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
   oper
     -- [AZ]
     Pronoun = {
-      s : PronForm => Str ;
+      s : PronForm => {c1, c2: Str} ;
       a : Agr ;
       } ;
 
   param
     PronForm =
-        Personal -- JIEN
+        Personal -- JIENA
       | Possessive -- TIEGĦI
-      | Suffixed -- 
+      | Suffixed PronCase
+      ;
+
+    PronCase =
+        Acc -- Accusative: rajtu
+      | Dat -- Dative: rajtlu
+      | Gen -- Genitive: qalbu
       ;
 
   {- Verb ----------------------------------------------------------------- -}
@@ -202,6 +208,96 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
       | QWeak
       ;
 
+  oper
+    -- [AZ]
+    VP : Type = {
+      s : VPForm => Anteriority => Polarity => Str ;
+      -- a1 : Str ;
+      -- n2 : Agr => Str ;
+      -- a2 : Str ;
+      } ;
+
+  param
+    -- [AZ]
+    VPForm =
+        VPIndicat Tense VAgr
+      | VPImperat Number
+      ;
+
+  oper
+
+    -- Inferred from [AZ]
+    CopulaVP : VP = {
+      s = \\vpf,ant,pol =>
+        case <vpf,pol> of {
+          <VPIndicat Past (AgP1 Sg), Pos> => "kont" ;
+          <VPIndicat Past (AgP1 Sg), Neg> => "kontx" ;
+          <VPIndicat Past (AgP2 Sg), Pos> => "kont" ;
+          <VPIndicat Past (AgP2 Sg), Neg> => "kontx" ;
+          <VPIndicat Past (AgP3Sg Masc), Pos> => "kien" ;
+          <VPIndicat Past (AgP3Sg Masc), Neg> => "kienx" ;
+          <VPIndicat Past (AgP3Sg Fem), Pos> => "kienet" ;
+          <VPIndicat Past (AgP3Sg Fem), Neg> => "kienitx" ;
+          <VPIndicat Past (AgP1 Pl), Pos> => "konna" ;
+          <VPIndicat Past (AgP1 Pl), Neg> => "konniex" ;
+          <VPIndicat Past (AgP2 Pl), Pos> => "kontu" ;
+          <VPIndicat Past (AgP2 Pl), Neg> => "kontux" ;
+          <VPIndicat Past (AgP3Pl), Pos> => "kienu" ;
+          <VPIndicat Past (AgP3Pl), Neg> => "kienux" ;
+
+          <VPIndicat Pres (AgP1 Sg), Pos> => "nkun" ;
+          <VPIndicat Pres (AgP1 Sg), Neg> => "nkunx" ;
+          <VPIndicat Pres (AgP2 Sg), Pos> => "tkun" ;
+          <VPIndicat Pres (AgP2 Sg), Neg> => "tkunx" ;
+          <VPIndicat Pres (AgP3Sg Masc), Pos> => "jkun" ;
+          <VPIndicat Pres (AgP3Sg Masc), Neg> => "jkunx" ;
+          <VPIndicat Pres (AgP3Sg Fem), Pos> => "tkun" ;
+          <VPIndicat Pres (AgP3Sg Fem), Neg> => "tkunx" ;
+          <VPIndicat Pres (AgP1 Pl), Pos> => "nkunu" ;
+          <VPIndicat Pres (AgP1 Pl), Neg> => "nkunux" ;
+          <VPIndicat Pres (AgP2 Pl), Pos> => "tkunu" ;
+          <VPIndicat Pres (AgP2 Pl), Neg> => "tkunux" ;
+          <VPIndicat Pres (AgP3Pl), Pos> => "jkunu" ;
+          <VPIndicat Pres (AgP3Pl), Neg> => "jkunux" ;
+
+          <VPImperat Sg, Pos> => "kun" ;
+          <VPImperat Sg, Neg> => "kunx" ;
+          <VPImperat Pl, Pos> => "kunu" ;
+          <VPImperat Pl, Neg> => "kunux" ;
+
+          _ => Predef.error "tense not implemented"
+        }
+      } ;
+
+    -- [AZ]
+    predV : Verb -> VP = \verb -> {
+      s = \\vpf,ant,pol =>
+        case vpf of {
+          VPIndicat tense vagr =>
+            let
+              neg = case <tense,pol,ant> of {
+                <Fut,Neg,Simul> => "mhux";
+                <_,Neg> => "ma" ;
+                _ => []
+                } ;
+              kien = CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol;
+            in
+            case <tense,ant> of {
+              <Pres,Simul> => neg ++ verb.s ! VImpf vagr ;
+              <Pres,Anter> => neg ++ kien ++ verb.s ! VImpf vagr ;
+              <Past,Simul> => neg ++ verb.s ! VPerf vagr ;
+              <Past,Anter> => neg ++ kien ++ verb.s ! VPerf vagr ;
+              <Fut, Simul> => neg ++ "se" ++ verb.s ! VImpf vagr ;
+              <Fut, Anter> => neg ++ kien ++ "se" ++ verb.s ! VImpf vagr ;
+              _ => "tense not implemented"
+            } ;
+          VPImperat num => verb.s ! VImp num
+        }
+      -- a1 = [] ;
+      -- n2 = \\_ => [] ;
+      -- a2 = [] ;
+      } ;
+
   {- Adjective ------------------------------------------------------------ -}
 
   oper
@@ -249,7 +345,7 @@ resource ResMlt = ParamX - [Tense] ** open Prelude, Predef in {
     Root : Type = {C1, C2, C3, C4 : Str} ;
 
     -- Make a root object. Accepts following overloads:
-    -- mkRoot (empty root)
+    -- mkoot (empty root)
     -- mkRoot "k-t-b" / mkRoot "k-t-b-l"
     -- mkRoot "k" "t" "b"
     -- mkRoot "k" "t" "b" "l"
