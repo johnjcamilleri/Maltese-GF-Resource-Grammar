@@ -280,7 +280,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    sit_V
     skin_N = mkN "ġilda" "ġildiet" ;
     sky_N = mkN "sema" "smewwiet" masculine ;
---    sleep_V
+    sleep_V = mkV "raqad" (mkRoot "r-q-d") ;
     small_A = brokenA "zgħir" "zgħar" "iżgħar" ;
 --    smell_V
     smoke_N = mkN "duħħan" "dħaħen" ;
