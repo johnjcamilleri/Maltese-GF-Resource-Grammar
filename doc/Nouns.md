@@ -1,7 +1,7 @@
 # Maltese GF Resource Grammar: Nouns
 
 Notes about the implementation of Maltese **nouns**.
-This file is both a documentaion, as well as a to-do list, and will be in flux a lot.
+This file is both a documentation, as well as a to-do list, and will be in flux a lot.
 
 ## Checklist
 
