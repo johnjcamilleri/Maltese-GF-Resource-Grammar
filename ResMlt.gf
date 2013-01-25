@@ -226,45 +226,41 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
 
+    polarise : Str -> Polarity -> Str = \s,pol ->
+      case pol of {
+        Neg => glue s "x" ;
+        _ => s
+      } ;
+
+    copula_kien = {
+      s : (VForm => Str) = table {
+        VPerf (AgP1 Sg) => "kont" ;
+        VPerf (AgP2 Sg) => "kont" ;
+        VPerf (AgP3Sg Masc) => "kien" ;
+        VPerf (AgP3Sg Fem) => "kienet" ;
+        VPerf (AgP1 Pl) => "konna" ;
+        VPerf (AgP2 Pl) => "kontu" ;
+        VPerf (AgP3Pl) => "kienu" ;
+        VImpf (AgP1 Sg) => "nkun" ;
+        VImpf (AgP2 Sg) => "tkun" ;
+        VImpf (AgP3Sg Masc) => "jkun" ;
+        VImpf (AgP3Sg Fem) => "tkun" ;
+        VImpf (AgP1 Pl) => "nkunu" ;
+        VImpf (AgP2 Pl) => "tkunu" ;
+        VImpf (AgP3Pl) => "jkunu" ;
+        VImp (Pl) => "kun" ;
+        VImp (Sg) => "kunu"
+        } ;
+      i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
+      } ;
+
     -- Inferred from [AZ]
     CopulaVP : VP = {
       s = \\vpf,ant,pol =>
-        case <vpf,pol> of {
-          <VPIndicat Past (AgP1 Sg), Pos> => "kont" ;
-          <VPIndicat Past (AgP1 Sg), Neg> => "kontx" ;
-          <VPIndicat Past (AgP2 Sg), Pos> => "kont" ;
-          <VPIndicat Past (AgP2 Sg), Neg> => "kontx" ;
-          <VPIndicat Past (AgP3Sg Masc), Pos> => "kien" ;
-          <VPIndicat Past (AgP3Sg Masc), Neg> => "kienx" ;
-          <VPIndicat Past (AgP3Sg Fem), Pos> => "kienet" ;
-          <VPIndicat Past (AgP3Sg Fem), Neg> => "kienitx" ;
-          <VPIndicat Past (AgP1 Pl), Pos> => "konna" ;
-          <VPIndicat Past (AgP1 Pl), Neg> => "konniex" ;
-          <VPIndicat Past (AgP2 Pl), Pos> => "kontu" ;
-          <VPIndicat Past (AgP2 Pl), Neg> => "kontux" ;
-          <VPIndicat Past (AgP3Pl), Pos> => "kienu" ;
-          <VPIndicat Past (AgP3Pl), Neg> => "kienux" ;
-
-          <VPIndicat Pres (AgP1 Sg), Pos> => "nkun" ;
-          <VPIndicat Pres (AgP1 Sg), Neg> => "nkunx" ;
-          <VPIndicat Pres (AgP2 Sg), Pos> => "tkun" ;
-          <VPIndicat Pres (AgP2 Sg), Neg> => "tkunx" ;
-          <VPIndicat Pres (AgP3Sg Masc), Pos> => "jkun" ;
-          <VPIndicat Pres (AgP3Sg Masc), Neg> => "jkunx" ;
-          <VPIndicat Pres (AgP3Sg Fem), Pos> => "tkun" ;
-          <VPIndicat Pres (AgP3Sg Fem), Neg> => "tkunx" ;
-          <VPIndicat Pres (AgP1 Pl), Pos> => "nkunu" ;
-          <VPIndicat Pres (AgP1 Pl), Neg> => "nkunux" ;
-          <VPIndicat Pres (AgP2 Pl), Pos> => "tkunu" ;
-          <VPIndicat Pres (AgP2 Pl), Neg> => "tkunux" ;
-          <VPIndicat Pres (AgP3Pl), Pos> => "jkunu" ;
-          <VPIndicat Pres (AgP3Pl), Neg> => "jkunux" ;
-
-          <VPImperat Sg, Pos> => "kun" ;
-          <VPImperat Sg, Neg> => "kunx" ;
-          <VPImperat Pl, Pos> => "kunu" ;
-          <VPImperat Pl, Neg> => "kunux" ;
-
+        case <vpf> of {
+          <VPIndicat Past vagr> => polarise (copula_kien.s ! VPerf vagr) pol ;
+          <VPIndicat Pres vagr> => polarise (copula_kien.s ! VImpf vagr) pol ;
+          <VPImperat num> => polarise (copula_kien.s ! VImp num) pol ;
           _ => Predef.error "tense not implemented"
         }
       } ;
@@ -275,21 +271,28 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         case vpf of {
           VPIndicat tense vagr =>
             let
-              neg = case <tense,pol,ant> of {
-                <Fut,Neg,Simul> => "mhux";
-                <_,Neg> => "ma" ;
-                _ => []
-                } ;
-              kien = CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol;
+              ma = "ma" ;
+              mhux = "mhux" ;
+              kien = CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol ;
+              neg : Str -> Str = \s -> polarise s Neg ;
             in
-            case <tense,ant> of {
-              <Pres,Simul> => neg ++ verb.s ! VImpf vagr ;
-              <Pres,Anter> => neg ++ kien ++ verb.s ! VImpf vagr ;
-              <Past,Simul> => neg ++ verb.s ! VPerf vagr ;
-              <Past,Anter> => neg ++ kien ++ verb.s ! VPerf vagr ;
-              <Fut, Simul> => neg ++ "se" ++ verb.s ! VImpf vagr ;
-              <Fut, Anter> => neg ++ kien ++ "se" ++ verb.s ! VImpf vagr ;
-              _ => "tense not implemented"
+            case <tense,ant,pol> of {
+              <Pres,Simul,Pos> => verb.s ! VImpf vagr ; -- norqod
+              <Pres,Anter,Pos> => kien ++ verb.s ! VImpf vagr ; -- kont norqod
+              <Past,Simul,Pos> => verb.s ! VPerf vagr ; -- rqadt
+              <Past,Anter,Pos> => kien ++ verb.s ! VPerf vagr ; -- kont rqadt
+              <Fut, Simul,Pos> => "se" ++ verb.s ! VImpf vagr ; -- se norqod
+              <Fut, Anter,Pos> => kien ++ "se" ++ verb.s ! VImpf vagr ; -- kont se norqod
+
+              <Pres,Simul,Neg> => ma ++ neg (verb.s ! VImpf vagr) ; -- ma norqodx
+              <Pres,Anter,Neg> => ma ++ kien ++ verb.s ! VImpf vagr ; -- ma kontx norqod
+              <Past,Simul,Neg> => ma ++ neg (verb.s ! VPerf vagr) ; -- ma rqadtx
+              <Past,Anter,Neg> => ma ++ kien ++ verb.s ! VPerf vagr ; -- ma kontx rqadt
+              <Fut, Simul,Neg> => mhux ++ "se" ++ verb.s ! VImpf vagr ; -- mhux se norqod
+              <Fut, Anter,Neg> => ma ++ kien ++ "se" ++ verb.s ! VImpf vagr ; -- ma kontx se norqod
+
+              <Cond,_,Pos> => kien ++ verb.s ! VImpf vagr ; -- kont norqod
+              <Cond,_,Neg> => ma ++ kien ++ verb.s ! VImpf vagr -- ma kontx norqod
             } ;
           VPImperat num => verb.s ! VImp num
         }
