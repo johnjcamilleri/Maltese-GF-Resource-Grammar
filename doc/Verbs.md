@@ -1,7 +1,7 @@
 # Maltese GF Resource Grammar: Verbs
 
 Notes about the GF implementation of Maltese **verbs**.
-This file is both a documentaion, as well as a to-do list, and will be in flux a lot.
+This file is both a documentation, as well as a to-do list, and will be in flux a lot.
 
 ## Checklist
 
@@ -9,10 +9,10 @@ This file is both a documentaion, as well as a to-do list, and will be in flux a
 1. ~~Non-semitic verbs (romance, English-loan)~~
 1. ~~Polarity, e.g. _oħroġ_ vs _toħroġx_~~
 1. ~~Inflection for direct & indirect object suffixes, e.g. _ħaditu_, _ġabuhielhom_~~
-1. Derived forms
+1. ~~Derived forms~~
 1. Participles - should verbs also contain a table for Active/Past Participle?
-1. Irregular verbs
-1. Two-place verbs (V2)
+1. ~~Irregular verbs~~
+1. ~~Two-place verbs (V2)~~
 
 ### Known issues:
 
