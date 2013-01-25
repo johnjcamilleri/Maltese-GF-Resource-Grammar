@@ -18,7 +18,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    alas_Interj
 --    already_Adv
     animal_N = mkN "annimal" ;
---    answer_V2S
+    answer_V2S = wiegeb_WGB_3_10033_V ;
     apartment_N = mkN "appartament" ;
     art_N = mkNNoPlural "arti" feminine ;
 --    ashes_N = mkN "rmied" ;
