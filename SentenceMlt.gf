@@ -21,7 +21,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
       s = \\tense,ant,pol => (s ++ v ++ o)
         where {
           s = if_then_Str np.isPron [] (np.s ! Nom) ; -- omit subject pronouns
-          v = vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol ;
+          v = unbits (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
           o = vp.s2 ! np.a ;
         } ;
       } ;

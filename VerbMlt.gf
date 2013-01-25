@@ -19,7 +19,9 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
       case np.isPron of {
         -- Join pron to verb
         True => {
-            s = \\vpf,ant,pol => glue (vp.s ! vpf ! ant ! pol) (np.s ! CPrep) ;
+            s = \\vpf,ant,pol =>
+              let bits = vp.s ! vpf ! ant ! pol in
+              { stem = glue bits.stem (np.s ! CPrep) ; polsfx = bits.polsfx } ;
             s2 = \\agr => [] ;
           } ;
 

@@ -215,9 +215,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   oper
+
+    Vbits : Type = {stem, polsfx : Str} ;
+    unbits : Vbits -> Str = \vb -> vb.stem ++ vb.polsfx ;
+    
     -- [AZ]
     VP : Type = {
-      s : VPForm => Anteriority => Polarity => Str ; -- verb
+      s : VPForm => Anteriority => Polarity => Vbits ; -- verb
       s2 : Agr => Str ; -- complement
       -- a1 : Str ;
       -- a2 : Str ;
@@ -238,12 +242,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s2 = obj ;
       -- a1 = vp.a1 ;
       -- a2 = vp.a2 ;
-      } ;
-
-    polarise : Str -> Polarity -> Str = \s,pol ->
-      case pol of {
-        Neg => glue s "x" ;
-        _ => s
       } ;
 
     copula_kien = {
@@ -268,6 +266,15 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
       } ;
 
+    polarise : Str -> Polarity -> Vbits = \s,pol ->
+      {
+        stem = s ;
+        polsfx = case pol of {
+          Neg => BIND ++ "x" ;
+          _ => []
+          } ;
+      } ;
+
     -- Adapted from [AZ]
     CopulaVP : VP = {
       s = \\vpf,ant,pol =>
@@ -283,33 +290,36 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- [AZ]
     predV : Verb -> VP = \verb -> {
       s = \\vpf,ant,pol =>
+        let
+          ma = "ma" ;
+          mhux = "mhux" ;
+          b1 : Str -> Vbits = \s -> {stem=s;polsfx=[]} ;
+          b2 : Str -> Vbits = \s -> {stem=s;polsfx=BIND ++ "x"} ;
+        in
         case vpf of {
           VPIndicat tense vagr =>
             let
-              ma = "ma" ;
-              mhux = "mhux" ;
-              kien = CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol ;
-              neg : Str -> Str = \s -> polarise s Neg ;
+              kien = unbits (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
             in
             case <tense,ant,pol> of {
-              <Pres,Simul,Pos> => verb.s ! VImpf vagr ; -- norqod
-              <Pres,Anter,Pos> => kien ++ verb.s ! VImpf vagr ; -- kont norqod
-              <Past,Simul,Pos> => verb.s ! VPerf vagr ; -- rqadt
-              <Past,Anter,Pos> => kien ++ verb.s ! VPerf vagr ; -- kont rqadt
-              <Fut, Simul,Pos> => "se" ++ verb.s ! VImpf vagr ; -- se norqod
-              <Fut, Anter,Pos> => kien ++ "se" ++ verb.s ! VImpf vagr ; -- kont se norqod
+              <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
+              <Pres,Anter,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
+              <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+              <Past,Anter,Pos> => b1 (kien ++ verb.s ! VPerf vagr) ; -- kont rqadt
+              <Fut, Simul,Pos> => b1 ("se" ++ verb.s ! VImpf vagr) ; -- se norqod
+              <Fut, Anter,Pos> => b1 (kien ++ "se" ++ verb.s ! VImpf vagr) ; -- kont se norqod
 
-              <Pres,Simul,Neg> => ma ++ neg (verb.s ! VImpf vagr) ; -- ma norqodx
-              <Pres,Anter,Neg> => ma ++ kien ++ verb.s ! VImpf vagr ; -- ma kontx norqod
-              <Past,Simul,Neg> => ma ++ neg (verb.s ! VPerf vagr) ; -- ma rqadtx
-              <Past,Anter,Neg> => ma ++ kien ++ verb.s ! VPerf vagr ; -- ma kontx rqadt
-              <Fut, Simul,Neg> => mhux ++ "se" ++ verb.s ! VImpf vagr ; -- mhux se norqod
-              <Fut, Anter,Neg> => ma ++ kien ++ "se" ++ verb.s ! VImpf vagr ; -- ma kontx se norqod
+              <Pres,Simul,Neg> => b2 (ma ++ verb.s ! VImpf vagr) ; -- ma norqodx
+              <Pres,Anter,Neg> => b1 (ma ++ kien ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
+              <Past,Simul,Neg> => b2 (ma ++ verb.s ! VPerf vagr) ; -- ma rqadtx
+              <Past,Anter,Neg> => b1 (ma ++ kien ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
+              <Fut, Simul,Neg> => b1 (mhux ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
+              <Fut, Anter,Neg> => b1 (ma ++ kien ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
 
-              <Cond,_,Pos> => kien ++ verb.s ! VImpf vagr ; -- kont norqod
-              <Cond,_,Neg> => ma ++ kien ++ verb.s ! VImpf vagr -- ma kontx norqod
+              <Cond,_,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
+              <Cond,_,Neg> => b1 (ma ++ kien ++ verb.s ! VImpf vagr) -- ma kontx norqod
             } ;
-          VPImperat num => verb.s ! VImp num
+          VPImperat num => b2 (verb.s ! VImp num) -- torqodx
         };
       s2 = \\agr => [] ;
       -- a1 = [] ;
