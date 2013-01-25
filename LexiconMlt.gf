@@ -7,7 +7,7 @@
 --# -path=.:../abstract:../common:../prelude
 
 concrete LexiconMlt of Lexicon = CatMlt **
-  open Prelude, ParadigmsMlt, IrregMlt in {
+  open Prelude, ParadigmsMlt, IrregMlt, DictMlt in {
 
   flags
     optimize=values ;
@@ -22,7 +22,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     apartment_N = mkN "appartament" ;
     art_N = mkNNoPlural "arti" feminine ;
 --    ashes_N = mkN "rmied" ;
---    ask_V2Q
+    ask_V2Q = saqsa_SQSJ_1_7268_V ;
     baby_N = mkN "tarbija" "trabi" ;
     back_N = mkN "dahar" "dhur" ; -- pronSuffix
     bad_A = brokenA "ħażin" "hżiena" "agħar" ;
@@ -36,10 +36,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
     big_A = brokenA "kbir" "kbar" "ikbar" ;
     bike_N = mkN "rota" ;
     bird_N = mkN "għasfur" "għasafar" ; -- what about GĦASFURA?
---    bite_V2
+    bite_V2 = gidem_GDM_1_8009_V ;
     black_A = mkA "iswed" "sewda" "suwed" ;
     blood_N = mkN [] "demm" [] "dmija" [] ; -- pronSuffix
---    blow_V
+    blow_V = nefah_NFH_1_8966_V ;
     blue_A = sameA "blu" ;
     boat_N = mkN "dgħajsa" "dgħajjes" ;
     bone_N = mkNColl "għadam" ;
@@ -48,15 +48,15 @@ concrete LexiconMlt of Lexicon = CatMlt **
     boss_N = mkN "mgħallem" "mgħallmin" ;
     boy_N = mkN "tifel" "tfal" ;
     bread_N = mkNColl "ħobż" ;
---    break_V2
+    break_V2 = kiser_KSR_1_8636_V ;
     breast_N = mkN "sider" "sdur" ; -- also ISDRA -- pronSuffix
 --    breathe_V
     broad_A = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
     brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ; -- pronSuffix
     brown_A = sameA "kannella" ;
---    burn_V
+    burn_V = haraq_HRQ_1_8367_V ;
     butter_N = mkN [] "butir" [] "butirijiet" [] ;
---    buy_V2
+    buy_V2 = xtara_XRJ_8_10296_V ;
     camera_N = mkN "kamera" "kameras" ;
     cap_N = mkN "beritta" ;
     car_N = mkN "karozza" ;
@@ -70,18 +70,18 @@ concrete LexiconMlt of Lexicon = CatMlt **
     city_N = mkN "belt" "bliet" feminine ; -- pronSuffix
     clean_A = brokenA "nadif" "nodfa" ;
     clever_A = regA "bravu" ;
---    close_V2
+    close_V2 = ghalaq_GHLQ_1_10530_V ;
     cloud_N = mkNColl "sħab" ;
     coat_N = mkN "kowt" "kowtijiet" ;
     cold_A = mkA "kiesaħ" "kiesħa" "kesħin" ;
 --    come_V
     computer_N = mkN "kompjuter" "kompjuters" ;
     correct_A = regA "korrett" ;
---    count_V2
+    count_V2 = ghadd_GHDD_1_10460_V ;
     country_N = mkN "pajjiż" ; -- pronSuffix
     cousin_N = mkN "kuġin" ; -- pronSuffix
     cow_N = mkN "baqra" "baqar" "baqartejn" [] [] ;
---    cut_V2
+    cut_V2 = qata'_QTGH_1_9305_V ;
     day_N = mkN "ġurnata" "ġranet" ;
 --    dig_V
     dirty_A = regA "maħmuġ" ;
@@ -191,7 +191,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
 --    lose_V2
     louse_N = mkN "qamla" "qamliet" ;
     love_N = mkN "mħabba" "mħabbiet" ; -- hmmm
-    love_V2 = mkV "ħabb" (mkRoot "ħ-b-b") ;
+    love_V2 = habb_HBB_1_8174_V ;
     man_N = mkN "raġel" "rġiel" ;
 --    married_A2
     meat_N = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
