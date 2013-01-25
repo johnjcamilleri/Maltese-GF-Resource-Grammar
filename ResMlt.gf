@@ -100,7 +100,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     ProperNoun : Type = {
       s : Str ;
-      g : Gender ;
+      a : Agr ; -- ignore a.p (always P3)
+      } ;
+
+    NounPhrase : Type = {
+      s : NPCase => Str ;
+      a : Agr ;
+      isPron : Bool ;
       } ;
 
   param
@@ -211,9 +217,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   oper
     -- [AZ]
     VP : Type = {
-      s : VPForm => Anteriority => Polarity => Str ;
+      s : VPForm => Anteriority => Polarity => Str ; -- verb
+      s2 : Agr => Str ; -- complement
       -- a1 : Str ;
-      -- n2 : Agr => Str ;
       -- a2 : Str ;
       } ;
 
@@ -225,6 +231,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   oper
+
+    -- [AZ]
+    insertObj : (Agr => Str) -> VP -> VP = \obj,vp -> {
+      s = vp.s ;
+      s2 = obj ;
+      -- a1 = vp.a1 ;
+      -- a2 = vp.a2 ;
+      } ;
 
     polarise : Str -> Polarity -> Str = \s,pol ->
       case pol of {
@@ -254,7 +268,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
       } ;
 
-    -- Inferred from [AZ]
+    -- Adapted from [AZ]
     CopulaVP : VP = {
       s = \\vpf,ant,pol =>
         case <vpf> of {
@@ -262,7 +276,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           <VPIndicat Pres vagr> => polarise (copula_kien.s ! VImpf vagr) pol ;
           <VPImperat num> => polarise (copula_kien.s ! VImp num) pol ;
           _ => Predef.error "tense not implemented"
-        }
+        } ;
+      s2 = \\agr => [] ;
       } ;
 
     -- [AZ]
@@ -295,7 +310,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
               <Cond,_,Neg> => ma ++ kien ++ verb.s ! VImpf vagr -- ma kontx norqod
             } ;
           VPImperat num => verb.s ! VImp num
-        }
+        };
+      s2 = \\agr => [] ;
       -- a1 = [] ;
       -- n2 = \\_ => [] ;
       -- a2 = [] ;

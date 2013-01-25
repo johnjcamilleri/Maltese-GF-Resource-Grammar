@@ -16,7 +16,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       a = case (numnum2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
 	_ => mkAgr cn.g Pl P3
-      }
+      } ;
+      isPron = False ;
       -- s = \\c => det.s ++ cn.s ! det.n ! npcase2case c ; 
       -- a = agrgP3 det.n cn.g
     } ;
@@ -42,10 +43,22 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       --   }
     } ;
 
+    -- PN -> NP
+    UsePN pn = {
+      s = \\c => pn.s ;
+      a = pn.a ;
+      isPron = False ;
+      } ;
+
     -- Pron -> NP
     UsePron p = {
-      s = \\npcase => (p.s ! Personal).c1 ;
-      a = p.a
+      -- s = \\npcase => (p.s ! Personal).c1 ;
+      s = table {
+        Nom => (p.s ! Personal).c1 ;
+        CPrep => (p.s ! Suffixed Acc).c1
+        } ;
+      a = p.a ;
+      isPron = True ;
       } ;
 
     -- Num

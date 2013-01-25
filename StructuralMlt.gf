@@ -12,6 +12,21 @@ concrete StructuralMlt of Structural = CatMlt **
     coding=utf8 ;
 
   lin
+    
+    {- Pronoun -------------------------------------------------------------- -}
+    
+    he_Pron = mkPron "hu" "u" "h" "u" "h" "lu" singular P3 masculine ; --- also HUWA
+    i_Pron = mkPron "jien" "i" "ja" "ni" [] "li" singular P1 masculine ; --- also JIENA
+    -- it_Pron  = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
+    she_Pron = mkPron "hi" "ha" singular P3 feminine ; --- also HIJA
+    they_Pron = mkPron "huma" "hom" plural P3 masculine ;
+    we_Pron = mkPron "aħna" "na" plural P1 masculine ;
+    youSg_Pron = mkPron "int" "ek" "ok" "ek" "k" "lek" singular P2 masculine ; -- also INTI
+    youPl_Pron = mkPron "intom" "kom" plural P2 masculine ;
+    youPol_Pron = youSg_Pron ;
+
+    {- Others --------------------------------------------------------------- -}
+
     -- above_Prep = mkPrep "above" ;
     -- after_Prep = mkPrep "after" ;
     -- all_Predet = ss "all" ;
@@ -49,7 +64,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- few_Det = mkDeterminer plural "few" ;
     -- for_Prep = mkPrep "for" ;
     -- from_Prep = mkPrep "from" ;
-    he_Pron = mkPron "hu" "u" "h" "u" "h" "lu" singular P3 masculine ; --- also HUWA
     -- here_Adv = mkAdv "here" ;
     -- here7to_Adv = mkAdv ["to here"] ;
     -- here7from_Adv = mkAdv ["from here"] ;
@@ -58,9 +72,7 @@ concrete StructuralMlt of Structural = CatMlt **
     -- how8many_IDet = mkDeterminer plural ["how many"] ;
     -- if_Subj = ss "if" ;
     -- in8front_Prep = mkPrep ["in front of"] ;
-    i_Pron = mkPron "jien" "i" "ja" "ni" [] "li" singular P1 masculine ; --- also JIENA
     -- in_Prep = mkPrep "in" ;
-    -- it_Pron  = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
     -- less_CAdv = C.mkCAdv "less" "than" ;
     -- many_Det = mkDeterminer plural "many" ;
     -- more_CAdv = C.mkCAdv "more" "than" ;
@@ -87,7 +99,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- please_Voc = ss "please" ;
     -- possess_Prep = mkPrep "of" ;
     -- quite_Adv = mkAdv "quite" ;
-    she_Pron = mkPron "hi" "ha" singular P3 feminine ; --- also HIJA
     -- so_AdA = mkAdA "so" ;
     -- somebody_NP = regNP "somebody" singular ;
     -- someSg_Det = mkDeterminer singular "some" ;
@@ -99,7 +110,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- there7to_Adv = mkAdv "there" ;
     -- there7from_Adv = mkAdv ["from there"] ;
     -- therefore_PConj = ss "therefore" ;
-    they_Pron = mkPron "huma" "hom" plural P3 masculine ;
     -- this_Quant = mkQuant "this" "these" ;
     -- through_Prep = mkPrep "through" ;
     -- too_AdA = mkAdA "too" ;
@@ -107,7 +117,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- under_Prep = mkPrep "under" ;
     -- very_AdA = mkAdA "very" ;
     -- want_VV = mkVV (regV "want") ;
-    we_Pron = mkPron "aħna" "na" plural P1 masculine ;
     -- whatPl_IP = mkIP "what" "what" "what's" plural ;
     -- whatSg_IP = mkIP "what" "what" "what's" singular ;
     -- when_IAdv = ss "when" ;
@@ -120,9 +129,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- without_Prep = mkPrep "without" ;
     -- with_Prep = mkPrep "with" ;
     -- yes_Utt = ss "yes" ;
-    youSg_Pron = mkPron "int" "ek" "ok" "ek" "k" "lek" singular P2 masculine ; -- also INTI
-    youPl_Pron = mkPron "intom" "kom" plural P2 masculine ;
-    youPol_Pron = youSg_Pron ;
     
     -- not_predet = {s = "not" ; lock_Predet = <>} ;
     -- no_Quant = mkQuant "no" "no" "none" "none" ;

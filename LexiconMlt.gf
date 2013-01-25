@@ -164,7 +164,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     important_A = sameA "importanti" ;
     industry_N = mkN "industrija" ;
     iron_N = mk5N "ħadida" "ħadid" [] "ħadidiet" "ħdejjed" masculine ;
---    john_PN
+    john_PN = mkPN "Ġanni" masculine singular ;
 --    jump_V
 --    kill_V2
     king_N = mkN "re" "rejjiet" ;

@@ -180,12 +180,17 @@ resource ParadigmsMlt = open
         -- gender = inferNounGender sing ;
         gender = Masc ; -- Collective noun is always treated as Masculine
       in
-        mk5N sing coll [] det [] gender ;
+      mk5N sing coll [] det [] gender ;
 
     -- Build a noun using 5 forms, and a gender
     mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
-    mk5N = \sing,coll,dual,det,ind,gen ->
-      lin N (mkNoun sing coll dual det ind gen) ;
+    mk5N = \sing,coll,dual,det,ind,gen -> lin N (mkNoun sing coll dual det ind gen) ;
+
+    -- Make a proper noun
+    mkPN : Str -> Gender -> Number -> ProperNoun = \name,g,n -> {
+      s = name ;
+      a = mkAgr g n P3 ;
+      } ;
 
 {-
     -- Correctly abbreviate definite prepositions and join with noun

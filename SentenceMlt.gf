@@ -18,7 +18,12 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- NP -> VP -> Cl
     -- John walks
     PredVP np vp = {
-      s = \\tense,ant,pol => np.s ! Nom ++ vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol
+      s = \\tense,ant,pol => (s ++ v ++ o)
+        where {
+          s = if_then_Str np.isPron [] (np.s ! Nom) ; -- omit subject pronouns
+          v = vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol ;
+          o = vp.s2 ! np.a ;
+        } ;
       } ;
 
 -- Cl
