@@ -21,7 +21,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         True => {
             s = \\vpf,ant,pol =>
               let bits = vp.s ! vpf ! ant ! pol in
-              { stem = glue bits.stem (np.s ! CPrep) ; polsfx = bits.polsfx } ;
+              mkVParts (glue bits.stem (np.s ! CPrep)) bits.pol ;
             s2 = \\agr => [] ;
           } ;
 

@@ -216,12 +216,16 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
 
-    Vbits : Type = {stem, polsfx : Str} ;
-    unbits : Vbits -> Str = \vb -> vb.stem ++ vb.polsfx ;
+    VerbParts : Type = { stem, dir, ind, pol : Str } ;
+    mkVParts = overload {
+      mkVParts : Str -> Str -> VerbParts = \a,d -> {stem=a; dir=[]; ind=[]; pol=d} ;
+      mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=a; dir=b; ind=c; pol=d} ;
+      } ;
+    joinVParts : VerbParts -> Str = \vb -> vb.stem ++ vb.dir ++ vb.ind ++ vb.ind ;
     
     -- [AZ]
     VP : Type = {
-      s : VPForm => Anteriority => Polarity => Vbits ; -- verb
+      s : VPForm => Anteriority => Polarity => VerbParts ; -- verb
       s2 : Agr => Str ; -- complement
       -- a1 : Str ;
       -- a2 : Str ;
@@ -266,15 +270,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
       } ;
 
-    polarise : Str -> Polarity -> Vbits = \s,pol ->
-      {
-        stem = s ;
-        polsfx = case pol of {
-          Neg => BIND ++ "x" ;
-          _ => []
-          } ;
-      } ;
-
     -- Adapted from [AZ]
     CopulaVP : VP = {
       s = \\vpf,ant,pol =>
@@ -285,6 +280,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           _ => Predef.error "tense not implemented"
         } ;
       s2 = \\agr => [] ;
+      } where {
+        polarise : Str -> Polarity -> VerbParts = \s,pol ->
+          mkVParts s (case pol of { Neg => BIND ++ "x" ; _ => [] }) ;
       } ;
 
     -- [AZ]
@@ -293,13 +291,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         let
           ma = "ma" ;
           mhux = "mhux" ;
-          b1 : Str -> Vbits = \s -> {stem=s;polsfx=[]} ;
-          b2 : Str -> Vbits = \s -> {stem=s;polsfx=BIND ++ "x"} ;
+          b1 : Str -> VerbParts = \s -> mkVParts s [] ;
+          b2 : Str -> VerbParts = \s -> mkVParts s (BIND ++ "x") ;
         in
         case vpf of {
           VPIndicat tense vagr =>
             let
-              kien = unbits (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
+              kien = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
             in
             case <tense,ant,pol> of {
               <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
