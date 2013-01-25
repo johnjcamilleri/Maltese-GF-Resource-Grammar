@@ -102,7 +102,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     V, VS, VQ, VA = Verb ;
     V2, V2A, V2Q, V2S = Verb ; -- ** {c2 : Str} ;
-    V3 = Verb ** {c2, c3 : Str} ;
+    V3 = Verb ; -- ** {c2, c3 : Str} ;
     -- VV = {s : VVForm => Str ; typ : VVType} ;
     -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;
 
