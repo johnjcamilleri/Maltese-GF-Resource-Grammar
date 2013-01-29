@@ -52,7 +52,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     breast_N = mkN "sider" "sdur" ; -- also ISDRA -- pronSuffix
 --    breathe_V
     broad_A = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
-    brother_N2 = mkN2 (mkN "ħu" "aħwa") (mkPrep "ta'") ; -- pronSuffix
+    brother_N2 = mkN2 (mkN "ħu" "aħwa") ; -- pronSuffix
     brown_A = sameA "kannella" ;
     burn_V = haraq_HRQ_1_8367_V ;
     butter_N = mkN [] "butir" [] "butirijiet" [] ;
@@ -106,7 +106,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fall_V = waqa'_WQGH_1_10070_V ;
 --    far_Adv
     fat_N = mkNColl "xaħam" ;
-    father_N2 = mkN2 (mkN "missier" "missierijiet") (mkPrep "ta'") ; -- pronSuffix
+    father_N2 = mkN2 (mkN "missier" "missierijiet") ; -- pronSuffix
 --    fear_V2
 --    fear_VS
     feather_N = mkNColl "rix" ;
@@ -197,7 +197,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     meat_N = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
     milk_N = mkN [] "ħalib" [] "ħalibijiet" "ħlejjeb" ;
     moon_N = mkN "qamar" "oqmra" ; -- qmura?
-    mother_N2 = mkN2 (mkN "omm" "ommijiet" feminine) (mkPrep "ta'") ; -- pronSuffix
+    mother_N2 = mkN2 (mkN "omm" "ommijiet" feminine) ; -- pronSuffix
     mountain_N = mkN "muntanja" ;
     mouth_N = mkN "ħalq" "ħluq" ; -- pronSuffix
     music_N = mkN "musika" ; -- plural?

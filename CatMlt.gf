@@ -109,9 +109,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     A = Adjective ** {hasComp : Bool} ; -- Does the adjective have a comparative form (e.g. ISBAĦ)?
 --    A2 = Adjective ** {c2 : Str} ;
 
-    N, N3 = Noun ;
-    N2 = Noun ** {c2 : Str} ;
-    -- N3 = Noun ** {c2,c3 : Str} ;
+    N, N2, N3 = Noun ;
     PN = ProperNoun ;
 
 }

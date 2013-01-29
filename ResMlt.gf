@@ -588,21 +588,34 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         _                   => []          -- ?
       } ;
 
-    artIndef = [] ;
+    artIndef : Str =
+      pre {
+        "lill-" ;
+        "lil" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
+        "liċ-" ++ BIND / strs { "ċ" } ;
+        "lid-" ++ BIND / strs { "d" } ;
+        "lin-" ++ BIND / strs { "n" } ;
+        "lir-" ++ BIND / strs { "r" } ;
+        "lis-" ++ BIND / strs { "s" } ;
+        "lit-" ++ BIND / strs { "t" } ;
+        "lix-" ++ BIND / strs { "x" } ;
+        "liż-" ++ BIND / strs { "ż" } ;
+        "liz-" ++ BIND / strs { "z" }
+      } ;
 
     artDef : Str =
       pre {
         "il-" ;
-        "l-" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
-        "iċ-" / strs { "ċ" } ;
-        "id-" / strs { "d" } ;
-        "in-" / strs { "n" } ;
-        "ir-" / strs { "r" } ;
-        "is-" / strs { "s" } ;
-        "it-" / strs { "t" } ;
-        "ix-" / strs { "x" } ;
-        "iż-" / strs { "ż" } ;
-        "iz-" / strs { "z" }
+        "l-" ++ BIND / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
+        "iċ-" ++ BIND / strs { "ċ" } ;
+        "id-" ++ BIND / strs { "d" } ;
+        "in-" ++ BIND / strs { "n" } ;
+        "ir-" ++ BIND / strs { "r" } ;
+        "is-" ++ BIND / strs { "s" } ;
+        "it-" ++ BIND / strs { "t" } ;
+        "ix-" ++ BIND / strs { "x" } ;
+        "iż-" ++ BIND / strs { "ż" } ;
+        "iz-" ++ BIND / strs { "z" }
       } ;
 
     {- ~~~ Worst-case functions ~~~ -}

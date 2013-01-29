@@ -8,3 +8,13 @@ Lang> l PredVP (UsePron he_Pron) (ComplSlash (SlashV2a kill_V2) (AdvNP (UsePron 
 he kills it for me
 
 
+
+PredVP (UsePN john_PN  ) (ComplSlash (SlashV2a love_V2) (UsePron he_Pron))
+PredVP (UsePron he_Pron) (ComplSlash (SlashV2a love_V2) (UsePron he_Pron))
+
+PredVP (UsePN john_PN  ) (ComplSlash (SlashV2a love_V2) (UsePN john_PN  ))
+PredVP (UsePron he_Pron) (ComplSlash (SlashV2a love_V2) (UsePN john_PN  ))
+
+
+Lang> l PredVP (UsePron he_Pron) (ComplSlash (SlashV2a love_V2) (DetCN (DetQuant IndefArt NumPl) (UseN woman_N)))
+he loves women
