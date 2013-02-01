@@ -106,7 +106,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fall_V = waqa'_WQGH_1_10070_V ;
 --    far_Adv
     fat_N = mkNColl "xaħam" ;
-    father_N2 = mkN2 (mkN "missier" "missierijiet") ; -- pronSuffix
+    father_N2 = mkN2 (possN (mkN "missier" "missierijiet")) ; -- pronSuffix
 --    fear_V2
 --    fear_VS
     feather_N = mkNColl "rix" ;

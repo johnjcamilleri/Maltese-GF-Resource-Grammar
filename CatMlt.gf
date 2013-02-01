@@ -52,7 +52,6 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Adjective
 
---    AP = {s : Agr => Str ; isPre : Bool} ; 
     AP = {s : GenNum => Str ; isPre : Bool} ;
 
 -- Noun
@@ -60,25 +59,59 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     CN = Noun ;
     NP = NounPhrase ;
     Pron = Pronoun ;
-    -- Pron = {s : NPCase => Str ; sp : Case => Str ; a : Agr} ;
-    Det = {s : Str ; n : Num_Number ; hasNum : Bool} ;
-    -- Det = {s : Str ; sp : NPCase => Str ; n : Number ; hasNum : Bool} ;
+
+    Det = {s : Str ; n : Num_Number ; hasNum : Bool ; isPron : Bool} ;
+    -- [AZ]
+    -- Det = {
+    --   s : NPCase => Gender => Num_Case => Str ;
+    --   s2 : NPCase => Gender => Str ; -- tieghi (possesive pronoun)
+    --   -- size : Num_Size ; -- One (agreement feature for noun)
+    --   isNum : Bool ; -- True (a numeral is present)
+    --   isDemo : Bool ; -- True (is a demostrative)
+    --   isDefn : Bool ;-- True (is definite)
+    --   } ;
+
     -- Predet = {s : Str} ;
-    -- Ord = { s : Case => Str } ;
-    Num  = {s : Num_Case => Str ; n : Num_Number ; hasCard : Bool} ;
-    -- Card = {s : Case => Str ; n : Number} ;
-    -- Quant = {s : Bool => Number => Str ; sp : Bool => Number => NPCase => Str} ;
-    Quant = {s : Bool => Num_Number => Str} ;
+
+    Quant = {s : Bool => Num_Number => Str ; isPron : Bool} ;
+    -- [AZ]
+    -- Quant = {
+    --   s : NPCase => Gender => Num_Number => Str ;
+    --   s2 : NPCase => Gender => Num_Number => Str ;
+    --   isDemo : Bool ;
+    --   isDefn : Bool ;
+    --   } ;
+
+    -- [AZ]
+    -- Card = {
+    --   s : Num_Case => Str ;
+    --   n : Num_Number ;
+    --   size : Num_Size
+    --   } ;
+
+    -- [AZ]
+    -- Ord = {
+    --   s : NPCase => GenNum => Str ;
+    --   hasBSuperl : Bool
+    --   } ;
+
+    -- [AZ]
+    Num = {
+      s : Num_Case => Str ;
+      n : Num_Number ;
+      hasCard : Bool ;
+      -- isNum : Bool ;
+      } ;
 
 -- Numeral
 
-    -- Cardinal or ordinal in WORDS (not digits) [JJC]
+    -- Cardinal or ordinal in WORDS (not digits)
     Numeral = {
       s : CardOrd => Num_Case => Str ;
       n : Num_Number
     } ;
 
-    -- Cardinal or ordinal in DIGITS (not words) [JJC]
+    -- Cardinal or ordinal in DIGITS (not words)
     Digits = {
       s : Str ;      -- No need for CardOrd, i.e. no 1st, 2nd etc in Maltese
       n : Num_Number ;

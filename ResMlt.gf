@@ -97,6 +97,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     Noun : Type = {
       s : Noun_Number => Str ;
       g : Gender ;
+      takesPron : Bool ; -- takes enclitic pronon? e.g. MISSIERI
       --      anim : Animacy ; -- is the noun animate? e.g. TABIB
       } ;
 
@@ -639,6 +640,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         Plural Indeterminate => ind
         } ;
       g = gen ;
+      takesPron = False ;
       -- anim = Inanimate ;
       } ;
 

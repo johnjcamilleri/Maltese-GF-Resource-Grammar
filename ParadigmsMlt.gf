@@ -185,7 +185,9 @@ resource ParadigmsMlt = open
 
     -- Build a noun using 5 forms, and a gender
     mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
-    mk5N = \sing,coll,dual,det,ind,gen -> lin N (mkNoun sing coll dual det ind gen) ;
+    mk5N = \sing,coll,dual,det,ind,gen -> lin N (
+      mkNoun sing coll dual det ind gen
+      ) ;
 
     -- Make a proper noun
     mkPN : Str -> Gender -> Number -> ProperNoun = \name,g,n -> {
@@ -266,10 +268,16 @@ resource ParadigmsMlt = open
     prepN2 : N -> Prep -> N2 ;
     prepN2 = \n,p -> lin N2 (n ** {c2 = p.s}) ;
 
-    mkPrep : Str -> Prep ; -- e.g. "in front of"
-    noPrep : Prep ;  -- no preposition
+    -- Mark a noun as taking possessive enclitic pronouns
+    possN : N -> N ;
+    possN = \n -> n ** { takesPron = True } ;
 
+    {- Prepositions ------------------------------------------------------- -}
+
+    mkPrep : Str -> Prep ; -- e.g. "in front of"
     mkPrep p = lin Prep (ss p) ;
+
+    noPrep : Prep ;  -- no preposition
     noPrep = mkPrep [] ;
 
 
