@@ -115,7 +115,7 @@ foreach ($data['out'] as $n => $line) {
 		);
 
 		// Trim, and nest
-		array_walk_recursive(&$columns, 'trim');
+		array_walk_recursive($columns, 'trim');
 		nest($columns, $tree[$ix][$matches[2]]);
 
 	}
