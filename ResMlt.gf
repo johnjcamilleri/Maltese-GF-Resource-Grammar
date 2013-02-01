@@ -70,17 +70,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     DForm =
         Unit    -- 0..10
-      | Teen    -- 11-19
-      --| TeenIl  -- 11-19
-      | Ten    -- 20-99
+      | Teen    -- 11..19
+      --| TeenIl-- 11..19
+      | Ten     -- 20..99
       | Hund    -- 100..999
-      --| Thou    -- 1000+
+      --| Thou  -- 1000+
       ;
 
     Num_Number =
-        Num_Sg
-      | Num_Dl
-      | Num_Pl
+        Num_0      -- 0 (used only in digits)
+      | Num_1      -- 1
+      | Num_2      -- 2
+      | Num_3to10  -- 3..10
+      | Num_11plus -- 11+
       ;
 
     Num_Case =

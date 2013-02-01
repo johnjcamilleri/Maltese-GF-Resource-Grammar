@@ -55,8 +55,23 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       } ;
 
     -- Num
-    NumSg = {s = \\c => []; n = Num_Sg ; hasCard = False} ;
-    NumPl = {s = \\c => []; n = Num_Pl ; hasCard = False} ;
+    NumSg = {s = \\c => []; n = Num_1 ; hasCard = False} ;
+    NumPl = {s = \\c => []; n = Num_3to10 ; hasCard = False} ;
+
+    -- Card -> Num
+    -- NumCard n = n ** {hasCard = True} ;
+ 
+    -- Digits -> Card
+    -- NumDigits n = {s = n.s ! NCard ; n = n.n} ;
+
+    -- Digits -> Ord
+    -- OrdDigits n = {s = n.s ! NOrd} ;
+
+    -- Numeral -> Card
+    -- NumNumeral numeral = {s = numeral.s ! NCard; n = numeral.n} ;
+
+    -- Numeral -> Ord
+    -- OrdNumeral numeral = {s = numeral.s ! NOrd} ;
 
     -- N -> CN
     UseN n = n ;
