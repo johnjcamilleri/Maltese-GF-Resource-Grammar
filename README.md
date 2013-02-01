@@ -76,3 +76,4 @@ Other potentially useful references:
 1. _Tagħrif Fuq Il-Kitba Bil-Malti_ by Għaqda tal-Kittieba tal-Malti, 1924. <http://www.akkademjatalmalti.com/filebank/documents/Taghrif_rivedut.pdf>
 1. _Żieda mat-Tagħrif_ by l-Akkademja tal-Malti, 1984. <http://www.akkademjatalmalti.com/filebank/documents/Zieda_rivedut.pdf>
 1. _Aġġornament tat-Tagħrif fuq il-Kitba Maltija_ by l-Akkademja tal-Malti, 1992. <http://www.akkademjatalmalti.com/filebank/documents/Aggornament_rivedut.pdf>
+1. _Il-Gwida Tal-Istil Dipartimentali_ Il-Kummissjoni Ewropea 2011. <http://ec.europa.eu/translation/maltese/guidelines/documents/styleguide_maltese_dgt_mt.pdf>
