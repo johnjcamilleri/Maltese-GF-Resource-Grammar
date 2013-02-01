@@ -590,7 +590,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     artIndef : Str =
       pre {
-        "lill-" ;
+        "lill- &+" ; --- ugly hack! but won't let me use ++
         "lil" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
         "liċ-" ++ BIND / strs { "ċ" } ;
         "lid-" ++ BIND / strs { "d" } ;
@@ -605,7 +605,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     artDef : Str =
       pre {
-        "il-" ;
+        "il- &+" ; --- ugly hack! but won't let me use ++
         "l-" ++ BIND / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
         "iċ-" ++ BIND / strs { "ċ" } ;
         "id-" ++ BIND / strs { "d" } ;
