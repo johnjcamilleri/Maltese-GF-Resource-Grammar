@@ -1,7 +1,7 @@
 -- ResMlt.gf: Language-specific parameter types, morphology, VP formation
 --
--- Maltese Resource Grammar Library
--- John J. Camilleri 2009 -- 2013
+-- Maltese GF Resource Grammar
+-- John J. Camilleri 2011 -- 2013
 -- Angelo Zammit 2012
 -- Licensed under LGPL
 

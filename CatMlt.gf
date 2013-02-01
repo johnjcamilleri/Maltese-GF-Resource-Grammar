@@ -1,13 +1,9 @@
 -- CatMlt.gf: the common type system
 --
--- Maltese Resource Grammar Library
--- John J. Camilleri, 2012
+-- Maltese GF Resource Grammar
+-- John J. Camilleri 2011 -- 2013
+-- Angelo Zammit 2012
 -- Licensed under LGPL
-
-{-
-All code in comments was copied from CatEng.gf and may need to be corrected for Maltese.
-The same overall structure should be maintained.
--}
 
 concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 

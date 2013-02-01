@@ -1,7 +1,8 @@
 -- NounMlt.gf: noun phrases and nouns
 --
--- Maltese Resource Grammar Library
--- John J. Camilleri, 2012
+-- Maltese GF Resource Grammar
+-- John J. Camilleri 2011 -- 2013
+-- Angelo Zammit 2012
 -- Licensed under LGPL
 
 concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
