@@ -96,19 +96,19 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
       s = table {
         Unit => table {
           NCard => table {
-            NumNominative => unit ;    -- eg TNEJN
-            NumAdjectival => adjectival -- eg ŻEWĠ
+            NumNom => unit ;    -- eg TNEJN
+            NumAdj => adjectival -- eg ŻEWĠ
           } ;
           NOrd => \\numcase => artDef ++ ordunit      -- eg IT-TIENI
         } ;
         Teen => table {
           NCard => table {
-            NumNominative => teen ;      -- eg TNAX
-            NumAdjectival => teen + "-il"  -- eg TNAX-IL
+            NumNom => teen ;      -- eg TNAX
+            NumAdj => teen + "-il"  -- eg TNAX-IL
           } ;
           NOrd => table {
-            NumNominative => artDef ++ teen ;      -- eg IT-TNAX
-            NumAdjectival => artDef ++ (teen + "-il")  -- eg IT-TNAX-IL
+            NumNom => artDef ++ teen ;      -- eg IT-TNAX
+            NumAdj => artDef ++ (teen + "-il")  -- eg IT-TNAX-IL
           }
         } ;
         Ten => table {
@@ -119,24 +119,24 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         _ => table {
           NCard => case num of {
             Num1 => table {
-              NumNominative => "mija" ;  -- ie MIJA
-              NumAdjectival => "mitt"    -- ie MITT suldat
+              NumNom => "mija" ;  -- ie MIJA
+              NumAdj => "mitt"    -- ie MITT suldat
             } ;
             Num2 => \\numcase => hundred ;    -- ie MITEJN
             _ => table {
-              NumNominative => hundred ++ "mija" ;  -- eg MIJA, SEBA' MIJA
-              NumAdjectival => hundred ++ "mitt"    -- eg MITT, SEBA' MITT suldat
+              NumNom => hundred ++ "mija" ;  -- eg MIJA, SEBA' MIJA
+              NumAdj => hundred ++ "mitt"    -- eg MITT, SEBA' MITT suldat
             }
           } ;
           NOrd => case num of {
             Num1 => table {
-              NumNominative => artDef ++ "mija" ;  -- ie IL-MIJA
-              NumAdjectival => artDef ++ "mitt"    -- ie IL-MITT suldat
+              NumNom => artDef ++ "mija" ;  -- ie IL-MIJA
+              NumAdj => artDef ++ "mitt"    -- ie IL-MITT suldat
             } ;
             Num2 => \\numcase => artDef ++ hundred ;    -- ie IL-MITEJN, IL-MITEJN suldat
             _ => table {
-              NumNominative => artDef ++ hundred ++ "mija" ;  -- eg IS-SEBA' MIJA
-              NumAdjectival => artDef ++ hundred ++ "mitt"  -- eg IS-SEBA' MITT suldat
+              NumNom => artDef ++ hundred ++ "mija" ;  -- eg IS-SEBA' MIJA
+              NumAdj => artDef ++ hundred ++ "mitt"  -- eg IS-SEBA' MITT suldat
             }
           }
         }
@@ -176,12 +176,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
       mkForm2 : Str -> Str -> Str -> Str -> DForm -> NumForm -> Form2 = \card,ord,adj,thousand,dform,numform -> {
         s = table {
           NCard => table {
-            NumNominative => card ;
-            NumAdjectival => adj
+            NumNom => card ;
+            NumAdj => adj
           } ;
           NOrd => table {
-            NumNominative => artDef ++ ord ;
-            NumAdjectival => artDef ++ adj
+            NumNom => artDef ++ ord ;
+            NumAdj => artDef ++ adj
           }
         } ;
         thou =  { s = thousand ; treatAs = dform } ;
@@ -194,8 +194,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         s = tab ;
         thou = {
           s = case dform of {
-            Teen => tab ! NCard ! NumAdjectival ;
-            _ => tab ! NCard ! NumNominative
+            Teen => tab ! NCard ! NumAdj ;
+            _ => tab ! NCard ! NumNom
           } ;
           treatAs = dform ;
         } ;
@@ -245,15 +245,15 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     -- Digit -> Sub10 -> Sub100 ; d * 10 + n
     pot1plus d n =
       let
-        unit = (n.s ! Unit ! NCard ! NumNominative) ;
+        unit = (n.s ! Unit ! NCard ! NumNom) ;
         numform : NumForm = case d.n of {
           Num1 => Num11_19 ;
           _ => Num20_99
           }
       in
       mkForm2
-        (unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
-        (artDef ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
+        (unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNom))
+        (artDef ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNom))
         Ten
         numform
       ;
@@ -279,16 +279,16 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     -- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
     pot2plus m n =
       let
-        hund : Str = m.s ! Hund ! NCard ! NumNominative
+        hund : Str = m.s ! Hund ! NCard ! NumNom
       in {
         s = table {
           NCard => table {
-            NumNominative => hund ++ "u" ++ n.s ! NCard ! NumNominative ;
-            NumAdjectival => hund ++ "u" ++ n.s ! NCard ! NumAdjectival
+            NumNom => hund ++ "u" ++ n.s ! NCard ! NumNom ;
+            NumAdj => hund ++ "u" ++ n.s ! NCard ! NumAdj
           } ;
           NOrd => table {
-            NumNominative => artDef ++ hund ++ "u" ++ n.s ! NCard ! NumNominative ;
-            NumAdjectival => artDef ++ hund ++ "u" ++ n.s ! NCard ! NumAdjectival
+            NumNom => artDef ++ hund ++ "u" ++ n.s ! NCard ! NumNom ;
+            NumAdj => artDef ++ hund ++ "u" ++ n.s ! NCard ! NumAdj
           }
         } ;
         thou = {
@@ -327,8 +327,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
       s =
       let
         ukemm = table {
-          NumNominative => "u" ++ (n.s ! NCard ! NumNominative) ;
-          NumAdjectival => "u" ++ (n.s ! NCard ! NumAdjectival)
+          NumNom => "u" ++ (n.s ! NCard ! NumNom) ;
+          NumAdj => "u" ++ (n.s ! NCard ! NumAdj)
         }
       in
         case <m.n, m.thou.treatAs> of  {
@@ -361,12 +361,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
         numTable : Str -> (NumCase => Str) -> (CardOrd => NumCase => Str) = \thou,attach -> table {
           NCard => table {
-            NumNominative => thou ++ (attach ! NumNominative) ;
-            NumAdjectival => thou ++ (attach ! NumAdjectival)
+            NumNom => thou ++ (attach ! NumNom) ;
+            NumAdj => thou ++ (attach ! NumAdj)
           } ;
           NOrd => table {
-            NumNominative => artDef ++ thou ++ (attach ! NumNominative) ;
-            NumAdjectival => artDef ++ thou ++ (attach ! NumAdjectival)
+            NumNom => artDef ++ thou ++ (attach ! NumNom) ;
+            NumAdj => artDef ++ thou ++ (attach ! NumAdj)
           }
         } ;
 

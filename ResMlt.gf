@@ -88,8 +88,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
     NumCase =
-        NumNominative -- TNEJN, ĦAMSA, TNAX, MIJA
-      | NumAdjectival -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
+        NumNom  -- "Type B" in {MDG, 133}, e.g. TNEJN, ĦAMSA, TNAX, MIJA
+      | NumAdj  -- "Type A" in {MDG, 133}, e.g. ŻEWĠ, ĦAMES, TNAX-IL, MITT
       ;
 
   {- Nouns ---------------------------------------------------------------- -}

@@ -26,7 +26,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Quant -> Num -> Det
     DetQuant quant num = {
-      s  = quant.s ! num.hasCard ! num.n ++ num.s ! NumNominative;
+      s  = quant.s ! num.hasCard ! num.n ++ num.s ! NumNom;
       n  = num.n ;
       hasNum = num.hasCard ;
       isPron = quant.isPron ;
