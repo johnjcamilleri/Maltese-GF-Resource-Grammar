@@ -68,28 +68,29 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     CardOrd = NCard | NOrd ;
 
+    -- Order of magnitude
     DForm =
-        Unit    -- 0..10
-      | Teen    -- 11..19
-      --| TeenIl-- 11..19
-      | Ten     -- 20..99
-      | Hund    -- 100..999
-      --| Thou  -- 1000+
+        Unit  -- 0..10
+      | Teen  -- 11..19
+      | Ten   -- 20..99
+      | Hund  -- 100..999
+      | Thou  -- 1000+
       ;
 
-    Num_Number =
-        Num_0      -- 0 (used only in digits)
-      | Num_1      -- 1
-      | Num_2      -- 2
-      | Num_3to10  -- 3..10
-      | Num_11plus -- 11+
+    -- Indicate how a corresponding object should be treated
+    NumForm =
+        Num0     -- 0 (l-edba SIEGĦA)
+      | Num1     -- 1, 101... (SIEGĦA, mija u SIEGĦA)
+      | Num2     -- 2, 102... (SAGĦTEJN, mija u żewġ SIEGĦAT)
+      | Num3_10  -- 3..10, 103... (tlett SIEGĦAT, għaxar SIEGĦAT, mija u tlett SIEGĦAT)
+      | Num11_19 -- 11..19, 111... (ħdax-il SIEGĦA, mija u dsatax-il SIEGĦA)
+      | Num20_99 -- 20..99, 120... (għoxrin SIEGĦA, disa' u disgħajn SIEGĦA)
       ;
 
-    Num_Case =
+    NumCase =
         NumNominative -- TNEJN, ĦAMSA, TNAX, MIJA
       | NumAdjectival -- ŻEWĠ, ĦAMES, TNAX-IL, MITT
       ;
-
 
   {- Nouns ---------------------------------------------------------------- -}
 
@@ -450,10 +451,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     {- ~~~ Conversions ~~~ -}
 
-    numnum2nounnum : Num_Number -> Noun_Number = \n ->
+    numform2nounnum : NumForm -> Noun_Number = \n ->
       case n of {
-	Num_Sg => Singular Singulative ;
-	_ => Plural Determinate
+        Num0 => Singular Singulative ;
+        Num1 => Singular Singulative ;
+        Num2 => Dual ;
+        Num3_10 => Singular Collective ;
+        Num11_19 => Singular Singulative ;
+        Num20_99 => Plural Indeterminate
       } ;
 
 

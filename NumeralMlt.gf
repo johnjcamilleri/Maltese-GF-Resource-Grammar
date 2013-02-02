@@ -44,16 +44,16 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
   oper
     Form1 = {
-      s : DForm => CardOrd => Num_Case => Str ;
+      s : DForm => CardOrd => NumCase => Str ;
       --thou : CardOrd => Str ;
       thou : { s : Str ; treatAs : DForm } ;
-      n : Num_Number ;
+      n : NumForm ;
     } ;
     Form2 = {
-      s : CardOrd => Num_Case => Str ;
+      s : CardOrd => NumCase => Str ;
       --thou : CardOrd => Str ;
       thou : { s : Str ; treatAs : DForm } ;
-      n : Num_Number ;
+      n : NumForm ;
       f : DForm ;
     } ;
 
@@ -74,18 +74,18 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
       -- adjectival, eg ŻEWĠ
       -- teen, eg TNAX
       -- ten, eg GĦOXRIN
-      -- number, eg Num_2
-    --mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,ordunit,adjectival,teen,ten,hundred,thousand,num -> {
-    mkNum : Str -> Str -> Str -> Str -> Str -> Num_Number -> Form1 = \unit,ordunit,adjectival,teen,ten,num ->
+      -- number, eg Num2
+    --mkNum : Str -> Str -> Str -> Str -> Str -> Str -> Str -> NumForm -> Form1 = \unit,ordunit,adjectival,teen,ten,hundred,thousand,num -> {
+    mkNum : Str -> Str -> Str -> Str -> Str -> NumForm -> Form1 = \unit,ordunit,adjectival,teen,ten,num ->
       let
         hundred = case num of {
-          Num_1 => "mija" ;
-          Num_2 => "mitejn" ;
+          Num1 => "mija" ;
+          Num2 => "mitejn" ;
           _ => adjectival
         } ;
         thousand = case num of {
-          Num_1 => "wieħed" ;
-          Num_2 => "elfejn" ;
+          Num1 => "wieħed" ;
+          Num2 => "elfejn" ;
           _ => case adjectival of {
             _ + "'" => (init adjectival) + "t" ;  -- eg SEBA' -> SEBAT
             _ + "t" => adjectival ;          -- eg SITT -> SITT
@@ -115,24 +115,25 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
           NCard => \\numcase => ten ;            -- eg TLETIN
           NOrd => \\numcase => artDef ++ ten    -- eg IT-TLETIN
         } ;
-        Hund => table {
+        -- Hund, Thou
+        _ => table {
           NCard => case num of {
-            Num_1 => table {
+            Num1 => table {
               NumNominative => "mija" ;  -- ie MIJA
               NumAdjectival => "mitt"    -- ie MITT suldat
             } ;
-            Num_2 => \\numcase => hundred ;    -- ie MITEJN
+            Num2 => \\numcase => hundred ;    -- ie MITEJN
             _ => table {
               NumNominative => hundred ++ "mija" ;  -- eg MIJA, SEBA' MIJA
               NumAdjectival => hundred ++ "mitt"    -- eg MITT, SEBA' MITT suldat
             }
           } ;
           NOrd => case num of {
-            Num_1 => table {
+            Num1 => table {
               NumNominative => artDef ++ "mija" ;  -- ie IL-MIJA
               NumAdjectival => artDef ++ "mitt"    -- ie IL-MITT suldat
             } ;
-            Num_2 => \\numcase => artDef ++ hundred ;    -- ie IL-MITEJN, IL-MITEJN suldat
+            Num2 => \\numcase => artDef ++ hundred ;    -- ie IL-MITEJN, IL-MITEJN suldat
             _ => table {
               NumNominative => artDef ++ hundred ++ "mija" ;  -- eg IS-SEBA' MIJA
               NumAdjectival => artDef ++ hundred ++ "mitt"  -- eg IS-SEBA' MITT suldat
@@ -147,62 +148,59 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
   lin
     --      Unit    Ord.Unit  Adjectival  Teen    Ten      Number
-    n2 = mkNum "tnejn"   "tieni"  "żewġ"  "tnax"    "għoxrin" Num_2 ;
-    n3 = mkNum "tlieta"  "tielet" "tlett" "tlettax" "tletin"  Num_3to10 ; -- TODO tlett / tliet ?
-    n4 = mkNum "erbgħa"  "raba'"  "erba'" "erbatax" "erbgħin" Num_3to10 ;
-    n5 = mkNum "ħamsa"   "ħames"  "ħames" "ħmistax" "ħamsin"  Num_3to10 ;
-    n6 = mkNum "sitta"   "sitt"   "sitt"  "sittax"  "sittin"  Num_3to10 ;
-    n7 = mkNum "sebgħa"  "seba'"  "seba'" "sbatax"  "sebgħin" Num_3to10 ;
-    n8 = mkNum "tmienja" "tmin"   "tmin"  "tmintax" "tmenin"  Num_3to10 ;
-    n9 = mkNum "disgħa"  "disa'"  "disa'" "dsatax"  "disgħin" Num_3to10 ;
+    n2 = mkNum "tnejn"   "tieni"  "żewġ"  "tnax"    "għoxrin" Num2 ;
+    n3 = mkNum "tlieta"  "tielet" "tlett" "tlettax" "tletin"  Num3_10 ; --- TODO tlett / tliet ?
+    n4 = mkNum "erbgħa"  "raba'"  "erba'" "erbatax" "erbgħin" Num3_10 ;
+    n5 = mkNum "ħamsa"   "ħames"  "ħames" "ħmistax" "ħamsin"  Num3_10 ;
+    n6 = mkNum "sitta"   "sitt"   "sitt"  "sittax"  "sittin"  Num3_10 ;
+    n7 = mkNum "sebgħa"  "seba'"  "seba'" "sbatax"  "sebgħin" Num3_10 ;
+    n8 = mkNum "tmienja" "tmin"   "tmin"  "tmintax" "tmenin"  Num3_10 ;
+    n9 = mkNum "disgħa"  "disa'"  "disa'" "dsatax"  "disgħin" Num3_10 ;
 
   oper
     -- Helper functions for below
     mkForm2 : Form2 = overload {
 
       -- Infer adjectival, thousands
-      mkForm2 : Str -> Str -> DForm -> Form2 = \card,ord,form -> {
+      mkForm2 : Str -> Str -> DForm -> NumForm -> Form2 = \card,ord,dform,numform -> {
         s = table {
           NCard => \\numcase => card ;
           NOrd => \\numcase => ord
         } ;
-        --thou = card ;
-        thou =  { s = card ; treatAs = form } ;
-        n = Num_11plus ;
-        f = form ;
+        thou = { s = card ; treatAs = dform } ;
+        n = numform ;
+        f = dform ;
       } ;
 
       -- Explicit everything
-      mkForm2 : Str -> Str -> Str -> Str -> DForm -> Form2 = \card,ord,adj,thousand,form -> {
+      mkForm2 : Str -> Str -> Str -> Str -> DForm -> NumForm -> Form2 = \card,ord,adj,thousand,dform,numform -> {
         s = table {
           NCard => table {
             NumNominative => card ;
             NumAdjectival => adj
           } ;
-          --NOrd => \\numcase => addDefiniteArticle ord
           NOrd => table {
             NumNominative => artDef ++ ord ;
             NumAdjectival => artDef ++ adj
           }
         } ;
-        --thou = thousand ;
-        thou =  { s = thousand ; treatAs = form } ;
-        n = Num_11plus ;
-        f = form ;
+        thou =  { s = thousand ; treatAs = dform } ;
+        n = numform ;
+        f = dform ;
       } ;
 
       -- Given an existing table
-      mkForm2 : (CardOrd => Num_Case => Str) -> DForm -> Form2 = \tab,form -> {
+      mkForm2 : (CardOrd => NumCase => Str) -> DForm -> NumForm -> Form2 = \tab,dform,numform -> {
         s = tab ;
         thou = {
-          s = case form of {
+          s = case dform of {
             Teen => tab ! NCard ! NumAdjectival ;
             _ => tab ! NCard ! NumNominative
           } ;
-          treatAs = form ;
+          treatAs = dform ;
         } ;
-        n = Num_11plus ;
-        f = form ;
+        n = numform ;
+        f = dform ;
       } ;
 
     }; -- end of mkForm2 overload
@@ -214,39 +212,18 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
     -- Sub10 ; 1
     --        Unit    Ord.Unit  Adjectival  Teen    Ten      Number
-    pot01 = mkNum  "wieħed"  "ewwel"    "wieħed"  []      []      Num_1 ;
+    pot01 = mkNum  "wieħed"  "ewwel"    "wieħed"  []      []      Num1 ;
 
     -- Digit -> Sub10 ; d * 1
-    pot0 d = d ** {n = case d.n of { Num_2 => Num_2 ; _ => Num_3to10 }} ;
+    pot0 d = d ** {n = case d.n of { Num2 => Num2 ; _ => Num3_10 }} ;
 
     -- Sub100 ; 10, 11
     --          Cardinal  Ordinal    Adjectival  Thousand  Form
-    pot110 = mkForm2  "għaxra"  "għaxar"  "għaxar"  "għaxart"  Unit ;
-    pot111 = mkForm2  "ħdax"    "ħdax"    "ħdax-il"  "ħdax-il"  Teen ;
-{-
-    pot110 = {
-      s = table {
-        NCard => table {
-          NumNominative => "għaxra" ;
-          NumAdjectival => "għaxar"
-        } ;
-        NOrd => \\numcase => addDefiniteArticle "għaxar"
-      } ;
-      thou = table {
-        NCard => "għaxart" ;
-        NOrd =>  addDefiniteArticle "għaxart"
-      } ;
-      n = Num_Pl ;
-      f = Ten ;
-    } ;
--}
+    pot110 = mkForm2  "għaxra"  "għaxar"  "għaxar"  "għaxart"  Unit Num3_10 ;
+    pot111 = mkForm2  "ħdax"    "ħdax"    "ħdax-il"  "ħdax-il"  Teen Num11_19 ;
 
     -- Digit -> Sub100 ; 10 + d
-    pot1to19 d =
-      mkForm2
-        (d.s ! Teen)
-        Teen
-      ;
+    pot1to19 d = mkForm2 (d.s ! Teen) Teen Num11_19 ;
 
     -- Sub10 -> Sub100 ; coercion of 1..9
     pot0as1 d = {
@@ -258,18 +235,27 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
     -- Digit -> Sub100 ; d * 10
     pot1 d =
-      mkForm2
-        (d.s ! Ten)
-        Ten
-      ;
+      let
+        numform : NumForm = case d.n of {
+          Num1 => Num3_10 ;
+          _ => Num20_99
+          }
+      in mkForm2 (d.s ! Ten) Ten numform ;
 
     -- Digit -> Sub10 -> Sub100 ; d * 10 + n
     pot1plus d n =
-      let unit = (n.s ! Unit ! NCard ! NumNominative) in
+      let
+        unit = (n.s ! Unit ! NCard ! NumNominative) ;
+        numform : NumForm = case d.n of {
+          Num1 => Num11_19 ;
+          _ => Num20_99
+          }
+      in
       mkForm2
         (unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
         (artDef ++ unit ++ "u" ++ (d.s ! Ten ! NCard ! NumNominative))
         Ten
+        numform
       ;
 
     -- Sub100 -> Sub1000 ; coercion of 1..99
@@ -280,13 +266,13 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
       s = m.s ! Hund ;
       thou = {
         s = case m.n of {
-          Num_1 => "mitt" ; -- Special case for "mitt elf"
-          Num_2 => "mitejn" ; -- Special case for "mitejn elf"
+          Num1 => "mitt" ; -- Special case for "mitt elf"
+          Num2 => "mitejn" ; -- Special case for "mitejn elf"
           _ => m.thou.s
         } ;
         treatAs = Hund ;
       } ;
-      n = Num_11plus ;
+      n = Num0 ;
       f = Hund ;
     } ;
 
@@ -308,11 +294,11 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         thou = {
           s = hund ++ "u" ++ n.thou.s ;
           treatAs = case n.n of {
-            Num_1 => Ten ; -- specific case for mija u wiehed elf
+            Num1 => Ten ; -- specific case for mija u wiehed elf
             _ => n.f  -- eg So that "106,000" is treated as "6,000"
           } ;
         } ;
-        n = Num_11plus ;
+        n = n.n ;
         f = Hund ;
       } ;
 
@@ -323,8 +309,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     pot3 m = {
       s =
       case <m.n, m.thou.treatAs> of  {
-        <Num_1,_> => numTable "elf" ;        -- 1 * 1000
-        <Num_2,_> => numTable "elfejn" ;      -- 2 * 1000
+        <Num1,_> => numTable "elf" ;        -- 1 * 1000
+        <Num2,_> => numTable "elfejn" ;      -- 2 * 1000
         <_,Unit> => numTable m.thou.s "elef" ;  -- 3-10 * 1000
         <_,_> => numTable m.thou.s "elf"    -- 11+ * 1000
       } ;
@@ -332,8 +318,8 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         s = m.thou.s ;
         treatAs = m.f ;
       } ;
-      n = Num_11plus ;
-      f = Hund ; -- NOT IMPORTANT
+      n = Num0 ;
+      f = Thou ; -- NOT IMPORTANT
     } ;
 
     -- Sub1000 -> Sub1000 -> Sub1000000 ; m * 1000 + n
@@ -346,34 +332,34 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         }
       in
         case <m.n, m.thou.treatAs> of  {
-          <Num_1,_>     => numTable "elf" ukemm ;
-          <Num_2,_>     => numTable "elfejn" ukemm ;
-          <Num_Pl,Unit>  => numTable (m.thou.s ++ "elef") ukemm ;
-          <Num_Pl,_>     => numTable (m.thou.s ++ "elf") ukemm
+          <Num1,_>     => numTable "elf" ukemm ;
+          <Num2,_>     => numTable "elfejn" ukemm ;
+          <_,Unit>  => numTable (m.thou.s ++ "elef") ukemm ;
+          <_,_>     => numTable (m.thou.s ++ "elf") ukemm
         } ;
       thou = {
         s = m.thou.s ;
         treatAs = m.f ;
       } ;
-      n = Num_11plus ;
+      n = n.n ;
       f = Hund ; -- NOT IMPORTANT
     } ;
 
   oper
       -- Build "x thousand" table
-      numTable : (CardOrd => Num_Case => Str) = overload {
+      numTable : (CardOrd => NumCase => Str) = overload {
 
-        numTable : Str -> (CardOrd => Num_Case => Str) = \thou -> table {
+        numTable : Str -> (CardOrd => NumCase => Str) = \thou -> table {
           NCard => \\numcase => thou ;
           NOrd => \\numcase => artDef ++ thou
         } ;
 
-        numTable : Str -> Str -> (CardOrd => Num_Case => Str) = \thou,attach -> table {
+        numTable : Str -> Str -> (CardOrd => NumCase => Str) = \thou,attach -> table {
           NCard => \\numcase => thou ++ attach ;
           NOrd => \\numcase => artDef ++ thou ++ attach
         } ;
 
-        numTable : Str -> (Num_Case => Str) -> (CardOrd => Num_Case => Str) = \thou,attach -> table {
+        numTable : Str -> (NumCase => Str) -> (CardOrd => NumCase => Str) = \thou,attach -> table {
           NCard => table {
             NumNominative => thou ++ (attach ! NumNominative) ;
             NumAdjectival => thou ++ (attach ! NumAdjectival)
@@ -385,18 +371,6 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         } ;
 
       } ;
-{-
---    elf : (CardOrd => Str) = overload {
-      elf : Str -> (CardOrd => Num_Case => Str) = \m -> table {
-        NCard => \\numcase => m ;
-        NOrd => \\numcase => addDefiniteArticle m
-      } ;
-      elf2 : Str -> Str -> (CardOrd => Num_Case => Str) = \m,n -> table {
-        NCard => \\numcase => m ++ n ;
-        NOrd => \\numcase => (addDefiniteArticle m) ++ n
-      } ;
--}
---    } ;
 
 {-
   Numerals as sequences of digits have a separate, simpler grammar
@@ -416,12 +390,13 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
     Dig = {
       s : Str ;
-      n : Num_Number
+      n : NumForm ;
+      -- i : Int ; -- internal counter
     } ;
 
   oper
     -- Helper for making a Dig object.
-    mkDig : Str -> Num_Number -> Dig = \digit,num -> lin Dig {
+    mkDig : Str -> NumForm -> Dig = \digit,num -> lin Dig {
       s = digit ;
       n = num
       } ;
@@ -439,16 +414,16 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 
   lin
     -- Dig
-    D_0 = mkDig "0" Num_0 ;
-    D_1 = mkDig "1" Num_1 ;
-    D_2 = mkDig "2" Num_2 ;
-    D_3 = mkDig "3" Num_3to10 ;
-    D_4 = mkDig "4" Num_3to10 ;
-    D_5 = mkDig "5" Num_3to10 ;
-    D_6 = mkDig "6" Num_3to10 ;
-    D_7 = mkDig "7" Num_3to10 ;
-    D_8 = mkDig "8" Num_3to10 ;
-    D_9 = mkDig "9" Num_3to10 ;
+    D_0 = mkDig "0" Num0 ;
+    D_1 = mkDig "1" Num1 ;
+    D_2 = mkDig "2" Num2 ;
+    D_3 = mkDig "3" Num3_10 ;
+    D_4 = mkDig "4" Num3_10 ;
+    D_5 = mkDig "5" Num3_10 ;
+    D_6 = mkDig "6" Num3_10 ;
+    D_7 = mkDig "7" Num3_10 ;
+    D_8 = mkDig "8" Num3_10 ;
+    D_9 = mkDig "9" Num3_10 ;
 
     -- Create Digits from a Dig
     IDig d = d ** {tail = T1} ;
@@ -458,9 +433,13 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     IIDig d i = {
       s = d.s ++ (commaIf i.tail) ++ i.s ;
       n = case <d.n,i.n> of {
-        <Num_0,num> => num ;
-        <Num_1,Num_0> => Num_3to10 ;
-        <_,_> => Num_11plus
+        <Num0,num> => num ; -- 0 x
+        <Num1,Num0> => Num3_10 ; -- 1 0
+        <Num1,_> => Num11_19 ; -- 1 1
+        <Num2,_> => Num20_99 ; -- 2 x
+        <Num3_10,_> => Num20_99 ; -- [3-9] x
+        <Num20_99,_> => Num20_99 ;
+        <_,_> => Num20_99 --- how to handle overwrap? see i:Int in lincat Dig above
         } ;
       tail = inc i.tail
     } ;

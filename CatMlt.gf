@@ -60,10 +60,10 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     NP = NounPhrase ;
     Pron = Pronoun ;
 
-    Det = {s : Str ; n : Num_Number ; hasNum : Bool ; isPron : Bool} ;
+    Det = {s : Str ; n : NumForm ; hasNum : Bool ; isPron : Bool} ;
     -- [AZ]
     -- Det = {
-    --   s : NPCase => Gender => Num_Case => Str ;
+    --   s : NPCase => Gender => NumCase => Str ;
     --   s2 : NPCase => Gender => Str ; -- tieghi (possesive pronoun)
     --   -- size : Num_Size ; -- One (agreement feature for noun)
     --   isNum : Bool ; -- True (a numeral is present)
@@ -73,19 +73,19 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- Predet = {s : Str} ;
 
-    Quant = {s : Bool => Num_Number => Str ; isPron : Bool} ;
+    Quant = {s : Bool => NumForm => Str ; isPron : Bool} ;
     -- [AZ]
     -- Quant = {
-    --   s : NPCase => Gender => Num_Number => Str ;
-    --   s2 : NPCase => Gender => Num_Number => Str ;
+    --   s : NPCase => Gender => NumForm => Str ;
+    --   s2 : NPCase => Gender => NumForm => Str ;
     --   isDemo : Bool ;
     --   isDefn : Bool ;
     --   } ;
 
     -- [AZ]
     -- Card = {
-    --   s : Num_Case => Str ;
-    --   n : Num_Number ;
+    --   s : NumCase => Str ;
+    --   n : NumForm ;
     --   size : Num_Size
     --   } ;
 
@@ -97,8 +97,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- [AZ]
     Num = {
-      s : Num_Case => Str ;
-      n : Num_Number ;
+      s : NumCase => Str ;
+      n : NumForm ;
       hasCard : Bool ;
       -- isNum : Bool ;
       } ;
@@ -107,14 +107,14 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- Cardinal or ordinal in WORDS (not digits)
     Numeral = {
-      s : CardOrd => Num_Case => Str ;
-      n : Num_Number
+      s : CardOrd => NumCase => Str ;
+      n : NumForm -- number to be "treated as", e.g. 102 has n=Num_2
     } ;
 
     -- Cardinal or ordinal in DIGITS (not words)
     Digits = {
       s : Str ;      -- No need for CardOrd, i.e. no 1st, 2nd etc in Maltese
-      n : Num_Number ;
+      n : NumForm ;
       tail : DTail
     };
 

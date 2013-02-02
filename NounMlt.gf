@@ -14,10 +14,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     -- Det -> CN -> NP
     DetCN det cn = {
       s = \\c => case det.isPron of {
-        True => cn.s ! numnum2nounnum det.n ++ det.s ;
-        False => det.s ++ cn.s ! numnum2nounnum det.n
+        True => cn.s ! numform2nounnum det.n ++ det.s ;
+        False => det.s ++ cn.s ! numform2nounnum det.n
         } ;
-      a = case (numnum2nounnum det.n) of {
+      a = case (numform2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
 	_ => mkAgr cn.g Pl P3
       } ;
@@ -67,8 +67,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       } ;
 
     -- Num
-    NumSg = {s = \\c => []; n = Num_1 ; hasCard = False} ;
-    NumPl = {s = \\c => []; n = Num_3to10 ; hasCard = False} ;
+    NumSg = {s = \\c => []; n = Num1 ; hasCard = False} ;
+    NumPl = {s = \\c => []; n = Num3_10 ; hasCard = False} ;
 
     -- Card -> Num
     -- NumCard n = n ** {hasCard = True} ;
