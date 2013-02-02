@@ -5,13 +5,11 @@ This file is both a documentation, as well as a to-do list, and will be in flux 
 
 ## Checklist
 
-Items marked with a `*` are not yet covered.
-
-1. Different number types (sing, collective, dual, determinate and indeterminate plural)
-1. Gender
-1. *Inflections for possession, e.g. _idi_ or _widnejhom_
-1. *Animacy, e.g. _karozza_ is always feminine, but you could have both _qattus_ and _qattusa_, _spiżjar_ or _spiżjara_
-1. *Smart paradigm
+1. ~~Different number types (sing, collective, dual, determinate and indeterminate plural)~~
+1. ~~Gender~~
+1. Inflections for possession, e.g. _idi_ or _widnejhom_
+1. Animacy, e.g. _karozza_ is always feminine, but you could have both _qattus_ and _qattusa_, _spiżjar_ or _spiżjara_
+1. Smart paradigm
 
 ## Number
 
