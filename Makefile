@@ -3,18 +3,16 @@ all: batch
 rgl:
 	runghc ../Make lang api langs=Mlt
 
+lexicon:
+	./update_lexicon.py
+
 batch:
 #	time gf +RTS -K1000M -RTS --batch AllMlt.gf
 	time gf --batch AllMlt.gf
 
-interactive:
-	gf AllMlt.gf
-
 clean:
 	rm --force *.gfo
 	rm --force .gfbuild/*.gf-tags
-
-rebuild: clean batch
 
 tags:
 	gf --tags --output-dir=.gfbuild AllMlt.gf
