@@ -4,7 +4,8 @@ rgl:
 	runghc ../Make lang api langs=Mlt
 
 lexicon:
-	./update_lexicon.py
+	runghc update_lexicon.hs > tmp
+	mv tmp LexiconMlt.gf
 
 batch:
 #	time gf +RTS -K1000M -RTS --batch AllMlt.gf
