@@ -10,12 +10,35 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
   flags
     optimize=noexpand ;
 
+  oper
+    -- Used in DetCN below
+    chooseNounNumForm : Det -> CN -> Str = \det,n ->
+      let
+        det' = det.s ! n.g ;
+        sing = n.s ! Singular Singulative ;
+        coll = n.s ! Singular Collective ;
+        dual = n.s ! Dual ;
+        pdet = n.s ! Plural Determinate ;
+        pind = n.s ! Plural Indeterminate ;
+      in case det.n of {
+        Num0 => det' ++ sing ; -- L-EBDA BAQRA
+        Num1 => det' ++ sing ; -- BAQRA
+        Num2 => if_then_Str n.hasDual 
+          dual -- BAQARTEJN
+          (det' ++ pdet) -- ŻEWĠ IRĠIEL
+          ;
+        Num3_10 => det' ++ coll ; -- TLETT BAQAR
+        Num11_19 => det' ++ sing ; -- ĦDAX-IL BAQRA
+        Num20_99 => det' ++ sing -- GĦOXRIN BAQRA
+        -- _ => det' ++ n.s ! numform2nounnum det.n
+      } ;
+
   lin
     -- Det -> CN -> NP
     DetCN det cn = {
-      s = \\c => case det.isPron of {
-        True => cn.s ! numform2nounnum det.n ++ det.s ;
-        False => det.s ++ cn.s ! numform2nounnum det.n
+      s = \\c => case <det.isPron,det.n> of {
+        <True,_> => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+        _ => chooseNounNumForm det cn
         } ;
       a = case (numform2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
@@ -26,7 +49,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Quant -> Num -> Det
     DetQuant quant num = {
-      s  = quant.s ! num.hasCard ! num.n ++ num.s ! NumNom;
+      s  = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj;
       n  = num.n ;
       hasNum = num.hasCard ;
       isPron = quant.isPron ;
@@ -71,7 +94,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     NumPl = {s = \\c => []; n = Num3_10 ; hasCard = False} ;
 
     -- Card -> Num
-    -- NumCard n = n ** {hasCard = True} ;
+    NumCard n = n ** {hasCard = True} ;
  
     -- Digits -> Card
     -- NumDigits n = {s = n.s ! NCard ; n = n.n} ;
@@ -80,7 +103,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     -- OrdDigits n = {s = n.s ! NOrd} ;
 
     -- Numeral -> Card
-    -- NumNumeral numeral = {s = numeral.s ! NCard; n = numeral.n} ;
+    NumNumeral numeral = {s = numeral.s ! NCard; n = numeral.n} ;
 
     -- Numeral -> Ord
     -- OrdNumeral numeral = {s = numeral.s ! NOrd} ;

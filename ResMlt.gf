@@ -81,8 +81,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     NumForm =
         Num0     -- 0 (l-edba SIEGĦA)
       | Num1     -- 1, 101... (SIEGĦA, mija u SIEGĦA)
-      | Num2     -- 2, 102... (SAGĦTEJN, mija u żewġ SIEGĦAT)
-      | Num3_10  -- 3..10, 103... (tlett SIEGĦAT, għaxar SIEGĦAT, mija u tlett SIEGĦAT)
+      | Num2     -- 2 (SAGĦTEJN)
+      | Num3_10  -- 3..10, 102, 103... (tlett SIEGĦAT, għaxar SIEGĦAT, mija u żewġ SIEGĦAT, mija u tlett SIEGĦAT)
       | Num11_19 -- 11..19, 111... (ħdax-il SIEGĦA, mija u dsatax-il SIEGĦA)
       | Num20_99 -- 20..99, 120... (għoxrin SIEGĦA, disa' u disgħajn SIEGĦA)
       ;
@@ -98,6 +98,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     Noun : Type = {
       s : Noun_Number => Str ;
       g : Gender ;
+      hasDual : Bool ; -- has a dual form? e.g. SAGĦTEJN
       takesPron : Bool ; -- takes enclitic pronon? e.g. MISSIERI
       --      anim : Animacy ; -- is the noun animate? e.g. TABIB
       } ;
@@ -461,7 +462,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         Num20_99 => Plural Indeterminate
       } ;
 
-
     {- ~~~ Useful helper functions ~~~ -}
 
     -- Non-existant form
@@ -596,20 +596,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         _                   => []          -- ?
       } ;
 
-    artIndef : Str =
-      pre {
-        "lill- &+" ; --- ugly hack! but won't let me use ++
-        "lil" / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
-        "liċ-" ++ BIND / strs { "ċ" } ;
-        "lid-" ++ BIND / strs { "d" } ;
-        "lin-" ++ BIND / strs { "n" } ;
-        "lir-" ++ BIND / strs { "r" } ;
-        "lis-" ++ BIND / strs { "s" } ;
-        "lit-" ++ BIND / strs { "t" } ;
-        "lix-" ++ BIND / strs { "x" } ;
-        "liż-" ++ BIND / strs { "ż" } ;
-        "liz-" ++ BIND / strs { "z" }
-      } ;
+    artIndef : Str = "" ;
 
     artDef : Str =
       pre {
@@ -646,6 +633,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         } ;
       g = gen ;
       takesPron = False ;
+      hasDual = notB (isNil dual) ;
       -- anim = Inanimate ;
       } ;
 

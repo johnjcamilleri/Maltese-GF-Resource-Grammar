@@ -94,14 +94,17 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
         Unit => table {
           NCard => table {
             NumNom => unit ;    -- TNEJN
-            NumAdj => adjectival -- ŻEWĠ
+            NumAdj => case num of {
+              Num1 => "" ; -- [] baqra
+              _ => adjectival -- ŻEWĠ baqar
+              }
           } ;
           NOrd => \\numcase => ordunit -- TIENI
         } ;
         Teen => table {
           NCard => table {
             NumNom => teen ;      -- TNAX
-            NumAdj => teen + "-il"  -- TNAX-IL
+            NumAdj => glue teen "-il"  -- TNAX-IL
           } ;
           NOrd => table {
             NumNom => teen ;      -- TNAX
@@ -214,7 +217,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     -- Sub100 ; 10, 11
     --          Cardinal  Ordinal    Adjectival  Thousand  Form
     pot110 = mkForm2  "għaxra"  "għaxar"  "għaxar"  "għaxart"  Unit Num3_10 ;
-    pot111 = mkForm2  "ħdax"    "ħdax"    "ħdax-il"  "ħdax-il"  Teen Num11_19 ;
+    pot111 = mkForm2  "ħdax"    "ħdax"    (glue "ħdax" "-il") (glue "ħdax" "-il") Teen Num11_19 ;
 
     -- Digit -> Sub100 ; 10 + d
     pot1to19 d = mkForm2 (d.s ! Teen) Teen Num11_19 ;
@@ -273,9 +276,12 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     -- Sub10 -> Sub100 -> Sub1000 ; m * 100 + n
     pot2plus m n =
       let
-        hund : Str = m.s ! Hund ! NCard ! NumNom
+        hund : Str = m.s ! Hund ! NCard ! NumNom ;
       in {
-        s = \\cardord,numcase => hund ++ "u" ++ n.s ! NCard ! numcase ;
+        s = \\cardord,numcase => case n.n of {
+          Num1 => hund ++ "u" ;
+          _ => hund ++ "u" ++ n.s ! NCard ! numcase
+          } ;
         thou = {
           s = hund ++ "u" ++ n.thou.s ;
           treatAs = case n.n of {

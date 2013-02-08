@@ -60,7 +60,12 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     NP = NounPhrase ;
     Pron = Pronoun ;
 
-    Det = {s : Str ; n : NumForm ; hasNum : Bool ; isPron : Bool} ;
+    Det = {
+      s : Gender => Str ;
+      n : NumForm ;
+      hasNum : Bool ;
+      isPron : Bool ;
+      } ;
     -- [AZ]
     -- Det = {
     --   s : NPCase => Gender => NumCase => Str ;
@@ -73,26 +78,16 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- Predet = {s : Str} ;
 
-    Quant = {s : Bool => NumForm => Str ; isPron : Bool} ;
+    Quant = {
+      s : Bool => NumForm => Str ;
+      isPron : Bool ;
+      } ;
     -- [AZ]
     -- Quant = {
     --   s : NPCase => Gender => NumForm => Str ;
     --   s2 : NPCase => Gender => NumForm => Str ;
     --   isDemo : Bool ;
     --   isDefn : Bool ;
-    --   } ;
-
-    -- [AZ]
-    -- Card = {
-    --   s : NumCase => Str ;
-    --   n : NumForm ;
-    --   size : Num_Size
-    --   } ;
-
-    -- [AZ]
-    -- Ord = {
-    --   s : NPCase => GenNum => Str ;
-    --   hasBSuperl : Bool
     --   } ;
 
     -- [AZ]
@@ -103,12 +98,25 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
       -- isNum : Bool ;
       } ;
 
--- Numeral
+    -- [AZ]
+    Ord = {
+      s : NumCase => Str ;
+    --   s : NPCase => GenNum => Str ;
+    --   hasBSuperl : Bool
+      } ;
+
+    -- [AZ]
+    Card = {
+      s : NumCase => Str ;
+      n : NumForm ;
+      } ;
+
+-- numeral
 
     -- Cardinal or ordinal in WORDS (not digits)
     Numeral = {
       s : CardOrd => NumCase => Str ;
-      n : NumForm -- number to be "treated as", e.g. 102 has n=Num_2
+      n : NumForm -- number to be "treated as", e.g. 103 has n=Num3_10
     } ;
 
     -- Cardinal or ordinal in DIGITS (not words)
