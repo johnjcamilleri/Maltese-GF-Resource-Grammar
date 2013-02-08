@@ -1,3 +1,6 @@
+
+-- Numbers as quantifiers
+
 DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 pot01))))))) (UseN cow_N)
 DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN cow_N)
 DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN man_N)
@@ -19,3 +22,9 @@ DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 (pot
 DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 pot111)))))) (UseN cow_N)
 
 DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot3plus (pot1as2 (pot0as1 pot01)) (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN cow_N)
+
+
+DetCN (DetQuantOrd DefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot01))))))) (UseN cow_N)
+DetCN (DetQuantOrd DefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))) (UseN cow_N)
+DetCN (DetQuantOrd DefArt NumSg (OrdNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 (pot0 n2))))))) (UseN cow_N)
+

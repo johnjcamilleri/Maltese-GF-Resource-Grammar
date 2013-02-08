@@ -49,11 +49,19 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Quant -> Num -> Det
     DetQuant quant num = {
-      s  = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj;
-      n  = num.n ;
+      s = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj;
+      n = num.n ;
       hasNum = num.hasCard ;
       isPron = quant.isPron ;
     } ;
+
+    -- Quant -> Num -> Ord -> Det
+    DetQuantOrd quant num ord = {
+      s = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj ++ ord.s ! NumAdj;
+      n = num.n ;
+      hasNum = True ;
+      isPron = quant.isPron ;
+      } ;
 
     -- Quant
     DefArt = {
@@ -106,7 +114,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     NumNumeral numeral = {s = numeral.s ! NCard; n = numeral.n} ;
 
     -- Numeral -> Ord
-    -- OrdNumeral numeral = {s = numeral.s ! NOrd} ;
+    OrdNumeral numeral = {s = numeral.s ! NOrd} ;
 
     -- N -> CN
     UseN n = n ;
