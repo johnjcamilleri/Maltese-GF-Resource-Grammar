@@ -18,19 +18,11 @@ _Note: NNQ = Non-numerically quantifiable_
 - Singular
   - Singulative (1, >10)
   - Collective (NNQ)
-- Dual (2)
+- Dual ("għadd imtenni") (2)
 - Plural
   - Determinate (2-10)
   - Indeterminate (NNQ)
-
-### Morphological processes for plurals
-
-  - Sound (eternal/affix), e.g. FERGĦA -> FERGĦAT
-  - Broken (internal), e.g. FERGĦA -> FRIEGĦI
-  - Plural of Plural, e.g. TARF -> TRUF -> TRUFIJIET
-  - Irregular, e.g. MARA -> NISA
-  - Foreign, e.g. KARTI, PRATTIĊI, TELEVIXINS
-
+  
 ### Typical combinations
 
 Nouns typically have one of the following combinations of number forms  (* marks base form):
@@ -40,6 +32,53 @@ Nouns typically have one of the following combinations of number forms  (* marks
 - Singulative* (1), Dual (2), Plural (>2)
 - Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
 - Singulative, Collective*, Determinate Plural, Indeterminate Plural -> very few nouns have these 4 forms
+
+#### Examples
+  
+| English    | Singular  | Collective| Dual        | Det. Plural  | Ind. Plural |
+|------------|-----------|-----------|-------------|--------------|-------------|
+| blood      | []        | _demm_    | []          | _dmija_      | []          |
+| butter     | []        | _butir_   | []          | _butirijiet_ | []          |
+| cow        | _baqra_   | _baqar_   | _baqartejn_ | []           | []          |
+| eye        | _għajn_   | []        | _għajnejn_  | _għajnejn_   | _għejun_    |
+| fingernail | _difer_   | []        | _difrejn_   | _dwiefer_    | []          |
+| fog        | []        | _ċpar_    | []          | []           | []          |
+| foot       | _sieq_    | []        | _saqajn_    | _saqajn_     | []          |
+| gold       | []        | _deheb_   | []          | _dehbijiet_  | []          |
+| grass      | _ħaxixa_  | _ħaxix_   | []          | []           | _ħxejjex_   |
+| guts       | _musrana_ | []        | []          | _musraniet_  | _msaren_    |
+| hair       | _xagħar_  | []        | []          | _xagħariet_  | _xgħur_     |
+| hand       | _id_      | []        | _idejn_     | _idejn_      | []          |
+| iron       | _ħadida_  | _ħadid_   | []          | _ħadidiet_   | _ħdejjed_   |
+| knee       | _rkoppa_  | []        | _rkopptejn_ | _rkoppiet_   | []          |
+| leaf       | _werqa_   | _weraq_   | _werqtejn_  | _werqiet_    | []          |
+| leather    | _ġilda_   | _ġild_    | []          | _ġildiet_    | _ġlud_      |
+| leg        | _riġel_   | []        | _riġlejn_   | []           | []          |
+| liver      | _fwied_   | []        | []          | []           | _ifdwa_     |
+| meat       | _laħam_   | []        | []          | _laħmiet_    | _laħmijiet_ |
+| milk       | []        | _ħalib_   | []          | _ħalibijiet_ | _ħlejjeb_   |
+| person     | []        | _persuna_ | []          | _persuni_    | []          |
+| road       | _triq_    | []        | []          | _triqat_     | _toroq_     |
+| rock       | _blata_   | _blat_    | []          | _blatiet_    | _blajjiet_  |
+| sand       | _ramla_   | _ramel_   | []          | _ramliet_    | _rmiel_     |
+| sea        | _baħar_   | []        | _baħrejn_   | _ibħra_      | []          |
+| sheep      | _nagħġa_  | _nagħaġ_  | []          | _nagħġiet_   | []          |
+| snow       | []        | _borra_   | []          | []           | []          |
+| stone      | _ġebla_   | _ġebel_   | []          | _ġebliet_    | _ġbiel_     |
+| tooth      | _sinna_   | []        | []          | _sinniet_    | _snien_     |
+| tree       | _siġra_   | _siġar_   | []          | _siġriet_    | []          |
+| wind       | _riħ_     | []        | []          | _rjieħ_      | _rjiħat_    |
+| wine       | []        | _nbid_    | []          | []           | _nbejjed_   |
+| worm       | _dudu_    | _dud_     | []          | _dudiet_     | _dwied_     |
+| year       | _sena_    | []        | _sentejn_   | _snin_       | []          |
+
+### Morphological processes for plurals
+
+  - Sound (eternal/affix), e.g. FERGĦA -> FERGĦAT
+  - Broken (internal), e.g. FERGĦA -> FRIEGĦI
+  - Plural of Plural, e.g. TARF -> TRUF -> TRUFIJIET
+  - Irregular, e.g. MARA -> NISA
+  - Foreign, e.g. KARTI, PRATTIĊI, TELEVIXINS
 
 ## Case
 
