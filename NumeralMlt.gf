@@ -43,6 +43,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
 -}
 
   oper
+    --- I have a strong suspicion that these can be better factored, esp wrt thou
     Form1 = {
       s : DForm => CardOrd => NumCase => Str ;
       thou : { s : Str ; treatAs : DForm } ;
