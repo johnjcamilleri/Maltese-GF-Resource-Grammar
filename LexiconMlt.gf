@@ -7,7 +7,7 @@
 --# -path=.:../abstract:../common:../prelude
 
 concrete LexiconMlt of Lexicon = CatMlt **
-  open Prelude, ParadigmsMlt, IrregMlt, DictMlt in {
+  open Prelude, ParadigmsMlt, IrregMlt in {
 
   flags
     optimize=values ;
