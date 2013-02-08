@@ -121,7 +121,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- Cardinal or ordinal in DIGITS (not words)
     Digits = {
-      s : Str ;      -- No need for CardOrd, i.e. no 1st, 2nd etc in Maltese
+      s : NumCase => Str ;      -- No need for CardOrd, i.e. no 1st, 2nd etc in Maltese
       n : NumForm ;
       tail : DTail
     };

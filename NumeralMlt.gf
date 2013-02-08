@@ -368,7 +368,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
   lincat
 
     Dig = {
-      s : Str ;
+      s : NumCase => Str ;
       n : NumForm ;
       -- i : Int ; -- internal counter
     } ;
@@ -376,7 +376,7 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
   oper
     -- Helper for making a Dig object.
     mkDig : Str -> NumForm -> Dig = \digit,num -> lin Dig {
-      s = digit ;
+      s = \\numcase => digit ;
       n = num
       } ;
 
@@ -405,22 +405,33 @@ concrete NumeralMlt of Numeral = CatMlt [Numeral,Digits] ** open Prelude,ResMlt 
     D_9 = mkDig "9" Num3_10 ;
 
     -- Create Digits from a Dig
+    -- Dig -> Digits
     IDig d = d ** {tail = T1} ;
 
     -- Create Digits from combining Dig with Digits
     -- Dig -> Digits -> Digits
-    IIDig d i = {
-      s = d.s ++ (commaIf i.tail) ++ i.s ;
-      n = case <d.n,i.n> of {
-        <Num0,num> => num ; -- 0 x
-        <Num1,Num0> => Num3_10 ; -- 1 0
-        <Num1,_> => Num11_19 ; -- 1 1
-        <Num2,_> => Num20_99 ; -- 2 x
-        <Num3_10,_> => Num20_99 ; -- [3-9] x
-        <Num20_99,_> => Num20_99 ;
-        <_,_> => Num20_99 --- how to handle overwrap? see i:Int in lincat Dig above
-        } ;
-      tail = inc i.tail
-    } ;
+    IIDig d i =
+      let
+        digits = d.s ! NumNom ++ (commaIf i.tail) ++ i.s ! NumNom;
+        numform = case <d.n,i.n> of {
+          <Num0,num> => num ; -- 0 x
+          <Num1,Num0> => Num3_10 ; -- 1 0
+          <Num1,_> => Num11_19 ; -- 1 1
+          <Num2,_> => Num20_99 ; -- 2 x
+          <Num3_10,_> => Num20_99 ; -- [3-9] x
+          <Num20_99,_> => Num20_99 ;
+          <_,_> => Num20_99 --- how to handle overwrap? see i:Int in lincat Dig above
+          } ;
+      in {
+        s = table {
+          NumNom => digits ;
+          NumAdj => case numform of {
+            Num11_19 => glue digits "-il" ;
+            _ => digits
+            }
+          } ;
+        n = numform ;
+        tail = inc i.tail
+      } ;
 
 }

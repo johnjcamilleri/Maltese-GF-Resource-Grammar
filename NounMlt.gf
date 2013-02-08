@@ -105,10 +105,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     NumCard n = n ** {hasCard = True} ;
  
     -- Digits -> Card
-    -- NumDigits n = {s = n.s ! NCard ; n = n.n} ;
+    NumDigits d = {s = d.s ; n = d.n} ;
 
     -- Digits -> Ord
-    -- OrdDigits n = {s = n.s ! NOrd} ;
+    OrdDigits d = {s = d.s} ;
 
     -- Numeral -> Card
     NumNumeral numeral = {s = numeral.s ! NCard; n = numeral.n} ;
