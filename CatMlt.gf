@@ -62,6 +62,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     Det = {
       s : Gender => Str ;
+      --- TODO: n : NumSpecific NumForm | NumGeneral Number
       n : NumForm ;
       hasNum : Bool ;
       isPron : Bool ;

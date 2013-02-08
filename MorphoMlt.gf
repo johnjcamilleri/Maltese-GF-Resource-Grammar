@@ -12,6 +12,21 @@ resource MorphoMlt = ResMlt ** open Prelude in {
     coding=utf8 ;
 
 
+  {- Determiners ---------------------------------------------------------- -}
+
+  oper
+    mkDeterminer : Number -> Str -> 
+      {s : Gender => Str ; n : NumForm ; hasNum : Bool ; isPron : Bool} = \n,s -> {
+        s = \\gen => s ;
+        n = case n of {
+          Sg => Num1 ;
+          -- anything except Num1 is interpreted as plural when hasNum == false
+          Pl => Num3_10
+          } ;
+        hasNum = False ;
+        isPron = False ;
+      } ;
+
   {- Pronoun -------------------------------------------------------------- -}
 
   oper

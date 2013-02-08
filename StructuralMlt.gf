@@ -25,11 +25,23 @@ concrete StructuralMlt of Structural = CatMlt **
     youPl_Pron = mkPron "intom" "kom" plural P2 masculine ;
     youPol_Pron = youSg_Pron ;
 
+    {- Determiner ----------------------------------------------------------- -}
+
+    all_Predet = ss "kollha" ;
+    -- every_Det = mkDeterminerSpec singular "every" "everyone" False ;
+    few_Det = mkDeterminer plural "ftit" ;
+    many_Det = mkDeterminer plural "ħafna" ; -- bosta
+    -- most_Predet = ss "most" ;
+    -- much_Det = mkDeterminer singular "much" ;
+    only_Predet = ss "biss" ;
+    someSg_Det = mkDeterminer singular "xi" ;
+    somePl_Det = mkDeterminer plural "xi" ;
+    -- not_predet = {s = "not" ; lock_Predet = <>} ;
+    
     {- Others --------------------------------------------------------------- -}
 
     -- above_Prep = mkPrep "above" ;
     -- after_Prep = mkPrep "after" ;
-    -- all_Predet = ss "all" ;
     -- almost_AdA = mkAdA "almost" ;
     -- almost_AdN = mkAdN "almost" ;
     -- although_Subj = ss "although" ;
@@ -58,10 +70,8 @@ concrete StructuralMlt of Structural = CatMlt **
     -- during_Prep = mkPrep "during" ;
     -- either7or_DConj = mkConj "either" "or" singular ;
     -- everybody_NP = regNP "everybody" singular ;
-    -- every_Det = mkDeterminerSpec singular "every" "everyone" False ;
     -- everything_NP = regNP "everything" singular ;
     -- everywhere_Adv = mkAdv "everywhere" ;
-    -- few_Det = mkDeterminer plural "few" ;
     -- for_Prep = mkPrep "for" ;
     -- from_Prep = mkPrep "from" ;
     -- here_Adv = mkAdv "here" ;
@@ -74,10 +84,8 @@ concrete StructuralMlt of Structural = CatMlt **
     -- in8front_Prep = mkPrep ["in front of"] ;
     -- in_Prep = mkPrep "in" ;
     -- less_CAdv = C.mkCAdv "less" "than" ;
-    -- many_Det = mkDeterminer plural "many" ;
     -- more_CAdv = C.mkCAdv "more" "than" ;
     -- most_Predet = ss "most" ;
-    -- much_Det = mkDeterminer singular "much" ;
     -- must_VV = {
     --   s = table {
     --     VVF VInf => ["have to"] ;
@@ -92,7 +100,6 @@ concrete StructuralMlt of Structural = CatMlt **
     --   } ;
     -- no_Utt = ss "no" ;
     -- on_Prep = mkPrep "on" ;
-    -- only_Predet = ss "only" ;
     -- or_Conj = mkConj "or" singular ;
     -- otherwise_PConj = ss "otherwise" ;
     -- part_Prep = mkPrep "of" ;
@@ -101,8 +108,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- quite_Adv = mkAdv "quite" ;
     -- so_AdA = mkAdA "so" ;
     -- somebody_NP = regNP "somebody" singular ;
-    -- someSg_Det = mkDeterminer singular "some" ;
-    -- somePl_Det = mkDeterminer plural "some" ;
     -- something_NP = regNP "something" singular ;
     -- somewhere_Adv = mkAdv "somewhere" ;
     -- that_Quant = mkQuant "that" "those" ;
@@ -130,7 +135,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- with_Prep = mkPrep "with" ;
     -- yes_Utt = ss "yes" ;
     
-    -- not_predet = {s = "not" ; lock_Predet = <>} ;
     -- no_Quant = mkQuant "no" "no" "none" "none" ;
     -- if_then_Conj = mkConj "if" "then" singular ;
     -- nobody_NP = regNP "nobody" singular ;

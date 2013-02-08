@@ -36,9 +36,13 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
   lin
     -- Det -> CN -> NP
     DetCN det cn = {
-      s = \\c => case <det.isPron,det.n> of {
+      s = \\c => case <det.isPron,det.hasNum> of {
         <True,_> => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
-        _ => chooseNounNumForm det cn
+        <_,True> => chooseNounNumForm det cn ;
+        <_,False> => case det.n of {
+          Num1 => det.s ! cn.g ++ (cn.s ! Singular Singulative) ;
+          _ => det.s ! cn.g ++ (cn.s ! Plural Determinate)
+          }
         } ;
       a = case (numform2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
