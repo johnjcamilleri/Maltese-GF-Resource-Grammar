@@ -16,37 +16,37 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       let
         det' = det.s ! n.g ;
         sing = n.s ! Singular Singulative ;
-        coll = n.s ! Singular Collective ;
+        coll = if_then_Str n.hasColl
+          (n.s ! Singular Collective) -- BAQAR
+          (n.s ! Plural Determinate)  -- SNIEN
+          ;
         dual = n.s ! Dual ;
         pdet = n.s ! Plural Determinate ;
         pind = n.s ! Plural Indeterminate ;
       in case det.n of {
-        Num0 => det' ++ sing ; -- L-EBDA BAQRA
-        Num1 => det' ++ sing ; -- BAQRA
-        Num2 => if_then_Str n.hasDual 
+        Num Sg   => det' ++ sing ; -- BAQRA
+        Num Pl   => det' ++ coll ; -- BAQAR (coll) / ħafna SNIEN (pdet)
+        Num0     => det' ++ sing ; -- L-EBDA BAQRA
+        Num1     => det' ++ sing ; -- BAQRA
+        Num2     => if_then_Str n.hasDual 
           dual -- BAQARTEJN
           (det' ++ pdet) -- ŻEWĠ IRĠIEL
           ;
-        Num3_10 => det' ++ coll ; -- TLETT BAQAR
+        Num3_10  => det' ++ coll ; -- TLETT BAQAR
         Num11_19 => det' ++ sing ; -- ĦDAX-IL BAQRA
         Num20_99 => det' ++ sing -- GĦOXRIN BAQRA
-        -- _ => det' ++ n.s ! numform2nounnum det.n
       } ;
 
   lin
     -- Det -> CN -> NP
     DetCN det cn = {
       s = \\c => case <det.isPron,det.hasNum> of {
-        <True,_> => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
-        <_,True> => chooseNounNumForm det cn ;
-        <_,False> => case det.n of {
-          Num1 => det.s ! cn.g ++ (cn.s ! Singular Singulative) ;
-          _ => det.s ! cn.g ++ (cn.s ! Plural Determinate)
-          }
+        <True,_>  => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+        _         => chooseNounNumForm det cn
         } ;
       a = case (numform2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
-	_ => mkAgr cn.g Pl P3
+	_          => mkAgr cn.g Pl P3
       } ;
       isPron = False ;
     } ;
@@ -102,8 +102,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       } ;
 
     -- Num
-    NumSg = {s = \\c => []; n = Num1 ; hasCard = False} ;
-    NumPl = {s = \\c => []; n = Num3_10 ; hasCard = False} ;
+    NumSg = {s = \\c => []; n = Num Sg ; hasCard = False} ;
+    NumPl = {s = \\c => []; n = Num Pl ; hasCard = False} ;
 
     -- Card -> Num
     NumCard n = n ** {hasCard = True} ;

@@ -78,8 +78,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
     -- Indicate how a corresponding object should be treated
+    --- Overlap between Num Sg and Num1, but leaving as is for now
     NumForm =
-        Num0     -- 0 (l-edba SIEGĦA)
+        Num Number -- Sg | Pl
+      | Num0     -- 0 (l-edba SIEGĦA)
       | Num1     -- 1, 101... (SIEGĦA, mija u SIEGĦA)
       | Num2     -- 2 (SAGĦTEJN)
       | Num3_10  -- 3..10, 102, 103... (tlett SIEGĦAT, għaxar SIEGĦAT, mija u żewġ SIEGĦAT, mija u tlett SIEGĦAT)
@@ -98,6 +100,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     Noun : Type = {
       s : Noun_Number => Str ;
       g : Gender ;
+      hasColl : Bool ; -- has a collective form? e.g. BAQAR
       hasDual : Bool ; -- has a dual form? e.g. SAGĦTEJN
       takesPron : Bool ; -- takes enclitic pronon? e.g. MISSIERI
       --      anim : Animacy ; -- is the noun animate? e.g. TABIB
@@ -454,10 +457,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     numform2nounnum : NumForm -> Noun_Number = \n ->
       case n of {
-        Num0 => Singular Singulative ;
-        Num1 => Singular Singulative ;
-        Num2 => Dual ;
-        Num3_10 => Singular Collective ;
+        Num Sg   => Singular Singulative ;
+        Num Pl   => Plural Indeterminate ;
+        Num0     => Singular Singulative ;
+        Num1     => Singular Singulative ;
+        Num2     => Dual ;
+        Num3_10  => Singular Collective ;
         Num11_19 => Singular Singulative ;
         Num20_99 => Plural Indeterminate
       } ;
@@ -634,6 +639,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       g = gen ;
       takesPron = False ;
       hasDual = notB (isNil dual) ;
+      hasColl = notB (isNil coll) ;
       -- anim = Inanimate ;
       } ;
 
