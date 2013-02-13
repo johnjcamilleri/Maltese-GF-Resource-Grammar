@@ -42,6 +42,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     DetCN det cn = {
       s = \\c => case <det.isPron,det.hasNum> of {
         <True,_>  => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+--      <_,True>  => chooseNounNumForm det cn
         _         => chooseNounNumForm det cn
         } ;
       a = case (numform2nounnum det.n) of {
@@ -53,15 +54,26 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Quant -> Num -> Det
     DetQuant quant num = {
-      s = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj;
+      s = \\gen =>
+        let gennum = case num.n of { Num Sg => GSg gen ; _ => GPl }
+        in case quant.isDemo of {
+          True  => quant.s ! gennum ++ artDef ++ num.s ! NumAdj ;
+          False => quant.s ! gennum ++ num.s ! NumAdj
+        } ;
       n = num.n ;
       hasNum = num.hasCard ;
       isPron = quant.isPron ;
     } ;
 
     -- Quant -> Num -> Ord -> Det
+    --- Almost an exact copy of DetQuant, consider factoring together
     DetQuantOrd quant num ord = {
-      s = \\gen => quant.s ! num.hasCard ! num.n ++ num.s ! NumAdj ++ ord.s ! NumAdj;
+      s = \\gen => 
+        let gennum = case num.n of { Num Sg => GSg gen ; _ => GPl }
+        in case quant.isDemo of {
+          True  => quant.s ! gennum ++ artDef ++ num.s ! NumAdj ++ ord.s ! NumAdj ;
+          False => quant.s ! gennum ++ num.s ! NumAdj ++ ord.s ! NumAdj
+        } ;
       n = num.n ;
       hasNum = True ;
       isPron = quant.isPron ;
@@ -69,12 +81,14 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Quant
     DefArt = {
-      s  = \\hasCard,n => artDef ;
+      s  = \\_ => artDef ;
       isPron = False ;
+      isDemo = False ;
     } ;
     IndefArt = {
-      s  = \\hasCard,n => artIndef ;
+      s  = \\_ => artIndef ;
       isPron = False ;
+      isDemo = False ;
     } ;
 
     -- PN -> NP
@@ -97,8 +111,9 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Pron -> Quant
     PossPron p = {
-      s = \\_,_ => (p.s ! Suffixed Gen).c1 ;
+      s = \\_ => (p.s ! Suffixed Gen).c1 ;
       isPron = True ;
+      isDemo = False ;
       } ;
 
     -- Num

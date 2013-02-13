@@ -1052,4 +1052,17 @@ resource ParadigmsMlt = open
       _ => (init fem) + "i" -- BRAVA
       } ;
 
+
+    {- Quantitifer paradigms ---------------------------------------------- -}
+
+    mkQuant : (dak, dik, dawk : Str) -> Bool -> Quant = \dak,dik,dawk,isdemo -> lin Quant {
+      s = table {
+        GSg Masc => dak ;
+        GSg Fem  => dik ;
+        GPl      => dawk
+        } ;
+      isPron = False ;
+      isDemo = isdemo ;
+      } ;
+        
 }

@@ -38,6 +38,15 @@ concrete StructuralMlt of Structural = CatMlt **
     somePl_Det = mkDeterminer plural "xi" ;
     -- not_predet = {s = "not" ; lock_Predet = <>} ;
     
+    {- Quantifier ----------------------------------------------------------- -}
+
+    that_Quant = mkQuant "dak" "dik" "dawk" True ;
+    this_Quant = mkQuant "dan" "din" "dawn" True ;
+    no_Quant = let l_ebda = artDef ++ "ebda" in
+      mkQuant l_ebda l_ebda l_ebda False ;
+
+    -- which_IQuant = {s = \\_ => "which"} ;
+
     {- Others --------------------------------------------------------------- -}
 
     -- above_Prep = mkPrep "above" ;
@@ -110,12 +119,10 @@ concrete StructuralMlt of Structural = CatMlt **
     -- somebody_NP = regNP "somebody" singular ;
     -- something_NP = regNP "something" singular ;
     -- somewhere_Adv = mkAdv "somewhere" ;
-    -- that_Quant = mkQuant "that" "those" ;
     -- there_Adv = mkAdv "there" ;
     -- there7to_Adv = mkAdv "there" ;
     -- there7from_Adv = mkAdv ["from there"] ;
     -- therefore_PConj = ss "therefore" ;
-    -- this_Quant = mkQuant "this" "these" ;
     -- through_Prep = mkPrep "through" ;
     -- too_AdA = mkAdA "too" ;
     -- to_Prep = mkPrep "to" ;
@@ -127,7 +134,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- when_IAdv = ss "when" ;
     -- when_Subj = ss "when" ;
     -- where_IAdv = ss "where" ;
-    -- which_IQuant = {s = \\_ => "which"} ;
     -- whoPl_IP = mkIP "who" "whom" "whose" plural ;
     -- whoSg_IP = mkIP "who" "whom" "whose" singular ;
     -- why_IAdv = ss "why" ;
@@ -135,7 +141,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- with_Prep = mkPrep "with" ;
     -- yes_Utt = ss "yes" ;
     
-    -- no_Quant = mkQuant "no" "no" "none" "none" ;
     -- if_then_Conj = mkConj "if" "then" singular ;
     -- nobody_NP = regNP "nobody" singular ;
     -- nothing_NP = regNP "nothing" singular ;

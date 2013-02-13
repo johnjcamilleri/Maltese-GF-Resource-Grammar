@@ -79,14 +79,16 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     -- Predet = {s : Str} ;
 
     Quant = {
-      s : Bool => NumForm => Str ;
+      s      : GenNum => Str ;
       isPron : Bool ;
+      isDemo : Bool ; -- Demonstrative (this/that/those/these)
       } ;
+
     -- [AZ]
     -- Quant = {
     --   s : NPCase => Gender => NumForm => Str ;
     --   s2 : NPCase => Gender => NumForm => Str ;
-    --   isDemo : Bool ;
+    --   isDemo : Bool ; -- Demonstrative (this/that/those/these)
     --   isDefn : Bool ;
     --   } ;
 
