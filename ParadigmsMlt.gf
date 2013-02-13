@@ -111,7 +111,6 @@ resource ParadigmsMlt = open
       mkN : Str -> Str -> Gender -> N = \sing,plural,gender ->
           mk5N sing [] [] plural [] gender ;
 
-
       -- Takes all 5 forms, inferring gender
       -- Params:
         -- Singulative, eg KOXXA
@@ -189,10 +188,32 @@ resource ParadigmsMlt = open
       mkNoun sing coll dual det ind gen
       ) ;
 
-    -- Make a proper noun
+    -- Proper noun
     mkPN : Str -> Gender -> Number -> ProperNoun = \name,g,n -> {
       s = name ;
       a = mkAgr g n P3 ;
+      } ;
+
+    mkN2 = overload {
+      mkN2 : N -> Prep -> N2 = prepN2 ;
+      mkN2 : N -> Str -> N2 = \n,s -> prepN2 n (mkPrep s);
+--      mkN2 : Str -> Str -> N2 = \n,s -> prepN2 (regN n) (mkPrep s);
+      mkN2 : N -> N2         = \n -> prepN2 n (mkPrep "ta'") ;
+--      mkN2 : Str -> N2       = \s -> prepN2 (regN s) (mkPrep "ta'")
+    } ;
+
+    prepN2 : N -> Prep -> N2 ;
+    prepN2 = \n,p -> lin N2 (n ** {c2 = p.s}) ;
+
+    -- Mark a noun as taking possessive enclitic pronouns
+    possN : N -> N ;
+    -- possN = \n -> n ** { takesPron = True } ;
+    possN = \n -> lin N {
+      s = n.s ;
+      g = n.g ;
+      hasColl = n.hasColl ;
+      hasDual = n.hasDual ;
+      takesPron = True ;
       } ;
 
 {-
@@ -256,21 +277,6 @@ resource ParadigmsMlt = open
         _ => prep ++ noun
 
       });
-
-    mkN2 = overload {
-      mkN2 : N -> Prep -> N2 = prepN2 ;
-      mkN2 : N -> Str -> N2 = \n,s -> prepN2 n (mkPrep s);
---      mkN2 : Str -> Str -> N2 = \n,s -> prepN2 (regN n) (mkPrep s);
-      mkN2 : N -> N2         = \n -> prepN2 n (mkPrep "ta'") ;
---      mkN2 : Str -> N2       = \s -> prepN2 (regN s) (mkPrep "ta'")
-    } ;
-
-    prepN2 : N -> Prep -> N2 ;
-    prepN2 = \n,p -> lin N2 (n ** {c2 = p.s}) ;
-
-    -- Mark a noun as taking possessive enclitic pronouns
-    possN : N -> N ;
-    possN = \n -> n ** { takesPron = True } ;
 
     {- Prepositions ------------------------------------------------------- -}
 
@@ -1061,6 +1067,7 @@ resource ParadigmsMlt = open
         GSg Fem  => dik ;
         GPl      => dawk
         } ;
+      clitic = [] ;
       isPron = False ;
       isDemo = isdemo ;
       } ;

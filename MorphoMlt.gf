@@ -17,11 +17,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
   oper
     mkDeterminer : Number -> Str -> Determiner = \n,s -> {
         s = \\gen => s ;
-        n = case n of {
-          Sg => Num1 ;
-          -- anything except Num1 is interpreted as plural when hasNum == false
-          Pl => Num3_10
-          } ;
+        n = Num n ; -- Number -> NumForm
+        clitic = [] ;
         hasNum = False ;
         isPron = False ;
       } ;

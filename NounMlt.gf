@@ -40,10 +40,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
   lin
     -- Det -> CN -> NP
     DetCN det cn = {
-      s = \\c => case <det.isPron,det.hasNum> of {
-        <True,_>  => cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
---      <_,True>  => chooseNounNumForm det cn
-        _         => chooseNounNumForm det cn
+      s = \\c => case <det.isPron, cn.takesPron> of {
+        <True,True>  => glue (cn.s ! numform2nounnum det.n) det.clitic ;
+        <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+        _            => chooseNounNumForm det cn
         } ;
       a = case (numform2nounnum det.n) of {
 	Singular _ => mkAgr cn.g Sg P3 ;
@@ -63,6 +63,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       n = num.n ;
       hasNum = num.hasCard ;
       isPron = quant.isPron ;
+      clitic = quant.clitic ;
     } ;
 
     -- Quant -> Num -> Ord -> Det
@@ -77,16 +78,19 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       n = num.n ;
       hasNum = True ;
       isPron = quant.isPron ;
+      clitic = quant.clitic ;
       } ;
 
     -- Quant
     DefArt = {
       s  = \\_ => artDef ;
+      clitic = [] ;
       isPron = False ;
       isDemo = False ;
     } ;
     IndefArt = {
       s  = \\_ => artIndef ;
+      clitic = [] ;
       isPron = False ;
       isDemo = False ;
     } ;
@@ -110,7 +114,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Pron -> Quant
     PossPron p = {
-      s = \\_ => p.s ! Suffixed Gen ;
+      s = \\_ => p.s ! Possessive ;
+      clitic = p.s ! Suffixed Gen ;
       isPron = True ;
       isDemo = False ;
       } ;
