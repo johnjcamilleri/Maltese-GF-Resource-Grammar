@@ -135,9 +135,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   {- Pronoun -------------------------------------------------------------- -}
 
   oper
-    -- [AZ]
     Pronoun = {
-      s : PronForm => {c1, c2: Str} ;
+      -- s : PronForm => {c1, c2: Str} ;
+      s : PronForm => Str ; -- cases like omm-i / hi-ja are handled elsewhere
       a : Agr ;
       } ;
 

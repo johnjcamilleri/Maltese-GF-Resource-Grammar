@@ -15,15 +15,15 @@ concrete StructuralMlt of Structural = CatMlt **
     
     {- Pronoun -------------------------------------------------------------- -}
     
-    he_Pron = mkPron "hu" "u" "h" "u" "h" "lu" singular P3 masculine ; --- also HUWA
-    i_Pron = mkPron "jien" "i" "ja" "ni" [] "li" singular P1 masculine ; --- also JIENA
-    -- it_Pron  = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
-    she_Pron = mkPron "hi" "ha" singular P3 feminine ; --- also HIJA
-    they_Pron = mkPron "huma" "hom" plural P3 masculine ;
-    we_Pron = mkPron "aħna" "na" plural P1 masculine ;
-    youSg_Pron = mkPron "int" "ek" "ok" "ek" "k" "lek" singular P2 masculine ; -- also INTI
-    youPl_Pron = mkPron "intom" "kom" plural P2 masculine ;
+    i_Pron      = mkPron "jien"  "i"   "ni" "li"  singular P1 masculine ; --- also JIENA
+    youSg_Pron  = mkPron "int"   "ek"  "ek" "lek" singular P2 masculine ; --- also INTI
+    he_Pron     = mkPron "hu"    "u"   "u"  "lu"  singular P3 masculine ; --- also HUWA
+    she_Pron    = mkPron "hi"    "ha"             singular P3 feminine  ; --- also HIJA
+    we_Pron     = mkPron "aħna"  "na"             plural   P1 masculine ;
+    youPl_Pron  = mkPron "intom" "kom"            plural   P2 masculine ;
+    they_Pron   = mkPron "huma"  "hom"            plural   P3 masculine ;
     youPol_Pron = youSg_Pron ;
+    -- it_Pron  = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
 
     {- Determiner ----------------------------------------------------------- -}
 

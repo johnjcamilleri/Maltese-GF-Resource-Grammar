@@ -100,10 +100,9 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Pron -> NP
     UsePron p = {
-      -- s = \\npcase => (p.s ! Personal).c1 ;
       s = table {
-        Nom => (p.s ! Personal).c1 ;
-        CPrep => (p.s ! Suffixed Acc).c1
+        Nom => p.s ! Personal ;
+        CPrep => p.s ! Suffixed Acc
         } ;
       a = p.a ;
       isPron = True ;
@@ -111,7 +110,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Pron -> Quant
     PossPron p = {
-      s = \\_ => (p.s ! Suffixed Gen).c1 ;
+      s = \\_ => p.s ! Suffixed Gen ;
       isPron = True ;
       isDemo = False ;
       } ;
