@@ -94,6 +94,40 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | NumAdj  -- "Type A" in {MDG, 133}, e.g. ŻEWĠ, ĦAMES, TNAX-IL, MITT
       ;
 
+  {- Determiners etc. ----------------------------------------------------- -}
+
+  oper
+    -- [AZ]
+    Determiner : Type = {
+      s : Gender => Str ;
+      n : NumForm ;
+      clitic : Str ;
+      hasNum : Bool ;
+      isPron : Bool ;
+      } ;
+    -- Determiner = {
+    --   s : NPCase => Gender => NumCase => Str ;
+    --   s2 : NPCase => Gender => Str ; -- tieghi (possessive pronoun)
+    --   -- size : Num_Size ; -- One (agreement feature for noun)
+    --   isNum : Bool ; -- True (a numeral is present)
+    --   isDemo : Bool ; -- True (is a demostrative)
+    --   isDefn : Bool ;-- True (is definite)
+    --   } ;
+
+    -- [AZ]
+    Quantifier : Type = {
+      s      : GenNum => Str ;
+      clitic : Str ;
+      isPron : Bool ;
+      isDemo : Bool ; -- Demonstrative (this/that/those/these)
+      } ;
+    -- Quantifier = {
+    --   s : NPCase => Gender => NumForm => Str ;
+    --   s2 : NPCase => Gender => NumForm => Str ;
+    --   isDemo : Bool ; -- Demonstrative (this/that/those/these)
+    --   isDefn : Bool ;
+    --   } ;
+
   {- Nouns ---------------------------------------------------------------- -}
 
   oper

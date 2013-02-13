@@ -15,8 +15,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
   {- Determiners ---------------------------------------------------------- -}
 
   oper
-    mkDeterminer : Number -> Str -> 
-      {s : Gender => Str ; n : NumForm ; hasNum : Bool ; isPron : Bool} = \n,s -> {
+    mkDeterminer : Number -> Str -> Determiner = \n,s -> {
         s = \\gen => s ;
         n = case n of {
           Sg => Num1 ;

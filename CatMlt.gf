@@ -60,37 +60,9 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     NP = NounPhrase ;
     Pron = Pronoun ;
 
-    Det = {
-      s : Gender => Str ;
-      n : NumForm ;
-      hasNum : Bool ;
-      isPron : Bool ;
-      } ;
-    -- [AZ]
-    -- Det = {
-    --   s : NPCase => Gender => NumCase => Str ;
-    --   s2 : NPCase => Gender => Str ; -- tieghi (possesive pronoun)
-    --   -- size : Num_Size ; -- One (agreement feature for noun)
-    --   isNum : Bool ; -- True (a numeral is present)
-    --   isDemo : Bool ; -- True (is a demostrative)
-    --   isDefn : Bool ;-- True (is definite)
-    --   } ;
-
+    Det = Determiner ;
     -- Predet = {s : Str} ;
-
-    Quant = {
-      s      : GenNum => Str ;
-      isPron : Bool ;
-      isDemo : Bool ; -- Demonstrative (this/that/those/these)
-      } ;
-
-    -- [AZ]
-    -- Quant = {
-    --   s : NPCase => Gender => NumForm => Str ;
-    --   s2 : NPCase => Gender => NumForm => Str ;
-    --   isDemo : Bool ; -- Demonstrative (this/that/those/these)
-    --   isDefn : Bool ;
-    --   } ;
+    Quant = Quantifier ;
 
     -- [AZ]
     Num = {
