@@ -15,13 +15,13 @@ concrete LexiconMlt of Lexicon = CatMlt **
 
   lin
 --    add_V3
---    alas_Interj
---    already_Adv
+    alas_Interj    = ss "sfortunatament" ;
+    already_Adv    = mkAdv "diġà" ;
     animal_N       = mkN "annimal" ;
     answer_V2S     = mkV_III "wieġeb" (mkRoot "w-ġ-b") ;
     apartment_N    = mkN "appartament" ;
     art_N          = mkNNoPlural "arti" feminine ;
---    ashes_N      = mkN "rmied" ;
+    ashes_N        = mkN "rmied" "rmiet" ;
     ask_V2Q        = mkV "saqsa" (mkRoot "s-q-s-j") ;
     baby_N         = mkN "tarbija" "trabi" ;
     back_N         = possN (mkN "dahar" "dhur") ;
@@ -104,7 +104,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     eye_N          = possN (mk5N "għajn" [] "għajnejn" "għajnejn" "għejun" feminine) ;
     factory_N      = mkN "fabbrika" ;
     fall_V         = mkV "waqa'" (mkRoot "w-q-għ") ;
---    far_Adv
+    far_Adv        = mkAdv "il-bogħod" ; -- use glue?
     fat_N          = mkNColl "xaħam" ;
     father_N2      = mkN2 (possN (mkN "missier" "missierijiet")) ;
 --    fear_V2
@@ -180,7 +180,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     learn_V2       = mkV_V "tgħallem" (mkRoot "għ-l-m") ;
     leather_N      = mkN "ġilda" "ġild" [] "ġildiet" "ġlud" ; -- mkNColl "ġild" ;
     leave_V2       = mkV "telaq" (mkRoot "t-l-q") ;
---    left_Ord
+    left_Ord       = mkOrd "xellug" ;
     leg_N          = possN (mkN "riġel" [] "riġlejn" [] []) ; -- SIEQ
     lie_V          = mkV_VIII "mtedd" (mkRoot "m-d-d") ;
 --    like_V2
@@ -193,7 +193,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     love_N         = mkN "mħabba" "mħabbiet" ;
     love_V2        = mkV "ħabb" (mkRoot "ħ-b-b") ;
     man_N          = mkN "raġel" "rġiel" ;
---    married_A2
+    married_A2     = mkA2 (mkA "miżżewweġ" "miżżewġa") toP ;
     meat_N         = mkN "laħam" [] [] "laħmiet" "laħmijiet" ;
     milk_N         = mkN [] "ħalib" [] "ħalibijiet" "ħlejjeb" ;
     moon_N         = mkN "qamar" "oqmra" ; -- QMURA
@@ -209,7 +209,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     newspaper_N    = mkN "gazzetta" ;
     night_N        = mkN "lejl" "ljieli" ;
     nose_N         = possN (mkN "mnieħer" "mniħrijiet") ;
---    now_Adv
+    now_Adv        = mkAdv "issa" ;
     number_N       = mkN "numru" ;
     oil_N          = mkN "żejt" "żjut" ;
     old_A          = brokenA "qadim" "qodma" "eqdem" ;
@@ -226,7 +226,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     play_V         = mkV "lagħab" (mkRoot "l-għ-b") ;
     policeman_N    = mkNNoPlural "pulizija" ;
     priest_N       = mkN "qassis" "qassisin" ;
---    probable_AS
+    probable_AS    = mkAS (sameA "probabbli") ;
     pull_V2        = mkV "ġibed" (mkRoot "ġ-b-d") ;
 --    push_V2
     put_V2         = mkV_III "qiegħed" (mkRoot "q-għ-d") ;
@@ -241,7 +241,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     red_A          = mkA "aħmar" "ħamra" "ħomor" ;
     religion_N     = mkN "reliġjon" "reliġjonijiet" ;
     restaurant_N   = mkN "restorant" ;
---    right_Ord
+    right_Ord      = mkOrd "lemin" ;
     river_N        = mkN "xmara" "xmajjar" ;
     road_N         = mk5N "triq" [] [] "triqat" "toroq" feminine ;
     rock_N         = mkN "blata" "blat" [] "blatiet" "blajjiet" ; -- in dictionary BLAT and BLATA are separate!
@@ -256,7 +256,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     run_V          = mkV "ġera" (mkRoot "ġ-r-j") ;
     salt_N         = mkN "melħ" "melħiet" ;
     sand_N         = mkN "ramla" "ramel" [] "ramliet" "rmiel" ;
---    say_VS
+    say_VS         = mkV "qal" (mkRoot "q-w-l") ;
     school_N       = mkN "skola" "skejjel" ;
     science_N      = mkN "xjenza" ;
     scratch_V2     = mkV "barax" (mkRoot "b-r-x") ;
@@ -289,7 +289,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     snow_N         = mkN [] "borra" [] [] [] ;
     sock_N         = mkN "kalzetta" ;
     song_N         = mkN "kanzunetta" ;
---    speak_V2
+    speak_V2       = mkV_II "kellem" (mkRoot "k-l-m") ;
     spit_V         = mkV "beżaq" (mkRoot "b-ż-q") ;
     split_V2       = mkV "qasam" (mkRoot "q-s-m") ;
 --    squeeze_V2
@@ -321,7 +321,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     think_V        = mkV "ħaseb" (mkRoot "ħ-s-b") ;
     throw_V2       = mkV_II "waddab" (mkRoot "w-d-b") ;
     tie_V2         = mkV "qafel" (mkRoot "q-f-l") ;
---    today_Adv
+    today_Adv      = mkAdv "illum" ;
     tongue_N       = possN (mkN "lsien" "ilsna") ;
     tooth_N        = possN (mkN "sinna" [] [] "sinniet" "snien") ; -- DARSA
     train_N        = mkN "ferrovija" ;
@@ -359,5 +359,14 @@ concrete LexiconMlt of Lexicon = CatMlt **
     year_N         = mkN "sena" [] "sentejn" "snin" [] ;
     yellow_A       = mkA "isfar" "safra" "sofor" ;
     young_A        = small_A ;
+
+  oper
+    aboutP = mkPrep "fuq" ;
+    atP = mkPrep "għand" ;
+    forP = mkPrep "għal" ;
+    fromP = mkPrep "minn" ;
+    inP = mkPrep "ġo" ;
+    onP = mkPrep "fuq" ;
+    toP = mkPrep "lil" ;
 
 } ;

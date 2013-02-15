@@ -14,7 +14,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Tensed/Untensed
 
-    -- S  = {s : Str} ;
+    S  = {s : Str} ;
     -- QS = {s : QForm => Str} ;
     -- RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
     -- SSlash = {s : Str ; c2 : Str} ;
@@ -117,8 +117,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     -- VV = {s : VVForm => Str ; typ : VVType} ;
     -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;
 
-    A = Adjective ** {hasComp : Bool} ; -- Does the adjective have a comparative form (e.g. ISBAĦ)?
---    A2 = Adjective ** {c2 : Str} ;
+    A = Adjective ;
+    A2 = Adjective ** {c2 : Str} ;
 
     N, N2, N3 = Noun ;
     PN = ProperNoun ;

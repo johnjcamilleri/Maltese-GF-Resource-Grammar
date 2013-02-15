@@ -35,7 +35,7 @@ resource ParadigmsMlt = open
     singular : Number = Sg ;
     plural : Number = Pl ;
 
-    {- Noun paradigms ----------------------------------------------------- -}
+    {- Noun --------------------------------------------------------------- -}
 
     -- Helper function for inferring noun plural from singulative
     -- Nouns with collective & determinate forms should not use this...
@@ -278,7 +278,7 @@ resource ParadigmsMlt = open
 
       });
 
-    {- Prepositions ------------------------------------------------------- -}
+    {- Preposition -------------------------------------------------------- -}
 
     mkPrep : Str -> Prep ; -- e.g. "in front of"
     mkPrep p = lin Prep (ss p) ;
@@ -287,7 +287,7 @@ resource ParadigmsMlt = open
     noPrep = mkPrep [] ;
 
 
-    {- Verb paradigms ----------------------------------------------------- -}
+    {- Verb --------------------------------------------------------------- -}
 
     -- Re-export ResMlt.mkRoot
     mkRoot : Root = overload {
@@ -966,8 +966,13 @@ resource ParadigmsMlt = open
         i = info ;
       } ;
 
+    {- Verb --------------------------------------------------------------- -}
 
-    {- Adjective paradigms ------------------------------------------------ -}
+    mkVS : V -> VS ; -- sentence-compl
+    mkVS v = lin VS v ;
+
+
+    {- Adjective ---------------------------------------------------------- -}
 
     -- Overloaded function for building an adjective
     mkA : A = overload {
@@ -1058,8 +1063,38 @@ resource ParadigmsMlt = open
       _ => (init fem) + "i" -- BRAVA
       } ;
 
+    prepA2 : A -> Prep -> A2 ;
+    prepA2 a p = lin A2 (a ** {c2 = p.s}) ;
 
-    {- Quantitifer paradigms ---------------------------------------------- -}
+    mkA2 : overload {
+      mkA2 : A -> Prep -> A2 ;
+      mkA2 : A -> Str -> A2 ;
+      } ;
+    mkA2 = overload {
+      mkA2 : A -> Prep -> A2   = prepA2 ;
+      mkA2 : A -> Str -> A2    = \a,p -> prepA2 a (mkPrep p) ;
+      } ;
+
+    AS, A2S, AV : Type = A ;
+    A2V : Type = A2 ;
+
+    mkAS : A -> AS ;
+    mkAS a = a ;
+
+    {- Adverb ------------------------------------------------------------- -}
+
+    mkAdv : Str -> Adv ; -- post-verbal adverb, e.g. ILLUM
+    mkAdV : Str -> AdV ; -- preverbal adverb, e.g. DEJJEM
+    
+    mkAdA : Str -> AdA ; -- adverb modifying adjective, e.g. PJUTTOST
+    mkAdN : Str -> AdN ; -- adverb modifying numeral, e.g. MADWAR
+    
+    mkAdv x = lin Adv (ss x) ;
+    mkAdV x = lin AdV (ss x) ;
+    mkAdA x = lin AdA (ss x) ;
+    mkAdN x = lin AdN (ss x) ;
+
+    {- Quantifier, Ord ---------------------------------------------------- -}
 
     mkQuant : (dak, dik, dawk : Str) -> Bool -> Quant = \dak,dik,dawk,isdemo -> lin Quant {
       s = table {
@@ -1072,4 +1107,7 @@ resource ParadigmsMlt = open
       isDemo = isdemo ;
       } ;
         
+    mkOrd : Str -> Ord = \x -> lin Ord { s = \\c => x };
+
+
 }

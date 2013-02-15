@@ -205,7 +205,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     VForm =
         VPerf VAgr    -- Perfect tense in all pronoun cases
       | VImpf VAgr    -- Imperfect tense in all pronoun cases
-      | VImp Number  -- Imperative is always P2, Sg & Pl
+      | VImp Number   -- Imperative is always P2, Sg & Pl
       -- | VPresPart GenNum  -- Present Particible for Gender/Number
       -- | VPastPart GenNum  -- Past Particible for Gender/Number
       -- | VVerbalNoun      -- Verbal Noun
@@ -360,18 +360,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- a2 = [] ;
       } ;
 
-  {- Adjective ------------------------------------------------------------ -}
+  {- Adjecive ------------------------------------------------------------ -}
 
   oper
     Adjective : Type = {
       s : AForm => Str ;
+      hasComp : Bool ;
       } ;
 
   param
     AForm =
-        APosit GenNum
-      | ACompar
-      | ASuperl
+        APosit GenNum  -- Positive, e.g. SABIĦ
+      | ACompar        -- Comparative, e.g. ISBAĦ
+      | ASuperl        -- Superlative, e.g. L-ISBAĦ
       ;
 
   {- Other ---------------------------------------------------------------- -}
@@ -594,7 +595,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         _ => False
       } ;
 
-    
     -- Add a definite preposition in front of your token
     addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
     addDefiniteArticle = addDefinitePreposition "il" ;
@@ -685,6 +685,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         ACompar => compar ;
         ASuperl => addDefiniteArticle compar
       } ;
+      hasComp = notB (isNil compar) ;
     } ;
 
 }
