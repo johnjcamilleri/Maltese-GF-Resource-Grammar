@@ -80,7 +80,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Indicate how a corresponding object should be treated
     --- Overlap between Num Sg and Num1, but leaving as is for now
     NumForm =
-        Num Number -- Sg | Pl
+        NumX Number -- Sg | Pl
       | Num0     -- 0 (l-edba SIEGĦA)
       | Num1     -- 1, 101... (SIEGĦA, mija u SIEGĦA)
       | Num2     -- 2 (SAGĦTEJN)
@@ -152,18 +152,11 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       } ;
 
   param
-    Noun_Sg_Type =
-        Singulative  -- eg ĦUTA
-      | Collective  -- eg ĦUT
-      ;
-    Noun_Pl_Type =
-        Determinate  -- eg ĦUTIET
-      | Indeterminate  -- eg ĦWIET
-      ;
     Noun_Number =
-        Singular Noun_Sg_Type    -- eg ĦUTA / ĦUT
-      | Dual            -- eg WIDNEJN
-      | Plural Noun_Pl_Type    -- eg ĦUTIET / ĦWIET
+        Singulative -- ĦUTA
+      | Collective  -- ĦUT
+      | Dual        -- WIDNEJN
+      | Plural      -- ĦUTIET
       ;
 
   {- Pronoun -------------------------------------------------------------- -}
@@ -491,14 +484,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     numform2nounnum : NumForm -> Noun_Number = \n ->
       case n of {
-        Num Sg   => Singular Singulative ;
-        Num Pl   => Plural Indeterminate ;
-        Num0     => Singular Singulative ;
-        Num1     => Singular Singulative ;
+        NumX Sg  => Singulative ;
+        NumX Pl  => Plural ;
+        Num0     => Singulative ;
+        Num1     => Singulative ;
         Num2     => Dual ;
-        Num3_10  => Singular Collective ;
-        Num11_19 => Singular Singulative ;
-        Num20_99 => Plural Indeterminate
+        Num3_10  => Collective ;
+        Num11_19 => Singulative ;
+        Num20_99 => Plural
       } ;
 
     {- ~~~ Useful helper functions ~~~ -}
@@ -664,11 +657,11 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Gender
     mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
       s = table {
-        Singular Singulative => sing ;
-        Singular Collective => coll ;
+        Singulative => sing ;
+        Collective => coll ;
         Dual => dual ;
-        Plural Determinate => det ;
-        Plural Indeterminate => ind
+        Plural => if_then_Str (isNil det) ind det
+        -- Plural => variants {det ; ind}
         } ;
       g = gen ;
       takesPron = False ;

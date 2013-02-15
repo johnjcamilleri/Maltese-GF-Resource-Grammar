@@ -17,7 +17,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
   oper
     mkDeterminer : Number -> Str -> Determiner = \n,s -> {
         s = \\gen => s ;
-        n = Num n ; -- Number -> NumForm
+        n = NumX n ; -- Number -> NumForm
         clitic = [] ;
         hasNum = False ;
         isPron = False ;
