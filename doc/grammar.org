@@ -1,0 +1,126 @@
+* Maltese GF Resource Grammar
+
+Combined everything into one file.
+
+This file is both a documentation, as well as a to-do list, and will be in flux a lot.
+
+** Conventions
+
+*** Initial vowels & standard forms
+
+In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet other times they are part of the word.
+This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference we abide by. Examples:
+
+**** Nouns
+
+- /mbuljuta/
+- /mgħarfa/
+- /mħadda/
+- /mnieħer/
+- /mqarrun/
+- /nbid/
+- /sbuħija/
+- /spettur/
+- /statistika/
+
+But:
+
+- /imbatt/
+- /immaġinazzjoni/
+- /impenn/
+- /injam/
+- /ispirazzjoni/
+- /istitut/
+
+**** Semitic Verbs
+
+{MDG} gives verb conjugations *with* initial vowels: /insum, isum, inbierek, ibierek/ etc., 
+but others ({DM}, {OM}, {GM}) prefer to leave them out and give the standard form without the euphonic vowels: /nsum, jsum, nbierek, jbierek/ etc.
+
+We will keep to the form *without* included vowels, since they are not part of the morphology and are really a syntactic phenomena.
+
+**** Loan Verbs
+
+- /mmatura/
+- /kkopja/
+- /pparkja/
+- /nnervja/
+
+But:
+
+- /immaġina/
+- /ikkoppja/ (he fished with a net)
+- /ipponta/
+- /innamra/
+
+**** Adjectives
+
+Similar situation as with nouns:
+
+- /mħassar/
+- /mxarrab/
+- /rqiq/
+
+But:
+
+- /importanti/
+- /inċert/
+- /isfar/
+
+*** Handling euphonic vowels - different cases
+
+Examples
+
+- Noun
+    - Without vowel: /nbid, mqarrun, skola/
+    - With vowel: /injam, ilma (Masc)/
+    - Take no vowel: /nemla, maqrut, serp/
+- Verb
+    - Without vowel: /nħobb, mmorru, mxejt/
+    - Changing I/J: /jmur/
+    - Take no vowel: /bkejt/
+- Adj
+    - With vowel: /isfar/
+    - Without: /rqiq/
+
+*** Preceding word
+
+- Noun
+    - /ħafna nbid/ - /ftit *i*nbid/
+    - /ħafna njam/ - /ftit injam/
+- Verb
+    - /jiena nħobb/ - /jekk *i*nħobb/
+    - /huwa jmur/ - /is-sibt *i*mur/
+    - /aħna mmorru/ - /is-sibt *i*mmorru/
+    - /jiena mxejt/ - /is-sibt *i*mxejt/
+    - /jiena bkejt/ - /is-sibt bkejt/
+- Adj
+    - /mara rqiqa/ - /raġel *i*rqiq/
+    - /ilma *i*sfar/ - /injam isfar/
+
+*** Article
+
+- Noun
+    - /*l-i*nbid, *l-i*mqarrun, *l-i*skola/
+    - /*l-*injam, *l-*inbid/
+    - /*in-*nemla, *il-*maqrut, *is-*serp/
+- Adj
+    - /*l-*isfar/
+    - /*l-i*rqiq/
+    
+
+** Enclitic pronouns (pronomi mehmużin)
+
+See {GM, pg 165}
+
+| Object     | Noun, Prep | Verb accusative (direct) | Accusative (when joined with dative) | Verb dative (indirect) |
+|------------+------------+--------------------------+--------------------------------------+------------------------|
+| P1 Sg      | i, ja      | ni                       |                                      | li                     |
+| P2 Sg      | ek         | ek, k                    |                                      | lek                    |
+| P3 Sg Masc | u, h       | u, h                     | hu                                   | lu                     |
+| P3 Sg Fem  | ha         | ha                       | hie                                  | lha                    |
+| P1 Pl      | na         | na                       |                                      | lna                    |
+| P2 Pl      | kom        | kom                      |                                      | lkom                   |
+| P3 Pl      | hom        | hom                      | hom                                  | lhom                   |
+
+
