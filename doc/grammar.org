@@ -1,17 +1,15 @@
-* Maltese GF Resource Grammar
+#+TITLE: Maltese GF Resource Grammar
+#+AUTHOR: John J. Camilleri
 
-Combined everything into one file.
 
-This file is both a documentation, as well as a to-do list, and will be in flux a lot.
+* Conventions
 
-** Conventions
-
-*** Initial vowels & standard forms
+** Initial vowels & standard forms
 
 In all lexical classes, it seems that initial vowels are sometimes euphonic ("tal-leħen"), yet other times they are part of the word.
 This is likely an etymological issue, though no clear patterns emerge. We will use {DM} as the reference we abide by. Examples:
 
-**** Nouns
+*** Nouns
 
 - /mbuljuta/
 - /mgħarfa/
@@ -32,14 +30,14 @@ But:
 - /ispirazzjoni/
 - /istitut/
 
-**** Semitic Verbs
+*** Semitic Verbs
 
 {MDG} gives verb conjugations *with* initial vowels: /insum, isum, inbierek, ibierek/ etc., 
 but others ({DM}, {OM}, {GM}) prefer to leave them out and give the standard form without the euphonic vowels: /nsum, jsum, nbierek, jbierek/ etc.
 
 We will keep to the form *without* included vowels, since they are not part of the morphology and are really a syntactic phenomena.
 
-**** Loan Verbs
+*** Loan Verbs
 
 - /mmatura/
 - /kkopja/
@@ -53,7 +51,7 @@ But:
 - /ipponta/
 - /innamra/
 
-**** Adjectives
+*** Adjectives
 
 Similar situation as with nouns:
 
@@ -67,7 +65,7 @@ But:
 - /inċert/
 - /isfar/
 
-*** Handling euphonic vowels - different cases
+** Handling euphonic vowels - different cases
 
 Examples
 
@@ -83,33 +81,32 @@ Examples
     - With vowel: /isfar/
     - Without: /rqiq/
 
-*** Preceding word
+** Preceding word
 
 - Noun
-    - /ħafna nbid/ - /ftit *i*nbid/
+    - /ħafna nbid/ - /ftit inbid/
     - /ħafna njam/ - /ftit injam/
 - Verb
-    - /jiena nħobb/ - /jekk *i*nħobb/
-    - /huwa jmur/ - /is-sibt *i*mur/
-    - /aħna mmorru/ - /is-sibt *i*mmorru/
-    - /jiena mxejt/ - /is-sibt *i*mxejt/
+    - /jiena nħobb/ - /jekk inħobb/
+    - /huwa jmur/ - /is-sibt imur/
+    - /aħna mmorru/ - /is-sibt immorru/
+    - /jiena mxejt/ - /is-sibt imxejt/
     - /jiena bkejt/ - /is-sibt bkejt/
 - Adj
-    - /mara rqiqa/ - /raġel *i*rqiq/
-    - /ilma *i*sfar/ - /injam isfar/
+    - /mara rqiqa/ - /raġel irqiq/
+    - /ilma isfar/ - /injam isfar/
 
-*** Article
+** Article
 
 - Noun
-    - /*l-i*nbid, *l-i*mqarrun, *l-i*skola/
-    - /*l-*injam, *l-*inbid/
-    - /*in-*nemla, *il-*maqrut, *is-*serp/
+    - /l-inbid, l-imqarrun, l-iskola/
+    - /l-injam, l-inbid/
+    - /in-nemla, il-maqrut, is-serp/
 - Adj
-    - /*l-*isfar/
-    - /*l-i*rqiq/
+    - /l-isfar/
+    - /l-irqiq/
     
-
-** Enclitic pronouns (pronomi mehmużin)
+* Enclitic pronouns (pronomi mehmużin)
 
 See {GM, pg 165}
 
@@ -123,4 +120,595 @@ See {GM, pg 165}
 | P2 Pl      | kom        | kom                      |                                      | lkom                   |
 | P3 Pl      | hom        | hom                      | hom                                  | lhom                   |
 
+* Numerals
+
+** Case
+
+{MDG, 133} mentions "type A" and "type B" numerals, which in {GM, 202} are described as "użu aġġettiv" and "użu nominali" respectively.
+
+** Implementation notes
+
+An important note is that regardless of the magnitude of a number, for inflection purposes it is the latter part
+of a numeral which is important, e.g.:
+
+|    3 | /tlett siegħat/        |
+|------+------------------------|
+|  103 | /mija u tlett siegħat/ |
+| 1003 | /elf u tlett siegħat/  |
+
+* Nouns
+
+Notes about the implementation of Maltese **nouns**.
+This file is both a documentation, as well as a to-do list, and will be in flux a lot.
+
+** Number
+
+/Note: NNQ = Non-numerically quantifiable/
+
+- Singular
+  - Singulative (1, >10)
+  - Collective (NNQ)
+- Dual ("għadd imtenni") (2)
+- Plural
+  - Determinate (2-10)
+  - Indeterminate (NNQ)
+  
+*** Typical combinations
+
+Nouns typically have one of the following combinations of number forms  (* marks base form):
+
+- Singulative, no plural!
+- Singulative*, Plural
+- Singulative* (1), Dual (2), Plural (>2)
+- Singulative (1, >10), Collective* (NNQ), Determinate Plural (2-10)
+- Singulative, Collective*, Determinate Plural, Indeterminate Plural -> very few nouns have these 4 forms
+
+**** Examples
+  
+| English    | Singular  | Collective | Dual        | Det. Plural  | Ind. Plural |
+|------------+-----------+------------+-------------+--------------+-------------|
+| blood      |           | /demm/     |             | /dmija/      |             |
+| butter     |           | /butir/    |             | /butirijiet/ |             |
+| cow        | /baqra/   | /baqar/    | /baqartejn/ |              |             |
+| eye        | /għajn/   |            | /għajnejn/  | /għajnejn/   | /għejun/    |
+| fingernail | /difer/   |            | /difrejn/   | /dwiefer/    |             |
+| fog        |           | /ċpar/     |             |              |             |
+| foot       | /sieq/    |            | /saqajn/    | /saqajn/     |             |
+| gold       |           | /deheb/    |             | /dehbijiet/  |             |
+| grass      | /ħaxixa/  | /ħaxix/    |             |              | /ħxejjex/   |
+| guts       | /musrana/ |            |             | /musraniet/  | /msaren/    |
+| hair       | /xagħar/  |            |             | /xagħariet/  | /xgħur/     |
+| hand       | /id/      |            | /idejn/     | /idejn/      |             |
+| iron       | /ħadida/  | /ħadid/    |             | /ħadidiet/   | /ħdejjed/   |
+| knee       | /rkoppa/  |            | /rkopptejn/ | /rkoppiet/   |             |
+| leaf       | /werqa/   | /weraq/    | /werqtejn/  | /werqiet/    |             |
+| leather    | /ġilda/   | /ġild/     |             | /ġildiet/    | /ġlud/      |
+| leg        | /riġel/   |            | /riġlejn/   |              |             |
+| liver      | /fwied/   |            |             |              | /ifdwa/     |
+| meat       | /laħam/   |            |             | /laħmiet/    | /laħmijiet/ |
+| milk       |           | /ħalib/    |             | /ħalibijiet/ | /ħlejjeb/   |
+| person     |           | /persuna/  |             | /persuni/    |             |
+| road       | /triq/    |            |             | /triqat/     | /toroq/     |
+| rock       | /blata/   | /blat/     |             | /blatiet/    | /blajjiet/  |
+| sand       | /ramla/   | /ramel/    |             | /ramliet/    | /rmiel/     |
+| sea        | /baħar/   |            | /baħrejn/   | /ibħra/      |             |
+| sheep      | /nagħġa/  | /nagħaġ/   |             | /nagħġiet/   |             |
+| snow       |           | /borra/    |             |              |             |
+| stone      | /ġebla/   | /ġebel/    |             | /ġebliet/    | /ġbiel/     |
+| tooth      | /sinna/   |            |             | /sinniet/    | /snien/     |
+| tree       | /siġra/   | /siġar/    |             | /siġriet/    |             |
+| wind       | /riħ/     |            |             | /rjieħ/      | /rjiħat/    |
+| wine       |           | /nbid/     |             |              | /nbejjed/   |
+| worm       | /dudu/    | /dud/      |             | /dudiet/     | /dwied/     |
+| year       | /sena/    |            | /sentejn/   | /snin/       |             |
+
+*** Morphological processes for plurals
+
+- Sound (eternal/affix), e.g. FERGĦA -> FERGĦAT
+- Broken (internal), e.g. FERGĦA -> FRIEGĦI
+- Plural of Plural, e.g. TARF -> TRUF -> TRUFIJIET
+- Irregular, e.g. MARA -> NISA
+- Foreign, e.g. KARTI, PRATTIĊI, TELEVIXINS
+
+** Case
+
+*** As defined in Grammatika Maltija, p132
+
+    Case =
+        Nominative  -- referent as subject, eg IT-TARBIJA ...
+      | Genitive    -- referent as possessor, eg ... TAT-TARBIJA
+      | Accusative  -- referent as direct object
+      | Dative      -- referent as indirect object, eg ... LIT-TARBIJA
+      | Ablative    -- referent as instrument, cause, location, source or time, eg ... MINN TARBIJA
+      | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
+    ;
+
+** Other
+
+*** Gender
+
+Different gender treatment for different number forms; gender is somewhat inherent but can be "overridden".
+
+Gender inflection for animate nominals
+
+- /ħabib/ħabiba/, /ħija/oħti/ but /ħuti subien/ / /ħuti tfajliet/
+- /qattus/qattusa/, /bodbod/mogħża/ but /qanfud raġel/ / /qanfud mara/
+
+*** Common plurals
+
+Loss of information in plural
+
+- /ħu/oħt/ but /aħwa/
+- /tifel/tifla/ but /tfal/
+
+*** Collectives
+
+With collectives, I often put the female collective as the singulative of the same entry. Maybe that's wrong? e.g. /ġild/ġilda/
+
+*** Diminutive
+
+e.g. /ġobna -> ġbejna/
+Is it just a different word? It's probably not common enough to introduce a parameter.
+
+
+* Verbs
+
+Notes about the GF implementation of Maltese **verbs**.
+This file is both a documentation, as well as a to-do list, and will be in flux a lot.
+
+*** Test cases
+
+When testing the verb morphology, each of these cases should be considered for the given reason(s). Ideally we will have gold standards for each.
+
+**** Form I
+
+| Verb          | Class                       | Notes                                        |
+|---------------+-----------------------------+----------------------------------------------|
+| /kiteb/       | Regular strong              | Vowel changes (/kitibli/)                    |
+| /lagħab/      | Regular strong              | Middle radical is 2 characters               |
+| /ħareġ/       | Liquid-medial strong        | Vowel changes (/oħroġ/)                      |
+| /kenn/        | Geminated strong            | Triple n with suffix /na/                    |
+| /ħakk/        | Geminated strong            | Triple k with suffix /kom/                   |
+| /ħall/        | Geminated strong            | Triple l with suffix /lu/                    |
+| /bexx/        | Geminated strong            | Triple x in negation                         |
+| /waqaf/       | Weak initial (assimilative) | Long vowel in Imp/Impf (/nieqaf/)            |
+| /wasal/       | Weak initial (assimilative) | Liquid-medial                                |
+| /sab/         | Weak medial (hollow)        | -                                            |
+| /żied/        | Weak medial (hollow)        | Middle vowel is 2 characters                 |
+| /mexa/        | Weak final (lacking)        | -                                            |
+| /qata’/       | Defective                   | Treatment of apostrophe                      |
+| /ħarbat/      | Quad strong                 | 4 distinct radicals                          |
+| /gemgem/      | Quad strong                 | Repeated biradical base                      |
+| /gerbeb/      | Quad strong                 | Repeated C3                                  |
+| /żerżaq/      | Quad strong                 | Repeated C1 after C2                         |
+| /għargħax/    | Quad strong                 | C1 repeated; C1 & C3 are 2 characters        |
+| /kanta/       | Weak quad (integrated loan) | Italian origin /-are/: imperative is /kanta/ |
+| /serva/       | Weak quad (integrated loan) | Italian origin /-ire/: imperative is /servi/ |
+| /vinċa/       | Weak quad (integrated loan) | Italian origin /-ere/: imperative is /vinċi/ |
+| /żviluppa/    | Loan                        | -                                            |
+| /antagonizza/ | Loan                        | /-izza/ ending                               |
+| /ssuġġerixxa/ | Loan                        | /-ixxa/ ending; Double first letter          |
+
+**** Form II
+
+| Derived mamma | Root   | Form I  | Class                | Notes                                                                          |
+|---------------+--------+---------+----------------------+--------------------------------------------------------------------------------|
+| /ħabbat/      | Ħ-B-T  | /ħabat/ | Strong               |                                                                                |
+| /kisser/      | K-S-R  | /kiser/ | Strong liquid-medial |                                                                                |
+| /bexxex/      | B-X-X  | /bexx/  | Geminated            | Vowel change (/bexxixt/); Avoid triple /xxx/                                   |
+| /waqqaf/      | W-Q-F  | /waqaf/ | Weak-initial         |                                                                                |
+| /qajjem/      | Q-J-M  | /qam/   | Weak-medial          | Double j/w can only occur when a vowel follows. i.e. /qajmek/, not +/qajjmek/+ |
+| /neħħa/       | N-Ħ-J  | -       | Weak-final           |                                                                                |
+| /qatta’/      | Q-T-GĦ | /qata’/ | Defective            |                                                                                |
+| /kerrah/      | K-R-H  | -       | -                    | Formed from adjective /ikrah/                                                  |
+
+Others:
+
+- /libbes/ L-B-S
+- /raqqad/ R-Q-D
+- /daħħak/ D-Ħ-K
+- /baħħar/ B-Ħ-R
+- /ġedded/ Ġ-D-D
+- /sewwed/ S-W-D
+
+**** Quad. Form II
+
+| Derived mamma | Root    | Form I   | Class      | Notes                                             |
+|---------------+---------+----------+------------+---------------------------------------------------|
+| /tħarbat/     | Ħ-R-B-T | /ħarbat/ | Strong     |                                                   |
+| /tfixkel/     | F-X-K-L | /fixkel/ | Strong     | Final L causes dubious cases, e.g. /tfixkillilna/ |
+| /ddardar/     | D-R-D-R | /dardar/ | Strong     | Assimilation of T                                 |
+| /tkanta/      | K-N-T-J | /kanta/  | Weak-final |                                                   |
+| /sserva/      | S-R-V-J | /serva/  | Weak-final | Assimilation of T                                 |
+
+
+**** Form III
+
+| Derived mamma | Root   | Form I   | Class                | Notes                             |
+|---------------+--------+----------+----------------------+-----------------------------------|
+| /ħares/       | Ħ-R-S  | -        | Strong liquid-medial |                                   |
+| /qiegħed/     | Q-GĦ-D | /qagħad/ | Strong               | C2 is 2 chars                     |
+| /wieġeb/      | W-Ġ-B  | -        | Weak-initial         | /ie/ is shortened to /e/, not /i/ |
+| /miera/       | M-R-J  | -        | Weak-final           |                                   |
+
+Others:
+
+- /bierek/ B-R-K (use as model for /qiegħed/)
+- /siefer/ S-F-R
+- /żiegħel/ Ż-GĦ-L
+
+**** Form IV
+
+| Derived mamma | Root   | Notes |
+|---------------+--------+-------|
+| /wera/        | R-'-J  |       |
+| /għama/       | GĦ-M-J |       |
+| /għana/       | GĦ-N-J |       |
+
+**** Form V
+
+| Derived mamma | Root   | Form I/II          | Class                | Notes             |
+|---------------+--------+--------------------+----------------------+-------------------|
+| /tkisser/     | K-S-R  | /kiser/kisser/     | Strong               |                   |
+| /tniżżel/     | N-Ż-L  | /niżel/niżżel/     | Strong               |                   |
+| /tgħallaq/    | GĦ-L-Q | /għalaq/għallaq/   | Strong liquid-medial | C1 is two chars   |
+| /ssellef/     | S-L-F  | /silef/sellef/     | Strong liquid-medial | Assimilation of T |
+| /twassal/     | W-S-L  | /wasal/            | Weak-initial         |                   |
+| /tfejjaq/     | F-J-Q  | /fieq/             | Weak-medial          |                   |
+| /tfaċċa/      | F-Ċ-J  | /faċċa/            | Weak-final           |                   |
+| /tbeżża'/     | B-Ż-GĦ | /beża'/            | Weak defective       |                   |
+
+Others
+
+- /tħallat/ Ħ-L-T
+- /ssaħħan/ S-Ħ-N
+- /tħammeġ/ Ħ-M-Ġ
+- /tgħannaq/ GĦ-N-Q
+- /ċċarrat/ Ċ-R-T
+- /tmexxa/ M-X-J
+
+
+**** Form VI
+
+| Derived mamma | Root   | Form I/III       | Class                | Notes                   |
+|---------------+--------+------------------+----------------------+-------------------------|
+| /tħabat/      | Ħ-B-T  | /ħabat/          | Strong               | Long vowel Â            |
+| /tqiegħed/    | Q-GĦ-D | /qagħad/qiegħed/ | Strong               | Long vowel IE; C2 is GĦ |
+| /ġġieled/     | Ġ-L-D  | /ġieled/         | Strong liquid-medial | Assimilation of T       |
+| /tbierek/     | B-R-K  | /bierek/         | Strong liquid-medial |                         |
+| /twieġeb/     | W-Ġ-B  | /wieġeb/         | Weak-initial         |                         |
+| /twiegħed/    | W-GĦ-D | /wegħed/wiegħed/ | Weak-initial         |                         |
+| /tkaża/       | K-Ż-J  | /tkaża/          | Weak-final           |                         |
+| /tgara/       | G-R-J  | /gara/           | Weak-final           |                         |
+
+**** Form VII
+
+| Derived mamma | Root   | Form I   | Class                | Notes                                  |
+|---------------+--------+----------+----------------------+----------------------------------------|
+| /nġabar/      | Ġ-B-R  | /ġabar/  | Strong               |                                        |
+| /nħasel/      | Ħ-S-L  | /ħasel/  | Strong               | N prefix                               |
+| /nfirex/      | F-R-X  | /firex/  | Strong liquid-medial |                                        |
+| /ntrifes/     | R-F-S  | /rifes/  | Strong               | NT prefix                              |
+| /nxteħet/     | X-Ħ-T  | /xeħet/  | Strong               | N-T infix                              |
+| /ntgħaġen/    | GĦ-Ġ-N | /għaġen/ | Strong               | C1 is GĦ, NT prefix                    |
+| /nxtamm/      | X-M-M  | /xamm/   | Geminated            | N-T infix                              |
+| /ntemm/       | T-M-M  | /temm/   | Geminated            | N prefix                               |
+| /ntiżen/      | W-Ż-N  | /wiżen/  | Weak-inital          | NT prefix with dropped C1              |
+| /nstab/       | S-J-B  | /sab/    | Weak-medial          |                                        |
+| /nbeda/       | B-D-J  | /beda/   | Weak-final           |                                        |
+| /ntlewa/      | L-W-J  | /lewa/   | Weak-final           | NT prefix                              |
+| /nqata’/      | Q-T-GĦ | /qata’/  | Defective            |                                        |
+| /ntqal/       | Q-W-L  | /qal/    | Weak-medial/Irreg    | /qal/ is irregular in the imperfective |
+
+Others
+
+- /nġieb/ Ġ-J-B
+- /nħeba/ Ħ-B-J
+
+
+**** Form VIII
+
+| Derived mamma | Root   | Form I  | Class       | Notes |
+|---------------+--------+---------+-------------+-------|
+| /xteħet/      | X-Ħ-T  | /xeħet/ | Strong      |       |
+| /mtedd/       | M-D-D  | /medd/  | Geminated   |       |
+| /xtaq/        | X-W-Q  | /xaq/   | Weak-medial |       |
+| /mtela/       | T-L-J  | /tela/  | Weak-final  |       |
+| /ltaqa’/      | L-Q-GĦ | /laqa‘/ | Defective   |       |
+
+Others
+
+- /ntefaq/ N-F-Q
+- /stabat/ S-B-T
+- /ltewa/ L-W-J
+- /ntesa/ N-S-J
+- /ftaqar/ F-Q-R
+
+**** Form IX
+
+| Derived mamma | Root  | Class       | Notes |
+|---------------+-------+-------------+-------|
+| /ħdar/        | Ħ-D-R | Strong      |       |
+| /rqaq/        | R-Q-Q | Geminated   |       |
+| /twal/        | T-W-L | Weak Medial |       |
+
+Others:
+
+- /sfar/ S-F-R
+- /qsar/ Q-S-R
+- /blieh/ B-L-H
+- /bjad/ B-J-D
+- /krieh/ K-R-H
+
+**** Form X
+
+| Derived mamma | Root   | Form I/II    | Class                | Notes                               |
+|---------------+--------+--------------+----------------------+-------------------------------------|
+| /stagħġeb/    | GĦ-Ġ-B | II:/għaġġeb/ | Strong               |                                     |
+| /stenbaħ/     | N-B-Ħ  | II:/nebbaħ/  | Strong               |                                     |
+| /stħarreġ/    | Ħ-R-Ġ  | I:/ħareġ/    | Strong liquid-medial | Stem is in second form (double /R/) |
+| /stkerrah/    | K-R-H  | II:/kerrah/  | Strong liquid-medial |                                     |
+| /stqarr/      | Q-R-R  | I:/qarr/     | Geminated            |                                     |
+| /strieħ/      | S-R-Ħ  | II:/serraħ/  | Weak-medial          |                                     |
+| /staħba/      | Ħ-B-J  | I:/ħeba/     | Weak-Final           |                                     |
+| /stenna/      | '-N-J  | -            | Irregular            |                                     |
+| /stieden/     | '-D-N  | -            | Irregular            |                                     |
+
+*** Other examples
+
+*** Strong verbs
+
+- kiteb, fetaħ, rabat
+- ħareġ, żelaq
+- ħabb, bexx
+
+**** Quad verbs
+
+- gemgem, karkar, għargħax
+- gerbeb
+- żerżaq
+- ħarbat, qarben, xengel
+- kanta, serva, vinċa
+
+**** Loan verbs
+
+- żviluppa
+- pperfezzjona
+- antagonizza
+- bbukkja
+- wweldja
+- ertja
+- ffittja
+- ssuġġerixxa
+- stabilixxa
+
+
+*** Table of derived forms by verb class
+
+Adapted from {MDG}
+
+| Class                       | II        | III      | IV     | V         | VI        | VII      | VIII     | IX     | X          |
+|-----------------------------+-----------+----------+--------+-----------+-----------+----------+----------+--------+------------|
+| Strong                      | /daħħal/  | /bierek/ | /wera/ | /tfarrak/ | /tbierek/ | /nġabar/ | /ntefaq/ | /ħdar/ | /stkerrah/ |
+| Geminated                   | /ħabbeb/  | /qarar/  |        | /tħabbeb/ |           | /ntemm/  | /mtedd/  | /rqaq/ | /stqarr/   |
+| Assimilative (Weak-initial) | /wassal/  | /wieġeb/ |        | /twassal/ | /twieġeb/ | /ntiżen/ |          |        |            |
+| Hollow (Weak-medial)        | /fejjaq/  |          |        | /tfejjaq/ |           | /nġieb/  | /xtaq/   | /twal/ | /strieħ/   |
+| Lacking (Weak-final)        | /mexxa/   | /miera/  |        | /tmexxa/  | /tkaża/   | /nbeda/  | /mtela/  |        | /staħba/   |
+| Defective (GĦ-final)        | /beżża’/  |          |        | /tbeżża’/ |           | /nqata’/ | /ltaqa’/ |        |            |
+| Quad Strong                 | /tħarbat/ |          |        |           |           |          |          |        |            |
+| Quad Weak-final             | /sserva/  |          |        |           |           |          |          |        |            |
+
+** Classification
+
+Verb classification according to {MDG}, {T2M} and {GM}.
+
+- Semitic
+    - *Strong* ("sħiħ")
+        - *Regular*: all radicals strong & distinct, e.g. /QATEL (Q-T-L)/.
+        - *Liquid-Medial*: C2 is liquid {MDG pg246,364; T2M pg18-19}, e.g. /ŻELAQ (Ż-L-Q)/
+        - *Geminated* / Reduplicative / Doubled ("trux"): C2 & C3 are identical, e.g. /ĦABB (Ħ-B-B), XAMM (X-M-M), BEXX (B-X-X)/
+    - *Weak* ("dgħajjef")
+        - *Assimilative* ("assimilativ"/"xebbiehi"): C1 is weak, e.g. /WAQAF (W-Q-F), WASAL (W-S-L)/
+        - *Hollow* ("moħfi"): C2 is weak, long A or IE between C1 & C3, e.g. /DAM (D-W-M), SAR (S-J-R)/
+        - *Lacking* ("nieqes"): C3 is weak, e.g. /BEKA (B-K-J), MEXA (M-X-J)/
+        - *Defective*: C3 is silent GĦ, e.g. /BELA’ (B-L-GĦ), QATA’ (Q-T-GĦ)/  
+          Use /kiser/ as model (or /seraq/ when C2 is liquid). {GO pg169}
+          As {SA} notes, GĦ is not weak, thus these verbs are technically Strong. However, the behave inflectionally as weak verbs.
+    - *Quadriliteral*: 4 radicals
+        - *Strong*
+            - Repeated bi-radical base, e.g. /GEMGEM (G-M-G-M)/
+            - Repeated C3, e.g. /GERBEB (G-R-B-B)/
+            - Repeated C1 after C2, e.g. /ŻERŻAQ (Ż-R-Ż-Q)/
+            - Added C4 to triradical base, e.g. /ĦARBAT (Ħ-R-B-T)/
+        - *Weak-final*: C4 weak, e.g. /PINĠA (P-N-Ġ-J)/  
+        These are generally strongly-integrated Romance verbs (see below), e.g. /KANTA/ from Italian /cantare/.
+    - Irregular: /ĦA, TA, RA, MAR, ĠIE, QAL, KIEL, KELLU, IDDA, EMMEN, IŻŻA, JAF, KIEN/
+- Romance
+    - Strongly-integrated, e.g. /KANTA, SERREP, BANDAL, BAQQAN/  
+    From Italian /-are/ (e.g. /KANTA/), /-ere/ (e.g. /VINĊA/), /-ire/ (e.g. /SERVA/).  
+    These are covered by the semitic paradigms above, they merely have a different etymology {T2M}.
+    - Loosely-integrated. e.g. /ŻVILUPPA, IPPERFEZZJONA, ANTAGONIZZA, IDDIŻUBBIDIXXA/
+- English loan words. e.g. /IBBUKJA, IWWELDJA, ERTJA, IFFITTJA/
+
+{SA} clasifies loan verbs as follows:
+
+- Type 1:
+    - Verbs like /KANTA/ - modelled on /qara/ (based on imperative: /kanta/kantaw/, /aqra/aqraw/)
+    - Doubled initial consonant, e.g. /IKKONVINĊA, IMMONITERJA, ITTAJPJA/
+- Type 2:
+    - Verbs like /FALLA/ - modelled on /beka/ (based on imperative: /falli/fallu/, /ibki, ibku/)
+    - Italian ending /-isco/, e.g. /ISSUĠĠERIXXA/
+- Type 3:
+    - Fully integrated into Semitic pattern. Conjugated as triliteral 2nd form verb/quadriliteral verb. e.g. /SERREP/
+
+*Questions*
+
+- Is /WERŻAQ/ weak or strong? {T2M app} says strong, {GM pg48} says weak.
+
+
+** Pronominal suffixes
+
+A verb can have the following pronominal suffix combinations:
+
+- None, e.g. /FTAĦT/
+- Direct Object, e.g. /FTAĦTU/
+- Indirect Object, e.g. /FTAĦTLU/
+- Direct Object + Indirect Object, .e.g /FTAĦTHULU/  
+  In this case the D.O. is necessarily 3rd person (Masc/Fem/Plural).
+  
+** Variations
+
+For liquid-medial verbs some variations seem to exist, when adding pronominal suffixes.
+The following are standard:
+
+- noħorġilkom
+- noħorġilha
+- noħorġilhom
+- jisirqilhom
+
+However this alternate spelling seems to be relatively accepted (likely for some verbs more than others):
+
+- noħroġilkom
+- noħroġilha
+- noħroġilhom
+- jisraqilhom
+
+However in the RG we are currently considering only the first case. See [this discussion](https://www.facebook.com/groups/246657308743181/permalink/351277908281120/).
+The code for having this as a variant is there, but commented out.
+
+** Polarity
+
+Verb inflects for polarity:
+
+- Positive, e.g. /FETAĦ/
+- Negative, e.g. /[MA] FETAĦX/  
+  The negative form typically follows the clitic /ma/, although there exist constructions where this is not the case, e.g. /mur ara jekk fetaħx/
+
+** Tense
+
+*** Basic definitions
+
+Mood:
+
+- Indicative
+- Imperative, e.g. /ISRAQ/  
+  "The imperative is formed from the imperfect form of the verb" {MDG pg238}
+
+Derived moods:
+
+- Conditional, e.g. /JEKK TIĠI/
+- Subjunctive, e.g. /BIEX INKELLEM/
+
+Tense-aspect:
+
+- Perfective, e.g. /SERAQ/
+- Imperfective, e.g. /JISRAQ/
+
+*** Maltese tenses
+
+Tenses according to {SA} and {GM}.
+
+| Aux1 | Aux2  | Main verb | Meaning (name)                           |
+|------+-------+-----------+------------------------------------------|
+| -    | -     | sraqt     | simple past (Perfective)                 |
+| kont | -     | sraqt     | past perfect (Pluperfett)                |
+| nkun | -     | sraqt     | future perfect                           |
+| -    | -     | nisraq    | habitual present (Imperfective)          |
+| kont | -     | nisraq    | habitual past (Past Imperfective)        |
+| -    | qed   | nisraq    | present progressive (Present Continuous) |
+| kont | qed   | nisraq    | past progressive (Past Continuous)       |
+| nkun | -/qed | nisraq    | future progressive (Future Imperfective) |
+| -    | sa    | nisraq    | prospective                              |
+| kont | sa    | nisraq    | past prospective                         |
+| nkun | sa    | nisraq    | future prospective                       |
+
+**** Notes
+
+- /Future/ can also be expressed by means of: Imperfective + temporal adverb, e.g. /GĦADA MMUR NIXTRI/
+- Conditional clauses
+    - Counterfactual conditional with past reference: Perfective + Past Imperfective, e.g.:  
+    /Kieku rbaħt l-lotterija kont nixtri dar./
+    - Counterfactual with non-past time reference: Jekk/Kieku + Imperfective, e.g.:  
+    /Jekk nirbaħ l-lotterija nixtri dar./
+    - Imperfective with future meaning:  
+    /Kieku nirbaħ l-lotterija nixtri dar./
+- Future habituality is expressed using bare imperfective/prospective with adequate future adverbial {TAS pg335}
+- A few verbs in Maltese have no perfective form, and thus use /kien/ + Imperfective for simple/habitual past:
+    - /kont naf/
+    - /kont nixbaħ/
+    - /kien jisimni/
+- Progressive can be:
+    - Synthetic, e.g. /nieżel/ (Only possible when verb has an active participial form.) {TAS pg328}
+    - Analytic, e.g. /qed jinżel/
+- Some more complex (and lesser used) tense-aspect constructions:
+    - /Pawlu kien dejjem ikun jilgħab il-futboll/
+    - /Pawlu kien dejjem ikun qed jilgħab il-futboll/
+    - /Pawlu kien dejjem ikun sa jilgħab il-futboll/
+    - /Pawlu kien dejjem ikun lagħab il-futboll/
+- Still/yet:
+    - Pseudo-verb /għad/ + Imperfective:
+        - /Pawlu għadu jiekol/
+        - /Pawlu għadu qed jiekol/
+        - /Pawlu għadu sa jiekol/
+    - /għad/ + /kemm/ + Perfective: /Pawlu għadu kemm qam/
+- Insistence/repetition:
+    - /Pawlu joqgħod idejjaqni/
+    - /Pawlu jibqa’ jaħdem tard/
+    - /Pawlu jkompli jispara fuq kull għasfur/
+- {GM} also notes two additional constuctions:
+    - Perfective present continuous, e.g. /ILNI NAĦDEM SIEGĦA/
+    - Pluperfett kontinwu, e.g. /JIEN KONT QGĦADT NAĦDEM/
+
+*** The RGL common tense-polarity system
+
+RGL tenses and how they are expressed in Maltese (refer to table above):
+
+| Anteriority  | Temporal Order | Polarity | Description            | Example                           |
+|--------------+----------------+----------+------------------------+-----------------------------------|
+| Simultaneous | Present        | Positive | Imperfective           | /jien norqod/                     |
+| Simultaneous | Present        | Negative |                        | /jien ma norqodx/                 |
+| Simultaneous | Past           | Positive | Perfective             | /jien irqadt/                     |
+| Simultaneous | Past           | Negative |                        | /jien ma rqadtx/                  |
+| Simultaneous | Future         | Positive | Prospective            | /jien se norqod/                  |
+| Simultaneous | Future         | Negative |                        | /jien minix se norqod/            |
+| Simultaneous | Conditional    | Positive | Past Imperfective      | /jien kont norqod [kieku]/        |
+| Simultaneous | Conditional    | Negative |                        | /jien ma kontx norqod [kieku]/    |
+| Anterior     | Present        | Positive | /Same as Sim Past Pos/ |                                   |
+| Anterior     | Present        | Negative | /Same as Sim Past Neg/ |                                   |
+| Anterior     | Past           | Positive | Past Perfect           | /jien kont irqadt/                |
+| Anterior     | Past           | Negative |                        | /jien ma kontx irqadt/            |
+| Anterior     | Future         | Positive | Future Perfect         | /jien inkun irqadt/               |
+| Anterior     | Future         | Negative |                        | /jien ma nkunx irqadt/ (?)        |
+| Anterior     | Conditional    | Positive | Past prospective       | /jien kont se norqod [kieku]/     |
+| Anterior     | Conditional    | Negative |                        | /jien ma kontx se norqod [kieku]/ |
+
+** Derived forms
+
+All information from {MDG pg247}.
+
+*** Triliteral roots
+
+| Form | Process                                    | Example    | Description                                                          |
+|------+--------------------------------------------+------------+----------------------------------------------------------------------|
+| I    | -                                          | /kiteb/    | Base form                                                            |
+| II   | Reduplication/gemination of second radical | /daħħal/   | In general, intransitive Form I verbs are made transitive/causative. |
+| III  | Long first vowel                           | /bierek/   | Similar to Form II, when reduplication of C2 is not possible.        |
+| IV   | -                                          | /wera/     | Empty class.                                                         |
+| V    | Prefix /t-/ to Form II                     | /farrak/   | Intransitive. Passive or reflexive.                                  |
+| VI   | Prefix of /t-/ to Form III                 | /tbierek/  | Same as Form V.                                                      |
+| VII  | Prefix of /n-/ to Form I                   | /nkiteb/   | In general, transitive Form I verbs are made intransitive.           |
+| VIII | Infix /-t-/ after C1 of Form 1             | /ftiehem/  | Intransitive (like V, VI, VII).                                      |
+| 〃   | Prefix /nt-/ to Form 1                     | /ntlaħaq/  | 〃                                                                   |
+| 〃   | Infix /n-t-/ to Form 1                     | /nxteħet/  | 〃                                                                   |
+| IX   | Structure `1 2v: 3`                        | /ċkien/    | Change of state.                                                     |
+| X    | Prefix /st-/                               | /stagħġeb/ | -                                                                    |
+
+*** Quadriliteral roots
+
+| Form | Process     | Example   | Description                         |
+|------+-------------+-----------+-------------------------------------|
+| I    | -           | /ħarbat/  | Base form                           |
+| II   | Prefix /t-/ | /tħarbat/ | Intransitive. Passive or reflexive. |
+| -    | Prefix /m-/ | /mfarfar/ | Past participle.                    |
+| -    | -           | /tfarfir/ | Verbal noun.                        |
 
