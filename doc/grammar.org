@@ -1,7 +1,6 @@
 #+TITLE: Maltese GF Resource Grammar
 #+AUTHOR: John J. Camilleri
 
-
 * Conventions
 
 ** Initial vowels & standard forms
@@ -121,7 +120,6 @@ See {GM, pg 165}
 | P3 Pl      | hom        | hom                      | hom                                  | lhom                   |
 
 * Numerals
-
 ** Case
 
 {MDG, 133} mentions "type A" and "type B" numerals, which in {GM, 202} are described as "użu aġġettiv" and "użu nominali" respectively.
@@ -132,15 +130,10 @@ An important note is that regardless of the magnitude of a number, for inflectio
 of a numeral which is important, e.g.:
 
 |    3 | /tlett siegħat/        |
-|------+------------------------|
 |  103 | /mija u tlett siegħat/ |
 | 1003 | /elf u tlett siegħat/  |
 
 * Nouns
-
-Notes about the implementation of Maltese **nouns**.
-This file is both a documentation, as well as a to-do list, and will be in flux a lot.
-
 ** Number
 
 /Note: NNQ = Non-numerically quantifiable/
@@ -204,24 +197,24 @@ Nouns typically have one of the following combinations of number forms  (* marks
 
 *** Morphological processes for plurals
 
-- Sound (eternal/affix), e.g. FERGĦA -> FERGĦAT
-- Broken (internal), e.g. FERGĦA -> FRIEGĦI
-- Plural of Plural, e.g. TARF -> TRUF -> TRUFIJIET
-- Irregular, e.g. MARA -> NISA
-- Foreign, e.g. KARTI, PRATTIĊI, TELEVIXINS
-
+- Sound (eternal/affix), e.g. /fergħa -> fergħat/
+- Broken (internal), e.g. /fergħa -> friegħi/
+- Plural of Plural, e.g. /tarf -> truf -> trufijiet/
+- Irregular, e.g. /mara -> nisa/
+- Foreign, e.g. /karti, prattiċi, televixins/
+  
 ** Case
 
 *** As defined in Grammatika Maltija, p132
 
-    Case =
-        Nominative  -- referent as subject, eg IT-TARBIJA ...
-      | Genitive    -- referent as possessor, eg ... TAT-TARBIJA
-      | Accusative  -- referent as direct object
-      | Dative      -- referent as indirect object, eg ... LIT-TARBIJA
-      | Ablative    -- referent as instrument, cause, location, source or time, eg ... MINN TARBIJA
-      | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
-    ;
+>  Case =
+>      Nominative  -- referent as subject, eg IT-TARBIJA ...
+>    | Genitive    -- referent as possessor, eg ... TAT-TARBIJA
+>    | Accusative  -- referent as direct object
+>    | Dative      -- referent as indirect object, eg ... LIT-TARBIJA
+>    | Ablative    -- referent as instrument, cause, location, source or time, eg ... MINN TARBIJA
+>    | Vocative    -- referent being adressed, eg AA TARBIJA (lol)
+>  ;
 
 ** Other
 
@@ -250,11 +243,7 @@ With collectives, I often put the female collective as the singulative of the sa
 e.g. /ġobna -> ġbejna/
 Is it just a different word? It's probably not common enough to introduce a parameter.
 
-
 * Verbs
-
-Notes about the GF implementation of Maltese **verbs**.
-This file is both a documentation, as well as a to-do list, and will be in flux a lot.
 
 *** Test cases
 
@@ -291,16 +280,16 @@ When testing the verb morphology, each of these cases should be considered for t
 
 **** Form II
 
-| Derived mamma | Root   | Form I  | Class                | Notes                                                                          |
-|---------------+--------+---------+----------------------+--------------------------------------------------------------------------------|
-| /ħabbat/      | Ħ-B-T  | /ħabat/ | Strong               |                                                                                |
-| /kisser/      | K-S-R  | /kiser/ | Strong liquid-medial |                                                                                |
-| /bexxex/      | B-X-X  | /bexx/  | Geminated            | Vowel change (/bexxixt/); Avoid triple /xxx/                                   |
-| /waqqaf/      | W-Q-F  | /waqaf/ | Weak-initial         |                                                                                |
-| /qajjem/      | Q-J-M  | /qam/   | Weak-medial          | Double j/w can only occur when a vowel follows. i.e. /qajmek/, not +/qajjmek/+ |
-| /neħħa/       | N-Ħ-J  | -       | Weak-final           |                                                                                |
-| /qatta’/      | Q-T-GĦ | /qata’/ | Defective            |                                                                                |
-| /kerrah/      | K-R-H  | -       | -                    | Formed from adjective /ikrah/                                                  |
+| Derived mamma | Root   | Form I  | Class                | Notes                                                                        |
+|---------------+--------+---------+----------------------+------------------------------------------------------------------------------|
+| /ħabbat/      | Ħ-B-T  | /ħabat/ | Strong               |                                                                              |
+| /kisser/      | K-S-R  | /kiser/ | Strong liquid-medial |                                                                              |
+| /bexxex/      | B-X-X  | /bexx/  | Geminated            | Vowel change (/bexxixt/); Avoid triple /xxx/                                 |
+| /waqqaf/      | W-Q-F  | /waqaf/ | Weak-initial         |                                                                              |
+| /qajjem/      | Q-J-M  | /qam/   | Weak-medial          | Double j/w can only occur when a vowel follows. i.e. /qajmek/, not /qajjmek/ |
+| /neħħa/       | N-Ħ-J  | -       | Weak-final           |                                                                              |
+| /qatta’/      | Q-T-GĦ | /qata’/ | Defective            |                                                                              |
+| /kerrah/      | K-R-H  | -       | -                    | Formed from adjective /ikrah/                                                |
 
 Others:
 
@@ -320,7 +309,6 @@ Others:
 | /ddardar/     | D-R-D-R | /dardar/ | Strong     | Assimilation of T                                 |
 | /tkanta/      | K-N-T-J | /kanta/  | Weak-final |                                                   |
 | /sserva/      | S-R-V-J | /serva/  | Weak-final | Assimilation of T                                 |
-
 
 **** Form III
 
@@ -347,16 +335,16 @@ Others:
 
 **** Form V
 
-| Derived mamma | Root   | Form I/II          | Class                | Notes             |
-|---------------+--------+--------------------+----------------------+-------------------|
-| /tkisser/     | K-S-R  | /kiser/kisser/     | Strong               |                   |
-| /tniżżel/     | N-Ż-L  | /niżel/niżżel/     | Strong               |                   |
-| /tgħallaq/    | GĦ-L-Q | /għalaq/għallaq/   | Strong liquid-medial | C1 is two chars   |
-| /ssellef/     | S-L-F  | /silef/sellef/     | Strong liquid-medial | Assimilation of T |
-| /twassal/     | W-S-L  | /wasal/            | Weak-initial         |                   |
-| /tfejjaq/     | F-J-Q  | /fieq/             | Weak-medial          |                   |
-| /tfaċċa/      | F-Ċ-J  | /faċċa/            | Weak-final           |                   |
-| /tbeżża'/     | B-Ż-GĦ | /beża'/            | Weak defective       |                   |
+| Derived mamma | Root   | Form I/II        | Class                | Notes             |
+|---------------+--------+------------------+----------------------+-------------------|
+| /tkisser/     | K-S-R  | /kiser/kisser/   | Strong               |                   |
+| /tniżżel/     | N-Ż-L  | /niżel/niżżel/   | Strong               |                   |
+| /tgħallaq/    | GĦ-L-Q | /għalaq/għallaq/ | Strong liquid-medial | C1 is two chars   |
+| /ssellef/     | S-L-F  | /silef/sellef/   | Strong liquid-medial | Assimilation of T |
+| /twassal/     | W-S-L  | /wasal/          | Weak-initial         |                   |
+| /tfejjaq/     | F-J-Q  | /fieq/           | Weak-medial          |                   |
+| /tfaċċa/      | F-Ċ-J  | /faċċa/          | Weak-final           |                   |
+| /tbeżża’/     | B-Ż-GĦ | /beża’/          | Weak defective       |                   |
 
 Others
 
@@ -366,7 +354,6 @@ Others
 - /tgħannaq/ GĦ-N-Q
 - /ċċarrat/ Ċ-R-T
 - /tmexxa/ M-X-J
-
 
 **** Form VI
 
@@ -405,7 +392,6 @@ Others
 - /nġieb/ Ġ-J-B
 - /nħeba/ Ħ-B-J
 
-
 **** Form VIII
 
 | Derived mamma | Root   | Form I  | Class       | Notes |
@@ -442,17 +428,17 @@ Others:
 
 **** Form X
 
-| Derived mamma | Root   | Form I/II    | Class                | Notes                               |
-|---------------+--------+--------------+----------------------+-------------------------------------|
-| /stagħġeb/    | GĦ-Ġ-B | II:/għaġġeb/ | Strong               |                                     |
-| /stenbaħ/     | N-B-Ħ  | II:/nebbaħ/  | Strong               |                                     |
-| /stħarreġ/    | Ħ-R-Ġ  | I:/ħareġ/    | Strong liquid-medial | Stem is in second form (double /R/) |
-| /stkerrah/    | K-R-H  | II:/kerrah/  | Strong liquid-medial |                                     |
-| /stqarr/      | Q-R-R  | I:/qarr/     | Geminated            |                                     |
-| /strieħ/      | S-R-Ħ  | II:/serraħ/  | Weak-medial          |                                     |
-| /staħba/      | Ħ-B-J  | I:/ħeba/     | Weak-Final           |                                     |
-| /stenna/      | '-N-J  | -            | Irregular            |                                     |
-| /stieden/     | '-D-N  | -            | Irregular            |                                     |
+| Derived mamma | Root   | Form I  | Form II   | Class                | Notes                               |
+|---------------+--------+---------+-----------+----------------------+-------------------------------------|
+| /stagħġeb/    | GĦ-Ġ-B | -       | /għaġġeb/ | Strong               |                                     |
+| /stenbaħ/     | N-B-Ħ  | -       | /nebbaħ/  | Strong               |                                     |
+| /stħarreġ/    | Ħ-R-Ġ  | /ħareġ/ |           | Strong liquid-medial | Stem is in second form (double /R/) |
+| /stkerrah/    | K-R-H  | -       | /kerrah/  | Strong liquid-medial |                                     |
+| /stqarr/      | Q-R-R  | /qarr/  |           | Geminated            |                                     |
+| /strieħ/      | S-R-Ħ  | -       | /serraħ/  | Weak-medial          |                                     |
+| /staħba/      | Ħ-B-J  | /ħeba/  |           | Weak-Final           |                                     |
+| /stenna/      | '-N-J  | -       |           | Irregular            |                                     |
+| /stieden/     | '-D-N  | -       |           | Irregular            |                                     |
 
 *** Other examples
 
@@ -712,3 +698,4 @@ All information from {MDG pg247}.
 | -    | Prefix /m-/ | /mfarfar/ | Past participle.                    |
 | -    | -           | /tfarfir/ | Verbal noun.                        |
 
+    
