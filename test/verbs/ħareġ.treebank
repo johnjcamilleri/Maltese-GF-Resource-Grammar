@@ -1,0 +1,1166 @@
+i -retain ParadigmsMlt.gf
+cc -table -unqual mkV "ħareġ"
+---
+s . VPerf (AgP1 Sg) => VSuffixNone => Pos => ħriġt
+s . VPerf (AgP1 Sg) => VSuffixNone => Neg => ħriġtx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => ħriġtek
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => ħriġtekx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => ħriġtkom
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => ħriġtkomx
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => ħriġtu
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => ħriġtux
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => ħriġtha
+s . VPerf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => ħriġthiex
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => ħriġthom
+s . VPerf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => ħriġthomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => ħriġtlek
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => ħriġtlekx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => ħriġtilkom
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => ħriġtilkomx
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => ħriġtlu
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => ħriġtlux
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => ħriġtilha
+s . VPerf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => ħriġtilhiex
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => ħriġtilhom
+s . VPerf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => ħriġtilhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ħriġthulek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ħriġthulekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ħriġthulkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => ħriġthulkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħriġthulu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħriġthulux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħriġthulha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħriġthulhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħriġthulhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħriġthulhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ħriġthielek
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ħriġthilekx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ħriġthielkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => ħriġthilkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħriġthielu
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħriġthilux
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħriġthielha
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħriġthilhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħriġthielhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħriġthilhomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ħriġthomlok
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ħriġthomlokx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ħriġthomlkom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => ħriġthomlkomx
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħriġthomlu
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħriġthomlux
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħriġthomlha
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħriġthomlhiex
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => ħriġthomlhom
+s . VPerf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => ħriġthomlhomx
+s . VPerf (AgP1 Pl) => VSuffixNone => Pos => ħriġna
+s . VPerf (AgP1 Pl) => VSuffixNone => Neg => ħriġniex
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => ħriġniek
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => ħriġnikx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => ħriġniekom
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => ħriġnikomx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => ħriġnieh
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => ħriġnihx
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => ħriġnieha
+s . VPerf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => ħriġnihiex
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => ħriġniehom
+s . VPerf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => ħriġnihomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => ħriġnielek
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => ħriġnilekx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => ħriġnielkom
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => ħriġnilkomx
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => ħriġnielu
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => ħriġnilux
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => ħriġnielha
+s . VPerf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => ħriġnilhiex
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => ħriġnielhom
+s . VPerf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => ħriġnilhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ħriġnihulek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ħriġnihulekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ħriġnihulkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => ħriġnihulkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħriġnihulu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħriġnihulux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħriġnihulha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħriġnihulhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħriġnihulhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħriġnihulhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ħriġnihielek
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ħriġnihilekx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ħriġnihielkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => ħriġnihilkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħriġnihielu
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħriġnihilux
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħriġnihielha
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħriġnihilhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħriġnihielhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħriġnihilhomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ħriġnihomlok
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ħriġnihomlokx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ħriġnihomlkom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => ħriġnihomlkomx
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħriġnihomlu
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħriġnihomlux
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħriġnihomlha
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħriġnihomlhiex
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => ħriġnihomlhom
+s . VPerf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => ħriġnihomlhomx
+s . VPerf (AgP2 Sg) => VSuffixNone => Pos => ħriġt
+s . VPerf (AgP2 Sg) => VSuffixNone => Neg => ħriġtx
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => ħriġtni
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => ħriġtnix
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => ħriġtna
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => ħriġtniex
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => ħriġtu
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => ħriġtux
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => ħriġtha
+s . VPerf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => ħriġthiex
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => ħriġthom
+s . VPerf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => ħriġthomx
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => ħriġtli
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => ħriġtlix
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => ħriġtilna
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => ħriġtilniex
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => ħriġtlu
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => ħriġtlux
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => ħriġtilha
+s . VPerf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => ħriġtilhiex
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => ħriġtilhom
+s . VPerf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => ħriġtilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ħriġthuli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ħriġthulix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ħriġthulna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ħriġthulniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħriġthulu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħriġthulux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħriġthulha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħriġthulhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħriġthulhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħriġthulhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ħriġthieli
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ħriġthilix
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ħriġthielna
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ħriġthilniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħriġthielu
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħriġthilux
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħriġthielha
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħriġthilhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħriġthielhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħriġthilhomx
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ħriġthomli
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ħriġthomlix
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ħriġthomlna
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ħriġthomlniex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħriġthomlu
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħriġthomlux
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħriġthomlha
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħriġthomlhiex
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => ħriġthomlhom
+s . VPerf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => ħriġthomlhomx
+s . VPerf (AgP2 Pl) => VSuffixNone => Pos => ħriġtu
+s . VPerf (AgP2 Pl) => VSuffixNone => Neg => ħriġtux
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => ħriġtuni
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => ħriġtunix
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => ħriġtuna
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => ħriġtuniex
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => ħriġtuh
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => ħriġtuhx
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => ħriġtuha
+s . VPerf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => ħriġtuhiex
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => ħriġtuhom
+s . VPerf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => ħriġtuhomx
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => ħriġtuli
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => ħriġtulix
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => ħriġtulna
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => ħriġtulniex
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => ħriġtulu
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => ħriġtulux
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => ħriġtulha
+s . VPerf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => ħriġtulhiex
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => ħriġtulhom
+s . VPerf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => ħriġtulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ħriġtuhuli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ħriġtuhulix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ħriġtuhulna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ħriġtuhulniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħriġtuhulu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħriġtuhulux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħriġtuhulha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħriġtuhulhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħriġtuhulhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħriġtuhulhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ħriġtuhieli
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ħriġtuhilix
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ħriġtuhielna
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ħriġtuhilniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħriġtuhielu
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħriġtuhilux
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħriġtuhielha
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħriġtuhilhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħriġtuhielhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħriġtuhilhomx
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ħriġtuhomli
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ħriġtuhomlix
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ħriġtuhomlna
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ħriġtuhomlniex
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħriġtuhomlu
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħriġtuhomlux
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħriġtuhomlha
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħriġtuhomlhiex
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => ħriġtuhomlhom
+s . VPerf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => ħriġtuhomlhomx
+s . VPerf (AgP3Sg Masc) => VSuffixNone => Pos => ħareġ
+s . VPerf (AgP3Sg Masc) => VSuffixNone => Neg => ħariġx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Pos => ħariġni
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Neg => ħariġnix
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Pos => ħariġna
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Neg => ħariġniex
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Pos => ħarġek
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Neg => ħarġekx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Pos => ħariġkom
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Neg => ħariġkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Pos => ħarġu
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Neg => ħarġux
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Pos => ħariġha
+s . VPerf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Neg => ħariġhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Pos => ħariġhom
+s . VPerf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Neg => ħariġhomx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Pos => ħariġli
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Neg => ħariġlix
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Pos => ħarġilna
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Neg => ħarġilniex
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Pos => ħariġlek
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Neg => ħariġlekx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Pos => ħarġilkom
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Neg => ħarġilkomx
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Pos => ħariġlu
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Neg => ħariġlux
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Pos => ħarġilha
+s . VPerf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Neg => ħarġilhiex
+s . VPerf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Pos => ħarġilhom
+s . VPerf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Neg => ħarġilhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ħariġhuli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ħariġhulix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ħariġhulna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ħariġhulniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ħariġhulek
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ħariġhulekx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ħariġhulkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => ħariġhulkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħariġhulu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħariġhulux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħariġhulha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħariġhulhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħariġhulhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħariġhulhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ħariġhieli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ħariġhilix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ħariġhielna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ħariġhilniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ħariġhielek
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ħariġhilekx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ħariġhielkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => ħariġhilkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħariġhielu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħariġhilux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħariġhielha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħariġhilhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħariġhielhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħariġhilhomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ħariġhomli
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ħariġhomlix
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ħariġhomlna
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ħariġhomlniex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ħariġhomlok
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ħariġhomlokx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ħariġhomlkom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Neg => ħariġhomlkomx
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħariġhomlu
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħariġhomlux
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħariġhomlha
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħariġhomlhiex
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Pos => ħariġhomlhom
+s . VPerf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Neg => ħariġhomlhomx
+s . VPerf (AgP3Sg Fem) => VSuffixNone => Pos => ħarġet
+s . VPerf (AgP3Sg Fem) => VSuffixNone => Neg => ħarġitx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Pos => ħarġitni
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Neg => ħarġitnix
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Pos => ħarġitna
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Neg => ħarġitniex
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Pos => ħarġitek
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Neg => ħarġitekx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Pos => ħarġitkom
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Neg => ħarġitkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Pos => ħarġitu
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Neg => ħarġitux
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Pos => ħarġitha
+s . VPerf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Neg => ħarġithiex
+s . VPerf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Pos => ħarġithom
+s . VPerf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Neg => ħarġithomx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Pos => ħarġitli
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Neg => ħarġitlix
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Pos => ħarġitilna
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Neg => ħarġitilniex
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Pos => ħarġitlek
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Neg => ħarġitlekx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Pos => ħarġitilkom
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Neg => ħarġitilkomx
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Pos => ħarġitlu
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Neg => ħarġitlux
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Pos => ħarġitilha
+s . VPerf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Neg => ħarġitilhiex
+s . VPerf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Pos => ħarġitilhom
+s . VPerf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Neg => ħarġitilhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ħarġithuli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ħarġithulix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ħarġithulna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ħarġithulniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ħarġithulek
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ħarġithulekx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ħarġithulkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => ħarġithulkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħarġithulu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħarġithulux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħarġithulha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħarġithulhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħarġithulhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħarġithulhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ħarġithieli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ħarġithilix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ħarġithielna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ħarġithilniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ħarġithielek
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ħarġithilekx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ħarġithielkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => ħarġithilkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħarġithielu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħarġithilux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħarġithielha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħarġithilhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħarġithielhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħarġithilhomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Pos => ħarġithomli
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Neg => ħarġithomlix
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Pos => ħarġithomlna
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Neg => ħarġithomlniex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Pos => ħarġithomlok
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Neg => ħarġithomlokx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Pos => ħarġithomlkom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Neg => ħarġithomlkomx
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħarġithomlu
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħarġithomlux
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħarġithomlha
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħarġithomlhiex
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Pos => ħarġithomlhom
+s . VPerf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Neg => ħarġithomlhomx
+s . VPerf AgP3Pl => VSuffixNone => Pos => ħarġu
+s . VPerf AgP3Pl => VSuffixNone => Neg => ħarġux
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Sg) => Pos => ħarġuni
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Sg) => Neg => ħarġunix
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Pl) => Pos => ħarġuna
+s . VPerf AgP3Pl => VSuffixDir (AgP1 Pl) => Neg => ħarġuniex
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Sg) => Pos => ħarġuk
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Sg) => Neg => ħarġukx
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Pl) => Pos => ħarġukom
+s . VPerf AgP3Pl => VSuffixDir (AgP2 Pl) => Neg => ħarġukomx
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Pos => ħarġuh
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Neg => ħarġuhx
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Pos => ħarġuha
+s . VPerf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Neg => ħarġuhiex
+s . VPerf AgP3Pl => VSuffixDir AgP3Pl => Pos => ħarġuhom
+s . VPerf AgP3Pl => VSuffixDir AgP3Pl => Neg => ħarġuhomx
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Sg) => Pos => ħarġuli
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Sg) => Neg => ħarġulix
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Pl) => Pos => ħarġulna
+s . VPerf AgP3Pl => VSuffixInd (AgP1 Pl) => Neg => ħarġulniex
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Sg) => Pos => ħarġulek
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Sg) => Neg => ħarġulekx
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Pl) => Pos => ħarġulkom
+s . VPerf AgP3Pl => VSuffixInd (AgP2 Pl) => Neg => ħarġulkomx
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Pos => ħarġulu
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Neg => ħarġulux
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Pos => ħarġulha
+s . VPerf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Neg => ħarġulhiex
+s . VPerf AgP3Pl => VSuffixInd AgP3Pl => Pos => ħarġulhom
+s . VPerf AgP3Pl => VSuffixInd AgP3Pl => Neg => ħarġulhomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => ħarġuhuli
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => ħarġuhulix
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => ħarġuhulna
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => ħarġuhulniex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => ħarġuhulek
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => ħarġuhulekx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => ħarġuhulkom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => ħarġuhulkomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => ħarġuhulu
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => ħarġuhulux
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => ħarġuhulha
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => ħarġuhulhiex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => ħarġuhulhom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => ħarġuhulhomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => ħarġuhieli
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => ħarġuhilix
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => ħarġuhielna
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => ħarġuhilniex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => ħarġuhielek
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => ħarġuhilekx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => ħarġuhielkom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => ħarġuhilkomx
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => ħarġuhielu
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => ħarġuhilux
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => ħarġuhielha
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => ħarġuhilhiex
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => ħarġuhielhom
+s . VPerf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => ħarġuhilhomx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => ħarġuhomli
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => ħarġuhomlix
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => ħarġuhomlna
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => ħarġuhomlniex
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => ħarġuhomlok
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => ħarġuhomlokx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => ħarġuhomlkom
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => ħarġuhomlkomx
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => ħarġuhomlu
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => ħarġuhomlux
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => ħarġuhomlha
+s . VPerf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => ħarġuhomlhiex
+s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Pos => ħarġuhomlhom
+s . VPerf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Neg => ħarġuhomlhomx
+s . VImpf (AgP1 Sg) => VSuffixNone => Pos => noħroġ
+s . VImpf (AgP1 Sg) => VSuffixNone => Neg => noħroġx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Pos => noħorġok
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Sg) => Neg => noħorġokx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Pos => noħroġkom
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP2 Pl) => Neg => noħroġkomx
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => noħorġu
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => noħorġux
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => noħroġha
+s . VImpf (AgP1 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => noħroġhiex
+s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Pos => noħroġhom
+s . VImpf (AgP1 Sg) => VSuffixDir AgP3Pl => Neg => noħroġhomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Pos => noħroġlok
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Sg) => Neg => noħroġlokx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Pos => noħorġilkom
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP2 Pl) => Neg => noħorġilkomx
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => noħroġlu
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => noħroġlux
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => noħorġilha
+s . VImpf (AgP1 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => noħorġilhiex
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Pos => noħorġilhom
+s . VImpf (AgP1 Sg) => VSuffixInd AgP3Pl => Neg => noħorġilhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => noħroġhulek
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => noħroġhulekx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => noħroġhulkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => noħroġhulkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => noħroġhulu
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => noħroġhulux
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => noħroġhulha
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => noħroġhulhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => noħroġhulhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => noħroġhulhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => noħroġhielek
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => noħroġhilekx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => noħroġhielkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => noħroġhilkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => noħroġhielu
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => noħroġhilux
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => noħroġhielha
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => noħroġhilhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => noħroġhielhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => noħroġhilhomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => noħroġhomlok
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => noħroġhomlokx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => noħroġhomlkom
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => noħroġhomlkomx
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => noħroġhomlu
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => noħroġhomlux
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => noħroġhomlha
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => noħroġhomlhiex
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => noħroġhomlhom
+s . VImpf (AgP1 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => noħroġhomlhomx
+s . VImpf (AgP1 Pl) => VSuffixNone => Pos => noħorġu
+s . VImpf (AgP1 Pl) => VSuffixNone => Neg => noħorġux
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Pos => noħorġuk
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Sg) => Neg => noħorġukx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Pos => noħorġukom
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP2 Pl) => Neg => noħorġukomx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => noħorġuh
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => noħorġuhx
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => noħorġuha
+s . VImpf (AgP1 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => noħorġuhiex
+s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Pos => noħorġuhom
+s . VImpf (AgP1 Pl) => VSuffixDir AgP3Pl => Neg => noħorġuhomx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Pos => noħorġulek
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Sg) => Neg => noħorġulekx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Pos => noħorġulkom
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP2 Pl) => Neg => noħorġulkomx
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => noħorġulu
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => noħorġulux
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => noħorġulha
+s . VImpf (AgP1 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => noħorġulhiex
+s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Pos => noħorġulhom
+s . VImpf (AgP1 Pl) => VSuffixInd AgP3Pl => Neg => noħorġulhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => noħorġuhulek
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => noħorġuhulekx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => noħorġuhulkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => noħorġuhulkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => noħorġuhulu
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => noħorġuhulux
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => noħorġuhulha
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => noħorġuhulhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => noħorġuhulhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => noħorġuhulhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => noħorġuhielek
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => noħorġuhilekx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => noħorġuhielkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => noħorġuhilkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => noħorġuhielu
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => noħorġuhilux
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => noħorġuhielha
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => noħorġuhilhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => noħorġuhielhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => noħorġuhilhomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => NOEXIST
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => noħorġuhomlok
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => noħorġuhomlokx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => noħorġuhomlkom
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => noħorġuhomlkomx
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => noħorġuhomlu
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => noħorġuhomlux
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => noħorġuhomlha
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => noħorġuhomlhiex
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => noħorġuhomlhom
+s . VImpf (AgP1 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => noħorġuhomlhomx
+s . VImpf (AgP2 Sg) => VSuffixNone => Pos => toħroġ
+s . VImpf (AgP2 Sg) => VSuffixNone => Neg => toħroġx
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Pos => toħroġni
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Sg) => Neg => toħroġnix
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Pos => toħroġna
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP1 Pl) => Neg => toħroġniex
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Pos => toħorġu
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Masc) => Neg => toħorġux
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Pos => toħroġha
+s . VImpf (AgP2 Sg) => VSuffixDir (AgP3Sg Fem) => Neg => toħroġhiex
+s . VImpf (AgP2 Sg) => VSuffixDir AgP3Pl => Pos => toħroġhom
+s . VImpf (AgP2 Sg) => VSuffixDir AgP3Pl => Neg => toħroġhomx
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Pos => toħroġli
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Sg) => Neg => toħroġlix
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Pos => toħorġilna
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP1 Pl) => Neg => toħorġilniex
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Pos => toħroġlu
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Masc) => Neg => toħroġlux
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Pos => toħorġilha
+s . VImpf (AgP2 Sg) => VSuffixInd (AgP3Sg Fem) => Neg => toħorġilhiex
+s . VImpf (AgP2 Sg) => VSuffixInd AgP3Pl => Pos => toħorġilhom
+s . VImpf (AgP2 Sg) => VSuffixInd AgP3Pl => Neg => toħorġilhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => toħroġhuli
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => toħroġhulix
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => toħroġhulna
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => toħroġhulniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => toħroġhulu
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => toħroġhulux
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => toħroġhulha
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => toħroġhulhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => toħroġhulhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => toħroġhulhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => toħroġhieli
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => toħroġhilix
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => toħroġhielna
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => toħroġhilniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => toħroġhielu
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => toħroġhilux
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => toħroġhielha
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => toħroġhilhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => toħroġhielhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => toħroġhilhomx
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Pos => toħroġhomli
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Sg) => Neg => toħroġhomlix
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Pos => toħroġhomlna
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP1 Pl) => Neg => toħroġhomlniex
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => toħroġhomlu
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => toħroġhomlux
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => toħroġhomlha
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => toħroġhomlhiex
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Pos => toħroġhomlhom
+s . VImpf (AgP2 Sg) => VSuffixDirInd GPl AgP3Pl => Neg => toħroġhomlhomx
+s . VImpf (AgP2 Pl) => VSuffixNone => Pos => toħorġu
+s . VImpf (AgP2 Pl) => VSuffixNone => Neg => toħorġux
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Pos => toħorġuni
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Sg) => Neg => toħorġunix
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Pos => toħorġuna
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP1 Pl) => Neg => toħorġuniex
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Pos => toħorġuh
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Masc) => Neg => toħorġuhx
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Pos => toħorġuha
+s . VImpf (AgP2 Pl) => VSuffixDir (AgP3Sg Fem) => Neg => toħorġuhiex
+s . VImpf (AgP2 Pl) => VSuffixDir AgP3Pl => Pos => toħorġuhom
+s . VImpf (AgP2 Pl) => VSuffixDir AgP3Pl => Neg => toħorġuhomx
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Pos => toħorġuli
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Sg) => Neg => toħorġulix
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Pos => toħorġulna
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP1 Pl) => Neg => toħorġulniex
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Pos => toħorġulu
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Masc) => Neg => toħorġulux
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Pos => toħorġulha
+s . VImpf (AgP2 Pl) => VSuffixInd (AgP3Sg Fem) => Neg => toħorġulhiex
+s . VImpf (AgP2 Pl) => VSuffixInd AgP3Pl => Pos => toħorġulhom
+s . VImpf (AgP2 Pl) => VSuffixInd AgP3Pl => Neg => toħorġulhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => toħorġuhuli
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => toħorġuhulix
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => toħorġuhulna
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => toħorġuhulniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => toħorġuhulu
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => toħorġuhulux
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => toħorġuhulha
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => toħorġuhulhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => toħorġuhulhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => toħorġuhulhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => toħorġuhieli
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => toħorġuhilix
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => toħorġuhielna
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => toħorġuhilniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => toħorġuhielu
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => toħorġuhilux
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => toħorġuhielha
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => toħorġuhilhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => toħorġuhielhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => toħorġuhilhomx
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Pos => toħorġuhomli
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Sg) => Neg => toħorġuhomlix
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Pos => toħorġuhomlna
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP1 Pl) => Neg => toħorġuhomlniex
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => toħorġuhomlu
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => toħorġuhomlux
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => toħorġuhomlha
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => toħorġuhomlhiex
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Pos => toħorġuhomlhom
+s . VImpf (AgP2 Pl) => VSuffixDirInd GPl AgP3Pl => Neg => toħorġuhomlhomx
+s . VImpf (AgP3Sg Masc) => VSuffixNone => Pos => joħroġ
+s . VImpf (AgP3Sg Masc) => VSuffixNone => Neg => joħroġx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Pos => joħroġni
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Sg) => Neg => joħroġnix
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Pos => joħroġna
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP1 Pl) => Neg => joħroġniex
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Pos => joħorġok
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Sg) => Neg => joħorġokx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Pos => joħroġkom
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP2 Pl) => Neg => joħroġkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Pos => joħorġu
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Masc) => Neg => joħorġux
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Pos => joħroġha
+s . VImpf (AgP3Sg Masc) => VSuffixDir (AgP3Sg Fem) => Neg => joħroġhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Pos => joħroġhom
+s . VImpf (AgP3Sg Masc) => VSuffixDir AgP3Pl => Neg => joħroġhomx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Pos => joħroġli
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Sg) => Neg => joħroġlix
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Pos => joħorġilna
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP1 Pl) => Neg => joħorġilniex
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Pos => joħroġlok
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Sg) => Neg => joħroġlokx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Pos => joħorġilkom
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP2 Pl) => Neg => joħorġilkomx
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Pos => joħroġlu
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Masc) => Neg => joħroġlux
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Pos => joħorġilha
+s . VImpf (AgP3Sg Masc) => VSuffixInd (AgP3Sg Fem) => Neg => joħorġilhiex
+s . VImpf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Pos => joħorġilhom
+s . VImpf (AgP3Sg Masc) => VSuffixInd AgP3Pl => Neg => joħorġilhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => joħroġhuli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => joħroġhulix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => joħroġhulna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => joħroġhulniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => joħroġhulek
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => joħroġhulekx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => joħroġhulkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => joħroġhulkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => joħroġhulu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => joħroġhulux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => joħroġhulha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => joħroġhulhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => joħroġhulhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => joħroġhulhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => joħroġhieli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => joħroġhilix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => joħroġhielna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => joħroġhilniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => joħroġhielek
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => joħroġhilekx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => joħroġhielkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => joħroġhilkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => joħroġhielu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => joħroġhilux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => joħroġhielha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => joħroġhilhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => joħroġhielhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => joħroġhilhomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Pos => joħroġhomli
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Sg) => Neg => joħroġhomlix
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Pos => joħroġhomlna
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP1 Pl) => Neg => joħroġhomlniex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Pos => joħroġhomlok
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Sg) => Neg => joħroġhomlokx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Pos => joħroġhomlkom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP2 Pl) => Neg => joħroġhomlkomx
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => joħroġhomlu
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => joħroġhomlux
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => joħroġhomlha
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => joħroġhomlhiex
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Pos => joħroġhomlhom
+s . VImpf (AgP3Sg Masc) => VSuffixDirInd GPl AgP3Pl => Neg => joħroġhomlhomx
+s . VImpf (AgP3Sg Fem) => VSuffixNone => Pos => toħroġ
+s . VImpf (AgP3Sg Fem) => VSuffixNone => Neg => toħroġx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Pos => toħroġni
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Sg) => Neg => toħroġnix
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Pos => toħroġna
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP1 Pl) => Neg => toħroġniex
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Pos => toħorġok
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Sg) => Neg => toħorġokx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Pos => toħroġkom
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP2 Pl) => Neg => toħroġkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Pos => toħorġu
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Masc) => Neg => toħorġux
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Pos => toħroġha
+s . VImpf (AgP3Sg Fem) => VSuffixDir (AgP3Sg Fem) => Neg => toħroġhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Pos => toħroġhom
+s . VImpf (AgP3Sg Fem) => VSuffixDir AgP3Pl => Neg => toħroġhomx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Pos => toħroġli
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Sg) => Neg => toħroġlix
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Pos => toħorġilna
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP1 Pl) => Neg => toħorġilniex
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Pos => toħroġlok
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Sg) => Neg => toħroġlokx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Pos => toħorġilkom
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP2 Pl) => Neg => toħorġilkomx
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Pos => toħroġlu
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Masc) => Neg => toħroġlux
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Pos => toħorġilha
+s . VImpf (AgP3Sg Fem) => VSuffixInd (AgP3Sg Fem) => Neg => toħorġilhiex
+s . VImpf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Pos => toħorġilhom
+s . VImpf (AgP3Sg Fem) => VSuffixInd AgP3Pl => Neg => toħorġilhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => toħroġhuli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => toħroġhulix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => toħroġhulna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => toħroġhulniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => toħroġhulek
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => toħroġhulekx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => toħroġhulkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => toħroġhulkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => toħroġhulu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => toħroġhulux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => toħroġhulha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => toħroġhulhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => toħroġhulhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => toħroġhulhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => toħroġhieli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => toħroġhilix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => toħroġhielna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => toħroġhilniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => toħroġhielek
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => toħroġhilekx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => toħroġhielkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => toħroġhilkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => toħroġhielu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => toħroġhilux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => toħroġhielha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => toħroġhilhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => toħroġhielhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => toħroġhilhomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Pos => toħroġhomli
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Sg) => Neg => toħroġhomlix
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Pos => toħroġhomlna
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP1 Pl) => Neg => toħroġhomlniex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Pos => toħroġhomlok
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Sg) => Neg => toħroġhomlokx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Pos => toħroġhomlkom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP2 Pl) => Neg => toħroġhomlkomx
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => toħroġhomlu
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => toħroġhomlux
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => toħroġhomlha
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => toħroġhomlhiex
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Pos => toħroġhomlhom
+s . VImpf (AgP3Sg Fem) => VSuffixDirInd GPl AgP3Pl => Neg => toħroġhomlhomx
+s . VImpf AgP3Pl => VSuffixNone => Pos => joħorġu
+s . VImpf AgP3Pl => VSuffixNone => Neg => joħorġux
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Sg) => Pos => joħorġuni
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Sg) => Neg => joħorġunix
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Pl) => Pos => joħorġuna
+s . VImpf AgP3Pl => VSuffixDir (AgP1 Pl) => Neg => joħorġuniex
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Sg) => Pos => joħorġuk
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Sg) => Neg => joħorġukx
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Pl) => Pos => joħorġukom
+s . VImpf AgP3Pl => VSuffixDir (AgP2 Pl) => Neg => joħorġukomx
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Pos => joħorġuh
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Masc) => Neg => joħorġuhx
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Pos => joħorġuha
+s . VImpf AgP3Pl => VSuffixDir (AgP3Sg Fem) => Neg => joħorġuhiex
+s . VImpf AgP3Pl => VSuffixDir AgP3Pl => Pos => joħorġuhom
+s . VImpf AgP3Pl => VSuffixDir AgP3Pl => Neg => joħorġuhomx
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Sg) => Pos => joħorġuli
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Sg) => Neg => joħorġulix
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Pl) => Pos => joħorġulna
+s . VImpf AgP3Pl => VSuffixInd (AgP1 Pl) => Neg => joħorġulniex
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Sg) => Pos => joħorġulek
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Sg) => Neg => joħorġulekx
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Pl) => Pos => joħorġulkom
+s . VImpf AgP3Pl => VSuffixInd (AgP2 Pl) => Neg => joħorġulkomx
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Pos => joħorġulu
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Masc) => Neg => joħorġulux
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Pos => joħorġulha
+s . VImpf AgP3Pl => VSuffixInd (AgP3Sg Fem) => Neg => joħorġulhiex
+s . VImpf AgP3Pl => VSuffixInd AgP3Pl => Pos => joħorġulhom
+s . VImpf AgP3Pl => VSuffixInd AgP3Pl => Neg => joħorġulhomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => joħorġuhuli
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => joħorġuhulix
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => joħorġuhulna
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => joħorġuhulniex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => joħorġuhulek
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => joħorġuhulekx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => joħorġuhulkom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => joħorġuhulkomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => joħorġuhulu
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => joħorġuhulux
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => joħorġuhulha
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => joħorġuhulhiex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => joħorġuhulhom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => joħorġuhulhomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => joħorġuhieli
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => joħorġuhilix
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => joħorġuhielna
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => joħorġuhilniex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => joħorġuhielek
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => joħorġuhilekx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => joħorġuhielkom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => joħorġuhilkomx
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => joħorġuhielu
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => joħorġuhilux
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => joħorġuhielha
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => joħorġuhilhiex
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => joħorġuhielhom
+s . VImpf AgP3Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => joħorġuhilhomx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => joħorġuhomli
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => joħorġuhomlix
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => joħorġuhomlna
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => joħorġuhomlniex
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => joħorġuhomlok
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => joħorġuhomlokx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => joħorġuhomlkom
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => joħorġuhomlkomx
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => joħorġuhomlu
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => joħorġuhomlux
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => joħorġuhomlha
+s . VImpf AgP3Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => joħorġuhomlhiex
+s . VImpf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Pos => joħorġuhomlhom
+s . VImpf AgP3Pl => VSuffixDirInd GPl AgP3Pl => Neg => joħorġuhomlhomx
+s . VImp Sg => VSuffixNone => Pos => oħroġ
+s . VImp Sg => VSuffixNone => Neg => oħroġx
+s . VImp Sg => VSuffixDir (AgP1 Sg) => Pos => oħroġni
+s . VImp Sg => VSuffixDir (AgP1 Sg) => Neg => oħroġnix
+s . VImp Sg => VSuffixDir (AgP1 Pl) => Pos => oħroġna
+s . VImp Sg => VSuffixDir (AgP1 Pl) => Neg => oħroġniex
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Pos => oħorġu
+s . VImp Sg => VSuffixDir (AgP3Sg Masc) => Neg => oħorġux
+s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Pos => oħroġha
+s . VImp Sg => VSuffixDir (AgP3Sg Fem) => Neg => oħroġhiex
+s . VImp Sg => VSuffixDir AgP3Pl => Pos => oħroġhom
+s . VImp Sg => VSuffixDir AgP3Pl => Neg => oħroġhomx
+s . VImp Sg => VSuffixInd (AgP1 Sg) => Pos => oħroġli
+s . VImp Sg => VSuffixInd (AgP1 Sg) => Neg => oħroġlix
+s . VImp Sg => VSuffixInd (AgP1 Pl) => Pos => oħroġilna
+s . VImp Sg => VSuffixInd (AgP1 Pl) => Neg => oħroġilniex
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Pos => oħroġlu
+s . VImp Sg => VSuffixInd (AgP3Sg Masc) => Neg => oħroġlux
+s . VImp Sg => VSuffixInd (AgP3Sg Fem) => Pos => oħroġilha
+s . VImp Sg => VSuffixInd (AgP3Sg Fem) => Neg => oħroġilhiex
+s . VImp Sg => VSuffixInd AgP3Pl => Pos => oħroġilhom
+s . VImp Sg => VSuffixInd AgP3Pl => Neg => oħroġilhomx
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => oħroġhuli
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => oħroġhulix
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => oħroġhulna
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => oħroġhulniex
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => oħroġhulu
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => oħroġhulux
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => oħroġhulha
+s . VImp Sg => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => oħroġhulhiex
+s . VImp Sg => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => oħroġhulhom
+s . VImp Sg => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => oħroġhulhomx
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => oħroġhieli
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => oħroġhilix
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => oħroġhielna
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => oħroġhilniex
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => oħroġhielu
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => oħroġhilux
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => oħroġhielha
+s . VImp Sg => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => oħroġhilhiex
+s . VImp Sg => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => oħroġhielhom
+s . VImp Sg => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => oħroġhilhomx
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Pos => oħroġhomli
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Sg) => Neg => oħroġhomlix
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Pos => oħroġhomlna
+s . VImp Sg => VSuffixDirInd GPl (AgP1 Pl) => Neg => oħroġhomlniex
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => oħroġhomlu
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => oħroġhomlux
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => oħroġhomlha
+s . VImp Sg => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => oħroġhomlhiex
+s . VImp Sg => VSuffixDirInd GPl AgP3Pl => Pos => oħroġhomlhom
+s . VImp Sg => VSuffixDirInd GPl AgP3Pl => Neg => oħroġhomlhomx
+s . VImp Pl => VSuffixNone => Pos => oħorġu
+s . VImp Pl => VSuffixNone => Neg => oħorġux
+s . VImp Pl => VSuffixDir (AgP1 Sg) => Pos => oħorġuni
+s . VImp Pl => VSuffixDir (AgP1 Sg) => Neg => oħorġunix
+s . VImp Pl => VSuffixDir (AgP1 Pl) => Pos => oħorġuna
+s . VImp Pl => VSuffixDir (AgP1 Pl) => Neg => oħorġuniex
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDir (AgP2 Pl) => Neg => NOEXIST
+s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Pos => oħorġuh
+s . VImp Pl => VSuffixDir (AgP3Sg Masc) => Neg => oħorġuhx
+s . VImp Pl => VSuffixDir (AgP3Sg Fem) => Pos => oħorġuha
+s . VImp Pl => VSuffixDir (AgP3Sg Fem) => Neg => oħorġuhiex
+s . VImp Pl => VSuffixDir AgP3Pl => Pos => oħorġuhom
+s . VImp Pl => VSuffixDir AgP3Pl => Neg => oħorġuhomx
+s . VImp Pl => VSuffixInd (AgP1 Sg) => Pos => oħorġuli
+s . VImp Pl => VSuffixInd (AgP1 Sg) => Neg => oħorġulix
+s . VImp Pl => VSuffixInd (AgP1 Pl) => Pos => oħorġulna
+s . VImp Pl => VSuffixInd (AgP1 Pl) => Neg => oħorġulniex
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixInd (AgP2 Pl) => Neg => NOEXIST
+s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Pos => oħorġulu
+s . VImp Pl => VSuffixInd (AgP3Sg Masc) => Neg => oħorġulux
+s . VImp Pl => VSuffixInd (AgP3Sg Fem) => Pos => oħorġulha
+s . VImp Pl => VSuffixInd (AgP3Sg Fem) => Neg => oħorġulhiex
+s . VImp Pl => VSuffixInd AgP3Pl => Pos => oħorġulhom
+s . VImp Pl => VSuffixInd AgP3Pl => Neg => oħorġulhomx
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Pos => oħorġuhuli
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Sg) => Neg => oħorġuhulix
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Pos => oħorġuhulna
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP1 Pl) => Neg => oħorġuhulniex
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP2 Pl) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Pos => oħorġuhulu
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Masc) => Neg => oħorġuhulux
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Pos => oħorġuhulha
+s . VImp Pl => VSuffixDirInd (GSg Masc) (AgP3Sg Fem) => Neg => oħorġuhulhiex
+s . VImp Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Pos => oħorġuhulhom
+s . VImp Pl => VSuffixDirInd (GSg Masc) AgP3Pl => Neg => oħorġuhulhomx
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Pos => oħorġuhieli
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Sg) => Neg => oħorġuhilix
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Pos => oħorġuhielna
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP1 Pl) => Neg => oħorġuhilniex
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP2 Pl) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Pos => oħorġuhielu
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Masc) => Neg => oħorġuhilux
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Pos => oħorġuhielha
+s . VImp Pl => VSuffixDirInd (GSg Fem) (AgP3Sg Fem) => Neg => oħorġuhilhiex
+s . VImp Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Pos => oħorġuhielhom
+s . VImp Pl => VSuffixDirInd (GSg Fem) AgP3Pl => Neg => oħorġuhilhomx
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Pos => oħorġuhomli
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Sg) => Neg => oħorġuhomlix
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Pos => oħorġuhomlna
+s . VImp Pl => VSuffixDirInd GPl (AgP1 Pl) => Neg => oħorġuhomlniex
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Sg) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Pos => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP2 Pl) => Neg => NOEXIST
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Pos => oħorġuhomlu
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Masc) => Neg => oħorġuhomlux
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Pos => oħorġuhomlha
+s . VImp Pl => VSuffixDirInd GPl (AgP3Sg Fem) => Neg => oħorġuhomlhiex
+s . VImp Pl => VSuffixDirInd GPl AgP3Pl => Pos => oħorġuhomlhom
+s . VImp Pl => VSuffixDirInd GPl AgP3Pl => Neg => oħorġuhomlhomx
+i . class . Strong LiquidMedial
+i . form . FormI
+i . imp . oħroġ
+i . patt . V1 . a
+i . patt . V2 . e
+i . patt2 . V1 . a
+i . patt2 . V2 . e
+i . root . C1 . ħ
+i . root . C2 . r
+i . root . C3 . ġ
+i . root . C4 . []
