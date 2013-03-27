@@ -782,8 +782,16 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     balla'_BLGH_2_7436_V = mkV_II "balla'" (mkRoot "b-l-għ") ;
     tballa'_BLGH_5_7437_V = mkV_V "tballa'" (mkRoot "b-l-għ") ;
     nbela'_BLGH_7_7438_V = mkV_VII "bela'" "nbela'" (mkRoot "b-l-għ") ;
-    blehhen_BLHN_1_7439_V = mkV "bleħħen" (mkRoot "b-l-ħ-n") ;
-    tblehhen_BLHN_2_7440_V = mkV_II "tbleħħen" (mkRoot "b-l-ħ-n") ;
+    blehhen_BLHN_1_7439_V = mkV strong form1 (mkRoot "bl-ħ-n") (mkPattern "e" "e")
+      "bleħħint" "bleħħint" "bleħħen" "bleħħnet" "bleħħinna" "bleħħintu" "bleħħnu"
+      "nbleħħen" "tbleħħen" "jibleħħen" "tbleħħen" "nbleħħnu" "tbleħħnu" "jibleħħnu"
+      "bleħħen" "bleħħnu"
+      ;
+    tblehhen_BLHN_2_7440_V = mkV strong form2 (mkRoot "bl-ħ-n") (mkPattern "e" "e")
+      "tbleħħint" "tbleħħint" "tbleħħen" "tbleħħnet" "tbleħħinna" "tbleħħintu" "tbleħħnu"
+      "nitbleħħen" "titbleħħen" "jitbleħħen" "titbleħħen" "nitbleħħnu" "titbleħħnu" "jitbleħħnu"
+      "tbleħħen" "tbleħħnu"
+      ;
     bell_BLL_1_7441_V = mkV "bell" (mkRoot "b-l-l") ;
     bellel_BLL_2_7442_V = mkV_II "bellel" (mkRoot "b-l-l") ;
     tbell_BLL_5_7443_V = mkV_V "tbell" (mkRoot "b-l-l") ;
