@@ -35,6 +35,28 @@ resource ParadigmsMlt = open
     singular : Number = Sg ;
     plural : Number = Pl ;
 
+    form1 = FormI ;
+    form2 = FormII ;
+    form3 = FormIII ;
+    form4 = FormIV ;
+    form5 = FormV ;
+    form6 = FormVI ;
+    form7 = FormVII ;
+    form8 = FormVIII ;
+    form9 = FormIX ;
+    form10 = FormX ;
+
+    strong       = Strong Regular ;
+    liquidMedial = Strong LiquidMedial ;
+    geminated    = Strong Geminated ;
+    assimilative = Weak Assimilative ;
+    hollow       = Weak Hollow ;
+    lacking      = Weak Lacking ;
+    quad         = Quad QStrong ;
+    quadWeak     = Quad QWeak ;
+    loan         = Loan ;
+    irregular    = Irregular ;
+
     {- Noun --------------------------------------------------------------- -}
 
     -- Helper function for inferring noun plural from singulative
@@ -332,10 +354,6 @@ resource ParadigmsMlt = open
         <_,_,_,_>  => Predef.error("Cannot classify root:"++r.C1+"-"+r.C2+"-"+r.C3+"-"+r.C4)
       } ;
 
-    -- Just get the non-suffixed forms of a verb, for quick testing
-    -- plainVerbTable : V -> (VForm => Str) = \v ->
-    --   \\tense => v.s ! tense ! VSuffixNone ! Pos ;
-
     -- Smart paradigm for building a verb
     mkV : V = overload {
 
@@ -385,7 +403,7 @@ resource ParadigmsMlt = open
           Loan                => loanV mamma
         } ;
 
-      -- All forms! :S
+      -- All forms
       -- mkV (Strong Regular) (FormI) (mkRoot "k-t-b") (mkPattern "i" "e") "ktibt" "ktibt" "kiteb" "kitbet" "ktibna" "ktibtu" "kitbu" "nikteb" "tikteb" "jikteb" "tikteb" "niktbu" "tiktbu" "jiktbu" "ikteb" "iktbu"
       mkV : VClass -> VDerivedForm -> Root -> Pattern -> (_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> V =
         \class, form, root, patt,
@@ -948,7 +966,12 @@ resource ParadigmsMlt = open
         i = info ;
       } ;
 
-    {- ~~~ Non-semitic verbs ~~~ -}
+    {- ~~~ Irregular verbs ~~~ -}
+
+    -- Make an irregular verb, giving all forms (see last overload of mkV)
+    irregularV = mkV Irregular ;
+
+    {- ~~~ Loan verbs ~~~ -}
 
     -- Make a loan verb, eg IPPARKJA
     -- Params: mamma
@@ -970,6 +993,12 @@ resource ParadigmsMlt = open
 
     mkVS : V -> VS ; -- sentence-compl
     mkVS v = lin VS v ;
+
+    prepV2 : V -> Prep -> V2 ;
+    prepV2 v p = lin V2 ( v ** { prep = p } ) ;
+
+    dirV2 : V -> V2 ;
+    dirV2 v = prepV2 v noPrep ;
 
 
     {- Adjective ---------------------------------------------------------- -}

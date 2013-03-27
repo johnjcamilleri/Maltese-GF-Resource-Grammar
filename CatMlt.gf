@@ -112,7 +112,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Open lexical classes, e.g. Lexicon
 
     V, VS, VQ, VA = Verb ;
-    V2, V2A, V2Q, V2S = Verb ; -- ** {c2 : Str} ;
+    V2, V2A, V2Q, V2S = Verb ** {prep : Prep} ;
     V3 = Verb ; -- ** {c2, c3 : Str} ;
     -- VV = {s : VVForm => Str ; typ : VVType} ;
     -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;

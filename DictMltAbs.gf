@@ -759,8 +759,8 @@ abstract DictMltAbs = Cat ** {
     balla'_BLGH_2_7436_V : V ;
     tballa'_BLGH_5_7437_V : V ;
     nbela'_BLGH_7_7438_V : V ;
-    belleh_BLHN_2_7439_V : V ;
-    tbelleh_BLHN_5_7440_V : V ;
+    blehhen_BLHN_1_7439_V : V ;
+    tblehhen_BLHN_2_7440_V : V ;
     bell_BLL_1_7441_V : V ;
     bellel_BLL_2_7442_V : V ;
     tbell_BLL_5_7443_V : V ;

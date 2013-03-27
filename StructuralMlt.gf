@@ -152,7 +152,13 @@ concrete StructuralMlt of Structural = CatMlt **
     
     -- as_CAdv = C.mkCAdv "as" "as" ;
     
-    -- have_V2 = dirV2 (mk5V "have" "has" "had" "had" "having") ;
+    have_V2 = dirV2 (
+      irregularV form1 (ResMlt.mkRoot) (ResMlt.mkPattern)
+        "kelli" "kellek" "kellu" "kellha" "kellna" "kellkom" "kellhom"
+        "għandi" "għandek" "għandu" "għandha" "għandna" "għandkom" "għandhom"
+        "kollok" "kollkom"
+      ) ;
+
     -- that_Subj = ss "that" ;
 
   lin language_title_Utt = ss "Malti" ;
