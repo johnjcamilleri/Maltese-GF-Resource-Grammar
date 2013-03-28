@@ -1000,8 +1000,34 @@ resource ParadigmsMlt = open
     dirV2 : V -> V2 ;
     dirV2 v = prepV2 v noPrep ;
 
+    prepPrepV3 : V -> Prep -> Prep -> V3 ;
+    prepPrepV3 v p t = lin V3 (v ** { prep1 = p ; prep2 = t }) ;
+
+    dirV3 : V -> Prep -> V3 ;
+    dirV3 v p = prepPrepV3 v noPrep p ;
+
+    dirdirV3 : V -> V3 ;
+    dirdirV3 v = dirV3 v noPrep ;
+
+    mkV3 : overload {
+      mkV3  : V -> V3 ;                   -- ditransitive, e.g. give,_,_
+      mkV3  : V -> Prep -> Prep -> V3 ;   -- two prepositions, e.g. speak, with, about
+      mkV3  : V -> Prep -> V3 ;           -- give,_,to --%
+      -- mkV3  : V -> Str -> V3 ;            -- give,_,to --%
+      -- mkV3  : Str -> Str -> V3 ;          -- give,_,to --%
+      -- mkV3  : Str -> V3 ;                 -- give,_,_ --%
+      };
+    mkV3 = overload {
+      mkV3 : V -> V3 = dirdirV3 ;
+      mkV3 : V -> Prep -> Prep -> V3 = prepPrepV3 ;
+      mkV3 : V -> Prep -> V3 = dirV3 ;
+      -- mkV3 : V -> Str -> V3 = \v,s -> dirV3 v (mkPrep s);
+      -- mkV3 : Str -> Str -> V3 = \v,s -> dirV3 (regV v) (mkPrep s);
+      -- mkV3 : Str -> V3 = \v -> dirdirV3 (regV v) ;
+      } ;
+
     mkV2V : V -> Prep -> Prep -> V2V ;  -- e.g. want (noPrep NP) (to VP)
-    mkV2V v p t = lin V2V (v ** {prep1 = p ; prep2 = t}) ;
+    mkV2V v p t = lin V2V (v ** { prep1 = p ; prep2 = t }) ;
 
     {- Adjective ---------------------------------------------------------- -}
 
