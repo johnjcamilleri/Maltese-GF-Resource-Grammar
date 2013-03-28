@@ -1145,8 +1145,12 @@ abstract DictMltAbs = Cat ** {
     faggar_FGR_2_7822_V : V ;
     nfagar_FGR_7_7823_V : V ;
     faghal_FGHL_1_7824_V : V ;
-    nftehem_FHM_7_7825_V : V ;
-    ftiehem_FHM_8_7826_V : V ;
+    fehem_FHM_1_10830_V : V ;
+    fehhem_FHM_2_10832_V : V ;
+    fiehem_FHM_3_10831_V : V ;
+    tfehem_FHM_6_10833_V : V ;
+    nfehem_FHM_7_7825_V : V ;
+    ftehem_FHM_8_7826_V : V ;
     fahal_FHL_1_7827_V : V ;
     fahhal_FHL_2_7828_V : V ;
     tfahhal_FHL_5_7829_V : V ;

@@ -844,7 +844,11 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     tberrek_BRK_5_7490_V = mkV_V "tberrek" (mkRoot "b-r-k") ;
     bierek_BRK_3_7491_V = mkV_III "bierek" (mkRoot "b-r-k") ;
     tbierek_BRK_6_7492_V = mkV_VI "tbierek" (mkRoot "b-r-k") ;
-    -- tbrekken_BRKN_5_7493_V = mkV_V "tbrekken" (mkRoot "br-k-n") ;
+    tbrekken_BRKN_5_7493_V = mkV strong form5 (mkRoot "br-k-n") (mkPattern "e" "e")
+      "tbrekkint" "tbrekkint" "tbrekken" "tbrekknet" "tbrekkinna" "tbrekkintu" "tbrekknu"
+      "nitbrekken" "titbrekken" "jitbrekken" "titbrekken" "nitbrekknu" "titbrekknu" "jitbrekknu"
+      "tbrekken" "tbrekknu"
+      ;
     baram_BRM_1_7494_V = mkV "baram" (mkRoot "b-r-m") ;
     barram_BRM_2_7495_V = mkV_II "barram" (mkRoot "b-r-m") ;
     tbarram_BRM_5_7496_V = mkV_V "tbarram" (mkRoot "b-r-m") ;
@@ -1176,8 +1180,12 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     faggar_FGR_2_7822_V = mkV_II "faġġar" (mkRoot "f-ġ-r") ;
     nfagar_FGR_7_7823_V = mkV_VII "faġar" "nfaġar" (mkRoot "f-ġ-r") ;
     faghal_FGHL_1_7824_V = mkV "fagħal" (mkRoot "f-għ-l") ;
-    nftehem_FHM_7_7825_V = mkV_VII "ftehem" "nftehem" (mkRoot "f-h-m") ;
-    ftiehem_FHM_8_7826_V = mkV_VIII "ftiehem" (mkRoot "f-h-m") ;
+    fehem_FHM_1_10830_V = mkV "fehem" (mkRoot "f-h-m") ;
+    fehhem_FHM_2_10832_V = mkV_II "fehhem" (mkRoot "f-h-m") ;
+    fiehem_FHM_3_10831_V = mkV_III "fiehem" (mkRoot "f-h-m") ;
+    tfehem_FHM_6_10833_V = mkV_VI "tfehem" (mkRoot "f-h-m") ;
+    nfehem_FHM_7_7825_V = mkV_VII "fehem" "nfehem" (mkRoot "f-h-m") ;
+    ftehem_FHM_8_7826_V = mkV_VIII "ftehem" (mkRoot "f-h-m") ;
     fahal_FHL_1_7827_V = mkV "faħal" (mkRoot "f-ħ-l") ;
     fahhal_FHL_2_7828_V = mkV_II "faħħal" (mkRoot "f-ħ-l") ;
     tfahhal_FHL_5_7829_V = mkV_V "tfaħħal" (mkRoot "f-ħ-l") ;
@@ -3283,9 +3291,21 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     ntelaq_TLQ_7_9906_V = mkV_VII "telaq" "ntelaq" (mkRoot "t-l-q") ;
     tellet_TLT_2_9907_V = mkV_II "tellet" (mkRoot "t-l-t") ;
     ttellet_TLT_5_9908_V = mkV_V "ttellet" (mkRoot "t-l-t") ;
-    -- tamma_TM'_2_9909_V = mkV_II "tamma" (mkRoot "t-m-'") ;
-    -- tama_TM'_3_9910_V = mkV_III "tama" (mkRoot "t-m-'") ;
-    -- ttama_TM'_6_9911_V = mkV_VI "ttama" (mkRoot "t-m-'") ;
+    tamma_TM'_2_9909_V = mkV irregular form2 (mkRoot "t-m-'") (mkPattern "a" "a")
+      "tammajt" "tammajt" "tamma" "tammat" "tammajna" "tammajtu" "tammaw"
+      "nitamma" "titamma" "jitamma" "titamma" "nitammaw" "titammaw" "jitammaw"
+      "tamma" "tammaw"
+      ;
+    tama_TM'_3_9910_V = mkV irregular form3 (mkRoot "t-m-'") (mkPattern "a" "a")
+      "tamajt" "tamajt" "tama" "tamat" "tamajna" "tamajtu" "tamaw"
+      "nitama" "titama" "jitama" "titama" "nitamaw" "titamaw" "jitamaw"
+      "tama" "tamaw"
+      ;
+    ttama_TM'_6_9911_V = mkV irregular form6 (mkRoot "t-m-'") (mkPattern "a" "a")
+      "ttamajt" "ttamajt" "ttama" "ttamat" "ttamajna" "ttamajtu" "ttamaw"
+      "nittama" "tittama" "jittama" "tittama" "nittamaw" "tittamaw" "jittamaw"
+      "ttama" "ttamaw"
+      ;
     tama'_TMGH_1_9912_V = mkV "tama'" (mkRoot "t-m-għ") ;
     tamma'_TMGH_2_9913_V = mkV_II "tamma'" (mkRoot "t-m-għ") ;
     ttamma'_TMGH_5_9914_V = mkV_V "ttamma'" (mkRoot "t-m-għ") ;
@@ -4156,7 +4176,11 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
       "niddi" "tiddi" "jiddi" "tiddi" "niddu" "tiddu" "jiddu" 
       "iddi" "iddu"
       ;
-    -- idden_'DN_2_10772_V = mkV_II "idden" (mkRoot "'-d-n") ;
+    idden_'DN_2_10772_V = irregularV form2 (mkRoot "'-d-n") (mkPattern "i" "e")
+      "iddint" "iddint" "idden" "iddnet" "iddinna" "iddinntu" "iddnu"
+      "nidden" "tidden" "jidden" "tidden" "niddnu" "tiddnu" "jiddnu"
+      "idden" "iddnu"
+      ;
     stieden_'DN_10_10773_V = irregularV form10 (mkRoot "'-d-n") (mkPattern "ie" "e")
       "stedint" "stedint" "stieden" "stiednet" "stedinna" "stedintu" "stiednu"
       "nistieden" "tistieden" "jistieden" "tistieden" "nistiednu" "tistiednu" "jistiednu" 
@@ -4167,7 +4191,11 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
       "naf" "taf" "jaf" "taf" "nafu" "tafu" "jafu" 
       "kun af" "kunu afu"
       ;
-    -- ntaf_''F_7_10775_V = mkV_VII "af" "ntaf" (mkRoot "'-'-f") ;
+    ntaf_''F_7_10775_V = irregularV form2 (mkRoot "'-'-f") (mkPattern "a" [])
+      "ntafejt" "ntafejt" "ntaf" "ntafet" "ntafna" "ntaftu" "ntafu"
+      "nintaf" "tintaf" "jintaf" "tintaf" "nintafu" "tintafu" "jintafu"
+      "ntaf" "ntafu"
+      ;
     ha_'HD_1_10776_V = irregularV form1 (mkRoot "'-ħ-d") (mkPattern "a" [])
       "ħadt" "ħadt" "ħa" "ħadet" "ħadna" "ħadtu" "ħadu" 
       "nieħu" "tieħu" "jieħu" "tieħu" "nieħdu" "tieħdu" "jieħdu" 
@@ -4183,20 +4211,36 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
       "nistħi" "tistħi" "jistħi" "tistħi" "nistħu" "tistħu" "jistħu"
       "istħi" "istħu"
       ;
-    -- amar_'MR_1_10779_V = mkV "amar" (mkRoot "'-m-r") ;
-    -- amba_'MB_1_10780_V = mkV "amba" (mkRoot "'-m-b") ;
+    amar_'MR_1_10779_V = irregularV form1 (mkRoot "'-m-r") (mkPattern "a" "a") -- order, command
+      "amart" "amart" "amar" "amret" "amarna" "amartu" "amraw"
+      "namar" "tamar" "jamar" "tamar" "namraw" "tamraw" "jamraw"
+      "amar" "amraw"
+      ;
+    amba_'MB_1_10780_V = irregularV form1 (mkRoot "'-m-b") (mkPattern "a" "a")
+      "ambajt" "ambajt" "amba" "ambat" "ambajna" "ambajtu" "ambaw"
+      "namba" "tamba" "jamba" "tamba" "nambaw" "tambaw" "jambaw"
+      "amba" "ambaw"
+      ;
     stenna_'NJ_10_10781_V = irregularV form10 (mkRoot "'-n-j") (mkPattern "e" "a")
       "stennejt" "stennejt" "stenna" "stenniet" "stennejna" "stennejtu" "stennew" 
       "nistenna" "tistenna" "jistenna" "tistenna" "nistennew" "tistennew" "jistennew"
       "stenna" "stennew"
       ;
-    -- stienes_'NS_10_10782_V = mkV_X "stienes" (mkRoot "'-n-s") ;
+    stienes_'NS_10_10782_V = mkV irregular form10 (mkRoot "'-n-s") (mkPattern "ie" "e")
+      "stienist" "stienist" "stienes" "stienset" "stienisna" "stienistu" "stiensu"
+      "nistienes" "tistienes" "jistienes" "tistienes" "nistiensu" "tistiensu" "jistiensu"
+      "stienes" "stiensu"
+      ;
     izza_'ZJ_2_10783_V = irregularV form2 (mkRoot "'-ż-j") (mkPattern "i" "a")
       "iżżajt" "iżżajt" "iżża" "iżżat" "iżżajna" "iżżajtu" "iżżaw"
       "niżżi" "tiżżi" "jiżżi" "tiżżi" "niżżu" "tiżżu" "jiżżu"
       "iżżi" "iżżu"
       ;
-    -- azzem_'ZM_2_10784_V = mkV_II "ażżem" (mkRoot "'-ż-m") ;
+    azzem_'ZM_2_10784_V = irregularV form2 (mkRoot "'-ż-m") (mkPattern "a" "e")
+      "ażżimt" "ażżimt" "ażżem" "ażżmet" "ażżimna" "ażżimtu" "ażżmu"
+      "nażżem" "tażżem" "jażżem" "tażżem" "nażżmu" "tażżmu" "jażżmu"
+      "ażżem" "ażżmu"
+      ;
     zanqar_ZNQR_1_10785_V = mkV "żanqar" (mkRoot "ż-n-q-r") ;
     zanzan_ZNZN_1_10786_V = mkV "żanżan" (mkRoot "ż-n-ż-n") ;
     zzanzan_ZNZN_2_10787_V = mkV_II "żżanżan" (mkRoot "ż-n-ż-n") ;
