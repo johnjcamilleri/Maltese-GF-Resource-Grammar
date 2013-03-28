@@ -2,6 +2,7 @@
 
 abstract DictMltAbs = Cat ** {
 
+  -- Root-and-pattern verbs
   fun
     badbad_BDBD_1_6674_V : V ;
     tbadbad_BDBD_2_6675_V : V ;
@@ -861,9 +862,9 @@ abstract DictMltAbs = Cat ** {
     bexxex_BXX_2_7538_V : V ;
     tbexxex_BXX_5_7539_V : V ;
     nbexx_BXX_7_7540_V : V ;
-    baza'_BZGH_1_7541_V : V ;
-    bazza'_BZGH_2_7542_V : V ;
-    tbazza'_BZGH_5_7543_V : V ;
+    beza'_BZGH_1_7541_V : V ;
+    bezza'_BZGH_2_7542_V : V ;
+    tbezza'_BZGH_5_7543_V : V ;
     bizel_BZL_1_7544_V : V ;
     bizzel_BZL_2_7545_V : V ;
     tbizzel_BZL_5_7546_V : V ;
@@ -4145,4 +4146,11 @@ abstract DictMltAbs = Cat ** {
     itteka_TKW_1_10825_V : V ;
     ntemm_TMM_7_10826_V : V ;
     nghadda_GHDJ_7_10828_V : V ;
+
+  -- Loan verbs
+  fun
+    mbotta_V : V ;
+    vvjagga_V : V ;
+    ffriza_V : V ;
+    kkuntempla_V : V ;
 }

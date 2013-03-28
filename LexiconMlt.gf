@@ -14,12 +14,14 @@ concrete LexiconMlt of Lexicon = CatMlt **
     coding=utf8 ;
 
   lin
---    add_V3
+    add_V3         = zied_ZJD_1_10424_V ;
+    airplane_N     = mkN "ajruplan" ;
     alas_Interj    = ss "sfortunatament" ;
     already_Adv    = mkAdv "diġà" ;
     animal_N       = mkN "annimal" ;
     answer_V2S     = lilV2 (wiegeb_WGB_3_10033_V) ;
     apartment_N    = mkN "appartament" ;
+    apple_N        = mkNColl "tuffieħ" ;
     art_N          = mkNNoPlural "arti" feminine ;
     ashes_N        = mkN "rmied" "rmiet" ;
     ask_V2Q        = lilV2 (saqsa_SQSJ_1_7268_V) ;
@@ -29,9 +31,9 @@ concrete LexiconMlt of Lexicon = CatMlt **
     bank_N         = mkN "bank" "bankijiet" ; -- BANEK is for lotto booths!
     bark_N         = mkN "qoxra" "qoxriet" ;
     beautiful_A    = brokenA "sabiħ" "sbieħ" "isbaħ" ;
---    become_VA
+    become_VA      = sar_SJR_1_9797_V ;
     beer_N         = mkN "birra" "birer" ;
---    beg_V2V
+    beg_V2V        = mkV2V ttallab_TLB_5_9893_V ghalP minnP ;
     belly_N        = possN (mkN "żaqq" "żquq") ;
     big_A          = brokenA "kbir" "kbar" "ikbar" ;
     bike_N         = mkN "rota" ;
@@ -50,7 +52,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     bread_N        = mkNColl "ħobż" ;
     break_V2       = dirV2 (kiser_KSR_1_8636_V) ;
     breast_N       = possN (mkN "sider" "sdur") ; -- also ISDRA
---    breathe_V
+--    breathe_V -- ĦA N-NIFS
     broad_A        = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
     brother_N2     = mkN2 (possN (mkN "ħu" "aħwa")) ;
     brown_A        = sameA "kannella" ;
@@ -74,7 +76,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     cloud_N        = mkNColl "sħab" ;
     coat_N         = mkN "kowt" "kowtijiet" ;
     cold_A         = mkA "kiesaħ" "kiesħa" "kesħin" ;
---    come_V
+    come_V         = gie_GJ'_1_8123_V ;
     computer_N     = mkN "kompjuter" "kompjuters" ;
     correct_A      = regA "korrett" ;
     count_V2       = dirV2 (ghadd_GHDD_1_10460_V) ;
@@ -83,6 +85,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     cow_N          = mkN "baqra" "baqar" "baqartejn" [] [] ;
     cut_V2         = dirV2 (qata'_QTGH_1_9305_V) ;
     day_N          = mkN "ġurnata" "ġranet" ;
+    die_V          = miet_MWT_1_8923_V ;
     dig_V          = hafer_HFR_1_8233_V ;
     dirty_A        = regA "maħmuġ" ;
     distance_N3    = mkN "distanza" ;
@@ -96,8 +99,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
     dust_N         = mkNColl "trab" ; -- not sure but sounds right
     ear_N          = possN (mkNDual "widna") ;
     earth_N        = mkN "art" "artijiet" feminine ;
---    easy_A2V
---    eat_V2
+    easy_A2V       = sameA "faċli" ;
+    eat_V2         = dirV2 (kiel_KJL_1_8672_V) ;
     egg_N          = mkNColl "bajd" ;
     empty_A        = mkA "vojt" "vojta" "vojta" ;
     enemy_N        = mkN "għadu" "għedewwa" ;
@@ -107,8 +110,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
     far_Adv        = mkAdv "il-bogħod" ; -- use glue?
     fat_N          = mkNColl "xaħam" ;
     father_N2      = mkN2 (possN (mkN "missier" "missierijiet")) ;
---    fear_V2
---    fear_VS
+    fear_V2        = prepV2 (beza'_BZGH_1_7541_V) minnP ;
+    fear_VS        = beza'_BZGH_1_7541_V;
     feather_N      = mkNColl "rix" ;
     fight_V2       = prepV2 (ggieled_GLD_6_8074_V) maP ;
     find_V2        = lilV2 (sab_SJB_1_9779_V) ;
@@ -116,23 +119,23 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fire_N         = mkN "nar" "nirien" ;
     fish_N         = mkNColl "ħut" ;
 --    float_V
-    earth_N        = mkN "art" "artijiet" feminine ;
---    flow_V
+    floor_N        = mkN "art" "artijiet" feminine ;
     flower_N       = mkN "fjura" ;
+--    flow_V
     fly_V          = tar_TJR_1_9972_V ;
     fog_N          = mkN [] "ċpar" [] [] [] ;
     foot_N         = possN (mk5N "sieq" [] "saqajn" "saqajn" [] feminine) ;
     forest_N       = mkN "foresta" ; -- also MASĠAR
     forget_V2      = lilV2 (nesa_NSJ_1_9126_V) ;
---    freeze_V
+    freeze_V       = ffriza_V ;
     fridge_N       = mkN "friġġ" "friġġijiet" ;
     friend_N       = possN (mkN "ħabib" "ħbieb") ; -- feminine: ĦABIBA
     fruit_N        = mkNColl "frott" ;
     full_A         = regA "mimli" ;
---    fun_AV
+    fun_AV         = sameA "pjaċevoli" ;
     garden_N       = mkN "ġnien" "ġonna" ;
     girl_N         = mkN "tifla" "tfal" ;
---    give_V3
+    give_V3        = ta_GHTJ_1_10767_V ;
     glove_N        = mkN "ingwanta" ;
     go_V           = mar_MWR_1_8918_V ;
     gold_N         = mkN [] "deheb" [] "dehbijiet" [] ;
@@ -145,14 +148,14 @@ concrete LexiconMlt of Lexicon = CatMlt **
     hand_N         = possN (mk5N "id" [] "idejn" "idejn" [] feminine) ;
     harbour_N      = mkN "port" "portijiet" ;
     hat_N          = mkN "kappell" "kpiepel" ;
---    hate_V2
+    hate_V2        = lilV2 (baghad_BGHD_1_7402_V) ;
     head_N         = possN (mkN "ras" "rjus" feminine) ;
     hear_V2        = lilV2 (sema'_SMGH_1_9698_V) ;
     heart_N        = possN (mkN "qalb" "qlub" feminine) ;
     heavy_A        = brokenA "tqil" "tqal" "itqal" ;
     hill_N         = mkN "għolja" "għoljiet" ;
     hit_V2         = lilV2 (laqat_LQT_1_8772_V) ;
---    hold_V2
+    hold_V2        = lilV2 (zamm_ZMM_1_10392_V) ;
     hope_VS        = xtaq_XWQ_8_10313_V ;
     horn_N         = mkN "ħorn" "ħornijiet" ;
     horse_N        = mkN "żiemel" "żwiemel" ;
@@ -170,8 +173,8 @@ concrete LexiconMlt of Lexicon = CatMlt **
     king_N         = mkN "re" "rejjiet" ;
     knee_N         = possN (mkN "rkoppa" [] "rkopptejn" "rkoppiet" []) ; -- TODO use mkNDual
     know_V2        = lilV2 (af_''F_1_10774_V) ;
---    know_VQ
---    know_VS
+    know_VQ        = af_''F_1_10774_V ;
+    know_VS        = af_''F_1_10774_V ;
     lake_N         = mkN "għadira" "għadajjar" ;
     lamp_N         = mkN "lampa" ;
     language_N     = mkN "lingwa" ; -- lsien?
@@ -183,7 +186,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     left_Ord       = mkOrd "xellug" ;
     leg_N          = possN (mkN "riġel" [] "riġlejn" [] []) ; -- SIEQ
     lie_V          = mtedd_MDD_8_8816_V ; -- lie down
---    like_V2
+    like_V2        = lilV2 (ghogob_GHGB_1_10485_V) ;
     listen_V2      = lilV2 (sema'_SMGH_1_9698_V) ;
     live_V         = ghex_GHJX_1_10711_V ;
     liver_N        = mkN "fwied" [] [] [] "ifdwa" ;
@@ -214,7 +217,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     oil_N          = mkN "żejt" "żjut" ;
     old_A          = brokenA "qadim" "qodma" "eqdem" ;
     open_V2        = dirV2 (fetah_FTH_1_7932_V) ;
---    paint_V2A
+    paint_V2A      = dirV2 (pitter_PTR_2_9152_V) ;
     paper_N        = mkN "karta" ;
     paris_PN       = mkPN "Pariġi" feminine singular ;
     peace_N        = mkN "paċi" "paċijiet" feminine ;
@@ -222,18 +225,19 @@ concrete LexiconMlt of Lexicon = CatMlt **
     person_N       = mk5N [] "persuna" [] "persuni" [] masculine ;
     planet_N       = mkN "pjaneta" ;
     plastic_N      = mkNNoPlural "plastik" ;
-    play_V         = laghab_LGHB_1_8724_V ;
+    play_V         = daqq_DQQ_1_7736_V ;
+    play_V2        = prepV2 (laghab_LGHB_1_8724_V) maP ;
     policeman_N    = mkNNoPlural "pulizija" ;
     priest_N       = mkN "qassis" "qassisin" ;
     probable_AS    = mkAS (sameA "probabbli") ;
     pull_V2        = lilV2 (gibed_GBD_1_8043_V) ;
---    push_V2
+    push_V2        = dirV2 (mbotta_V) ; -- GĦAFAS
     put_V2         = lilV2 (qieghed_QGHD_3_9212_V) ;
     queen_N        = mkN "reġina" "rġejjen" ;
     question_N     = mkN "mistoqsija" "mistoqsijiet" ; -- DOMANDA
     radio_N        = mkN "radju" "radjijiet" ;
     rain_N         = mkNNoPlural "xita" ;
---    rain_V0
+    rain_V0        = xita_XTW_1_10297_V ; -- TAGĦMEL IX-XITA
     read_V2        = dirV2 (qara_QRJ_1_9350_V) ;
     ready_A        = regA "lest" ;
     reason_N       = mkN "raġun" "raġunijiet" ;
@@ -249,7 +253,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     rope_N         = mkN "ħabel" "ħbula" ;
     rotten_A       = mkA "mħassar" "mħassra" "mħassrin" ;
     round_A        = regA "tond" ;
---    rub_V2
+    rub_V2         = dirV2 (ghorok_GHRK_1_10599_V) ;
     rubber_N       = mkN "gomma" "gomom" ;
     rule_N         = mkN "regola" ;
     run_V          = gera_GRJ_1_8131_V ;
@@ -291,7 +295,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     speak_V2       = prepV2 (kellem_KLM_2_8597_V) maP ;
     spit_V         = bezaq_BZQ_1_7549_V ;
     split_V2       = lilV2 (qasam_QSM_1_9292_V) ;
---    squeeze_V2
+    squeeze_V2     = dirV2 (ghasar_GHSR_1_10625_V) ;
     stab_V2        = lilV2 (mewwes_MWS_2_8921_V) ;
 --    stand_V
     star_N         = mkN "stilla" "stilel" ;
@@ -324,7 +328,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     tongue_N       = possN (mkN "lsien" "ilsna") ;
     tooth_N        = possN (mkN "sinna" [] [] "sinniet" "snien") ; -- DARSA
     train_N        = mkN "ferrovija" ;
---    travel_V -- VJAĠĠA
+    travel_V       = vvjagga_V ;
     tree_N         = mkN "siġra" "siġar" [] "siġriet" [] ;
     turn_V         = dar_DWR_1_7803_V ;
     ugly_A         = mkA "ikrah" "kerha" "koroh" ;
@@ -351,7 +355,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     wing_N         = mkN "ġewnaħ" "ġwienaħ" ;
     wipe_V2        = dirV2 (mesah_MSH_1_8881_V) ;
     woman_N        = mkN "mara" "nisa" ;
---    wonder_VQ
+    wonder_VQ      = kkuntempla_V ;
     wood_N         = mkN "injam" "injamiet" ;
     worm_N         = mkN "dudu" "dud" [] "dudiet" "dwied" ;
     write_V2       = dirV2 (kiteb_KTB_1_8641_V) ;

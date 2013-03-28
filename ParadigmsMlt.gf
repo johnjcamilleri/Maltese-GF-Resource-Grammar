@@ -1000,6 +1000,8 @@ resource ParadigmsMlt = open
     dirV2 : V -> V2 ;
     dirV2 v = prepV2 v noPrep ;
 
+    mkV2V : V -> Prep -> Prep -> V2V ;  -- e.g. want (noPrep NP) (to VP)
+    mkV2V v p t = lin V2V (v ** {prep1 = p ; prep2 = t}) ;
 
     {- Adjective ---------------------------------------------------------- -}
 

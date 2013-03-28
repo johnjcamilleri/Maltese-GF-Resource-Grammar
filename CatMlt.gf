@@ -115,10 +115,10 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     V2, V2A, V2Q, V2S = Verb ** {prep : Prep} ;
     V3 = Verb ; -- ** {c2, c3 : Str} ;
     -- VV = {s : VVForm => Str ; typ : VVType} ;
-    -- V2V = Verb ** {c2,c3 : Str ; typ : VVType} ;
+    V2V = Verb ** {prep1,prep2 : Prep} ; -- ** {typ : VVType} ;
 
     A = Adjective ;
-    A2 = Adjective ** {c2 : Str} ;
+    A2 = Adjective ;
 
     N, N2, N3 = Noun ;
     PN = ProperNoun ;

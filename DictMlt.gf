@@ -9,6 +9,7 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
   flags
     coding=utf8 ;
 
+  -- Root-and-pattern verbs
   lin
     badbad_BDBD_1_6674_V = mkV "badbad" (mkRoot "b-d-b-d") ;
     tbadbad_BDBD_2_6675_V = mkV_II "tbadbad" (mkRoot "b-d-b-d") ;
@@ -896,9 +897,9 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     bexxex_BXX_2_7538_V = mkV_II "bexxex" (mkRoot "b-x-x") ;
     tbexxex_BXX_5_7539_V = mkV_V "tbexxex" (mkRoot "b-x-x") ;
     nbexx_BXX_7_7540_V = mkV_VII "bexx" "nbexx" (mkRoot "b-x-x") ;
-    baza'_BZGH_1_7541_V = mkV "baża'" (mkRoot "b-ż-għ") ;
-    bazza'_BZGH_2_7542_V = mkV_II "bażża'" (mkRoot "b-ż-għ") ;
-    tbazza'_BZGH_5_7543_V = mkV_V "tbażża'" (mkRoot "b-ż-għ") ;
+    beza'_BZGH_1_7541_V = mkV "baża'" (mkRoot "b-ż-għ") ;
+    bezza'_BZGH_2_7542_V = mkV_II "bażża'" (mkRoot "b-ż-għ") ;
+    tbezza'_BZGH_5_7543_V = mkV_V "tbażża'" (mkRoot "b-ż-għ") ;
     bizel_BZL_1_7544_V = mkV "biżel" (mkRoot "b-ż-l") ;
     bizzel_BZL_2_7545_V = mkV_II "biżżel" (mkRoot "b-ż-l") ;
     tbizzel_BZL_5_7546_V = mkV_V "tbiżżel" (mkRoot "b-ż-l") ;
@@ -4292,4 +4293,12 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     itteka_TKW_1_10825_V = mkV "itteka" (mkRoot "t-k-w") ;
     ntemm_TMM_7_10826_V = mkV_VII "temm" "ntemm" (mkRoot "t-m-m") ;
     nghadda_GHDJ_7_10828_V = mkV_VII "għadda" "ngħadda" (mkRoot "għ-d-j") ;
+
+  -- Loan verbs
+  lin
+    mbotta_V = mkV "mbotta" ;
+    vvjagga_V = mkV "vvjaġġa" ;
+    ffriza_V = mkV "ffriża" ;
+    kkuntempla_V = mkV "kkuntempla" ;
+
 }
