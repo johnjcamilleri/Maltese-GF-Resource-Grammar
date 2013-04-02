@@ -21,6 +21,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         clitic = [] ;
         hasNum = False ;
         isPron = False ;
+        isDefn = False ;
       } ;
 
   {- Pronoun -------------------------------------------------------------- -}

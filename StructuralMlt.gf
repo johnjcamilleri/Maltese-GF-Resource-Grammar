@@ -58,20 +58,37 @@ concrete StructuralMlt of Structural = CatMlt **
     therefore_PConj = ss "allura" ;
     if_then_Conj    = mkConj "jekk" ;
 
+    {- Preposition ---------------------------------------------------------- -}
+
+    above_Prep    = mkPrep "fuq" ;
+    after_Prep    = mkPrep "wara" ;
+    before_Prep   = mkPrep "qabel" ;
+    behind_Prep   = mkPrep "wara" ;
+    between_Prep  = mkPrep "bejn" ;
+    by8agent_Prep = mkPrep "minn" "mill-" ;
+    by8means_Prep = mkPrep "bi" "b'" "bil-" "bl-" ;
+    during_Prep   = mkPrep "waqt" ;
+    for_Prep      = mkPrep "għal" "għall-" ;
+    from_Prep     = mkPrep "minn" "mill-" ;
+    in8front_Prep = mkPrep "quddiem" ;
+    in_Prep       = mkPrep "fi" "f'" "fil-" "fl-" ;
+    on_Prep       = mkPrep "fuq" ;
+    part_Prep     = mkPrep "ta'" "tal-" ;
+    possess_Prep  = mkPrep "ta'" "tal-" ;
+    through_Prep  = mkPrep "ġo" "ġol-" ;
+    to_Prep       = mkPrep "lil" "'l" "lill-" "lill-" ;
+    under_Prep    = mkPrep "taħt" ;
+    without_Prep  = mkPrep "mingħajr" ;
+    with_Prep     = mkPrep "ma'" "m'" "mal-" "mal-" ;
+    except_Prep   = mkPrep "apparti" ;
+
     {- Others --------------------------------------------------------------- -}
 
-    -- above_Prep = mkPrep "above" ;
-    -- after_Prep = mkPrep "after" ;
     -- almost_AdA = mkAdA "almost" ;
     -- almost_AdN = mkAdN "almost" ;
     -- although_Subj = ss "although" ;
     -- always_AdV = mkAdV "always" ;
     -- because_Subj = ss "because" ;
-    -- before_Prep = mkPrep "before" ;
-    -- behind_Prep = mkPrep "behind" ;
-    -- between_Prep = mkPrep "between" ;
-    -- by8agent_Prep = mkPrep "by" ;
-    -- by8means_Prep = mkPrep "by" ;
     -- can8know_VV, can_VV = {
     --   s = table { 
     --     VVF VInf => ["be able to"] ;
@@ -84,12 +101,9 @@ concrete StructuralMlt of Structural = CatMlt **
     --     } ;
     --   typ = VVAux
     --   } ;
-    -- during_Prep = mkPrep "during" ;
     -- everybody_NP = regNP "everybody" singular ;
     -- everything_NP = regNP "everything" singular ;
     -- everywhere_Adv = mkAdv "everywhere" ;
-    -- for_Prep = mkPrep "for" ;
-    -- from_Prep = mkPrep "from" ;
     -- here_Adv = mkAdv "here" ;
     -- here7to_Adv = mkAdv ["to here"] ;
     -- here7from_Adv = mkAdv ["from here"] ;
@@ -97,8 +111,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- how8much_IAdv = ss "how much" ;
     -- how8many_IDet = mkDeterminer plural ["how many"] ;
     -- if_Subj = ss "if" ;
-    -- in8front_Prep = mkPrep ["in front of"] ;
-    -- in_Prep = mkPrep "in" ;
     -- less_CAdv = C.mkCAdv "less" "than" ;
     -- more_CAdv = C.mkCAdv "more" "than" ;
     -- most_Predet = ss "most" ;
@@ -115,10 +127,7 @@ concrete StructuralMlt of Structural = CatMlt **
     --   typ = VVAux
     --   } ;
     -- no_Utt = ss "no" ;
-    -- on_Prep = mkPrep "on" ;
-    -- part_Prep = mkPrep "of" ;
     -- please_Voc = ss "please" ;
-    -- possess_Prep = mkPrep "of" ;
     -- quite_Adv = mkAdv "quite" ;
     -- so_AdA = mkAdA "so" ;
     -- somebody_NP = regNP "somebody" singular ;
@@ -127,10 +136,7 @@ concrete StructuralMlt of Structural = CatMlt **
     -- there_Adv = mkAdv "there" ;
     -- there7to_Adv = mkAdv "there" ;
     -- there7from_Adv = mkAdv ["from there"] ;
-    -- through_Prep = mkPrep "through" ;
     -- too_AdA = mkAdA "too" ;
-    -- to_Prep = mkPrep "to" ;
-    -- under_Prep = mkPrep "under" ;
     -- very_AdA = mkAdA "very" ;
     -- want_VV = mkVV (regV "want") ;
     -- whatPl_IP = mkIP "what" "what" "what's" plural ;
@@ -141,8 +147,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- whoPl_IP = mkIP "who" "whom" "whose" plural ;
     -- whoSg_IP = mkIP "who" "whom" "whose" singular ;
     -- why_IAdv = ss "why" ;
-    -- without_Prep = mkPrep "without" ;
-    -- with_Prep = mkPrep "with" ;
     -- yes_Utt = ss "yes" ;
     
     -- nobody_NP = regNP "nobody" singular ;
@@ -151,7 +155,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- at_least_AdN = mkAdN "at least" ;
     -- at_most_AdN = mkAdN "at most" ;
     
-    -- except_Prep = mkPrep "except" ;
     
     -- as_CAdv = C.mkCAdv "as" "as" ;
     

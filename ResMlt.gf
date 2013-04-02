@@ -22,6 +22,16 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | GPl -- dawk
       ;
 
+    Definiteness =
+        Definite    -- eg BIL-
+      | Indefinite  -- eg BI 
+      ;
+
+    Contraction =
+        Full        -- eg BI
+      | Contracted  -- eg B' 
+      ;
+
   oper
     -- Agreement system corrected based on comments by [AZ]
     Agr : Type = { g : Gender ; n : Number ; p : Person } ;
@@ -54,14 +64,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   param
-    NPCase = Nom | CPrep ; -- [AZ]
+    NPCase = Nom | CPrep ; -- [AZ] --- JJC: Not sure about this
 
     -- Animacy = Animate | Inanimate ;
-
-    -- Definiteness =
-    --     Definite    -- eg IL-KARTA. In this context same as Determinate
-    --   | Indefinite  -- eg KARTA
-    --   ;
 
 
   {- Numeral -------------------------------------------------------------- -}
@@ -102,8 +107,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s : Gender => Str ;
       n : NumForm ;
       clitic : Str ;
-      hasNum : Bool ;
-      isPron : Bool ;
+      hasNum : Bool ; -- has a numeral
+      isPron : Bool ; -- is a pronoun
+      isDefn : Bool ; -- is definite
       } ;
     -- Determiner = {
     --   s : NPCase => Gender => NumCase => Str ;
@@ -120,6 +126,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       clitic : Str ;
       isPron : Bool ;
       isDemo : Bool ; -- Demonstrative (this/that/those/these)
+      isDefn : Bool ; -- is definite
       } ;
     -- Quantifier = {
     --   s : NPCase => Gender => NumForm => Str ;
@@ -149,6 +156,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s : NPCase => Str ;
       a : Agr ;
       isPron : Bool ;
+      isDefn : Bool ;
       } ;
 
   param

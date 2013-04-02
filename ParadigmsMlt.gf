@@ -302,12 +302,31 @@ resource ParadigmsMlt = open
 
     {- Preposition -------------------------------------------------------- -}
 
-    mkPrep : Str -> Prep ; -- e.g. "in front of"
-    mkPrep p = lin Prep (ss p) ;
+    mkPrep = overload {
+      mkPrep : Str -> Prep = \fuq -> lin Prep {
+        s = \\defn,cont => fuq ;
+        takesDet = False
+        } ;
+      mkPrep : Str -> Str -> Prep = \minn,mill -> lin Prep {
+        s = table {
+          Indefinite => \\cont => minn ;
+          Definite => \\cont => mill
+          } ;
+        takesDet = True
+        } ;
+      mkPrep : Str -> Str -> Str -> Str -> Prep = \bi,b,bil,bl -> lin Prep {
+        s = \\defn,cont => case <defn,cont> of {
+          <Indefinite, Full>       => bi ;
+          <Indefinite, Contracted> => b ;
+          <Definite, Full>         => bil ;
+          <Definite, Contracted>   => bl
+          } ;
+        takesDet = True
+        } ;
+      } ;
 
     noPrep : Prep ;  -- no preposition
     noPrep = mkPrep [] ;
-
 
     {- Verb --------------------------------------------------------------- -}
 
@@ -1172,6 +1191,7 @@ resource ParadigmsMlt = open
       clitic = [] ;
       isPron = False ;
       isDemo = isdemo ;
+      isDefn = False ;
       } ;
         
     mkOrd : Str -> Ord = \x -> lin Ord { s = \\c => x };

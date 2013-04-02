@@ -85,7 +85,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
       n : NumForm ;
       } ;
 
--- numeral
+-- Numeral
 
     -- Cardinal or ordinal in WORDS (not digits)
     Numeral = {
@@ -100,12 +100,14 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
       tail : DTail
     };
 
-
 -- Structural
 
     Conj = {s1,s2 : Str} ;
 --     Subj = {s : Str} ;
-    Prep = {s : Str} ;
+    Prep = {
+      s : Definiteness => Contraction => Str ;
+      takesDet : Bool
+      } ;
 
 -- Open lexical classes, e.g. Lexicon
 
