@@ -47,6 +47,17 @@ concrete StructuralMlt of Structural = CatMlt **
 
     -- which_IQuant = {s = \\_ => "which"} ;
 
+    {- Conjunction ---------------------------------------------------------- -}
+
+    and_Conj        = mkConj "u" ;
+    both7and_DConj  = mkConj "kemm" "u";
+    but_PConj       = ss "imma" ;
+    either7or_DConj = mkConj "jew" "inkella" ;
+    or_Conj         = mkConj "jew" ;
+    otherwise_PConj = ss "inkella" ;
+    therefore_PConj = ss "allura" ;
+    if_then_Conj    = mkConj "jekk" ;
+
     {- Others --------------------------------------------------------------- -}
 
     -- above_Prep = mkPrep "above" ;
@@ -55,13 +66,10 @@ concrete StructuralMlt of Structural = CatMlt **
     -- almost_AdN = mkAdN "almost" ;
     -- although_Subj = ss "although" ;
     -- always_AdV = mkAdV "always" ;
-    -- and_Conj = mkConj "and" ;
     -- because_Subj = ss "because" ;
     -- before_Prep = mkPrep "before" ;
     -- behind_Prep = mkPrep "behind" ;
     -- between_Prep = mkPrep "between" ;
-    -- both7and_DConj = mkConj "both" "and";
-    -- but_PConj = ss "but" ;
     -- by8agent_Prep = mkPrep "by" ;
     -- by8means_Prep = mkPrep "by" ;
     -- can8know_VV, can_VV = {
@@ -77,7 +85,6 @@ concrete StructuralMlt of Structural = CatMlt **
     --   typ = VVAux
     --   } ;
     -- during_Prep = mkPrep "during" ;
-    -- either7or_DConj = mkConj "either" "or" singular ;
     -- everybody_NP = regNP "everybody" singular ;
     -- everything_NP = regNP "everything" singular ;
     -- everywhere_Adv = mkAdv "everywhere" ;
@@ -109,8 +116,6 @@ concrete StructuralMlt of Structural = CatMlt **
     --   } ;
     -- no_Utt = ss "no" ;
     -- on_Prep = mkPrep "on" ;
-    -- or_Conj = mkConj "or" singular ;
-    -- otherwise_PConj = ss "otherwise" ;
     -- part_Prep = mkPrep "of" ;
     -- please_Voc = ss "please" ;
     -- possess_Prep = mkPrep "of" ;
@@ -122,7 +127,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- there_Adv = mkAdv "there" ;
     -- there7to_Adv = mkAdv "there" ;
     -- there7from_Adv = mkAdv ["from there"] ;
-    -- therefore_PConj = ss "therefore" ;
     -- through_Prep = mkPrep "through" ;
     -- too_AdA = mkAdA "too" ;
     -- to_Prep = mkPrep "to" ;
@@ -141,7 +145,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- with_Prep = mkPrep "with" ;
     -- yes_Utt = ss "yes" ;
     
-    -- if_then_Conj = mkConj "if" "then" singular ;
     -- nobody_NP = regNP "nobody" singular ;
     -- nothing_NP = regNP "nothing" singular ;
     

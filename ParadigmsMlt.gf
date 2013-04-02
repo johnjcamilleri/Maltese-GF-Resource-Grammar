@@ -1029,6 +1029,16 @@ resource ParadigmsMlt = open
     mkV2V : V -> Prep -> Prep -> V2V ;  -- e.g. want (noPrep NP) (to VP)
     mkV2V v p t = lin V2V (v ** { prep1 = p ; prep2 = t }) ;
 
+    {- Conjunction -------------------------------------------------------- -}
+
+    mkConj = overload {
+      mkConj : Str -> Conj = \y -> mk2Conj [] y ;
+      mkConj : Str -> Str -> Conj = \x,y -> mk2Conj x y ;
+      } ;
+
+    mk2Conj : Str -> Str -> Conj = \x,y ->
+      lin Conj (sd2 x y) ;
+
     {- Adjective ---------------------------------------------------------- -}
 
     -- Overloaded function for building an adjective

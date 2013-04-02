@@ -103,9 +103,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Structural
 
---     Conj = {s1,s2 : Str ; n : Number} ;
--- ---b    Conj = {s : Str ; n : Number} ;
--- ---b    DConj = {s1,s2 : Str ; n : Number} ;
+    Conj = {s1,s2 : Str} ;
 --     Subj = {s : Str} ;
     Prep = {s : Str} ;
 
