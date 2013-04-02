@@ -238,68 +238,6 @@ resource ParadigmsMlt = open
       takesPron = True ;
       } ;
 
-{-
-    -- Correctly abbreviate definite prepositions and join with noun
-    -- Params:
-      -- preposition (eg TAL, MAL, BĦALL)
-      -- noun
-    abbrevPrepositionDef : Str -> Str -> Str = \prep,noun ->
-      let
-        -- Remove either 1 or 2 l's
-        prepStem : Str = case prep of {
-          _ + "ll" => dropSfx 2 prep ;
-          _ + "l"  => dropSfx 1 prep ;
-          _ => prep -- this should never happen, I don't think
-        }
-      in
-      case noun of {
-        ("s"|#LiquidCons) + #Consonant + _ => prep + "-i" + noun ;
-        ("għ" | #Vowel) + _ => case prep of {
-          ("fil"|"bil") => (takePfx 1 prep) + "l-" + noun ;
-          _ => prep + "-" + noun
-        };
-        K@#CoronalConsonant + _ => prepStem + K + "-" + noun ;
-        #Consonant + _ => prep + "-" + noun ;
-        _ => []
-      } ;
--}
-    -- Correctly abbreviate indefinite prepositions and join with noun
-    -- Params:
-      -- preposition (eg TA', MA', BĦAL)
-      -- noun
-    abbrevPrepositionIndef : Str -> Str -> Str = \prep,noun ->
-      let
-        initPrepLetter = takePfx 1 prep ;
-        initNounLetter = takePfx 1 noun
-      in
-      if_then_Str (isNil noun) [] (
-      case prep of {
-
-        -- TA', MA', SA
-        _ + ("a'"|"a") =>
-          case noun of {
-            #Vowel + _  => initPrepLetter + "'" + noun ;
-            ("għ" | "h") + #Vowel + _ => initPrepLetter + "'" + noun ;
-            _ => prep ++ noun
-          } ;
-
-        -- FI, BI
-        _ + "i" =>
-        if_then_Str (pbool2bool (eqStr initPrepLetter initNounLetter))
-          (prep ++ noun)
-          (case noun of {
-            -- initPrepLetter + _ => prep ++ noun ;
-            #Vowel + _  => initPrepLetter + "'" + noun ;
-            #Consonant + #Vowel + _  => initPrepLetter + "'" + noun ;
-            #Consonant + "r" + #Vowel + _ => initPrepLetter + "'" + noun ;
-            _ => prep ++ noun
-          }) ;
-
-        -- Else leave untouched
-        _ => prep ++ noun
-
-      });
-
     {- Preposition -------------------------------------------------------- -}
 
     mkPrep = overload {

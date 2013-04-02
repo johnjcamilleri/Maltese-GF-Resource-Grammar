@@ -603,38 +603,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         _ => False
       } ;
 
-    -- Add a definite preposition in front of your token
-    addDefinitePreposition : Str -> Str -> Str = \prep,n -> (getDefinitePreposition prep n) ++ n ;
-    addDefiniteArticle = addDefinitePreposition "il" ;
-    getDefiniteArticle = getDefinitePreposition "il" ;
-
-    -- Correctly inflect definite preposition
-    -- A more generic version of getDefiniteArticle
-      -- Params:
-        -- preposition (eg TAL, MAL, BĦALL)
-        -- noun
-    -- NOTE trying to call this with a runtime string will cause a world of pain. Design around it.
-    getDefinitePreposition : Str -> Str -> Str = \prep,noun ->
-      let
-        -- Remove either 1 or 2 l's
-        prepStem : Str = case prep of {
-          _ + "ll" => Predef.tk 2 prep ;
-          _ + "l"  => Predef.tk 1 prep ;
-          _ => prep -- this should never happen, I don't think
-        }
-      in
-      case noun of {
-        ("s"|#LiquidCons) + #Consonant + _   => prep + "-i" ;    -- L-ISKOLA
-        ("għ" | #Vowel) + _         => case prep of {    -- L-GĦATBA...
-                            ("fil"|"bil")  => (Predef.take 1 prep) + "l-" ;
-                            "il"       => "l" + "-" ;
-                            _         => prep + "-"
-                          };
-        K@#CoronalCons + _       => prepStem + K + "-" ;  -- IĊ-ĊISK
-        #Consonant + _             => prep + "-" ;      -- IL-QADDIS
-        _                   => []          -- ?
-      } ;
-
     artIndef : Str = "" ;
 
     artDef : Str =
@@ -691,7 +659,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           GPl      => plural
         } ;
         ACompar => compar ;
-        ASuperl => addDefiniteArticle compar
+        ASuperl => artDef ++ compar
       } ;
       hasComp = notB (isNil compar) ;
     } ;
