@@ -605,19 +605,25 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     artIndef : Str = "" ;
 
-    artDef : Str =
+    artDef : Str = makePre "il" ;
+
+    makePre : Str -> Str = \mal ->
+      let
+        default = mal+"-" ++ BIND ;
+        ma = dropSfx 1 mal ;
+      in
       pre {
-        "il- &+" ; --- ugly hack! but won't let me use ++
-        "l-" ++ BIND / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
-        "iċ-" ++ BIND / strs { "ċ" } ;
-        "id-" ++ BIND / strs { "d" } ;
-        "in-" ++ BIND / strs { "n" } ;
-        "ir-" ++ BIND / strs { "r" } ;
-        "is-" ++ BIND / strs { "s" } ;
-        "it-" ++ BIND / strs { "t" } ;
-        "ix-" ++ BIND / strs { "x" } ;
-        "iż-" ++ BIND / strs { "ż" } ;
-        "iz-" ++ BIND / strs { "z" }
+        default ;
+        ma+"l-" ++ BIND / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
+        ma+"ċ-" ++ BIND / strs { "ċ" } ;
+        ma+"d-" ++ BIND / strs { "d" } ;
+        ma+"n-" ++ BIND / strs { "n" } ;
+        ma+"r-" ++ BIND / strs { "r" } ;
+        ma+"s-" ++ BIND / strs { "s" } ;
+        ma+"t-" ++ BIND / strs { "t" } ;
+        ma+"x-" ++ BIND / strs { "x" } ;
+        ma+"ż-" ++ BIND / strs { "ż" } ;
+        ma+"z-" ++ BIND / strs { "z" }
       } ;
 
     {- ~~~ Worst-case functions ~~~ -}

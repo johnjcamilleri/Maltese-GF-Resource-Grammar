@@ -256,7 +256,7 @@ resource ParadigmsMlt = open
         s = \\defn,cont => case <defn,cont> of {
           <Indefinite, Full>       => bi ;
           <Indefinite, Contracted> => b ;
-          <Definite, Full>         => bil ;
+          <Definite, Full>         => makePre (dropSfx 1 bil) ;
           <Definite, Contracted>   => bl
           } ;
         takesDet = True
