@@ -241,23 +241,34 @@ resource ParadigmsMlt = open
     {- Preposition -------------------------------------------------------- -}
 
     mkPrep = overload {
+      -- Same in all cases, e.g. FUQ
       mkPrep : Str -> Prep = \fuq -> lin Prep {
-        s = \\defn,cont => fuq ;
+        s = \\defn => fuq ;
         takesDet = False
         } ;
-      mkPrep : Str -> Str -> Prep = \minn,mill -> lin Prep {
+
+      -- Forms:
+      --   GĦAL ktieb / triq / ajruplan
+      --   GĦALL-ktieb / ajruplan
+      --   GĦAT-triq
+      mkPrep : Str -> Str -> Str -> Prep = \ghal,ghall,ghat -> lin Prep {
         s = table {
-          Indefinite => \\cont => minn ;
-          Definite => \\cont => mill
+          Indefinite => ghal ;
+          Definite   => makePreFull ghall (dropSfx 2 ghat) ghall
           } ;
         takesDet = True
         } ;
-      mkPrep : Str -> Str -> Str -> Str -> Prep = \bi,b,bil,bl -> lin Prep {
-        s = \\defn,cont => case <defn,cont> of {
-          <Indefinite, Full>       => bi ;
-          <Indefinite, Contracted> => b ;
-          <Definite, Full>         => makePre (dropSfx 1 bil) ;
-          <Definite, Contracted>   => bl
+
+      -- All forms:
+      --   BI ktieb/triq
+      --   B'ajruplan
+      --   BIL-ktieb
+      --   BIT-triq
+      --   BL-ajruplan
+      mkPrep : Str -> Str -> Str -> Str -> Str -> Prep = \bi,b',bil,bit,bl -> lin Prep {
+        s = table {
+          Indefinite => makePreVowel bi b' ;
+          Definite   => makePreFull  bil (dropSfx 2 bit) bl
           } ;
         takesDet = True
         } ;

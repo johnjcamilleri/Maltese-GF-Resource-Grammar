@@ -24,12 +24,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     Definiteness =
         Definite    -- eg BIL-
-      | Indefinite  -- eg BI 
-      ;
-
-    Contraction =
-        Full        -- eg BI
-      | Contracted  -- eg B' 
+      | Indefinite  -- eg BI
       ;
 
   oper
@@ -64,10 +59,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   param
-    NPCase = Nom | CPrep ; -- [AZ] --- JJC: Not sure about this
-
-    -- Animacy = Animate | Inanimate ;
-
+    NPCase = Nom | CPrep ; -- [AZ]
 
   {- Numeral -------------------------------------------------------------- -}
 
@@ -605,16 +597,41 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     artIndef : Str = "" ;
 
-    artDef : Str = makePre "il" ;
+    artDef : Str =
+      makePreFull
+        "il-" -- il-ktieb
+        "i"   -- it-triq
+        "l-"  -- l-ajruplan
+      ;
 
-    makePre : Str -> Str = \mal ->
+    -- Make a pre string which only varies for vowels
+    makePreVowel : Str -> Str -> Str = \cons,vowel ->
       let
-        default = mal+"-" ++ BIND ;
-        ma = dropSfx 1 mal ;
+        vowel' : Str = case vowel of {
+          _ + "'" => vowel ++ BIND ;
+          _ => vowel
+          } ;
       in
       pre {
-        default ;
-        ma+"l-" ++ BIND / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
+        -- Consonant
+        cons ;
+        -- Vowel
+        vowel' / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" }
+      } ;
+
+    -- Make a pre string which varies coronal consonants and vowels
+    makePreFull : Str -> Str -> Str -> Str = \cons,corcons,vowel ->
+      let
+        mal = cons ++ BIND ;
+        m' = vowel ++ BIND ;
+        ma = corcons ;
+      in
+      pre {
+        -- Regular consonant
+        mal ;
+        -- Vowel
+        m' / strs { "a" ; "e" ; "i" ; "o" ; "u" ; "h" ; "għ" } ;
+        -- Coronal consonants
         ma+"ċ-" ++ BIND / strs { "ċ" } ;
         ma+"d-" ++ BIND / strs { "d" } ;
         ma+"n-" ++ BIND / strs { "n" } ;

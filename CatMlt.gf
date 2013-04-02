@@ -105,7 +105,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     Conj = {s1,s2 : Str} ;
 --     Subj = {s : Str} ;
     Prep = {
-      s : Definiteness => Contraction => Str ;
+      s : Definiteness => Str ;
       takesDet : Bool
       } ;
 
