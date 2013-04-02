@@ -7,6 +7,10 @@ lexicon:
 	runghc update_lexicon.hs > tmp
 	mv tmp LexiconMlt.gf
 
+pgf:
+	gf --make --name=PGF/Lang LangMlt.gf
+	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
+
 batch:
 #	time gf +RTS -K1000M -RTS --batch AllMlt.gf
 	time gf --batch AllMlt.gf
