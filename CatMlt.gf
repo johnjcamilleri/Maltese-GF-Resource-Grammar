@@ -31,7 +31,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Question
 
     -- QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
-    -- IP = {s : NPCase => Str ; n : Number} ;
+    IP = {s : Str ; n : Number} ;
     -- IComp = {s : Str} ;    
     -- IDet = {s : Str ; n : Number} ;
     -- IQuant = {s : Number => Str} ;

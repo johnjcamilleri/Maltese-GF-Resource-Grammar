@@ -687,6 +687,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       hasComp = notB (isNil compar) ;
     } ;
 
+    -- Interrogative pronoun
+    mkIP : Str -> Number -> {s : Str ; n : Number} = \who,n ->
+      {
+        s = who ;
+        n = n
+      } ;
+
     -- Noun phrase
     mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
       s = table {

@@ -5,7 +5,7 @@
 -- Licensed under LGPL
 
 concrete StructuralMlt of Structural = CatMlt **
-  open MorphoMlt, ResMlt, ParadigmsMlt, Prelude in {
+  open MorphoMlt, ResMlt, ParadigmsMlt, (C = ConstructX), Prelude in {
 
   flags
     optimize=all ;  
@@ -23,20 +23,25 @@ concrete StructuralMlt of Structural = CatMlt **
     youPl_Pron  = mkPron "intom" "kom"            plural   P2 masculine ;
     they_Pron   = mkPron "huma"  "hom"            plural   P3 masculine ;
     youPol_Pron = youSg_Pron ;
-    -- it_Pron  = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
+    -- it_Pron     = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
+
+    whatPl_IP = mkIP ("x'" ++ BIND) plural ;
+    whatSg_IP = mkIP ("x'" ++ BIND) singular ;
+    whoPl_IP  = mkIP "min" plural ;
+    whoSg_IP  = mkIP "min" singular ;
 
     {- Determiner ----------------------------------------------------------- -}
 
-    all_Predet = ss "kollha" ;
+    all_Predet  = ss "kollha" ;
     -- every_Det = mkDeterminerSpec singular "every" "everyone" False ;
-    few_Det = mkDeterminer plural "ftit" ;
-    many_Det = mkDeterminer plural "ħafna" ; -- bosta
-    -- most_Predet = ss "most" ;
+    few_Det     = mkDeterminer plural "ftit" ;
+    many_Det    = mkDeterminer plural "ħafna" ;
+    most_Predet = ss "il-maġġoranza ta'" ; --- TAL-, TAN-
     -- much_Det = mkDeterminer singular "much" ;
     only_Predet = ss "biss" ;
-    someSg_Det = mkDeterminer singular "xi" ;
-    somePl_Det = mkDeterminer plural "xi" ;
-    -- not_predet = {s = "not" ; lock_Predet = <>} ;
+    someSg_Det  = mkDeterminer singular "xi" ;
+    somePl_Det  = mkDeterminer plural "xi" ;
+    not_predet  = ss "mhux" ;
     
     {- Quantifier ----------------------------------------------------------- -}
 
@@ -44,7 +49,6 @@ concrete StructuralMlt of Structural = CatMlt **
     this_Quant = mkQuant "dan" "din" "dawn" True ;
     no_Quant = let l_ebda = artDef ++ "ebda" in
       mkQuant l_ebda l_ebda l_ebda False ;
-
     -- which_IQuant = {s = \\_ => "which"} ;
 
     {- Conjunction ---------------------------------------------------------- -}
@@ -99,11 +103,37 @@ concrete StructuralMlt of Structural = CatMlt **
     when_Subj     = ss "meta" ;
     that_Subj     = ss "li" ;
 
+    {- Adverb --------------------------------------------------------------- -}
+
+    almost_AdA     = mkAdA "kważi" ;
+    almost_AdN     = mkAdN "kważi" ;
+    always_AdV     = mkAdV "dejjem" ;
+    at_least_AdN   = mkAdN "mill-inqas" ;
+    at_most_AdN    = mkAdN "l-iktar" ;
+    everywhere_Adv = mkAdv "kullimkien" ;
+    here_Adv       = mkAdv "hawn" ;
+    here7to_Adv    = mkAdv ["s'hawnhekk"] ;
+    here7from_Adv  = mkAdv ["minn hawnhekk"] ;
+    less_CAdv      = C.mkCAdv "inqas" "minn" ; --- INQAS MILL-IEĦOR
+    more_CAdv      = C.mkCAdv "iktar" "minn" ; --- IKTAR MIT-TNEJN
+    quite_Adv      = mkAdv "pjuttost" ;
+    so_AdA         = mkAdA "allura" ;
+    somewhere_Adv  = mkAdv "x'imkien" ;
+    there_Adv      = mkAdv "hemmhekk" ;
+    there7to_Adv   = mkAdv "s'hemmhekk" ;
+    there7from_Adv = mkAdv ["minn hemmhekk"] ;
+    too_AdA        = mkAdA "ukoll" ;
+    very_AdA       = mkAdA "ħafna" ;
+    as_CAdv        = C.mkCAdv "" "daqs" ; -- "as good as gold"
+
+    how_IAdv      = ss "kif" ;
+    how8much_IAdv = ss "kemm" ;
+    when_IAdv     = ss "meta" ;
+    where_IAdv    = ss "fejn" ;
+    why_IAdv      = ss "għalfejn" ;
+    
     {- Others --------------------------------------------------------------- -}
 
-    -- almost_AdA = mkAdA "almost" ;
-    -- almost_AdN = mkAdN "almost" ;
-    -- always_AdV = mkAdV "always" ;
     -- can8know_VV, can_VV = {
     --   s = table { 
     --     VVF VInf => ["be able to"] ;
@@ -116,16 +146,7 @@ concrete StructuralMlt of Structural = CatMlt **
     --     } ;
     --   typ = VVAux
     --   } ;
-    -- everywhere_Adv = mkAdv "everywhere" ;
-    -- here_Adv = mkAdv "here" ;
-    -- here7to_Adv = mkAdv ["to here"] ;
-    -- here7from_Adv = mkAdv ["from here"] ;
-    -- how_IAdv = ss "how" ;
-    -- how8much_IAdv = ss "how much" ;
     -- how8many_IDet = mkDeterminer plural ["how many"] ;
-    -- less_CAdv = C.mkCAdv "less" "than" ;
-    -- more_CAdv = C.mkCAdv "more" "than" ;
-    -- most_Predet = ss "most" ;
     -- must_VV = {
     --   s = table {
     --     VVF VInf => ["have to"] ;
@@ -138,31 +159,7 @@ concrete StructuralMlt of Structural = CatMlt **
     --     } ;
     --   typ = VVAux
     --   } ;
-    -- no_Utt = ss "no" ;
-    -- please_Voc = ss "please" ;
-    -- quite_Adv = mkAdv "quite" ;
-    -- so_AdA = mkAdA "so" ;
-    -- somewhere_Adv = mkAdv "somewhere" ;
-    -- there_Adv = mkAdv "there" ;
-    -- there7to_Adv = mkAdv "there" ;
-    -- there7from_Adv = mkAdv ["from there"] ;
-    -- too_AdA = mkAdA "too" ;
-    -- very_AdA = mkAdA "very" ;
     -- want_VV = mkVV (regV "want") ;
-    -- whatPl_IP = mkIP "what" "what" "what's" plural ;
-    -- whatSg_IP = mkIP "what" "what" "what's" singular ;
-    -- when_IAdv = ss "when" ;
-    -- where_IAdv = ss "where" ;
-    -- whoPl_IP = mkIP "who" "whom" "whose" plural ;
-    -- whoSg_IP = mkIP "who" "whom" "whose" singular ;
-    -- why_IAdv = ss "why" ;
-    -- yes_Utt = ss "yes" ;
-    
-    -- at_least_AdN = mkAdN "at least" ;
-    -- at_most_AdN = mkAdN "at most" ;
-    
-    
-    -- as_CAdv = C.mkCAdv "as" "as" ;
     
     have_V2 = dirV2 (
       irregularV form1 (ResMlt.mkRoot) (ResMlt.mkPattern)
@@ -171,6 +168,11 @@ concrete StructuralMlt of Structural = CatMlt **
         "kollok" "kollkom"
       ) ;
 
-  lin language_title_Utt = ss "Malti" ;
+    please_Voc = ss "jekk jgħoġbok" ; --- JEKK JGĦOĠOBKOM
+
+    no_Utt = ss "le" ;
+    yes_Utt = ss "iva" ;
+
+    language_title_Utt = ss "Malti" ;
 
 }
