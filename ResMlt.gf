@@ -29,9 +29,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
     -- Agreement system corrected based on comments by [AZ]
-    Agr : Type = { g : Gender ; n : Number ; p : Person } ;
+    Agr : Type = { n : Number ; p : Person ; g : Gender } ;
 
-    mkAgr : Gender -> Number -> Person -> Agr = \g,n,p -> {g = g ; n = n ; p = p} ;
+    mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
 
     toVAgr : Agr -> VAgr = \agr ->
       case <agr.p,agr.n> of {
@@ -43,10 +43,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     
     toAgr : VAgr -> Agr = \vagr ->
       case vagr of {
-        AgP1 num   => mkAgr Masc num P1 ; --- sorry ladies
-        AgP2 num   => mkAgr Masc num P2 ;
-        AgP3Sg gen => mkAgr gen Pl P3 ;
-        AgP3Pl     => mkAgr Masc Pl P3
+        AgP1 num   => mkAgr num P1 Masc ; --- sorry ladies
+        AgP2 num   => mkAgr num P2 Masc ;
+        AgP3Sg gen => mkAgr Pl  P3 gen ;
+        AgP3Pl     => mkAgr Pl  P3 Masc
       } ;
 
   param

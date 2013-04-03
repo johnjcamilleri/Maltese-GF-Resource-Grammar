@@ -213,7 +213,7 @@ resource ParadigmsMlt = open
     -- Proper noun
     mkPN : Str -> Gender -> Number -> ProperNoun = \name,g,n -> {
       s = name ;
-      a = mkAgr g n P3 ;
+      a = mkAgr n P3 g ;
       } ;
 
     mkN2 = overload {

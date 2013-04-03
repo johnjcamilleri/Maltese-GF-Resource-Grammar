@@ -49,8 +49,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
         CPrep => cn.s ! numform2nounnum det.n
         } ;
       a = case (numform2nounnum det.n) of {
-	Singulative => mkAgr cn.g Sg P3 ; --- collective?
-	_           => mkAgr cn.g Pl P3
+	Singulative => mkAgr Sg P3 cn.g ; --- collective?
+	_           => mkAgr Pl P3 cn.g
       } ;
       isPron = False ;
       isDefn = det.isDefn ;

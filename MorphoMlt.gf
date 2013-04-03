@@ -40,7 +40,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             Suffixed Dat => _li ;          -- rajtli
             Suffixed Gen => _i             -- qalbi, idejja
             } ;
-          a = mkAgr gen num pers ;
+          a = mkAgr num pers gen ;
         } ;
 
       -- hija, aħna, intom, huma
@@ -53,7 +53,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
             Suffixed Dat => "l"+_ha ;      -- rajtilha
             Suffixed Gen => _ha            -- qalbha
             } ;
-          a = mkAgr gen num pers ;
+          a = mkAgr num pers gen ;
         } ;
       
       } ;
