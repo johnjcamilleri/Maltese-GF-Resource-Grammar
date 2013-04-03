@@ -84,20 +84,26 @@ concrete StructuralMlt of Structural = CatMlt **
 
     {- Noun phrase ---------------------------------------------------------- -}
 
-    everybody_NP  = regNP "kulħadd" singular ;
-    everything_NP = regNP "kollox" singular ;
-    somebody_NP   = regNP "xi ħadd" singular ;
-    something_NP  = regNP "xi ħaġa" singular ;
-    nobody_NP     = regNP "ħadd" singular ;
-    nothing_NP    = regNP "xejn" singular ;
+    everybody_NP  = regNP "kulħadd" ;
+    everything_NP = regNP "kollox" ;
+    somebody_NP   = regNP "xi ħadd" ;
+    something_NP  = regNP "xi ħaġa" ;
+    nobody_NP     = regNP "ħadd" ;
+    nothing_NP    = regNP "xejn" ;
+
+    {- Subjunction ---------------------------------------------------------- -}
+
+    although_Subj = ss "avolja" ;
+    because_Subj  = ss "għax" ;
+    if_Subj       = ss "jekk" ;
+    when_Subj     = ss "meta" ;
+    that_Subj     = ss "li" ;
 
     {- Others --------------------------------------------------------------- -}
 
     -- almost_AdA = mkAdA "almost" ;
     -- almost_AdN = mkAdN "almost" ;
-    -- although_Subj = ss "although" ;
     -- always_AdV = mkAdV "always" ;
-    -- because_Subj = ss "because" ;
     -- can8know_VV, can_VV = {
     --   s = table { 
     --     VVF VInf => ["be able to"] ;
@@ -117,7 +123,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- how_IAdv = ss "how" ;
     -- how8much_IAdv = ss "how much" ;
     -- how8many_IDet = mkDeterminer plural ["how many"] ;
-    -- if_Subj = ss "if" ;
     -- less_CAdv = C.mkCAdv "less" "than" ;
     -- more_CAdv = C.mkCAdv "more" "than" ;
     -- most_Predet = ss "most" ;
@@ -147,7 +152,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- whatPl_IP = mkIP "what" "what" "what's" plural ;
     -- whatSg_IP = mkIP "what" "what" "what's" singular ;
     -- when_IAdv = ss "when" ;
-    -- when_Subj = ss "when" ;
     -- where_IAdv = ss "where" ;
     -- whoPl_IP = mkIP "who" "whom" "whose" plural ;
     -- whoSg_IP = mkIP "who" "whom" "whose" singular ;
@@ -166,8 +170,6 @@ concrete StructuralMlt of Structural = CatMlt **
         "għandi" "għandek" "għandu" "għandha" "għandna" "għandkom" "għandhom"
         "kollok" "kollkom"
       ) ;
-
-    -- that_Subj = ss "that" ;
 
   lin language_title_Utt = ss "Malti" ;
 

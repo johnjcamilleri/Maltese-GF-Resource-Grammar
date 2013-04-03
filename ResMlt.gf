@@ -18,8 +18,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     Gender = Masc | Fem ;
 
     GenNum  =
-        GSg Gender -- dak, dik
-      | GPl -- dawk
+        GSg Gender -- DAK, DIK
+      | GPl        -- DAWK
       ;
 
     Definiteness =
@@ -52,10 +52,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   param
     -- Agreement for verbs
     VAgr =
-        AgP1 Number   -- jiena, aħna
-      | AgP2 Number   -- inti, intom
-      | AgP3Sg Gender -- huwa, hija
-      | AgP3Pl        -- huma
+        AgP1 Number   -- JIENA, AĦNA
+      | AgP2 Number   -- INTI, INTOM
+      | AgP3Sg Gender -- HUWA, HIJA
+      | AgP3Pl        -- HUMA
       ;
 
   param
@@ -688,8 +688,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     } ;
 
     -- Noun phrase
-    -- Params:
-      -- 
     mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
       s = table {
         Nom   => s ;
@@ -700,8 +698,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       isDefn = False ;
       };
 
-    regNP : Str -> Number -> NounPhrase = \that,n ->
-      mkNP that n P3 Masc ; -- we say KULĦADD KUNTENT (not KUNTENTA)
+    regNP : Str -> NounPhrase = \kulhadd ->
+      mkNP kulhadd Sg P3 Masc ; -- KULĦADD KUNTENT (not KULĦADD KUNTENTA)
 
 }
 
