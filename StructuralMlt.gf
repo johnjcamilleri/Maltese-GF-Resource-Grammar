@@ -82,6 +82,15 @@ concrete StructuralMlt of Structural = CatMlt **
     with_Prep     = mkPrep "ma'" "m'" "mal-" "mat-" "mal-" ;
     except_Prep   = mkPrep "apparti" ;
 
+    {- Noun phrase ---------------------------------------------------------- -}
+
+    everybody_NP  = regNP "kulħadd" singular ;
+    everything_NP = regNP "kollox" singular ;
+    somebody_NP   = regNP "xi ħadd" singular ;
+    something_NP  = regNP "xi ħaġa" singular ;
+    nobody_NP     = regNP "ħadd" singular ;
+    nothing_NP    = regNP "xejn" singular ;
+
     {- Others --------------------------------------------------------------- -}
 
     -- almost_AdA = mkAdA "almost" ;
@@ -101,8 +110,6 @@ concrete StructuralMlt of Structural = CatMlt **
     --     } ;
     --   typ = VVAux
     --   } ;
-    -- everybody_NP = regNP "everybody" singular ;
-    -- everything_NP = regNP "everything" singular ;
     -- everywhere_Adv = mkAdv "everywhere" ;
     -- here_Adv = mkAdv "here" ;
     -- here7to_Adv = mkAdv ["to here"] ;
@@ -130,8 +137,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- please_Voc = ss "please" ;
     -- quite_Adv = mkAdv "quite" ;
     -- so_AdA = mkAdA "so" ;
-    -- somebody_NP = regNP "somebody" singular ;
-    -- something_NP = regNP "something" singular ;
     -- somewhere_Adv = mkAdv "somewhere" ;
     -- there_Adv = mkAdv "there" ;
     -- there7to_Adv = mkAdv "there" ;
@@ -148,9 +153,6 @@ concrete StructuralMlt of Structural = CatMlt **
     -- whoSg_IP = mkIP "who" "whom" "whose" singular ;
     -- why_IAdv = ss "why" ;
     -- yes_Utt = ss "yes" ;
-    
-    -- nobody_NP = regNP "nobody" singular ;
-    -- nothing_NP = regNP "nothing" singular ;
     
     -- at_least_AdN = mkAdN "at least" ;
     -- at_most_AdN = mkAdN "at most" ;

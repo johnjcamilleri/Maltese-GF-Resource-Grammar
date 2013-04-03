@@ -687,5 +687,21 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       hasComp = notB (isNil compar) ;
     } ;
 
+    -- Noun phrase
+    -- Params:
+      -- 
+    mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
+      s = table {
+        Nom   => s ;
+        CPrep => s
+        } ;
+      a = mkAgr n p g ;
+      isPron = False ;
+      isDefn = False ;
+      };
+
+    regNP : Str -> Number -> NounPhrase = \that,n ->
+      mkNP that n P3 Masc ; -- we say KULĦADD KUNTENT (not KUNTENTA)
+
 }
 
