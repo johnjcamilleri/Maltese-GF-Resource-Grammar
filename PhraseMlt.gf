@@ -14,8 +14,8 @@ concrete PhraseMlt of Phrase = CatMlt ** open ParamX, Prelude, ResMlt in {
     -- UttImpSg pol imp = {s = pol.s ++ imp.s ! pol.p ! ImpF Sg False} ;
     -- UttImpPl pol imp = {s = pol.s ++ imp.s ! pol.p ! ImpF Pl False} ;
     -- UttImpPol pol imp = {s = pol.s ++ imp.s ! pol.p ! ImpF Sg True} ;
- 
-    -- UttIP ip = {s = ip.s ! npNom} ; --- Acc also
+
+    UttIP ip = {s = ip.s} ;
     UttIAdv iadv = iadv ;
     UttNP np = {s = np.s ! npNom} ;
     -- UttVP vp = {s = infVP VVInf vp Simul CPos (agrP3 Sg)} ;
@@ -24,10 +24,10 @@ concrete PhraseMlt of Phrase = CatMlt ** open ParamX, Prelude, ResMlt in {
     -- UttCard n = {s = n.s ! Nom} ;
     -- UttAP ap = {s = ap.s ! agrP3 Sg} ;
     UttInterj i = i ;
- 
+
     NoPConj = {s = []} ;
     PConjConj conj = {s = conj.s2} ;
- 
+
     NoVoc = {s = []} ;
     VocNP np = {s = "," ++ np.s ! npNom} ;
 

@@ -23,12 +23,13 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Sentence
 
-    Cl, ClSlash = {s : ResMlt.Tense => Anteriority => Polarity => Order => Str} ;
+    Cl = Clause ;
+    ClSlash = Clause ;
     Imp = {s : Polarity => Number => Str} ;
 
 -- Question
 
-    QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
+    QCl = QClause ;
     IP = {s : Str ; n : Number} ;
     IComp = {s : Str} ;
     IDet = {s : Str} ;
@@ -36,10 +37,10 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Relative
 
-    RCl = {s : ResMlt.Tense => Anteriority => Polarity => Agr => Str} ;
+    RCl = RClause ;
     RP  = {s : Str} ;
     -- RCl = {
-    --   s : ResMlt.Tense => Anteriority => Polarity => Agr => Str ; 
+    --   s : ResMlt.Tense => Anteriority => Polarity => Agr => Str ;
     --   c : NPCase
     --   } ;
     -- RP = {s : RCase => Str ; a : RAgr} ;

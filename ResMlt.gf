@@ -67,6 +67,40 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   oper
     npNom = Nom ;
 
+  {- Clause --------------------------------------------------------------- -}
+
+    Clause : Type = {
+      s : Tense => Anteriority => Polarity => Order => Str
+      } ;
+    QClause : Type = {
+      s : Tense => Anteriority => Polarity => QForm => Str
+      } ;
+    RClause : Type = {
+      s : Tense => Anteriority => Polarity => Agr => Str
+      } ;
+
+    -- Clause
+    mkClause : Str -> Agr -> VerbPhrase -> Clause = \subj,agr,vp -> {
+      s = \\t,a,p,o => 
+        let 
+          -- verb  = vp.s ! t ! a ! p ! o ! agr ;
+          -- vform = case <t,agr> of {
+          --   _ => VPres
+          --   } ;
+          vpform = VPIndicat t (toVAgr agr) ;
+          verb  = joinVParts (vp.s ! vpform ! a ! p) ;
+          compl = vp.s2 ! agr ;
+        in
+        case o of {
+          -- ODir => subj ++ verb.aux ++ verb.adv ++ vp.ad ++ verb.fin ++ verb.inf ++ vp.p ++ compl ;
+          -- OQuest => verb.aux ++ subj ++ verb.adv ++ vp.ad ++ verb.fin ++ verb.inf ++ vp.p ++ compl
+
+          -- ABSOLUTELY NOT CORRECT: in progress
+          ODir => subj ++ verb ++ compl ;
+          OQuest => subj ++ verb ++ compl
+        }
+      } ;
+
   {- Numeral -------------------------------------------------------------- -}
 
   param
@@ -97,6 +131,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         NumNom  -- "Type B" in {MDG, 133}, e.g. TNEJN, ĦAMSA, TNAX, MIJA
       | NumAdj  -- "Type A" in {MDG, 133}, e.g. ŻEWĠ, ĦAMES, TNAX-IL, MITT
       ;
+
+  oper
+    numform2nounnum : NumForm -> Noun_Number = \n ->
+      case n of {
+        NumX Sg  => Singulative ;
+        NumX Pl  => Plural ;
+        Num0     => Singulative ;
+        Num1     => Singulative ;
+        Num2     => Dual ;
+        Num3_10  => Collective ;
+        Num11_19 => Singulative ;
+        Num20_99 => Plural
+      } ;
 
   {- Determiners etc. ----------------------------------------------------- -}
 
@@ -134,7 +181,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     --   isDefn : Bool ;
     --   } ;
 
-  {- Nouns ---------------------------------------------------------------- -}
+  {- Noun ----------------------------------------------------------------- -}
 
   oper
     Noun : Type = {
@@ -166,6 +213,44 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | Plural      -- ĦUTIET
       ;
 
+  oper
+    -- Noun: Takes all forms and a gender
+    -- Params:
+    -- Singulative, eg KOXXA
+    -- Collective, eg KOXXOX
+    -- Double, eg KOXXTEJN
+    -- Determinate Plural, eg KOXXIET
+    -- Indeterminate Plural
+    -- Gender
+    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+      s = table {
+        Singulative => sing ;
+        Collective  => coll ;
+        Dual        => dual ;
+        Plural      => if_then_Str (isNil det) ind det
+        -- Plural   => variants {det ; ind}
+        } ;
+      g = gen ;
+      takesPron = False ;
+      hasDual = notB (isNil dual) ;
+      hasColl = notB (isNil coll) ;
+      -- anim = Inanimate ;
+      } ;
+
+    -- Noun phrase
+    mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
+      s = table {
+        Nom   => s ;
+        CPrep => s
+        } ;
+      a = mkAgr n p g ;
+      isPron = False ;
+      isDefn = False ;
+      };
+
+    regNP : Str -> NounPhrase = \kulhadd ->
+      mkNP kulhadd Sg P3 Masc ; -- KULĦADD KUNTENT (not KULĦADD KUNTENTA)
+
   {- Pronoun -------------------------------------------------------------- -}
 
   oper
@@ -187,6 +272,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | Dat -- Dative: rajtlu
       | Gen -- Genitive: qalbu
       ;
+
+  oper
+    -- Interrogative pronoun
+    mkIP : Str -> Number -> {s : Str ; n : Number} = \who,n ->
+      {
+        s = who ;
+        n = n
+      } ;
 
   {- Verb ----------------------------------------------------------------- -}
 
@@ -389,6 +482,26 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | ASuperl        -- Superlative, e.g. L-ISBAĦ
       ;
 
+  oper
+    -- adjective: Takes all forms (except superlative)
+    -- Params:
+      -- Masculine, eg SABIĦ
+      -- Feminine, eg SABIĦA
+      -- Plural, eg SBIEĦ
+      -- Comparative, eg ISBAĦ
+    mkAdjective : (_,_,_,_ : Str) -> Adjective = \masc,fem,plural,compar -> {
+      s = table {
+        APosit gn => case gn of {
+          GSg Masc => masc ;
+          GSg Fem  => fem ;
+          GPl      => plural
+        } ;
+        ACompar => compar ;
+        ASuperl => artDef ++ compar
+      } ;
+      hasComp = notB (isNil compar) ;
+    } ;
+
   {- Other ---------------------------------------------------------------- -}
 
   oper
@@ -492,21 +605,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       updateVerbInfo : VerbInfo -> VDerivedForm -> Str -> VerbInfo = \i,f,imp ->
         { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=imp } ;
 
-      } ;
-
-
-    {- ~~~ Conversions ~~~ -}
-
-    numform2nounnum : NumForm -> Noun_Number = \n ->
-      case n of {
-        NumX Sg  => Singulative ;
-        NumX Pl  => Plural ;
-        Num0     => Singulative ;
-        Num1     => Singulative ;
-        Num2     => Dual ;
-        Num3_10  => Collective ;
-        Num11_19 => Singulative ;
-        Num20_99 => Plural
       } ;
 
     {- ~~~ Useful helper functions ~~~ -}
@@ -656,71 +754,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         ma+"ż-" ++ BIND / strs { "ż" } ;
         ma+"z-" ++ BIND / strs { "z" }
       } ;
-
-    {- ~~~ Worst-case functions ~~~ -}
-
-    -- Noun: Takes all forms and a gender
-    -- Params:
-    -- Singulative, eg KOXXA
-    -- Collective, eg KOXXOX
-    -- Double, eg KOXXTEJN
-    -- Determinate Plural, eg KOXXIET
-    -- Indeterminate Plural
-    -- Gender
-    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
-      s = table {
-        Singulative => sing ;
-        Collective  => coll ;
-        Dual        => dual ;
-        Plural      => if_then_Str (isNil det) ind det
-        -- Plural   => variants {det ; ind}
-        } ;
-      g = gen ;
-      takesPron = False ;
-      hasDual = notB (isNil dual) ;
-      hasColl = notB (isNil coll) ;
-      -- anim = Inanimate ;
-      } ;
-
-    -- adjective: Takes all forms (except superlative)
-    -- Params:
-      -- Masculine, eg SABIĦ
-      -- Feminine, eg SABIĦA
-      -- Plural, eg SBIEĦ
-      -- Comparative, eg ISBAĦ
-    mkAdjective : (_,_,_,_ : Str) -> Adjective = \masc,fem,plural,compar -> {
-      s = table {
-        APosit gn => case gn of {
-          GSg Masc => masc ;
-          GSg Fem  => fem ;
-          GPl      => plural
-        } ;
-        ACompar => compar ;
-        ASuperl => artDef ++ compar
-      } ;
-      hasComp = notB (isNil compar) ;
-    } ;
-
-    -- Interrogative pronoun
-    mkIP : Str -> Number -> {s : Str ; n : Number} = \who,n ->
-      {
-        s = who ;
-        n = n
-      } ;
-
-    -- Noun phrase
-    mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
-      s = table {
-        Nom   => s ;
-        CPrep => s
-        } ;
-      a = mkAgr n p g ;
-      isPron = False ;
-      isDefn = False ;
-      };
-
-    regNP : Str -> NounPhrase = \kulhadd ->
-      mkNP kulhadd Sg P3 Masc ; -- KULĦADD KUNTENT (not KULĦADD KUNTENTA)
 
 }
 
