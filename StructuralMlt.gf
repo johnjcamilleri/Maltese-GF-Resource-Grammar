@@ -23,7 +23,7 @@ concrete StructuralMlt of Structural = CatMlt **
     youPl_Pron  = mkPron "intom" "kom"            plural   P2 masculine ;
     they_Pron   = mkPron "huma"  "hom"            plural   P3 masculine ;
     youPol_Pron = youSg_Pron ;
-    -- it_Pron     = mkPron "it" "it" "its" "its" singular P3 nonhuman ;
+    it_Pron     = he_Pron ;
 
     whatPl_IP = mkIP ("x'" ++ BIND) plural ;
     whatSg_IP = mkIP ("x'" ++ BIND) singular ;
@@ -33,23 +33,26 @@ concrete StructuralMlt of Structural = CatMlt **
     {- Determiner ----------------------------------------------------------- -}
 
     all_Predet  = ss "kollha" ;
-    -- every_Det = mkDeterminerSpec singular "every" "everyone" False ;
+    every_Det   = mkDeterminer singular "kull" ; --- KULĦADD
     few_Det     = mkDeterminer plural "ftit" ;
     many_Det    = mkDeterminer plural "ħafna" ;
     most_Predet = ss "il-maġġoranza ta'" ; --- TAL-, TAN-
-    -- much_Det = mkDeterminer singular "much" ;
+    much_Det    = mkDeterminer singular "ħafna" ;
     only_Predet = ss "biss" ;
     someSg_Det  = mkDeterminer singular "xi" ;
     somePl_Det  = mkDeterminer plural "xi" ;
-    not_predet  = ss "mhux" ;
-    
+    not_Predet  = ss "mhux" ;
+
+    how8many_IDet = ss "kemm" ; -- KEMM IL-...
+
     {- Quantifier ----------------------------------------------------------- -}
 
     that_Quant = mkQuant "dak" "dik" "dawk" True ;
     this_Quant = mkQuant "dan" "din" "dawn" True ;
     no_Quant = let l_ebda = artDef ++ "ebda" in
       mkQuant l_ebda l_ebda l_ebda False ;
-    -- which_IQuant = {s = \\_ => "which"} ;
+
+    which_IQuant = ss "liema" ;
 
     {- Conjunction ---------------------------------------------------------- -}
 
@@ -132,41 +135,30 @@ concrete StructuralMlt of Structural = CatMlt **
     where_IAdv    = ss "fejn" ;
     why_IAdv      = ss "għalfejn" ;
     
-    {- Others --------------------------------------------------------------- -}
+    {- Verb ----------------------------------------------------------------- -}
 
-    -- can8know_VV, can_VV = {
-    --   s = table { 
-    --     VVF VInf => ["be able to"] ;
-    --     VVF VPres => "can" ;
-    --     VVF VPPart => ["been able to"] ;
-    --     VVF VPresPart => ["being able to"] ;
-    --     VVF VPast => "could" ;      --# notpresent
-    --     VVPastNeg => "couldn't" ;   --# notpresent
-    --     VVPresNeg => "can't"
-    --     } ;
-    --   typ = VVAux
-    --   } ;
-    -- how8many_IDet = mkDeterminer plural ["how many"] ;
-    -- must_VV = {
-    --   s = table {
-    --     VVF VInf => ["have to"] ;
-    --     VVF VPres => "must" ;
-    --     VVF VPPart => ["had to"] ;
-    --     VVF VPresPart => ["having to"] ;
-    --     VVF VPast => ["had to"] ;      --# notpresent
-    --     VVPastNeg => ["hadn't to"] ;      --# notpresent
-    --     VVPresNeg => "mustn't"
-    --     } ;
-    --   typ = VVAux
-    --   } ;
-    -- want_VV = mkVV (regV "want") ;
-    
-    have_V2 = dirV2 (
-      irregularV form1 (ResMlt.mkRoot) (ResMlt.mkPattern)
-        "kelli" "kellek" "kellu" "kellha" "kellna" "kellkom" "kellhom"
-        "għandi" "għandek" "għandu" "għandha" "għandna" "għandkom" "għandhom"
-        "kollok" "kollkom"
-      ) ;
+    can8know_VV = af_V ;
+    can_VV      = sata'_V ;
+    must_VV     = kellu_V ;
+    want_VV     = ried_V ;
+    have_V2     = dirV2 (kellu_V) ;
+
+  oper
+    af_V = irregularV form1 (ResMlt.mkRoot "'-'-f") (ResMlt.mkPattern "a" [])
+      "kont naf" "kont taf" "kien jaf" "kienet taf" "konna nafu" "kontu tafu" "kienu jafu" --- will fail for negative
+      "naf" "taf" "jaf" "taf" "nafu" "tafu" "jafu"
+      "kun af" "kunu afu"
+      ;
+    sata'_V = mkV "sata'" (ResMlt.mkRoot "s-t-għ") ;
+    ried_V = mkV "ried" (ResMlt.mkRoot "r-j-d") ;
+    kellu_V = irregularV form1 (ResMlt.mkRoot) (ResMlt.mkPattern)
+      "kelli" "kellek" "kellu" "kellha" "kellna" "kellkom" "kellhom"
+      "għandi" "għandek" "għandu" "għandha" "għandna" "għandkom" "għandhom"
+      "kollok" "kollkom"
+      ;
+
+    {- Others --------------------------------------------------------------- -}
+  lin
 
     please_Voc = ss "jekk jgħoġbok" ; --- JEKK JGĦOĠOBKOM
 

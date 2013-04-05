@@ -32,9 +32,9 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     -- QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
     IP = {s : Str ; n : Number} ;
-    -- IComp = {s : Str} ;    
-    -- IDet = {s : Str ; n : Number} ;
-    -- IQuant = {s : Number => Str} ;
+    -- IComp = {s : Str} ;
+    IDet = {s : Str} ;
+    IQuant = {s : Str} ;
 
 -- Relative
 
@@ -61,7 +61,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     Pron = Pronoun ;
 
     Det = Determiner ;
-    -- Predet = {s : Str} ;
+    Predet = {s : Str} ;
     Quant = Quantifier ;
 
     -- [AZ]
@@ -113,7 +113,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     V, VS, VQ, VA = Verb ;
     V2, V2A, V2Q, V2S = Verb ** {prep : Prep} ;
-    -- VV = {s : VVForm => Str ; typ : VVType} ;
+    VV = Verb ;
     V3, V2V = Verb ** {prep1,prep2 : Prep} ; -- ** {typ : VVType} ;
 
     A = Adjective ;
