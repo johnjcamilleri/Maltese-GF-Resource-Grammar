@@ -8,10 +8,14 @@ concrete QuestionMlt of Question = CatMlt ** open ResMlt, ParamX, Prelude in {
 
   flags optimize=all_subs ;
 
--- IAdv
--- IComp
--- IDet
--- IP
--- QCl
+  lin
+    QuestCl cl = {
+      s = \\t,a,p => 
+        let cls = cl.s ! t ! a ! p 
+        in table {
+          QDir   => cls ! OQuest ;
+          QIndir => "kieku" ++ cls ! ODir
+        }
+      } ;
 
 }

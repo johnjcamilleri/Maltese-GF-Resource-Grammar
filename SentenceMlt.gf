@@ -36,16 +36,24 @@ concrete SentenceMlt of Sentence = CatMlt ** open
 
     -- Temp -> Pol -> Cl -> S
     UseCl t p cl = {
-      -- t and p never have any linearization
       s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! p.p ! ODir
       } ;
 
--- Cl
--- Imp
--- QS
--- RS
--- S
--- SC
--- SSlash
+    -- Temp -> Pol -> QCl -> QS
+    UseQCl t p qcl = {
+      s = \\q => t.s ++ p.s ++ qcl.s ! t.t ! t.a ! p.p ! q
+    } ;
+
+    -- Temp -> Pol -> RCl -> RS
+    UseRCl t p rcl = {
+      s = \\r => t.s ++ p.s ++ rcl.s ! t.t ! t.a ! p.p ! r ;
+      -- c = cl.c
+    } ;
+
+    -- Temp -> Pol -> ClSlash -> SSlash
+    UseSlash t p clslash = {
+      s = t.s ++ p.s ++ clslash.s ! t.t ! t.a ! p.p ! ODir ;
+      -- c2 = cl.c2
+    } ;
 
 }

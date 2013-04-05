@@ -64,8 +64,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   param
     NPCase = Nom | CPrep ; -- [AZ]
 
+  oper
+    npNom = Nom ;
+
   {- Numeral -------------------------------------------------------------- -}
 
+  param
     CardOrd = NCard | NOrd ;
 
     -- Order of magnitude

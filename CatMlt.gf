@@ -16,6 +16,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     S  = {s : Str} ;
     QS = {s : QForm => Str} ;
+    RS = {s : Agr => Str} ;
+    SSlash = {s : Str} ;
     -- RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
     -- SSlash = {s : Str ; c2 : Str} ;
 
@@ -26,7 +28,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Question
 
-    -- QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
+    QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
     IP = {s : Str ; n : Number} ;
     IComp = {s : Str} ;
     IDet = {s : Str} ;
@@ -34,6 +36,8 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Relative
 
+    RCl = {s : ResMlt.Tense => Anteriority => Polarity => Agr => Str} ;
+    RP  = {s : Str} ;
     -- RCl = {
     --   s : ResMlt.Tense => Anteriority => Polarity => Agr => Str ; 
     --   c : NPCase
