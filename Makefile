@@ -1,11 +1,11 @@
 all: batch
 
-rgl:
-	runghc ../Make lang api langs=Mlt
+# rgl:
+# 	runghc ../Make lang api langs=Mlt
 
-lexicon:
-	runghc update_lexicon.hs > tmp
-	mv tmp LexiconMlt.gf
+# lexicon:
+# 	runghc update_lexicon.hs > tmp
+# 	mv tmp LexiconMlt.gf
 
 pgf:
 	gf --make --name=PGF/Lang LangMlt.gf
