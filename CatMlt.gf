@@ -15,24 +15,20 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Tensed/Untensed
 
     S  = {s : Str} ;
-    -- QS = {s : QForm => Str} ;
+    QS = {s : QForm => Str} ;
     -- RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
     -- SSlash = {s : Str ; c2 : Str} ;
 
 -- Sentence
 
-    Cl = {s : ResMlt.Tense => Anteriority => Polarity => Str} ;
-    -- ClSlash = {
-    --   s : ResMlt.Tense => Anteriority => Polarity => Order => Str ;
-    --   c2 : Str
-    --   } ;
-    -- Imp = {s : Polarity => ImpForm => Str} ;
+    Cl, ClSlash = {s : ResMlt.Tense => Anteriority => Polarity => Order => Str} ;
+    Imp = {s : Polarity => Number => Str} ;
 
 -- Question
 
     -- QCl = {s : ResMlt.Tense => Anteriority => Polarity => QForm => Str} ;
     IP = {s : Str ; n : Number} ;
-    -- IComp = {s : Str} ;
+    IComp = {s : Str} ;
     IDet = {s : Str} ;
     IQuant = {s : Str} ;
 
@@ -46,9 +42,9 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
 -- Verb
 
-    VP = ResMlt.VP ;
-    VPSlash = ResMlt.VP ;
-    -- Comp = {s : Agr => Str} ;
+    VP = VerbPhrase ;
+    VPSlash = VerbPhrase ;
+    Comp = {s : Agr => Str} ;
 
 -- Adjective
 

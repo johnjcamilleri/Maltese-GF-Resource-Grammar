@@ -49,6 +49,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         AgP3Pl     => mkAgr Pl  P3 Masc
       } ;
 
+    agrP3 : Number -> Gender -> Agr = \n,g ->
+      mkAgr n P3 g;
+
   param
     -- Agreement for verbs
     VAgr =
@@ -249,17 +252,23 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | QWeak
       ;
 
-  oper
+    Order =
+        ODir    -- ĠANNI JIEKOL ĦUT
+      | OQuest  -- JIEKOL ĦUT ĠANNI [?]
+      ;
 
+  oper
+    
+    -- Verb stem and suffixes for dir/ind objects, polarity
     VerbParts : Type = { stem, dir, ind, pol : Str } ;
     mkVParts = overload {
       mkVParts : Str -> Str -> VerbParts = \a,d -> {stem=a; dir=[]; ind=[]; pol=d} ;
       mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=a; dir=b; ind=c; pol=d} ;
       } ;
-    joinVParts : VerbParts -> Str = \vb -> vb.stem ++ vb.dir ++ vb.ind ++ vb.ind ;
+    joinVParts : VerbParts -> Str = \vb -> vb.stem ++ vb.dir ++ vb.ind ++ vb.pol ;
     
     -- [AZ]
-    VP : Type = {
+    VerbPhrase : Type = {
       s : VPForm => Anteriority => Polarity => VerbParts ; -- verb
       s2 : Agr => Str ; -- complement
       -- a1 : Str ;
@@ -276,7 +285,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   oper
 
     -- [AZ]
-    insertObj : (Agr => Str) -> VP -> VP = \obj,vp -> {
+    insertObj : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
       s = vp.s ;
       s2 = obj ;
       -- a1 = vp.a1 ;
@@ -306,7 +315,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       } ;
 
     -- Adapted from [AZ]
-    CopulaVP : VP = {
+    CopulaVP : VerbPhrase = {
       s = \\vpf,ant,pol =>
         case <vpf> of {
           <VPIndicat Past vagr> => polarise (copula_kien.s ! VPerf vagr) pol ;
@@ -321,7 +330,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       } ;
 
     -- [AZ]
-    predV : Verb -> VP = \verb -> {
+    predV : Verb -> VerbPhrase = \verb -> {
       s = \\vpf,ant,pol =>
         let
           ma = "ma" ;
@@ -332,7 +341,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         case vpf of {
           VPIndicat tense vagr =>
             let
-              kien = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
+              kien  = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
+              kienx = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! Neg) ;
             in
             case <tense,ant,pol> of {
               <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
@@ -343,14 +353,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
               <Fut, Anter,Pos> => b1 (kien ++ "se" ++ verb.s ! VImpf vagr) ; -- kont se norqod
 
               <Pres,Simul,Neg> => b2 (ma ++ verb.s ! VImpf vagr) ; -- ma norqodx
-              <Pres,Anter,Neg> => b1 (ma ++ kien ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
+              <Pres,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
               <Past,Simul,Neg> => b2 (ma ++ verb.s ! VPerf vagr) ; -- ma rqadtx
-              <Past,Anter,Neg> => b1 (ma ++ kien ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
+              <Past,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
               <Fut, Simul,Neg> => b1 (mhux ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
-              <Fut, Anter,Neg> => b1 (ma ++ kien ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
+              <Fut, Anter,Neg> => b1 (ma ++ kienx ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
 
               <Cond,_,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
-              <Cond,_,Neg> => b1 (ma ++ kien ++ verb.s ! VImpf vagr) -- ma kontx norqod
+              <Cond,_,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) -- ma kontx norqod
             } ;
           VPImperat num => b2 (verb.s ! VImp num) -- torqodx
         };

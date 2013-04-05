@@ -19,7 +19,11 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- NP -> VP -> Cl
     -- John walks
     PredVP np vp = {
-      s = \\tense,ant,pol => (s ++ v ++ o)
+      s = \\tense,ant,pol,ord =>
+        case ord of {
+          ODir => (s ++ v ++ o) ; -- ĠANNI JIEKOL ĦUT
+          OQuest => (v ++ o ++ s) -- JIEKOL ĦUT ĠANNI ?
+        }
         where {
           s = case np.isPron of {
             True => [] ; -- omit subject pronouns
@@ -27,15 +31,13 @@ concrete SentenceMlt of Sentence = CatMlt ** open
             } ;
           v = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
           o = vp.s2 ! np.a ;
-          -- s = if_then_Str np.isPron [] (np.s ! Nom) ; -- omit subject pronouns
-          -- v = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
-          -- o = vp.s2 ! np.a ;
         } ;
       } ;
 
-    --  Temp -> Polarity -> Cl -> S
+    -- Temp -> Pol -> Cl -> S
     UseCl t p cl = {
-      s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! p.p
+      -- t and p never have any linearization
+      s = t.s ++ p.s ++ cl.s ! t.t ! t.a ! p.p ! ODir
       } ;
 
 -- Cl

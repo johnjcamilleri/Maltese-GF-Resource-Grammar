@@ -52,7 +52,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     bread_N        = mkNColl "ħobż" ;
     break_V2       = dirV2 (kiser_KSR_1_8636_V) ;
     breast_N       = possN (mkN "sider" "sdur") ; -- also ISDRA
---    breathe_V -- ĦA N-NIFS
+    breathe_V      = mkV "respira" ; -- ĦA N-NIFS
     broad_A        = mkA "wiesgħa" "wiesgħa" "wiesgħin" ;
     brother_N2     = mkN2 (possN (mkN "ħu" "aħwa")) ;
     brown_A        = sameA "kannella" ;
@@ -118,10 +118,10 @@ concrete LexiconMlt of Lexicon = CatMlt **
     fingernail_N   = possN (mkN "difer" [] "difrejn" "dwiefer" []) ;
     fire_N         = mkN "nar" "nirien" ;
     fish_N         = mkNColl "ħut" ;
---    float_V
+    float_V        = gham_GHWM_1_10750_V ; ---
     floor_N        = mkN "art" "artijiet" feminine ;
     flower_N       = mkN "fjura" ;
---    flow_V
+    flow_V         = ghadda_GHDJ_2_10679_V ;
     fly_V          = tar_TJR_1_9972_V ;
     fog_N          = mkN [] "ċpar" [] [] [] ;
     foot_N         = possN (mk5N "sieq" [] "saqajn" "saqajn" [] feminine) ;
@@ -297,7 +297,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     split_V2       = lilV2 (qasam_QSM_1_9292_V) ;
     squeeze_V2     = dirV2 (ghasar_GHSR_1_10625_V) ;
     stab_V2        = lilV2 (mewwes_MWS_2_8921_V) ;
---    stand_V
+    stand_V        = qaghad_QGHD_1_9210_V ; ---
     star_N         = mkN "stilla" "stilel" ;
     steel_N        = mkNNoPlural "azzar" ;
     stick_N        = mkN "lasta" ;

@@ -156,6 +156,14 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     -- N2 -> CN
     UseN2 n = n ;
 
+    -- CN -> NP
+    MassNP cn = {
+      s = \\c => cn.s ! Collective ;
+      a = agrP3 Sg cn.g ;
+      isPron = False ;
+      isDefn = True ;
+      } ;
+
 -- Card
 -- CN
 -- Det
