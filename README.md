@@ -14,7 +14,7 @@ Feel free to contact me if you are interested in contributing, or just curious.
 [2]: http://www.grammaticalframework.org/lib/src/maltese/
 [3]: http://www.grammaticalframework.org/
 
-## Overview
+## Repository overview
 
 - This directory contains the grammar itself, split amongst various `.gf` files.
   Check out the [dependancy graph diagram][4] to see how the individual modules plug together.
@@ -26,6 +26,11 @@ Feel free to contact me if you are interested in contributing, or just curious.
 [5]: https://github.com/johnjcamilleri/Maltese-GF-Resource-Grammar/tree/master/doc
 [6]: http://mlrs.research.um.edu.mt/index.php?page=33
 [8]: http://blog.johnjcamilleri.com/category/academic/research/
+
+## License
+
+This work is released under the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.txt).
+In a nutshell, this means you can freely use it for whatever you want, including non-open source applications.
 
 ## References
 
