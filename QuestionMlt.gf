@@ -33,17 +33,19 @@ concrete QuestionMlt of Question = CatMlt ** open ResMlt, ParamX, Prelude in {
 
     -- -- IP -> ClSlash -> QCl
     -- -- whom does John love
-    -- QuestSlash ip slash = 
+    -- QuestSlash ip slash =
     --   mkQuestion (ss (slash.c2 ++ ip.s ! NPAcc)) slash ;
-    --   --- stranding in ExratEng 
- 
+    --   --- stranding in ExratEng
+
     -- -- IAdv -> Cl -> QCl
     -- -- why does John walk
     -- QuestIAdv iadv cl = mkQuestion iadv cl ;
- 
+
     -- -- IComp -> NP -> QCl
     -- -- where is John
-    -- QuestIComp icomp np = 
+    -- QuestIComp icomp np =
     --   mkQuestion icomp (mkClause (np.s ! npNom) np.a (predAux auxBe)) ;
 
+  lincat
+    QVP = ResMlt.VerbPhrase ;
 }
