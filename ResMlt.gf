@@ -40,7 +40,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         <P3,Sg>  => AgP3Sg agr.g;
         <P3,Pl>  => AgP3Pl
       } ;
-    
+
     toAgr : VAgr -> Agr = \vagr ->
       case vagr of {
         AgP1 num   => mkAgr num P1 Masc ; --- sorry ladies
@@ -51,6 +51,15 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     agrP3 : Number -> Gender -> Agr = \n,g ->
       mkAgr n P3 g;
+
+    conjAgr : Agr -> Agr -> Agr = \a,b -> {
+      n = (conjNumber a.n b.n) ;
+      p = (conjPerson a.p b.p) ;
+      g = a.g ;
+      } ;
+
+    -- ConjNumber, ConjPerson are defined in ParamX
+    conjGender : Gender -> Gender -> Gender = \a,b -> b ;
 
   param
     -- Agreement for verbs
@@ -81,8 +90,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     -- Clause
     mkClause : Str -> Agr -> VerbPhrase -> Clause = \subj,agr,vp -> {
-      s = \\t,a,p,o => 
-        let 
+      s = \\t,a,p,o =>
+        let
           -- verb  = vp.s ! t ! a ! p ! o ! agr ;
           -- vform = case <t,agr> of {
           --   _ => VPres
@@ -355,7 +364,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   oper
-    
+
     -- Verb stem and suffixes for dir/ind objects, polarity
     VerbParts : Type = { stem, dir, ind, pol : Str } ;
     mkVParts = overload {
@@ -363,7 +372,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=a; dir=b; ind=c; pol=d} ;
       } ;
     joinVParts : VerbParts -> Str = \vb -> vb.stem ++ vb.dir ++ vb.ind ++ vb.pol ;
-    
+
     -- [AZ]
     VerbPhrase : Type = {
       s : VPForm => Anteriority => Polarity => VerbParts ; -- verb
@@ -507,7 +516,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
   oper
 
     {- ~~~ Some character classes ~~~ -}
-    
+
     Letter        : pattern Str = #( "a" | "b" | "ċ" | "d" | "e" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "i" | "ie" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "ż" | "z" );
     Consonant     : pattern Str = #( "b" | "ċ" | "d" | "f" | "ġ" | "g" | "għ" | "h" | "ħ" | "j" | "k" | "l" | "m" | "n" | "p" | "q" | "r" | "s" | "t" | "v" | "w" | "x" | "ż" | "z" );
     CoronalCons   : pattern Str = #( "ċ" | "d" | "n" | "r" | "s" | "t" | "x" | "ż" | "z" ); -- "konsonanti xemxin"
@@ -553,7 +562,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       mkRoot : Str -> Str -> Str -> Str -> Root = \c1,c2,c3,c4 ->
         { C1=toLower c1 ; C2=toLower c2 ; C3=toLower c3 ; C4=toLower c4 } ;
       } ;
-    
+
     mkPattern : Pattern = overload {
       mkPattern : Pattern =
         { V1=[] ; V2=[] } ;
@@ -664,7 +673,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       <"NOEXIST", str> => str ; --- dependent on defn of ResMlt.noexist
       <px, str> => px + str
       } ;
-  
+
     -- Add suffix, avoiding triple letters {GO pg96-7}
     --- add more cases?
     --- potentially slow
@@ -756,4 +765,3 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       } ;
 
 }
-
