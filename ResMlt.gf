@@ -31,12 +31,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     bool2definiteness : Bool -> Definiteness = \b ->
       if_then_else Definiteness b Definite Indefinite ;
 
-    -- Humanness =
-    --     Human
-    --   | NonHuman
-    --   ;
-
-  oper
     -- Agreement system corrected based on comments by [AZ]
     Agr : Type = { n : Number ; p : Person ; g : Gender } ;
 

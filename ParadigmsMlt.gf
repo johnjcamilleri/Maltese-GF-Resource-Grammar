@@ -24,16 +24,14 @@ resource ParadigmsMlt = open
     {- Parameters --------------------------------------------------------- -}
 
     -- Abstraction over gender names
-    Gender : Type ;
-    masculine : Gender ; --%
-    feminine : Gender ; --%
 
-    Gender = ResMlt.Gender ;
     masculine = Masc ;
-    feminine = Fem ;
+    feminine  = Fem ;
+    -- human     = Masc ;
+    -- nonhuman  = Neutr ;
 
-    singular : Number = Sg ;
-    plural : Number = Pl ;
+    singular = Sg ;
+    plural   = Pl ;
 
     form1 = FormI ;
     form2 = FormII ;
