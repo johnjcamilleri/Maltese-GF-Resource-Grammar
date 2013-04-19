@@ -13,11 +13,12 @@ pgf:
 
 batch:
 #	time gf +RTS -K1000M -RTS --batch AllMlt.gf
-	time gf --batch AllMlt.gf
+	gf --batch AllMlt.gf
 
 clean:
-	rm --force *.gfo
-	rm --force .gfbuild/*.gf-tags
+	rm -f _tmpi _tmpo
+	rm -f *.gfo
+	rm -f .gfbuild/*.gf-tags
 
 tags:
 	gf --tags --output-dir=.gfbuild AllMlt.gf
