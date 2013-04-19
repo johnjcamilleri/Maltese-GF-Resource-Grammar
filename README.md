@@ -32,6 +32,13 @@ Feel free to contact me if you are interested in contributing, or just curious.
 This work is released under the [GNU Lesser General Public License](http://www.gnu.org/licenses/lgpl.txt).
 In a nutshell, this means you can freely use it for whatever you want, including non-open source applications.
 
+## Citations
+
+Please site this work as:
+
+> J. Camilleri, _A computational grammar and lexicon for Maltese_,
+> M.Sc. thesis, Chalmers University of Technology. Gothenburg, Sweden, 2013.
+
 ## References
 
 These publications are currently being used and can be referenced by citation stamp:
