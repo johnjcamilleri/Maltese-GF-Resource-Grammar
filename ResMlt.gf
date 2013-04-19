@@ -36,6 +36,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
 
+    mkGenNum = overload {
+      mkGenNum : Gender -> Number -> GenNum = \g,n ->
+        case n of {
+          Sg => GSg g ;
+          Pl => GPl
+        } ;
+      mkGenNum : Number -> Gender -> GenNum = \n,g ->
+        case n of {
+          Sg => GSg g ;
+          Pl => GPl
+        }
+      } ;
+
     toVAgr : Agr -> VAgr = \agr ->
       case <agr.p,agr.n> of {
         <P1,num> => AgP1 num;
@@ -146,6 +159,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   oper
+    num2nounnum : Number -> Noun_Number = \n ->
+      case n of {
+        Sg  => Singulative ;
+        Pl  => Plural
+      } ;
+
     numform2nounnum : NumForm -> Noun_Number = \n ->
       case n of {
         NumX Sg  => Singulative ;
@@ -479,6 +498,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- n2 = \\_ => [] ;
       -- a2 = [] ;
       } ;
+
+    -- There is no infinitive in Maltese; use mamma
+    infVP : VerbPhrase -> Anteriority -> Polarity -> Agr -> Str = \vp,ant,pol,agr ->
+      let
+        vpform = VPIndicat Past (toVAgr agr) ;
+      in
+        joinVParts (vp.s ! vpform ! ant ! pol) ++ vp.s2 ! agr ;
 
   {- Adjecive ------------------------------------------------------------ -}
 
