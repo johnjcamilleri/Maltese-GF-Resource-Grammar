@@ -87,10 +87,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   param
-    NPCase = Nom | CPrep ; -- [AZ]
+    NPCase = NPNom | NPCPrep ; -- [AZ]
 
   oper
-    npNom = Nom ;
+    npNom = NPNom ;
 
   {- Clause --------------------------------------------------------------- -}
 
@@ -159,6 +159,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   oper
+
     num2nounnum : Number -> Noun_Number = \n ->
       case n of {
         Sg  => Singulative ;
@@ -175,6 +176,14 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         Num3_10  => Collective ;
         Num11_19 => Singulative ;
         Num20_99 => Plural
+      } ;
+
+    numform2num : NumForm -> Number = \n ->
+      case n of {
+        NumX num => num ;
+        Num0     => Sg ;
+        Num1     => Sg ;
+        _        => Pl
       } ;
 
   {- Determiners etc. ----------------------------------------------------- -}
@@ -272,8 +281,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Noun phrase
     mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
       s = table {
-        Nom   => s ;
-        CPrep => s
+        NPNom   => s ;
+        NPCPrep => s
         } ;
       a = mkAgr n p g ;
       isPron = False ;
@@ -282,6 +291,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     regNP : Str -> NounPhrase = \kulhadd ->
       mkNP kulhadd Sg P3 Masc ; -- KULĦADD KUNTENT (not KULĦADD KUNTENTA)
+
+    -- Join a preposition and NP to a string
+    prepNP : Preposition -> NounPhrase -> Str ;
+    prepNP prep np = case <np.isDefn,prep.takesDet> of {
+        <True,True>  => prep.s ! Definite ++ np.s ! NPCPrep ; -- FIT-TRIQ
+        <True,False> => prep.s ! Definite ++ np.s ! NPNom ;   -- FUQ IT-TRIQ
+        <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- FI TRIQ
+      } ;
+
+    Preposition = {
+      s : Definiteness => Str ;
+      takesDet : Bool
+      } ;
 
   {- Pronoun -------------------------------------------------------------- -}
 

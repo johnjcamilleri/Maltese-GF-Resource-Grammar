@@ -27,7 +27,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
         where {
           s = case np.isPron of {
             True => [] ; -- omit subject pronouns
-            False => np.s ! Nom
+            False => np.s ! NPNom
             } ;
           v = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
           o = vp.s2 ! np.a ;

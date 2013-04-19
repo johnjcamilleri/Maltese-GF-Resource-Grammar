@@ -31,7 +31,7 @@ concrete RelativeMlt of Relative = CatMlt ** open ResMlt in {
 
     -- Prep -> NP -> RP -> RP
     FunRP prep np rp = {
-      s = np.s ! Nom ++ (prep.s ! bool2definiteness np.isDefn) ++ rp.s ;
+      s = np.s ! NPNom ++ (prep.s ! bool2definiteness np.isDefn) ++ rp.s ;
       } ;
 
     -- RP

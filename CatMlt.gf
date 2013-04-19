@@ -105,10 +105,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 
     Conj = {s1,s2 : Str} ;
     Subj = {s : Str} ;
-    Prep = {
-      s : Definiteness => Str ;
-      takesDet : Bool
-      } ;
+    Prep = Preposition ;
 
 -- Open lexical classes, e.g. Lexicon
 
@@ -120,7 +117,9 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     A = Adjective ;
     A2 = Adjective ;
 
-    N, N2, N3 = Noun ;
+    N  = Noun ;
+    N2 = Noun  ** {c2 : Prep} ;
+    N3 = Noun  ** {c2, c3 : Prep} ;
     PN = ProperNoun ;
 
 }

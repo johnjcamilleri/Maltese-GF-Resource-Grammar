@@ -88,7 +88,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     die_V          = miet_MWT_1_8923_V ;
     dig_V          = hafer_HFR_1_8233_V ;
     dirty_A        = regA "maħmuġ" ;
-    distance_N3    = mkN "distanza" ;
+    distance_N3    = mkN3 (mkN "distanza") minnP saP ;
     do_V2          = dirV2 (ghamel_GHML_1_10544_V) ;
     doctor_N       = genderedN "tabib" "tobba" ;
     dog_N          = mkN "kelb" "klieb" ;
@@ -372,6 +372,7 @@ concrete LexiconMlt of Lexicon = CatMlt **
     lilP = mkPrep "lil" ;
     maP = mkPrep "ma'" ;
     taP = mkPrep "ta'" ;
+    saP = mkPrep "sa" ;
     biP = mkPrep "bi" ;
     fiP = mkPrep "fi" ;
 

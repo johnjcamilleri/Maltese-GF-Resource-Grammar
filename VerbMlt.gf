@@ -22,12 +22,12 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         True => {
             s = \\vpf,ant,pol =>
               let bits = vp.s ! vpf ! ant ! pol in
-              mkVParts (glue bits.stem (np.s ! CPrep)) bits.pol ;
+              mkVParts (glue bits.stem (np.s ! NPCPrep)) bits.pol ;
             s2 = \\agr => [] ;
           } ;
 
         -- Insert obj to VP
-        _ => insertObj (\\agr => np.s ! CPrep) vp
+        _ => insertObj (\\agr => np.s ! NPCPrep) vp
       } ;
 
     -- VP -> Adv -> VP

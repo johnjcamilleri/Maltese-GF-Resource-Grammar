@@ -21,7 +21,7 @@ concrete AdjectiveMlt of Adjective = CatMlt ** open ResMlt, Prelude in {
         True => a.s ! ACompar ;
         _    => compMore ++ a.s ! (APosit gn)
         }
-        ++ conjThan ++ np.s ! Nom ; 
+        ++ conjThan ++ np.s ! NPNom ;
       isPre = False -- TO CHECK
       } ;
 
@@ -45,6 +45,5 @@ concrete AdjectiveMlt of Adjective = CatMlt ** open ResMlt, Prelude in {
     compMore : Str = "iktar" | "iżjed" ;
     compLess : Str = "inqas" ;
     conjThan : Str = "minn" ;
-
 
 }

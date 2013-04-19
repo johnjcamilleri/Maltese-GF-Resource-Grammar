@@ -223,7 +223,10 @@ resource ParadigmsMlt = open
     } ;
 
     prepN2 : N -> Prep -> N2 ;
-    prepN2 = \n,p -> lin N2 (n ** {c2 = p.s}) ;
+    prepN2 = \n,p -> lin N2 (n ** {c2 = p}) ;
+
+    mkN3 : Noun -> Prep -> Prep -> N3 ;
+    mkN3 = \n,p,q -> lin N3 (n ** {c2 = p ; c3 = q}) ;
 
     -- Mark a noun as taking possessive enclitic pronouns
     possN : N -> N ;
@@ -571,8 +574,8 @@ resource ParadigmsMlt = open
     -- e.g.: derivedV_IX "sfar"
     derivedV_IX : Str -> Root -> V = \mammaIX, root ->
       case mammaIX of {
-        -- c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant => 
-        _  + v1@("ie"|"a"|"â") + _ => 
+        -- c1@#Consonant + c2@#Consonant + v1@("ie"|"a") + c3@#Consonant =>
+        _  + v1@("ie"|"a"|"â") + _ =>
           let
             patt : Pattern = mkPattern v1 ;
             class : VClass = classifyRoot root ;
@@ -681,7 +684,7 @@ resource ParadigmsMlt = open
       geminatedV : Root -> Pattern -> V = \root,patt ->
         let imp = conjGeminatedImp root patt
         in geminatedVWorst root patt imp ;
-        
+
       -- Params: root, pattern, imperative P2Sg
       geminatedV : Root -> Pattern -> Str -> V = \root,patt,imp_sg ->
         let
@@ -1118,10 +1121,10 @@ resource ParadigmsMlt = open
 
     mkAdv : Str -> Adv ; -- post-verbal adverb, e.g. ILLUM
     mkAdV : Str -> AdV ; -- preverbal adverb, e.g. DEJJEM
-    
+
     mkAdA : Str -> AdA ; -- adverb modifying adjective, e.g. PJUTTOST
     mkAdN : Str -> AdN ; -- adverb modifying numeral, e.g. MADWAR
-    
+
     mkAdv x = lin Adv (ss x) ;
     mkAdV x = lin AdV (ss x) ;
     mkAdA x = lin AdA (ss x) ;
@@ -1140,7 +1143,7 @@ resource ParadigmsMlt = open
       isDemo = isdemo ;
       isDefn = False ;
       } ;
-        
+
     mkOrd : Str -> Ord = \x -> lin Ord { s = \\c => x };
 
 
