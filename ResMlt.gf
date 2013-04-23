@@ -49,12 +49,19 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         }
       } ;
 
-    toVAgr : Agr -> VAgr = \agr ->
-      case <agr.p,agr.n> of {
-        <P1,num> => AgP1 num;
-        <P2,num> => AgP2 num;
-        <P3,Sg>  => AgP3Sg agr.g;
-        <P3,Pl>  => AgP3Pl
+    toVAgr = overload {
+      toVAgr : Agr -> VAgr = \agr ->
+        case <agr.p,agr.n> of {
+          <P1,num> => AgP1 num;
+          <P2,num> => AgP2 num;
+          <P3,Sg>  => AgP3Sg agr.g;
+          <P3,Pl>  => AgP3Pl
+        } ;
+      toVAgr : GenNum -> VAgr = \gn ->
+        case gn of {
+          GSg g => AgP3Sg g;
+          GPl   => AgP3Pl
+        } ;
       } ;
 
     toAgr : VAgr -> Agr = \vagr ->
@@ -87,7 +94,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       ;
 
   param
-    NPCase = NPNom | NPCPrep ; -- [AZ]
+    NPCase =
+        NPNom
+      | NPAcc     -- I have a feeling we'll this need eventually
+      | NPCPrep ; -- [AZ]
 
   oper
     npNom = NPNom ;
@@ -113,9 +123,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           -- vform = case <t,agr> of {
           --   _ => VPres
           --   } ;
-          vpform = VPIndicat t (toVAgr agr) ;
-          verb  = joinVParts (vp.s ! vpform ! a ! p) ;
-          compl = vp.s2 ! agr ;
+          vpform : VPForm = VPIndicat t (toVAgr agr) ;
+          verb   : Str    = joinVParts (vp.s ! vpform ! a ! p) ;
+          compl  : Str    = vp.s2 ! agr ;
         in
         case o of {
           -- ODir => subj ++ verb.aux ++ verb.adv ++ vp.ad ++ verb.fin ++ verb.inf ++ vp.p ++ compl ;
@@ -280,10 +290,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
     -- Noun phrase
     mkNP : Str -> Number -> Person -> Gender -> NounPhrase = \s,n,p,g -> {
-      s = table {
-        NPNom   => s ;
-        NPCPrep => s
-        } ;
+      s = \\npcase => s ;
       a = mkAgr n p g ;
       isPron = False ;
       isDefn = False ;
@@ -524,7 +531,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- There is no infinitive in Maltese; use perfective
     infVP : VerbPhrase -> Anteriority -> Polarity -> Agr -> Str = \vp,ant,pol,agr ->
       let
-        vpform = VPIndicat Past (toVAgr agr) ;
+        vpform : VPForm = VPIndicat Past (toVAgr agr) ;
       in
         joinVParts (vp.s ! vpform ! ant ! pol) ++ vp.s2 ! agr ;
 
@@ -537,11 +544,21 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         <Pres,Neg> => "m'hemmx" ;
         <Past,Pos> => "kien hemm" ;
         <Past,Neg> => "ma kienx hemm" ;
-        <Fut,Pos> => "ħa jkun hemm" ;
-        <Fut,Neg> => "mhux ħa jkun hemm" ;
+        <Fut,Pos>  => "ħa jkun hemm" ;
+        <Fut,Neg>  => "mhux ħa jkun hemm" ;
         <Cond,Pos> => "jekk hemm" ;
         <Cond,Neg> => "jekk hemmx"
         }
+      } ;
+
+    reflPron : VAgr => Str = table {
+      AgP1 Sg      => "lili nnifsi" ;
+      AgP2 Sg      => "lilek innifsek" ;
+      AgP3Sg Masc  => "lilu nnifsu" ;
+      AgP3Sg Fem   => "lila nnifisha" ;
+      AgP1 Pl      => "lilna nfusna" ;
+      AgP2 Pl      => "lilkom infuskom" ;
+      AgP3Pl       => "lilhom infushom"
       } ;
 
   {- Adjecive ------------------------------------------------------------ -}

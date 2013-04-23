@@ -41,12 +41,12 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     -- Det -> CN -> NP
     DetCN det cn = {
       s = table {
-        NPNom => case <det.isPron, cn.takesPron> of {
+        NPCPrep => cn.s ! numform2nounnum det.n ;
+        _       => case <det.isPron, cn.takesPron> of {
           <True,True>  => glue (cn.s ! numform2nounnum det.n) det.clitic ;
           <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
           _            => chooseNounNumForm det cn
-          } ;
-        NPCPrep => cn.s ! numform2nounnum det.n
+          }
         } ;
       a = case (numform2nounnum det.n) of {
 	Singulative => mkAgr Sg P3 cn.g ; --- collective?
@@ -127,6 +127,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     UsePron p = {
       s = table {
         NPNom   => p.s ! Personal ;
+        NPAcc   => p.s ! Personal ;
         NPCPrep => p.s ! Suffixed Acc
         } ;
       a = p.a ;
@@ -189,7 +190,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- A -> Ord
     OrdSuperl a = {
-      s = \\c => a.s ! ASuperl
+      s = \\c => case a.hasComp of {
+        True => a.s ! ASuperl ;
+        False => "l-iktar" ++ a.s ! APosit (GSg Masc) --- should agree
+        }
       } ;
 
     -- CN -> NP
@@ -277,9 +281,4 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       takesDet = False
       } ;
 
-{-
-   Warning: no linearization of AdNum
-   Warning: no linearization of DetNP
-   Warning: no linearization of OrdSuperl
--}
 }

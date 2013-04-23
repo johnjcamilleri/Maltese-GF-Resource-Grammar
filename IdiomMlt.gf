@@ -36,7 +36,7 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
 
     -- NP -> Cl ;        -- there is a house
     ExistNP np = {
-      s = \\t,a,p,o => auxHemm.s ! t ! p ++ np.s ! NPNom ;
+      s = \\t,a,p,o => auxHemm.s ! t ! p ++ np.s ! NPAcc ;
       } ;
 
     -- IP -> QCl ;       -- which houses are there
@@ -46,7 +46,7 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
 
     -- NP -> Adv -> Cl ;    -- there is a house in Paris
     ExistNPAdv np adv = {
-      s = \\t,a,p,o => auxHemm.s ! t ! p ++ np.s ! NPNom ++ adv.s ;
+      s = \\t,a,p,o => auxHemm.s ! t ! p ++ np.s ! NPAcc ++ adv.s ;
       } ;
 
     -- IP -> Adv -> QCl ;   -- which houses are there in Paris
@@ -66,7 +66,7 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
 
     -- NP -> VP -> Utt ; -- let John walk
     ImpP3 np vp = {
-        s = halli ++ np.s ! NPNom ++ infVP vp Simul Pos np.a
+        s = halli ++ np.s ! NPAcc ++ infVP vp Simul Pos np.a
       } where {
         halli : Str = case np.a.n of {
           Sg => "ħalli" ;

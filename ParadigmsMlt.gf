@@ -1100,15 +1100,18 @@ resource ParadigmsMlt = open
       } ;
 
     prepA2 : A -> Prep -> A2 ;
-    prepA2 a p = lin A2 (a ** {c2 = p.s}) ;
+    prepA2 a p = lin A2 (a ** {prep = p}) ;
+
+    dirA2 : A -> A2 ;
+    dirA2 a = prepA2 a noPrep ;
 
     mkA2 : overload {
       mkA2 : A -> Prep -> A2 ;
       mkA2 : A -> Str -> A2 ;
       } ;
     mkA2 = overload {
-      mkA2 : A -> Prep -> A2   = prepA2 ;
-      mkA2 : A -> Str -> A2    = \a,p -> prepA2 a (mkPrep p) ;
+      mkA2 : A -> Prep -> A2 = prepA2 ;
+      mkA2 : A -> Str -> A2  = \a,p -> prepA2 a (mkPrep p) ;
       } ;
 
     AS, A2S, AV : Type = A ;
