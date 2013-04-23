@@ -521,12 +521,28 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- a2 = [] ;
       } ;
 
-    -- There is no infinitive in Maltese; use mamma
+    -- There is no infinitive in Maltese; use perfective
     infVP : VerbPhrase -> Anteriority -> Polarity -> Agr -> Str = \vp,ant,pol,agr ->
       let
         vpform = VPIndicat Past (toVAgr agr) ;
       in
         joinVParts (vp.s ! vpform ! ant ! pol) ++ vp.s2 ! agr ;
+
+    Aux = {
+      s : Tense => Polarity => Str ;
+      } ;
+    auxHemm : Aux = {
+      s = \\t,p => case <t,p> of {
+        <Pres,Pos> => "hemm" ;
+        <Pres,Neg> => "m'hemmx" ;
+        <Past,Pos> => "kien hemm" ;
+        <Past,Neg> => "ma kienx hemm" ;
+        <Fut,Pos> => "ħa jkun hemm" ;
+        <Fut,Neg> => "mhux ħa jkun hemm" ;
+        <Cond,Pos> => "jekk hemm" ;
+        <Cond,Neg> => "jekk hemmx"
+        }
+      } ;
 
   {- Adjecive ------------------------------------------------------------ -}
 
