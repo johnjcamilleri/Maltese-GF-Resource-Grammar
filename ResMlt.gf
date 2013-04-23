@@ -101,6 +101,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
     npNom = NPNom ;
+    npAcc = NPAcc ;
 
   {- Clause --------------------------------------------------------------- -}
 
