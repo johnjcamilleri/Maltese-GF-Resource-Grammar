@@ -17,14 +17,12 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     S  = {s : Str} ;
     QS = {s : QForm => Str} ;
     RS = {s : Agr => Str} ;
-    SSlash = {s : Str} ;
-    -- RS = {s : Agr => Str ; c : NPCase} ; -- c for it clefts
-    -- SSlash = {s : Str ; c2 : Str} ;
+    SSlash = {s : Str ; c2 : Str} ; -- not sure if we need c2
 
 -- Sentence
 
     Cl = Clause ;
-    ClSlash = Clause ;
+    ClSlash = Clause ** {c2 : Str} ; -- not sure if we need c2
     Imp = {s : Polarity => Number => Str} ;
 
 -- Question

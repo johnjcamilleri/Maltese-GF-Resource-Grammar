@@ -562,6 +562,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       AgP3Pl       => "lilhom infushom"
       } ;
 
+    conjLi : Str = "li" ;
+
   {- Adjecive ------------------------------------------------------------ -}
 
   oper

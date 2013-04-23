@@ -25,13 +25,63 @@ concrete SentenceMlt of Sentence = CatMlt ** open
           OQuest => (v ++ o ++ s) -- JIEKOL ĦUT ĠANNI ?
         }
         where {
-          s = case np.isPron of {
+          s : Str = case np.isPron of {
             True => [] ; -- omit subject pronouns
             False => np.s ! NPNom
             } ;
-          v = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
-          o = vp.s2 ! np.a ;
+          v : Str = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
+          o : Str = vp.s2 ! np.a ;
         } ;
+      } ;
+
+    -- SC -> VP -> Cl
+    -- that she goes is good
+    PredSCVP sc vp = mkClause sc.s (agrP3 Sg Masc) vp ;
+
+    -- VP -> Imp
+    ImpVP vp = {
+      s = \\pol,n => joinVParts (vp.s ! VPImperat n ! Simul ! pol)
+    } ;
+
+    -- NP -> VPSlash -> ClSlash
+    -- (whom) he sees
+    SlashVP np vp =
+      mkClause (np.s ! npNom) np.a vp ** {c2 = vp.s2 ! np.a} ;
+
+    -- ClSlash -> Adv -> ClSlash
+    -- (whom) he sees today
+    AdvSlash slash adv = {
+      s  = \\t,a,p,o => slash.s ! t ! a ! p ! o ++ adv.s ;
+      c2 = slash.c2
+    } ;
+
+    -- Cl -> Prep -> ClSlash
+    -- (with whom) he  walks
+    SlashPrep cl prep = cl ** {c2 = prep.s ! Definite} ;
+
+    -- NP -> VS -> SSlash -> ClSlash
+    -- (whom) she says that he loves
+    SlashVS np vs slash =
+      mkClause (np.s ! npNom) np.a
+        (insertObj (\\_ => conjLi ++ slash.s) (predV vs))  **
+        {c2 = slash.c2} ;
+
+    -- S -> SC
+    -- that she goes
+    EmbedS s = {
+      s = conjLi ++ s.s
+      } ;
+
+    -- QS -> SC
+    -- who goes
+    EmbedQS qs = {
+      s = qs.s ! QIndir
+      } ;
+
+    -- VP -> SC
+    -- to go
+    EmbedVP vp = {
+      s = infVP vp Simul Pos (agrP3 Sg Masc) --- agr
       } ;
 
     -- Temp -> Pol -> Cl -> S
@@ -53,7 +103,31 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- Temp -> Pol -> ClSlash -> SSlash
     UseSlash t p clslash = {
       s = t.s ++ p.s ++ clslash.s ! t.t ! t.a ! p.p ! ODir ;
-      -- c2 = cl.c2
+      c2 = clslash.c2
     } ;
+
+    -- Adv -> S -> S
+    -- then I will go home
+    AdvS a s = {
+      s = a.s ++ s.s
+      } ;
+
+    -- Adv -> S -> S
+    -- next week, I will go home
+    ExtAdvS a s = {
+      s = a.s ++ "," ++ s.s
+      } ;
+
+    -- S -> Subj -> S -> S
+    -- I go home if she comes
+    SSubjS a s b = {
+      s = a.s ++ "," ++ s.s ++ b.s
+      } ;
+
+    -- S -> RS -> S
+    -- she sleeps, which is good
+    RelS s r = {
+      s = s.s ++ "," ++ r.s ! agrP3 Sg Masc
+      } ;
 
 }
