@@ -34,7 +34,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Agreement system corrected based on comments by [AZ]
     Agr : Type = { n : Number ; p : Person ; g : Gender } ;
 
-    mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
+    mkAgr = overload {
+      mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
+      mkAgr : GenNum -> Agr = \gn -> case gn of {
+        GSg g => {n = Sg ; p = P3 ; g = g} ;
+        GPl   => {n = Pl ; p = P3 ; g = Masc}
+        }
+      } ;
 
     mkGenNum = overload {
       mkGenNum : Gender -> Number -> GenNum = \g,n ->
@@ -46,7 +52,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         case n of {
           Sg => GSg g ;
           Pl => GPl
-        }
+        } ;
+      mkGenNum : Agr -> GenNum = \a ->
+        case a.n of {
+          Sg => GSg a.g ;
+          Pl => GPl
+        } ;
       } ;
 
     toVAgr = overload {
@@ -451,7 +462,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- a2 = vp.a2 ;
       } ;
 
-    copula_kien = {
+    copula_kien : Verb = {
       s : (VForm => Str) = table {
         VPerf (AgP1 Sg)     => "kont" ;
         VPerf (AgP2 Sg)     => "kont" ;
@@ -563,6 +574,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       } ;
 
     conjLi : Str = "li" ;
+    conjThat = conjLi ;
 
   {- Adjecive ------------------------------------------------------------ -}
 
