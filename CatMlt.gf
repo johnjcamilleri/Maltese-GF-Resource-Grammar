@@ -46,7 +46,7 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Verb
 
     VP = VerbPhrase ;
-    VPSlash = VerbPhrase ;
+    VPSlash = SlashVerbPhrase ;
     Comp = {s : Agr => Str} ;
 
 -- Adjective
@@ -108,16 +108,16 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
 -- Open lexical classes, e.g. Lexicon
 
     V, VS, VQ, VA = Verb ;
-    V2, V2A, V2Q, V2S = Verb ** {prep : Prep} ;
+    V2, V2A, V2Q, V2S = Verb ** {c2 : Compl} ;
     VV = Verb ;
-    V3, V2V = Verb ** {prep1,prep2 : Prep} ; -- ** {typ : VVType} ;
+    V3, V2V = Verb ** {c2, c3 : Compl} ; -- ** {typ : VVType} ;
 
     A  = Adjective ;
-    A2 = Adjective ** {prep : Prep} ;
+    A2 = Adjective ** {c2 : Compl} ;
 
     N  = Noun ;
-    N2 = Noun ** {c2 : Prep} ;
-    N3 = Noun ** {c2, c3 : Prep} ;
+    N2 = Noun ** {c2 : Compl} ;
+    N3 = Noun ** {c2, c3 : Compl} ;
     PN = ProperNoun ;
 
 }

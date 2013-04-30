@@ -49,13 +49,13 @@ concrete AdjectiveMlt of Adjective = CatMlt ** open ResMlt, Prelude in {
 
     -- A2 -> NP -> AP ;  -- married to her
     ComplA2 a2 np = {
-      s = \\gn => a2.s ! APosit gn ++ a2.prep.s ! Definite ++ np.s ! NPAcc ;
+      s = \\gn => a2.s ! APosit gn ++ a2.c2.s ! Definite ++ np.s ! NPAcc ;
       isPre = False
       } ;
 
     -- A2 -> AP ;        -- married to itself
     ReflA2 a2 = {
-      s = \\gn => a2.s ! APosit gn ++ a2.prep.s ! Definite ++ reflPron ! (toVAgr gn) ;
+      s = \\gn => a2.s ! APosit gn ++ a2.c2.s ! Definite ++ reflPron ! (toVAgr gn) ;
       isPre = False
       } ;
 

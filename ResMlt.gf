@@ -11,6 +11,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   flags coding=utf8 ;
 
+  {- Maybe type------------------------------------------------------------ -}
+
+  -- oper
+  --   Maybe   : Type t = t ** {exists : Bool} ;
+  --   Just    : t -> Maybe t = \s -> s ** {exists = True} ;
+  --   Nothing : t -> Maybe t = \s -> s ** {exists = False} ;
+
   {- General -------------------------------------------------------------- -}
 
   param
@@ -34,14 +41,25 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Agreement system corrected based on comments by [AZ]
     Agr : Type = { n : Number ; p : Person ; g : Gender } ;
 
-    mkAgr = overload {
-      mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
-      mkAgr : GenNum -> Agr = \gn -> case gn of {
+    -- Make Agr from raw ingredients
+    mkAgr : Number -> Person -> Gender -> Agr = \n,p,g -> {n = n ; p = p ; g = g} ;
+
+    -- Convert to Agr from other typek
+    toAgr = overload {
+      toAgr : GenNum -> Agr = \gn -> case gn of {
         GSg g => {n = Sg ; p = P3 ; g = g} ;
         GPl   => {n = Pl ; p = P3 ; g = Masc}
-        }
+        } ;
+      toAgr : VAgr -> Agr = \vagr ->
+        case vagr of {
+          AgP1 num   => mkAgr num P1 Masc ; --- sorry ladies
+          AgP2 num   => mkAgr num P2 Masc ;
+          AgP3Sg gen => mkAgr Pl  P3 gen ;
+          AgP3Pl     => mkAgr Pl  P3 Masc
+        } ;
       } ;
 
+    -- Make Agr from raw ingredients
     mkGenNum = overload {
       mkGenNum : Gender -> Number -> GenNum = \g,n ->
         case n of {
@@ -53,13 +71,16 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           Sg => GSg g ;
           Pl => GPl
         } ;
-      mkGenNum : Agr -> GenNum = \a ->
-        case a.n of {
-          Sg => GSg a.g ;
-          Pl => GPl
-        } ;
       } ;
 
+    -- Convert to GenNum from another type
+    toGenNum : Agr -> GenNum = \a ->
+      case a.n of {
+        Sg => GSg a.g ;
+        Pl => GPl
+      } ;
+
+    -- Convert to VAgr from another type
     toVAgr = overload {
       toVAgr : Agr -> VAgr = \agr ->
         case <agr.p,agr.n> of {
@@ -73,14 +94,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           GSg g => AgP3Sg g;
           GPl   => AgP3Pl
         } ;
-      } ;
-
-    toAgr : VAgr -> Agr = \vagr ->
-      case vagr of {
-        AgP1 num   => mkAgr num P1 Masc ; --- sorry ladies
-        AgP2 num   => mkAgr num P2 Masc ;
-        AgP3Sg gen => mkAgr Pl  P3 gen ;
-        AgP3Pl     => mkAgr Pl  P3 Masc
       } ;
 
     agrP3 : Number -> Gender -> Agr = \n,g ->
@@ -319,6 +332,13 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- FI TRIQ
       } ;
 
+    Compl = Preposition ;
+    -- Compl : Type = {
+    --   s : Str ;
+    --   -- c : NPForm ;
+    --   -- isPre : Bool
+    --   } ;
+
     Preposition = {
       s : Definiteness => Str ;
       takesDet : Bool
@@ -379,8 +399,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         VPerf VAgr    -- Perfect tense in all pronoun cases
       | VImpf VAgr    -- Imperfect tense in all pronoun cases
       | VImp Number   -- Imperative is always P2, Sg & Pl
-      -- | VPresPart GenNum  -- Present Particible for Gender/Number
-      -- | VPastPart GenNum  -- Past Particible for Gender/Number
+      | VActivePart GenNum  -- Present/active particible, e.g. RIEQED
+      | VPassivePart GenNum  -- Passive/past particible, e.g. MAĦBUB
       -- | VVerbalNoun      -- Verbal Noun
     ;
 
@@ -445,6 +465,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- a2 : Str ;
       } ;
 
+    SlashVerbPhrase : Type = VerbPhrase ** {c2 : Compl} ;
+
   param
     -- [AZ]
     VPForm =
@@ -454,13 +476,26 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
 
-    -- [AZ]
     insertObj : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
       s = vp.s ;
-      s2 = obj ;
-      -- a1 = vp.a1 ;
-      -- a2 = vp.a2 ;
+      s2 = \\agr => vp.s2 ! agr ++ obj ! agr ;
       } ;
+
+    insertObjPre : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
+      s = vp.s ;
+      s2 = \\agr => obj ! agr ++ vp.s2 ! agr ;
+      } ;
+
+    insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
+      insertObj obj vp ** {c2 = vp.c2} ;
+
+    insertAdV : Str -> VerbPhrase -> VerbPhrase = \adv,vp -> {
+      s = vp.s ;
+      s2 = \\agr => vp.s2 ! agr ++ adv ;
+      } ;
+
+    predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->
+      predV verb ** {c2 = verb.c2} ;
 
     copula_kien : Verb = {
       s : (VForm => Str) = table {
@@ -479,7 +514,9 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         VImpf (AgP2 Pl)     => "tkunu" ;
         VImpf (AgP3Pl)      => "jkunu" ;
         VImp (Pl)           => "kun" ;
-        VImp (Sg)           => "kunu"
+        VImp (Sg)           => "kunu" ;
+        VActivePart gn      => "" ;
+        VPassivePart gn     => ""
         } ;
       i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
       } ;
