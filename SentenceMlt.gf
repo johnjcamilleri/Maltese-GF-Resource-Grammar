@@ -46,7 +46,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- NP -> VPSlash -> ClSlash
     -- (whom) he sees
     SlashVP np vp =
-      mkClause (np.s ! npNom) np.a vp ** {c2 = vp.s2 ! np.a} ;
+      mkClause (np.s ! npNom) np.a vp ** {c2 = vp.c2} ;
 
     -- ClSlash -> Adv -> ClSlash
     -- (whom) he sees today
@@ -57,7 +57,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
 
     -- Cl -> Prep -> ClSlash
     -- (with whom) he  walks
-    SlashPrep cl prep = cl ** {c2 = prep.s ! Definite} ;
+    SlashPrep cl prep = cl ** {c2 = prep} ;
 
     -- NP -> VS -> SSlash -> ClSlash
     -- (whom) she says that he loves

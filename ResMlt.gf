@@ -96,8 +96,10 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         } ;
       } ;
 
-    agrP3 : Number -> Gender -> Agr = \n,g ->
-      mkAgr n P3 g;
+    -- agrP3 : Agr = overload {
+      agrP3 : Number -> Gender -> Agr = \n,g -> mkAgr n P3 g;
+      -- agrP3 : Number           -> Agr = \n   -> mkAgr n P3 Masc;
+      -- } ;
 
     conjAgr : Agr -> Agr -> Agr = \a,b -> {
       n = (conjNumber a.n b.n) ;
@@ -159,6 +161,17 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           -- ABSOLUTELY NOT CORRECT: in progress
           ODir => subj ++ verb ++ compl ;
           OQuest => subj ++ verb ++ compl
+        }
+      } ;
+
+    mkQuestion : {s : Str} -> Clause -> QClause = \wh,cl -> {
+      s = \\t,a,p =>
+        let
+          cls = cl.s ! t ! a ! p ;
+          why = wh.s
+        in table {
+          QDir   => why ++ cls ! OQuest ;
+          QIndir => why ++ cls ! ODir
         }
       } ;
 

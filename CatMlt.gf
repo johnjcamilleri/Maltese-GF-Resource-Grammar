@@ -17,20 +17,20 @@ concrete CatMlt of Cat = CommonX ** open ResMlt, Prelude in {
     S  = {s : Str} ;
     QS = {s : QForm => Str} ;
     RS = {s : Agr => Str} ;
-    SSlash = {s : Str ; c2 : Str} ; -- not sure if we need c2
+    SSlash = {s : Str ; c2 : Compl} ; -- not sure if we need c2
 
 -- Sentence
 
     Cl = Clause ;
-    ClSlash = Clause ** {c2 : Str} ; -- not sure if we need c2
+    ClSlash = Clause ** {c2 : Compl} ; -- not sure if we need c2
     Imp = {s : Polarity => Number => Str} ;
 
 -- Question
 
-    QCl = QClause ;
-    IP = {s : Str ; n : Number} ;
-    IComp = {s : Str} ;
-    IDet = {s : Str} ;
+    QCl    = QClause ;
+    IP     = {s : Str ; n : Number} ;
+    IComp  = {s : Str} ;
+    IDet   = {s : Str ; n : Number} ;
     IQuant = {s : Str} ;
 
 -- Relative

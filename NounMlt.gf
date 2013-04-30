@@ -39,7 +39,12 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
   lin
     -- Det -> CN -> NP
-    DetCN det cn = {
+    DetCN det cn =
+      let
+        -- To stop complaining about lock fields
+        det = lin Det det ;
+        cn  = lin CN cn ;
+      in {
       s = table {
         NPCPrep => cn.s ! numform2nounnum det.n ;
         _       => case <det.isPron, cn.takesPron> of {

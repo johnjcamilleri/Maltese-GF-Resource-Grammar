@@ -8,13 +8,13 @@ concrete StructuralMlt of Structural = CatMlt **
   open MorphoMlt, ResMlt, ParadigmsMlt, (C = ConstructX), Prelude in {
 
   flags
-    optimize=all ;  
+    optimize=all ;
     coding=utf8 ;
 
   lin
-    
+
     {- Pronoun -------------------------------------------------------------- -}
-    
+
     i_Pron      = mkPron "jien"  "i"   "ni" "li"  singular P1 masculine ; --- also JIENA
     youSg_Pron  = mkPron "int"   "ek"  "ek" "lek" singular P2 masculine ; --- also INTI
     he_Pron     = mkPron "hu"    "u"   "u"  "lu"  singular P3 masculine ; --- also HUWA
@@ -43,7 +43,10 @@ concrete StructuralMlt of Structural = CatMlt **
     somePl_Det  = mkDeterminer plural "xi" ;
     not_Predet  = ss "mhux" ;
 
-    how8many_IDet = ss "kemm" ; -- KEMM IL-...
+    how8many_IDet = {
+      s = "kemm" ; -- KEMM IL-...
+      n = plural
+      } ;
 
     {- Quantifier ----------------------------------------------------------- -}
 
@@ -134,7 +137,7 @@ concrete StructuralMlt of Structural = CatMlt **
     when_IAdv     = ss "meta" ;
     where_IAdv    = ss "fejn" ;
     why_IAdv      = ss "għalfejn" ;
-    
+
     {- Verb ----------------------------------------------------------------- -}
 
     can8know_VV = af_V ;
