@@ -2,6 +2,7 @@
 
 ( cd ../../ ; make pgf )
 
-( ghc tester.hs )
+( make tester )
 
+echo
 ./tester "$@"

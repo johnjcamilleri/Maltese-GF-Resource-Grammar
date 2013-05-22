@@ -31,28 +31,43 @@ main = do
 runFile :: (MonadIO m, MonadReader Env m) => FilePath -> m ()
 runFile filepath = do
   c <- liftIO (readFile filepath)
-  liftIO $ putStrLn $ "-- " ++ filepath
+  liftIO $ putStrLn $ "# " ++ filepath
   run . (drop 2) . lines $ c
 
 -- | Process the table contents
 run :: (MonadIO m, MonadReader Env m) => [String] -> m ()
 run lines = do
   results <- mapM line lines
-  let good = length $ filter (==True) results
-  let total = length results
-  liftIO $ putStrLn $ printf "Passed %d/%d" good total
+  let good = length $ filter (\x->case x of {Ok _ -> True; _ -> False}) results
+  let total = length $ filter (\x->case x of {Ignore -> False; _ -> True}) results
+  let perc = fromIntegral (good * 100) / fromIntegral total :: Float
+  liftIO $ putStrLn $ printf "Passed %d/%d (%.1f%%)" good total perc
 
--- | Expects line of an org-mode table
-line ::  (MonadIO m, MonadReader Env m) => String -> m Bool
+-- | Process a single line (expects line of an org-mode table)
+line :: (MonadIO m, MonadReader Env m) => String -> m Result
 line l = do
-  let bits = map strip $ wordsWhen (=='|') l
-  res <- check (bits!!0) (bits!!1) (bits!!2)
-  case res of
-    Right s -> do ok $ "+ " ++ s ; return True
-    Left s  -> do err $ "- " ++ s ; return False
+  let bits
+        = map strip $ wordsWhen (=='|') l
+  if (length bits < 3)
+    then do
+    liftIO $ putStrLn "-"
+    return Ignore
+    else do
+    res <- check (bits!!0) (bits!!1) (bits!!2)
+    case res of
+      Ok s      -> ok   $ "+ " ++ s
+      Warning s -> warn $ "! " ++ s
+      Error s   -> err  $ "x " ++ s
+    return res
 
-type Result = Either String String
+-- | The result of processing a single line
+data Result =
+    Error String
+  | Warning String
+  | Ok String
+  | Ignore
 
+-- | Check linearisation against gold standard
 check :: (MonadIO m, MonadReader Env m) => String -> String -> String -> m Result
 check ast eng mlt = do
   pgf <- asks pgf
@@ -64,13 +79,15 @@ check ast eng mlt = do
           Just out_eng = Map.lookup lang_eng m
           Just out_mlt' = Map.lookup lang_mlt m
           out_mlt = bind out_mlt'
-      unless (out_eng == eng) $ warn $ printf "! English mismatch: expected \"%s\" but got \"%s\"" eng out_eng
-      return $ if out_mlt == mlt then Right mlt else Left $ printf "Expected \"%s\" but got \"%s\"" mlt out_mlt
-    Nothing -> return $ Left $ "Invalid AST: " ++ ast
+      case () of _
+                   | out_eng /= eng -> return $ Warning $ printf "English mismatch: expected \"%s\" but got \"%s\"" eng out_eng
+                   | out_mlt /= mlt -> return $ Error   $ printf "%s (expected \"%s\")" out_mlt mlt
+                   | out_mlt == mlt -> return $ Ok      $ mlt
+    Nothing -> return $ Warning $ "Invalid AST: " ++ ast
 
-ok s   = liftIO $ putStrLn $ color green $ s
+ok   s = liftIO $ putStrLn $ color green $ s
 warn s = liftIO $ putStrLn $ color yellow $ s
-err s  = liftIO $ putStrLn $ color red $ s
+err  s = liftIO $ putStrLn $ color red $ s
 
 -- | See: http://stackoverflow.com/a/4981265/98600
 wordsWhen     :: (Char -> Bool) -> String -> [String]

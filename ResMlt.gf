@@ -45,7 +45,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
         } ;
       toAgr : VAgr -> Agr = \vagr ->
         case vagr of {
-          AgP1 num   => mkAgr num P1 Masc ; --- sorry ladies
+          AgP1 num   => mkAgr num P1 Masc ;
           AgP2 num   => mkAgr num P2 Masc ;
           AgP3Sg gen => mkAgr Pl  P3 gen ;
           AgP3Pl     => mkAgr Pl  P3 Masc
