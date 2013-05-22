@@ -9,6 +9,7 @@ all: batch
 
 pgf:
 	gf --make --name=PGF/Lang LangMlt.gf
+	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
 	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
 
 batch:
@@ -26,6 +27,9 @@ tags:
 wordlist:
 	echo "print_grammar -words" | gf --run AllMlt.gf | sed 's/ /\n/g' > test/wordlist.txt
 
+dg:
+	echo "dg -only=AdjectiveMlt,AdverbMlt,AllMlt,CatMlt,ConjunctionMlt,DictMlt,ExtraMlt,GrammarMlt,IdiomMlt,IrregMlt,LangMlt,LexiconMlt,MorphoMlt,NounMlt,NumeralMlt,ParadigmsMlt,PhraseMlt,QuestionMlt,RelativeMlt,ResMlt,SentenceMlt,StructuralMlt,SymbolMlt,TextMlt,VerbMlt.gf" | gf --run --retain AllMlt.gf
+	mv _gfdepgraph.dot dependency_graph.dot
 
 # Only ever add a treebank here if its gold standard has been checked!
 treebank_all: \
@@ -71,7 +75,7 @@ treebank_verbs_formVI:
 	test/treebank.sh verbs "tqiegħed ġġieled" #  tħabat ... tbierek twieġeb tkaża
 
 treebank_verbs_formVII:
-	test/treebank.sh verbs "nġabar nħasel ntiżen nqata'" #  ... nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ... nstab nbeda ntlewa ... 
+	test/treebank.sh verbs "nġabar nħasel ntiżen nqata'" #  ... nfirex ntrifes nxteħet ntgħaġen nxtamm ntemm ... nstab nbeda ntlewa ...
 
 treebank_verbs_formVIII:
 	test/treebank.sh verbs "ntefaq mtedd ltaqa'" #  ... xtaq mtela ...
@@ -81,4 +85,3 @@ treebank_verbs_formIX:
 
 treebank_verbs_formX:
 	test/treebank.sh verbs "stagħġeb stħarreġ stqarr" #  staħba (strieħ)
-

@@ -11,13 +11,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   flags coding=utf8 ;
 
-  {- Maybe type------------------------------------------------------------ -}
-
-  -- oper
-  --   Maybe   : Type t = t ** {exists : Bool} ;
-  --   Just    : t -> Maybe t = \s -> s ** {exists = True} ;
-  --   Nothing : t -> Maybe t = \s -> s ** {exists = False} ;
-
   {- General -------------------------------------------------------------- -}
 
   param
@@ -123,7 +116,8 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     NPCase =
         NPNom
       | NPAcc     -- I have a feeling we'll this need eventually
-      | NPCPrep ; -- [AZ]
+      | NPCPrep   -- [AZ]
+      ;
 
   oper
     npNom = NPNom ;
