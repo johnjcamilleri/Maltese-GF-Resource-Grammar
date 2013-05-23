@@ -20,7 +20,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- V3 -> NP -> VPSlash
     -- give it (to her)
     Slash2V3 v np =
-      insertObjc (\\_ => v.c2.s ! Definite ++ np.s ! NPAcc) (predV v ** {c2 = v.c3}) ;
+      insertObjc (\\_ => v.c2.s ! Definite ++ np.s ! NPAcc) (predV v ** {c2 = "h"}) ;
 
     -- V3  -> NP -> VPSlash
     -- give (it) to her
@@ -78,7 +78,11 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- VV -> VPSlash -> VPSlash
     -- want to buy
-    SlashVV _ vp = vp;
+    -- SlashVV xy vp = {
+    --   s = \\a,b,c => mkVParts "s" ;
+    --   s2 = \\agr => "a" ;
+    --   c2 = { s = \\de => "c" ; takesDet = False}
+    --   };
       -- insertObj (\\agr => infVP vp Simul Pos agr) (predV vv) **
       --   {c2 = vp.c2} ;
 
@@ -97,9 +101,9 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
   --   -- sleep here
   --   AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
 
-  --   -- AdV -> VP -> VP
-  --   -- always sleep
-  --   AdVVP adv vp = insertAdV adv.s vp ;
+    -- AdV -> VP -> VP
+    -- always sleep
+    AdVVP adv vp = insertAdV adv.s vp ;
 
   --   -- VPSlash -> Adv -> VPSlash
   --   -- use (it) here

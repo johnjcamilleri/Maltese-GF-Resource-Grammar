@@ -145,7 +145,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
           --   _ => VPres
           --   } ;
           vpform : VPForm = VPIndicat t (toVAgr agr) ;
-          verb   : Str    = joinVParts (vp.s ! vpform ! a ! p) ;
+          verb   : Str    = "hi"; --joinVParts (vp.s ! vpform ! a ! p) ;
           compl  : Str    = vp.s2 ! agr ;
         in
         case o of {
@@ -518,18 +518,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
 
-    S3 : Type = {s1, s2, s3 : Str ; exists : Bool} ;
-    mkS3 : Str -> S3 = \s -> {s1=s ; s2=s ; s3=s ; exists = True} ;
-
     VerbParts : Type = {
-      stem : S3 ;
+      s1 : Str ;
+      exists : Bool ;
       } ;
 
-    mkVParts : Str -> VerbParts = \s -> {stem=mkS3 s} ;
-
-    mkVPartsNeg : Str -> VerbParts = \s -> {stem=mkS3 s} ;
-
-    joinVParts : VerbParts -> Str = \v -> "bye" ;
+    mkVParts : Str -> VerbParts = \s -> {s1="s" ; exists = True} ;
 
 -- ======================================================================
 
@@ -541,7 +535,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       -- a2 : Str ;
       } ;
 
-    SlashVerbPhrase : Type = VerbPhrase ** {c2 : Compl} ;
+    SlashVerbPhrase : Type = VerbPhrase ** {c2 : Str} ;
 
   param
     -- [AZ]
@@ -573,7 +567,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s2 = \\agr => vp.s2 ! agr ++ adv ;
       } ;
 
-    predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->  predV verb ** {c2 = verb.c2} ;
+    predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->  predV verb ** {c2 = "hi"} ;
     -- predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->
     --   predV verb ** {c2 = verb.c2} ;
 
@@ -605,19 +599,12 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     CopulaVP : VerbPhrase = {
       s = \\vpf,ant,pol =>
         case <vpf> of {
-          <VPIndicat Past vagr> => polarise (copula_kien.s ! VPerf vagr) pol ;
-          <VPIndicat Pres vagr> => polarise (copula_kien.s ! VImpf vagr) pol ;
-          <VPImperat num> => polarise (copula_kien.s ! VImp num) pol ;
+          <VPIndicat Past vagr> => mkVParts "s" ; -- polarise (copula_kien.s ! VPerf vagr) pol ;
+          <VPIndicat Pres vagr> => mkVParts "s" ; -- polarise (copula_kien.s ! VImpf vagr) pol ;
+          <VPImperat num> => mkVParts "s" ; -- polarise (copula_kien.s ! VImp num) pol ;
           _ => Predef.error "tense not implemented"
         } ;
-      s2 = \\agr => [] ;
-      } where {
-        polarise : Str -> Polarity -> VerbParts = \s,pol ->
-          -- mkVParts s (case pol of { Neg => BIND ++ "x" ; _ => [] }) ;
-          case pol of {
-            Neg => mkVPartsNeg s ;
-            _   => mkVParts s
-          } ;
+      s2 = \\agr => []
       } ;
 
     -- [AZ]
