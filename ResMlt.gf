@@ -454,15 +454,84 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       | OQuest  -- JIEKOL ĦUT ĠANNI [?]
       ;
 
+-- ======================================================================
+
+  -- oper
+
+    -- -- Verb stem and suffixes for dir/ind objects, polarity
+    -- S1 : Type = {s1 : Str} ;
+    -- -- S2 : Type = {s1, s2 : Str} ;
+    -- S3 : Type = {s1, s2, s3 : Str} ;
+    -- NullS1 = Nothing S1 {s1=""};
+    -- -- NullS2 = Nothing S2 {s1="";s2=""};
+    -- NullS3 = Nothing S3 {s1="";s2="";s3=""};
+
+    -- mkS1 : Str -> S1 = \s -> {s1=s};
+    -- -- mkS2 : Str -> S2 = \s -> Just S2 {s1=s ; s2=s};
+    -- mkS3 : Str -> S3 = \s -> {s1=s ; s2=s ; s3=s};
+    -- mkMaybeS1 : Str -> Maybe S1 = \s -> Just S1 {s1=s};
+    -- -- mkMaybeS2 : Str -> Maybe S2 = \s -> Just S2 {s1=s ; s2=s};
+    -- mkMaybeS3 : Str -> Maybe S3 = \s -> Just S3 {s1=s ; s2=s ; s3=s};
+
+    -- VerbParts : Type = {
+    --   stem : S3 ;
+    --   dir  : Maybe S3 ;
+    --   ind  : Maybe S3 ;
+    --   pol  : Maybe S1
+    --   } ;
+
+    -- mkVParts = overload {
+    --   mkVParts : Str -> VerbParts = \a -> {stem=mkS3 a ; dir=NullS3; ind=NullS3; pol=NullS1} ;
+    --   mkVParts : Str -> Str -> VerbParts = \a,b -> {stem=mkS3 a ; dir=mkMaybeS3 b; ind=NullS3; pol=NullS1} ;
+    --   mkVParts : Str -> Str -> Str -> VerbParts = \a,b,c -> {stem=mkS3 a ; dir=mkMaybeS3 b; ind=mkMaybeS3 c; pol=NullS1} ;
+    --   mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=mkS3 a ; dir=mkMaybeS3 b; ind=mkMaybeS3 c; pol=NullS1} ;
+    --   } ;
+
+    -- mkVPartsNeg = overload {
+    --   mkVPartsNeg : Str -> VerbParts = \a -> {stem=mkS3 a ; dir=NullS3; ind=NullS3; pol=mkMaybeS1 "x"} ;
+    --   mkVPartsNeg : Str -> Str -> VerbParts = \a,b -> {stem=mkS3 a ; dir=mkMaybeS3 b; ind=NullS3; pol=mkMaybeS1 "x"} ;
+    --   mkVPartsNeg : Str -> Str -> Str -> VerbParts = \a,b,c -> {stem=mkS3 a ; dir=mkMaybeS3 b; ind=mkMaybeS3 c; pol=mkMaybeS1 "x"} ;
+    --   } ;
+
+    -- joinVParts : VerbParts -> Str = \v ->
+    --   case <exists S3 v.dir, exists S3 v.ind, exists S1 v.pol> of {
+
+    --     -- ftaħna / ftaħnie-x
+    --     <False,False,False> => v.stem.s1 ;
+    --     <False,False,True>  => v.stem.s2 ++ BIND ++ (fromJust S1 v.pol).s1 ;
+
+    --     -- ftaħnie-ha / ftaħni-hie-x
+    --     <True ,False,False> => v.stem.s2 ++ BIND ++ (fromJust S3 v.dir).s1 ;
+    --     <True ,False,True>  => v.stem.s3 ++ BIND ++ (fromJust S3 v.dir).s2 ++ BIND ++ (fromJust S1 v.pol).s1 ;
+
+    --     -- ftaħnie-lha / ftaħni-lhie-x
+    --     <False,True ,False> => v.stem.s2 ++ BIND ++ (fromJust S3 v.ind).s1 ;
+    --     <False,True ,True>  => v.stem.s3 ++ BIND ++ (fromJust S3 v.ind).s2 ++ BIND ++ (fromJust S1 v.pol).s1 ;
+
+    --     -- ftaħni-hie-lha / ftaħni-hi-lhie-x
+    --     <True, True,False> => v.stem.s3 ++ BIND ++ (fromJust S3 v.dir).s2 ++ BIND ++ (fromJust S3 v.ind).s1 ;
+    --     <True, True, True> => v.stem.s3 ++ BIND ++ (fromJust S3 v.dir).s3 ++ BIND ++ (fromJust S3 v.ind).s2 ++ BIND ++ (fromJust S1 v.pol).s1
+
+    --   } ;
+
+-- ======================================================================
+
   oper
 
-    -- Verb stem and suffixes for dir/ind objects, polarity
-    VerbParts : Type = { stem, dir, ind, pol : Str } ;
-    mkVParts = overload {
-      mkVParts : Str -> Str -> VerbParts = \a,d -> {stem=a; dir=[]; ind=[]; pol=d} ;
-      mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=a; dir=b; ind=c; pol=d} ;
+    S3 : Type = {s1, s2, s3 : Str ; exists : Bool} ;
+    mkS3 : Str -> S3 = \s -> {s1=s ; s2=s ; s3=s ; exists = True} ;
+
+    VerbParts : Type = {
+      stem : S3 ;
       } ;
-    joinVParts : VerbParts -> Str = \vb -> vb.stem ++ vb.dir ++ vb.ind ++ vb.pol ;
+
+    mkVParts : Str -> VerbParts = \s -> {stem=mkS3 s} ;
+
+    mkVPartsNeg : Str -> VerbParts = \s -> {stem=mkS3 s} ;
+
+    joinVParts : VerbParts -> Str = \v -> "bye" ;
+
+-- ======================================================================
 
     -- [AZ]
     VerbPhrase : Type = {
@@ -483,26 +552,30 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
 
-    insertObj : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
-      s = vp.s ;
-      s2 = \\agr => vp.s2 ! agr ++ obj ! agr ;
-      } ;
+    insertObj : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> vp ;
+    -- insertObj : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
+    --   s = vp.s ;
+    --   s2 = \\agr => vp.s2 ! agr ++ obj ! agr ;
+    --   } ;
 
-    insertObjPre : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
-      s = vp.s ;
-      s2 = \\agr => obj ! agr ++ vp.s2 ! agr ;
-      } ;
+    insertObjPre : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> vp ;
+    -- insertObjPre : (Agr => Str) -> VerbPhrase -> VerbPhrase = \obj,vp -> {
+    --   s = vp.s ;
+    --   s2 = \\agr => obj ! agr ++ vp.s2 ! agr ;
+    --   } ;
 
-    insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
-      insertObj obj vp ** {c2 = vp.c2} ;
+    insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp -> vp ;
+    -- insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
+    --   insertObj obj vp ** {c2 = vp.c2} ;
 
     insertAdV : Str -> VerbPhrase -> VerbPhrase = \adv,vp -> {
       s = vp.s ;
       s2 = \\agr => vp.s2 ! agr ++ adv ;
       } ;
 
-    predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->
-      predV verb ** {c2 = verb.c2} ;
+    predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->  predV verb ** {c2 = verb.c2} ;
+    -- predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->
+    --   predV verb ** {c2 = verb.c2} ;
 
     copula_kien : Verb = {
       s : (VForm => Str) = table {
@@ -540,56 +613,64 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s2 = \\agr => [] ;
       } where {
         polarise : Str -> Polarity -> VerbParts = \s,pol ->
-          mkVParts s (case pol of { Neg => BIND ++ "x" ; _ => [] }) ;
+          -- mkVParts s (case pol of { Neg => BIND ++ "x" ; _ => [] }) ;
+          case pol of {
+            Neg => mkVPartsNeg s ;
+            _   => mkVParts s
+          } ;
       } ;
 
     -- [AZ]
     predV : Verb -> VerbPhrase = \verb -> {
-      s = \\vpf,ant,pol =>
-        let
-          ma = "ma" ;
-          mhux = "mhux" ;
-          b1 : Str -> VerbParts = \s -> mkVParts s [] ;
-          b2 : Str -> VerbParts = \s -> mkVParts s (BIND ++ "x") ;
-        in
-        case vpf of {
-          VPIndicat tense vagr =>
-            let
-              kien  = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
-              kienx = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! Neg) ;
-            in
-            case <tense,ant,pol> of {
-              <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
-              <Pres,Anter,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
-              <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
-              <Past,Anter,Pos> => b1 (kien ++ verb.s ! VPerf vagr) ; -- kont rqadt
-              <Fut, Simul,Pos> => b1 ("se" ++ verb.s ! VImpf vagr) ; -- se norqod
-              <Fut, Anter,Pos> => b1 (kien ++ "se" ++ verb.s ! VImpf vagr) ; -- kont se norqod
-
-              <Pres,Simul,Neg> => b2 (ma ++ verb.s ! VImpf vagr) ; -- ma norqodx
-              <Pres,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
-              <Past,Simul,Neg> => b2 (ma ++ verb.s ! VPerf vagr) ; -- ma rqadtx
-              <Past,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
-              <Fut, Simul,Neg> => b1 (mhux ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
-              <Fut, Anter,Neg> => b1 (ma ++ kienx ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
-
-              <Cond,_,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
-              <Cond,_,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) -- ma kontx norqod
-            } ;
-          VPImperat num => b2 (verb.s ! VImp num) -- torqodx
-        };
-      s2 = \\agr => [] ;
-      -- a1 = [] ;
-      -- n2 = \\_ => [] ;
-      -- a2 = [] ;
+      s = \\vpf,ant,pol => mkVParts "hi" ;
+      s2 = \\agr => "hi2" ;
       } ;
+    -- predV : Verb -> VerbPhrase = \verb -> {
+    --   s = \\vpf,ant,pol =>
+    --     let
+    --       ma = "ma" ;
+    --       b1 : Str -> VerbParts = \s -> mkVParts s ;
+    --       b2 : Str -> VerbParts = \s -> mkVPartsNeg s ;
+    --     in
+    --     case vpf of {
+    --       VPIndicat tense vagr =>
+    --         let
+    --           kien  = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! pol) ;
+    --           kienx = joinVParts (CopulaVP.s ! VPIndicat Past vagr ! Simul ! Neg) ;
+    --         in
+    --         case <tense,ant,pol> of {
+    --           <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
+    --           <Pres,Anter,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
+    --           <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+    --           <Past,Anter,Pos> => b1 (kien ++ verb.s ! VPerf vagr) ; -- kont rqadt
+    --           <Fut, Simul,Pos> => b1 ("se" ++ verb.s ! VImpf vagr) ; -- se norqod
+    --           <Fut, Anter,Pos> => b1 (kien ++ "se" ++ verb.s ! VImpf vagr) ; -- kont se norqod
+
+    --           <Pres,Simul,Neg> => b2 (ma ++ verb.s ! VImpf vagr) ; -- ma norqodx
+    --           <Pres,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
+    --           <Past,Simul,Neg> => b2 (ma ++ verb.s ! VPerf vagr) ; -- ma rqadtx
+    --           <Past,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
+    --           <Fut, Simul,Neg> => b1 (mhux ! vagr ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
+    --           <Fut, Anter,Neg> => b1 (ma ++ kienx ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
+
+    --           <Cond,_,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
+    --           <Cond,_,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) -- ma kontx norqod
+    --         } ;
+    --       VPImperat num => b2 (verb.s ! VImp num) -- torqodx
+    --     };
+    --   s2 = \\agr => [] ;
+    --   -- a1 = [] ;
+    --   -- n2 = \\_ => [] ;
+    --   -- a2 = [] ;
+    --   } ;
 
     -- There is no infinitive in Maltese; use perfective
     infVP : VerbPhrase -> Anteriority -> Polarity -> Agr -> Str = \vp,ant,pol,agr ->
-      let
-        vpform : VPForm = VPIndicat Past (toVAgr agr) ;
-      in
-        joinVParts (vp.s ! vpform ! ant ! pol) ++ vp.s2 ! agr ;
+      -- let
+      --   vpform : VPForm = VPIndicat Past (toVAgr agr) ;
+      -- in
+      --   joinVParts (vp.s ! vpform ! ant ! pol) ++ vp.s2 ! agr ;
+      "hi" ;
 
     Aux = {
       s : Tense => Polarity => Str ;
@@ -615,6 +696,16 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       AgP1 Pl      => "lilna nfusna" ;
       AgP2 Pl      => "lilkom infuskom" ;
       AgP3Pl       => "lilhom infushom"
+      } ;
+
+    mhux : VAgr => Str = table {
+      AgP1 Sg      => "m'iniex" ;
+      AgP2 Sg      => "m'intix" ;
+      AgP3Sg Masc  => "m'hux" ;
+      AgP3Sg Fem   => "m'hix" ;
+      AgP1 Pl      => "m'aħniex" ;
+      AgP2 Pl      => "m'intomx" ;
+      AgP3Pl       => "m'humiex"
       } ;
 
     conjLi : Str = "li" ;

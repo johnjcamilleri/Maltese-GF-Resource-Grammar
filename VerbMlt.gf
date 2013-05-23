@@ -6,7 +6,8 @@
 -- Licensed under LGPL
 
 concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
-  flags optimize=all_subs ;
+
+  flags optimize=noexpand ;
 
   lin
     -- V -> VP
@@ -26,9 +27,9 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     Slash3V3 v np =
       insertObjc (\\_ => v.c3.s ! Definite ++ np.s ! NPAcc) (predVc v) ;
 
-    -- VV -> VP -> VP
-    -- want to run
-    ComplVV vv vp = insertObj (\\agr => infVP vp Simul Pos agr) (predV vv) ;
+    -- -- VV -> VP -> VP
+    -- -- want to run
+    -- ComplVV vv vp = insertObj (\\agr => infVP vp Simul Pos agr) (predV vv) ;
 
     -- VS -> S -> VP
     -- say that she runs
@@ -42,9 +43,9 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- they become red
     ComplVA v ap = insertObj (\\agr => ap.s ! toGenNum agr) (predV v) ;
 
-    -- V2V -> VP -> VPSlash
-    -- beg (her) to go
-    SlashV2V v vp = insertObjc (\\agr => v.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc v) ;
+  --   -- V2V -> VP -> VPSlash
+  --   -- beg (her) to go
+  --   SlashV2V v vp = insertObjc (\\agr => v.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc v) ;
 
     -- V2S -> S  -> VPSlash
     -- answer (to him) that it is good
@@ -60,56 +61,57 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- VPSlash -> NP -> VP
     -- love it
-    ComplSlash vp np =
-      case np.isPron of {
-        -- Join pron to verb
-        True => {
-            s = \\vpf,ant,pol =>
-              let bits = vp.s ! vpf ! ant ! pol in
-              mkVParts (glue bits.stem (np.s ! NPCPrep)) bits.pol ;
-            s2 = \\agr => [] ;
-          } ;
+    -- ComplSlash vp np =
+    --   case np.isPron of {
+    --     -- Join pron to verb
+    --     True => {
+    --         s = vp.s ;-- \\vpf,ant,pol => vp.s ! vpf ! ant ! pol ;
+    --           -- let bits = vp.s ! vpf ! ant ! pol in
+    --           -- mkVParts (glue bits.stem (np.s ! NPCPrep)) bits.pol ;
+    --           -- bits ** {dir = mkMaybeS3 (np.s ! NPCPrep)} ; -- mkVParts (glue bits.stem (np.s ! NPCPrep)) bits.pol ;
+    --         s2 = \\agr => [] ;
+    --       } ;
 
-        -- Insert obj to VP
-        _ => insertObj (\\agr => np.s ! NPCPrep) vp
-      } ;
+    --     -- Insert obj to VP
+    --     _ => insertObj (\\agr => np.s ! NPCPrep) vp
+    --   } ;
 
     -- VV -> VPSlash -> VPSlash
     -- want to buy
-    SlashVV vv vp =
-      insertObj (\\agr => infVP vp Simul Pos agr) (predV vv) **
-        {c2 = vp.c2} ;
+    SlashVV _ vp = vp;
+      -- insertObj (\\agr => infVP vp Simul Pos agr) (predV vv) **
+      --   {c2 = vp.c2} ;
 
-    -- V2V -> NP -> VPSlash -> VPSlash
-    -- beg me to buy
-    SlashV2VNP vv np vp =
-      insertObjPre (\\_ => vv.c2.s ! Definite ++ np.s ! NPAcc)
-        (insertObjc (\\agr => vv.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc vv)) **
-          {c2 = vp.c2} ;
+  --   -- V2V -> NP -> VPSlash -> VPSlash
+  --   -- beg me to buy
+  --   SlashV2VNP vv np vp =
+  --     insertObjPre (\\_ => vv.c2.s ! Definite ++ np.s ! NPAcc)
+  --       (insertObjc (\\agr => vv.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc vv)) **
+  --         {c2 = vp.c2} ;
 
     -- Comp -> VP
     -- be warm
     UseComp comp = insertObj comp.s (predV copula_kien) ;
 
-    -- VP -> Adv -> VP
-    -- sleep here
-    AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
+  --   -- VP -> Adv -> VP
+  --   -- sleep here
+  --   AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
 
-    -- AdV -> VP -> VP
-    -- always sleep
-    AdVVP adv vp = insertAdV adv.s vp ;
+  --   -- AdV -> VP -> VP
+  --   -- always sleep
+  --   AdVVP adv vp = insertAdV adv.s vp ;
 
-    -- VPSlash -> Adv -> VPSlash
-    -- use (it) here
-    AdvVPSlash vp adv = insertObj (\\_ => adv.s) vp ** {c2 = vp.c2} ;
+  --   -- VPSlash -> Adv -> VPSlash
+  --   -- use (it) here
+  --   AdvVPSlash vp adv = insertObj (\\_ => adv.s) vp ** {c2 = vp.c2} ;
 
-    -- AdV -> VPSlash -> VPSlash
-    -- always use (it)
-    AdVVPSlash adv vp = insertAdV adv.s vp ** {c2 = vp.c2} ;
+  --   -- AdV -> VPSlash -> VPSlash
+  --   -- always use (it)
+  --   AdVVPSlash adv vp = insertAdV adv.s vp ** {c2 = vp.c2} ;
 
-    -- VPSlash -> VP
-    -- love himself
-    ReflVP vpslash = insertObjPre (\\agr => vpslash.s2 ! agr ++ reflPron ! toVAgr agr) vpslash ;
+  --   -- VPSlash -> VP
+  --   -- love himself
+  --   ReflVP vpslash = insertObjPre (\\agr => vpslash.s2 ! agr ++ reflPron ! toVAgr agr) vpslash ;
 
     -- V2 -> VP
     -- be loved
@@ -146,10 +148,10 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- be
     UseCopula = predV copula_kien ;
 
-    -- VP -> Prep -> VPSlash
-    -- live in (it)
-    VPSlashPrep vp p = vp ** {
-      c2 = p
-      } ;
+  --   -- VP -> Prep -> VPSlash
+  --   -- live in (it)
+  --   VPSlashPrep vp p = vp ** {
+  --     c2 = p
+  --     } ;
 
 }
