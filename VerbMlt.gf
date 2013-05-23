@@ -89,7 +89,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- Comp -> VP
     -- be warm
-    UseComp comp = insertObj comp.s (predV copula_kien) ;
+    UseComp comp = insertObj comp.s CopulaVP ;
 
     -- VP -> Adv -> VP
     -- sleep here
@@ -113,7 +113,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VP
     -- be loved
-    PassV2 v2 = insertObj (\\agr => v2.s ! VPassivePart (toGenNum agr) ++ v2.c2.s ! Definite) (predV copula_kien) ;
+    PassV2 v2 = insertObj (\\agr => v2.s ! VPassivePart (toGenNum agr) ++ v2.c2.s ! Definite) CopulaVP ;
 
     -- AP -> Comp
     -- (be) small
@@ -144,7 +144,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- VP
     -- be
-    UseCopula = predV copula_kien ;
+    UseCopula = CopulaVP ;
 
     -- VP -> Prep -> VPSlash
     -- live in (it)

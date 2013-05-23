@@ -459,6 +459,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     -- Verb stem and suffixes for dir/ind objects, polarity
     VerbParts : Type = { stem, dir, ind, pol : Str } ;
     mkVParts = overload {
+      mkVParts : Str -> VerbParts = \a -> {stem=a; dir=[]; ind=[]; pol=[]} ;
       mkVParts : Str -> Str -> VerbParts = \a,d -> {stem=a; dir=[]; ind=[]; pol=d} ;
       mkVParts : Str -> Str -> Str -> Str -> VerbParts = \a,b,c,d -> {stem=a; dir=b; ind=c; pol=d} ;
       } ;
@@ -504,43 +505,74 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     predVc : (Verb ** {c2 : Compl}) -> SlashVerbPhrase = \verb ->
       predV verb ** {c2 = verb.c2} ;
 
-    copula_kien : Verb = {
-      s : (VForm => Str) = table {
-        VPerf (AgP1 Sg)     => "kont" ;
-        VPerf (AgP2 Sg)     => "kont" ;
-        VPerf (AgP3Sg Masc) => "kien" ;
-        VPerf (AgP3Sg Fem)  => "kienet" ;
-        VPerf (AgP1 Pl)     => "konna" ;
-        VPerf (AgP2 Pl)     => "kontu" ;
-        VPerf (AgP3Pl)      => "kienu" ;
-        VImpf (AgP1 Sg)     => "nkun" ;
-        VImpf (AgP2 Sg)     => "tkun" ;
-        VImpf (AgP3Sg Masc) => "jkun" ;
-        VImpf (AgP3Sg Fem)  => "tkun" ;
-        VImpf (AgP1 Pl)     => "nkunu" ;
-        VImpf (AgP2 Pl)     => "tkunu" ;
-        VImpf (AgP3Pl)      => "jkunu" ;
-        VImp (Pl)           => "kun" ;
-        VImp (Sg)           => "kunu" ;
-        VActivePart gn      => "" ;
-        VPassivePart gn     => ""
-        } ;
-      i : VerbInfo = mkVerbInfo (Irregular) (FormI) (mkRoot "k-w-n") (mkPattern "ie") ;
+    copula_kien : {s : VForm => Polarity => Str} = {
+      s = \\vform,pol => case <vform,pol> of {
+        <VPerf (AgP1 Sg), Pos>     => "kont" ;
+        <VPerf (AgP2 Sg), Pos>     => "kont" ;
+        <VPerf (AgP3Sg Masc), Pos> => "kien" ;
+        <VPerf (AgP3Sg Fem), Pos>  => "kienet" ;
+        <VPerf (AgP1 Pl), Pos>     => "konna" ;
+        <VPerf (AgP2 Pl), Pos>     => "kontu" ;
+        <VPerf (AgP3Pl), Pos>      => "kienu" ;
+        <VImpf (AgP1 Sg), Pos>     => "nkun" ;
+        <VImpf (AgP2 Sg), Pos>     => "tkun" ;
+        <VImpf (AgP3Sg Masc), Pos> => "jkun" ;
+        <VImpf (AgP3Sg Fem), Pos>  => "tkun" ;
+        <VImpf (AgP1 Pl), Pos>     => "nkunu" ;
+        <VImpf (AgP2 Pl), Pos>     => "tkunu" ;
+        <VImpf (AgP3Pl), Pos>      => "jkunu" ;
+        <VImp (Pl), Pos>           => "kun" ;
+        <VImp (Sg), Pos>           => "kunu" ;
+
+        <VPerf (AgP1 Sg), Neg>     => "kontx" ;
+        <VPerf (AgP2 Sg), Neg>     => "kontx" ;
+        <VPerf (AgP3Sg Masc), Neg> => "kienx" ;
+        <VPerf (AgP3Sg Fem), Neg>  => "kinitx" ;
+        <VPerf (AgP1 Pl), Neg>     => "konniex" ;
+        <VPerf (AgP2 Pl), Neg>     => "kontux" ;
+        <VPerf (AgP3Pl), Neg>      => "kienux" ;
+        <VImpf (AgP1 Sg), Neg>     => "nkunx" ;
+        <VImpf (AgP2 Sg), Neg>     => "tkunx" ;
+        <VImpf (AgP3Sg Masc), Neg> => "jkunx" ;
+        <VImpf (AgP3Sg Fem), Neg>  => "tkunx" ;
+        <VImpf (AgP1 Pl), Neg>     => "nkunux" ;
+        <VImpf (AgP2 Pl), Neg>     => "tkunux" ;
+        <VImpf (AgP3Pl), Neg>      => "jkunux" ;
+        <VImp (Pl), Neg>           => "kunx" ;
+        <VImp (Sg), Neg>           => "kunux" ;
+        <VActivePart gn, _>      => "" ;
+        <VPassivePart gn, _>     => ""
+        }
       } ;
+
+    -- -- Only use on compile-time strings!
+    -- polarise : Str -> (Pol => Str) = \s ->
+    --   table {
+    --     Pos => s ;
+    --     Neg => case s of {
+    --       konn + "a" => konn + "iex" ;
+    --       kien => kien + "x"
+    --       }
+    --   } ;
 
     -- Adapted from [AZ]
     CopulaVP : VerbPhrase = {
       s = \\vpf,ant,pol =>
-        case <vpf> of {
-          <VPIndicat Past vagr> => polarise (copula_kien.s ! VPerf vagr) pol ;
-          <VPIndicat Pres vagr> => polarise (copula_kien.s ! VImpf vagr) pol ;
-          <VPImperat num> => polarise (copula_kien.s ! VImp num) pol ;
-          _ => Predef.error "tense not implemented"
+        --- We are ignoring the anteriority
+        case <vpf, pol> of {
+          --- Here we are bypassing VerbParts by putting negatives in the stem
+          <VPIndicat Past vagr, Pos> => mkVParts (copula_kien.s ! VPerf vagr ! Pos) ; -- kien
+          <VPIndicat Pres vagr, Pos> => mkVParts (copula_kien.s ! VImpf vagr ! Pos) ; -- jkun
+          <VPIndicat Fut  vagr, Pos> => mkVParts ("se" ++ copula_kien.s ! VImpf vagr ! Pos) ; -- se jkun
+          <VPIndicat Cond vagr, Pos> => mkVParts ("kieku" ++ copula_kien.s ! VPerf vagr ! Pos) ; -- kieku kien
+          <VPImperat num, Pos>       => mkVParts (copula_kien.s ! VImp num ! Pos) ; -- kun
+          <VPIndicat Past vagr, Neg> => mkVParts (copula_kien.s ! VPerf vagr ! Neg) ; -- ma kienx
+          <VPIndicat Pres vagr, Neg> => mkVParts (copula_kien.s ! VImpf vagr ! Neg) ; -- ma jkunx
+          <VPIndicat Fut  vagr, Neg> => mkVParts (mhux ! vagr ++ "se" ++ copula_kien.s ! VImpf vagr ! Pos) ; -- mhux se jkun
+          <VPIndicat Cond vagr, Neg> => mkVParts ("kieku" ++ "ma" ++ copula_kien.s ! VPerf vagr ! Neg) ; -- kieku ma kienx
+          <VPImperat num, Neg>       => mkVParts (copula_kien.s ! VImp num ! Neg) -- kunx
         } ;
       s2 = \\agr => [] ;
-      } where {
-        polarise : Str -> Polarity -> VerbParts = \s,pol ->
-          mkVParts s (case pol of { Neg => BIND ++ "x" ; _ => [] }) ;
       } ;
 
     -- [AZ]
