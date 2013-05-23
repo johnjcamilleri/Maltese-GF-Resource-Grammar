@@ -385,6 +385,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
 
   oper
     Verb : Type = {
+      -- s : VForm => S3 ; --- TODO: need to store different "stems" already at verb level (ġera/ġerie/ġeri)
       s : VForm => Str ;
       i : VerbInfo ;
       } ;
@@ -579,7 +580,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
     predV : Verb -> VerbPhrase = \verb -> {
       s = \\vpf,ant,pol =>
         let
-          ma = "ma" ;
+          ma = makePreVowel "ma" "m'" ;
           b1 : Str -> VerbParts = \s -> mkVParts s [] ;
           b2 : Str -> VerbParts = \s -> mkVParts s (BIND ++ "x") ;
         in
