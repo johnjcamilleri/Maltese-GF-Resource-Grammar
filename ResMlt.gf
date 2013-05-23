@@ -548,7 +548,6 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       s = \\vpf,ant,pol =>
         let
           ma = "ma" ;
-          mhux = "mhux" ;
           b1 : Str -> VerbParts = \s -> mkVParts s [] ;
           b2 : Str -> VerbParts = \s -> mkVParts s (BIND ++ "x") ;
         in
@@ -570,7 +569,7 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
               <Pres,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VImpf vagr) ; -- ma kontx norqod
               <Past,Simul,Neg> => b2 (ma ++ verb.s ! VPerf vagr) ; -- ma rqadtx
               <Past,Anter,Neg> => b1 (ma ++ kienx ++ verb.s ! VPerf vagr) ; -- ma kontx rqadt
-              <Fut, Simul,Neg> => b1 (mhux ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
+              <Fut, Simul,Neg> => b1 (mhux ! vagr ++ "se" ++ verb.s ! VImpf vagr) ; -- mhux se norqod
               <Fut, Anter,Neg> => b1 (ma ++ kienx ++ "se" ++ verb.s ! VImpf vagr) ; -- ma kontx se norqod
 
               <Cond,_,Pos> => b1 (kien ++ verb.s ! VImpf vagr) ; -- kont norqod
@@ -615,6 +614,16 @@ resource ResMlt = ParamX ** open Prelude, Predef in {
       AgP1 Pl      => "lilna nfusna" ;
       AgP2 Pl      => "lilkom infuskom" ;
       AgP3Pl       => "lilhom infushom"
+      } ;
+
+    mhux : VAgr => Str = table {
+      AgP1 Sg      => "m'iniex" ;
+      AgP2 Sg      => "m'intix" ;
+      AgP3Sg Masc  => "m'hux" ;
+      AgP3Sg Fem   => "m'hix" ;
+      AgP1 Pl      => "m'aħniex" ;
+      AgP2 Pl      => "m'intomx" ;
+      AgP3Pl       => "m'humiex"
       } ;
 
     conjLi : Str = "li" ;
