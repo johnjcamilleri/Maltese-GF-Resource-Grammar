@@ -64,10 +64,10 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
       case np.isPron of {
         -- Join pron to verb
         True => {
-            s = \\vpf,ant,pol =>
-              let bits = vp.s ! vpf ! ant ! pol in
-              mkVParts (glue bits.stem (np.s ! NPCPrep)) bits.pol ;
+            s = vp.s ;
             s2 = \\agr => [] ;
+            dir = mkMaybeVariants3 (np.s ! NPCPrep) ; --- we'll need to get all the variants direct from the NP
+            ind = NullVariants3 ;
           } ;
 
         -- Insert obj to VP
@@ -113,7 +113,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VP
     -- be loved
-    PassV2 v2 = insertObj (\\agr => v2.s ! VPassivePart (toGenNum agr) ++ v2.c2.s ! Definite) CopulaVP ;
+    PassV2 v2 = insertObj (\\agr => stem1 (v2.s ! VPassivePart (toGenNum agr)) ++ v2.c2.s ! Definite) CopulaVP ;
 
     -- AP -> Comp
     -- (be) small

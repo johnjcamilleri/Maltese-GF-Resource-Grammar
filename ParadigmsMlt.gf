@@ -402,7 +402,7 @@ resource ParadigmsMlt = open
             } ;
           info : VerbInfo = mkVerbInfo class form root patt impSg ;
         in lin V  {
-          s = tbl ;
+          s = stemVariantsTbl tbl ;
           i = info ;
         } ;
 
@@ -449,7 +449,7 @@ resource ParadigmsMlt = open
           } ;
         newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
       in lin V {
-        s = conjFormII newinfo ;
+        s = stemVariantsTbl (conjFormII newinfo) ;
         i = newinfo ;
       } ;
 
@@ -462,7 +462,7 @@ resource ParadigmsMlt = open
           imp : Str = mammaII ; --- assumption: mamma II is also imperative
           newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
         in lin V {
-          s = conjFormII_quad newinfo ;
+          s = stemVariantsTbl (conjFormII_quad newinfo) ;
           i = newinfo ;
         } ;
       derivedV_QuadII : Str -> Str -> Root -> V = \mammaII, imp, root ->
@@ -471,7 +471,7 @@ resource ParadigmsMlt = open
           patt : Pattern = extractPattern mammaII ;
           newinfo : VerbInfo = mkVerbInfo class FormII root patt imp ;
         in lin V {
-          s = conjFormII_quad newinfo ;
+          s = stemVariantsTbl (conjFormII_quad newinfo) ;
           i = newinfo ;
         } ;
       } ;
@@ -485,7 +485,7 @@ resource ParadigmsMlt = open
         class : VClass = classifyRoot root ;
         info : VerbInfo = mkVerbInfo class FormIII root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
       in lin V {
-        s = conjFormIII info ;
+        s = stemVariantsTbl (conjFormIII info) ;
         i = info ;
       } ;
 
@@ -500,20 +500,22 @@ resource ParadigmsMlt = open
         mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
         vII : V = derivedV_II mammaII root ;
         info : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
-      in lin V {
-        s = table {
-          VPerf agr           => pfx_T (vII.s ! VPerf agr) ;
-          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg)))) ;
-          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg)))) ;
-          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc)))) ;
-          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem)))) ;
-          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl)))) ;
-          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl)))) ;
-          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl)))) ;
-          VImp num            => pfx_T (vII.s ! VImp num) ;
+        get : VForm -> Str = \vf -> stem1 (vII.s ! vf) ;
+        tbl : VForm => Str = table {
+          VPerf agr           => pfx_T (get (VPerf agr)) ;
+          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
+          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Sg))))) ;
+          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Masc))))) ;
+          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Fem))))) ;
+          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Pl))))) ;
+          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
+          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
+          VImp num            => pfx_T (get (VImp num)) ;
           VActivePart  _      => "" ; --- TODO
           VPassivePart _      => ""   --- TODO
           } ;
+      in lin V {
+        s = stemVariantsTbl (tbl) ;
         i = info ;
       } ;
 
@@ -525,20 +527,22 @@ resource ParadigmsMlt = open
         mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
         vIII : V = derivedV_III mammaIII root ;
         info : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
-      in lin V {
-        s = table {
-          VPerf agr           => pfx_T (vIII.s ! VPerf agr) ;
-          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg)))) ;
-          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg)))) ;
-          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc)))) ;
-          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem)))) ;
-          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl)))) ;
-          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl)))) ;
-          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl)))) ;
-          VImp num            => pfx_T (vIII.s ! VImp num) ;
+        get : VForm -> Str = \vf -> stem1 (vIII.s ! vf) ;
+        tbl : VForm => Str = table {
+          VPerf agr           => pfx_T (get (VPerf agr)) ;
+          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
+          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Sg))))) ;
+          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Masc))))) ;
+          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Fem))))) ;
+          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Pl))))) ;
+          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
+          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
+          VImp num            => pfx_T (get (VImp num)) ;
           VActivePart  _      => "" ; --- TODO
           VPassivePart _      => ""   --- TODO
           } ;
+      in lin V {
+        s = stemVariantsTbl (tbl) ;
         i = info ;
       } ;
 
@@ -558,7 +562,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo class FormVII root vowels mammaVII ;
       in lin V {
-        s = conjFormVII info c1 ;
+        s = stemVariantsTbl (conjFormVII info c1) ;
         i = info ;
       } ;
 
@@ -572,7 +576,7 @@ resource ParadigmsMlt = open
         info : VerbInfo = mkVerbInfo class FormVIII root vowels mammaVIII ;
         c1 : Str = root.C1+"t";
       in lin V {
-        s = conjFormVII info c1 ; -- note we use conjFormVII !
+        s = stemVariantsTbl (conjFormVII info c1) ; -- note we use conjFormVII !
         i = info ;
       } ;
 
@@ -587,7 +591,7 @@ resource ParadigmsMlt = open
             class : VClass = classifyRoot root ;
             info : VerbInfo = mkVerbInfo class FormIX root patt mammaIX ;
           in lin V {
-            s = conjFormIX info ;
+            s = stemVariantsTbl (conjFormIX info) ;
             i = info ;
           } ;
         _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
@@ -602,7 +606,7 @@ resource ParadigmsMlt = open
         patt2 : Pattern = vowelChangesIE root patt ;
         info : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
       in lin V {
-        s = conjFormX info ;
+        s = stemVariantsTbl (conjFormX info) ;
         i = info ;
       } ;
 
@@ -639,7 +643,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -681,7 +685,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -718,7 +722,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -759,7 +763,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -800,7 +804,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt patt2 (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -841,7 +845,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -878,7 +882,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -915,7 +919,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -955,7 +959,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Quad QWeak) (FormI) root patt (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 
@@ -980,7 +984,7 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo (Loan) (FormI) (imp ! Sg) ;
       in lin V {
-        s = tbl ;
+        s = stemVariantsTbl tbl ;
         i = info ;
       } ;
 

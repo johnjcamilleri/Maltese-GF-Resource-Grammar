@@ -29,7 +29,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
             True => [] ; -- omit subject pronouns
             False => np.s ! NPNom
             } ;
-          v : Str = joinVParts (vp.s ! VPIndicat tense (toVAgr np.a) ! ant ! pol) ;
+          v : Str = joinVP vp (VPIndicat tense (toVAgr np.a)) ant pol ;
           o : Str = vp.s2 ! np.a ;
         } ;
       } ;
@@ -40,7 +40,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
 
     -- VP -> Imp
     ImpVP vp = {
-      s = \\pol,n => joinVParts (vp.s ! VPImperat n ! Simul ! pol)
+      s = \\pol,n => joinVP vp (VPImperat n) Simul pol
     } ;
 
     -- NP -> VPSlash -> ClSlash

@@ -56,7 +56,7 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
 
     -- VP -> VP ;        -- be sleeping
     ProgrVP vp = CopulaVP ** {
-      s2 = \\agr => joinVParts (vp.s ! VPIndicat Pres agr ! Simul ! Pos)
+      s2 = \\agr => joinVP vp (VPIndicat Pres agr) Simul Pos
       } ;
 
     -- VP -> Utt ;       -- let's go
