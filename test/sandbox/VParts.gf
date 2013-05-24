@@ -1,8 +1,19 @@
 abstract VParts = {
 
-  cat V; S;
+  cat
+    Cl ;
+    NP ;
+    VP ;
+    V ;
 
-  fun ftahna : V ;
-  fun join : V -> S ;
+  fun
+    open_V : V ;
+    she_NP, we_NP : NP ;
+    window_NP : NP ;
+
+    UseV : V -> VP ;
+    Compl : VP -> NP -> VP ;
+    PredVP : NP -> VP -> Cl ;
+    PredVPNeg : NP -> VP -> Cl ;
 
 }
