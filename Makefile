@@ -7,7 +7,7 @@ all: batch
 # 	runghc update_lexicon.hs > tmp
 # 	mv tmp LexiconMlt.gf
 
-pgf:
+pgf: *.gf
 	gf --make --name=PGF/Lang LangMlt.gf
 	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
 	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf

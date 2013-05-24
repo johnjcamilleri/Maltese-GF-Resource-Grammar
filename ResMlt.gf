@@ -487,6 +487,9 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       | OQuest  -- JIEKOL ĦUT ĠANNI [?]
       ;
 
+
+  {- Verb Phrase ---------------------------------------------------------- -}
+
   oper
 
     joinVariants3 : Variants3 -> Polarity -> Str = \stems,pol ->
@@ -495,35 +498,85 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <Neg> => stem2 stems ++ BIND ++ "x"
       } ;
 
-    -- joinVP : Variants3 -> VerbPhrase -> Polarity -> Str = \stems,vp,pol ->
     joinVP : VerbPhrase -> VPForm -> Anteriority -> Polarity -> Str = \vp,form,ant,pol ->
       let
-        stems = (vp.s ! form ! ant ! pol) ;
+        stems = (vp.s ! form ! ant ! pol).main ;
+        aux   = (vp.s ! form ! ant ! pol).aux ;
         x : Str = "x" ;
       in
-        case <exists Variants3 vp.dir, exists Variants3 vp.ind, pol> of {
+        case takesAux form ant of {
 
-          -- ftaħna / ftaħnie-x
-          <False,False,Pos> => stems.s1 ;
-          <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+          -- aux is already negated for us
+          True => aux ++ case <exists Variants3 vp.dir, exists Variants3 vp.ind> of {
 
-          -- ftaħnie-ha / ftaħni-hie-x
-          <True ,False,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.dir).s1 ;
-          <True ,False,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ x ;
+            -- konna ftaħna / ma konniex ftaħna
+            <False,False> => stems.s1 ;
 
-          -- ftaħnie-lha / ftaħni-lhie-x
-          <False,True ,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
-          <False,True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x ;
+            -- konna ftaħnie-ha / ma konniex ftaħni-ha
+            <True ,False> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.dir).s1 ;
 
-          -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-          <True, True ,Pos> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
-          <True, True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x
+            -- konna ftaħnie-lha / ma konniex ftaħni-lha
+            <False,True > => stems.s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
 
+            -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
+            <True, True > => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1
+
+            } ;
+
+          -- No aux part to handle
+          False => aux ++ case <exists Variants3 vp.dir, exists Variants3 vp.ind, pol> of {
+
+            -- ftaħna / ftaħnie-x
+            <False,False,Pos> => stems.s1 ;
+            <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+
+            -- ftaħnie-ha / ftaħni-hie-x
+            <True ,False,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.dir).s1 ;
+            <True ,False,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ x ;
+
+            -- ftaħnie-lha / ftaħni-lhie-x
+            <False,True ,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
+            <False,True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x ;
+
+            -- ftaħni-hie-lha / ftaħni-hi-lhie-x
+            <True, True ,Pos> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
+            <True, True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x
+
+            }
+      } ;
+
+    -- Does a tense + ant take an auxiliary verb?
+    -- This affects where (if) the negation is applied
+    -- This is a workaround to avoid having a bool param in VerbParts
+    -- Must match with the logic in predV
+    takesAux : VPForm -> Anteriority -> Bool = \vpf,ant ->
+      case <vpf,ant> of {
+        <VPIndicat Pres _, Simul> => False ;
+        <VPIndicat Past _, Simul> => False ;
+        <VPIndicat Fut  _, Simul> => True ;
+        <VPIndicat Cond _, Simul> => True ;
+        <VPIndicat Pres _, Anter> => False ;
+        <VPIndicat Past _, Anter> => True ;
+        <VPIndicat Fut  _, Anter> => True ;
+        <VPIndicat Cond _, Anter> => True ;
+        <VPImperat _, _> => False
+      } ;
+
+    VerbParts : Type = {
+      aux : Str ;        -- when present, negation is applied here
+      main : Variants3 ; -- enclitics always applied here
+      } ;
+
+    mkVerbParts = overload {
+      mkVerbParts : Variants3 -> VerbParts = \vs -> { aux = [] ; main = vs } ;
+      mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVariants3 m } ;
+      mkVerbParts : Str -> Variants3 -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
+      mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVariants3 m } ;
       } ;
 
     -- [AZ]
     VerbPhrase : Type = {
-      s : VPForm => Anteriority => Polarity => Variants3 ; -- verb
+      s : VPForm => Anteriority => Polarity => VerbParts ;
       s2 : Agr => Str ; -- complement
       dir : Maybe Variants3 ; -- direct object clitic
       ind : Maybe Variants3 ; -- indirect object clitic
@@ -613,16 +666,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         --- We are ignoring the anteriority
         case <vpf, pol> of {
           --- Here we are bypassing VerbParts by putting negatives in the stem
-          <VPIndicat Past vagr, Pos> => mkVariants3 (copula_kien.s ! VPerf vagr ! Pos) ; -- kien
-          <VPIndicat Pres vagr, Pos> => mkVariants3 (copula_kien.s ! VImpf vagr ! Pos) ; -- jkun
-          <VPIndicat Fut  vagr, Pos> => mkVariants3 ("se" ++ copula_kien.s ! VImpf vagr ! Pos) ; -- se jkun
-          <VPIndicat Cond vagr, Pos> => mkVariants3 ("kieku" ++ copula_kien.s ! VPerf vagr ! Pos) ; -- kieku kien
-          <VPImperat num, Pos>       => mkVariants3 (copula_kien.s ! VImp num ! Pos) ; -- kun
-          <VPIndicat Past vagr, Neg> => mkVariants3 (copula_kien.s ! VPerf vagr ! Neg) ; -- ma kienx
-          <VPIndicat Pres vagr, Neg> => mkVariants3 (copula_kien.s ! VImpf vagr ! Neg) ; -- ma jkunx
-          <VPIndicat Fut  vagr, Neg> => mkVariants3 (mhux ! vagr ++ "se" ++ copula_kien.s ! VImpf vagr ! Pos) ; -- mhux se jkun
-          <VPIndicat Cond vagr, Neg> => mkVariants3 ("kieku" ++ "ma" ++ copula_kien.s ! VPerf vagr ! Neg) ; -- kieku ma kienx
-          <VPImperat num, Neg>       => mkVariants3 (copula_kien.s ! VImp num ! Neg) -- kunx
+          <VPIndicat Past vagr, Pos> => mkVerbParts (copula_kien.s ! VPerf vagr ! Pos) [] ; -- kien
+          <VPIndicat Pres vagr, Pos> => mkVerbParts (copula_kien.s ! VImpf vagr ! Pos) [] ; -- jkun
+          <VPIndicat Fut  vagr, Pos> => mkVerbParts ("se" ++ copula_kien.s ! VImpf vagr ! Pos) [] ; -- se jkun
+          <VPIndicat Cond vagr, Pos> => mkVerbParts ("kieku" ++ copula_kien.s ! VPerf vagr ! Pos) [] ; -- kieku kien
+          <VPImperat num, Pos>       => mkVerbParts (copula_kien.s ! VImp num ! Pos) [] ; -- kun
+          <VPIndicat Past vagr, Neg> => mkVerbParts (copula_kien.s ! VPerf vagr ! Neg) [] ; -- ma kienx
+          <VPIndicat Pres vagr, Neg> => mkVerbParts (copula_kien.s ! VImpf vagr ! Neg) [] ; -- ma jkunx
+          <VPIndicat Fut  vagr, Neg> => mkVerbParts (mhux ! vagr ++ "se" ++ copula_kien.s ! VImpf vagr ! Pos) [] ; -- mhux se jkun
+          <VPIndicat Cond vagr, Neg> => mkVerbParts ("kieku" ++ "ma" ++ copula_kien.s ! VPerf vagr ! Neg) [] ; -- kieku ma kienx
+          <VPImperat num, Neg>       => mkVerbParts (copula_kien.s ! VImp num ! Neg) [] -- kunx
         } ;
       s2 = \\agr => [] ;
       dir = NullVariants3 ;
@@ -634,44 +687,41 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s = \\vpf,ant,pol =>
         let
           ma = makePreVowel "ma" "m'" ;
-          b1 : Str -> Variants3 = \s -> mkVariants3 s ;
-          -- b2 : Str -> Variants3 -> Variants3 = \s,vs -> mkVariants3 (s ++ stem1 vs) (s ++ stem2 vs) (s ++ stem3 vs) ;
-          b2 : Str -> Variants3 -> Variants3 = \s,vs ->
-            let
-              r : Str = joinVariants3 vs Pos ;
-            in
-            mkVariants3 (s ++ r)
+          b1 : Variants3 -> VerbParts = \vs -> mkVerbParts vs ;
+          b2 : Str -> Variants3 -> VerbParts = \s,vs -> mkVerbParts s vs ;
         in
         case vpf of {
           VPIndicat tense vagr =>
             let
-              kien  = joinVP CopulaVP (VPIndicat Past vagr) Simul pol ;
-              kienx = joinVP CopulaVP (VPIndicat Past vagr) Simul Neg ;
+              -- kien  = joinVP CopulaVP (VPIndicat Past vagr) Simul Pos ;
+              -- kienx = joinVP CopulaVP (VPIndicat Past vagr) Simul Neg ;
+              kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
+              kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
             in
             case <tense,ant,pol> of {
-              <Pres,Simul,Pos> => b1 (stem1 (verb.s ! VImpf vagr)) ; -- norqod
+              <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
               <Pres,Simul,Neg> => b2 ma (verb.s ! VImpf vagr) ; -- ma norqodx
 
-              <Past,Simul,Pos> => b1 (stem1 (verb.s ! VPerf vagr)) ; -- rqadt
+              <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
               <Past,Simul,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-              <Fut, Simul,Pos> => b1 ("se" ++ stem1 (verb.s ! VImpf vagr)) ; -- se norqod
-              <Fut, Simul,Neg> => b1 (mhux ! vagr ++ "se" ++ stem1 (verb.s ! VImpf vagr)) ; -- m'iniex se norqod
+              <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
+              <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
 
-              <Cond,_    ,Pos> => b1 (kien ++ stem1 (verb.s ! VImpf vagr)) ; -- kont norqod
-              <Cond,_    ,Neg> => b1 (ma ++ kienx ++ stem1 (verb.s ! VImpf vagr)) ; -- ma kontx norqod
+              <Cond,_    ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
+              <Cond,_    ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
 
               -- Same as Past Simul
-              <Pres,Anter,Pos> => b1 (stem1 (verb.s ! VPerf vagr)) ; -- rqadt
+              <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
               <Pres,Anter,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-              <Past,Anter,Pos> => b1 (kien ++ stem1 (verb.s ! VPerf vagr)) ; -- kont rqadt
-              <Past,Anter,Neg> => b1 (ma ++ kienx ++ stem1 (verb.s ! VPerf vagr)) ; -- ma kontx rqadt
+              <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
+              <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
 
-              <Fut, Anter,Pos> => b1 (kien ++ "se" ++ stem1 (verb.s ! VImpf vagr)) ; -- kont se norqod
-              <Fut, Anter,Neg> => b1 (ma ++ kienx ++ "se" ++ stem1 (verb.s ! VImpf vagr)) -- ma kontx se norqod
+              <Fut, Anter,Pos> => b2 (kien ++ "se") (verb.s ! VImpf vagr) ; -- kont se norqod
+              <Fut, Anter,Neg> => b2 (ma ++ kienx ++ "se") (verb.s ! VImpf vagr) -- ma kontx se norqod
             } ;
-          VPImperat num => b2 [] (verb.s ! VImp num) -- torqodx
+          VPImperat num => b1 (verb.s ! VImp num) -- torqodx
         };
       s2 = \\agr => [] ;
       dir = NullVariants3 ;
