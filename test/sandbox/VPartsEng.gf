@@ -39,12 +39,15 @@ concrete VPartsEng of VParts = Maybe, Prelude ** {
 
       } ;
 
+  param
+    P = P1 | P2 | P3 ;
+
   lincat
-    V = VerbParts ;
+    V = P => P => VerbParts ;
     S = {s : Str} ;
 
   lin
-    ftahna = {
+    ftahna = \\_,_ => {
       stem = {s1="ftaħna" ; s2="ftaħnie" ; s3="ftaħni"} ;
       dir  = Just S3 {s1="ha"  ; s2="hie"  ; s3="hi"} ;
       ind  = Just S3 {s1="lha" ; s2="lhie" ; s3="lhi"} ;
@@ -52,6 +55,6 @@ concrete VPartsEng of VParts = Maybe, Prelude ** {
       } ;
 
     join v = {
-      s = joinVParts v
+      s = joinVParts (v!P1!P1) ;
       } ;
 }
