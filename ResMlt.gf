@@ -697,6 +697,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
               -- kienx = joinVP CopulaVP (VPIndicat Past vagr) Simul Neg ;
               kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
               kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
+              nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;
             in
             case <tense,ant,pol> of {
               <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
@@ -718,8 +719,10 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
               <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
               <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
 
-              <Fut, Anter,Pos> => b2 (kien ++ "se") (verb.s ! VImpf vagr) ; -- kont se norqod
-              <Fut, Anter,Neg> => b2 (ma ++ kienx ++ "se") (verb.s ! VImpf vagr) -- ma kontx se norqod
+              -- <Fut, Anter,Pos> => b2 (kien ++ "se") (verb.s ! VImpf vagr) ; -- kont se norqod
+              -- <Fut, Anter,Neg> => b2 (ma ++ kienx ++ "se") (verb.s ! VImpf vagr) -- ma kontx se norqod
+              <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
+              <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- mhux se nkun rqadt
             } ;
           VPImperat num => b1 (verb.s ! VImp num) -- torqodx
         };
