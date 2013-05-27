@@ -245,7 +245,23 @@ resource ParadigmsMlt = open
       -- Same in all cases, e.g. FUQ
       mkPrep : Str -> Prep = \fuq -> lin Prep {
         s = \\defn => fuq ;
-        takesDet = False
+        enclitic = prepClitics fuq ;
+        takesDet = False ;
+        } ;
+
+      -- Same in non-clitic cases, but given all clitic cases e.g. QABEL
+      mkPrep : (_,_,_,_,_,_,_,_ : Str) -> Prep = \qabel, qabli, qablek, qablu, qabilha, qabilna, qabilkom, qabilhom -> lin Prep {
+        s = \\defn => qabel ;
+        enclitic = \\agr => case toVAgr agr of {
+          AgP1 Sg     => qabli ;
+          AgP2 Sg     => qablek ;
+          AgP3Sg Masc => qablu ;
+          AgP3Sg Fem  => qabilha ;
+          AgP1 Pl     => qabilna ;
+          AgP2 Pl     => qabilkom ;
+          AgP2Pl      => qabilhom
+          } ;
+        takesDet = False ;
         } ;
 
       -- Forms:
@@ -257,10 +273,11 @@ resource ParadigmsMlt = open
           Indefinite => ghal ;
           Definite   => makePreFull ghall (dropSfx 2 ghat) ghall
           } ;
-        takesDet = True
+        enclitic = prepClitics ghal ;
+        takesDet = True ;
         } ;
 
-      -- All forms:
+      -- All forms, but assumed enclitic forms
       --   BI ktieb/triq
       --   B'ajruplan
       --   BIL-ktieb
@@ -271,12 +288,84 @@ resource ParadigmsMlt = open
           Indefinite => makePreVowel bi b' ;
           Definite   => makePreFull  bil (dropSfx 2 bit) bl
           } ;
-        takesDet = True
+        enclitic = prepClitics bi ;
+        takesDet = True ;
         } ;
-      } ;
 
-    -- noPrep : Prep ;  -- no preposition
-    -- noPrep = mkPrep [] ;
+      -- All forms:
+      --   BI ktieb/triq
+      --   B'ajruplan
+      --   BIL-ktieb
+      --   BIT-triq
+      --   BL-ajruplan
+      --   BIJA
+      --   BIK
+      --   BIH
+      --   BIHA
+      --   BINA
+      --   BIKOM
+      --   BIHOM
+      mkPrep : (_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Prep = \bi,b',bil,bit,bl,bija,bik,bih,biha,bina,bikom,bihom -> lin Prep {
+        s = table {
+          Indefinite => makePreVowel bi b' ;
+          Definite   => makePreFull  bil (dropSfx 2 bit) bl
+          } ;
+        enclitic = \\agr => case toVAgr agr of {
+          AgP1 Sg     => bija ;
+          AgP2 Sg     => bik ;
+          AgP3Sg Masc => bih ;
+          AgP3Sg Fem  => biha ;
+          AgP1 Pl     => bina ;
+          AgP2 Pl     => bikom ;
+          AgP2Pl      => bihom
+          } ;
+        takesDet = True ;
+        } ;
+    } ;
+
+    prepClitics : Str -> (Agr => Str) = \taht -> \\agr =>
+      case taht of {
+
+        war+"a" => case toVAgr agr of {
+          AgP1 Sg     => war+"ajja" ;
+          AgP2 Sg     => war+"ajk" ;
+          AgP3Sg Masc => war+"ajh" ;
+          AgP3Sg Fem  => war+"ajha" ;
+          AgP1 Pl     => war+"ajna" ;
+          AgP2 Pl     => war+"ajkom" ;
+          AgP2Pl      => war+"ajhom"
+          } ;
+
+        f+"i" => case toVAgr agr of {
+          AgP1 Sg     => f+"ija" ;
+          AgP2 Sg     => f+"ik" ;
+          AgP3Sg Masc => f+"ih" ;
+          AgP3Sg Fem  => f+"iha" ;
+          AgP1 Pl     => f+"ina" ;
+          AgP2 Pl     => f+"ikom" ;
+          AgP2Pl      => f+"ihom"
+          } ;
+
+        t+"a'" => case toVAgr agr of {
+          AgP1 Sg     => t+"iegħi" ;
+          AgP2 Sg     => t+"iegħek" ;
+          AgP3Sg Masc => t+"iegħu" ;
+          AgP3Sg Fem  => t+"agħha" ;
+          AgP1 Pl     => t+"agħna" ;
+          AgP2 Pl     => t+"agħkom" ;
+          AgP2Pl      => t+"agħhom"
+          } ;
+
+        _ => case toVAgr agr of {
+          AgP1 Sg     => taht+"i" ;
+          AgP2 Sg     => taht+"ek" ;
+          AgP3Sg Masc => taht+"u" ;
+          AgP3Sg Fem  => taht + "ha" ;
+          AgP1 Pl     => case taht of {bej+"n" => bej+"na"; _ => taht+"na"} ;
+          AgP2 Pl     => taht + "kom" ;
+          AgP2Pl      => taht + "hom"
+          }
+      } ;
 
     {- Verb --------------------------------------------------------------- -}
 

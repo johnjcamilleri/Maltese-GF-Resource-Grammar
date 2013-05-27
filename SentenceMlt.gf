@@ -58,7 +58,13 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- Cl -> Prep -> ClSlash
     -- (with whom) he  walks
     -- SlashPrep cl prep = cl ** {c2 = prep} ;
-    SlashPrep cl prep = cl ** {c2 = { s = prep.s ; takesDet = prep.takesDet ; isPresent = True } } ;
+    SlashPrep cl prep = cl ** {c2 = {
+                                 s = prep.s ;
+                                 enclitic = prep.enclitic ;
+                                 takesDet = prep.takesDet ;
+                                 isPresent = True ;
+                                 }
+      } ;
 
     -- NP -> VS -> SSlash -> ClSlash
     -- (whom) she says that he loves

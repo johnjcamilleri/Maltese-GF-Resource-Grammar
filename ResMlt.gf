@@ -331,10 +331,13 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Join a preposition and NP to a string
     prepNP : Preposition -> NounPhrase -> Str ;
-    prepNP prep np = case <np.isDefn,prep.takesDet> of {
+    prepNP prep np = case np.isPron of {
+      True  => prep.enclitic ! np.a ; -- MAGĦHA
+      False => case <np.isDefn, prep.takesDet> of {
         <True,True>  => prep.s ! Definite ++ np.s ! NPCPrep ; -- FIT-TRIQ
         <True,False> => prep.s ! Definite ++ np.s ! NPNom ;   -- FUQ IT-TRIQ
         <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- FI TRIQ
+        }
       } ;
 
     Compl : Type = Preposition ** {isPresent : Bool} ;
@@ -344,16 +347,23 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     --   -- isPre : Bool
     --   } ;
 
+    noCompl : Compl = {
+      s = \\_ => [] ;
+      enclitic = \\_ => [] ;
+      takesDet = False ;
+      isPresent = False ;
+      } ;
+
     Preposition = {
       s : Definiteness => Str ;
-      takesDet : Bool
+      enclitic : Agr => Str ; -- when suffixed by pronouns; magħ-ha
+      takesDet : Bool ;
       } ;
 
   {- Pronoun -------------------------------------------------------------- -}
 
   oper
     Pronoun = {
-      -- s : PronForm => {c1, c2: Str} ;
       s : PronForm => Str ; -- cases like omm-i / hi-ja are handled elsewhere
       a : Agr ;
       } ;

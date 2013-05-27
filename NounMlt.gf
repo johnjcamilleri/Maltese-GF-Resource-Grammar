@@ -265,10 +265,10 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       s = \\num => cn.s ! num ++ np.s ! NPNom
       } ;
     PossNP cn np = cn ** {
-      s = \\num => cn.s ! num ++ prepNP (mkPrep "ta'") np
+      s = \\num => cn.s ! num ++ prepNP prep_ta np
       } ;
     PartNP cn np = cn ** {
-      s = \\num => cn.s ! num ++ prepNP (mkPrep "ta'") np
+      s = \\num => cn.s ! num ++ prepNP prep_ta np
       } ;
 
     -- Det -> NP -> NP
@@ -281,9 +281,25 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
   oper
     -- Copied from ParadigmsMlt (didn't want to change import structure)
-    mkPrep : Str -> Prep = \fuq -> lin Prep {
-      s = \\defn => fuq ;
-      takesDet = False
+    -- mkPrep : Str -> Prep = \fuq -> lin Prep {
+    --   s = \\defn => fuq ;
+    --   takesDet = False
+    --   } ;
+    prep_ta = lin Prep {
+      s = table {
+        Indefinite => "ta'" ;
+        Definite => makePreFull "tal-" "ta" "t'"
+      } ;
+      enclitic : Agr => Str = \\agr => case toVAgr agr of {
+        AgP1 Sg     => "tiegħi" ;
+        AgP2 Sg     => "tiegħek" ;
+        AgP3Sg Masc => "tiegħu" ;
+        AgP3Sg Fem  => "tagħha" ;
+        AgP1 Pl     => "tagħna" ;
+        AgP2 Pl     => "tagħkom" ;
+        AgP2Pl      => "tagħhom"
+        } ;
+      takesDet = True ;
       } ;
 
 }

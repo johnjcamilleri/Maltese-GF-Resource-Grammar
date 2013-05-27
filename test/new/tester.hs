@@ -1,4 +1,5 @@
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 
 import System.Environment
 import Control.Monad.Reader
@@ -37,7 +38,16 @@ runFile filepath = do
 -- | Process the table contents
 run :: (MonadIO m, MonadReader Env m) => [String] -> m ()
 run lines = do
-  results <- mapM line lines
+  results :: [Result] <- mapM line lines
+  mapM (\(ln,res) -> do
+           liftIO $ putStr $ printf "%3d " (ln :: Int)
+           case res of
+             Ok s      -> ok   $ "+ " ++ s
+             Warning s -> warn $ "! " ++ s
+             Error s   -> err  $ "x " ++ s
+             _         -> liftIO $ putStrLn "-"
+       ) (zip [3..] results)
+
   let good = length $ filter (\x->case x of {Ok _ -> True; _ -> False}) results
   let total = length $ filter (\x->case x of {Ignore -> False; _ -> True}) results
   let perc = fromIntegral (good * 100) / fromIntegral total :: Float
@@ -49,16 +59,8 @@ line l = do
   let bits
         = map strip $ wordsWhen (=='|') l
   if (length bits < 3)
-    then do
-    liftIO $ putStrLn "-"
-    return Ignore
-    else do
-    res <- check (bits!!0) (bits!!1) (bits!!2)
-    case res of
-      Ok s      -> ok   $ "+ " ++ s
-      Warning s -> warn $ "! " ++ s
-      Error s   -> err  $ "x " ++ s
-    return res
+    then return Ignore
+    else check (bits!!0) (bits!!1) (bits!!2)
 
 -- | The result of processing a single line
 data Result =

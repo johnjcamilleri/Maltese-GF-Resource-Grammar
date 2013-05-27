@@ -14,7 +14,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VPSlash
     -- love (it)
-    SlashV2a = predVc ;
+    -- SlashV2a = predVc ;
+    SlashV2a v2 = (predV v2) ** { c2 = noCompl } ; -- gets rid of the V2's prep
 
     -- V3 -> NP -> VPSlash
     -- give it (to her)
@@ -61,9 +62,18 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VPSlash -> NP -> VP
     -- love it
     ComplSlash vp np =
-      case np.isPron of {
+      case <np.isPron, vp.c2.isPresent> of {
+
+        -- Get enclitic version of c2
+        <True,True> => {
+            s = vp.s ;
+            s2 = \\agr => vp.c2.enclitic ! np.a ;
+            dir = NullVariants3 ;
+            ind = NullVariants3 ;
+          } ;
+
         -- Join pron to verb
-        True => {
+        <True,False> => {
             s = vp.s ;
             s2 = \\agr => [] ;
             dir = mkMaybeVariants3 (np.s ! NPCPrep) ; --- we'll need to get all the variants direct from the NP
@@ -154,8 +164,13 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VP -> Prep -> VPSlash
     -- live in (it)
     VPSlashPrep vp p = vp ** {
-      -- c2 = p ** {isPresent = True} ;
-      c2 = { s = p.s ; takesDet = p.takesDet ; isPresent = True } ;
+      -- c2 = lin Compl (p ** {isPresent = True}) ;
+      c2 = {
+        s = p.s ;
+        enclitic = p.enclitic ;
+        takesDet = p.takesDet ;
+        isPresent = True ;
+        } ;
       } ;
 
 }
