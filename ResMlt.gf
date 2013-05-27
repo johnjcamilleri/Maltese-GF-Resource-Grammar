@@ -399,23 +399,38 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     NullVariants3 : Maybe Variants3 = Nothing Variants3 { s1 = [] ; s2 = [] ; s3 = [] } ;
 
     -- Produce stem variants as needed (only call on compile-time strings!)
-    stemVariants : Str -> Variants3 = \s ->
+    -- Refer to doc/stems.org
+    stemVariantsPerf : Str -> Variants3 = \s ->
       let
         ftahna  : Str = s ;
         ftahnie : Str = case s of {
           ftahn + "a" => ftahn + "ie" ;
+          fet + h@#Cns + "et" => fet + h + "it" ;
           _ => s
           } ;
         ftahni  : Str = case s of {
           ftahn + "a" => ftahn + "i" ;
-          _ => s
+          _ => ftahnie
           } ;
       in
       { s1 = ftahna ; s2 = ftahnie ; s3 = ftahni } ;
+    stemVariantsImpf : Str -> Variants3 = \s ->
+      let
+        ftahna  : Str = s ;
+        ftahnie : Str = case s of {
+          nift + "aħ" => nift + "ħ" ;
+          _ => s
+          } ;
+      in
+      { s1 = ftahna ; s2 = ftahnie ; s3 = [] } ;
 
     -- Convert old verb form table into one with stem variants
     stemVariantsTbl : (VForm => Str) -> (VForm => Variants3) = \tbl ->
-      \\vf => stemVariants (tbl ! vf) ;
+      \\vf => case vf of {
+        VPerf _ => stemVariantsPerf (tbl ! vf) ;
+        VImpf _ => stemVariantsImpf (tbl ! vf) ;
+        _  => mkVariants3 (tbl ! vf)
+      } ;
 
     Verb : Type = {
       s : VForm => Variants3 ; --- need to store different "stems" already at verb level (ġera/ġerie/ġeri)

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-( cd ../../ ; make pgf )
+( cd ../../ ; make pgf_engmlt )
 
 ( make tester )
 
