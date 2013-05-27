@@ -71,7 +71,11 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
           } ;
 
         -- Insert obj to VP
-        _ => insertObj (\\agr => np.s ! NPNom) vp
+        -- _ => insertObj (\\agr => vp.c2.s ! bool2definiteness np.isDefn ++ np.s ! NPNom) vp
+        _ => insertObj (\\agr => case np.isDefn of {
+                          True  => vp.c2.s ! Definite ++ np.s ! NPCPrep ; -- mal-qattus
+                          False => vp.c2.s ! Indefinite ++ np.s ! NPNom   -- ma' qattus
+                          }) vp
       } ;
 
     -- VV -> VPSlash -> VPSlash
