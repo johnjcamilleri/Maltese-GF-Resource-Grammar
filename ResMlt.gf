@@ -337,7 +337,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- FI TRIQ
       } ;
 
-    Compl = Preposition ;
+    Compl : Type = Preposition ** {isPresent : Bool} ;
     -- Compl : Type = {
     --   s : Str ;
     --   -- c : NPForm ;

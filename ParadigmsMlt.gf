@@ -223,10 +223,10 @@ resource ParadigmsMlt = open
     } ;
 
     prepN2 : N -> Prep -> N2 ;
-    prepN2 = \n,p -> lin N2 (n ** {c2 = p}) ;
+    prepN2 = \n,p -> lin N2 (n ** {c2 = hasCompl p}) ;
 
     mkN3 : Noun -> Prep -> Prep -> N3 ;
-    mkN3 = \n,p,q -> lin N3 (n ** {c2 = p ; c3 = q}) ;
+    mkN3 = \n,p,q -> lin N3 (n ** {c2 = hasCompl p ; c3 = hasCompl q}) ;
 
     -- Mark a noun as taking possessive enclitic pronouns
     possN : N -> N ;
@@ -275,8 +275,8 @@ resource ParadigmsMlt = open
         } ;
       } ;
 
-    noPrep : Prep ;  -- no preposition
-    noPrep = mkPrep [] ;
+    -- noPrep : Prep ;  -- no preposition
+    -- noPrep = mkPrep [] ;
 
     {- Verb --------------------------------------------------------------- -}
 
@@ -990,23 +990,29 @@ resource ParadigmsMlt = open
 
     {- Verb --------------------------------------------------------------- -}
 
+    hasCompl : Prep -> Compl = \p -> p ** { isPresent = True } ;
+    noCompl : Compl = noPrep ** { isPresent = False } where { noPrep : Prep = mkPrep [] };
+
     mkVS : V -> VS ; -- sentence-compl
     mkVS v = lin VS v ;
 
     prepV2 : V -> Prep -> V2 ;
-    prepV2 v p = lin V2 ( v ** { c2 = p } ) ;
+    prepV2 v p = lin V2 ( v ** { c2 = hasCompl p } ) ;
 
     dirV2 : V -> V2 ;
-    dirV2 v = prepV2 v noPrep ;
+    -- dirV2 v = prepV2 v noPrep ;
+    dirV2 v = lin V2 ( v ** { c2 = noCompl } ) ;
 
     prepPrepV3 : V -> Prep -> Prep -> V3 ;
-    prepPrepV3 v p t = lin V3 (v ** { c2 = p ; c3 = t }) ;
+    prepPrepV3 v p t = lin V3 (v ** { c2 = hasCompl p ; c3 = hasCompl t }) ;
 
     dirV3 : V -> Prep -> V3 ;
-    dirV3 v p = prepPrepV3 v noPrep p ;
+    -- dirV3 v p = prepPrepV3 v noPrep p ;
+    dirV3      v   t = lin V3 (v ** { c2 = noCompl ; c3 = hasCompl t }) ;
 
     dirdirV3 : V -> V3 ;
-    dirdirV3 v = dirV3 v noPrep ;
+    -- dirdirV3 v = dirV3 v noPrep ;
+    dirdirV3   v     = lin V3 (v ** { c2 = noCompl ; c3 = noCompl }) ;
 
     mkV3 : overload {
       mkV3  : V -> V3 ;                   -- ditransitive, e.g. give,_,_
@@ -1026,7 +1032,7 @@ resource ParadigmsMlt = open
       } ;
 
     mkV2V : V -> Prep -> Prep -> V2V ;  -- e.g. want (noPrep NP) (to VP)
-    mkV2V v p t = lin V2V (v ** { c2 = p ; c3 = t }) ;
+    mkV2V v p t = lin V2V (v ** { c2 = hasCompl p ; c3 = hasCompl t }) ;
 
     {- Conjunction -------------------------------------------------------- -}
 
@@ -1130,10 +1136,11 @@ resource ParadigmsMlt = open
       } ;
 
     prepA2 : A -> Prep -> A2 ;
-    prepA2 a p = lin A2 (a ** {c2 = p}) ;
+    prepA2 a p = lin A2 (a ** {c2 = hasCompl p}) ;
 
     dirA2 : A -> A2 ;
-    dirA2 a = prepA2 a noPrep ;
+    -- dirA2 a = prepA2 a noPrep ;
+    dirA2 a = lin A2 (a ** {c2 = noCompl}) ;
 
     mkA2 : overload {
       mkA2 : A -> Prep -> A2 ;

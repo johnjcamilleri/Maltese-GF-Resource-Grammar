@@ -72,9 +72,10 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
         -- Insert obj to VP
         -- _ => insertObj (\\agr => vp.c2.s ! bool2definiteness np.isDefn ++ np.s ! NPNom) vp
-        _ => insertObj (\\agr => case np.isDefn of {
-                          True  => vp.c2.s ! Definite ++ np.s ! NPCPrep ; -- mal-qattus
-                          False => vp.c2.s ! Indefinite ++ np.s ! NPNom   -- ma' qattus
+        _ => insertObj (\\agr => case <vp.c2.isPresent,np.isDefn> of {
+                          <True,True>  => vp.c2.s ! Definite ++ np.s ! NPCPrep ; -- mal-qattus
+                          <True,False> => vp.c2.s ! Indefinite ++ np.s ! NPNom ; -- ma' qattus
+                          _            => np.s ! NPNom                           -- il-qattus
                           }) vp
       } ;
 
@@ -122,19 +123,19 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- AP -> Comp
     -- (be) small
     CompAP ap = {
-      s = \\agr => ap.s ! toGenNum agr
+      s = \\agr => ap.s ! toGenNum agr ;
       } ;
 
     -- NP -> Comp
     -- (be) the man
     CompNP np = {
-      s = \\_ => np.s ! NPAcc
+      s = \\_ => np.s ! NPAcc ;
       } ;
 
     -- Adv -> Comp
     -- (be) here
     CompAdv adv = {
-      s = \\_ => adv.s
+      s = \\_ => adv.s ;
       } ;
 
     -- CN -> Comp
@@ -143,7 +144,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
       s = \\agr => case agr.n of {
         Sg => artIndef ++ cn.s ! Singulative ;
         Pl => cn.s ! Plural
-        }
+        } ;
     } ;
 
     -- VP
@@ -153,7 +154,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VP -> Prep -> VPSlash
     -- live in (it)
     VPSlashPrep vp p = vp ** {
-      c2 = p
+      -- c2 = p ** {isPresent = True} ;
+      c2 = { s = p.s ; takesDet = p.takesDet ; isPresent = True } ;
       } ;
 
 }
