@@ -14,6 +14,16 @@ data Env = Env {
   langMlt :: Language
   }
 
+-- | The result of processing a whole file
+data Summary = Summary { file :: FilePath , passed :: Int , total :: Int }
+
+-- | The result of processing a single line
+data Result =
+    Error String
+  | Warning String
+  | Ok String
+  | Ignore
+
 main :: IO ()
 main = do
 
@@ -26,32 +36,40 @@ main = do
   args <- getArgs
   case args of
     [] -> error "Must specify argument"
-    fs -> mapM_ (\f -> runReaderT (runFile f) env) fs
+    fs -> do
+      summaries <- mapM (\f -> runReaderT (runFile f) env) fs
+      putStrLn ""
+      mapM_ (\summary -> do
+                let good' = passed summary
+                let total' = total summary
+                let perc = fromIntegral (good' * 100) / fromIntegral total' :: Float
+                putStrLn $ printf "%s: %d/%d (%.1f%%)" (file summary) good' total' perc
+            ) summaries
 
 -- | Run a single file
-runFile :: (MonadIO m, MonadReader Env m) => FilePath -> m ()
+runFile :: (MonadIO m, MonadReader Env m) => FilePath -> m Summary
 runFile filepath = do
   c <- liftIO (readFile filepath)
   liftIO $ putStrLn $ "# " ++ filepath
-  run . (drop 2) . lines $ c
+  summ <- run . (drop 2) . lines $ c
+  return $ summ { file = filepath }
 
 -- | Process the table contents
-run :: (MonadIO m, MonadReader Env m) => [String] -> m ()
+run :: (MonadIO m, MonadReader Env m) => [String] -> m Summary
 run lines = do
   results :: [Result] <- mapM line lines
   mapM (\(ln,res) -> do
            liftIO $ putStr $ printf "%3d " (ln :: Int)
            case res of
-             Ok s      -> ok   $ "+ " ++ s
-             Warning s -> warn $ "! " ++ s
-             Error s   -> err  $ "x " ++ s
+             Ok s      -> ok   $ s
+             Warning s -> warn $ s
+             Error s   -> err  $ s
              _         -> liftIO $ putStrLn "-"
        ) (zip [3..] results)
 
   let good = length $ filter (\x->case x of {Ok _ -> True; _ -> False}) results
   let total = length $ filter (\x->case x of {Ignore -> False; _ -> True}) results
-  let perc = fromIntegral (good * 100) / fromIntegral total :: Float
-  liftIO $ putStrLn $ printf "Passed %d/%d (%.1f%%)" good total perc
+  return $ Summary [] good total
 
 -- | Process a single line (expects line of an org-mode table)
 line :: (MonadIO m, MonadReader Env m) => String -> m Result
@@ -61,13 +79,6 @@ line l = do
   if (length bits < 3)
     then return Ignore
     else check (bits!!0) (bits!!1) (bits!!2)
-
--- | The result of processing a single line
-data Result =
-    Error String
-  | Warning String
-  | Ok String
-  | Ignore
 
 -- | Check linearisation against gold standard
 check :: (MonadIO m, MonadReader Env m) => String -> String -> String -> m Result

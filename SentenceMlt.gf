@@ -10,8 +10,7 @@
 concrete SentenceMlt of Sentence = CatMlt ** open
   Prelude,
   ResMlt,
-  ParamX,
-  CommonX in {
+  ParamX in {
 
   flags optimize=all_subs ;
 
@@ -62,6 +61,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
                                  s = prep.s ;
                                  enclitic = prep.enclitic ;
                                  takesDet = prep.takesDet ;
+                                 joinsVerb = prep.joinsVerb ;
                                  isPresent = True ;
                                  }
       } ;

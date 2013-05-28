@@ -247,6 +247,7 @@ resource ParadigmsMlt = open
         s = \\defn => fuq ;
         enclitic = prepClitics fuq ;
         takesDet = False ;
+        joinsVerb = False ;
         } ;
 
       -- Same in non-clitic cases, but given all clitic cases e.g. QABEL
@@ -262,6 +263,7 @@ resource ParadigmsMlt = open
           AgP2Pl      => qabilhom
           } ;
         takesDet = False ;
+        joinsVerb = False ;
         } ;
 
       -- Forms:
@@ -275,6 +277,7 @@ resource ParadigmsMlt = open
           } ;
         enclitic = prepClitics ghal ;
         takesDet = True ;
+        joinsVerb = False ;
         } ;
 
       -- All forms, but assumed enclitic forms
@@ -290,6 +293,7 @@ resource ParadigmsMlt = open
           } ;
         enclitic = prepClitics bi ;
         takesDet = True ;
+        joinsVerb = False ;
         } ;
 
       -- All forms:
@@ -305,7 +309,7 @@ resource ParadigmsMlt = open
       --   BINA
       --   BIKOM
       --   BIHOM
-      mkPrep : (_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Prep = \bi,b',bil,bit,bl,bija,bik,bih,biha,bina,bikom,bihom -> lin Prep {
+      mkPrep : (_,_,_,_,_,_,_,_,_,_,_,_ : Str) -> Bool -> Prep = \bi,b',bil,bit,bl,bija,bik,bih,biha,bina,bikom,bihom,joinsV -> lin Prep {
         s = table {
           Indefinite => makePreVowel bi b' ;
           Definite   => makePreFull  bil (dropSfx 2 bit) bl
@@ -320,6 +324,7 @@ resource ParadigmsMlt = open
           AgP2Pl      => bihom
           } ;
         takesDet = True ;
+        joinsVerb = joinsV ;
         } ;
     } ;
 
@@ -1254,7 +1259,10 @@ resource ParadigmsMlt = open
     mkAdA : Str -> AdA ; -- adverb modifying adjective, e.g. PJUTTOST
     mkAdN : Str -> AdN ; -- adverb modifying numeral, e.g. MADWAR
 
-    mkAdv x = lin Adv (ss x) ;
+    mkAdv x = lin Adv (ss x) ** {
+      joinsVerb = False ;
+      a = agrP3 Sg Masc ; -- ignored when joinsVerb = False
+      } ;
     mkAdV x = lin AdV (ss x) ;
     mkAdA x = lin AdA (ss x) ;
     mkAdN x = lin AdN (ss x) ;

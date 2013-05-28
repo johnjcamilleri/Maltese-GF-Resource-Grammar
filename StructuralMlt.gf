@@ -80,7 +80,8 @@ concrete StructuralMlt of Structural = CatMlt **
     by8means_Prep = mkPrep "bi" "b'" "bil-" "bit-" "bl-" ;
     during_Prep   = mkPrep "waqt" ;
     for_Prep      = mkPrep "għal" "għall-" "għall-" "għat-" "għall-"
-                           "għalija" "għalik" "għalih" "għaliha" "għalina" "għalikom" "għalihom" ;
+                           "għalija" "għalik" "għalih" "għaliha" "għalina" "għalikom" "għalihom"
+                           True ;
     from_Prep     = mkPrep "mingħand" ;
     in8front_Prep = mkPrep "quddiem" ;
     in_Prep       = mkPrep "fi" "f'" "fil-" "fit-" "fl-" ;
@@ -88,7 +89,8 @@ concrete StructuralMlt of Structural = CatMlt **
     part_Prep     = possess_Prep ;
     possess_Prep  = mkPrep "ta'" "t'" "tal-" "tat-" "tal-" ;
     through_Prep  = mkPrep "minn ġo" "minn ġol-" "minn ġol-" "minn ġot-" "minn ġol-"
-                           "minn ġo fija" "minn ġo fik" "minn ġo fih" "minn ġo fiha" "minn ġo fina" "minn ġo fikom" "minn ġo fihom" ;
+                           "minn ġo fija" "minn ġo fik" "minn ġo fih" "minn ġo fiha" "minn ġo fina" "minn ġo fikom" "minn ġo fihom"
+                           False ;
     to_Prep       = mkPrep "lil" "lill-" "lit-" ;
     under_Prep    = mkPrep "taħt" ;
     without_Prep  = mkPrep "mingħajr" ;

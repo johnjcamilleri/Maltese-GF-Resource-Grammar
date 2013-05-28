@@ -64,6 +64,11 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           Sg => GSg g ;
           Pl => GPl
         } ;
+      mkGenNum : Noun_Number -> Gender -> GenNum = \n,g ->
+        case nounnum2num n of {
+          Sg => GSg g ;
+          Pl => GPl
+        } ;
       } ;
 
     -- Convert to GenNum from another type
@@ -89,10 +94,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         } ;
       } ;
 
-    -- agrP3 : Agr = overload {
-      agrP3 : Number -> Gender -> Agr = \n,g -> mkAgr n P3 g;
-      -- agrP3 : Number           -> Agr = \n   -> mkAgr n P3 Masc;
-      -- } ;
+    agrP3 : Number -> Gender -> Agr = \n,g -> mkAgr n P3 g;
 
     conjAgr : Agr -> Agr -> Agr = \a,b -> {
       n = (conjNumber a.n b.n) ;
@@ -206,6 +208,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       case n of {
         Sg  => Singulative ;
         Pl  => Plural
+      } ;
+
+    nounnum2num : Noun_Number -> Number = \n ->
+      case n of {
+        Singulative => Sg ;
+        Collective  => Sg ;
+        Dual        => Pl ;
+        Plural      => Pl
       } ;
 
     numform2nounnum : NumForm -> Noun_Number = \n ->
@@ -327,16 +337,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       };
 
     regNP : Str -> NounPhrase = \kulhadd ->
-      mkNP kulhadd Sg P3 Masc ; -- KULĦADD KUNTENT (not KULĦADD KUNTENTA)
+      mkNP kulhadd Sg P3 Masc ; -- kulħadd kuntent
 
     -- Join a preposition and NP to a string
     prepNP : Preposition -> NounPhrase -> Str ;
     prepNP prep np = case np.isPron of {
-      True  => prep.enclitic ! np.a ; -- MAGĦHA
+      True  => prep.enclitic ! np.a ; -- magħha
       False => case <np.isDefn, prep.takesDet> of {
-        <True,True>  => prep.s ! Definite ++ np.s ! NPCPrep ; -- FIT-TRIQ
-        <True,False> => prep.s ! Definite ++ np.s ! NPNom ;   -- FUQ IT-TRIQ
-        <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- FI TRIQ
+        <True,True>  => prep.s ! Definite ++ np.s ! NPCPrep ; -- fit-triq
+        <True,False> => prep.s ! Definite ++ np.s ! NPNom ;   -- fuq it-triq
+        <False,_>    => prep.s ! Indefinite ++ np.s ! NPNom   -- fi triq
         }
       } ;
 
@@ -351,13 +361,15 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s = \\_ => [] ;
       enclitic = \\_ => [] ;
       takesDet = False ;
+      joinsVerb = False ;
       isPresent = False ;
       } ;
 
     Preposition = {
       s : Definiteness => Str ;
       enclitic : Agr => Str ; -- when suffixed by pronouns; magħ-ha
-      takesDet : Bool ;
+      takesDet : Bool ; -- True: fil- / False: fuq il-
+      joinsVerb : Bool ; -- True for for_Prep (I.O. suffix)
       } ;
 
   {- Pronoun -------------------------------------------------------------- -}
@@ -635,6 +647,13 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
       insertObj obj vp ** {c2 = vp.c2} ;
 
+    insertIndObj : Str -> VerbPhrase -> VerbPhrase = \ind,vp -> {
+      s = vp.s ;
+      s2 = vp.s2 ;
+      dir = vp.dir ;
+      ind = mkMaybeVariants3 ind ;
+      };
+
     insertAdV : Str -> VerbPhrase -> VerbPhrase = \adv,vp -> {
       s = vp.s ;
       s2 = \\agr => vp.s2 ! agr ++ adv ;
@@ -734,8 +753,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
               <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
               <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
 
-              <Cond,_    ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
-              <Cond,_    ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
+              <Cond, _   ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
+              <Cond, _   ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
 
               -- Same as Past Simul
               <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
@@ -744,10 +763,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
               <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
               <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
 
-              -- <Fut, Anter,Pos> => b2 (kien ++ "se") (verb.s ! VImpf vagr) ; -- kont se norqod
-              -- <Fut, Anter,Neg> => b2 (ma ++ kienx ++ "se") (verb.s ! VImpf vagr) -- ma kontx se norqod
               <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
-              <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- mhux se nkun rqadt
+              <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- m'iniex se nkun rqadt
             } ;
           VPImperat num => b1 (verb.s ! VImp num) -- torqodx
         };

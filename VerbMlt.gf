@@ -14,8 +14,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VPSlash
     -- love (it)
-    -- SlashV2a = predVc ;
-    SlashV2a v2 = (predV v2) ** { c2 = noCompl } ; -- gets rid of the V2's prep
+    SlashV2a = predVc ;
+    -- SlashV2a v2 = (predV v2) ** { c2 = noCompl } ; -- gets rid of the V2's prep
 
     -- V3 -> NP -> VPSlash
     -- give it (to her)
@@ -67,7 +67,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         -- Get enclitic version of c2
         <True,True> => {
             s = vp.s ;
-            s2 = \\agr => vp.c2.enclitic ! np.a ;
+            s2 = \\agr => vp.s2 ! agr ++ vp.c2.enclitic ! np.a ;
             dir = NullVariants3 ;
             ind = NullVariants3 ;
           } ;
@@ -79,6 +79,13 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
             dir = mkMaybeVariants3 (np.s ! NPCPrep) ; --- we'll need to get all the variants direct from the NP
             ind = NullVariants3 ;
           } ;
+
+        -- <False,False> => {
+        --     s = vp.s ;
+        --     s2 = \\agr => vp.c2.enclitic ! agr ;
+        --     dir = NullVariants3 ;
+        --     ind = NullVariants3 ;
+        --   } ;
 
         -- Insert obj to VP
         -- _ => insertObj (\\agr => vp.c2.s ! bool2definiteness np.isDefn ++ np.s ! NPNom) vp
@@ -108,7 +115,10 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- VP -> Adv -> VP
     -- sleep here
-    AdvVP vp adv = insertObj (\\_ => adv.s) vp ;
+    AdvVP vp adv = case adv.joinsVerb of {
+      True  => insertIndObj (indObjSuffix adv.a) vp ;
+      False => insertObj (\\_ => adv.s) vp
+      } ;
 
     -- AdV -> VP -> VP
     -- always sleep
@@ -116,7 +126,27 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- VPSlash -> Adv -> VPSlash
     -- use (it) here
-    AdvVPSlash vp adv = insertObj (\\_ => adv.s) vp ** {c2 = vp.c2} ;
+    AdvVPSlash vp adv = case adv.joinsVerb of {
+      True  => insertIndObj (indObjSuffix adv.a) vp ;
+      False => insertObj (\\_ => adv.s) vp
+      }  ** {c2 = vp.c2} ;
+
+  oper
+
+    -- Only for_Prep causes these to be used, thus it doesn't make sense to store this
+    -- information in Prep.
+    indObjSuffix : Agr -> Str = \agr ->
+      case (toVAgr agr) of {
+        AgP1 Sg      => "li" ;
+        AgP2 Sg      => "lek" ;
+        AgP3Sg Masc  => "lu" ;
+        AgP3Sg Fem   => "ilha" ;
+        AgP1 Pl      => "ilna" ;
+        AgP2 Pl      => "ilkom" ;
+        AgP3Pl       => "ilhom"
+      } ;
+
+  lin
 
     -- AdV -> VPSlash -> VPSlash
     -- always use (it)
@@ -169,6 +199,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         s = p.s ;
         enclitic = p.enclitic ;
         takesDet = p.takesDet ;
+        joinsVerb = p.joinsVerb ;
         isPresent = True ;
         } ;
       } ;
