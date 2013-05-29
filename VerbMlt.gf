@@ -140,10 +140,14 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         AgP1 Sg      => "li" ;
         AgP2 Sg      => "lek" ;
         AgP3Sg Masc  => "lu" ;
-        AgP3Sg Fem   => "ilha" ;
-        AgP1 Pl      => "ilna" ;
-        AgP2 Pl      => "ilkom" ;
-        AgP3Pl       => "ilhom"
+        -- AgP3Sg Fem   => "ilha" ;
+        -- AgP1 Pl      => "ilna" ;
+        -- AgP2 Pl      => "ilkom" ;
+        -- AgP3Pl       => "ilhom"   --- need to introduce variants here too
+        AgP3Sg Fem   => "lha" ;
+        AgP1 Pl      => "lna" ;
+        AgP2 Pl      => "lkom" ;
+        AgP3Pl       => "lhom"
       } ;
 
   lin

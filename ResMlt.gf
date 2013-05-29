@@ -444,7 +444,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           _ => s
           } ;
       in
-      { s1 = ftahna ; s2 = ftahnie ; s3 = ftahnie } ;
+      { s1 = ftahna ; s2 = ftahnie ; s3 = ftahna } ;
 
     -- Convert old verb form table into one with stem variants
     stemVariantsTbl : (VForm => Str) -> (VForm => Variants3) = \tbl ->
