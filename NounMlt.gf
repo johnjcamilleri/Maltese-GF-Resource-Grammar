@@ -153,7 +153,7 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     PredetNP pred np = overwriteNPs np (\\c => pred.s ++ np.s ! c) ;
 
     -- NP -> V2 -> NP
-    PPartNP np v2 = overwriteNPs np (\\c => np.s ! c ++ stem1 (v2.s ! VActivePart (toGenNum np.a))) ;
+    PPartNP np v2 = overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VActivePart (toGenNum np.a)).s1) ;
 
     -- NP -> RS -> NP
     RelNP np rs = overwriteNPs np (\\c => np.s ! c ++ "," ++ rs.s ! np.a ) ;

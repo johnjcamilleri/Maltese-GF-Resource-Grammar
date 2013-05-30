@@ -404,12 +404,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   {- Verb ----------------------------------------------------------------- -}
 
   oper
+    -- Generic variants (used for verb stems)
     Variants3 : Type = {s1, s2, s3 : Str} ;
-
-    -- Shortcut functions for accessing stems
-    stem1 : Variants3 -> Str = \stems -> stems.s1 ;
-    stem2 : Variants3 -> Str = \stems -> stems.s2 ;
-    stem3 : Variants3 -> Str = \stems -> stems.s3 ;
 
     mkVariants3 : Variants3 = overload {
       mkVariants3 : (s1 : Str) -> Variants3 = \a -> { s1 = a ; s2 = a ; s3 = a } ;
@@ -419,6 +415,46 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     mkMaybeVariants3 : Str -> Maybe Variants3 = \s -> Just Variants3 (mkVariants3 s) ;
 
     NullVariants3 : Maybe Variants3 = Nothing Variants3 { s1 = [] ; s2 = [] ; s3 = [] } ;
+
+    -- Direct object clitic
+    DirObjVerbClitic : Type = {
+      s1 : Str ;
+      s2 : Str ;
+      s3 : Str ;
+      a  : Agr ;
+      } ;
+    NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = agrP3 Sg Masc } ;
+
+    mkDirObjVerbClitic : DirObjVerbClitic = overload {
+      mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = agr } ;
+      -- mkDirObjVerbClitic : (s1, s2, s3 : Str) -> Agr -> DirObjVerbClitic = \a,b,c,agr -> { s1 = a ; s2 = b ; s3 = c ; a = agr } ;
+      } ;
+
+    mkMaybeDirObjVerbClitic : Str -> Agr -> Maybe DirObjVerbClitic = \s,agr -> Just DirObjVerbClitic (mkDirObjVerbClitic s agr) ;
+
+    -- Indirect object clitic
+    IndObjVerbClitic : Type = {
+      s1 : Str ; --   ftaħt-ilha
+      s2 : Str ; -- ftaħnie-lha
+      s3 : Str ; --   ftaħt-ilhiex
+      s4 : Str ; -- ftaħnie-lhiex
+      a  : Agr ;
+      } ;
+
+    -- Only for_Prep causes these to be used, thus it doesn't make sense to store this
+    -- information in Prep.
+    indObjSuffix : Agr -> IndObjVerbClitic = \agr ->
+      case (toVAgr agr) of {
+        AgP1 Sg      => { s1="li"   ; s2="li"   ; s3="li"    ; s4="li"    ; a = agr } ;
+        AgP2 Sg      => { s1="lek"  ; s2="lek"  ; s3="lok"   ; s4="lok"   ; a = agr } ;
+        AgP3Sg Masc  => { s1="lu"   ; s2="lu"   ; s3="lu"    ; s4="lu"    ; a = agr } ;
+        AgP3Sg Fem   => { s1="lha"  ; s2="lhie" ; s3="ilha"  ; s4="ilhie" ; a = agr } ;
+        AgP1 Pl      => { s1="lna"  ; s2="lnie" ; s3="ilna"  ; s4="ilnie" ; a = agr } ;
+        AgP2 Pl      => { s1="lkom" ; s2="lkom" ; s3="ilkom" ; s4="ilkom" ; a = agr } ;
+        AgP3Pl       => { s1="lhom" ; s2="lhom" ; s3="ilhom" ; s4="ilhom" ; a = agr }
+      } ;
+
+    NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = agrP3 Sg Masc } ;
 
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
@@ -531,15 +567,29 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     joinVariants3 : Variants3 -> Polarity -> Str = \stems,pol ->
       case <pol> of {
-        <Pos> => stem1 stems ;
-        <Neg> => stem2 stems ++ BIND ++ "x"
+        <Pos> => stems.s1 ;
+        <Neg> => stems.s2 ++ BIND ++ "x"
       } ;
 
     joinVP : VerbPhrase -> VPForm -> Anteriority -> Polarity -> Str = \vp,form,ant,pol ->
-      let
+     let
         stems = (vp.s ! form ! ant ! pol).main ;
         aux   = (vp.s ! form ! ant ! pol).aux ;
         x : Str = "x" ;
+        dir = fromJust DirObjVerbClitic vp.dir ; -- These are lazy
+        ind = fromJust IndObjVerbClitic vp.ind ;
+
+        ind_s1 = ind.s1 ;
+        ind_s2 = ind.s2 ;
+        -- ind_s1 : Str = case <toVAgr dir.a, toVAgr ind.a> of {
+        --   <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
+        --   _                 => ind.s1   -- hie-lek
+        --   } ;
+        -- ind_s2 : Str = case <toVAgr dir.a, toVAgr ind.a> of {
+        --   <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
+        --   _                 => ind.s2   -- hie-lekx
+        --   } ;
+
       in
         case takesAux form ant of {
 
@@ -550,13 +600,13 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
             <False,False> => stems.s1 ;
 
             -- konna ftaħnie-ha / ma konniex ftaħni-ha
-            <True ,False> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.dir).s1 ;
+            <True ,False> => stems.s2 ++ BIND ++ dir.s1 ;
 
             -- konna ftaħnie-lha / ma konniex ftaħni-lha
-            <False,True > => stems.s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
+            <False,True > => stems.s2 ++ BIND ++ ind.s1 ;
 
             -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
-            <True, True > => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1
+            <True, True > => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
 
             } ;
 
@@ -568,16 +618,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
             <False,False,Neg> => stems.s2 ++ BIND ++ x ;
 
             -- ftaħnie-ha / ftaħni-hie-x
-            <True ,False,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.dir).s1 ;
-            <True ,False,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ x ;
+            <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
+            <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
             -- ftaħnie-lha / ftaħni-lhie-x
-            <False,True ,Pos> => stems.s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
-            <False,True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x ;
+            <False,True ,Pos> => stems.s2 ++ BIND ++ ind.s1 ;
+            <False,True ,Neg> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ;
 
             -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-            <True, True ,Pos> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s2 ++ BIND ++ (fromJust Variants3 vp.ind).s1 ;
-            <True, True ,Neg> => stems.s3 ++ BIND ++ (fromJust Variants3 vp.dir).s3 ++ BIND ++ (fromJust Variants3 vp.ind).s2 ++ BIND ++ x
+            <True, True ,Pos> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind_s1 ;
+            <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_s2 ++ BIND ++ x
 
             }
       } ;
@@ -599,6 +649,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <VPImperat _, _> => False
       } ;
 
+    -- selectDirClitic_2 : VForm -> DirObjVerbClitic = \vf,dir ->
+    --   case vf of {
+    --      _ => (fromJust DirObjVerbClitic dir).s2
+    --   } ;
+    -- selectDirClitic : VForm -> DirObjVerbClitic -> Str = \vf,dir,fallback ->
+    --   case vf of {
+    --     <> => ;
+    --     _ => fallback
+    --   } ;
+
     VerbParts : Type = {
       aux : Str ;        -- when present, negation is applied here
       main : Variants3 ; -- enclitics always applied here
@@ -615,8 +675,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     VerbPhrase : Type = {
       s : VPForm => Anteriority => Polarity => VerbParts ;
       s2 : Agr => Str ; -- complement
-      dir : Maybe Variants3 ; -- direct object clitic
-      ind : Maybe Variants3 ; -- indirect object clitic
+      dir : Maybe DirObjVerbClitic ; -- direct object clitic
+      ind : Maybe IndObjVerbClitic ; -- indirect object clitic
       } ;
 
     SlashVerbPhrase : Type = VerbPhrase ** {c2 : Compl} ;
@@ -647,11 +707,11 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
       insertObj obj vp ** {c2 = vp.c2} ;
 
-    insertIndObj : Str -> VerbPhrase -> VerbPhrase = \ind,vp -> {
+    insertIndObj : IndObjVerbClitic -> VerbPhrase -> VerbPhrase = \ind,vp -> {
       s = vp.s ;
       s2 = vp.s2 ;
       dir = vp.dir ;
-      ind = mkMaybeVariants3 ind ;
+      ind = Just IndObjVerbClitic ind ;
       };
 
     insertAdV : Str -> VerbPhrase -> VerbPhrase = \adv,vp -> {
@@ -722,8 +782,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           <VPImperat num, Neg>       => mkVerbParts (copula_kien.s ! VImp num ! Neg) [] -- kunx
         } ;
       s2 = \\agr => [] ;
-      dir = NullVariants3 ;
-      ind = NullVariants3 ;
+      dir = NullDirObjVerbClitic ;
+      ind = NullIndObjVerbClitic ;
       } ;
 
     -- [AZ]
@@ -769,8 +829,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           VPImperat num => b1 (verb.s ! VImp num) -- torqodx
         };
       s2 = \\agr => [] ;
-      dir = NullVariants3 ;
-      ind = NullVariants3 ;
+      dir = NullDirObjVerbClitic ;
+      ind = NullIndObjVerbClitic ;
       -- a1 = [] ;
       -- n2 = \\_ => [] ;
       -- a2 = [] ;

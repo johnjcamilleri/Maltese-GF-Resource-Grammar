@@ -68,16 +68,16 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         <True,True> => {
             s = vp.s ;
             s2 = \\agr => vp.s2 ! agr ++ vp.c2.enclitic ! np.a ;
-            dir = NullVariants3 ;
-            ind = NullVariants3 ;
+            dir = NullDirObjVerbClitic ;
+            ind = NullIndObjVerbClitic ;
           } ;
 
         -- Join pron to verb
         <True,False> => {
             s = vp.s ;
             s2 = \\agr => [] ;
-            dir = mkMaybeVariants3 (np.s ! NPCPrep) ; --- we'll need to get all the variants direct from the NP
-            ind = NullVariants3 ;
+            dir = mkMaybeDirObjVerbClitic (np.s ! NPCPrep) np.a ; --- we'll need to get all the variants direct from the NP
+            ind = NullIndObjVerbClitic ;
           } ;
 
         -- <False,False> => {
@@ -131,27 +131,6 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
       False => insertObj (\\_ => adv.s) vp
       }  ** {c2 = vp.c2} ;
 
-  oper
-
-    -- Only for_Prep causes these to be used, thus it doesn't make sense to store this
-    -- information in Prep.
-    indObjSuffix : Agr -> Str = \agr ->
-      case (toVAgr agr) of {
-        AgP1 Sg      => "li" ;
-        AgP2 Sg      => "lek" ;
-        AgP3Sg Masc  => "lu" ;
-        -- AgP3Sg Fem   => "ilha" ;
-        -- AgP1 Pl      => "ilna" ;
-        -- AgP2 Pl      => "ilkom" ;
-        -- AgP3Pl       => "ilhom"   --- need to introduce variants here too
-        AgP3Sg Fem   => "lha" ;
-        AgP1 Pl      => "lna" ;
-        AgP2 Pl      => "lkom" ;
-        AgP3Pl       => "lhom"
-      } ;
-
-  lin
-
     -- AdV -> VPSlash -> VPSlash
     -- always use (it)
     AdVVPSlash adv vp = insertAdV adv.s vp ** {c2 = vp.c2} ;
@@ -162,7 +141,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VP
     -- be loved
-    PassV2 v2 = insertObj (\\agr => stem1 (v2.s ! VPassivePart (toGenNum agr)) ++ v2.c2.s ! Definite) CopulaVP ;
+    PassV2 v2 = insertObj (\\agr => (v2.s ! VPassivePart (toGenNum agr)).s1 ++ v2.c2.s ! Definite) CopulaVP ;
 
     -- AP -> Comp
     -- (be) small
