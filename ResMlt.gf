@@ -10,6 +10,7 @@
 resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   flags coding=utf8 ;
+        optimize=noexpand ;
 
   {- General -------------------------------------------------------------- -}
 
@@ -421,12 +422,12 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s1 : Str ;
       s2 : Str ;
       s3 : Str ;
-      a  : Agr ;
+      a  : VAgr ;
       } ;
-    NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = agrP3 Sg Masc } ;
+    NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = AgP3Sg Masc } ;
 
     mkDirObjVerbClitic : DirObjVerbClitic = overload {
-      mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = agr } ;
+      mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = toVAgr agr } ;
       -- mkDirObjVerbClitic : (s1, s2, s3 : Str) -> Agr -> DirObjVerbClitic = \a,b,c,agr -> { s1 = a ; s2 = b ; s3 = c ; a = agr } ;
       } ;
 
@@ -438,13 +439,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s2 : Str ; -- ftaħnie-lha
       s3 : Str ; --   ftaħt-ilhiex
       s4 : Str ; -- ftaħnie-lhiex
-      a  : Agr ;
+      a  : VAgr ;
       } ;
 
     -- Only for_Prep causes these to be used, thus it doesn't make sense to store this
     -- information in Prep.
-    indObjSuffix : Agr -> IndObjVerbClitic = \agr ->
-      case (toVAgr agr) of {
+    indObjSuffix : Agr -> IndObjVerbClitic = \agr' ->
+      let agr : VAgr = toVAgr agr' in
+      case agr of {
         AgP1 Sg      => { s1="li"   ; s2="li"   ; s3="li"    ; s4="li"    ; a = agr } ;
         AgP2 Sg      => { s1="lek"  ; s2="lek"  ; s3="lok"   ; s4="lok"   ; a = agr } ;
         AgP3Sg Masc  => { s1="lu"   ; s2="lu"   ; s3="lu"    ; s4="lu"    ; a = agr } ;
@@ -454,7 +456,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         AgP3Pl       => { s1="lhom" ; s2="lhom" ; s3="ilhom" ; s4="ilhom" ; a = agr }
       } ;
 
-    NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = agrP3 Sg Masc } ;
+    NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = AgP3Sg Masc } ;
 
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
@@ -565,31 +567,23 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   oper
 
-    joinVariants3 : Variants3 -> Polarity -> Str = \stems,pol ->
-      case <pol> of {
-        <Pos> => stems.s1 ;
-        <Neg> => stems.s2 ++ BIND ++ "x"
-      } ;
-
     joinVP : VerbPhrase -> VPForm -> Anteriority -> Polarity -> Str = \vp,form,ant,pol ->
      let
         stems = (vp.s ! form ! ant ! pol).main ;
         aux   = (vp.s ! form ! ant ! pol).aux ;
         x : Str = "x" ;
+        agr : VAgr = VPForm2VAgr form ;
         dir = fromJust DirObjVerbClitic vp.dir ; -- These are lazy
         ind = fromJust IndObjVerbClitic vp.ind ;
 
-        ind_s1 = ind.s1 ;
-        ind_s2 = ind.s2 ;
-        -- ind_s1 : Str = case <toVAgr dir.a, toVAgr ind.a> of {
-        --   <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
-        --   _                 => ind.s1   -- hie-lek
-        --   } ;
-        -- ind_s2 : Str = case <toVAgr dir.a, toVAgr ind.a> of {
-        --   <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
-        --   _                 => ind.s2   -- hie-lekx
-        --   } ;
-
+        ind_pos : Str = case <dir.a, ind.a> of {
+          <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
+          _                 => ind.s1   -- hie-lek
+          } ;
+        ind_neg : Str = case <dir.a, ind.a> of {
+          <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
+          _                 => ind.s2   -- hie-lekx
+          } ;
       in
         case takesAux form ant of {
 
@@ -623,13 +617,32 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
             -- ftaħnie-lha / ftaħni-lhie-x
             <False,True ,Pos> => stems.s2 ++ BIND ++ ind.s1 ;
-            <False,True ,Neg> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ;
+            <False,True ,Neg> => stems.s3 ++ BIND ++ (if_then_Str (Sing agr) ind.s4 ind.s2) ++ BIND ++ x ;
 
             -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-            <True, True ,Pos> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind_s1 ;
-            <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_s2 ++ BIND ++ x
+            <True, True ,Pos> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+            <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
 
             }
+      } ;
+
+    VPForm2VAgr : VPForm -> VAgr = \vpform ->
+      case vpform of {
+        VPIndicat _ vagr => vagr ;
+        VPImperat n => AgP2 n
+      };
+
+    Sing : VAgr -> Bool = \agr ->
+      case toAgr agr of {
+        {n=Sg; p=_; g=_} => True ;
+        _ => False
+      } ;
+
+    FemOrPlural : VAgr -> Bool = \agr ->
+      case toAgr agr of {
+        {n=Sg; p=_; g=Fem} => True ;
+        {n=Pl; p=_; g=_}   => True ;
+        _ => False
       } ;
 
     -- Does a tense + ant take an auxiliary verb?
@@ -797,8 +810,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         case vpf of {
           VPIndicat tense vagr =>
             let
-              -- kien  = joinVP CopulaVP (VPIndicat Past vagr) Simul Pos ;
-              -- kienx = joinVP CopulaVP (VPIndicat Past vagr) Simul Neg ;
               kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
               kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
               nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;

@@ -7,17 +7,17 @@ all: batch
 # 	runghc update_lexicon.hs > tmp
 # 	mv tmp LexiconMlt.gf
 
-pgf: *.gf
+pgf: batch
 	gf --make --name=PGF/Lang LangMlt.gf
 	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
 	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
 
-pgf_engmlt: *.gf
-	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
+pgf_engmlt: batch
+	gf +RTS -K1000M -RTS --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
 
-batch:
-#	time gf +RTS -K1000M -RTS --batch AllMlt.gf
-	gf --batch AllMlt.gf
+batch: *.gf
+	gf +RTS -K1000M -RTS --batch AllMlt.gf
+#	gf --batch AllMlt.gf
 
 clean:
 	rm -f _tmpi _tmpo
