@@ -48,7 +48,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         case vagr of {
           AgP1 num   => mkAgr num P1 Masc ;
           AgP2 num   => mkAgr num P2 Masc ;
-          AgP3Sg gen => mkAgr Pl  P3 gen ;
+          AgP3Sg gen => mkAgr Sg  P3 gen ;
           AgP3Pl     => mkAgr Pl  P3 Masc
         } ;
       } ;
@@ -96,6 +96,25 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     agrP3 : Number -> Gender -> Agr = \n,g -> mkAgr n P3 g;
+
+    VPForm2VAgr : VPForm -> VAgr = \vpform ->
+      case vpform of {
+        VPIndicat _ vagr => vagr ;
+        VPImperat n => AgP2 n
+      };
+
+    sing : VAgr -> Bool = \agr ->
+      case toAgr agr of {
+        {n=Sg; p=_; g=_} => True ;
+        _ => False
+      } ;
+
+    femOrPlural : Agr -> Bool = \agr ->
+      case agr of {
+        {n=Sg; p=_; g=Fem} => True ;
+        {n=Pl; p=_; g=_}   => True ;
+        _ => False
+      } ;
 
     conjAgr : Agr -> Agr -> Agr = \a,b -> {
       n = (conjNumber a.n b.n) ;
@@ -426,21 +445,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s2 : Str ;
       s3 : Str ;
       } ;
-    -- NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = AgP3Sg Masc } ;
-
-    -- mkDirObjVerbClitic : DirObjVerbClitic = overload {
-    --   mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = toVAgr agr } ;
-    --   -- mkDirObjVerbClitic : (s1, s2, s3 : Str) -> Agr -> DirObjVerbClitic = \a,b,c,agr -> { s1 = a ; s2 = b ; s3 = c ; a = agr } ;
-    --   } ;
-
-    -- mkMaybeDirObjVerbClitic : Str -> Agr -> Maybe DirObjVerbClitic = \s,agr -> Just DirObjVerbClitic (mkDirObjVerbClitic s agr) ;
 
     dirObjSuffix : Agr -> DirObjVerbClitic = \agr' ->
       let agr : VAgr = toVAgr agr' in
       case agr of {
+        --                DO          DO + ..     DO + .. (Neg)
         AgP1 Sg      => { s1="ni"   ; s2="ni"   ; s3="ni"  } ;
-        AgP2 Sg      => { s1="ek"   ; s2="k"    ; s3="k"   } ;
-        AgP3Sg Masc  => { s1="u"    ; s2="h"    ; s3="h"   } ;
+        AgP2 Sg      => { s1="ek"   ; s2="ek"   ; s3="k"   } ;
+        AgP3Sg Masc  => { s1="u"    ; s2="hu"   ; s3="hu"  } ;
         AgP3Sg Fem   => { s1="ha"   ; s2="hie"  ; s3="hi"  } ;
         AgP1 Pl      => { s1="na"   ; s2="nie"  ; s3="hi"  } ;
         AgP2 Pl      => { s1="kom"  ; s2="kom"  ; s3="kom" } ;
@@ -460,6 +472,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     indObjSuffix : Agr -> IndObjVerbClitic = \agr' ->
       let agr : VAgr = toVAgr agr' in
       case agr of {
+        --                IO          IO + Neg    IO           IO + Neg
         AgP1 Sg      => { s1="li"   ; s2="li"   ; s3="li"    ; s4="li"    } ;
         AgP2 Sg      => { s1="lek"  ; s2="lek"  ; s3="lok"   ; s4="lok"   } ;
         AgP3Sg Masc  => { s1="lu"   ; s2="lu"   ; s3="lu"    ; s4="lu"    } ;
@@ -469,8 +482,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         AgP3Pl       => { s1="lhom" ; s2="lhom" ; s3="ilhom" ; s4="ilhom" }
       } ;
 
-    -- NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = AgP3Sg Masc } ;
-
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
     stemVariantsPerf : Str -> Variants3 = \s ->
@@ -479,23 +490,27 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         ftahnie : Str = case s of {
           ftahn + "a" => ftahn + "ie" ;
           fet + h@#Cns + "et" => fet + h + "it" ;
+          fet + "aħ" => fet + "ħ" ;
           _ => s
           } ;
         ftahni  : Str = case s of {
           ftahn + "a" => ftahn + "i" ;
           _ => ftahnie
           } ;
-      in
-      { s1 = ftahna ; s2 = ftahnie ; s3 = ftahni } ;
+      in {
+        s1 = ftahna ; s2 = ftahnie ; s3 = ftahni ;
+      } ;
+
     stemVariantsImpf : Str -> Variants3 = \s ->
       let
-        ftahna  : Str = s ;
-        ftahnie : Str = case s of {
-          nift + "aħ" => nift + "ħ" ;
+        jiftah  : Str = s ;
+        jifth : Str = case s of {
+          jift + "aħ" => jift + "ħ" ;
           _ => s
           } ;
-      in
-      { s1 = ftahna ; s2 = ftahnie ; s3 = ftahna } ;
+      in {
+        s1 = jiftah ; s2 = jifth ; s3 = jifth ;
+      } ;
 
     -- Convert old verb form table into one with stem variants
     stemVariantsTbl : (VForm => Str) -> (VForm => Variants3) = \tbl ->
@@ -621,45 +636,65 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
             } ;
 
           -- No aux part to handle
-          False => aux ++ case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
+          False => aux ++ case isPerf form ant of {
 
-            -- ftaħna / ftaħnie-x
-            <False,False,Pos> => stems.s1 ;
-            <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+            True => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
-            -- ftaħnie-ha / ftaħni-hie-x
-            <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
-            <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+              -- ftaħna / ftaħnie-x
+              <False,False,Pos> => stems.s1 ;
+              <False,False,Neg> => stems.s2 ++ BIND ++ x ;
 
-            -- ftaħnie-lha / ftaħni-lhie-x
-            <False,True ,Pos> => stems.s2 ++ BIND ++ ind.s1 ;
-            <False,True ,Neg> => stems.s3 ++ BIND ++ (if_then_Str (Sing agr) ind.s4 ind.s2) ++ BIND ++ x ;
+              -- ftaħnie-ha / ftaħni-hie-x
+              <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
+              <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
-            -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-            <True, True ,Pos> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-            <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+              -- ftaħnie-lha / ftaħni-lhie-x
+              <False,True ,Pos> => case <sing agr, femOrPlural ind_a> of {
+                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- fetħ-ilha
+                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- ftaħnie-lha
+                _            => stems.s1 ++ BIND ++ ind.s1   -- fetaħ-li
+                } ;
+              <False,True ,Neg> =>  case <sing agr, femOrPlural ind_a> of {
+                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
+                <False,True> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- ftaħni-lhiex
+                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- fetaħ-lix
+                } ;
 
+              -- ftaħni-hie-lha / ftaħni-hi-lhie-x
+              <True, True ,Pos> => stems.s2 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+              <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+
+              } ;
+
+            False => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
+
+              -- jiftaħ / jiftaħ-x
+              <False,False,Pos> => stems.s1 ;
+              <False,False,Neg> => stems.s1 ++ BIND ++ x ;
+
+              -- jiftaħ-ha / jiftaħ-hie-x
+              <True ,False,Pos> => stems.s1 ++ BIND ++ dir.s1 ;
+              <True ,False,Neg> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+
+              -- jiftħ-ilha / jiftħ-ilhie-x
+              <False,True ,Pos> => case <sing agr, femOrPlural ind_a> of {
+                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- jiftħ-ilha
+                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- jiftħu-lha
+                _            => stems.s1 ++ BIND ++ ind.s1   -- jiftaħ-li
+                } ;
+              <False,True ,Neg> => case <sing agr, femOrPlural ind_a> of {
+                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
+                <False,True> => stems.s2 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- jiftħu-lhiex
+                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- jiftaħ-lix
+                } ;
+
+              -- jiftaħ-hie-lha / jiftaħ-hi-lhie-x
+              <True, True ,Pos> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+              <True, True ,Neg> => stems.s1 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+
+              }
             }
       } ;
-
-    VPForm2VAgr : VPForm -> VAgr = \vpform ->
-      case vpform of {
-        VPIndicat _ vagr => vagr ;
-        VPImperat n => AgP2 n
-      };
-
-    Sing : VAgr -> Bool = \agr ->
-      case toAgr agr of {
-        {n=Sg; p=_; g=_} => True ;
-        _ => False
-      } ;
-
-    -- FemOrPlural : VAgr -> Bool = \agr ->
-    --   case toAgr agr of {
-    --     {n=Sg; p=_; g=Fem} => True ;
-    --     {n=Pl; p=_; g=_}   => True ;
-    --     _ => False
-    --   } ;
 
     -- Does a tense + ant take an auxiliary verb?
     -- This affects where (if) the negation is applied
@@ -678,15 +713,20 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <VPImperat _, _> => False
       } ;
 
-    -- selectDirClitic_2 : VForm -> DirObjVerbClitic = \vf,dir ->
-    --   case vf of {
-    --      _ => (fromJust DirObjVerbClitic dir).s2
-    --   } ;
-    -- selectDirClitic : VForm -> DirObjVerbClitic -> Str = \vf,dir,fallback ->
-    --   case vf of {
-    --     <> => ;
-    --     _ => fallback
-    --   } ;
+    -- Does a tense + ant give a perfective verb?
+    -- Must match with the logic in predV
+    isPerf : VPForm -> Anteriority -> Bool = \vpf,ant ->
+      case <vpf,ant> of {
+        <VPIndicat Pres _, Simul> => False ;
+        <VPIndicat Past _, Simul> => True ;
+        <VPIndicat Fut  _, Simul> => False ;
+        <VPIndicat Cond _, Simul> => False ;
+        <VPIndicat Pres _, Anter> => True ;
+        <VPIndicat Past _, Anter> => True ;
+        <VPIndicat Fut  _, Anter> => True ;
+        <VPIndicat Cond _, Anter> => False ;
+        <VPImperat _, _> => False
+      } ;
 
     VerbParts : Type = {
       aux : Str ;        -- when present, negation is applied here
