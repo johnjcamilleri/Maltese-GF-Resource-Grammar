@@ -2,11 +2,20 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 
 import System.Environment
+import System.FilePath
+import System.Locale
+
+import Data.Time.Clock
+import Data.Time.Format
+
 import Control.Monad.Reader
+import Control.Monad.State
+
+import Text.Printf
 import Data.String.Utils
 import qualified Data.Map as Map
+
 import PGF
-import Text.Printf
 
 data Env = Env {
   pgf :: PGF,
@@ -51,25 +60,40 @@ runFile :: (MonadIO m, MonadReader Env m) => FilePath -> m Summary
 runFile filepath = do
   c <- liftIO (readFile filepath)
   liftIO $ putStrLn $ "# " ++ filepath
-  summ <- run . (drop 2) . lines $ c
-  return $ summ { file = filepath }
+  let summ = Summary filepath 0 0
+  execStateT (run . (drop 2) . lines $ c) summ
 
 -- | Process the table contents
-run :: (MonadIO m, MonadReader Env m) => [String] -> m Summary
+run :: (MonadIO m, MonadReader Env m, MonadState Summary m) => [String] -> m ()
 run lines = do
+  filepath <- gets file
+  utctime <- liftIO getCurrentTime
+  let out_file = "history" </> filepath ++ "-" ++ (formatTime defaultTimeLocale "%Y%m%d%H%M%S" utctime)
+
   results :: [Result] <- mapM line lines
   mapM (\(ln,res) -> do
+           -- Output
            liftIO $ putStr $ printf "%3d " (ln :: Int)
            case res of
              Ok s      -> ok   $ s
              Warning s -> warn $ s
              Error s   -> err  $ s
              _         -> liftIO $ putStrLn "-"
+
+           -- Write to file
+           liftIO $ appendFile out_file $ (case res of
+             Ok s      -> s
+             Warning s -> s
+             Error s   -> s
+             _         -> "-") ++ "\n"
+
        ) (zip [3..] results)
 
+
+  -- Put back in state
   let good = length $ filter (\x->case x of {Ok _ -> True; _ -> False}) results
   let total = length $ filter (\x->case x of {Ignore -> False; _ -> True}) results
-  return $ Summary [] good total
+  modify $ \summary -> summary { passed = good , total = total }
 
 -- | Process a single line (expects line of an org-mode table)
 line :: (MonadIO m, MonadReader Env m) => String -> m Result
