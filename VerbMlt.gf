@@ -68,12 +68,12 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
         <True,True> => {
             s = vp.s ;
             s2 = \\agr => vp.s2 ! agr ++ vp.c2.enclitic ! np.a ;
-            dir = NullDirObjVerbClitic ;
-            ind = NullIndObjVerbClitic ;
+            dir = NullAgr ;
+            ind = NullAgr ;
           } ;
 
         -- Add dir pron to verb
-        <True,False> => insertDirObj (dirObjSuffix np.a) vp ;
+        <True,False> => insertDirObj np.a vp ;
 
         -- <False,False> => {
         --     s = vp.s ;
@@ -111,7 +111,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VP -> Adv -> VP
     -- sleep here
     AdvVP vp adv = case adv.joinsVerb of {
-      True  => insertIndObj (indObjSuffix adv.a) vp ;
+      True  => insertIndObj adv.a vp ;
       False => insertObj (\\_ => adv.s) vp
       } ;
 
@@ -122,7 +122,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VPSlash -> Adv -> VPSlash
     -- use (it) here
     AdvVPSlash vp adv = case adv.joinsVerb of {
-      True  => insertIndObj (indObjSuffix adv.a) vp ;
+      True  => insertIndObj adv.a vp ;
       False => insertObj (\\_ => adv.s) vp
       }  ** {c2 = vp.c2} ;
 

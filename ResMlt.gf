@@ -383,16 +383,17 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   param
     PronForm =
-        Personal -- JIENA
-      | Possessive -- TIEGĦI
-      | Suffixed PronCase
+        Personal   -- jiena
+      | Possessive -- tiegħi
+      | Suffixed   -- qalb-i  Only nouns!
+      -- | Suffixed PronCase
       ;
 
-    PronCase =
-        Acc -- Accusative: rajtu
-      | Dat -- Dative: rajtlu
-      | Gen -- Genitive: qalbu
-      ;
+    -- PronCase =
+    --     Acc -- Accusative: rajtu
+    --   | Dat -- Dative: rajtlu
+    --   | Gen -- Genitive: qalbu
+    --   ;
 
   oper
     -- Interrogative pronoun
@@ -417,32 +418,33 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     NullVariants3 : Maybe Variants3 = Nothing Variants3 { s1 = [] ; s2 = [] ; s3 = [] } ;
 
+    NullAgr : Maybe Agr = Nothing Agr (agrP3 Sg Masc) ;
+
     -- Direct object clitic
     DirObjVerbClitic : Type = {
       s1 : Str ;
       s2 : Str ;
       s3 : Str ;
-      a  : VAgr ;
       } ;
-    NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = AgP3Sg Masc } ;
+    -- NullDirObjVerbClitic : Maybe DirObjVerbClitic = Nothing DirObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; a = AgP3Sg Masc } ;
 
-    mkDirObjVerbClitic : DirObjVerbClitic = overload {
-      mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = toVAgr agr } ;
-      -- mkDirObjVerbClitic : (s1, s2, s3 : Str) -> Agr -> DirObjVerbClitic = \a,b,c,agr -> { s1 = a ; s2 = b ; s3 = c ; a = agr } ;
-      } ;
+    -- mkDirObjVerbClitic : DirObjVerbClitic = overload {
+    --   mkDirObjVerbClitic : (s1 : Str) -> Agr -> DirObjVerbClitic = \a,agr -> { s1 = a ; s2 = a ; s3 = a ; a = toVAgr agr } ;
+    --   -- mkDirObjVerbClitic : (s1, s2, s3 : Str) -> Agr -> DirObjVerbClitic = \a,b,c,agr -> { s1 = a ; s2 = b ; s3 = c ; a = agr } ;
+    --   } ;
 
-    mkMaybeDirObjVerbClitic : Str -> Agr -> Maybe DirObjVerbClitic = \s,agr -> Just DirObjVerbClitic (mkDirObjVerbClitic s agr) ;
+    -- mkMaybeDirObjVerbClitic : Str -> Agr -> Maybe DirObjVerbClitic = \s,agr -> Just DirObjVerbClitic (mkDirObjVerbClitic s agr) ;
 
     dirObjSuffix : Agr -> DirObjVerbClitic = \agr' ->
       let agr : VAgr = toVAgr agr' in
       case agr of {
-        AgP1 Sg      => { s1="ni"   ; s2="ni"   ; s3="ni"  ; a = agr } ;
-        AgP2 Sg      => { s1="ek"   ; s2="k"    ; s3="k"   ; a = agr } ;
-        AgP3Sg Masc  => { s1="u"    ; s2="h"    ; s3="h"   ; a = agr } ;
-        AgP3Sg Fem   => { s1="ha"   ; s2="hie"  ; s3="hi"  ; a = agr } ;
-        AgP1 Pl      => { s1="na"   ; s2="nie"  ; s3="hi"  ; a = agr } ;
-        AgP2 Pl      => { s1="kom"  ; s2="kom"  ; s3="kom" ; a = agr } ;
-        AgP3Pl       => { s1="hom"  ; s2="hom"  ; s3="hom" ; a = agr }
+        AgP1 Sg      => { s1="ni"   ; s2="ni"   ; s3="ni"  } ;
+        AgP2 Sg      => { s1="ek"   ; s2="k"    ; s3="k"   } ;
+        AgP3Sg Masc  => { s1="u"    ; s2="h"    ; s3="h"   } ;
+        AgP3Sg Fem   => { s1="ha"   ; s2="hie"  ; s3="hi"  } ;
+        AgP1 Pl      => { s1="na"   ; s2="nie"  ; s3="hi"  } ;
+        AgP2 Pl      => { s1="kom"  ; s2="kom"  ; s3="kom" } ;
+        AgP3Pl       => { s1="hom"  ; s2="hom"  ; s3="hom" }
       } ;
 
     -- Indirect object clitic
@@ -451,7 +453,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s2 : Str ; -- ftaħnie-lha
       s3 : Str ; --   ftaħt-ilhiex
       s4 : Str ; -- ftaħnie-lhiex
-      a  : VAgr ;
       } ;
 
     -- Only for_Prep causes these to be used, thus it doesn't make sense to store this
@@ -459,16 +460,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     indObjSuffix : Agr -> IndObjVerbClitic = \agr' ->
       let agr : VAgr = toVAgr agr' in
       case agr of {
-        AgP1 Sg      => { s1="li"   ; s2="li"   ; s3="li"    ; s4="li"    ; a = agr } ;
-        AgP2 Sg      => { s1="lek"  ; s2="lek"  ; s3="lok"   ; s4="lok"   ; a = agr } ;
-        AgP3Sg Masc  => { s1="lu"   ; s2="lu"   ; s3="lu"    ; s4="lu"    ; a = agr } ;
-        AgP3Sg Fem   => { s1="lha"  ; s2="lhie" ; s3="ilha"  ; s4="ilhie" ; a = agr } ;
-        AgP1 Pl      => { s1="lna"  ; s2="lnie" ; s3="ilna"  ; s4="ilnie" ; a = agr } ;
-        AgP2 Pl      => { s1="lkom" ; s2="lkom" ; s3="ilkom" ; s4="ilkom" ; a = agr } ;
-        AgP3Pl       => { s1="lhom" ; s2="lhom" ; s3="ilhom" ; s4="ilhom" ; a = agr }
+        AgP1 Sg      => { s1="li"   ; s2="li"   ; s3="li"    ; s4="li"    } ;
+        AgP2 Sg      => { s1="lek"  ; s2="lek"  ; s3="lok"   ; s4="lok"   } ;
+        AgP3Sg Masc  => { s1="lu"   ; s2="lu"   ; s3="lu"    ; s4="lu"    } ;
+        AgP3Sg Fem   => { s1="lha"  ; s2="lhie" ; s3="ilha"  ; s4="ilhie" } ;
+        AgP1 Pl      => { s1="lna"  ; s2="lnie" ; s3="ilna"  ; s4="ilnie" } ;
+        AgP2 Pl      => { s1="lkom" ; s2="lkom" ; s3="ilkom" ; s4="ilkom" } ;
+        AgP3Pl       => { s1="lhom" ; s2="lhom" ; s3="ilhom" ; s4="ilhom" }
       } ;
 
-    NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = AgP3Sg Masc } ;
+    -- NullIndObjVerbClitic : Maybe IndObjVerbClitic = Nothing IndObjVerbClitic { s1 = [] ; s2 = [] ; s3 = [] ; s4 = [] ; a = AgP3Sg Masc } ;
 
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
@@ -586,14 +587,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         aux   = (vp.s ! form ! ant ! pol).aux ;
         x : Str = "x" ;
         agr : VAgr = VPForm2VAgr form ;
-        dir = fromJust DirObjVerbClitic vp.dir ; -- These are lazy
-        ind = fromJust IndObjVerbClitic vp.ind ;
+        dir_a : Agr = fromJust Agr vp.dir ; -- These are lazy
+        ind_a : Agr = fromJust Agr vp.ind ;
+        dir = dirObjSuffix dir_a ;
+        ind = indObjSuffix ind_a ;
 
-        ind_pos : Str = case <dir.a, ind.a> of {
+        ind_pos : Str = case <toVAgr dir_a, toVAgr ind_a> of {
           <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
           _                 => ind.s1   -- hie-lek
           } ;
-        ind_neg : Str = case <dir.a, ind.a> of {
+        ind_neg : Str = case <toVAgr dir_a, toVAgr ind_a> of {
           <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
           _                 => ind.s2   -- hie-lekx
           } ;
@@ -601,7 +604,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         case takesAux form ant of {
 
           -- aux is already negated for us
-          True => aux ++ case <exists Variants3 vp.dir, exists Variants3 vp.ind> of {
+          True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
             -- konna ftaħna / ma konniex ftaħna
             <False,False> => stems.s1 ;
@@ -618,7 +621,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
             } ;
 
           -- No aux part to handle
-          False => aux ++ case <exists Variants3 vp.dir, exists Variants3 vp.ind, pol> of {
+          False => aux ++ case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
             -- ftaħna / ftaħnie-x
             <False,False,Pos> => stems.s1 ;
@@ -701,8 +704,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     VerbPhrase : Type = {
       s : VPForm => Anteriority => Polarity => VerbParts ;
       s2 : Agr => Str ; -- complement
-      dir : Maybe DirObjVerbClitic ; -- direct object clitic
-      ind : Maybe IndObjVerbClitic ; -- indirect object clitic
+      dir : Maybe Agr ; -- direct object clitic
+      ind : Maybe Agr ; -- indirect object clitic
       } ;
 
     SlashVerbPhrase : Type = VerbPhrase ** {c2 : Compl} ;
@@ -733,18 +736,18 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
       insertObj obj vp ** {c2 = vp.c2} ;
 
-    insertDirObj : DirObjVerbClitic -> VerbPhrase -> VerbPhrase = \dir,vp -> {
+    insertDirObj : Agr -> VerbPhrase -> VerbPhrase = \dir,vp -> {
       s = vp.s ;
       s2 = vp.s2 ;
-      dir = Just DirObjVerbClitic dir ;
+      dir = Just Agr dir ;
       ind = vp.ind ;
       };
 
-    insertIndObj : IndObjVerbClitic -> VerbPhrase -> VerbPhrase = \ind,vp -> {
+    insertIndObj : Agr -> VerbPhrase -> VerbPhrase = \ind,vp -> {
       s = vp.s ;
       s2 = vp.s2 ;
       dir = vp.dir ;
-      ind = Just IndObjVerbClitic ind ;
+      ind = Just Agr ind ;
       };
 
     insertAdV : Str -> VerbPhrase -> VerbPhrase = \adv,vp -> {
@@ -815,8 +818,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           <VPImperat num, Neg>       => mkVerbParts (copula_kien.s ! VImp num ! Neg) [] -- kunx
         } ;
       s2 = \\agr => [] ;
-      dir = NullDirObjVerbClitic ;
-      ind = NullIndObjVerbClitic ;
+      dir = NullAgr ;
+      ind = NullAgr ;
       } ;
 
     -- [AZ]
@@ -860,8 +863,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           VPImperat num => b1 (verb.s ! VImp num) -- torqodx
         };
       s2 = \\agr => [] ;
-      dir = NullDirObjVerbClitic ;
-      ind = NullIndObjVerbClitic ;
+      dir = NullAgr ;
+      ind = NullAgr ;
       } ;
 
     -- There is no infinitive in Maltese; use perfective
