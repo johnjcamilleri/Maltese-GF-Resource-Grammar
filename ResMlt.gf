@@ -433,6 +433,18 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     mkMaybeDirObjVerbClitic : Str -> Agr -> Maybe DirObjVerbClitic = \s,agr -> Just DirObjVerbClitic (mkDirObjVerbClitic s agr) ;
 
+    dirObjSuffix : Agr -> DirObjVerbClitic = \agr' ->
+      let agr : VAgr = toVAgr agr' in
+      case agr of {
+        AgP1 Sg      => { s1="ni"   ; s2="ni"   ; s3="ni"  ; a = agr } ;
+        AgP2 Sg      => { s1="ek"   ; s2="k"    ; s3="k"   ; a = agr } ;
+        AgP3Sg Masc  => { s1="u"    ; s2="h"    ; s3="h"   ; a = agr } ;
+        AgP3Sg Fem   => { s1="ha"   ; s2="hie"  ; s3="hi"  ; a = agr } ;
+        AgP1 Pl      => { s1="na"   ; s2="nie"  ; s3="hi"  ; a = agr } ;
+        AgP2 Pl      => { s1="kom"  ; s2="kom"  ; s3="kom" ; a = agr } ;
+        AgP3Pl       => { s1="hom"  ; s2="hom"  ; s3="hom" ; a = agr }
+      } ;
+
     -- Indirect object clitic
     IndObjVerbClitic : Type = {
       s1 : Str ; --   ftaħt-ilha
@@ -567,6 +579,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   oper
 
+    -- Join verp phrase components into a string
     joinVP : VerbPhrase -> VPForm -> Anteriority -> Polarity -> Str = \vp,form,ant,pol ->
      let
         stems = (vp.s ! form ! ant ! pol).main ;
@@ -638,12 +651,12 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         _ => False
       } ;
 
-    FemOrPlural : VAgr -> Bool = \agr ->
-      case toAgr agr of {
-        {n=Sg; p=_; g=Fem} => True ;
-        {n=Pl; p=_; g=_}   => True ;
-        _ => False
-      } ;
+    -- FemOrPlural : VAgr -> Bool = \agr ->
+    --   case toAgr agr of {
+    --     {n=Sg; p=_; g=Fem} => True ;
+    --     {n=Pl; p=_; g=_}   => True ;
+    --     _ => False
+    --   } ;
 
     -- Does a tense + ant take an auxiliary verb?
     -- This affects where (if) the negation is applied
@@ -719,6 +732,13 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     insertObjc : (Agr => Str) -> SlashVerbPhrase -> SlashVerbPhrase = \obj,vp ->
       insertObj obj vp ** {c2 = vp.c2} ;
+
+    insertDirObj : DirObjVerbClitic -> VerbPhrase -> VerbPhrase = \dir,vp -> {
+      s = vp.s ;
+      s2 = vp.s2 ;
+      dir = Just DirObjVerbClitic dir ;
+      ind = vp.ind ;
+      };
 
     insertIndObj : IndObjVerbClitic -> VerbPhrase -> VerbPhrase = \ind,vp -> {
       s = vp.s ;
@@ -842,9 +862,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s2 = \\agr => [] ;
       dir = NullDirObjVerbClitic ;
       ind = NullIndObjVerbClitic ;
-      -- a1 = [] ;
-      -- n2 = \\_ => [] ;
-      -- a2 = [] ;
       } ;
 
     -- There is no infinitive in Maltese; use perfective

@@ -14,8 +14,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2 -> VPSlash
     -- love (it)
-    SlashV2a = predVc ;
-    -- SlashV2a v2 = (predV v2) ** { c2 = noCompl } ; -- gets rid of the V2's prep
+    -- SlashV2a = predVc ;
+    SlashV2a v2 = (predV v2) ** { c2 = noCompl } ; -- gets rid of the V2's prep
 
     -- V3 -> NP -> VPSlash
     -- give it (to her)
@@ -72,13 +72,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
             ind = NullIndObjVerbClitic ;
           } ;
 
-        -- Join pron to verb
-        <True,False> => {
-            s = vp.s ;
-            s2 = \\agr => [] ;
-            dir = mkMaybeDirObjVerbClitic (np.s ! NPCPrep) np.a ; --- we'll need to get all the variants direct from the NP
-            ind = NullIndObjVerbClitic ;
-          } ;
+        -- Add dir pron to verb
+        <True,False> => insertDirObj (dirObjSuffix np.a) vp ;
 
         -- <False,False> => {
         --     s = vp.s ;

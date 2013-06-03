@@ -27,6 +27,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
   {- Pronoun -------------------------------------------------------------- -}
 
   oper
+    --- TODO: Remove Suffixed Acc / Dat since they are not used here
     -- [AZ]
     mkPron = overload {
 
