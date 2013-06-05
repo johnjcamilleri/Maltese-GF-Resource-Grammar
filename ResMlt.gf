@@ -334,18 +334,18 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     -- Determinate Plural, eg KOXXIET
     -- Indeterminate Plural
     -- Gender
-    mkNoun : (_,_,_,_,_ : Str) -> Gender -> Noun = \sing,coll,dual,det,ind,gen -> {
+    mkNoun : (_,_,_,_,_ : Str) -> Gender -> (_,_ : Bool) -> Noun = \sing,coll,dual,det,ind,gen,hasColl,hasDual -> {
       s = table {
         Singulative => sing ;
         Collective  => coll ;
         Dual        => dual ;
-        Plural      => if_then_Str (isNil det) ind det
+        Plural      => det
         -- Plural   => variants {det ; ind}
         } ;
       g = gen ;
       takesPron = False ;
-      hasDual = notB (isNil dual) ;
-      hasColl = notB (isNil coll) ;
+      hasDual = hasDual ;
+      hasColl = hasColl ;
       } ;
 
     -- Noun phrase
@@ -740,7 +740,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVariants3 m } ;
       } ;
 
-    -- [AZ]
     VerbPhrase : Type = {
       s : VPForm => Anteriority => Polarity => VerbParts ;
       s2 : Agr => Str ; -- complement
