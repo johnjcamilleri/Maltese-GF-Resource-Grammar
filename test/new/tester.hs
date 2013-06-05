@@ -3,10 +3,6 @@
 
 import System.Environment
 import System.FilePath
-import System.Locale
-
-import Data.Time.Clock
-import Data.Time.Format
 
 import Control.Monad.Reader
 import Control.Monad.State
@@ -66,10 +62,6 @@ runFile filepath = do
 -- | Process the table contents
 run :: (MonadIO m, MonadReader Env m, MonadState Summary m) => [String] -> m ()
 run lines = do
-  filepath <- gets file
-  utctime <- liftIO getCurrentTime
-  let out_file = "history" </> filepath ++ "-" ++ (formatTime defaultTimeLocale "%Y%m%d%H%M%S" utctime)
-
   results :: [Result] <- mapM line lines
   mapM (\(ln,res) -> do
            -- Output
@@ -79,16 +71,7 @@ run lines = do
              Warning s -> warn $ s
              Error s   -> err  $ s
              _         -> liftIO $ putStrLn "-"
-
-           -- Write to file
-           liftIO $ appendFile out_file $ (case res of
-             Ok s      -> s
-             Warning s -> s
-             Error s   -> s
-             _         -> "-") ++ "\n"
-
        ) (zip [3..] results)
-
 
   -- Put back in state
   let good = length $ filter (\x->case x of {Ok _ -> True; _ -> False}) results
@@ -145,12 +128,12 @@ type Color = Int
 color :: Color -> String -> String
 color c s = fgcol c ++ s ++ normal
 
-highlight = "\ESC[7m"
-bold      = "\ESC[1m"
-underline = "\ESC[4m"
+-- highlight = "\ESC[7m"
+-- bold      = "\ESC[1m"
+-- underline = "\ESC[4m"
 normal    = "\ESC[0m"
-fgcol col = "\ESC[0" ++ show (30+col) ++ "m"
-bgcol col = "\ESC[0" ++ show (40+col) ++ "m"
+fgcol col = "\ESC[0;" ++ show (30+col) ++ "m"
+bgcol col = "\ESC[0;" ++ show (40+col) ++ "m"
 
 red, green, blue :: Color
 red = 1
