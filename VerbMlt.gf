@@ -99,10 +99,10 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
     -- V2V -> NP -> VPSlash -> VPSlash
     -- beg me to buy
-    -- SlashV2VNP vv np vp =
-    --   insertObjPre (\\_ => vv.c2.s ! Definite ++ np.s ! NPAcc)
-    --     (insertObjc (\\agr => vv.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc vv)) **
-    --       {c2 = vp.c2} ;
+    SlashV2VNP vv np vp =
+      insertObjPre (\\_ => vv.c2.s ! Definite ++ np.s ! NPAcc)
+        (insertObjc (\\agr => vv.c3.s ! Definite ++ infVP vp Simul Pos agr) (predVc vv)) **
+          {c2 = vp.c2} ;
 
     -- Comp -> VP
     -- be warm

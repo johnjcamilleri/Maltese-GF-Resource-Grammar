@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd ..
+
 # Count missing functions and return as percentage of all functions in RGL
 MISSING=`echo "pg -missing" | gf --run AllMlt.gf | wc -w | sed -e 's/^[ \t]*//'`
 TOTAL=690

@@ -88,32 +88,26 @@ resource ParadigmsMlt = open
     -- Noun paradigm 1(x): singular and plural(s)
     mkN : N = overload {
 
-      -- 1: Take the singular and infer gender & plural
+      -- 1: Take the singular and infer plural
       mkN : Str -> N = \sing ->
         let plural = inferNounPlural sing ;
             gender = inferNounGender sing ;
         in  mk5N sing [] [] plural [] gender ;
-
-      -- 1: Take an explicit gender
       mkN : Str -> Gender -> N = \sing,gender ->
         let plural = inferNounPlural sing ;
         in  mk5N sing [] [] plural [] gender ;
 
-      -- 1: Take the singular, plural. Infer gender.
+      -- 1: Take the singular and plural
       mkN : Str -> Str -> N = \sing,plural ->
         let gender = inferNounGender sing ;
         in  mk5N sing [] [] plural [] gender ;
-
-      -- 1: Take the singular, plural and gender.
       mkN : Str -> Str -> Gender -> N = \sing,plural,gender ->
         mk5N sing [] [] plural [] gender ;
 
-      -- 1x: Take both plurals, inferring gender
+      -- 1x: Take both plurals
       mkN : Str -> Str -> Str -> N = \sing,det,ind ->
         let gender = inferNounGender sing ;
         in  mk5N sing [] [] det ind gender ;
-
-      -- 1x: Take both plurals and gender
       mkN : Str -> Str -> Str -> Gender -> N = \sing,det,ind,gender ->
         mk5N sing [] [] det ind gender ;
 
@@ -145,16 +139,13 @@ resource ParadigmsMlt = open
 
     -- Noun paradigm 3: only singulative form
     mkNNoPlural : N = overload {
-
       mkNNoPlural : Str -> N = \sing ->
         let gender = inferNounGender sing ;
         in  mk5N sing [] [] [] [] gender
       ;
-
       mkNNoPlural : Str -> Gender -> N = \sing,gender ->
         mk5N sing [] [] [] [] gender
       ;
-
     } ;
 
     -- Noun paradigm 4: with dual form
@@ -177,11 +168,15 @@ resource ParadigmsMlt = open
       mkNDual : Str -> Str -> Str -> N = \sing,dual,det ->
         let gender = inferNounGender sing ;
         in  mk5N sing [] dual det [] gender ;
+      mkNDual : Str -> Str -> Str -> Gender -> N = \sing,dual,det,gender ->
+        mk5N sing [] dual det [] gender ;
 
       -- 4x
       mkNDual : Str -> Str -> Str -> Str -> N = \sing,dual,det,ind ->
         let gender = inferNounGender sing ;
         in  mk5N sing [] dual det ind gender ;
+      mkNDual : Str -> Str -> Str -> Str -> Gender -> N = \sing,dual,det,ind,gender ->
+        mk5N sing [] dual det ind gender ;
 
       } ;
 
