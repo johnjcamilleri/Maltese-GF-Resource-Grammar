@@ -184,20 +184,22 @@ resource ParadigmsMlt = open
     -- You can pass empty strings to this oper; they won't be passed along
     mk5N : (_,_,_,_,_ : Str) -> Gender -> N ;
     mk5N = \sing,coll,dual,det,ind,gen -> lin N (
-      case <sing,coll,dual,det,ind> of {
-        <_ ,"","",_ ,""> => mkNoun sing sing det det det gen False False ; -- 1
-        <_ ,"","",_ ,_ > => mkNoun sing sing det det ind gen False False ; -- 1x
+      case <isNil sing,isNil coll,isNil dual,isNil det,isNil ind> of {
+        <False,True, True, False,True > => mkNoun sing sing det det det gen False False ; -- 1
+        <False,True, True, False,False> => mkNoun sing sing det det ind gen False False ; -- 1x
 
-        <_ ,_ ,"",_ ,""> => mkNoun sing coll det det det gen True False ; -- 2
-        <_ ,_ ,"",_ ,_ > => mkNoun sing coll det det ind gen True False ; -- 2x
-        <"",_ ,"",_ ,""> => mkNoun coll coll det det det gen True False ; -- 2b
-        <"",_ ,"",_ ,_ > => mkNoun coll coll det det ind gen True False ; -- 2bx
-        <"",_ ,"","",""> => mkNoun coll coll coll coll coll gen True False ; -- 2c
+        <False,False,True, False,True > => mkNoun sing coll det det det gen True False ; -- 2
+        <False,False,True, False,False> => mkNoun sing coll det det ind gen True False ; -- 2x
+        <True, False,True, False,True > => mkNoun coll coll det det det gen True False ; -- 2b
+        <True, False,True, False,False> => mkNoun coll coll det det ind gen True False ; -- 2bx
+        <True, False,True, True, True > => mkNoun coll coll coll coll coll gen True False ; -- 2c
 
-        <_ ,"","","",""> => mkNoun sing sing sing sing sing gen False False ; -- 3
+        <False,True, True, True, True > => mkNoun sing sing sing sing sing gen False False ; -- 3
 
-        <_ ,"",_ ,_ ,""> => mkNoun sing sing dual det det gen False True ; -- 4
-        <_ ,"",_ ,_ ,_ > => mkNoun sing sing dual det ind gen False True   -- 4x
+        <False,True, False,False,True > => mkNoun sing sing dual det det gen False True ; -- 4
+        <False,True, False,False,False> => mkNoun sing sing dual det ind gen False True ; -- 4x
+
+        _ => error "Calling mk5N with some invalid combination"
         }
       ) ;
 

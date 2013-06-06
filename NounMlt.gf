@@ -54,8 +54,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
           }
         } ;
       a = case (numform2nounnum det.n) of {
-	Singulative => mkAgr Sg P3 cn.g ; --- collective?
-	_           => mkAgr Pl P3 cn.g
+        Singulative => mkAgr Sg P3 cn.g ; --- collective?
+        _           => mkAgr Pl P3 cn.g
       } ;
       isPron = False ;
       isDefn = det.isDefn ;
@@ -260,11 +260,6 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       } ;
 
   oper
-    -- Copied from ParadigmsMlt (didn't want to change import structure)
-    -- mkPrep : Str -> Prep = \fuq -> lin Prep {
-    --   s = \\defn => fuq ;
-    --   takesDet = False
-    --   } ;
     prep_ta = lin Prep {
       s = table {
         Indefinite => "ta'" ;
@@ -285,7 +280,6 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
   oper
     -- Overwrite the s field in an NP
-    -- Use this instead of np ** { s = ... }
     overwriteNPs : NounPhrase -> (NPCase => Str) -> NounPhrase = \np,tbl -> {
       s = tbl ;
       a = np.a ;
@@ -294,7 +288,6 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
       } ;
 
     -- Overwrite the s field in a Noun
-    -- Use this instead of n ** { s = ... }
     overwriteCNs : Noun -> (Noun_Number => Str) -> Noun = \n,tbl -> {
       s = tbl ;
       g = n.g ;
