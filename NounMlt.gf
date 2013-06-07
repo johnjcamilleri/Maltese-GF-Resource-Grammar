@@ -45,21 +45,22 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
         det = lin Det det ;
         cn  = lin CN cn ;
       in {
-      s = table {
-        NPCPrep => cn.s ! numform2nounnum det.n ;
-        _       => case <det.isPron, cn.takesPron> of {
-          <True,True>  => glue (cn.s ! numform2nounnum det.n) det.clitic ;
-          <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
-          _            => chooseNounNumForm det cn
-          }
-        } ;
-      a = case (numform2nounnum det.n) of {
-        Singulative => mkAgr Sg P3 cn.g ; --- collective?
-        _           => mkAgr Pl P3 cn.g
+        s = table {
+          NPCPrep => cn.s ! numform2nounnum det.n ;
+          _       => case <det.isPron, cn.takesPron> of {
+            <True,True>  => glue (cn.s ! numform2nounnum det.n) det.clitic ;
+            -- <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+            <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
+            _            => chooseNounNumForm det cn
+            }
+          } ;
+        a = case (numform2nounnum det.n) of {
+          Singulative => mkAgr Sg P3 cn.g ; --- collective?
+          _           => mkAgr Pl P3 cn.g
+          } ;
+        isPron = False ;
+        isDefn = det.isDefn ;
       } ;
-      isPron = False ;
-      isDefn = det.isDefn ;
-    } ;
 
     -- Quant -> Num -> Det
     DetQuant quant num = {
