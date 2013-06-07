@@ -486,8 +486,8 @@ resource ParadigmsMlt = open
             VImpf (AgP3Pl)      => impfP3Pl ;
             VImp (Pl)           => impSg ;
             VImp (Sg)           => impPl ;
-            VActivePart  _      => "" ; --- TODO
-            VPassivePart _      => ""   --- TODO
+            VActivePart  _      => NONEXIST ; --- TODO
+            VPassivePart _      => NONEXIST   --- TODO
             } ;
           info : VerbInfo = mkVerbInfo class form root patt impSg ;
         in lin V  {
@@ -600,8 +600,8 @@ resource ParadigmsMlt = open
           VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
           VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
           VImp num            => pfx_T (get (VImp num)) ;
-          VActivePart  _      => "" ; --- TODO
-          VPassivePart _      => ""   --- TODO
+          VActivePart  _      => NONEXIST ; --- TODO
+          VPassivePart _      => NONEXIST   --- TODO
           } ;
       in lin V {
         s = stemVariantsTbl (tbl) ;
@@ -627,8 +627,8 @@ resource ParadigmsMlt = open
           VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
           VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
           VImp num            => pfx_T (get (VImp num)) ;
-          VActivePart  _      => "" ; --- TODO
-          VPassivePart _      => ""   --- TODO
+          VActivePart  _      => NONEXIST ; --- TODO
+          VPassivePart _      => NONEXIST   --- TODO
           } ;
       in lin V {
         s = stemVariantsTbl (tbl) ;
@@ -727,8 +727,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjStrongPerf root patt ) ! agr ;
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -769,8 +769,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjLiquidMedialPerf root patt ) ! agr ;
           VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -806,8 +806,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjGeminatedPerf root patt ) ! agr ;
           VImpf agr => ( conjGeminatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -843,8 +843,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjAssimilativePerf root patt ) ! agr ;
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         patt2 : Pattern = case (imp!Sg) of {
           "ie"+_ => mkPattern "i" patt.V2 ; -- (WAQAF) IEQAF > TIQAFLI
@@ -884,8 +884,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjHollowPerf root patt ) ! agr ;
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         patt2 : Pattern = case patt.V1 of {
           "ie" => mkPattern "i" patt.V2 ; -- (ŻIED) ŻID > ŻIDLI
@@ -929,8 +929,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjLackingPerf root patt ) ! agr ;
           VImpf agr => ( conjLackingImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -966,8 +966,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjDefectivePerf root patt ) ! agr ;
           VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -1003,8 +1003,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjQuadPerf root patt ) ! agr ;
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -1043,8 +1043,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjQuadWeakPerf root patt (imp ! Sg) ) ! agr ;
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Quad QWeak) (FormI) root patt (imp ! Sg) ;
       in lin V {
@@ -1068,8 +1068,8 @@ resource ParadigmsMlt = open
           VPerf agr => ( conjLoanPerf mamma ) ! agr ;
           VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
           VImp n    => imp ! n ;
-          VActivePart  _ => "" ; --- TODO
-          VPassivePart _ => ""   --- TODO
+          VActivePart  _ => NONEXIST ; --- TODO
+          VPassivePart _ => NONEXIST   --- TODO
           } ;
         info : VerbInfo = mkVerbInfo (Loan) (FormI) (imp ! Sg) ;
       in lin V {

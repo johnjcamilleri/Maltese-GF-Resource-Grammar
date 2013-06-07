@@ -8,7 +8,7 @@ else
 fi
 
 # Build things
-( cd ../../ ; make pgf_engmlt )
+( cd ../../ ; make PGF/LangEngMlt.pgf )
 ( make tester )
 
 # Run test

@@ -9,32 +9,29 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
   flags
     optimize=noexpand ;
+    coding=utf8 ;
 
   oper
     -- Used in DetCN below
     chooseNounNumForm : Det -> CN -> Str = \det,n ->
       let
-        det' = det.s ! n.g ;
         sing = n.s ! Singulative ;
         coll = if_then_Str n.hasColl
-          (n.s ! Collective) -- BAQAR
-          (n.s ! Plural)  -- SNIEN
+          (n.s ! Collective) -- baqar
+          (n.s ! Plural)  -- snien
           ;
         dual = n.s ! Dual ;
         plur = n.s ! Plural ;
         -- pind = n.s ! Plural Indeterminate ;
       in case det.n of {
-        NumX Sg   => det' ++ sing ; -- BAQRA
-        NumX Pl   => det' ++ coll ; -- BAQAR (coll) / ħafna SNIEN (pdet)
-        Num0     => det' ++ sing ; -- L-EBDA BAQRA
-        Num1     => det' ++ sing ; -- BAQRA
-        Num2     => if_then_Str n.hasDual
-          dual -- BAQARTEJN
-          (det' ++ plur) -- ŻEWĠ IRĠIEL
-          ;
-        Num3_10  => det' ++ coll ; -- TLETT BAQAR
-        Num11_19 => det' ++ sing ; -- ĦDAX-IL BAQRA
-        Num20_99 => det' ++ sing -- GĦOXRIN BAQRA
+        NumX Sg  => sing ; -- baqra
+        NumX Pl  => coll ; -- baqar (coll) / ħafna snien (pdet)
+        Num0     => sing ; -- l-ebda baqra
+        Num1     => sing ; -- baqra
+        Num2     => if_then_Str n.hasDual dual plur ; -- sentejn / baqar
+        Num3_10  => coll ; -- tlett baqar
+        Num11_19 => sing ; -- ħdax-il baqra
+        Num20_99 => sing   -- għoxrin baqra
       } ;
 
   lin
@@ -44,14 +41,17 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
         -- To stop complaining about lock fields
         det = lin Det det ;
         cn  = lin CN cn ;
+        noun = chooseNounNumForm det cn ;
       in {
         s = table {
-          NPCPrep => cn.s ! numform2nounnum det.n ;
+          NPCPrep => noun ;
           _       => case <det.isPron, cn.takesPron> of {
-            <True,True>  => glue (cn.s ! numform2nounnum det.n) det.clitic ;
-            -- <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
-            <True,_>     => artDef ++ cn.s ! numform2nounnum det.n ++ det.s ! cn.g ;
-            _            => chooseNounNumForm det cn
+            <True,True>  => glue noun det.clitic ;
+            <True,_>     => artDef ++ noun ++ det.s ! cn.g ;
+            _            => case <det.n,cn.hasDual> of {
+              <Num2, True>  => noun ; -- sentejn
+              _             => det.s ! cn.g ++ noun -- tlett baqar
+              }
             }
           } ;
         a = case (numform2nounnum det.n) of {
@@ -66,13 +66,15 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     DetQuant quant num = {
       s = \\gen =>
         let gennum = case num.n of { NumX Sg => GSg gen ; _ => GPl }
-        in case quant.isDemo of {
-          True  => quant.s ! gennum ++ artDef ++ num.s ! NumAdj ;
-          False => quant.s ! gennum ++ num.s ! NumAdj
+        in case <quant.isDemo,num.n> of {
+            <True,_>  => quant.s ! gennum ++ artDef ++ num.s ! NumAdj ;
+            -- <True ,NumX Sg> => ...
+            <False,NumX Sg> => quant.s ! gennum ;
+            <False,_> => quant.s ! gennum ++ num.s ! NumAdj
         } ;
       n = num.n ;
       clitic = quant.clitic ;
-      hasNum = num.hasCard ;
+      hasNum = True ; -- num.hasCard ?
       isPron = quant.isPron ;
       isDefn = quant.isDefn ;
     } ;
@@ -95,10 +97,6 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
 
     -- Det -> NP
     DetNP det = {
-      -- s = case det.hasNum of {
-      --   True => \\_ => det.s ! Masc ;
-      --   _    => \\c => det.s ! Masc
-      --   } ;
       s = \\c => det.s ! Masc ;
       a = agrP3 (numform2num det.n) Masc ;
       isPron = False ;
@@ -154,7 +152,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     PredetNP pred np = overwriteNPs np (\\c => pred.s ++ np.s ! c) ;
 
     -- NP -> V2 -> NP
-    PPartNP np v2 = overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VActivePart (toGenNum np.a)).s1) ;
+    --- LEAKS
+    -- PPartNP np v2 = overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VActivePart (toGenNum np.a)).s1) ;
 
     -- NP -> RS -> NP
     RelNP np rs = overwriteNPs np (\\c => np.s ! c ++ "," ++ rs.s ! np.a ) ;
@@ -253,12 +252,13 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     PartNP cn np = overwriteCNs cn (\\num => cn.s ! num ++ prepNP prep_ta np) ;
 
     -- Det -> NP -> NP
-    CountNP det np = {
-      s = \\c => det.s ! np.a.g ++ np.s ! c ;
-      a = agrP3 (numform2num det.n) np.a.g ;
-      isPron = False ;
-      isDefn = np.isDefn ;
-      } ;
+    --- LEAKS
+    -- CountNP det np = {
+    --   s = \\c => det.s ! np.a.g ++ np.s ! c ;
+    --   a = agrP3 (numform2num det.n) np.a.g ;
+    --   isPron = False ;
+    --   isDefn = np.isDefn ;
+    --   } ;
 
   oper
     prep_ta = lin Prep {

@@ -206,11 +206,12 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       ;
 
     -- Indicate how a corresponding object should be treated
-    --- Overlap between Num Sg and Num1, but leaving as is for now
+    -- Num Sg is exactly 1
+    -- Num1 is anything "treated as" 1 (eg 101)
     NumForm =
         NumX Number -- Sg | Pl
       | Num0        -- 0 (l-edba SIEGĦA)
-      | Num1        -- 1, 101... (SIEGĦA, mija u SIEGĦA)
+      | Num1        -- 101... (mija u SIEGĦA)
       | Num2        -- 2 (SAGĦTEJN)
       | Num3_10     -- 3..10, 102, 103... (tlett SIEGĦAT, għaxar SIEGĦAT, mija u żewġ SIEGĦAT, mija u tlett SIEGĦAT)
       | Num11_19    -- 11..19, 111... (ħdax-il SIEGĦA, mija u dsatax-il SIEGĦA)
@@ -261,7 +262,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   {- Determiners etc. ----------------------------------------------------- -}
 
   oper
-    -- [AZ]
     Determiner : Type = {
       s : Gender => Str ;
       n : NumForm ;
@@ -270,16 +270,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       isPron : Bool ; -- is a pronoun
       isDefn : Bool ; -- is definite
       } ;
-    -- Determiner = {
-    --   s : NPCase => Gender => NumCase => Str ;
-    --   s2 : NPCase => Gender => Str ; -- tieghi (possessive pronoun)
-    --   -- size : Num_Size ; -- One (agreement feature for noun)
-    --   isNum : Bool ; -- True (a numeral is present)
-    --   isDemo : Bool ; -- True (is a demostrative)
-    --   isDefn : Bool ;-- True (is definite)
-    --   } ;
 
-    -- [AZ]
     Quantifier : Type = {
       s      : GenNum => Str ;
       clitic : Str ;
@@ -287,12 +278,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       isDemo : Bool ; -- Demonstrative (this/that/those/these)
       isDefn : Bool ; -- is definite
       } ;
-    -- Quantifier = {
-    --   s : NPCase => Gender => NumForm => Str ;
-    --   s2 : NPCase => Gender => NumForm => Str ;
-    --   isDemo : Bool ; -- Demonstrative (this/that/those/these)
-    --   isDefn : Bool ;
-    --   } ;
 
   {- Noun ----------------------------------------------------------------- -}
 
@@ -371,11 +356,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     Compl : Type = Preposition ** {isPresent : Bool} ;
-    -- Compl : Type = {
-    --   s : Str ;
-    --   -- c : NPForm ;
-    --   -- isPre : Bool
-    --   } ;
 
     noCompl : Compl = {
       s = \\_ => [] ;
@@ -1093,6 +1073,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     {- ~~~ Useful helper functions ~~~ -}
+
+    NONEXIST : Str = "#NONEXIST#" ;
 
     -- New names for the drop/take operations
     takePfx = Predef.take ;

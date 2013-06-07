@@ -606,8 +606,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
     conjFormII_quad : VerbInfo -> (VForm => Str) = \i ->
@@ -693,8 +693,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
     {- ~~~ Form III verbs ~~~ -}
@@ -735,8 +735,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
     {- ~~~ Form VII and VIII verbs ~~~ -}
@@ -806,8 +806,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
     {- ~~~ Form IX verbs ~~~ -}
@@ -842,8 +842,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
     {- ~~~ Form X verbs ~~~ -}
@@ -936,8 +936,8 @@ resource MorphoMlt = ResMlt ** open Prelude in {
         VPerf agr => perf ! agr ;
         VImpf agr => impf ! agr ;
         VImp num  => imp ! num ;
-        VActivePart  _ => "" ; --- TODO
-        VPassivePart _ => ""   --- TODO
+        VActivePart  _ => NONEXIST ; --- TODO
+        VPassivePart _ => NONEXIST   --- TODO
       } ;
 
 }

@@ -1,7 +1,8 @@
 | AST                                                                                                                                    | English                        | Maltese                |
 |----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+------------------------|
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 pot01))))))) (UseN cow_N)                                | one cow                        | baqra                  |
-| DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN cow_N)                            | two cows                       | baqartejn              |
+| DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN year_N)                           | two years                      | sentejn                |
+| DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN cow_N)                            | two cows                       | żewġ baqriet           |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN man_N)                            | two men                        | żewġ rġiel             |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n3)))))))) (UseN cow_N)                            | three cows                     | tlett baqar            |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n4)))))))) (UseN cow_N)                            | four cows                      | erba' baqar            |
@@ -15,17 +16,23 @@
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2 pot01)))))) (UseN cow_N)                                             | one hundred cows               | mitt baqra             |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 pot01))))))) (UseN cow_N)                         | one hundred and one cows       | mija u baqra           |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 (pot0 n2)))))))) (UseN cow_N)                     | one hundred and two cows       | mija u żewġ baqar      |
+| DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 (pot0 n2)))))))) (UseN year_N)                    | one hundred and two years      | mija u żewġ snin       |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 (pot0 n7)))))))) (UseN cow_N)                     | one hundred and seven cows     | mija u seba' baqar     |
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot2as3 (pot2plus pot01 pot111)))))) (UseN cow_N)                                  | one hundred and eleven cows    | mija u ħdax-il baqra   |
 |----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+------------------------|
 | DetCN (DetQuant IndefArt (NumCard (NumNumeral (num (pot3plus (pot1as2 (pot0as1 pot01)) (pot1as2 (pot0as1 (pot0 n2)))))))) (UseN cow_N) | one thousand two cows          | elf u żewġ baqar       |
 |----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+------------------------|
 | DetCN (DetQuant IndefArt (NumCard (NumDigits (IDig D_1)))) (UseN cow_N)                                                                | 1 cow                          | baqra                  |
-| DetCN (DetQuant IndefArt (NumCard (NumDigits (IDig D_2)))) (UseN cow_N)                                                                | 2 cows                         | baqartejn              |
+| DetCN (DetQuant IndefArt (NumCard (NumDigits (IDig D_2)))) (UseN year_N)                                                               | 2 years                        | sentejn                |
+| DetCN (DetQuant IndefArt (NumCard (NumDigits (IDig D_2)))) (UseN cow_N)                                                                | 2 cows                         | 2 baqriet              |
 | DetCN (DetQuant IndefArt (NumCard (NumDigits (IDig D_3)))) (UseN cow_N)                                                                | 3 cows                         | 3 baqar                |
 | DetCN (DetQuant IndefArt (NumCard (NumDigits (IIDig D_1 (IDig D_2))))) (UseN cow_N)                                                    | 1 2 cows                       | 1 2-il baqra           |
 | DetCN (DetQuant IndefArt (NumCard (NumDigits (IIDig D_1 (IDig D_9))))) (UseN cow_N)                                                    | 1 9 cows                       | 1 9-il baqra           |
 | DetCN (DetQuant IndefArt (NumCard (NumDigits (IIDig D_2 (IDig D_0))))) (UseN cow_N)                                                    | 2 0 cows                       | 2 0 baqra              |
+|----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+------------------------|
+| DetCN (DetQuantOrd IndefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot01))))))) (UseN cow_N)                               | a first cow                    | ewwel baqra            |
+| DetCN (DetQuantOrd IndefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))) (UseN cow_N)                             | a second cow                   | tieni baqra            |
+| DetCN (DetQuantOrd IndefArt NumSg (OrdNumeral (num (pot2as3 (pot2plus pot01 (pot0as1 (pot0 n2))))))) (UseN cow_N)                      | an one hundred and second cow  | mija u żewġ baqra      |
 |----------------------------------------------------------------------------------------------------------------------------------------+--------------------------------+------------------------|
 | DetCN (DetQuantOrd DefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot01))))))) (UseN cow_N)                                 | the first cow                  | l-ewwel baqra          |
 | DetCN (DetQuantOrd DefArt NumSg (OrdNumeral (num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))))) (UseN cow_N)                               | the second cow                 | it-tieni baqra         |
