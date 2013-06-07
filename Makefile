@@ -13,11 +13,12 @@ pgf: batch
 	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
 
 pgf_engmlt: batch
-	gf +RTS -K1000M -RTS --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
+#	gf +RTS -K1000M -RTS --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
+	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
 
 batch: *.gf
-	gf +RTS -K1000M -RTS --batch AllMlt.gf
-#	gf --batch AllMlt.gf
+#	gf +RTS -K1000M -RTS --batch AllMlt.gf
+	gf --batch AllMlt.gf
 
 clean:
 	rm -f _tmpi _tmpo
