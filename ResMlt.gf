@@ -405,17 +405,17 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   {- Verb ----------------------------------------------------------------- -}
 
   oper
-    -- Generic variants (used for verb stems)
-    Variants3 : Type = {s1, s2, s3 : Str} ;
+    -- Stem variants
+    VerbStems : Type = {s1, s2, s3 : Str} ;
 
-    mkVariants3 : Variants3 = overload {
-      mkVariants3 : (s1 : Str) -> Variants3 = \a -> { s1 = a ; s2 = a ; s3 = a } ;
-      mkVariants3 : (s1, s2, s3 : Str) -> Variants3 = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
+    mkVerbStems : VerbStems = overload {
+      mkVerbStems : (s1 : Str) -> VerbStems = \a -> { s1 = a ; s2 = a ; s3 = a } ;
+      mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
       } ;
 
-    mkMaybeVariants3 : Str -> Maybe Variants3 = \s -> Just Variants3 (mkVariants3 s) ;
+    mkMaybeVerbStems : Str -> Maybe VerbStems = \s -> Just VerbStems (mkVerbStems s) ;
 
-    NullVariants3 : Maybe Variants3 = Nothing Variants3 { s1 = [] ; s2 = [] ; s3 = [] } ;
+    NullVerbStems : Maybe VerbStems = Nothing VerbStems { s1 = [] ; s2 = [] ; s3 = [] } ;
 
     NullAgr : Maybe Agr = Nothing Agr (agrP3 Sg Masc) ;
 
@@ -464,7 +464,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
-    stemVariantsPerf : Str -> Variants3 = \s ->
+    stemVariantsPerf : Str -> VerbStems = \s ->
       let
         ftahna  : Str = s ;
         ftahnie : Str = case s of {
@@ -481,7 +481,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         s1 = ftahna ; s2 = ftahnie ; s3 = ftahni ;
       } ;
 
-    stemVariantsImpf : Str -> Variants3 = \s ->
+    stemVariantsImpf : Str -> VerbStems = \s ->
       let
         jiftah  : Str = s ;
         jifth : Str = case s of {
@@ -493,16 +493,18 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     -- Convert old verb form table into one with stem variants
-    stemVariantsTbl : (VForm => Str) -> (VForm => Variants3) = \tbl ->
+    stemVariantsTbl : (VForm => Str) -> (VForm => VerbStems) = \tbl ->
       \\vf => case vf of {
         VPerf _ => stemVariantsPerf (tbl ! vf) ;
         VImpf _ => stemVariantsImpf (tbl ! vf) ;
-        _  => mkVariants3 (tbl ! vf)
+        _  => mkVerbStems (tbl ! vf)
       } ;
 
     Verb : Type = {
-      s : VForm => Variants3 ; --- need to store different "stems" already at verb level (ġera/ġerie/ġeri)
+      s : VForm => VerbStems ; --- need to store different "stems" already at verb level (ġera/ġerie/ġeri)
       i : VerbInfo ;
+      hasPresPart : Bool ;
+      hasPastPart : Bool ;
       } ;
 
     VerbInfo : Type = {
@@ -522,9 +524,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         VPerf VAgr    -- Perfect tense in all pronoun cases
       | VImpf VAgr    -- Imperfect tense in all pronoun cases
       | VImp Number   -- Imperative is always P2, Sg & Pl
-      | VActivePart GenNum  -- Present/active particible, e.g. RIEQED
-      | VPassivePart GenNum  -- Passive/past particible, e.g. MAĦBUB
-      -- | VVerbalNoun      -- Verbal Noun
+      | VPresPart GenNum  -- Present/active particible, e.g. RIEQED
+      | VPastPart GenNum  -- Passive/past particible, e.g. MAĦBUB
     ;
 
     VDerivedForm =
@@ -710,14 +711,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     VerbParts : Type = {
       aux : Str ;        -- when present, negation is applied here
-      main : Variants3 ; -- enclitics always applied here
+      main : VerbStems ; -- enclitics always applied here
       } ;
 
     mkVerbParts = overload {
-      mkVerbParts : Variants3 -> VerbParts = \vs -> { aux = [] ; main = vs } ;
-      mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVariants3 m } ;
-      mkVerbParts : Str -> Variants3 -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
-      mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVariants3 m } ;
+      mkVerbParts : VerbStems -> VerbParts = \vs -> { aux = [] ; main = vs } ;
+      mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVerbStems m } ;
+      mkVerbParts : Str -> VerbStems -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
+      mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVerbStems m } ;
       } ;
 
     VerbPhrase : Type = {
@@ -797,7 +798,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <VImpf (AgP3Pl), Pos>      => "jkunu" ;
         <VImp (Pl), Pos>           => "kun" ;
         <VImp (Sg), Pos>           => "kunu" ;
-
         <VPerf (AgP1 Sg), Neg>     => "kontx" ;
         <VPerf (AgP2 Sg), Neg>     => "kontx" ;
         <VPerf (AgP3Sg Masc), Neg> => "kienx" ;
@@ -814,8 +814,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <VImpf (AgP3Pl), Neg>      => "jkunux" ;
         <VImp (Pl), Neg>           => "kunx" ;
         <VImp (Sg), Neg>           => "kunux" ;
-        <VActivePart gn, _>      => "" ;
-        <VPassivePart gn, _>     => ""
+        <VPresPart gn, _>          => NONEXIST ;
+        <VPastPart gn, _>          => NONEXIST
         }
       } ;
 
@@ -846,8 +846,8 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s = \\vpf,ant,pol =>
         let
           ma = makePreVowel "ma" "m'" ;
-          b1 : Variants3 -> VerbParts = \vs -> mkVerbParts vs ;
-          b2 : Str -> Variants3 -> VerbParts = \s,vs -> mkVerbParts s vs ;
+          b1 : VerbStems -> VerbParts = \vs -> mkVerbParts vs ;
+          b2 : Str -> VerbStems -> VerbParts = \s,vs -> mkVerbParts s vs ;
         in
         case vpf of {
           VPIndicat tense vagr =>
@@ -1161,7 +1161,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         _ => False
       } ;
 
-    artIndef : Str = "" ;
+    artIndef : Str = "" ; --- is this a source of leaks?
 
     artDef : Str =
       makePreFull
