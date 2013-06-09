@@ -512,9 +512,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       form  : VDerivedForm ;
       root  : Root ; -- radicals
       patt  : Pattern ; -- vowels extracted from mamma
-      patt2 : Pattern ; -- vowel changes; default to patt (experimental)
-      -- in particular, patt2 is used to indicate whether an IE sould be shortened
-      -- to an I or an E (same for entire verb)
       imp   : Str ; -- Imperative Sg. Gives so much information jaħasra!
       } ;
 
@@ -1044,15 +1041,15 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
     -- Create a VerbInfo record, optionally omitting various fields
     mkVerbInfo : VerbInfo = overload {
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
-        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; patt2=mkPattern ; imp=[] } ;
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=[] } ;
       mkVerbInfo : VClass -> VDerivedForm -> Str -> VerbInfo = \c,f,i ->
-        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; patt2=mkPattern ; imp=i } ;
+        { class=c ; form=f ; root=mkRoot ; patt=mkPattern ; imp=i } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> VerbInfo = \c,f,r,p ->
-        { class=c ; form=f ; root=r ; patt=p ; patt2=p ; imp=[] } ;
+        { class=c ; form=f ; root=r ; patt=p ; imp=[] } ;
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Str -> VerbInfo = \c,f,r,p,i ->
-        { class=c ; form=f ; root=r ; patt=p ; patt2=p ; imp=i } ;
-      mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Pattern -> Str -> VerbInfo = \c,f,r,p,p2,i ->
-        { class=c ; form=f ; root=r ; patt=p ; patt2=p2 ; imp=i } ;
+        { class=c ; form=f ; root=r ; patt=p ; imp=i } ;
+      -- mkVerbInfo : VClass -> VDerivedForm -> Root -> Pattern -> Pattern -> Str -> VerbInfo = \c,f,r,p,p2,i ->
+      --   { class=c ; form=f ; root=r ; patt=p ; patt2=p2 ; imp=i } ;
       } ;
 
     -- Change certain fields of a VerbInfo record
@@ -1060,15 +1057,15 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
       -- Root
       updateVerbInfo : VerbInfo -> Root -> VerbInfo = \i,r ->
-        { class=i.class ; form=i.form ; root=r ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
+        { class=i.class ; form=i.form ; root=r ; patt=i.patt ; imp=i.imp } ;
 
       -- DerivedForm
       updateVerbInfo : VerbInfo -> VDerivedForm -> VerbInfo = \i,f ->
-        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=i.imp } ;
+        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; imp=i.imp } ;
 
       -- DerivedForm, Imperative
       updateVerbInfo : VerbInfo -> VDerivedForm -> Str -> VerbInfo = \i,f,imp ->
-        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; patt2=i.patt2 ; imp=imp } ;
+        { class=i.class ; form=f ; root=i.root ; patt=i.patt ; imp=imp } ;
 
       } ;
 

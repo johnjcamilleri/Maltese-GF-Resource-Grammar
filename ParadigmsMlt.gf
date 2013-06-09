@@ -576,10 +576,9 @@ resource ParadigmsMlt = open
     -- e.g.: derivedV_III "qiegħed" (mkRoot "q-għ-d")
     derivedV_III : Str -> Root -> V = \mammaIII, root ->
       let
-        vowels : Pattern = extractPattern mammaIII ;
-        vowels2 : Pattern = vowelChangesIE root vowels ;
+        patt : Pattern = extractPattern mammaIII ;
         class : VClass = classifyRoot root ;
-        info : VerbInfo = mkVerbInfo class FormIII root vowels vowels2 mammaIII ; --- assumption: mamma III is also imperative
+        info : VerbInfo = mkVerbInfo class FormIII root patt mammaIII ; --- assumption: mamma III is also imperative
       in lin V {
         s = stemVariantsTbl (conjFormIII info) ;
         i = info ;
@@ -711,8 +710,7 @@ resource ParadigmsMlt = open
       let
         class : VClass = classifyRoot root ;
         patt : Pattern = extractPattern mammaX ;
-        patt2 : Pattern = vowelChangesIE root patt ;
-        info : VerbInfo = mkVerbInfo class FormX root patt patt2 mammaX ;
+        info : VerbInfo = mkVerbInfo class FormX root patt mammaX ;
       in lin V {
         s = stemVariantsTbl (conjFormX info) ;
         i = info ;
@@ -873,11 +871,7 @@ resource ParadigmsMlt = open
           VPresPart _ => NONEXIST ;
           VPastPart _ => NONEXIST
           } ;
-        patt2 : Pattern = case (imp!Sg) of {
-          "ie"+_ => mkPattern "i" patt.V2 ; -- (WAQAF) IEQAF > TIQAFLI
-          _ => patt -- (WASAL) ASAL > TASALLI
-          } ;
-        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt patt2 (imp ! Sg) ;
+        info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root patt (imp ! Sg) ;
       in lin V {
         s = stemVariantsTbl tbl ;
         i = info ;
@@ -916,11 +910,7 @@ resource ParadigmsMlt = open
           VPresPart _ => NONEXIST ;
           VPastPart _ => NONEXIST
           } ;
-        patt2 : Pattern = case patt.V1 of {
-          "ie" => mkPattern "i" patt.V2 ; -- (ŻIED) ŻID > ŻIDLI
-          _ => patt -- (MAR) MUR > MURLI
-          } ;
-        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt patt2 (imp ! Sg) ;
+        info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root patt (imp ! Sg) ;
       in lin V {
         s = stemVariantsTbl tbl ;
         i = info ;

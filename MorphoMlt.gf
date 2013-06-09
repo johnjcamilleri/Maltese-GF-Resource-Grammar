@@ -884,7 +884,7 @@ resource MorphoMlt = ResMlt ** open Prelude in {
           _ + "ie" + #Consonant =>
             let
               strieh : Str = mamma ;
-              strih : Str = ie2_ i.patt2.V1 strieh ;
+              strih : Str = ie2i strieh ;
               strihaj : Str = strih + "aj"
             in
             table {
