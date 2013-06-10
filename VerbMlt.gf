@@ -66,7 +66,7 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
 
         -- Get enclitic version of c2
         <True,True> => {
-            s = vp.s ;
+            v = vp.v ;
             s2 = \\agr => vp.s2 ! agr ++ vp.c2.enclitic ! np.a ;
             dir = NullAgr ;
             ind = NullAgr ;
@@ -175,7 +175,6 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- VP -> Prep -> VPSlash
     -- live in (it)
     VPSlashPrep vp p = vp ** {
-      -- c2 = lin Compl (p ** {isPresent = True}) ;
       c2 = {
         s = p.s ;
         enclitic = p.enclitic ;

@@ -32,7 +32,8 @@ concrete SentenceMlt of Sentence = CatMlt ** open
 
     -- VP -> Imp
     ImpVP vp = {
-      s = \\pol,n => joinVP vp (VPImperat n) Simul pol
+      -- s = \\pol,n => joinVP vp (VPImperat n) Simul pol ;
+      s = \\pol,n => "TODO" ; --- vp.v.s ! VImpf (toGenNum n) ++ v.s2 ;
     } ;
 
     -- NP -> VPSlash -> ClSlash
