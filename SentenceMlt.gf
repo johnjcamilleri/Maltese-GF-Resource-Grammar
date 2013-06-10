@@ -17,21 +17,14 @@ concrete SentenceMlt of Sentence = CatMlt ** open
   lin
     -- NP -> VP -> Cl
     -- John walks
-    PredVP np vp = {
-      s = \\tense,ant,pol,ord =>
-        case ord of {
-          ODir => (s ++ v ++ o) ; -- ĠANNI JIEKOL ĦUT
-          OQuest => (v ++ o ++ s) -- JIEKOL ĦUT ĠANNI ?
-        }
-        where {
-          s : Str = case np.isPron of {
-            True => [] ; -- omit subject pronouns
-            False => np.s ! NPNom
-            } ;
-          v : Str = joinVP vp (VPIndicat tense (toVAgr np.a)) ant pol ;
-          o : Str = vp.s2 ! np.a ;
-        } ;
-      } ;
+    PredVP np vp =
+      let
+        subj : Str = case np.isPron of {
+          True => [] ; -- omit subject pronouns
+          False => np.s ! NPNom
+          } ;
+      in
+      mkClause subj np.a vp ;
 
     -- SC -> VP -> Cl
     -- that she goes is good

@@ -158,25 +158,15 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       s : Tense => Anteriority => Polarity => Agr => Str
       } ;
 
-    -- Clause
     mkClause : Str -> Agr -> VerbPhrase -> Clause = \subj,agr,vp -> {
       s = \\t,a,p,o =>
         let
-          -- verb  = vp.s ! t ! a ! p ! o ! agr ;
-          -- vform = case <t,agr> of {
-          --   _ => VPres
-          --   } ;
           vpform : VPForm = VPIndicat t (toVAgr agr) ;
           verb   : Str    = joinVP vp vpform a p ;
-          compl  : Str    = vp.s2 ! agr ;
-        in
-        case o of {
-          -- ODir => subj ++ verb.aux ++ verb.adv ++ vp.ad ++ verb.fin ++ verb.inf ++ vp.p ++ compl ;
-          -- OQuest => verb.aux ++ subj ++ verb.adv ++ vp.ad ++ verb.fin ++ verb.inf ++ vp.p ++ compl
-
-          -- ABSOLUTELY NOT CORRECT: in progress
-          ODir => subj ++ verb ++ compl ;
-          OQuest => subj ++ verb ++ compl
+          obj    : Str    = vp.s2 ! agr ;
+        in case o of {
+          ODir   => subj ++ verb ++ obj ;  -- Ġanni jiekol ħut
+          OQuest => verb ++ obj ++ subj    -- jiekol ħut Ġanni ?
         }
       } ;
 
@@ -573,7 +563,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   oper
 
-    -- Join verp phrase components into a string
+    -- Join verb phrase components into a string
     joinVP : VerbPhrase -> VPForm -> Anteriority -> Polarity -> Str = \vp,form,ant,pol ->
      let
         stems = (vp.s ! form ! ant ! pol).main ;

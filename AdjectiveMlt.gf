@@ -45,7 +45,8 @@ concrete AdjectiveMlt of Adjective = CatMlt ** open ResMlt, Prelude in {
       isPre = True
       } ;
 
-    -- CAdv -> AP -> NP -> AP ; -- as cool as John
+    -- CAdv -> AP -> NP -> AP
+    -- as cool as John
     CAdvAP cadv ap np = {
       s = \\gn => cadv.s ++ ap.s ! gn ++ cadv.p ++ np.s ! NPNom ;
       isPre = False
