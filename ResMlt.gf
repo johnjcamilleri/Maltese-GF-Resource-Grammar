@@ -822,16 +822,18 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         --- We are ignoring the anteriority
         case <vpf, pol> of {
           --- Here we are bypassing VerbParts by putting negatives in the stem
-          <VPIndicat Past vagr, Pos> => mkVerbParts (copula_kien.s ! VPerf vagr ! Pos) [] ; -- kien
-          <VPIndicat Pres vagr, Pos> => mkVerbParts (copula_kien.s ! VImpf vagr ! Pos) [] ; -- jkun
-          <VPIndicat Fut  vagr, Pos> => mkVerbParts ("se" ++ copula_kien.s ! VImpf vagr ! Pos) [] ; -- se jkun
-          <VPIndicat Cond vagr, Pos> => mkVerbParts ("kieku" ++ copula_kien.s ! VPerf vagr ! Pos) [] ; -- kieku kien
-          <VPImperat num, Pos>       => mkVerbParts (copula_kien.s ! VImp num ! Pos) [] ; -- kun
-          <VPIndicat Past vagr, Neg> => mkVerbParts (copula_kien.s ! VPerf vagr ! Neg) [] ; -- ma kienx
-          <VPIndicat Pres vagr, Neg> => mkVerbParts (copula_kien.s ! VImpf vagr ! Neg) [] ; -- ma jkunx
+          -- <VPIndicat Pres vagr, Pos> => mkVerbParts (copula_kien.s ! VImpf vagr ! Pos) [] ;                        -- jkun
+          -- <VPIndicat Pres vagr, Neg> => mkVerbParts (copula_kien.s ! VImpf vagr ! Neg) [] ;                        -- ma jkunx
+          <VPIndicat Pres vagr, Pos> => mkVerbParts (huwa ! vagr) [] ;                                             -- huwa
+          <VPIndicat Pres vagr, Neg> => mkVerbParts (mhux ! vagr) [] ;                                             -- m'huwiex
+          <VPIndicat Past vagr, Pos> => mkVerbParts (copula_kien.s ! VPerf vagr ! Pos) [] ;                        -- kien
+          <VPIndicat Past vagr, Neg> => mkVerbParts (copula_kien.s ! VPerf vagr ! Neg) [] ;                        -- ma kienx
+          <VPIndicat Fut  vagr, Pos> => mkVerbParts ("se" ++ copula_kien.s ! VImpf vagr ! Pos) [] ;                -- se jkun
           <VPIndicat Fut  vagr, Neg> => mkVerbParts (mhux ! vagr ++ "se" ++ copula_kien.s ! VImpf vagr ! Pos) [] ; -- mhux se jkun
-          <VPIndicat Cond vagr, Neg> => mkVerbParts ("kieku" ++ "ma" ++ copula_kien.s ! VPerf vagr ! Neg) [] ; -- kieku ma kienx
-          <VPImperat num, Neg>       => mkVerbParts (copula_kien.s ! VImp num ! Neg) [] -- kunx
+          <VPIndicat Cond vagr, Pos> => mkVerbParts ("kieku" ++ copula_kien.s ! VPerf vagr ! Pos) [] ;             -- kieku kien
+          <VPIndicat Cond vagr, Neg> => mkVerbParts ("kieku" ++ "ma" ++ copula_kien.s ! VPerf vagr ! Neg) [] ;     -- kieku ma kienx
+          <VPImperat num, Pos>       => mkVerbParts (copula_kien.s ! VImp num ! Pos) [] ;                          -- kun
+          <VPImperat num, Neg>       => mkVerbParts (copula_kien.s ! VImp num ! Neg) []                            -- kunx
         } ;
       s2 = \\agr => [] ;
       dir = NullAgr ;
@@ -914,6 +916,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       AgP1 Pl      => "lilna nfusna" ;
       AgP2 Pl      => "lilkom infuskom" ;
       AgP3Pl       => "lilhom infushom"
+      } ;
+
+    huwa : VAgr => Str = table {
+      AgP1 Sg      => "jiena" ;
+      AgP2 Sg      => "inti" ;
+      AgP3Sg Masc  => "huwa" ;
+      AgP3Sg Fem   => "hija" ;
+      AgP1 Pl      => "aħna" ;
+      AgP2 Pl      => "intom" ;
+      AgP3Pl       => "huma"
       } ;
 
     mhux : VAgr => Str = table {
@@ -1158,7 +1170,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         _ => False
       } ;
 
-    artIndef : Str = "" ; --- is this a source of leaks?
+    artIndef : Str = [] ; --- is this a source of leaks?
 
     artDef : Str =
       makePreFull

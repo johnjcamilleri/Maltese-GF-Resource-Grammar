@@ -152,10 +152,9 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     PredetNP pred np = overwriteNPs np (\\c => pred.s ++ np.s ! c) ;
 
     -- NP -> V2 -> NP
-    --- LEAKS ?
-    PPartNP np v2 = case v2.hasPresPart of {
-      True  => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VPastPart (toGenNum np.a)).s1) ;
-      False => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VImpf (toVAgr np.a)).s1)
+    PPartNP np v2 = case v2.hasPastPart of {
+      True  => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VPastPart (toGenNum np.a)).s1) ; -- raġel rieqed
+      False => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VImpf (toVAgr np.a)).s1)         -- mara tisma'
       } ;
 
     -- NP -> RS -> NP
@@ -248,20 +247,18 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     SentCN cn sc = overwriteCNs cn (\\num => cn.s ! num ++ sc.s) ;
 
     -- CN -> NP -> CN
-    ApposCN cn np = overwriteCNs cn (\\num => cn.s ! num ++ np.s ! NPNom) ;
-
-    PossNP cn np = overwriteCNs cn (\\num => cn.s ! num ++ prepNP prep_ta np) ;
-
-    PartNP cn np = overwriteCNs cn (\\num => cn.s ! num ++ prepNP prep_ta np) ;
+    ApposCN cn np = overwriteCNs cn (\\num => cn.s ! num ++ np.s ! NPNom) ; -- known to be overgenerating
+    PossNP  cn np = overwriteCNs cn (\\num => cn.s ! num ++ prepNP prep_ta np) ;
+    PartNP  cn np = overwriteCNs cn (\\num => cn.s ! num ++ prepNP prep_ta np) ;
 
     -- Det -> NP -> NP
     --- LEAKS ?
-    CountNP det np = {
-      s = \\c => det.s ! np.a.g ++ np.s ! c ;
-      a = agrP3 (numform2num det.n) np.a.g ;
-      isPron = False ;
-      isDefn = np.isDefn ;
-      } ;
+    -- CountNP det np = {
+    --   s = \\c => det.s ! np.a.g ++ np.s ! c ;
+    --   a = agrP3 (numform2num det.n) np.a.g ;
+    --   isPron = False ;
+    --   isDefn = np.isDefn ;
+    --   } ;
 
   oper
     prep_ta = lin Prep {
