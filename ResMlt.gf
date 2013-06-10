@@ -97,12 +97,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     agrP3 : Number -> Gender -> Agr = \n,g -> mkAgr n P3 g;
 
-    -- VPForm2VAgr : VPForm -> VAgr = \vpform ->
-    --   case vpform of {
-    --     VPIndicat _ vagr => vagr ;
-    --     VPImperat n => AgP2 n
-    --   };
-
     sing : VAgr -> Bool = \agr ->
       case toAgr agr of {
         {n=Sg; p=_; g=_} => True ;
@@ -738,7 +732,11 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     VerbPhrase : Type = {
-      v   : {s : VForm => VerbStems} ;
+      v : {
+        s : VForm => VerbStems ;
+        hasPresPart : Bool ;
+        hasPastPart : Bool ;
+        } ;
       s2  : Agr => Str ; -- complement
       dir : Maybe Agr ; -- direct object clitic
       ind : Maybe Agr ; -- indirect object clitic
@@ -877,7 +875,6 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       ind = NullAgr ;
       } ;
 
-    -- [AZ]
     predV : Verb -> VerbPhrase = \verb -> {
       v = verb ;
       s2 = \\agr => [] ;

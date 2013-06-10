@@ -69,7 +69,10 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
     -- be sleeping
     ProgrVP vp = {
       v = CopulaVP.v ;
-      s2 = \\agr => "TODO" ; --- joinVP vp (VPIndicat Pres (toVAgr agr)) Simul Pos ;
+      s2 = \\agr => case vp.v.hasPresPart of {
+        True  => (vp.v.s ! VPresPart (toGenNum agr)).s1 ;
+        False => (vp.v.s ! VImpf (toVAgr agr)).s1
+        } ;
       dir = NullAgr ;
       ind = NullAgr ;
       } ;

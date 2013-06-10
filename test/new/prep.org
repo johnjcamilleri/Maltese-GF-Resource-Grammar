@@ -1,30 +1,29 @@
-| AST                                                                                                                                       | English    | Maltese |
-|-------------------------------------------------------------------------------------------------------------------------------------------+------------+---------|
-
-PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))
-PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))
-PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))
-PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))
-PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))
-PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))
-
-PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))
-PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))
-PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))
-PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))
-PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))
-PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))
-
-PrepNP in_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))
-PrepNP in_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))
-PrepNP in_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))
-PrepNP in_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))
-PrepNP in_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))
-PrepNP in_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))
-
-PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))
-PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))
-PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))
-PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))
-PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))
-PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))
+| AST                                                                     | English              | Maltese           |
+|-------------------------------------------------------------------------+----------------------+-------------------|
+| PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))          | on a book            | fuq ktieb         |
+| PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))          | on a road            | fuq triq          |
+| PrepNP on_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))      | on an airplane       | fuq ajruplan      |
+| PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))            | on the book          | fuq il-ktieb      |
+| PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))            | on the road          | fuq it-triq       |
+| PrepNP on_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))        | on the airplane      | fuq l-ajruplan    |
+|-------------------------------------------------------------------------+----------------------+-------------------|
+| PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))          | to a book            | lil ktieb         |
+| PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))          | to a road            | lil triq          |
+| PrepNP to_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))      | to an airplane       | lil ajruplan      |
+| PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))            | to the book          | lill-ktieb        |
+| PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))            | to the road          | lit-triq          |
+| PrepNP to_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))        | to the airplane      | lill-ajruplan     |
+|-------------------------------------------------------------------------+----------------------+-------------------|
+| PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))     | through a book       | minn ġo ktieb     |
+| PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))     | through a road       | minn ġo triq      |
+| PrepNP through_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N)) | through an airplane  | minn ġo ajruplan  |
+| PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))       | through the book     | minn ġol-ktieb    |
+| PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))       | through the road     | minn ġot-triq     |
+| PrepNP through_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))   | through the airplane | minn ġol-ajruplan |
+|-------------------------------------------------------------------------+----------------------+-------------------|
+| PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN book_N))        | with a book          | ma' ktieb         |
+| PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN road_N))        | with a road          | ma' triq          |
+| PrepNP with_Prep (DetCN (DetQuant IndefArt NumSg) (UseN airplane_N))    | with an airplane     | m'ajruplan        |
+| PrepNP with_Prep (DetCN (DetQuant DefArt NumSg) (UseN book_N))          | with the book        | mal-ktieb         |
+| PrepNP with_Prep (DetCN (DetQuant DefArt NumSg) (UseN road_N))          | with the road        | mat-triq          |
+| PrepNP with_Prep (DetCN (DetQuant DefArt NumSg) (UseN airplane_N))      | with the airplane    | mal-ajruplan      |
