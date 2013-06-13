@@ -591,7 +591,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   oper
 
-    --- TEMP FUNCTION
+    -- Pick the correct form of a verb, adding aux
     pickVerbForm : {s : VForm => VerbStems} -> Tense -> Anteriority -> Polarity -> Agr -> VerbParts = \verb,tense,ant,pol,agr ->
       let
         vagr : VAgr = toVAgr agr ;
@@ -920,9 +920,9 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       ind = NullAgr ;
       } ;
 
-    -- There is no infinitive in Maltese; use perfective
+    -- There is no infinitive in Maltese; use imperfective
     infVP : VerbPhrase -> Anteriority -> Polarity -> Agr -> Str = \vp,ant,pol,agr ->
-        joinVP vp Past ant pol agr ++ vp.s2 ! agr ;
+        joinVP vp Pres ant pol agr ++ vp.s2 ! agr ;
 
     Aux = {
       s : Tense => Polarity => Str ;
