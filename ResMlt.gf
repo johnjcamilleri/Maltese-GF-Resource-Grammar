@@ -103,8 +103,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         _ => False
       } ;
 
-    femOrPlural : Agr -> Bool = \agr ->
-      case agr of {
+    -- femOrPlural : Agr -> Bool = \agr ->
+    --   case agr of {
+    --     {n=Sg; p=_; g=Fem} => True ;
+    --     {n=Pl; p=_; g=_}   => True ;
+    --     _ => False
+    --   } ;
+    femOrPlural : VAgr -> Bool = \vagr ->
+      case toAgr vagr of {
         {n=Sg; p=_; g=Fem} => True ;
         {n=Pl; p=_; g=_}   => True ;
         _ => False
@@ -425,15 +431,34 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
   {- Verb ----------------------------------------------------------------- -}
 
+  param
+    VerbObjAgr = NoObjAgr | ObjAgr VAgr ;
+
   oper
     -- Stem variants
-    VerbStems : Type = {s1, s2, s3 : Str} ;
+    -- VerbStems : Type = {s1, s2, s3 : Str} ;
+    -- mkVerbStems : VerbStems = overload {
+    --   mkVerbStems : (s1 : Str)         -> VerbStems = \a     -> { s1 = a ; s2 = a ; s3 = a } ;
+    --   mkVerbStems : (s1, s2 : Str)     -> VerbStems = \a,b   -> { s1 = a ; s2 = b ; s3 = b } ;
+    --   mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
+    --   } ;
+
+    VerbStems : Type = VerbObjAgr => VerbObjAgr => Polarity => Str ;
 
     mkVerbStems : VerbStems = overload {
-      mkVerbStems : (s1 : Str)         -> VerbStems = \a     -> { s1 = a ; s2 = a ; s3 = a } ;
-      mkVerbStems : (s1, s2 : Str)     -> VerbStems = \a,b   -> { s1 = a ; s2 = b ; s3 = b } ;
-      mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
+      mkVerbStems : (s1 : Str)         -> VerbStems = \a     -> \\dir,ind,pol => a ;
+      mkVerbStems : (s1, s2 : Str)     -> VerbStems = \a,b   -> \\dir,ind => table { Pos => a ; Neg => b } ;
+
+      --- aboslutely needs more work
+      mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> \\dir,ind,pol => case <dir,ind,pol> of {
+        <NoObjAgr, NoObjAgr, Pos> => a ;
+        <NoObjAgr, ObjAgr _, Neg> => b ;
+        <ObjAgr _, ObjAgr _, _  > => c ;
+        _ => a
+        } ;
       } ;
+
+    stem1 : VerbStems -> Str = \stems -> stems ! NoObjAgr ! NoObjAgr ! Pos ;
 
     NullAgr : Maybe Agr = Nothing Agr (agrP3 Sg Masc) ;
 
@@ -497,9 +522,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           qat + "a'" => qat + "agħ" ;
           _ => ftahnie
           } ;
-      in {
-        s1 = ftahna ; s2 = ftahnie ; s3 = ftahni ;
-      } ;
+      in mkVerbStems ftahna ftahnie ftahni ;
 
     stemVariantsImpf : Str -> VerbStems = \s ->
       let
@@ -513,9 +536,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           jaq + "a'" => jaq + "agħ" ;
           _ => jifth
           } ;
-      in {
-        s1 = jiftah ; s2 = jifth ; s3 = jaqagh ;
-      } ;
+      in mkVerbStems jiftah jifth jaqagh ;
 
     -- Convert old verb form table into one with stem variants
     stemVariantsTbl : (VForm => Str) -> (VForm => VerbStems) = \tbl ->
@@ -641,16 +662,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         aux   = (pickVerbForm vp.v tense ant pol agr).aux ;
         x : Str = "x" ;
         vagr : VAgr = toVAgr agr ;
-        dir_a : Agr = fromJust Agr vp.dir ; -- These are lazy
-        ind_a : Agr = fromJust Agr vp.ind ;
-        dir = dirObjSuffix dir_a ;
-        ind = indObjSuffix ind_a ;
+        dir_a : VAgr = toVAgr (fromJust Agr vp.dir) ; -- These are lazy
+        ind_a : VAgr = toVAgr (fromJust Agr vp.ind) ;
+        dir : DirObjVerbClitic = dirObjSuffix (toAgr dir_a) ;
+        ind : IndObjVerbClitic = indObjSuffix (toAgr ind_a) ;
 
-        ind_pos : Str = case <toVAgr dir_a, toVAgr ind_a> of {
+        ind_pos : Str = case <dir_a, ind_a> of {
           <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
           _                 => ind.s1   -- hie-lek
           } ;
-        ind_neg : Str = case <toVAgr dir_a, toVAgr ind_a> of {
+        ind_neg : Str = case <dir_a, ind_a> of {
           <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
           _                 => ind.s2   -- hie-lekx
           } ;
@@ -661,16 +682,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
             -- konna ftaħna / ma konniex ftaħna
-            <False,False> => stems.s1 ;
+            <False,False> => stems ! NoObjAgr ! NoObjAgr ! Pos ;
 
             -- konna ftaħnie-ha / ma konniex ftaħni-ha
-            <True ,False> => stems.s2 ++ BIND ++ dir.s1 ;
+            <True ,False> => stems ! ObjAgr dir_a ! NoObjAgr ! Pos ++ BIND ++ dir.s1 ;
 
             -- konna ftaħnie-lha / ma konniex ftaħni-lha
-            <False,True > => stems.s2 ++ BIND ++ ind.s1 ;
+            <False,True > => stems ! NoObjAgr ! ObjAgr ind_a ! Pos ++ BIND ++ ind.s1 ;
 
             -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
-            <True, True > => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
+            <True, True > => stems ! ObjAgr dir_a ! ObjAgr ind_a ! Pos ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
 
             } ;
 
@@ -680,56 +701,52 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
             True => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
               -- ftaħna / ftaħnie-x
-              <False,False,Pos> => stems.s1 ;
-              <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+              <False,False,Pos> => stems ! NoObjAgr ! NoObjAgr ! Pos ;
+              <False,False,Neg> => stems ! NoObjAgr ! NoObjAgr ! Neg ++ BIND ++ x ;
 
               -- ftaħnie-ha / ftaħni-hie-x
-              <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
-              <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+              <True ,False,Pos> => stems ! ObjAgr dir_a ! NoObjAgr ! Pos ++ BIND ++ dir.s1 ;
+              <True ,False,Neg> => stems ! ObjAgr dir_a ! NoObjAgr ! Neg ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
               -- ftaħnie-lha / ftaħni-lhie-x
-              <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- fetħ-ilha
-                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- ftaħnie-lha
-                _            => stems.s1 ++ BIND ++ ind.s1   -- fetaħ-li
+              <False,True ,Pos> => stems ! NoObjAgr ! ObjAgr ind_a ! Pos ++ BIND ++ case <sing vagr, femOrPlural ind_a> of {
+                <True,True>  => ind.s3 ; -- fetħ-ilha
+                _            => ind.s1   -- ftaħnie-lha
                 } ;
-              <False,True ,Neg> =>  case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
-                <False,True> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- ftaħni-lhiex
-                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- fetaħ-lix
+              <False,True ,Neg> => stems ! NoObjAgr ! ObjAgr ind_a ! Neg ++ BIND ++ case <sing vagr, femOrPlural ind_a> of {
+                <True,True>  => ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
+                _            => ind.s2 ++ BIND ++ x   -- ftaħni-lhiex
                 } ;
 
               -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-              <True, True ,Pos> => stems.s2 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-              <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+              <True, True ,Pos> => stems ! ObjAgr dir_a ! ObjAgr ind_a ! Pos ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+              <True, True ,Neg> => stems ! ObjAgr dir_a ! ObjAgr ind_a ! Neg ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
 
               } ;
 
             False => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
               -- jiftaħ / jiftaħ-x
-              <False,False,Pos> => stems.s1 ;
-              <False,False,Neg> => stems.s1 ++ BIND ++ x ;
+              <False,False,Pos> => stems ! NoObjAgr ! NoObjAgr ! Pos ;
+              <False,False,Neg> => stems ! NoObjAgr ! NoObjAgr ! Neg ++ BIND ++ x ;
 
               -- jiftaħ-ha / jiftaħ-hie-x
-              <True ,False,Pos> => stems.s1 ++ BIND ++ dir.s1 ;
-              <True ,False,Neg> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+              <True ,False,Pos> => stems ! ObjAgr dir_a ! NoObjAgr ! Pos ++ BIND ++ dir.s1 ;
+              <True ,False,Neg> => stems ! ObjAgr dir_a ! NoObjAgr ! Neg ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
               -- jiftħ-ilha / jiftħ-ilhie-x
-              <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- jiftħ-ilha
-                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- jiftħu-lha
-                _            => stems.s1 ++ BIND ++ ind.s1   -- jiftaħ-li
+              <False,True ,Pos> => stems ! NoObjAgr ! ObjAgr ind_a ! Pos ++ BIND ++ case <sing vagr, femOrPlural ind_a> of {
+                <True,True>  => ind.s3 ; -- jiftħ-ilha
+                _            => ind.s1   -- jiftħu-lha
                 } ;
-              <False,True ,Neg> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
-                <False,True> => stems.s2 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- jiftħu-lhiex
-                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- jiftaħ-lix
+              <False,True ,Neg> => stems ! NoObjAgr ! ObjAgr ind_a ! Neg ++ BIND ++ case <sing vagr, femOrPlural ind_a> of {
+                <True,True>  => ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
+                _            => ind.s2 ++ BIND ++ x   -- jiftħu-lhiex
                 } ;
 
               -- jiftaħ-hie-lha / jiftaħ-hi-lhie-x
-              <True, True ,Pos> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-              <True, True ,Neg> => stems.s1 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+              <True, True ,Pos> => stems ! ObjAgr dir_a ! ObjAgr ind_a ! Pos ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+              <True, True ,Neg> => stems ! ObjAgr dir_a ! ObjAgr ind_a ! Neg ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
 
               }
             }

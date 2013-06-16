@@ -70,8 +70,8 @@ concrete IdiomMlt of Idiom = CatMlt ** open Prelude, ResMlt in {
     ProgrVP vp = {
       v = CopulaVP.v ;
       s2 = \\agr => case vp.v.hasPresPart of {
-        True  => (vp.v.s ! VPresPart (toGenNum agr)).s1 ;
-        False => (vp.v.s ! VImpf (toVAgr agr)).s1
+        True  => stem1 (vp.v.s ! VPresPart (toGenNum agr)) ;
+        False => stem1 (vp.v.s ! VImpf (toVAgr agr))
         } ;
       dir = NullAgr ;
       ind = NullAgr ;

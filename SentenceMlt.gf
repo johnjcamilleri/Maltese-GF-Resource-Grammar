@@ -34,8 +34,8 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     ImpVP vp = {
       -- s = \\pol,n => joinVP vp (VPImperat n) Simul pol ;
       s = \\pol,n => case pol of {
-        Pos => (vp.v.s ! VImp n).s1 ++ vp.s2 ! agrP3 n Masc ;
-        Neg => (vp.v.s ! VImp n).s2 ++ BIND ++ "x" ++ vp.s2 ! agrP3 n Masc
+        Pos => (vp.v.s ! VImp n) ! NoObjAgr ! NoObjAgr ! Pos ++ vp.s2 ! agrP3 n Masc ;
+        Neg => (vp.v.s ! VImp n) ! NoObjAgr ! NoObjAgr ! Neg ++ BIND ++ "x" ++ vp.s2 ! agrP3 n Masc
         } ;
     } ;
 

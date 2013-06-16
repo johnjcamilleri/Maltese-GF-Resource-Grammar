@@ -137,8 +137,8 @@ concrete VerbMlt of Verb = CatMlt ** open Prelude, ResMlt in {
     -- V2 -> VP
     -- be loved
     PassV2 v2 = case v2.hasPastPart of {
-      True  => insertObj (\\agr => (v2.s ! VPastPart (toGenNum agr)).s1 ++ v2.c2.s ! Definite) CopulaVP ;
-      False => insertObj (\\agr => (v2.s ! VPerf (toVAgr agr)).s1 ++ v2.c2.s ! Definite) CopulaVP
+      True  => insertObj (\\agr => stem1 (v2.s ! VPastPart (toGenNum agr)) ++ v2.c2.s ! Definite) CopulaVP ;
+      False => insertObj (\\agr => stem1 (v2.s ! VPerf (toVAgr agr)) ++ v2.c2.s ! Definite) CopulaVP
       } ;
 
     -- AP -> Comp

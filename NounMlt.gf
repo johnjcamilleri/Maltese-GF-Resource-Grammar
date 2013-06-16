@@ -162,8 +162,8 @@ concrete NounMlt of Noun = CatMlt ** open ResMlt, Prelude in {
     -- NP -> V2 -> NP
     -- the man seen
     PPartNP np v2 = case v2.hasPastPart of {
-      True  => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VPastPart (toGenNum np.a)).s1) ; -- raġel rieqed
-      False => overwriteNPs np (\\c => np.s ! c ++ (v2.s ! VImpf (toVAgr np.a)).s1)         -- mara tisma'
+      True  => overwriteNPs np (\\c => np.s ! c ++ stem1 (v2.s ! VPastPart (toGenNum np.a))) ; -- raġel rieqed
+      False => overwriteNPs np (\\c => np.s ! c ++ stem1 (v2.s ! VImpf (toVAgr np.a)))         -- mara tisma'
       } ;
 
     -- NP -> RS -> NP

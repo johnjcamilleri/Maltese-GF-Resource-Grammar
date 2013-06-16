@@ -597,7 +597,7 @@ resource ParadigmsMlt = open
         mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
         vII : V = derivedV_II mammaII root ;
         info : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.patt mammaV ;
-        get : VForm -> Str = \vf -> (vII.s ! vf).s1 ;
+        get : VForm -> Str = \vf -> stem1 (vII.s ! vf) ; --- is this right?
         tbl : VForm => Str = table {
           VPerf agr           => pfx_T (get (VPerf agr)) ;
           VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
@@ -626,7 +626,7 @@ resource ParadigmsMlt = open
         mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
         vIII : V = derivedV_III mammaIII root ;
         info : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
-        get : VForm -> Str = \vf -> (vIII.s ! vf).s1 ;
+        get : VForm -> Str = \vf -> stem1 (vIII.s ! vf) ; --- is this right?
         tbl : VForm => Str = table {
           VPerf agr           => pfx_T (get (VPerf agr)) ;
           VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
