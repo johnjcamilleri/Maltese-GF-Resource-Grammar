@@ -5,8 +5,13 @@
 -- Licensed under LGPL
 
 concrete ExtraMlt of ExtraMltAbs = CatMlt **
-  open ResMlt, ParadigmsMlt in {
+  open (R = ResMlt), ParadigmsMlt in {
 
   flags coding=utf8 ;
+
+  lin
+    SlashVa v = (R.predV v) ** { c2 = noCompl } ; -- See Verb.SlashV2a
+
+    -- VasV2 v = v ** { c2 = noCompl } ;
 
 }

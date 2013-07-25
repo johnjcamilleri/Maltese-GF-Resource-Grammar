@@ -6,4 +6,10 @@
 
 abstract ExtraMltAbs = Cat ** {
 
+  fun
+    -- SlashV2a : V2 -> VPSlash ; -- love (it)
+    SlashVa : V -> VPSlash ; -- jump (it)
+
+    -- VasV2 : V -> V2 ; --- too general for my liking
+
 }
