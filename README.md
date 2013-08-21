@@ -53,13 +53,6 @@ These publications are currently being used and can be referenced by citation st
 1. _Stem allomorphy in the Maltese Verb_ by Ray Fabri. In Ilsienna, Vol 1, 2009. {SA}
 1. _The tense and aspect system of Maltese_ in Tense Systems in European Languages II, 1995. {TAS}
 
-Some sources of enlightenment:
-
-1. _Korpus Malti_ - <http://mlrs.research.um.edu.mt/corpusquery/cwb/malti01/>
-1. _Kelmet il-Malti_ Facebook group - <https://www.facebook.com/groups/246657308743181/>
-1. _Is-Suffissi tan-Nazzjonijiet fil-Malti_ - Michael Spagnol. (unpublished).
-1. _Basic Maltese Grammar_ by Grazio Falzon. <http://aboutmalta.com/grazio/maltesegrammar.html>, 1997. {BMG}
-
 Other potentially useful references:
 
 1. Spagnol, Michael. 2009. Lexical and grammatical aspect in Maltese. In Thomas Stolz (ed.), _Ilsienna_, 51--86. Bochum: Universitätsverlag Brockmeyer.
