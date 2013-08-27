@@ -1,0 +1,68 @@
+| AST                                                                   | English                                           | Maltese                             |
+|-----------------------------------------------------------------------+---------------------------------------------------+-------------------------------------|
+| Cardinal, NumNominative                                               |                                                   |                                     |
+|-----------------------------------------------------------------------+---------------------------------------------------+-------------------------------------|
+| num (pot2as3 (pot1as2 (pot0as1 pot01)))                               | one                                               | wieħed                              |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n2))))                           | two                                               | tnejn                               |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n3))))                           | three                                             | tlieta                              |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n4))))                           | four                                              | erbgħa                              |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n5))))                           | five                                              | ħamsa                               |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n6))))                           | six                                               | sitta                               |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n7))))                           | seven                                             | sebgħa                              |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n8))))                           | eight                                             | tmienja                             |
+| num (pot2as3 (pot1as2 (pot0as1 (pot0 n9))))                           | nine                                              | disgħa                              |
+| num (pot2as3 (pot1as2 pot110))                                        | ten                                               | għaxra                              |
+| num (pot2as3 (pot1as2 pot111))                                        | eleven                                            | ħdax                                |
+| num (pot2as3 (pot1as2 (pot1to19 n3)))                                 | thirteen                                          | tlettax                             |
+| num (pot2as3 (pot1as2 (pot1to19 n4)))                                 | fourteen                                          | erbatax                             |
+| num (pot2as3 (pot1as2 (pot1 n7)))                                     | seventy                                           | sebgħin                             |
+| num (pot2as3 (pot2 pot01))                                            | one hundred                                       | mija                                |
+| num (pot2as3 (pot2plus pot01 (pot1to19 n2)))                          | one hundred and twelve                            | mija u tnax                         |
+| num (pot2as3 (pot2plus pot01 (pot1to19 n4)))                          | one hundred and fourteen                          | mija u erbatax                      |
+| num (pot2as3 (pot2 (pot0 n4)))                                        | four hundred                                      | erba' mija                          |
+| num (pot2as3 (pot2plus (pot0 n4) pot110))                             | four hundred and ten                              | erba' mija u għaxra                 |
+| num (pot2as3 (pot2plus (pot0 n5) (pot0as1 pot01)))                    | five hundred and one                              | ħames mija u wieħed                 |
+| num (pot2as3 (pot2 (pot0 n6)))                                        | six hundred                                       | sitt mija                           |
+| num (pot2as3 (pot2 (pot0 n8)))                                        | eight hundred                                     | tmin mija                           |
+| num (pot2as3 (pot2plus (pot0 n9) pot111))                             | nine hundred and eleven                           | disa' mija u ħdax                   |
+|-----------------------------------------------------------------------+---------------------------------------------------+-------------------------------------|
+| num (pot3 (pot1as2 (pot0as1 pot01)))                                  | one thousand                                      | elf                                 |
+| num (pot3 (pot1as2 (pot0as1 (pot0 n2))))                              | two thousand                                      | elfejn                              |
+| num (pot3 (pot1as2 (pot0as1 (pot0 n3))))                              | three thousand                                    | tlett elef                          |
+| num (pot3 (pot1as2 (pot0as1 (pot0 n9))))                              | nine thousand                                     | disat elef                          |
+| num (pot3 (pot1as2 pot110))                                           | ten thousand                                      | għaxart elef                        |
+| num (pot3 (pot1as2 pot111))                                           | eleven thousand                                   | ħdax-il elf                         |
+| num (pot3 (pot1as2 (pot1to19 n2)))                                    | twelve thousand                                   | tnax-il elf                         |
+| num (pot3 (pot1as2 (pot1to19 n3)))                                    | thirteen thousand                                 | tlettax-il elf                      |
+| num (pot3 (pot1as2 (pot1to19 n9)))                                    | nineteen thousand                                 | dsatax-il elf                       |
+| num (pot3 (pot1as2 (pot1 n2)))                                        | twenty thousand                                   | għoxrin elf                         |
+| num (pot3 (pot1as2 (pot1plus n2 pot01)))                              | twenty - one thousand                             | wieħed u għoxrin elf                |
+| num (pot3 (pot1as2 (pot1plus n2 (pot0 n2))))                          | twenty - two thousand                             | tnejn u għoxrin elf                 |
+| num (pot3 (pot1as2 (pot1 n3)))                                        | thirty thousand                                   | tletin elf                          |
+| num (pot3 (pot1as2 (pot1plus n3 pot01)))                              | thirty - one thousand                             | wieħed u tletin elf                 |
+| num (pot3 (pot1as2 (pot1plus n3 (pot0 n2))))                          | thirty - two thousand                             | tnejn u tletin elf                  |
+| num (pot3 (pot1as2 (pot1plus n9 (pot0 n9))))                          | ninety - nine thousand                            | disa' u disgħin elf                 |
+|-----------------------------------------------------------------------+---------------------------------------------------+-------------------------------------|
+| num (pot3 (pot2 pot01))                                               | one hundred thousand                              | mitt elf                            |
+| num (pot3 (pot2plus pot01 (pot0as1 pot01)))                           | one hundred and one thousand                      | mija u elf                          |
+| num (pot3 (pot2plus pot01 (pot0as1 (pot0 n6))))                       | one hundred and six thousand                      | mija u sitt elef                    |
+| num (pot3 (pot2plus pot01 pot110))                                    | one hundred and ten thousand                      | mija u għaxart elef                 |
+| num (pot3 (pot2plus pot01 pot111))                                    | one hundred and eleven thousand                   | mija u ħdax-il elf                  |
+| num (pot3 (pot2plus pot01 (pot1 n3)))                                 | one hundred and thirty thousand                   | mija u tletin elf                   |
+| num (pot3 (pot2plus pot01 (pot1plus n4 pot01)))                       | one hundred and forty - one thousand              | mija u wieħed u erbgħin elf         |
+| num (pot3 (pot2plus pot01 (pot1 n6)))                                 | one hundred and sixty thousand                    | mija u sittin elf                   |
+| num (pot3 (pot2 (pot0 n2)))                                           | two hundred thousand                              | mitejn elf                          |
+| num (pot3 (pot2plus (pot0 n4) (pot1to19 n6)))                         | four hundred and sixteen thousand                 | erba' mija u sittax-il elf          |
+| num (pot3plus (pot1as2 pot111) (pot1as2 (pot1to19 n2)))               | eleven thousand twelve                            | ħdax-il elf u tnax                  |
+| num (pot3 (pot1as2 (pot1 n4)))                                        | forty thousand                                    | erbgħin elf                         |
+| num (pot3plus (pot1as2 (pot1plus n9 pot01)) (pot2 (pot0 n7)))         | ninety - one thousand seven hundred               | wieħed u disgħin elf u seba' mija   |
+| num (pot3plus (pot2 pot01) (pot2 pot01))                              | one hundred thousand one hundred                  | mitt elf u mija                     |
+| num (pot3plus (pot2 pot01) (pot1as2 (pot1plus n3 pot01)))             | one hundred thousand thirty - one                 | mitt elf u wieħed u tletin          |
+| num (pot3plus (pot2plus pot01 (pot1plus n2 pot01)) (pot2 pot01))      | one hundred and twenty - one thousand one hundred | mija u wieħed u għoxrin elf u mija  |
+| num (pot3plus (pot2 (pot0 n2)) (pot2plus (pot0 n4) pot110))           | two hundred thousand four hundred and ten         | mitejn elf u erba' mija u għaxra    |
+| num (pot3 (pot2 (pot0 n6)))                                           | six hundred thousand                              | sitt mitt elf                       |
+| num (pot3plus (pot2plus (pot0 n6) pot110) (pot1as2 pot110))           | six hundred and ten thousand ten                  | sitt mija u għaxart elef u għaxra   |
+| num (pot3plus (pot2 (pot0 n7)) (pot2plus (pot0 n6) pot110))           | seven hundred thousand six hundred and ten        | seba' mitt elf u sitt mija u għaxra |
+| num (pot3plus (pot2plus (pot0 n8) (pot1 n5)) (pot1as2 (pot1to19 n7))) | eight hundred and fifty thousand seventeen        | tmin mija u ħamsin elf u sbatax     |
+| num (pot3plus (pot2 (pot0 n9)) (pot2plus pot01 pot110))               | nine hundred thousand one hundred and ten         | disa' mitt elf u mija u għaxra      |
+| num (pot3plus (pot2 (pot0 n9)) (pot2 (pot0 n2)))                      | nine hundred thousand two hundred                 | disa' mitt elf u mitejn             |
