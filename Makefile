@@ -16,10 +16,10 @@ all: $(SOURCES)
 # 	mv tmp LexiconMlt.gf
 
 pgf: $(SOURCES)
-	gf --make --name=PGF/Lang LangMlt.gf
+#	gf --make --name=PGF/Lang LangMlt.gf
 	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf
-	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
-	gf --make --name=PGF/AllMlt AllMlt.gf
+#	gf --make --name=PGF/ParadigmsMlt ParadigmsMlt.gf
+#	gf --make --name=PGF/AllMlt AllMlt.gf
 
 PGF/LangEngMlt.pgf: $(SOURCES)
 	gf --make --name=PGF/LangEngMlt LangMlt.gf ../english/LangEng.gf

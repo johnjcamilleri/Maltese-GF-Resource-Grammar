@@ -1,153 +1,153 @@
-| AST                                                                                                                        | English                    | Maltese                 |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseV walk_V)))) NoVoc                      | I walk                     | nimxi                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV walk_V)))) NoVoc                  | you walk                   | timxi                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (UseV walk_V)))) NoVoc                     | he walks                   | jimxi                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV walk_V)))) NoVoc                    | she walks                  | timxi                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron we_Pron) (UseV walk_V)))) NoVoc                     | we walk                    | nimxu                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV walk_V)))) NoVoc                  | you walk                   | timxu                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron they_Pron) (UseV walk_V)))) NoVoc                   | they walk                  | jimxu                   |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseV sleep_V)))) NoVoc                     | I slept                    | rqadt                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV sleep_V)))) NoVoc                 | you slept                  | rqadt                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (UseV sleep_V)))) NoVoc                    | he slept                   | raqad                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (UseV sleep_V)))) NoVoc                   | she slept                  | raqdet                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (UseV sleep_V)))) NoVoc                    | we slept                   | rqadna                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV sleep_V)))) NoVoc                 | you slept                  | rqadtu                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (UseV sleep_V)))) NoVoc                  | they slept                 | raqdu                   |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseV sit_V)))) NoVoc                        | I will sit                 | se npoġġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV sit_V)))) NoVoc                    | you will sit               | se tpoġġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron he_Pron) (UseV sit_V)))) NoVoc                       | he will sit                | se jpoġġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron she_Pron) (UseV sit_V)))) NoVoc                      | she will sit               | se tpoġġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron we_Pron) (UseV sit_V)))) NoVoc                       | we will sit                | se npoġġu               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV sit_V)))) NoVoc                    | you will sit               | se tpoġġu               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron they_Pron) (UseV sit_V)))) NoVoc                     | they will sit              | se jpoġġu               |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseV think_V)))) NoVoc                     | I would think              | kont naħseb             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV think_V)))) NoVoc                 | you would think            | kont taħseb             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron he_Pron) (UseV think_V)))) NoVoc                    | he would think             | kien jaħseb             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron she_Pron) (UseV think_V)))) NoVoc                   | she would think            | kienet taħseb           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron we_Pron) (UseV think_V)))) NoVoc                    | we would think             | konna naħsbu            |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV think_V)))) NoVoc                 | you would think            | kontu taħsbu            |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron they_Pron) (UseV think_V)))) NoVoc                  | they would think           | kienu jaħsbu            |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseV laugh_V)))) NoVoc                     | I have laughed             | dħakt                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV laugh_V)))) NoVoc                 | you have laughed           | dħakt                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron he_Pron) (UseV laugh_V)))) NoVoc                    | he has laughed             | daħak                   |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron she_Pron) (UseV laugh_V)))) NoVoc                   | she has laughed            | daħket                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron we_Pron) (UseV laugh_V)))) NoVoc                    | we have laughed            | dħakna                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV laugh_V)))) NoVoc                 | you have laughed           | dħaktu                  |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron they_Pron) (UseV laugh_V)))) NoVoc                  | they have laughed          | daħku                   |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseV smell_V)))) NoVoc                     | I had smelled              | kont xammejt            |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV smell_V)))) NoVoc                 | you had smelled            | kont xammejt            |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron he_Pron) (UseV smell_V)))) NoVoc                    | he had smelled             | kien xamm               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron she_Pron) (UseV smell_V)))) NoVoc                   | she had smelled            | kienet xammet           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron we_Pron) (UseV smell_V)))) NoVoc                    | we had smelled             | konna xammejna          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV smell_V)))) NoVoc                 | you had smelled            | kontu xammejtu          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron they_Pron) (UseV smell_V)))) NoVoc                  | they had smelled           | kienu xammew            |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseV jump_V)))) NoVoc                       | I will have jumped         | se nkun qbiżt           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV jump_V)))) NoVoc                   | you will have jumped       | se tkun qbiżt           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron he_Pron) (UseV jump_V)))) NoVoc                      | he will have jumped        | se jkun qabeż           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron she_Pron) (UseV jump_V)))) NoVoc                     | she will have jumped       | se tkun qabżet          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron we_Pron) (UseV jump_V)))) NoVoc                      | we will have jumped        | se nkunu qbiżna         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV jump_V)))) NoVoc                   | you will have jumped       | se tkunu qbiżtu         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron they_Pron) (UseV jump_V)))) NoVoc                    | they will have jumped      | se jkunu qabżu          |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseV come_V)))) NoVoc                      | I would have come          | kont niġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV come_V)))) NoVoc                  | you would have come        | kont tiġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron he_Pron) (UseV come_V)))) NoVoc                     | he would have come         | kien jiġi               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron she_Pron) (UseV come_V)))) NoVoc                    | she would have come        | kienet tiġi             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron we_Pron) (UseV come_V)))) NoVoc                     | we would have come         | konna niġu              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV come_V)))) NoVoc                  | you would have come        | kontu tiġu              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron they_Pron) (UseV come_V)))) NoVoc                   | they would have come       | kienu jiġu              |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron i_Pron) (UseV sing_V)))) NoVoc                      | I don't sing               | ma nkantax              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV sing_V)))) NoVoc                  | you don't sing             | ma tkantax              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron he_Pron) (UseV sing_V)))) NoVoc                     | he doesn't sing            | ma jkantax              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron she_Pron) (UseV sing_V)))) NoVoc                    | she doesn't sing           | ma tkantax              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron we_Pron) (UseV sing_V)))) NoVoc                     | we don't sing              | ma nkantawx             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV sing_V)))) NoVoc                  | you don't sing             | ma tkantawx             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron they_Pron) (UseV sing_V)))) NoVoc                   | they don't sing            | ma jkantawx             |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron i_Pron) (UseV run_V)))) NoVoc                       | I didn't run               | ma ġrejtx               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV run_V)))) NoVoc                   | you didn't run             | ma ġrejtx               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron he_Pron) (UseV run_V)))) NoVoc                      | he didn't run              | ma ġeriex               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron she_Pron) (UseV run_V)))) NoVoc                     | she didn't run             | ma ġrietx               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron we_Pron) (UseV run_V)))) NoVoc                      | we didn't run              | ma ġrejniex             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV run_V)))) NoVoc                   | you didn't run             | ma ġrejtux              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron they_Pron) (UseV run_V)))) NoVoc                    | they didn't run            | ma ġrewx                |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron i_Pron) (UseV swell_V)))) NoVoc                      | I won't swell              | m'iniex se nintefaħ     |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV swell_V)))) NoVoc                  | you won't swell            | m'intix se tintefaħ     |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron he_Pron) (UseV swell_V)))) NoVoc                     | he won't swell             | m'hux se jintefaħ       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron she_Pron) (UseV swell_V)))) NoVoc                    | she won't swell            | m'hix se tintefaħ       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron we_Pron) (UseV swell_V)))) NoVoc                     | we won't swell             | m'aħniex se nintefħu    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV swell_V)))) NoVoc                  | you won't swell            | m'intomx se tintefħu    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron they_Pron) (UseV swell_V)))) NoVoc                   | they won't swell           | m'humiex se jintefħu    |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron i_Pron) (UseV live_V)))) NoVoc                      | I wouldn't live            | ma kontx ngħix          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV live_V)))) NoVoc                  | you wouldn't live          | ma kontx tgħix          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron he_Pron) (UseV live_V)))) NoVoc                     | he wouldn't live           | ma kienx jgħix          |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron she_Pron) (UseV live_V)))) NoVoc                    | she wouldn't live          | ma kinitx tgħix         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron we_Pron) (UseV live_V)))) NoVoc                     | we wouldn't live           | ma konniex ngħixu       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV live_V)))) NoVoc                  | you wouldn't live          | ma kontux tgħixu        |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron they_Pron) (UseV live_V)))) NoVoc                   | they wouldn't live         | ma kienux jgħixu        |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron i_Pron) (UseV swim_V)))) NoVoc                      | I haven't swum             | m'għomtx                |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV swim_V)))) NoVoc                  | you haven't swum           | m'għomtx                |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron he_Pron) (UseV swim_V)))) NoVoc                     | he hasn't swum             | m'għamx                 |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron she_Pron) (UseV swim_V)))) NoVoc                    | she hasn't swum            | m'għamitx               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron we_Pron) (UseV swim_V)))) NoVoc                     | we haven't swum            | m'għomniex              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV swim_V)))) NoVoc                  | you haven't swum           | m'għomtux               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron they_Pron) (UseV swim_V)))) NoVoc                   | they haven't swum          | m'għamux                |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron i_Pron) (UseV freeze_V)))) NoVoc                    | I hadn't frozen            | ma kontx ffriżajt       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV freeze_V)))) NoVoc                | you hadn't frozen          | ma kontx ffriżajt       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron he_Pron) (UseV freeze_V)))) NoVoc                   | he hadn't frozen           | ma kienx ffriża         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron she_Pron) (UseV freeze_V)))) NoVoc                  | she hadn't frozen          | ma kinitx ffriżat       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron we_Pron) (UseV freeze_V)))) NoVoc                   | we hadn't frozen           | ma konniex ffriżajna    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV freeze_V)))) NoVoc                | you hadn't frozen          | ma kontux ffriżajtu     |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron they_Pron) (UseV freeze_V)))) NoVoc                 | they hadn't frozen         | ma kienux ffriżaw       |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron i_Pron) (UseV go_V)))) NoVoc                         | I won't have gone          | m'iniex se nkun mort    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV go_V)))) NoVoc                     | you won't have gone        | m'intix se tkun mort    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron he_Pron) (UseV go_V)))) NoVoc                        | he won't have gone         | m'hux se jkun mar       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron she_Pron) (UseV go_V)))) NoVoc                       | she won't have gone        | m'hix se tkun marret    |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron we_Pron) (UseV go_V)))) NoVoc                        | we won't have gone         | m'aħniex se nkunu morna |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV go_V)))) NoVoc                     | you won't have gone        | m'intomx se tkunu mortu |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron they_Pron) (UseV go_V)))) NoVoc                      | they won't have gone       | m'humiex se jkunu marru |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron i_Pron) (UseV stop_V)))) NoVoc                      | I wouldn't have stopped    | ma kontx nieqaf         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV stop_V)))) NoVoc                  | you wouldn't have stopped  | ma kontx tieqaf         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron he_Pron) (UseV stop_V)))) NoVoc                     | he wouldn't have stopped   | ma kienx jieqaf         |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron she_Pron) (UseV stop_V)))) NoVoc                    | she wouldn't have stopped  | ma kinitx tieqaf        |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron we_Pron) (UseV stop_V)))) NoVoc                     | we wouldn't have stopped   | ma konniex nieqfu       |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV stop_V)))) NoVoc                  | you wouldn't have stopped  | ma kontux tieqfu        |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron they_Pron) (UseV stop_V)))) NoVoc                   | they wouldn't have stopped | ma kienux jieqfu        |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I am a house               | jiena dar               |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I am ugly                  | jiena ikrah             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I was a house              | kont dar                |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I was ugly                 | kont ikrah              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc   | I will be a house          | se nkun dar             |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc  | I will be ugly             | se nkun ikrah           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I would be a house         | kont nkun dar           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I would be ugly            | kont nkun ikrah         |
-|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------|
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I have been a house        | kont dar                |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I have been ugly           | kont ikrah              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I had been a house         | kont dar                |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I had been ugly            | kont ikrah              |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc   | I will have been a house   | se nkun kont dar        |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc  | I will have been ugly      | se nkun kont ikrah      |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I would have been a house  | kont nkun dar           |
-| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I would have been ugly     | kont nkun ikrah         |
+| AST                                                                                                                        | English                    | Maltese                       |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseV walk_V)))) NoVoc                      | I walk                     | jien nimxi                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV walk_V)))) NoVoc                  | you walk                   | int timxi                     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron he_Pron) (UseV walk_V)))) NoVoc                     | he walks                   | hu jimxi                      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron she_Pron) (UseV walk_V)))) NoVoc                    | she walks                  | hi timxi                      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron we_Pron) (UseV walk_V)))) NoVoc                     | we walk                    | aħna nimxu                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV walk_V)))) NoVoc                  | you walk                   | intom timxu                   |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron they_Pron) (UseV walk_V)))) NoVoc                   | they walk                  | huma jimxu                    |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseV sleep_V)))) NoVoc                     | I slept                    | jien rqadt                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV sleep_V)))) NoVoc                 | you slept                  | int rqadt                     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron he_Pron) (UseV sleep_V)))) NoVoc                    | he slept                   | hu raqad                      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron she_Pron) (UseV sleep_V)))) NoVoc                   | she slept                  | hi raqdet                     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron we_Pron) (UseV sleep_V)))) NoVoc                    | we slept                   | aħna rqadna                   |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV sleep_V)))) NoVoc                 | you slept                  | intom rqadtu                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron they_Pron) (UseV sleep_V)))) NoVoc                  | they slept                 | huma raqdu                    |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseV sit_V)))) NoVoc                        | I will sit                 | jien se npoġġi                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV sit_V)))) NoVoc                    | you will sit               | int se tpoġġi                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron he_Pron) (UseV sit_V)))) NoVoc                       | he will sit                | hu se jpoġġi                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron she_Pron) (UseV sit_V)))) NoVoc                      | she will sit               | hi se tpoġġi                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron we_Pron) (UseV sit_V)))) NoVoc                       | we will sit                | aħna se npoġġu                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV sit_V)))) NoVoc                    | you will sit               | intom se tpoġġu               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron they_Pron) (UseV sit_V)))) NoVoc                     | they will sit              | huma se jpoġġu                |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseV think_V)))) NoVoc                     | I would think              | jien kont naħseb              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron youSg_Pron) (UseV think_V)))) NoVoc                 | you would think            | int kont taħseb               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron he_Pron) (UseV think_V)))) NoVoc                    | he would think             | hu kien jaħseb                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron she_Pron) (UseV think_V)))) NoVoc                   | she would think            | hi kienet taħseb              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron we_Pron) (UseV think_V)))) NoVoc                    | we would think             | aħna konna naħsbu             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron youPl_Pron) (UseV think_V)))) NoVoc                 | you would think            | intom kontu taħsbu            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron they_Pron) (UseV think_V)))) NoVoc                  | they would think           | huma kienu jaħsbu             |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseV laugh_V)))) NoVoc                     | I have laughed             | jien dħakt                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV laugh_V)))) NoVoc                 | you have laughed           | int dħakt                     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron he_Pron) (UseV laugh_V)))) NoVoc                    | he has laughed             | hu daħak                      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron she_Pron) (UseV laugh_V)))) NoVoc                   | she has laughed            | hi daħket                     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron we_Pron) (UseV laugh_V)))) NoVoc                    | we have laughed            | aħna dħakna                   |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV laugh_V)))) NoVoc                 | you have laughed           | intom dħaktu                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron they_Pron) (UseV laugh_V)))) NoVoc                  | they have laughed          | huma daħku                    |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseV smell_V)))) NoVoc                     | I had smelled              | jien kont xammejt             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV smell_V)))) NoVoc                 | you had smelled            | int kont xammejt              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron he_Pron) (UseV smell_V)))) NoVoc                    | he had smelled             | hu kien xamm                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron she_Pron) (UseV smell_V)))) NoVoc                   | she had smelled            | hi kienet xammet              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron we_Pron) (UseV smell_V)))) NoVoc                    | we had smelled             | aħna konna xammejna           |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV smell_V)))) NoVoc                 | you had smelled            | intom kontu xammejtu          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron they_Pron) (UseV smell_V)))) NoVoc                  | they had smelled           | huma kienu xammew             |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseV jump_V)))) NoVoc                       | I will have jumped         | jien se nkun qbiżt            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV jump_V)))) NoVoc                   | you will have jumped       | int se tkun qbiżt             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron he_Pron) (UseV jump_V)))) NoVoc                      | he will have jumped        | hu se jkun qabeż              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron she_Pron) (UseV jump_V)))) NoVoc                     | she will have jumped       | hi se tkun qabżet             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron we_Pron) (UseV jump_V)))) NoVoc                      | we will have jumped        | aħna se nkunu qbiżna          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV jump_V)))) NoVoc                   | you will have jumped       | intom se tkunu qbiżtu         |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron they_Pron) (UseV jump_V)))) NoVoc                    | they will have jumped      | huma se jkunu qabżu           |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseV come_V)))) NoVoc                      | I would have come          | jien kont niġi                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron youSg_Pron) (UseV come_V)))) NoVoc                  | you would have come        | int kont tiġi                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron he_Pron) (UseV come_V)))) NoVoc                     | he would have come         | hu kien jiġi                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron she_Pron) (UseV come_V)))) NoVoc                    | she would have come        | hi kienet tiġi                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron we_Pron) (UseV come_V)))) NoVoc                     | we would have come         | aħna konna niġu               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron youPl_Pron) (UseV come_V)))) NoVoc                  | you would have come        | intom kontu tiġu              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron they_Pron) (UseV come_V)))) NoVoc                   | they would have come       | huma kienu jiġu               |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron i_Pron) (UseV sing_V)))) NoVoc                      | I don't sing               | jien ma nkantax               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV sing_V)))) NoVoc                  | you don't sing             | int ma tkantax                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron he_Pron) (UseV sing_V)))) NoVoc                     | he doesn't sing            | hu ma jkantax                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron she_Pron) (UseV sing_V)))) NoVoc                    | she doesn't sing           | hi ma tkantax                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron we_Pron) (UseV sing_V)))) NoVoc                     | we don't sing              | aħna ma nkantawx              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV sing_V)))) NoVoc                  | you don't sing             | intom ma tkantawx             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PNeg (PredVP (UsePron they_Pron) (UseV sing_V)))) NoVoc                   | they don't sing            | huma ma jkantawx              |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron i_Pron) (UseV run_V)))) NoVoc                       | I didn't run               | jien ma ġrejtx                |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV run_V)))) NoVoc                   | you didn't run             | int ma ġrejtx                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron he_Pron) (UseV run_V)))) NoVoc                      | he didn't run              | hu ma ġeriex                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron she_Pron) (UseV run_V)))) NoVoc                     | she didn't run             | hi ma ġrietx                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron we_Pron) (UseV run_V)))) NoVoc                      | we didn't run              | aħna ma ġrejniex              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV run_V)))) NoVoc                   | you didn't run             | intom ma ġrejtux              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PNeg (PredVP (UsePron they_Pron) (UseV run_V)))) NoVoc                    | they didn't run            | huma ma ġrewx                 |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron i_Pron) (UseV swell_V)))) NoVoc                      | I won't swell              | jien m'iniex se nintefaħ      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV swell_V)))) NoVoc                  | you won't swell            | int m'intix se tintefaħ       |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron he_Pron) (UseV swell_V)))) NoVoc                     | he won't swell             | hu m'hux se jintefaħ          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron she_Pron) (UseV swell_V)))) NoVoc                    | she won't swell            | hi m'hix se tintefaħ          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron we_Pron) (UseV swell_V)))) NoVoc                     | we won't swell             | aħna m'aħniex se nintefħu     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV swell_V)))) NoVoc                  | you won't swell            | intom m'intomx se tintefħu    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PNeg (PredVP (UsePron they_Pron) (UseV swell_V)))) NoVoc                   | they won't swell           | huma m'humiex se jintefħu     |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron i_Pron) (UseV live_V)))) NoVoc                      | I wouldn't live            | jien ma kontx ngħix           |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron youSg_Pron) (UseV live_V)))) NoVoc                  | you wouldn't live          | int ma kontx tgħix            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron he_Pron) (UseV live_V)))) NoVoc                     | he wouldn't live           | hu ma kienx jgħix             |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron she_Pron) (UseV live_V)))) NoVoc                    | she wouldn't live          | hi ma kinitx tgħix            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron we_Pron) (UseV live_V)))) NoVoc                     | we wouldn't live           | aħna ma konniex ngħixu        |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron youPl_Pron) (UseV live_V)))) NoVoc                  | you wouldn't live          | intom ma kontux tgħixu        |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PNeg (PredVP (UsePron they_Pron) (UseV live_V)))) NoVoc                   | they wouldn't live         | huma ma kienux jgħixu         |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron i_Pron) (UseV swim_V)))) NoVoc                      | I haven't swum             | jien m'għomtx                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV swim_V)))) NoVoc                  | you haven't swum           | int m'għomtx                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron he_Pron) (UseV swim_V)))) NoVoc                     | he hasn't swum             | hu m'għamx                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron she_Pron) (UseV swim_V)))) NoVoc                    | she hasn't swum            | hi m'għamitx                  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron we_Pron) (UseV swim_V)))) NoVoc                     | we haven't swum            | aħna m'għomniex               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV swim_V)))) NoVoc                  | you haven't swum           | intom m'għomtux               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PNeg (PredVP (UsePron they_Pron) (UseV swim_V)))) NoVoc                   | they haven't swum          | huma m'għamux                 |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron i_Pron) (UseV freeze_V)))) NoVoc                    | I hadn't frozen            | jien ma kontx ffriżajt        |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV freeze_V)))) NoVoc                | you hadn't frozen          | int ma kontx ffriżajt         |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron he_Pron) (UseV freeze_V)))) NoVoc                   | he hadn't frozen           | hu ma kienx ffriża            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron she_Pron) (UseV freeze_V)))) NoVoc                  | she hadn't frozen          | hi ma kinitx ffriżat          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron we_Pron) (UseV freeze_V)))) NoVoc                   | we hadn't frozen           | aħna ma konniex ffriżajna     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV freeze_V)))) NoVoc                | you hadn't frozen          | intom ma kontux ffriżajtu     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PNeg (PredVP (UsePron they_Pron) (UseV freeze_V)))) NoVoc                 | they hadn't frozen         | huma ma kienux ffriżaw        |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron i_Pron) (UseV go_V)))) NoVoc                         | I won't have gone          | jien m'iniex se nkun mort     |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV go_V)))) NoVoc                     | you won't have gone        | int m'intix se tkun mort      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron he_Pron) (UseV go_V)))) NoVoc                        | he won't have gone         | hu m'hux se jkun mar          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron she_Pron) (UseV go_V)))) NoVoc                       | she won't have gone        | hi m'hix se tkun marret       |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron we_Pron) (UseV go_V)))) NoVoc                        | we won't have gone         | aħna m'aħniex se nkunu morna  |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV go_V)))) NoVoc                     | you won't have gone        | intom m'intomx se tkunu mortu |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PNeg (PredVP (UsePron they_Pron) (UseV go_V)))) NoVoc                      | they won't have gone       | huma m'humiex se jkunu marru  |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron i_Pron) (UseV stop_V)))) NoVoc                      | I wouldn't have stopped    | jien ma kontx nieqaf          |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron youSg_Pron) (UseV stop_V)))) NoVoc                  | you wouldn't have stopped  | int ma kontx tieqaf           |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron he_Pron) (UseV stop_V)))) NoVoc                     | he wouldn't have stopped   | hu ma kienx jieqaf            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron she_Pron) (UseV stop_V)))) NoVoc                    | she wouldn't have stopped  | hi ma kinitx tieqaf           |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron we_Pron) (UseV stop_V)))) NoVoc                     | we wouldn't have stopped   | aħna ma konniex nieqfu        |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron youPl_Pron) (UseV stop_V)))) NoVoc                  | you wouldn't have stopped  | intom ma kontux tieqfu        |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PNeg (PredVP (UsePron they_Pron) (UseV stop_V)))) NoVoc                   | they wouldn't have stopped | huma ma kienux jieqfu         |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I am a house               | jien dar                      |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I am ugly                  | jien ikrah                    |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I was a house              | jien kont dar                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I was ugly                 | jien kont ikrah               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc   | I will be a house          | jien se nkun dar              |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc  | I will be ugly             | jien se nkun ikrah            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I would be a house         | jien kont nkun dar            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond ASimul) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I would be ugly            | jien kont nkun ikrah          |
+|----------------------------------------------------------------------------------------------------------------------------+----------------------------+-------------------------------|
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I have been a house        | jien kont dar                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPres AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I have been ugly           | jien kont ikrah               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I had been a house         | jien kont dar                 |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TPast AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I had been ugly            | jien kont ikrah               |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc   | I will have been a house   | jien se nkun kont dar         |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TFut AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc  | I will have been ugly      | jien se nkun kont ikrah       |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompCN (UseN house_N)))))) NoVoc  | I would have been a house  | jien kont nkun dar            |
+| PhrUtt NoPConj (UttS (UseCl (TTAnt TCond AAnter) PPos (PredVP (UsePron i_Pron) (UseComp (CompAP (PositA ugly_A)))))) NoVoc | I would have been ugly     | jien kont nkun ikrah          |

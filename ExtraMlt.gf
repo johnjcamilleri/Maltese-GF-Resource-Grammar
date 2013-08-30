@@ -5,7 +5,7 @@
 -- Licensed under LGPL
 
 concrete ExtraMlt of ExtraMltAbs = CatMlt **
-  open (R = ResMlt), ParadigmsMlt in {
+  open (R=ResMlt), ParadigmsMlt in {
 
   flags coding=utf8 ;
 
@@ -13,5 +13,15 @@ concrete ExtraMlt of ExtraMltAbs = CatMlt **
     SlashVa v = (R.predV v) ** { c2 = noCompl } ; -- See Verb.SlashV2a
 
     -- VasV2 v = v ** { c2 = noCompl } ;
+
+    -- ProDrop : Pron -> Pron
+    -- unstressed subject pronoun becomes []: "(jiena) norqod"
+    ProDrop p = {
+      s = table {
+        R.Personal => [] ;
+        c => p.s ! c
+        } ;
+      a = p.a ;
+      } ;
 
 }

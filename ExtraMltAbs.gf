@@ -4,7 +4,7 @@
 -- John J. Camilleri 2011 -- 2013
 -- Licensed under LGPL
 
-abstract ExtraMltAbs = Cat ** {
+abstract ExtraMltAbs = Cat, Extra [Pron, ProDrop] ** {
 
   fun
     -- SlashV2a : V2 -> VPSlash ; -- love (it)
