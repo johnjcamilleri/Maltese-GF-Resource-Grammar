@@ -506,6 +506,10 @@ resource ParadigmsMlt = open
       mkVowels : Str -> Str -> Vowels = \s0,s1 -> ResMlt.mkVowels s0 s1 ;
       } ;
 
+    -- Just get the non-suffixed forms of a verb, for quick testing
+    plainVerbTable : V -> (VForm => Str) = \v ->
+      \\tense => v.s ! tense ! VSuffixNone ! Pos ;
+
     -- Smart paradigm for building a verb
     mkV : V = overload {
 
@@ -579,21 +583,21 @@ resource ParadigmsMlt = open
             VImpf (AgP2 Pl)     => impfP2Pl ;
             VImpf (AgP3Pl)      => impfP3Pl ;
             VImp (Pl)           => impSg ;
-            VImp (Sg)           => impPl ;
-            VPresPart _         => nonExist ;
-            VPastPart _         => nonExist
+            VImp (Sg)           => impPl
             } ;
           info : VerbInfo = mkVerbInfo class form root vseq impSg ;
         in lin V  {
-          s = stemVariantsTbl tbl ;
+          s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
           i = info ;
           hasPresPart = False ;
           hasPastPart = False ;
+          presPart = \\_ => nonExist ;
+          pastPart = \\_ => nonExist ;
         } ;
 
       } ; --end of mkV overload
 
-    -- Some shortcut function names (haven't decided on naming yet)
+    -- Some shortcut function names
     mkV_II = overload {
       mkV_II : Str -> Root -> V = \s,r -> derivedV_II s r ;
       mkV_II : Str -> Str -> Root -> V = \s,i,r -> derivedV_II s i r ;
@@ -634,10 +638,12 @@ resource ParadigmsMlt = open
           } ;
         newinfo : VerbInfo = mkVerbInfo class FormII root vseq imp ;
       in lin V {
-        s = stemVariantsTbl (conjFormII newinfo) ;
+        s = conjFormII newinfo ;
         i = newinfo ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- Make a Quadri-Consonantal Form II verb
@@ -649,10 +655,12 @@ resource ParadigmsMlt = open
           imp : Str = mammaII ; --- assumption: mamma II is also imperative
           newinfo : VerbInfo = mkVerbInfo class FormII root vseq imp ;
         in lin V {
-          s = stemVariantsTbl (conjFormII_quad newinfo) ;
+          s = conjFormII_quad newinfo ;
           i = newinfo ;
           hasPresPart = False ;
           hasPastPart = False ;
+          presPart = \\_ => nonExist ;
+          pastPart = \\_ => nonExist ;
         } ;
       derivedV_QuadII : Str -> Str -> Root -> V = \mammaII, imp, root ->
         let
@@ -660,10 +668,12 @@ resource ParadigmsMlt = open
           vseq : Vowels = extractVowels mammaII ;
           newinfo : VerbInfo = mkVerbInfo class FormII root vseq imp ;
         in lin V {
-          s = stemVariantsTbl (conjFormII_quad newinfo) ;
+          s = conjFormII_quad newinfo ;
           i = newinfo ;
           hasPresPart = False ;
           hasPastPart = False ;
+          presPart = \\_ => nonExist ;
+          pastPart = \\_ => nonExist ;
         } ;
       } ;
 
@@ -675,10 +685,12 @@ resource ParadigmsMlt = open
         class : VClass = classifyRoot root ;
         info : VerbInfo = mkVerbInfo class FormIII root vseq mammaIII ; --- assumption: mamma III is also imperative
       in lin V {
-        s = stemVariantsTbl (conjFormIII info) ;
+        s = conjFormIII info ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- No point having a paradigm for Form IV
@@ -692,25 +704,24 @@ resource ParadigmsMlt = open
         mammaII : Str = dropPfx 1 mammaV ; -- WAQQAF
         vII : V = derivedV_II mammaII root ;
         info : VerbInfo = mkVerbInfo vII.i.class FormV vII.i.root vII.i.vseq mammaV ;
-        get : VForm -> Str = \vf -> (vII.s ! vf).s1 ;
-        tbl : VForm => Str = table {
-          VPerf agr           => pfx_T (get (VPerf agr)) ;
-          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
-          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Sg))))) ;
-          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Masc))))) ;
-          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Fem))))) ;
-          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Pl))))) ;
-          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
-          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
-          VImp num            => pfx_T (get (VImp num)) ;
-          VPresPart _         => nonExist ;
-          VPastPart _         => nonExist
+        tbl : VForm => VSuffixForm => Polarity => Str = table {
+          VPerf agr           => \\suffix,pol => pfx_T (vII.s ! VPerf agr ! suffix ! pol) ;
+          VImpf (AgP1 Sg)     => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Sg) ! suffix ! pol))) ;
+          VImpf (AgP2 Sg)     => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Sg) ! suffix ! pol))) ;
+          VImpf (AgP3Sg Masc) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol))) ;
+          VImpf (AgP3Sg Fem)  => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol))) ;
+          VImpf (AgP1 Pl)     => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP1 Pl) ! suffix ! pol))) ;
+          VImpf (AgP2 Pl)     => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP2 Pl) ! suffix ! pol))) ;
+          VImpf (AgP3Pl)      => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vII.s ! VImpf (AgP3Pl) ! suffix ! pol))) ;
+          VImp num            => \\suffix,pol => pfx_T (vII.s ! VImp num ! suffix ! pol)
           } ;
       in lin V {
-        s = stemVariantsTbl (tbl) ;
+        s = tbl ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- Make a Form VI verb
@@ -721,25 +732,24 @@ resource ParadigmsMlt = open
         mammaIII : Str = dropPfx 1 mammaVI ; -- QIEGĦED
         vIII : V = derivedV_III mammaIII root ;
         info : VerbInfo = updateVerbInfo vIII.i FormVI mammaVI ;
-        get : VForm -> Str = \vf -> (vIII.s ! vf).s1 ;
-        tbl : VForm => Str = table {
-          VPerf agr           => pfx_T (get (VPerf agr)) ;
-          VImpf (AgP1 Sg)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Sg))))) ;
-          VImpf (AgP2 Sg)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Sg))))) ;
-          VImpf (AgP3Sg Masc) => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Masc))))) ;
-          VImpf (AgP3Sg Fem)  => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP3Sg Fem))))) ;
-          VImpf (AgP1 Pl)     => pfx "ni" (pfx_T (dropPfx 1 (get (VImpf (AgP1 Pl))))) ;
-          VImpf (AgP2 Pl)     => pfx "ti" (pfx_T (dropPfx 1 (get (VImpf (AgP2 Pl))))) ;
-          VImpf (AgP3Pl)      => pfx "ji" (pfx_T (dropPfx 1 (get (VImpf (AgP3Pl))))) ;
-          VImp num            => pfx_T (get (VImp num)) ;
-          VPresPart _         => nonExist ;
-          VPastPart _         => nonExist
+        tbl : VForm => VSuffixForm => Polarity => Str = table {
+          VPerf agr           => \\suffix,pol => pfx_T (vIII.s ! VPerf agr ! suffix ! pol) ;
+          VImpf (AgP1 Sg)     => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Sg) ! suffix ! pol))) ;
+          VImpf (AgP2 Sg)     => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Sg) ! suffix ! pol))) ;
+          VImpf (AgP3Sg Masc) => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Masc) ! suffix ! pol))) ;
+          VImpf (AgP3Sg Fem)  => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Sg Fem) ! suffix ! pol))) ;
+          VImpf (AgP1 Pl)     => \\suffix,pol => pfx "ni" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP1 Pl) ! suffix ! pol))) ;
+          VImpf (AgP2 Pl)     => \\suffix,pol => pfx "ti" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP2 Pl) ! suffix ! pol))) ;
+          VImpf (AgP3Pl)      => \\suffix,pol => pfx "ji" (pfx_T (dropPfx 1 (vIII.s ! VImpf (AgP3Pl) ! suffix ! pol))) ;
+          VImp num            => \\suffix,pol => pfx_T (vIII.s ! VImp num ! suffix ! pol)
           } ;
       in lin V {
-        s = stemVariantsTbl (tbl) ;
+        s = tbl ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- Make a Form VII verb
@@ -758,10 +768,12 @@ resource ParadigmsMlt = open
           } ;
         info : VerbInfo = mkVerbInfo class FormVII root vowels mammaVII ;
       in lin V {
-        s = stemVariantsTbl (conjFormVII info c1) ;
+        s = conjFormVII info c1 ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- Make a Form VIII verb
@@ -774,10 +786,12 @@ resource ParadigmsMlt = open
         info : VerbInfo = mkVerbInfo class FormVIII root vowels mammaVIII ;
         c1 : Str = root.C1+"t";
       in lin V {
-        s = stemVariantsTbl (conjFormVII info c1) ; -- note we use conjFormVII !
+        s = conjFormVII info c1 ; -- note we use conjFormVII !
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     -- Make a Form IX verb
@@ -791,10 +805,12 @@ resource ParadigmsMlt = open
             class : VClass = classifyRoot root ;
             info : VerbInfo = mkVerbInfo class FormIX root vseq mammaIX ;
           in lin V {
-            s = stemVariantsTbl (conjFormIX info) ;
+            s = conjFormIX info ;
             i = info ;
             hasPresPart = False ;
             hasPastPart = False ;
+            presPart = \\_ => nonExist ;
+            pastPart = \\_ => nonExist ;
           } ;
         _ => Predef.error("I don't know how to make a Form IX verb out of" ++ mammaIX)
       } ;
@@ -807,10 +823,12 @@ resource ParadigmsMlt = open
         vseq : Vowels = extractVowels mammaX ;
         info : VerbInfo = mkVerbInfo class FormX root vseq mammaX ;
       in lin V {
-        s = stemVariantsTbl (conjFormX info) ;
+        s = conjFormX info ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Strong Verb ~~~ -}
@@ -840,16 +858,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjStrongPerf root vseq ) ! agr ;
           VImpf agr => ( conjStrongImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Strong Regular) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
 
@@ -884,16 +902,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjLiquidMedialPerf root vseq ) ! agr ;
           VImpf agr => ( conjLiquidMedialImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Strong LiquidMedial) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Geminated Verb ~~~ -}
@@ -923,16 +941,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjGeminatedPerf root vseq ) ! agr ;
           VImpf agr => ( conjGeminatedImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Strong Geminated) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Assimilative Verb ~~~ -}
@@ -962,16 +980,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjAssimilativePerf root vseq ) ! agr ;
           VImpf agr => ( conjAssimilativeImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Weak Assimilative) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Hollow Verb ~~~ -}
@@ -1001,16 +1019,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjHollowPerf root vseq ) ! agr ;
           VImpf agr => ( conjHollowImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Weak Hollow) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Lacking Verb ~~~ -}
@@ -1044,16 +1062,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjLackingPerf root vseq ) ! agr ;
           VImpf agr => ( conjLackingImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Weak Lacking) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Defective Verb ~~~ -}
@@ -1083,16 +1101,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjDefectivePerf root vseq ) ! agr ;
           VImpf agr => ( conjDefectiveImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Weak Defective) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Strong) ~~~ -}
@@ -1122,16 +1140,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjQuadPerf root vseq ) ! agr ;
           VImpf agr => ( conjQuadImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Quad QStrong) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Quadriliteral Verb (Weak Final) ~~~ -}
@@ -1164,16 +1182,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjQuadWeakPerf root vseq (imp ! Sg) ) ! agr ;
           VImpf agr => ( conjQuadWeakImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Quad QWeak) (FormI) root vseq (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- ~~~ Irregular verbs ~~~ -}
@@ -1191,16 +1209,16 @@ resource ParadigmsMlt = open
         tbl : (VForm => Str) = table {
           VPerf agr => ( conjLoanPerf mamma ) ! agr ;
           VImpf agr => ( conjLoanImpf (imp ! Sg) (imp ! Pl) ) ! agr ;
-          VImp n    => imp ! n ;
-          VPresPart _ => nonExist ;
-          VPastPart _ => nonExist
+          VImp n    => imp ! n
           } ;
         info : VerbInfo = mkVerbInfo (Loan) (FormI) (imp ! Sg) ;
       in lin V {
-        s = stemVariantsTbl tbl ;
+        s = verbPolarityTable info (verbPronSuffixTable info tbl) ;
         i = info ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist ;
       } ;
 
     {- Verb --------------------------------------------------------------- -}
@@ -1226,27 +1244,29 @@ resource ParadigmsMlt = open
             _          => hiereg+"in"
             } ;
         in lin V {
-        s = \\vform => case vform of {
-          VPresPart (GSg Masc) => mkVerbStems m ;
-          VPresPart (GSg Fem)  => mkVerbStems f ;
-          VPresPart (GPl)      => mkVerbStems p ;
-          x => v.s ! x
-          } ;
+        s = v.s ;
         i = v.i ;
         hasPresPart = True ;
+        presPart = table {
+          GSg Masc => m ;
+          GSg Fem => f ;
+          GPl => p
+          } ;
         hasPastPart = v.hasPastPart ;
+        pastPart = v.pastPart ;
         } ;
 
       presPartV : Str -> Str -> Str -> V -> V = \hiereg,hierga,hiergin,v -> lin V {
-        s = \\vform => case vform of {
-          VPresPart (GSg Masc) => mkVerbStems hiereg ;
-          VPresPart (GSg Fem)  => mkVerbStems hierga ;
-          VPresPart (GPl)      => mkVerbStems hiergin ;
-          x => v.s ! x
-          } ;
+        s = v.s ;
         i = v.i ;
         hasPresPart = True ;
+        presPart = table {
+          GSg Masc => hiereg ;
+          GSg Fem => hierga ;
+          GPl => hiergin
+          } ;
         hasPastPart = v.hasPastPart ;
+        pastPart = v.pastPart ;
         } ;
 
       } ;
@@ -1271,27 +1291,29 @@ resource ParadigmsMlt = open
             _          => miktub+"in"
             } ;
         in lin V {
-        s = \\vform => case vform of {
-          VPastPart (GSg Masc) => mkVerbStems m ;
-          VPastPart (GSg Fem)  => mkVerbStems f ;
-          VPastPart (GPl)      => mkVerbStems p ;
-          x => v.s ! x
-          } ;
+        s = v.s ;
         i = v.i ;
         hasPresPart = v.hasPresPart ;
+        presPart = v.presPart ;
         hasPastPart = True ;
+        pastPart = table {
+          GSg Masc => m ;
+          GSg Fem => f ;
+          GPl => p
+          } ;
         } ;
 
       pastPartV : Str -> Str -> Str -> V -> V = \miktub,miktuba,miktubin,v -> lin V {
-        s = \\vform => case vform of {
-          VPastPart (GSg Masc) => mkVerbStems miktub ;
-          VPastPart (GSg Fem)  => mkVerbStems miktuba ;
-          VPastPart (GPl)      => mkVerbStems miktubin ;
-          x => v.s ! x
-          } ;
+        s = v.s ;
         i = v.i ;
         hasPresPart = v.hasPresPart ;
+        presPart = v.presPart ;
         hasPastPart = True ;
+        pastPart = table {
+          GSg Masc => miktub ;
+          GSg Fem => miktuba ;
+          GPl => miktubin
+          } ;
         } ;
 
       } ;

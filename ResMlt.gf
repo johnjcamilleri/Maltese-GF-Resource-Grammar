@@ -522,15 +522,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       \\vf => case vf of {
         VPerf _ => stemVariantsPerf (tbl ! vf) ;
         VImpf _ => stemVariantsImpf (tbl ! vf) ;
-        VImp  _ => stemVariantsImpf (tbl ! vf) ;
-        _  => mkVerbStems (tbl ! vf)
+        VImp  _ => stemVariantsImpf (tbl ! vf)
       } ;
 
     Verb : Type = {
-      s : VForm => VerbStems ; --- need to store different "stems" already at verb level (ġera/ġerie/ġeri)
+      s : VForm => VSuffixForm => Polarity => Str ;
       i : VerbInfo ;
       hasPresPart : Bool ;
       hasPastPart : Bool ;
+      presPart : GenNum => Str ; -- Present/active particible, e.g. RIEQED
+      pastPart : GenNum => Str ; -- Passive/past particible, e.g. MAĦBUB
       } ;
 
     VerbInfo : Type = {
@@ -538,7 +539,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       form  : VDerivedForm ;
       root  : Root ; -- radicals
       vseq  : Vowels ; -- vowels extracted from mamma
-      imp   : Str ; -- Imperative Sg. Gives so much information jaħasra!
+      imp   : Str ; -- Imperative Sg. gives so much information jaħasra!
       } ;
 
   param
@@ -547,9 +548,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         VPerf VAgr    -- Perfect tense in all pronoun cases
       | VImpf VAgr    -- Imperfect tense in all pronoun cases
       | VImp Number   -- Imperative is always P2, Sg & Pl
-      | VPresPart GenNum  -- Present/active particible, e.g. RIEQED
-      | VPastPart GenNum  -- Passive/past particible, e.g. MAĦBUB
     ;
+
+    VSuffixForm =
+        VSuffixNone  -- ftaħt
+      | VSuffixDir VAgr  -- ftaħtu
+      | VSuffixInd VAgr  -- ftaħtlu
+      | VSuffixDirInd GenNum VAgr  -- ftaħthulu
+      ;
 
     VDerivedForm =
         FormI
@@ -636,104 +642,105 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Join verb phrase components into a string
     joinVP : VerbPhrase -> Tense -> Anteriority -> Polarity -> Agr -> Str = \vp,tense,ant,pol,agr ->
-     let
-        stems = (pickVerbForm vp.v tense ant pol agr).main ;
-        aux   = (pickVerbForm vp.v tense ant pol agr).aux ;
-        x : Str = "x" ;
-        vagr : VAgr = toVAgr agr ;
-        dir_a : Agr = fromJust Agr vp.dir ; -- These are lazy
-        ind_a : Agr = fromJust Agr vp.ind ;
-        dir = dirObjSuffix dir_a ;
-        ind = indObjSuffix ind_a ;
+      "TODO" ;
+     -- let
+     --    stems = (pickVerbForm vp.v tense ant pol agr).main ;
+     --    aux   = (pickVerbForm vp.v tense ant pol agr).aux ;
+     --    x : Str = "x" ;
+     --    vagr : VAgr = toVAgr agr ;
+     --    dir_a : Agr = fromJust Agr vp.dir ; -- These are lazy
+     --    ind_a : Agr = fromJust Agr vp.ind ;
+     --    dir = dirObjSuffix dir_a ;
+     --    ind = indObjSuffix ind_a ;
 
-        ind_pos : Str = case <toVAgr dir_a, toVAgr ind_a> of {
-          <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
-          _                 => ind.s1   -- hie-lek
-          } ;
-        ind_neg : Str = case <toVAgr dir_a, toVAgr ind_a> of {
-          <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
-          _                 => ind.s2   -- hie-lekx
-          } ;
-      in
-        case takesAux tense ant of {
+     --    ind_pos : Str = case <toVAgr dir_a, toVAgr ind_a> of {
+     --      <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
+     --      _                 => ind.s1   -- hie-lek
+     --      } ;
+     --    ind_neg : Str = case <toVAgr dir_a, toVAgr ind_a> of {
+     --      <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
+     --      _                 => ind.s2   -- hie-lekx
+     --      } ;
+     --  in
+     --    case takesAux tense ant of {
 
-          -- aux is already negated for us
-          True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
+     --      -- aux is already negated for us
+     --      True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
-            -- konna ftaħna / ma konniex ftaħna
-            <False,False> => stems.s1 ;
+     --        -- konna ftaħna / ma konniex ftaħna
+     --        <False,False> => stems.s1 ;
 
-            -- konna ftaħnie-ha / ma konniex ftaħni-ha
-            <True ,False> => stems.s2 ++ BIND ++ dir.s1 ;
+     --        -- konna ftaħnie-ha / ma konniex ftaħni-ha
+     --        <True ,False> => stems.s2 ++ BIND ++ dir.s1 ;
 
-            -- konna ftaħnie-lha / ma konniex ftaħni-lha
-            <False,True > => stems.s2 ++ BIND ++ ind.s1 ;
+     --        -- konna ftaħnie-lha / ma konniex ftaħni-lha
+     --        <False,True > => stems.s2 ++ BIND ++ ind.s1 ;
 
-            -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
-            <True, True > => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
+     --        -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
+     --        <True, True > => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
 
-            } ;
+     --        } ;
 
-          -- No aux part to handle
-          False => aux ++ case isPerf tense ant of {
+     --      -- No aux part to handle
+     --      False => aux ++ case isPerf tense ant of {
 
-            True => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
+     --        True => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
-              -- ftaħna / ftaħnie-x
-              <False,False,Pos> => stems.s1 ;
-              <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+     --          -- ftaħna / ftaħnie-x
+     --          <False,False,Pos> => stems.s1 ;
+     --          <False,False,Neg> => stems.s2 ++ BIND ++ x ;
 
-              -- ftaħnie-ha / ftaħni-hie-x
-              <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
-              <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+     --          -- ftaħnie-ha / ftaħni-hie-x
+     --          <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
+     --          <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
-              -- ftaħnie-lha / ftaħni-lhie-x
-              <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- fetħ-ilha
-                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- ftaħnie-lha
-                _            => stems.s1 ++ BIND ++ ind.s1   -- fetaħ-li
-                } ;
-              <False,True ,Neg> =>  case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
-                <False,True> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- ftaħni-lhiex
-                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- fetaħ-lix
-                } ;
+     --          -- ftaħnie-lha / ftaħni-lhie-x
+     --          <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
+     --            <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- fetħ-ilha
+     --            <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- ftaħnie-lha
+     --            _            => stems.s1 ++ BIND ++ ind.s1   -- fetaħ-li
+     --            } ;
+     --          <False,True ,Neg> =>  case <sing vagr, femOrPlural ind_a> of {
+     --            <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
+     --            <False,True> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- ftaħni-lhiex
+     --            _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- fetaħ-lix
+     --            } ;
 
-              -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-              <True, True ,Pos> => stems.s2 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-              <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+     --          -- ftaħni-hie-lha / ftaħni-hi-lhie-x
+     --          <True, True ,Pos> => stems.s2 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+     --          <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
 
-              } ;
+     --          } ;
 
-            False => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
+     --        False => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
 
-              -- jiftaħ / jiftaħ-x
-              <False,False,Pos> => stems.s1 ;
-              <False,False,Neg> => stems.s1 ++ BIND ++ x ;
+     --          -- jiftaħ / jiftaħ-x
+     --          <False,False,Pos> => stems.s1 ;
+     --          <False,False,Neg> => stems.s1 ++ BIND ++ x ;
 
-              -- jiftaħ-ha / jiftaħ-hie-x
-              <True ,False,Pos> => stems.s1 ++ BIND ++ dir.s1 ;
-              <True ,False,Neg> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+     --          -- jiftaħ-ha / jiftaħ-hie-x
+     --          <True ,False,Pos> => stems.s1 ++ BIND ++ dir.s1 ;
+     --          <True ,False,Neg> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ x ;
 
-              -- jiftħ-ilha / jiftħ-ilhie-x
-              <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- jiftħ-ilha
-                <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- jiftħu-lha
-                _            => stems.s1 ++ BIND ++ ind.s1   -- jiftaħ-li
-                } ;
-              <False,True ,Neg> => case <sing vagr, femOrPlural ind_a> of {
-                <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
-                <False,True> => stems.s2 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- jiftħu-lhiex
-                _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- jiftaħ-lix
-                } ;
+     --          -- jiftħ-ilha / jiftħ-ilhie-x
+     --          <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
+     --            <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- jiftħ-ilha
+     --            <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- jiftħu-lha
+     --            _            => stems.s1 ++ BIND ++ ind.s1   -- jiftaħ-li
+     --            } ;
+     --          <False,True ,Neg> => case <sing vagr, femOrPlural ind_a> of {
+     --            <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
+     --            <False,True> => stems.s2 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- jiftħu-lhiex
+     --            _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- jiftaħ-lix
+     --            } ;
 
-              -- jiftaħ-hie-lha / jiftaħ-hi-lhie-x
-              <True, True ,Pos> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-              <True, True ,Neg> => stems.s1 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
+     --          -- jiftaħ-hie-lha / jiftaħ-hi-lhie-x
+     --          <True, True ,Pos> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
+     --          <True, True ,Neg> => stems.s1 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
 
-              }
-            }
-      } ;
+     --          }
+     --        }
+     --  } ;
 
     -- Does a tense + ant take an auxiliary verb?
     -- This affects where (if) the negation is applied
@@ -778,11 +785,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       } ;
 
     VerbPhrase : Type = {
-      v : {
-        s : VForm => VerbStems ;
-        hasPresPart : Bool ;
-        hasPastPart : Bool ;
-        } ;
+      v : Verb ;
       s2  : Agr => Str ; -- complement
       dir : Maybe Agr ; -- direct object clitic
       ind : Maybe Agr ; -- indirect object clitic
@@ -866,9 +869,7 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <VImpf (AgP2 Pl), Neg>     => "tkunux" ;
         <VImpf (AgP3Pl), Neg>      => "jkunux" ;
         <VImp (Sg), Neg>           => "kunx" ;
-        <VImp (Pl), Neg>           => "kunux" ;
-        <VPresPart gn, _>          => nonExist ;
-        <VPastPart gn, _>          => nonExist
+        <VImp (Pl), Neg>           => "kunux"
         }
       } ;
 
@@ -893,28 +894,28 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
       --   } ;
       v = {
         s = table {
-          VPerf (AgP1 Sg)     => mkVerbStems "kont" ;
-          VPerf (AgP2 Sg)     => mkVerbStems "kont" ;
-          VPerf (AgP3Sg Masc) => mkVerbStems "kien" ;
-          VPerf (AgP3Sg Fem)  => mkVerbStems "kienet" "kinit" ;
-          VPerf (AgP1 Pl)     => mkVerbStems "konna" "konnie" ;
-          VPerf (AgP2 Pl)     => mkVerbStems "kontu" ;
-          VPerf (AgP3Pl)      => mkVerbStems "kienu" ;
-          VImpf (AgP1 Sg)     => mkVerbStems [] "m'inie" ;
-          VImpf (AgP2 Sg)     => mkVerbStems [] "m'inti";
-          VImpf (AgP3Sg Masc) => mkVerbStems "huwa" "m'hu" ;
-          VImpf (AgP3Sg Fem)  => mkVerbStems "hija" "m'hi" ;
-          VImpf (AgP1 Pl)     => mkVerbStems [] "m'aħnie" ;
-          VImpf (AgP2 Pl)     => mkVerbStems [] "m'intom" ;
-          VImpf (AgP3Pl)      => mkVerbStems "huma" "m'humie" ;
-          VImp (Sg)           => mkVerbStems "kun" ;
-          VImp (Pl)           => mkVerbStems "kunu" ;
-          VPresPart gn        => mkVerbStems nonExist ;
-          VPastPart gn        => mkVerbStems nonExist
+          VPerf (AgP1 Sg)     => \\_ => table { Pos => "kont" ; Neg => "kontx" } ;
+          VPerf (AgP2 Sg)     => \\_ => table { Pos => "kont" ; Neg => "kontx" } ;
+          VPerf (AgP3Sg Masc) => \\_ => table { Pos => "kien" ; Neg => "kienx" } ;
+          VPerf (AgP3Sg Fem)  => \\_ => table { Pos => "kienet" ; Neg => "kinitx" } ;
+          VPerf (AgP1 Pl)     => \\_ => table { Pos => "konna" ; Neg => "konnieX" } ;
+          VPerf (AgP2 Pl)     => \\_ => table { Pos => "kontu" ; Neg => "kontux" } ;
+          VPerf (AgP3Pl)      => \\_ => table { Pos => "kienu" ; Neg => "kienux" } ;
+          VImpf (AgP1 Sg)     => \\_ => table { Pos => "m'inie" ; Neg => "m'iniex" } ;
+          VImpf (AgP2 Sg)     => \\_ => table { Pos => "m'inti" ; Neg => "m'intix" } ;
+          VImpf (AgP3Sg Masc) => \\_ => table { Pos => "huwa" ; Neg => "m'hux" } ;
+          VImpf (AgP3Sg Fem)  => \\_ => table { Pos => "hija" ; Neg => "m'hix" } ;
+          VImpf (AgP1 Pl)     => \\_ => table { Pos => "m'aħnie" ; Neg => "m'aħniex" } ;
+          VImpf (AgP2 Pl)     => \\_ => table { Pos => "m'intom" ; Neg => "m'intomx" } ;
+          VImpf (AgP3Pl)      => \\_ => table { Pos => "huma" ; Neg => "m'humiex" } ;
+          VImp (Sg)           => \\_ => table { Pos => "kun" ; Neg => "kunx" } ;
+          VImp (Pl)           => \\_ => table { Pos => "kunu" ; Neg => "kunux" }
           } ;
         i = mkVerbInfo Irregular FormI ;
         hasPresPart = False ;
         hasPastPart = False ;
+        presPart = \\_ => nonExist ;
+        pastPart = \\_ => nonExist
         } ;
       s2 = \\agr => [] ;
       dir = NullAgr ;
@@ -1092,14 +1093,19 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Create a VerbInfo record, optionally omitting various fields
     mkVerbInfo : VerbInfo = overload {
+
       mkVerbInfo : VClass -> VDerivedForm -> VerbInfo = \c,f ->
         { class=c ; form=f ; root=mkRoot ; vseq=mkVowels ; imp=[] } ;
+
       mkVerbInfo : VClass -> VDerivedForm -> Str -> VerbInfo = \c,f,i ->
         { class=c ; form=f ; root=mkRoot ; vseq=mkVowels ; imp=i } ;
+
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Vowels -> VerbInfo = \c,f,r,p ->
         { class=c ; form=f ; root=r ; vseq=p ; imp=[] } ;
+
       mkVerbInfo : VClass -> VDerivedForm -> Root -> Vowels -> Str -> VerbInfo = \c,f,r,p,i ->
         { class=c ; form=f ; root=r ; vseq=p ; imp=i } ;
+
       -- mkVerbInfo : VClass -> VDerivedForm -> Root -> Vowels -> Vowels -> Str -> VerbInfo = \c,f,r,p,p2,i ->
       --   { class=c ; form=f ; root=r ; vseq=p ; vseq2=p2 ; imp=i } ;
       } ;
@@ -1221,20 +1227,20 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Is a word mono-syllabic?
     --- potentially slow
-    -- isMonoSyl : Str -> Bool = \s ->
-    --   case s of {
-    --     #Consonant + ("ie" | #Vowel) => True ; -- ra
-    --     #Consonant + #Consonant + ("ie" | #Vowel) => True ; -- bla
+    isMonoSyl : Str -> Bool = \s ->
+      case s of {
+        #Consonant + ("ie" | #Vowel) => True ; -- ra
+        #Consonant + #Consonant + ("ie" | #Vowel) => True ; -- bla
 
-    --     ("ie" | #Vowel) + #Consonant => True ; -- af
-    --     ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- elf
+        ("ie" | #Vowel) + #Consonant => True ; -- af
+        ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- elf
 
-    --     #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- miet
-    --     #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- mort
-    --     #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- ħliet
-    --     #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- ħriġt
-    --     _ => False
-    --   } ;
+        #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- miet
+        #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- mort
+        #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant => True ; -- ħliet
+        #Consonant + #Consonant + ("ie" | #Vowel) + #Consonant + #Consonant => True ; -- ħriġt
+        _ => False
+      } ;
 
     wiehed : Gender => Str =
       table {
