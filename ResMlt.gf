@@ -426,14 +426,14 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   {- Verb ----------------------------------------------------------------- -}
 
   oper
-    -- Stem variants
-    VerbStems : Type = {s1, s2, s3 : Str} ;
+    -- -- Stem variants
+    -- VerbStems : Type = {s1, s2, s3 : Str} ;
 
-    mkVerbStems : VerbStems = overload {
-      mkVerbStems : (s1 : Str)         -> VerbStems = \a     -> { s1 = a ; s2 = a ; s3 = a } ;
-      mkVerbStems : (s1, s2 : Str)     -> VerbStems = \a,b   -> { s1 = a ; s2 = b ; s3 = b } ;
-      mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
-      } ;
+    -- mkVerbStems : VerbStems = overload {
+    --   mkVerbStems : (s1 : Str)         -> VerbStems = \a     -> { s1 = a ; s2 = a ; s3 = a } ;
+    --   mkVerbStems : (s1, s2 : Str)     -> VerbStems = \a,b   -> { s1 = a ; s2 = b ; s3 = b } ;
+    --   mkVerbStems : (s1, s2, s3 : Str) -> VerbStems = \a,b,c -> { s1 = a ; s2 = b ; s3 = c } ;
+    --   } ;
 
     NullAgr : Maybe Agr = Nothing Agr (agrP3 Sg Masc) ;
 
@@ -482,48 +482,48 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
 
     -- Produce stem variants as needed (only call on compile-time strings!)
     -- Refer to doc/stems.org
-    stemVariantsPerf : Str -> VerbStems = \s ->
-      let
-        ftahna  : Str = s ;
-        ftahnie : Str = case s of {
-          ftahn + "a" => ftahn + "ie" ;
-          fet + h@#Cns + "et" => fet + h + "it" ;
-          fet + "aħ" => fet + "ħ" ;
-          qat + "a'" => qat + "a" ; -- waqa' -> ma waqax
-          _ => s
-          } ;
-        ftahni  : Str = case s of {
-          ftahn + "a" => ftahn + "i" ;
-          qat + "a'" => qat + "agħ" ;
-          _ => ftahnie
-          } ;
-      in {
-        s1 = ftahna ; s2 = ftahnie ; s3 = ftahni ;
-      } ;
+    -- stemVariantsPerf : Str -> VerbStems = \s ->
+    --   let
+    --     ftahna  : Str = s ;
+    --     ftahnie : Str = case s of {
+    --       ftahn + "a" => ftahn + "ie" ;
+    --       fet + h@#Cns + "et" => fet + h + "it" ;
+    --       fet + "aħ" => fet + "ħ" ;
+    --       qat + "a'" => qat + "a" ; -- waqa' -> ma waqax
+    --       _ => s
+    --       } ;
+    --     ftahni  : Str = case s of {
+    --       ftahn + "a" => ftahn + "i" ;
+    --       qat + "a'" => qat + "agħ" ;
+    --       _ => ftahnie
+    --       } ;
+    --   in {
+    --     s1 = ftahna ; s2 = ftahnie ; s3 = ftahni ;
+    --   } ;
 
-    stemVariantsImpf : Str -> VerbStems = \s ->
-      let
-        jiftah  : Str = s ;
-        jifth : Str = case s of {
-          jift + "aħ" => jift + "ħ" ;
-          jaq + "a'" => jaq + "a" ; -- jaqa' -> ma jaqax
-          _ => s
-          } ;
-        jaqagh : Str = case s of {
-          jaq + "a'" => jaq + "agħ" ;
-          _ => jifth
-          } ;
-      in {
-        s1 = jiftah ; s2 = jifth ; s3 = jaqagh ;
-      } ;
+    -- stemVariantsImpf : Str -> VerbStems = \s ->
+    --   let
+    --     jiftah  : Str = s ;
+    --     jifth : Str = case s of {
+    --       jift + "aħ" => jift + "ħ" ;
+    --       jaq + "a'" => jaq + "a" ; -- jaqa' -> ma jaqax
+    --       _ => s
+    --       } ;
+    --     jaqagh : Str = case s of {
+    --       jaq + "a'" => jaq + "agħ" ;
+    --       _ => jifth
+    --       } ;
+    --   in {
+    --     s1 = jiftah ; s2 = jifth ; s3 = jaqagh ;
+    --   } ;
 
-    -- Convert old verb form table into one with stem variants
-    stemVariantsTbl : (VForm => Str) -> (VForm => VerbStems) = \tbl ->
-      \\vf => case vf of {
-        VPerf _ => stemVariantsPerf (tbl ! vf) ;
-        VImpf _ => stemVariantsImpf (tbl ! vf) ;
-        VImp  _ => stemVariantsImpf (tbl ! vf)
-      } ;
+    -- -- Convert old verb form table into one with stem variants
+    -- stemVariantsTbl : (VForm => Str) -> (VForm => VerbStems) = \tbl ->
+    --   \\vf => case vf of {
+    --     VPerf _ => stemVariantsPerf (tbl ! vf) ;
+    --     VImpf _ => stemVariantsImpf (tbl ! vf) ;
+    --     VImp  _ => stemVariantsImpf (tbl ! vf)
+    --   } ;
 
     Verb : Type = {
       s : VForm => VSuffixForm => Polarity => Str ;
@@ -606,39 +606,39 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   oper
 
     -- Pick the correct form of a verb, adding aux
-    pickVerbForm : {s : VForm => VerbStems} -> Tense -> Anteriority -> Polarity -> Agr -> VerbParts = \verb,tense,ant,pol,agr ->
-      let
-        vagr : VAgr = toVAgr agr ;
-        ma = makePreVowel "ma" "m'" ;
-        b1 : VerbStems -> VerbParts = \vs -> mkVerbParts vs ;
-        b2 : Str -> VerbStems -> VerbParts = \s,vs -> mkVerbParts s vs ;
-        kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
-        kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
-        nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;
-      in
-      case <tense,ant,pol> of {
-        <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
-        <Pres,Simul,Neg> => b2 ma (verb.s ! VImpf vagr) ; -- ma norqodx
+    -- pickVerbForm : {s : VForm => VerbStems} -> Tense -> Anteriority -> Polarity -> Agr -> VerbParts = \verb,tense,ant,pol,agr ->
+    --   let
+    --     vagr : VAgr = toVAgr agr ;
+    --     ma = makePreVowel "ma" "m'" ;
+    --     b1 : VerbStems -> VerbParts = \vs -> mkVerbParts vs ;
+    --     b2 : Str -> VerbStems -> VerbParts = \s,vs -> mkVerbParts s vs ;
+    --     kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
+    --     kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
+    --     nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;
+    --   in
+    --   case <tense,ant,pol> of {
+    --     <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
+    --     <Pres,Simul,Neg> => b2 ma (verb.s ! VImpf vagr) ; -- ma norqodx
 
-        <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
-        <Past,Simul,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
+    --     <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+    --     <Past,Simul,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-        <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
-        <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
+    --     <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
+    --     <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
 
-        <Cond, _   ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
-        <Cond, _   ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
+    --     <Cond, _   ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
+    --     <Cond, _   ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
 
-        -- Same as Past Simul
-        <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
-        <Pres,Anter,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
+    --     -- Same as Past Simul
+    --     <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+    --     <Pres,Anter,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-        <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
-        <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
+    --     <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
+    --     <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
 
-        <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
-        <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- m'iniex se nkun rqadt
-      } ;
+    --     <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
+    --     <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- m'iniex se nkun rqadt
+    --   } ;
 
     -- Join verb phrase components into a string
     joinVP : VerbPhrase -> Tense -> Anteriority -> Polarity -> Agr -> Str = \vp,tense,ant,pol,agr ->
@@ -772,17 +772,17 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <Cond, Anter> => False
       } ;
 
-    VerbParts : Type = {
-      aux : Str ;        -- when present, negation is applied here
-      main : VerbStems ; -- enclitics always applied here
-      } ;
+    -- VerbParts : Type = {
+    --   aux : Str ;        -- when present, negation is applied here
+    --   main : VerbStems ; -- enclitics always applied here
+    --   } ;
 
-    mkVerbParts = overload {
-      mkVerbParts : VerbStems -> VerbParts = \vs -> { aux = [] ; main = vs } ;
-      mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVerbStems m } ;
-      mkVerbParts : Str -> VerbStems -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
-      mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVerbStems m } ;
-      } ;
+    -- mkVerbParts = overload {
+    --   mkVerbParts : VerbStems -> VerbParts = \vs -> { aux = [] ; main = vs } ;
+    --   mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVerbStems m } ;
+    --   mkVerbParts : Str -> VerbStems -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
+    --   mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVerbStems m } ;
+    --   } ;
 
     VerbPhrase : Type = {
       v : Verb ;
