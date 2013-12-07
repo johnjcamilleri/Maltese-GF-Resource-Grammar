@@ -606,141 +606,85 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
   oper
 
     -- Pick the correct form of a verb, adding aux
-    -- pickVerbForm : {s : VForm => VerbStems} -> Tense -> Anteriority -> Polarity -> Agr -> VerbParts = \verb,tense,ant,pol,agr ->
-    --   let
-    --     vagr : VAgr = toVAgr agr ;
-    --     ma = makePreVowel "ma" "m'" ;
-    --     b1 : VerbStems -> VerbParts = \vs -> mkVerbParts vs ;
-    --     b2 : Str -> VerbStems -> VerbParts = \s,vs -> mkVerbParts s vs ;
-    --     kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
-    --     kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
-    --     nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;
-    --   in
-    --   case <tense,ant,pol> of {
-    --     <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
-    --     <Pres,Simul,Neg> => b2 ma (verb.s ! VImpf vagr) ; -- ma norqodx
+    pickVerbForm : {s : VForm => VSuffixForm => Polarity => Str } -> Tense -> Anteriority -> Polarity -> Agr -> VerbParts = \verb,tense,ant,pol,agr ->
+      let
+        vagr : VAgr = toVAgr agr ;
+        ma = makePreVowel "ma" "m'" ;
+        b1 : VerbForms -> VerbParts = \vs -> mkVerbParts vs ;
+        b2 : Str -> VerbForms -> VerbParts = \s,vs -> mkVerbParts s vs ;
+        kien  = copula_kien.s ! (VPerf vagr) ! Pos ;
+        kienx = copula_kien.s ! (VPerf vagr) ! Neg ;
+        nkun  = copula_kien.s ! (VImpf vagr) ! Pos ;
+      in
+      case <tense,ant,pol> of {
+        <Pres,Simul,Pos> => b1 (verb.s ! VImpf vagr) ; -- norqod
+        <Pres,Simul,Neg> => b2 ma (verb.s ! VImpf vagr) ; -- ma norqodx
 
-    --     <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
-    --     <Past,Simul,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
+        <Past,Simul,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+        <Past,Simul,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-    --     <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
-    --     <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
+        <Fut, Simul,Pos> => b2 "se" (verb.s ! VImpf vagr) ; -- se norqod
+        <Fut, Simul,Neg> => b2 (mhux ! vagr ++ "se") (verb.s ! VImpf vagr) ; -- m'iniex se norqod
 
-    --     <Cond, _   ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
-    --     <Cond, _   ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
+        <Cond, _   ,Pos> => b2 kien (verb.s ! VImpf vagr) ; -- kont norqod
+        <Cond, _   ,Neg> => b2 (ma ++ kienx) (verb.s ! VImpf vagr) ; -- ma kontx norqod
 
-    --     -- Same as Past Simul
-    --     <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
-    --     <Pres,Anter,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
+        -- Same as Past Simul
+        <Pres,Anter,Pos> => b1 (verb.s ! VPerf vagr) ; -- rqadt
+        <Pres,Anter,Neg> => b2 ma (verb.s ! VPerf vagr) ; -- ma rqadtx
 
-    --     <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
-    --     <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
+        <Past,Anter,Pos> => b2 kien (verb.s ! VPerf vagr) ; -- kont rqadt
+        <Past,Anter,Neg> => b2 (ma ++ kienx) (verb.s ! VPerf vagr) ; -- ma kontx rqadt
 
-    --     <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
-    --     <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- m'iniex se nkun rqadt
-    --   } ;
+        <Fut, Anter,Pos> => b2 ("se" ++ nkun) (verb.s ! VPerf vagr) ; -- se nkun rqadt
+        <Fut, Anter,Neg> => b2 (mhux ! vagr ++ "se" ++ nkun) (verb.s ! VPerf vagr) -- m'iniex se nkun rqadt
+      } ;
 
     -- Join verb phrase components into a string
     joinVP : VerbPhrase -> Tense -> Anteriority -> Polarity -> Agr -> Str = \vp,tense,ant,pol,agr ->
-      "TODO" ;
-     -- let
-     --    stems = (pickVerbForm vp.v tense ant pol agr).main ;
-     --    aux   = (pickVerbForm vp.v tense ant pol agr).aux ;
-     --    x : Str = "x" ;
-     --    vagr : VAgr = toVAgr agr ;
-     --    dir_a : Agr = fromJust Agr vp.dir ; -- These are lazy
-     --    ind_a : Agr = fromJust Agr vp.ind ;
-     --    dir = dirObjSuffix dir_a ;
-     --    ind = indObjSuffix ind_a ;
+     let
+        main = (pickVerbForm vp.v tense ant pol agr).main ;
+        aux  = (pickVerbForm vp.v tense ant pol agr).aux ;
+        dir_a : VAgr = toVAgr (fromJust Agr vp.dir) ; -- These are lazy
+        ind_a : VAgr = toVAgr (fromJust Agr vp.ind) ;
+        dir_gn : GenNum = toGenNum (fromJust Agr vp.dir) ;
+      in
+        case takesAux tense ant of {
 
-     --    ind_pos : Str = case <toVAgr dir_a, toVAgr ind_a> of {
-     --      <AgP3Pl, AgP2 Sg> => ind.s3 ; -- hom-lok
-     --      _                 => ind.s1   -- hie-lek
-     --      } ;
-     --    ind_neg : Str = case <toVAgr dir_a, toVAgr ind_a> of {
-     --      <AgP3Pl, AgP2 Sg> => ind.s4 ; -- hom-lokx
-     --      _                 => ind.s2   -- hie-lekx
-     --      } ;
-     --  in
-     --    case takesAux tense ant of {
+          -- aux is already negated for us
+          True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
-     --      -- aux is already negated for us
-     --      True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
+            -- konna ftaħna / ma konniex ftaħna
+            <False,False> => main ! VSuffixNone ! pol ; -- TODO continue those below...
 
-     --        -- konna ftaħna / ma konniex ftaħna
-     --        <False,False> => stems.s1 ;
+            -- konna ftaħnie-ha / ma konniex ftaħni-ha
+            <True ,False> => main ! VSuffixDir dir_a ! pol ;
 
-     --        -- konna ftaħnie-ha / ma konniex ftaħni-ha
-     --        <True ,False> => stems.s2 ++ BIND ++ dir.s1 ;
+            -- konna ftaħnie-lha / ma konniex ftaħni-lha
+            <False,True > => main ! VSuffixInd ind_a ! pol ;
 
-     --        -- konna ftaħnie-lha / ma konniex ftaħni-lha
-     --        <False,True > => stems.s2 ++ BIND ++ ind.s1 ;
+            -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
+            <True, True > => main ! VSuffixDirInd dir_gn ind_a ! pol
 
-     --        -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
-     --        <True, True > => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ ind.s1
+            } ;
 
-     --        } ;
+          -- No aux part to handle
+          False => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
-     --      -- No aux part to handle
-     --      False => aux ++ case isPerf tense ant of {
+            -- ftaħna / ftaħnie-x
+            <False,False> => main ! VSuffixNone ! pol ;
 
-     --        True => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
+            -- ftaħnie-ha / ftaħni-hie-x
+            <True ,False> => main ! VSuffixDir dir_a ! pol ;
 
-     --          -- ftaħna / ftaħnie-x
-     --          <False,False,Pos> => stems.s1 ;
-     --          <False,False,Neg> => stems.s2 ++ BIND ++ x ;
+            -- ftaħnie-lha / ftaħni-lhie-x
+            <False,True>  => main ! VSuffixInd ind_a ! pol ;
 
-     --          -- ftaħnie-ha / ftaħni-hie-x
-     --          <True ,False,Pos> => stems.s2 ++ BIND ++ dir.s1 ;
-     --          <True ,False,Neg> => stems.s3 ++ BIND ++ dir.s2 ++ BIND ++ x ;
+            -- ftaħni-hie-lha / ftaħni-hi-lhie-x
+            <True, True>  => main ! VSuffixDirInd dir_gn ind_a ! pol
 
-     --          -- ftaħnie-lha / ftaħni-lhie-x
-     --          <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-     --            <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- fetħ-ilha
-     --            <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- ftaħnie-lha
-     --            _            => stems.s1 ++ BIND ++ ind.s1   -- fetaħ-li
-     --            } ;
-     --          <False,True ,Neg> =>  case <sing vagr, femOrPlural ind_a> of {
-     --            <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- fetħ-ilhiex
-     --            <False,True> => stems.s3 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- ftaħni-lhiex
-     --            _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- fetaħ-lix
-     --            } ;
-
-     --          -- ftaħni-hie-lha / ftaħni-hi-lhie-x
-     --          <True, True ,Pos> => stems.s2 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-     --          <True, True ,Neg> => stems.s3 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
-
-     --          } ;
-
-     --        False => case <exists Agr vp.dir, exists Agr vp.ind, pol> of {
-
-     --          -- jiftaħ / jiftaħ-x
-     --          <False,False,Pos> => stems.s1 ;
-     --          <False,False,Neg> => stems.s1 ++ BIND ++ x ;
-
-     --          -- jiftaħ-ha / jiftaħ-hie-x
-     --          <True ,False,Pos> => stems.s1 ++ BIND ++ dir.s1 ;
-     --          <True ,False,Neg> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ x ;
-
-     --          -- jiftħ-ilha / jiftħ-ilhie-x
-     --          <False,True ,Pos> => case <sing vagr, femOrPlural ind_a> of {
-     --            <True,True>  => stems.s2 ++ BIND ++ ind.s3 ; -- jiftħ-ilha
-     --            <False,True> => stems.s2 ++ BIND ++ ind.s1 ; -- jiftħu-lha
-     --            _            => stems.s1 ++ BIND ++ ind.s1   -- jiftaħ-li
-     --            } ;
-     --          <False,True ,Neg> => case <sing vagr, femOrPlural ind_a> of {
-     --            <True,True>  => stems.s2 ++ BIND ++ ind.s4 ++ BIND ++ x ; -- jiftħ-ilhiex
-     --            <False,True> => stems.s2 ++ BIND ++ ind.s2 ++ BIND ++ x ; -- jiftħu-lhiex
-     --            _            => stems.s1 ++ BIND ++ ind.s2 ++ BIND ++ x   -- jiftaħ-lix
-     --            } ;
-
-     --          -- jiftaħ-hie-lha / jiftaħ-hi-lhie-x
-     --          <True, True ,Pos> => stems.s1 ++ BIND ++ dir.s2 ++ BIND ++ ind_pos ;
-     --          <True, True ,Neg> => stems.s1 ++ BIND ++ dir.s3 ++ BIND ++ ind_neg ++ BIND ++ x
-
-     --          }
-     --        }
-     --  } ;
+            }
+      } ;
 
     -- Does a tense + ant take an auxiliary verb?
     -- This affects where (if) the negation is applied
@@ -772,17 +716,19 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
         <Cond, Anter> => False
       } ;
 
-    -- VerbParts : Type = {
-    --   aux : Str ;        -- when present, negation is applied here
-    --   main : VerbStems ; -- enclitics always applied here
-    --   } ;
+    VerbForms : Type = VSuffixForm => Polarity => Str ;
 
-    -- mkVerbParts = overload {
-    --   mkVerbParts : VerbStems -> VerbParts = \vs -> { aux = [] ; main = vs } ;
-    --   mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVerbStems m } ;
-    --   mkVerbParts : Str -> VerbStems -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
-    --   mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVerbStems m } ;
-    --   } ;
+    VerbParts : Type = {
+      aux  : Str ; -- when present, negation is applied here
+      main : VerbForms ;
+      } ;
+
+    mkVerbParts = overload {
+      mkVerbParts : VerbForms -> VerbParts = \vs -> { aux = [] ; main = vs } ;
+      -- mkVerbParts : Str -> VerbParts = \m -> { aux = [] ; main = mkVerbForms m } ;
+      mkVerbParts : Str -> VerbForms -> VerbParts = \a,vs -> { aux = a ; main = vs } ;
+      -- mkVerbParts : Str -> Str -> VerbParts = \a,m -> { aux = a ; main = mkVerbForms m } ;
+      } ;
 
     VerbPhrase : Type = {
       v : Verb ;
