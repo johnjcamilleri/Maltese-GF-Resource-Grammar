@@ -34,10 +34,7 @@ concrete SentenceMlt of Sentence = CatMlt ** open
     -- VP -> Imp
     ImpVP vp = {
       -- s = \\pol,n => joinVP vp (VPImperat n) Simul pol ;
-      s = \\pol,n => case pol of {
-        Pos => (vp.v.s ! VImp n).s1 ++ vp.s2 ! agrP3 n Masc ;
-        Neg => (vp.v.s ! VImp n).s2 ++ BIND ++ "x" ++ vp.s2 ! agrP3 n Masc
-        } ;
+      s = \\pol,n => (vp.v.s ! VImp n ! VSuffixNone ! pol) ++ vp.s2 ! agrP3 n Masc ;
     } ;
 
     -- NP -> VPSlash -> ClSlash

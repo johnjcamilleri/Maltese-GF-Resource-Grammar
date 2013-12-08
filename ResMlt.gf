@@ -655,16 +655,16 @@ resource ResMlt = ParamX ** open Prelude, Predef, Maybe in {
           True => aux ++ case <exists Agr vp.dir, exists Agr vp.ind> of {
 
             -- konna ftaħna / ma konniex ftaħna
-            <False,False> => main ! VSuffixNone ! pol ; -- TODO continue those below...
+            <False,False> => main ! VSuffixNone ! Pos ;
 
             -- konna ftaħnie-ha / ma konniex ftaħni-ha
-            <True ,False> => main ! VSuffixDir dir_a ! pol ;
+            <True ,False> => main ! VSuffixDir dir_a ! Pos ;
 
             -- konna ftaħnie-lha / ma konniex ftaħni-lha
-            <False,True > => main ! VSuffixInd ind_a ! pol ;
+            <False,True > => main ! VSuffixInd ind_a ! Pos ;
 
             -- konna ftaħni-hie-lha / ma konniex ftaħni-hi-lha
-            <True, True > => main ! VSuffixDirInd dir_gn ind_a ! pol
+            <True, True > => main ! VSuffixDirInd dir_gn ind_a ! Pos
 
             } ;
 
