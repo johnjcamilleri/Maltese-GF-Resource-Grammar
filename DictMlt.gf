@@ -3292,17 +3292,17 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
     ntelaq_TLQ_7_9906_V       = mkV_VII "telaq" "ntelaq" (mkRoot "t-l-q") ;
     tellet_TLT_2_9907_V       = mkV_II "tellet" (mkRoot "t-l-t") ;
     ttellet_TLT_5_9908_V      = mkV_V "ttellet" (mkRoot "t-l-t") ;
-    tamma_TM'_2_9909_V        = mkV irregular form2 (mkRoot "t-m-'") (mkVowels "a" "a")
+    tamma_TM'_2_9909_V        = irregularV form2 (mkRoot "t-m-'") (mkVowels "a" "a")
       "tammajt" "tammajt" "tamma" "tammat" "tammajna" "tammajtu" "tammaw"
       "nitamma" "titamma" "jitamma" "titamma" "nitammaw" "titammaw" "jitammaw"
       "tamma" "tammaw"
       ;
-    tama_TM'_3_9910_V         = mkV irregular form3 (mkRoot "t-m-'") (mkVowels "a" "a")
+    tama_TM'_3_9910_V         = irregularV form3 (mkRoot "t-m-'") (mkVowels "a" "a")
       "tamajt" "tamajt" "tama" "tamat" "tamajna" "tamajtu" "tamaw"
       "nitama" "titama" "jitama" "titama" "nitamaw" "titamaw" "jitamaw"
       "tama" "tamaw"
       ;
-    ttama_TM'_6_9911_V        = mkV irregular form6 (mkRoot "t-m-'") (mkVowels "a" "a")
+    ttama_TM'_6_9911_V        = irregularV form6 (mkRoot "t-m-'") (mkVowels "a" "a")
       "ttamajt" "ttamajt" "ttama" "ttamat" "ttamajna" "ttamajtu" "ttamaw"
       "nittama" "tittama" "jittama" "tittama" "nittamaw" "tittamaw" "jittamaw"
       "ttama" "ttamaw"
@@ -4227,7 +4227,7 @@ concrete DictMlt of DictMltAbs = CatMlt ** open ParadigmsMlt in {
       "nistenna" "tistenna" "jistenna" "tistenna" "nistennew" "tistennew" "jistennew"
       "stenna" "stennew"
       ) ;
-    stienes_'NS_10_10782_V    = mkV irregular form10 (mkRoot "'-n-s") (mkVowels "ie" "e")
+    stienes_'NS_10_10782_V    = irregularV form10 (mkRoot "'-n-s") (mkVowels "ie" "e")
       "stienist" "stienist" "stienes" "stienset" "stienisna" "stienistu" "stiensu"
       "nistienes" "tistienes" "jistienes" "tistienes" "nistiensu" "tistiensu" "jistiensu"
       "stienes" "stiensu"

@@ -575,8 +575,8 @@ resource ParadigmsMlt = open
             VImpf (AgP1 Pl)     => impfP1Pl ;
             VImpf (AgP2 Pl)     => impfP2Pl ;
             VImpf (AgP3Pl)      => impfP3Pl ;
-            VImp (Pl)           => impSg ;
-            VImp (Sg)           => impPl
+            VImp (Sg)           => impSg ;
+            VImp (Pl)           => impPl
             } ;
           info : VerbInfo = mkVerbInfo class form root vseq impSg ;
         in lin V  {
